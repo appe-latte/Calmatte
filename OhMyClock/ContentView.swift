@@ -152,13 +152,45 @@ struct ClockView: View {
                                 Spacer()
                             }
                             
+                            // MARK: "Morning / Afternoon / Evening"
                             HStack {
-                                Text("Oh My Clock")
-                                    .font(.footnote)
-                                    .fontWeight(.bold)
-                                    .kerning(10)
-                                    .textCase(.uppercase)
-                                    .minimumScaleFactor(0.5)
+                                if Calendar.current.component(.hour, from: Date()) > 5 && Calendar.current.component(.hour, from: Date()) < 11 {
+                                    Text("Good Morning")
+                                        .font(.footnote)
+                                        .fontWeight(.bold)
+                                        .kerning(10)
+                                        .textCase(.uppercase)
+                                        .minimumScaleFactor(0.5)
+                                } else if Calendar.current.component(.hour, from: Date()) > 11 && Calendar.current.component(.hour, from: Date()) < 13 {
+                                    Text("Mid-day")
+                                        .font(.footnote)
+                                        .fontWeight(.bold)
+                                        .kerning(10)
+                                        .textCase(.uppercase)
+                                        .minimumScaleFactor(0.5)
+                                } else if Calendar.current.component(.hour, from: Date()) > 13 && Calendar.current.component(.hour, from: Date()) < 17 {
+                                    Text("Good Afternoon")
+                                        .font(.footnote)
+                                        .fontWeight(.bold)
+                                        .kerning(7)
+                                        .textCase(.uppercase)
+                                        .minimumScaleFactor(0.5)
+                                } else if Calendar.current.component(.hour, from: Date()) > 17 && Calendar.current.component(.hour, from: Date()) < 22 {
+                                    Text("Good Evening")
+                                        .font(.footnote)
+                                        .fontWeight(.bold)
+                                        .kerning(10)
+                                        .textCase(.uppercase)
+                                        .minimumScaleFactor(0.5)
+                                }
+                                else {
+                                    Text("Good Night")
+                                        .font(.footnote)
+                                        .fontWeight(.bold)
+                                        .kerning(10)
+                                        .textCase(.uppercase)
+                                        .minimumScaleFactor(0.5)
+                                }
                                 
                                 Spacer()
                             }
