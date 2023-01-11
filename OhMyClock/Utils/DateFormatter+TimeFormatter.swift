@@ -14,5 +14,4 @@ extension DateFormatter {
         formatter.dateFormat = "HHmmss"
         return formatter
     }
-
 }

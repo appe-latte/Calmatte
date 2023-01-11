@@ -325,9 +325,9 @@ struct ClockView: View {
                                 }
                             }
                             
+                            // MARK: Location
+                            
                             HStack {
-                                // MARK: Location
-                                
                                 VStack(spacing: 5) {
                                     Image("city")
                                         .resizable()
@@ -399,7 +399,6 @@ struct ClockView: View {
         
         return format.string(from: Date())
     }
-    
 }
 
 struct MainView_Previews: PreviewProvider {
