@@ -112,7 +112,7 @@ struct MeditationView: View {
                 if #available(iOS 16.0, *) {
                     PlayerView(meditationViewModel: meditationViewModel)
                         .ignoresSafeArea()
-                        .presentationDetents([.height(screenHeight / 4), .fraction(0.3)])
+                        .presentationDetents([.height(screenHeight / 2.5), .fraction(0.4)])
                 } else {
                     // Fallback on earlier versions
                     PlayerView(meditationViewModel: meditationViewModel)
@@ -120,7 +120,6 @@ struct MeditationView: View {
             }
         }
         .ignoresSafeArea()
-        
     }
 }
 
@@ -133,6 +132,7 @@ struct MeditationView_Previews: PreviewProvider {
     }
 }
 
+// MARK: extension for rounded corners for ZStack
 extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape( RoundedCorner(radius: radius, corners: corners) )

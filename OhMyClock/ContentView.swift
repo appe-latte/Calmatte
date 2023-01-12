@@ -11,10 +11,10 @@ struct ContentView: View {
     
     init() {
         let tabBarTintColor = UITabBarAppearance()
-                tabBarTintColor.configureWithOpaqueBackground()
-                tabBarTintColor.selectionIndicatorTintColor = UIColor.init(Color(red: 24 / 255, green: 24 / 255, blue: 24 / 255))
-                UITabBar.appearance().scrollEdgeAppearance = tabBarTintColor
-                UITabBar.appearance().standardAppearance = tabBarTintColor
+        tabBarTintColor.configureWithOpaqueBackground()
+        tabBarTintColor.selectionIndicatorTintColor = UIColor.init(Color(red: 24 / 255, green: 24 / 255, blue: 24 / 255))
+        UITabBar.appearance().scrollEdgeAppearance = tabBarTintColor
+        UITabBar.appearance().standardAppearance = tabBarTintColor
     }
     
     var body: some View {

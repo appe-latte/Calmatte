@@ -23,45 +23,64 @@ struct PlayerView: View {
     var body: some View {
         ZStack {
             
-            VStack(spacing: 0) {
+            VStack(spacing: 10) {
                 
                 // MARK: Playback
-                if let player = audioManager.player {
-                VStack(spacing: 5) {
-                    Slider(value: $value, in: 0...player.duration) { editing in
-                        isEditing = editing
-                        
-                        if !editing {
-                            audioManager.player?.currentTime = value
-                        }
-                    }
-                    .accentColor(np_red)
+                
+//                if let player = audioManager.player {
+//                    VStack(spacing: 5) {
+//                        Slider(value: $value, in: 0...player.duration) { editing in
+//                            isEditing = editing
+//                            
+//                            if !editing {
+//                                audioManager.player?.currentTime = value
+//                            }
+//                        }
+//                        .accentColor(np_red)
+//                        .frame(maxWidth: .infinity)
+//                        .padding(.vertical, 10)
+//                    }
+//                    
+//                    HStack {
+//                        Text(DateComponentsFormatter.positional.string(from: player.currentTime) ?? "0:00")
+//                            .fontWeight(.semibold)
+//                            .kerning(5)
+//                            .frame(width: 75, height:20)
+//                            .padding(.leading, 10)
+//                            .background(np_white)
+//                            .clipShape(Capsule())
+//                        
+//                        Spacer()
+//                        
+//                        Text(DateComponentsFormatter.positional.string(from: player.duration - player.currentTime) ?? "0:00")
+//                            .fontWeight(.semibold)
+//                            .kerning(5)
+//                            .frame(width: 75, height:20)
+//                            .padding(.leading, 10)
+//                            .background(np_white)
+//                            .clipShape(Capsule())
+//                    }
+//                    .font(.caption)
+//                    .foregroundColor(np_black)
+//                }
+                
+//                Text("As you begin your meditation, take slow deep breaths and let the calming sounds gently drift you away.")
+//                    .font(.footnote)
+//                    .fontWeight(.semibold)
+//                    .kerning(7)
+//                    .textCase(.uppercase)
+//                    .minimumScaleFactor(0.5)
+//                    .frame(maxWidth: .infinity)
+                
+                // MARK: description
+                
+                Text("As you begin your meditative journey, remember to steady your mind and focus on your slow, deep breathing.")
+                    .font(.footnote)
+                    .fontWeight(.semibold)
+                    .kerning(7)
+                    .textCase(.uppercase)
+                    .minimumScaleFactor(0.5)
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 10)
-                }
-                    
-                    HStack {
-                        Text(DateComponentsFormatter.positional.string(from: player.currentTime) ?? "0:00")
-                            .fontWeight(.semibold)
-                            .kerning(5)
-                            .frame(width: 75, height:20)
-                            .padding(.leading, 10)
-                            .background(np_white)
-                            .clipShape(Capsule())
-                        
-                        Spacer()
-                        
-                        Text(DateComponentsFormatter.positional.string(from: player.duration - player.currentTime) ?? "0:00")
-                            .fontWeight(.semibold)
-                            .kerning(5)
-                            .frame(width: 75, height:20)
-                            .padding(.leading, 10)
-                            .background(np_white)
-                            .clipShape(Capsule())
-                    }
-                    .font(.caption)
-                    .foregroundColor(np_black)
-                }
                 
                 // MARK: Playback Controls
                 
@@ -80,8 +99,8 @@ struct PlayerView: View {
                     
                     // MARK: "Play" button
                     
-                    PlaybackControlButton(systemName: "play.circle.fill", fontSize: 50) {
-                        
+                    PlaybackControlButton(systemName: audioManager.player?.isPlaying ?? true ? "pause.circle.fill" : "play.circle.fill", fontSize: 50) {
+                        audioManager.playPauseFunction()
                     }
                     
                     // MARK: "Go Forwards" button

@@ -280,10 +280,10 @@ struct ClockView: View {
                                         .scaledToFill()
                                         .aspectRatio(contentMode: .fill)
                                         .clipped()
-                                        .frame(width: 60, height: 60)
+                                        .frame(width: 50, height: 50)
                                         .padding(25)
                                         .background(np_black)
-                                        .clipShape(Circle())
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                         .foregroundColor(np_white)
                                     
                                     Text(weatherViewModel.title)
@@ -307,10 +307,10 @@ struct ClockView: View {
                                         .scaledToFill()
                                         .aspectRatio(contentMode: .fill)
                                         .clipped()
-                                        .frame(width: 60, height: 60)
+                                        .frame(width: 50, height: 50)
                                         .padding(25)
                                         .background(np_black)
-                                        .clipShape(Circle())
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                         .foregroundColor(np_white)
                                     
                                     
@@ -335,10 +335,10 @@ struct ClockView: View {
                                         .scaledToFill()
                                         .aspectRatio(contentMode: .fill)
                                         .clipped()
-                                        .frame(width: 60, height: 60)
+                                        .frame(width: 50, height: 50)
                                         .padding(25)
                                         .background(np_black)
-                                        .clipShape(Circle())
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                         .foregroundColor(np_white)
                                     
                                     Text("Calgary")
@@ -362,10 +362,10 @@ struct ClockView: View {
                                         .scaledToFill()
                                         .aspectRatio(contentMode: .fill)
                                         .clipped()
-                                        .frame(width: 60, height: 60)
+                                        .frame(width: 50, height: 50)
                                         .padding(25)
                                         .background(np_black)
-                                        .clipShape(Circle())
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                         .foregroundColor(np_white)
                                     
                                     Text(weatherViewModel.humidity)
@@ -378,6 +378,7 @@ struct ClockView: View {
                                         .textCase(.uppercase)
                                         .foregroundColor(np_black)
                                 }
+                                .padding(.trailing)
                             }
                             
                             Spacer(minLength: 0)
