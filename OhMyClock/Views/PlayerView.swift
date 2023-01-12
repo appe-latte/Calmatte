@@ -27,50 +27,50 @@ struct PlayerView: View {
                 
                 // MARK: Playback
                 
-//                if let player = audioManager.player {
-//                    VStack(spacing: 5) {
-//                        Slider(value: $value, in: 0...player.duration) { editing in
-//                            isEditing = editing
-//                            
-//                            if !editing {
-//                                audioManager.player?.currentTime = value
-//                            }
-//                        }
-//                        .accentColor(np_red)
-//                        .frame(maxWidth: .infinity)
-//                        .padding(.vertical, 10)
-//                    }
-//                    
-//                    HStack {
-//                        Text(DateComponentsFormatter.positional.string(from: player.currentTime) ?? "0:00")
-//                            .fontWeight(.semibold)
-//                            .kerning(5)
-//                            .frame(width: 75, height:20)
-//                            .padding(.leading, 10)
-//                            .background(np_white)
-//                            .clipShape(Capsule())
-//                        
-//                        Spacer()
-//                        
-//                        Text(DateComponentsFormatter.positional.string(from: player.duration - player.currentTime) ?? "0:00")
-//                            .fontWeight(.semibold)
-//                            .kerning(5)
-//                            .frame(width: 75, height:20)
-//                            .padding(.leading, 10)
-//                            .background(np_white)
-//                            .clipShape(Capsule())
-//                    }
-//                    .font(.caption)
-//                    .foregroundColor(np_black)
-//                }
+                //                if let player = audioManager.player {
+                //                    VStack(spacing: 5) {
+                //                        Slider(value: $value, in: 0...player.duration) { editing in
+                //                            isEditing = editing
+                //
+                //                            if !editing {
+                //                                audioManager.player?.currentTime = value
+                //                            }
+                //                        }
+                //                        .accentColor(np_red)
+                //                        .frame(maxWidth: .infinity)
+                //                        .padding(.vertical, 10)
+                //                    }
+                //
+                //                    HStack {
+                //                        Text(DateComponentsFormatter.positional.string(from: player.currentTime) ?? "0:00")
+                //                            .fontWeight(.semibold)
+                //                            .kerning(5)
+                //                            .frame(width: 75, height:20)
+                //                            .padding(.leading, 10)
+                //                            .background(np_white)
+                //                            .clipShape(Capsule())
+                //
+                //                        Spacer()
+                //
+                //                        Text(DateComponentsFormatter.positional.string(from: player.duration - player.currentTime) ?? "0:00")
+                //                            .fontWeight(.semibold)
+                //                            .kerning(5)
+                //                            .frame(width: 75, height:20)
+                //                            .padding(.leading, 10)
+                //                            .background(np_white)
+                //                            .clipShape(Capsule())
+                //                    }
+                //                    .font(.caption)
+                //                    .foregroundColor(np_black)
+                //                }
                 
-//                Text("As you begin your meditation, take slow deep breaths and let the calming sounds gently drift you away.")
-//                    .font(.footnote)
-//                    .fontWeight(.semibold)
-//                    .kerning(7)
-//                    .textCase(.uppercase)
-//                    .minimumScaleFactor(0.5)
-//                    .frame(maxWidth: .infinity)
+                //                Text("As you begin your meditation, take slow deep breaths and let the calming sounds gently drift you away.")
+                //                    .font(.footnote)
+                //                    .fontWeight(.semibold)
+                //                    .kerning(7)
+                //                    .textCase(.uppercase)
+                //                    .minimumScaleFactor(0.5)
+                //                    .frame(maxWidth: .infinity)
                 
                 // MARK: description
                 
@@ -85,35 +85,27 @@ struct PlayerView: View {
                 // MARK: Playback Controls
                 
                 HStack(spacing: 30) {
-                    // MARK: "Repeat" button
-                    
-                    PlaybackControlButton(systemName: "repeat") {
-                        
-                    }
-                    
-                    // MARK: "Go Backwards" button
-                    
-                    PlaybackControlButton(systemName: "gobackward.10") {
-                        
-                    }
                     
                     // MARK: "Play" button
                     
-                    PlaybackControlButton(systemName: audioManager.player?.isPlaying ?? true ? "pause.circle.fill" : "play.circle.fill", fontSize: 50) {
+                    PlaybackControlButton(systemName: audioManager.isPlaying ? "pause.circle.fill" : "play.circle.fill", fontSize: 50) {
                         audioManager.playPauseFunction()
-                    }
-                    
-                    // MARK: "Go Forwards" button
-                    
-                    PlaybackControlButton(systemName: "goforward.10") {
-                        
                     }
                     
                     // MARK: "Stop" button
                     
-                    PlaybackControlButton(systemName: "stop.circle.fill") {
-                        
+                    PlaybackControlButton(systemName: "stop.circle.fill", fontSize: 40) {
+                        audioManager.stop()
+                        dismiss()
                     }
+                    
+                    // MARK: "Duration"
+                    
+                    Text(DateComponentsFormatter.positional.string(from: (audioManager.player?.currentTime ?? 0.0)) ?? "0:00")
+                        .font(.footnote)
+                        .fontWeight(.semibold)
+                        .kerning(5)
+                        .foregroundColor(np_black)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(5)

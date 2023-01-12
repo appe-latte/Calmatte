@@ -40,6 +40,7 @@ struct MeditationView: View {
                         
                         Text(DateComponentsFormatter.abbreviated.string(from: meditationViewModel.meditation.duration) ?? meditationViewModel.meditation.duration.formatted() + "s")
                             .font(.footnote)
+                            .fontWeight(.semibold)
                             .kerning(5)
                             .textCase(.uppercase)
                     }
