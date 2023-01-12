@@ -8,6 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    init() {
+        let tabBarTintColor = UITabBarAppearance()
+                tabBarTintColor.configureWithOpaqueBackground()
+                tabBarTintColor.selectionIndicatorTintColor = UIColor.init(Color(red: 24 / 255, green: 24 / 255, blue: 24 / 255))
+                UITabBar.appearance().scrollEdgeAppearance = tabBarTintColor
+                UITabBar.appearance().standardAppearance = tabBarTintColor
+    }
+    
     var body: some View {
         TabView {
             MainView()
@@ -15,9 +24,14 @@ struct ContentView: View {
                     Label("Home", image: "home")
                 }
             
-            MeditationView()
+            MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
                 .tabItem {
                     Label("Meditation", image: "zen")
+                }
+            
+            TasksView()
+                .tabItem {
+                    Label("Daily Goals", image: "collections")
                 }
             
             SettingsView()
@@ -31,6 +45,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(AudioManager())
     }
 }
 

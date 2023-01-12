@@ -42,7 +42,7 @@ struct FlipView: View {
             // MARK: Separator
             
             np_black
-                .frame(height: 1.5)
+                .frame(height: 2.5)
                 .clipShape(RoundedRectangle(cornerRadius: 2))
             
             ZStack {
@@ -117,7 +117,6 @@ struct SingleFlipView: View {
     
     private let text: String
     private let type: FlipType
-    
 }
 
 struct ClockView: View {
@@ -136,6 +135,8 @@ struct ClockView: View {
                 VStack {
                     HStack {
                         VStack(spacing: 10) {
+                            // MARK: Date
+                            
                             HStack {
                                 Text(Date().formatted(.dateTime.month().day().year()))
                                     .font(.system(size: 28))
@@ -149,28 +150,28 @@ struct ClockView: View {
                             
                             // MARK: "Morning / Afternoon / Evening"
                             HStack {
-                                if Calendar.current.component(.hour, from: Date()) > 5 && Calendar.current.component(.hour, from: Date()) < 11 {
+                                if Calendar.current.component(.hour, from: Date()) >= 5 && Calendar.current.component(.hour, from: Date()) < 12 {
                                     Text("Good Morning")
                                         .font(.footnote)
                                         .fontWeight(.bold)
                                         .kerning(10)
                                         .textCase(.uppercase)
                                         .minimumScaleFactor(0.5)
-                                } else if Calendar.current.component(.hour, from: Date()) > 11 && Calendar.current.component(.hour, from: Date()) < 13 {
+                                } else if Calendar.current.component(.hour, from: Date()) >= 12 && Calendar.current.component(.hour, from: Date()) < 13 {
                                     Text("Mid-day")
                                         .font(.footnote)
                                         .fontWeight(.bold)
                                         .kerning(10)
                                         .textCase(.uppercase)
                                         .minimumScaleFactor(0.5)
-                                } else if Calendar.current.component(.hour, from: Date()) > 13 && Calendar.current.component(.hour, from: Date()) < 17 {
+                                } else if Calendar.current.component(.hour, from: Date()) >= 13 && Calendar.current.component(.hour, from: Date()) < 17 {
                                     Text("Good Afternoon")
                                         .font(.footnote)
                                         .fontWeight(.bold)
                                         .kerning(7)
                                         .textCase(.uppercase)
                                         .minimumScaleFactor(0.5)
-                                } else if Calendar.current.component(.hour, from: Date()) > 17 && Calendar.current.component(.hour, from: Date()) < 22 {
+                                } else if Calendar.current.component(.hour, from: Date()) >= 17 && Calendar.current.component(.hour, from: Date()) < 22 {
                                     Text("Good Evening")
                                         .font(.footnote)
                                         .fontWeight(.bold)

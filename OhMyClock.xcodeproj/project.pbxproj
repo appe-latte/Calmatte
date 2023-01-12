@@ -17,6 +17,13 @@
 		2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0BA2967A55900AC8D59 /* ClockViewModel.swift */; };
 		2F36B0BD2967A57D00AC8D59 /* FlipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */; };
 		2F36B0BF2967A5A200AC8D59 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0BE2967A5A200AC8D59 /* WeatherViewModel.swift */; };
+		2F434BAD296F3E2500698C1A /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BAC296F3E2500698C1A /* TasksView.swift */; };
+		2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BAE296F60FE00698C1A /* PlayerView.swift */; };
+		2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */; };
+		2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB2296F863400698C1A /* MeditationViewModel.swift */; };
+		2F434BB6296F89F100698C1A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB5296F89F100698C1A /* Extensions.swift */; };
+		2F434BB8296F8CCA00698C1A /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB7296F8CCA00698C1A /* AudioManager.swift */; };
+		2F434BBA296F8F0500698C1A /* meditation-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F434BB9296F8F0500698C1A /* meditation-1.mp3 */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
 		2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50126296EA2B400813D40 /* MeditationView.swift */; };
 		2FF50129296EA33000813D40 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50128296EA33000813D40 /* SettingsView.swift */; };
@@ -34,6 +41,14 @@
 		2F36B0BA2967A55900AC8D59 /* ClockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewModel.swift; sourceTree = "<group>"; };
 		2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipViewModel.swift; sourceTree = "<group>"; };
 		2F36B0BE2967A5A200AC8D59 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		2F434BAC296F3E2500698C1A /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
+		2F434BAE296F60FE00698C1A /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlButton.swift; sourceTree = "<group>"; };
+		2F434BB2296F863400698C1A /* MeditationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationViewModel.swift; sourceTree = "<group>"; };
+		2F434BB5296F89F100698C1A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		2F434BB7296F8CCA00698C1A /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		2F434BB9296F8F0500698C1A /* meditation-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "meditation-1.mp3"; sourceTree = "<group>"; };
+		2F434BBB296F8F9A00698C1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2FF50123296E9B2800813D40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2FF50126296EA2B400813D40 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 		2FF50128296EA33000813D40 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -69,6 +84,8 @@
 		2F36B0A22967A40000AC8D59 /* OhMyClock */ = {
 			isa = PBXGroup;
 			children = (
+				2F434BBB296F8F9A00698C1A /* Info.plist */,
+				2F434BB4296F89D100698C1A /* Helpers */,
 				2F36B0B12967A48B00AC8D59 /* Utils */,
 				2F36B0B62967A4FD00AC8D59 /* Models */,
 				2F36B0B92967A52500AC8D59 /* ViewModels */,
@@ -76,6 +93,7 @@
 				2F36B0A52967A40000AC8D59 /* ContentView.swift */,
 				2FF50125296EA29300813D40 /* Views */,
 				2F36B0A72967A40200AC8D59 /* Assets.xcassets */,
+				2F434BB9296F8F0500698C1A /* meditation-1.mp3 */,
 				2F36B0A92967A40200AC8D59 /* Preview Content */,
 			);
 			path = OhMyClock;
@@ -94,6 +112,7 @@
 			children = (
 				2F36B0B22967A4B000AC8D59 /* Colors.swift */,
 				2F36B0B42967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift */,
+				2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -112,8 +131,18 @@
 				2F36B0BA2967A55900AC8D59 /* ClockViewModel.swift */,
 				2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */,
 				2F36B0BE2967A5A200AC8D59 /* WeatherViewModel.swift */,
+				2F434BB2296F863400698C1A /* MeditationViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		2F434BB4296F89D100698C1A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2F434BB5296F89F100698C1A /* Extensions.swift */,
+				2F434BB7296F8CCA00698C1A /* AudioManager.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		2FF50125296EA29300813D40 /* Views */ = {
@@ -121,7 +150,9 @@
 			children = (
 				2FF50123296E9B2800813D40 /* MainView.swift */,
 				2FF50126296EA2B400813D40 /* MeditationView.swift */,
+				2F434BAC296F3E2500698C1A /* TasksView.swift */,
 				2FF50128296EA33000813D40 /* SettingsView.swift */,
+				2F434BAE296F60FE00698C1A /* PlayerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F434BBA296F8F0500698C1A /* meditation-1.mp3 in Resources */,
 				2F36B0AB2967A40200AC8D59 /* Preview Assets.xcassets in Resources */,
 				2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */,
 			);
@@ -199,11 +231,17 @@
 				2F36B0B52967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift in Sources */,
 				2FF50124296E9B2800813D40 /* MainView.swift in Sources */,
 				2F36B0A62967A40000AC8D59 /* ContentView.swift in Sources */,
+				2F434BB8296F8CCA00698C1A /* AudioManager.swift in Sources */,
 				2F36B0B32967A4B000AC8D59 /* Colors.swift in Sources */,
+				2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */,
 				2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */,
 				2F36B0BD2967A57D00AC8D59 /* FlipViewModel.swift in Sources */,
 				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
+				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
+				2F434BAD296F3E2500698C1A /* TasksView.swift in Sources */,
 				2F36B0BF2967A5A200AC8D59 /* WeatherViewModel.swift in Sources */,
+				2F434BB6296F89F100698C1A /* Extensions.swift in Sources */,
+				2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */,
 				2F36B0B82967A51900AC8D59 /* Models.swift in Sources */,
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
 				2FF50129296EA33000813D40 /* SettingsView.swift in Sources */,
@@ -339,6 +377,7 @@
 				DEVELOPMENT_TEAM = QACLP69RHJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OhMyClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Oh My Clock";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -375,6 +414,7 @@
 				DEVELOPMENT_TEAM = QACLP69RHJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OhMyClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Oh My Clock";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
