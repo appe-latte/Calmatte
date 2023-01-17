@@ -23,3 +23,15 @@ struct WeatherInfo : Codable {
     let main : String
     let description : String
 }
+
+struct LocationResults: Codable {
+    var latitude : String
+    var longitude : String
+    var city : String
+    
+    enum CodingKeys: String, CodingKey {
+        case latitude
+        case longitude
+        case city
+    }
+}

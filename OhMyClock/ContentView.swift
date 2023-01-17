@@ -9,11 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var showMenuSheet = false
+    
     init() {
         let tabBarTintColor = UITabBarAppearance()
         tabBarTintColor.configureWithOpaqueBackground()
         tabBarTintColor.selectionIndicatorTintColor = UIColor.init(Color(red: 24 / 255, green: 24 / 255, blue: 24 / 255))
         UITabBar.appearance().scrollEdgeAppearance = tabBarTintColor
+        UITabBar.appearance().standardAppearance = tabBarTintColor
+        
+        tabBarTintColor.configureWithTransparentBackground()
         UITabBar.appearance().standardAppearance = tabBarTintColor
     }
     
@@ -36,7 +41,7 @@ struct ContentView: View {
             
             SettingsView()
                 .tabItem {
-                    Label("Menu", image: "more")
+                    Label("More", image: "more")
                 }
         }
     }

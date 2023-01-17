@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A17F2973F0FC007DA7CC /* LocationManager.swift */; };
+		2F27A18329740143007DA7CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A18229740143007DA7CC /* Alamofire */; };
+		2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A185297401B8007DA7CC /* SwiftyJSON */; };
+		2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A187297402AB007DA7CC /* LocationFetch.swift */; };
 		2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0A32967A40000AC8D59 /* OhMyClockApp.swift */; };
 		2F36B0A62967A40000AC8D59 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0A52967A40000AC8D59 /* ContentView.swift */; };
 		2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F36B0A72967A40200AC8D59 /* Assets.xcassets */; };
@@ -23,13 +27,15 @@
 		2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB2296F863400698C1A /* MeditationViewModel.swift */; };
 		2F434BB6296F89F100698C1A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB5296F89F100698C1A /* Extensions.swift */; };
 		2F434BB8296F8CCA00698C1A /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB7296F8CCA00698C1A /* AudioManager.swift */; };
-		2F434BBA296F8F0500698C1A /* meditation-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F434BB9296F8F0500698C1A /* meditation-1.mp3 */; };
+		2FF081572976950D004F2294 /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FF081562976950C004F2294 /* equilibrium.mp3 */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
 		2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50126296EA2B400813D40 /* MeditationView.swift */; };
 		2FF50129296EA33000813D40 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50128296EA33000813D40 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F27A17F2973F0FC007DA7CC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		2F27A187297402AB007DA7CC /* LocationFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetch.swift; sourceTree = "<group>"; };
 		2F36B0A02967A40000AC8D59 /* OhMyClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhMyClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F36B0A32967A40000AC8D59 /* OhMyClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhMyClockApp.swift; sourceTree = "<group>"; };
 		2F36B0A52967A40000AC8D59 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,8 +53,8 @@
 		2F434BB2296F863400698C1A /* MeditationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationViewModel.swift; sourceTree = "<group>"; };
 		2F434BB5296F89F100698C1A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2F434BB7296F8CCA00698C1A /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
-		2F434BB9296F8F0500698C1A /* meditation-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "meditation-1.mp3"; sourceTree = "<group>"; };
 		2F434BBB296F8F9A00698C1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2FF081562976950C004F2294 /* equilibrium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = equilibrium.mp3; sourceTree = "<group>"; };
 		2FF50123296E9B2800813D40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2FF50126296EA2B400813D40 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 		2FF50128296EA33000813D40 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -59,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */,
+				2F27A18329740143007DA7CC /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +101,7 @@
 				2F36B0A52967A40000AC8D59 /* ContentView.swift */,
 				2FF50125296EA29300813D40 /* Views */,
 				2F36B0A72967A40200AC8D59 /* Assets.xcassets */,
-				2F434BB9296F8F0500698C1A /* meditation-1.mp3 */,
+				2FF081562976950C004F2294 /* equilibrium.mp3 */,
 				2F36B0A92967A40200AC8D59 /* Preview Content */,
 			);
 			path = OhMyClock;
@@ -141,6 +149,8 @@
 			children = (
 				2F434BB5296F89F100698C1A /* Extensions.swift */,
 				2F434BB7296F8CCA00698C1A /* AudioManager.swift */,
+				2F27A17F2973F0FC007DA7CC /* LocationManager.swift */,
+				2F27A187297402AB007DA7CC /* LocationFetch.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -173,6 +183,10 @@
 			dependencies = (
 			);
 			name = OhMyClock;
+			packageProductDependencies = (
+				2F27A18229740143007DA7CC /* Alamofire */,
+				2F27A185297401B8007DA7CC /* SwiftyJSON */,
+			);
 			productName = OhMyClock;
 			productReference = 2F36B0A02967A40000AC8D59 /* OhMyClock.app */;
 			productType = "com.apple.product-type.application";
@@ -201,6 +215,10 @@
 				Base,
 			);
 			mainGroup = 2F36B0972967A40000AC8D59;
+			packageReferences = (
+				2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 2F36B0A12967A40000AC8D59 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -215,8 +233,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F434BBA296F8F0500698C1A /* meditation-1.mp3 in Resources */,
 				2F36B0AB2967A40200AC8D59 /* Preview Assets.xcassets in Resources */,
+				2FF081572976950D004F2294 /* equilibrium.mp3 in Resources */,
 				2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,12 +256,14 @@
 				2F36B0BD2967A57D00AC8D59 /* FlipViewModel.swift in Sources */,
 				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
+				2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */,
 				2F434BAD296F3E2500698C1A /* TasksView.swift in Sources */,
 				2F36B0BF2967A5A200AC8D59 /* WeatherViewModel.swift in Sources */,
 				2F434BB6296F89F100698C1A /* Extensions.swift in Sources */,
 				2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */,
 				2F36B0B82967A51900AC8D59 /* Models.swift in Sources */,
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
+				2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */,
 				2FF50129296EA33000813D40 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +400,7 @@
 				INFOPLIST_FILE = OhMyClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Oh My Clock";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Required to show the name of your location and weather information\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -417,6 +438,7 @@
 				INFOPLIST_FILE = OhMyClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Oh My Clock";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Required to show the name of your location and weather information\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -461,6 +483,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2F27A18229740143007DA7CC /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		2F27A185297401B8007DA7CC /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2F36B0982967A40000AC8D59 /* Project object */;
 }

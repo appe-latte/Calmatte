@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import Combine
+import Alamofire
+import SwiftyJSON
 import CoreLocation
 
 struct MainView: View {
@@ -47,6 +50,7 @@ struct FlipView: View {
             
             ZStack {
                 SingleFlipView(text: viewModel.oldValue ?? "", type: .bottom)
+                
                 SingleFlipView(text: viewModel.newValue ?? "", type: .bottom)
                     .rotation3DEffect(.init(degrees: self.viewModel.animateBottom ? .zero : 90),
                                       axis: (1, 0, 0),
@@ -78,7 +82,7 @@ struct SingleFlipView: View {
             .padding(type.paddingEdges, 15)
             .clipped()
             .background(np_white)
-            .cornerRadius(15)
+            .clipShape(RoundedCorner(radius: 15))
             .padding(type.padding, -15.5)
             .clipped()
     }
@@ -119,12 +123,97 @@ struct SingleFlipView: View {
     private let type: FlipType
 }
 
+
+//struct ClockView: View {
+//    @StateObject var weatherViewModel = WeatherViewModel()
+//    @Binding var nightMode : Bool
+//    let viewModel = ClockViewModel()
+//    let locationFetch = LocationFetch()
+//    var width = UIScreen.main.bounds.width
+//    var height = UIScreen.main.bounds.height
+//
+//    var body: some View {
+//        ScrollView {
+//            ZStack {
+//                VStack {
+//                    HStack {
+//                        VStack(spacing: 10) {
+//                            // MARK: Date
+//                            HStack {
+//                                Text(Date(), style: .dateTime)
+//                                    .font(.system(size: 28))
+//                                    .fontWeight(.bold)
+//                                    .kerning(5)
+//                                    .minimumScaleFactor(0.5)
+//                                    .textCase(.uppercase)
+//                                Spacer()
+//                            }
+//                            // MARK: "Morning / Afternoon / Evening"
+//                            HStack {
+//                                Text(greeting)
+//                                    .font(.footnote)
+//                                    .fontWeight(.bold)
+//                                    .kerning(10)
+//                                    .textCase(.uppercase)
+//                                    .minimumScaleFactor(0.5)
+//                                Spacer()
+//                            }
+//                        }
+//                        .padding(10)
+//                        .padding(.top, 30)
+//                        Spacer(minLength: 0)
+//                        // MARK: Toggle Day / Night
+//                        VStack {
+//                            Button(action: {
+//                                nightMode.toggle()
+//                            }, label: {
+//                                Image(nightMode ? "sun" : "moon")
+//                                    .font(.headline)
+//                                    .foregroundColor(nightMode ? .black : .white)
+//                                    .padding(7)
+//                                    .background(Color.primary)
+//                                    .clipShape(Circle())
+//                            })
+//
+//                            Text("Day / Night")
+//                                .font(.footnote)
+//                                .fontWeight(.semibold)
+//                                .textCase(.uppercase)
+//                        }
+//                        .padding(.top, 30)
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    private var greeting: String {
+//        let hour = Calendar.current.component(.hour, from: Date())
+//        switch hour {
+//        case 5..<12:
+//            return "Good Morning"
+//        case 12:
+//            return "Mid-day"
+//        case 13..<17:
+//            return "Good Afternoon"
+//        case 17..<22:
+//            return "Good Evening"
+//        default:
+//            return "Good Night"
+//        }
+//    }
+//}
+
+
+
 struct ClockView: View {
     @StateObject var weatherViewModel = WeatherViewModel()
+    @State var city : String = ""
     
     @Binding var nightMode : Bool
     
     let viewModel = ClockViewModel()
+    let locationFetch = LocationFetch()
     
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
@@ -150,46 +239,16 @@ struct ClockView: View {
                             
                             // MARK: "Morning / Afternoon / Evening"
                             HStack {
-                                if Calendar.current.component(.hour, from: Date()) >= 5 && Calendar.current.component(.hour, from: Date()) < 12 {
-                                    Text("Good Morning")
-                                        .font(.footnote)
-                                        .fontWeight(.bold)
-                                        .kerning(10)
-                                        .textCase(.uppercase)
-                                        .minimumScaleFactor(0.5)
-                                } else if Calendar.current.component(.hour, from: Date()) >= 12 && Calendar.current.component(.hour, from: Date()) < 13 {
-                                    Text("Mid-day")
-                                        .font(.footnote)
-                                        .fontWeight(.bold)
-                                        .kerning(10)
-                                        .textCase(.uppercase)
-                                        .minimumScaleFactor(0.5)
-                                } else if Calendar.current.component(.hour, from: Date()) >= 13 && Calendar.current.component(.hour, from: Date()) < 17 {
-                                    Text("Good Afternoon")
-                                        .font(.footnote)
-                                        .fontWeight(.bold)
-                                        .kerning(7)
-                                        .textCase(.uppercase)
-                                        .minimumScaleFactor(0.5)
-                                } else if Calendar.current.component(.hour, from: Date()) >= 17 && Calendar.current.component(.hour, from: Date()) < 22 {
-                                    Text("Good Evening")
-                                        .font(.footnote)
-                                        .fontWeight(.bold)
-                                        .kerning(10)
-                                        .textCase(.uppercase)
-                                        .minimumScaleFactor(0.5)
-                                }
-                                else {
-                                    Text("Good Night")
-                                        .font(.footnote)
-                                        .fontWeight(.bold)
-                                        .kerning(10)
-                                        .textCase(.uppercase)
-                                        .minimumScaleFactor(0.5)
-                                }
+                                Text(greeting)
+                                    .font(.footnote)
+                                    .fontWeight(.bold)
+                                    .kerning(10)
+                                    .textCase(.uppercase)
+                                    .minimumScaleFactor(0.5)
                                 
                                 Spacer()
                             }
+                            
                         }
                         .padding(10)
                         .padding(.top, 30)
@@ -216,6 +275,7 @@ struct ClockView: View {
                                 .textCase(.uppercase)
                         }
                         .padding(.top, 30)
+                        
                     }
                     .padding()
                     
@@ -341,7 +401,7 @@ struct ClockView: View {
                                         .clipShape(RoundedRectangle(cornerRadius: 10))
                                         .foregroundColor(np_white)
                                     
-                                    Text("Calgary")
+                                    Text(city)
                                         .font(.custom("Helvetica-Bold", size: 30))
                                         .foregroundColor(np_black)
                                     
@@ -385,11 +445,31 @@ struct ClockView: View {
                         }
                         .frame(maxWidth: width / 1.25)
                         .padding(.top, 25)
+                        
                     }
                     .frame(maxWidth: width - 20, maxHeight: 650)
                     .cornerRadius(20)
                     .padding(.top, 20)
                     .edgesIgnoringSafeArea(.bottom)
+                    .onAppear {
+                        locationFetch.getCurrentLocation { location in
+                            let lat = location.latitude
+                            let lon = location.longitude
+                            let apiKey = "AIzaSyDkXur7s6FqAHIB-kaPpGlIeaFHpTNhNPo"
+                            let url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(lat),\(lon)&key=\(apiKey)"
+                            AF.request(url).responseJSON { response in
+                                switch response.result {
+                                case .success(let value):
+                                    let json = JSON(value)
+                                    let city = json["results"][0]["address_components"][3]["long_name"].stringValue
+                                    self.city = city
+                                case .failure(let error):
+                                    print(error)
+                                }
+                            }
+                        }
+                        
+                    }
                 }
             }
         }
@@ -401,6 +481,22 @@ struct ClockView: View {
         
         return format.string(from: Date())
     }
+    
+    private var greeting: String {
+        let hour = Calendar.current.component(.hour, from: Date())
+        switch hour {
+        case 5..<12:
+            return "Good Morning"
+        case 12:
+            return "Mid-day"
+        case 13..<17:
+            return "Good Afternoon"
+        case 17..<22:
+            return "Good Evening"
+        default:
+            return "Good Night"
+        }
+    }
 }
 
 struct MainView_Previews: PreviewProvider {
@@ -408,3 +504,4 @@ struct MainView_Previews: PreviewProvider {
         MainView()
     }
 }
+

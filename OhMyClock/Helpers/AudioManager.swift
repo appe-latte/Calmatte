@@ -5,27 +5,30 @@
 //  Created by Stanford L. Khumalo on 2023-01-11.
 //
 
-import Foundation
-import AVKit
+import AVFoundation
+import SwiftUI
 
 final class AudioManager: ObservableObject {
-    var player : AVAudioPlayer?
-    @Published private(set) var isPlaying : Bool = false {
+    public var player: AVAudioPlayer?
+    private var track: String?
+    private var isPreview: Bool = false
+    
+    @Published var isPlaying: Bool = false {
         didSet {
             print("isPlaying", isPlaying)
         }
     }
     
     func startPlayer(track: String, isPreview: Bool = false) {
+        self.track = track
+        self.isPreview = isPreview
+        
         guard let url = Bundle.main.url(forResource: track, withExtension: ".mp3") else {
             print("Music file not found: \(track)")
             return
-            
         }
         
         do {
-            // MARK: plays sound whether device is on silent mode or not
-            
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
             
@@ -38,11 +41,11 @@ final class AudioManager: ObservableObject {
                 isPlaying = true
             }
         } catch {
-            print("Failed to initialise player", error)
+            print("Failed to initialize player:", error)
         }
     }
     
-    func playPauseFunction() {
+    func playPause() {
         guard let player = player else {
             print("No instance of the audio player was found")
             return
@@ -63,6 +66,13 @@ final class AudioManager: ObservableObject {
         if player.isPlaying {
             player.stop()
             isPlaying = false
+            player.currentTime = 0
         }
+    }
+    
+    func replay() {
+        guard let track = track, !isPreview else { return }
+        stop()
+        startPlayer(track: track)
     }
 }

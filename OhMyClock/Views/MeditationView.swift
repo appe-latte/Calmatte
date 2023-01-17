@@ -25,7 +25,7 @@ struct MeditationView: View {
             
             ZStack {
                 
-                Color(red: 24 / 255, green: 24 / 255, blue: 24 / 255) // BG color
+                //                Color(red: 24 / 255, green: 24 / 255, blue: 24 / 255)
                 
                 VStack(alignment: .leading, spacing: 20) {
                     
@@ -79,19 +79,21 @@ struct MeditationView: View {
                                     .resizable()
                                     .scaledToFill()
                                     .frame(maxWidth: 30, maxHeight: 30)
-                                Text("play")
+                                Text("begin")
                                     .font(.footnote)
                                     .fontWeight(.semibold)
                                     .kerning(10)
                                     .textCase(.uppercase)
                             }
                             .padding(.vertical, 5)
-                            .foregroundColor(np_white)
+                            .foregroundColor(np_black)
                             .frame(width: 200, height: 50)
+                            .background(np_white)
                             .clipShape(Capsule())
                             .overlay(
                                 Capsule(style: .continuous)
-                                    .stroke(np_white, style: StrokeStyle(lineWidth: 1))
+                                    .stroke(np_black, style: StrokeStyle(lineWidth: 1))
+                                    .padding(3)
                             )
                         })
                         
@@ -106,6 +108,7 @@ struct MeditationView: View {
                 .padding(20)
             }
             .frame(height: screenHeight * 1 / 2)
+            .background(.black)
             .cornerRadius(15, corners: [.topLeft, .topRight])
             .blurredSheet(.init(.ultraThinMaterial), show: $showPlayerSheet) {
                 //

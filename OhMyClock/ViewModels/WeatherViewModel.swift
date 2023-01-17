@@ -15,8 +15,6 @@ class WeatherViewModel : ObservableObject {
     @Published var timezone : String = "_"
     @Published var feels_like : String = "_"
     @Published var humidity : String = "_"
-    @Published var long : String = "_"
-    @Published var lat : String = "_"
     
     init() {
         fetchWeather()
