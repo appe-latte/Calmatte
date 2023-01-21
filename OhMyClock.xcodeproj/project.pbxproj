@@ -27,6 +27,10 @@
 		2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB2296F863400698C1A /* MeditationViewModel.swift */; };
 		2F434BB6296F89F100698C1A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB5296F89F100698C1A /* Extensions.swift */; };
 		2F434BB8296F8CCA00698C1A /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB7296F8CCA00698C1A /* AudioManager.swift */; };
+		2F54B25D297C5F0E0075E488 /* AddTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B25C297C5F0E0075E488 /* AddTasksView.swift */; };
+		2F54B260297C71190075E488 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B25F297C71190075E488 /* Realm */; };
+		2F54B262297C71190075E488 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B261297C71190075E488 /* RealmSwift */; };
+		2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEE581297731CE00416E54 /* TaskRow.swift */; };
 		2FF081572976950D004F2294 /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FF081562976950C004F2294 /* equilibrium.mp3 */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
 		2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50126296EA2B400813D40 /* MeditationView.swift */; };
@@ -54,6 +58,8 @@
 		2F434BB5296F89F100698C1A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2F434BB7296F8CCA00698C1A /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		2F434BBB296F8F9A00698C1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2F54B25C297C5F0E0075E488 /* AddTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTasksView.swift; sourceTree = "<group>"; };
+		2FEEE581297731CE00416E54 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		2FF081562976950C004F2294 /* equilibrium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = equilibrium.mp3; sourceTree = "<group>"; };
 		2FF50123296E9B2800813D40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2FF50126296EA2B400813D40 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
@@ -65,6 +71,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F54B262297C71190075E488 /* RealmSwift in Frameworks */,
+				2F54B260297C71190075E488 /* Realm in Frameworks */,
 				2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */,
 				2F27A18329740143007DA7CC /* Alamofire in Frameworks */,
 			);
@@ -121,6 +129,7 @@
 				2F36B0B22967A4B000AC8D59 /* Colors.swift */,
 				2F36B0B42967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift */,
 				2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */,
+				2FEEE581297731CE00416E54 /* TaskRow.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -161,6 +170,7 @@
 				2FF50123296E9B2800813D40 /* MainView.swift */,
 				2FF50126296EA2B400813D40 /* MeditationView.swift */,
 				2F434BAC296F3E2500698C1A /* TasksView.swift */,
+				2F54B25C297C5F0E0075E488 /* AddTasksView.swift */,
 				2FF50128296EA33000813D40 /* SettingsView.swift */,
 				2F434BAE296F60FE00698C1A /* PlayerView.swift */,
 			);
@@ -186,6 +196,8 @@
 			packageProductDependencies = (
 				2F27A18229740143007DA7CC /* Alamofire */,
 				2F27A185297401B8007DA7CC /* SwiftyJSON */,
+				2F54B25F297C71190075E488 /* Realm */,
+				2F54B261297C71190075E488 /* RealmSwift */,
 			);
 			productName = OhMyClock;
 			productReference = 2F36B0A02967A40000AC8D59 /* OhMyClock.app */;
@@ -218,6 +230,7 @@
 			packageReferences = (
 				2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 2F36B0A12967A40000AC8D59 /* Products */;
 			projectDirPath = "";
@@ -261,9 +274,11 @@
 				2F36B0BF2967A5A200AC8D59 /* WeatherViewModel.swift in Sources */,
 				2F434BB6296F89F100698C1A /* Extensions.swift in Sources */,
 				2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */,
+				2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */,
 				2F36B0B82967A51900AC8D59 /* Models.swift in Sources */,
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
 				2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */,
+				2F54B25D297C5F0E0075E488 /* AddTasksView.swift in Sources */,
 				2FF50129296EA33000813D40 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,6 +516,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -513,6 +536,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		2F54B25F297C71190075E488 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		2F54B261297C71190075E488 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

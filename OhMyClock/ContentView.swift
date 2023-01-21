@@ -36,7 +36,7 @@ struct ContentView: View {
             
             TasksView()
                 .tabItem {
-                    Label("Daily Goals", image: "collections")
+                    Label("Milestones", image: "collections")
                 }
             
             SettingsView()

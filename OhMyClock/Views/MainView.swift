@@ -123,89 +123,6 @@ struct SingleFlipView: View {
     private let type: FlipType
 }
 
-
-//struct ClockView: View {
-//    @StateObject var weatherViewModel = WeatherViewModel()
-//    @Binding var nightMode : Bool
-//    let viewModel = ClockViewModel()
-//    let locationFetch = LocationFetch()
-//    var width = UIScreen.main.bounds.width
-//    var height = UIScreen.main.bounds.height
-//
-//    var body: some View {
-//        ScrollView {
-//            ZStack {
-//                VStack {
-//                    HStack {
-//                        VStack(spacing: 10) {
-//                            // MARK: Date
-//                            HStack {
-//                                Text(Date(), style: .dateTime)
-//                                    .font(.system(size: 28))
-//                                    .fontWeight(.bold)
-//                                    .kerning(5)
-//                                    .minimumScaleFactor(0.5)
-//                                    .textCase(.uppercase)
-//                                Spacer()
-//                            }
-//                            // MARK: "Morning / Afternoon / Evening"
-//                            HStack {
-//                                Text(greeting)
-//                                    .font(.footnote)
-//                                    .fontWeight(.bold)
-//                                    .kerning(10)
-//                                    .textCase(.uppercase)
-//                                    .minimumScaleFactor(0.5)
-//                                Spacer()
-//                            }
-//                        }
-//                        .padding(10)
-//                        .padding(.top, 30)
-//                        Spacer(minLength: 0)
-//                        // MARK: Toggle Day / Night
-//                        VStack {
-//                            Button(action: {
-//                                nightMode.toggle()
-//                            }, label: {
-//                                Image(nightMode ? "sun" : "moon")
-//                                    .font(.headline)
-//                                    .foregroundColor(nightMode ? .black : .white)
-//                                    .padding(7)
-//                                    .background(Color.primary)
-//                                    .clipShape(Circle())
-//                            })
-//
-//                            Text("Day / Night")
-//                                .font(.footnote)
-//                                .fontWeight(.semibold)
-//                                .textCase(.uppercase)
-//                        }
-//                        .padding(.top, 30)
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//    private var greeting: String {
-//        let hour = Calendar.current.component(.hour, from: Date())
-//        switch hour {
-//        case 5..<12:
-//            return "Good Morning"
-//        case 12:
-//            return "Mid-day"
-//        case 13..<17:
-//            return "Good Afternoon"
-//        case 17..<22:
-//            return "Good Evening"
-//        default:
-//            return "Good Night"
-//        }
-//    }
-//}
-
-
-
 struct ClockView: View {
     @StateObject var weatherViewModel = WeatherViewModel()
     @State var city : String = ""
@@ -468,10 +385,10 @@ struct ClockView: View {
                                 }
                             }
                         }
-                        
                     }
                 }
             }
+            .frame(maxWidth: .infinity)
         }
     }
     

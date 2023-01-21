@@ -24,9 +24,6 @@ struct MeditationView: View {
                 .frame(width: screenWidth, height: screenHeight * 2 / 3, alignment: .top)
             
             ZStack {
-                
-                //                Color(red: 24 / 255, green: 24 / 255, blue: 24 / 255)
-                
                 VStack(alignment: .leading, spacing: 20) {
                     
                     HStack {
