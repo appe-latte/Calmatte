@@ -23,5 +23,5 @@ struct Meditation {
     let track : String
     let image : String
     
-    static let data = Meditation(title: "5-Minute Meditation", description: "Take a deep breath, close your eyes, relax and take this quick 5-minute meditation break to help you refocus.", duration: 300, track: "equilibrium", image: "meditation-stones")
+    static let data = Meditation(title: "7-Minute Meditation", description: "Take a deep breath, close your eyes, relax and take this quick 5-minute meditation break to help you refocus.", duration: 420, track: "equilibrium", image: "meditation-stones")
 }

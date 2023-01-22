@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct AddTasksView: View {
-    @State var milestoneText : String = ""
+    @EnvironmentObject var realmManager : OmcRealmManager
+    @State var title : String = ""
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
@@ -20,8 +22,8 @@ struct AddTasksView: View {
             
             // MARK: "textfield"
             
-            TextField("Enter milestone here...", text: $milestoneText)
-                .textFieldStyle(.roundedBorder)
+            TextField("Enter milestone here...", text: $title)
+                .textFieldStyle(PlainTextFieldStyle())
                 .foregroundColor(np_black)
             
             // MARK: "Save" button
@@ -30,8 +32,10 @@ struct AddTasksView: View {
                 Spacer()
                 
                 Button(action: {
-                    print("Milestone Saved!")
-                    
+                    if title != "" {
+                        realmManager.addMilestone(milestoneTitle: title)
+                    }
+                    dismiss()
                 }, label: {
                     Text("Save")
                         .font(.footnote)
@@ -57,12 +61,13 @@ struct AddTasksView: View {
         }
         .padding(.top, 40)
         .padding(.horizontal)
-//        .background(LinearGradient(gradient: Gradient(colors: [np_white, .white]), startPoint: .topLeading, endPoint: .bottomTrailing))
+        .background(np_white)
     }
 }
 
 struct AddTasksView_Previews: PreviewProvider {
     static var previews: some View {
         AddTasksView()
+            .environmentObject(OmcRealmManager())
     }
 }

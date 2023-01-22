@@ -30,6 +30,8 @@
 		2F54B25D297C5F0E0075E488 /* AddTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B25C297C5F0E0075E488 /* AddTasksView.swift */; };
 		2F54B260297C71190075E488 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B25F297C71190075E488 /* Realm */; };
 		2F54B262297C71190075E488 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B261297C71190075E488 /* RealmSwift */; };
+		2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B263297D19E20075E488 /* OmcRealmManager.swift */; };
+		2F54B266297D1AE50075E488 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B265297D1AE40075E488 /* Milestone.swift */; };
 		2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEE581297731CE00416E54 /* TaskRow.swift */; };
 		2FF081572976950D004F2294 /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FF081562976950C004F2294 /* equilibrium.mp3 */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
@@ -59,6 +61,8 @@
 		2F434BB7296F8CCA00698C1A /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		2F434BBB296F8F9A00698C1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2F54B25C297C5F0E0075E488 /* AddTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTasksView.swift; sourceTree = "<group>"; };
+		2F54B263297D19E20075E488 /* OmcRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmcRealmManager.swift; sourceTree = "<group>"; };
+		2F54B265297D1AE40075E488 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		2FEEE581297731CE00416E54 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		2FF081562976950C004F2294 /* equilibrium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = equilibrium.mp3; sourceTree = "<group>"; };
 		2FF50123296E9B2800813D40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 				2F36B0A72967A40200AC8D59 /* Assets.xcassets */,
 				2FF081562976950C004F2294 /* equilibrium.mp3 */,
 				2F36B0A92967A40200AC8D59 /* Preview Content */,
+				2F54B263297D19E20075E488 /* OmcRealmManager.swift */,
+				2F54B265297D1AE40075E488 /* Milestone.swift */,
 			);
 			path = OhMyClock;
 			sourceTree = "<group>";
@@ -272,8 +278,10 @@
 				2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */,
 				2F434BAD296F3E2500698C1A /* TasksView.swift in Sources */,
 				2F36B0BF2967A5A200AC8D59 /* WeatherViewModel.swift in Sources */,
+				2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */,
 				2F434BB6296F89F100698C1A /* Extensions.swift in Sources */,
 				2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */,
+				2F54B266297D1AE50075E488 /* Milestone.swift in Sources */,
 				2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */,
 				2F36B0B82967A51900AC8D59 /* Models.swift in Sources */,
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
@@ -520,8 +528,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.10.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

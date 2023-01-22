@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @StateObject var realmManager = OmcRealmManager()
     @State var showMenuSheet = false
     
     init() {
@@ -35,6 +35,8 @@ struct ContentView: View {
                 }
             
             TasksView()
+                .environmentObject(realmManager)
+                .colorScheme(.light)
                 .tabItem {
                     Label("Milestones", image: "collections")
                 }

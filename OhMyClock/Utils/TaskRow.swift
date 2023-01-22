@@ -13,9 +13,11 @@ struct TaskRow : View {
     
     var body: some View {
         HStack(spacing: 10) {
-            Image(systemName: completed ? "checkmark.circle" : "checkmark")
+            Image(systemName: completed ? "square.inset.filled" : "square")
             Text(task)
+                .font(.headline)
         }
+        .foregroundColor(np_black)
     }
 }
 
