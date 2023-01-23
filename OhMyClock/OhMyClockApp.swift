@@ -15,6 +15,7 @@ struct OhMyClockApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(audioManager)
+                .preferredColorScheme(.light)
         }
     }
 }

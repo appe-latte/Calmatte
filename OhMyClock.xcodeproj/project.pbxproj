@@ -21,7 +21,7 @@
 		2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0BA2967A55900AC8D59 /* ClockViewModel.swift */; };
 		2F36B0BD2967A57D00AC8D59 /* FlipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */; };
 		2F36B0BF2967A5A200AC8D59 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0BE2967A5A200AC8D59 /* WeatherViewModel.swift */; };
-		2F434BAD296F3E2500698C1A /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BAC296F3E2500698C1A /* TasksView.swift */; };
+		2F434BAD296F3E2500698C1A /* MilestonesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BAC296F3E2500698C1A /* MilestonesView.swift */; };
 		2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BAE296F60FE00698C1A /* PlayerView.swift */; };
 		2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */; };
 		2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB2296F863400698C1A /* MeditationViewModel.swift */; };
@@ -53,7 +53,7 @@
 		2F36B0BA2967A55900AC8D59 /* ClockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewModel.swift; sourceTree = "<group>"; };
 		2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipViewModel.swift; sourceTree = "<group>"; };
 		2F36B0BE2967A5A200AC8D59 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
-		2F434BAC296F3E2500698C1A /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
+		2F434BAC296F3E2500698C1A /* MilestonesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestonesView.swift; sourceTree = "<group>"; };
 		2F434BAE296F60FE00698C1A /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlButton.swift; sourceTree = "<group>"; };
 		2F434BB2296F863400698C1A /* MeditationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationViewModel.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 			children = (
 				2FF50123296E9B2800813D40 /* MainView.swift */,
 				2FF50126296EA2B400813D40 /* MeditationView.swift */,
-				2F434BAC296F3E2500698C1A /* TasksView.swift */,
+				2F434BAC296F3E2500698C1A /* MilestonesView.swift */,
 				2F54B25C297C5F0E0075E488 /* AddTasksView.swift */,
 				2FF50128296EA33000813D40 /* SettingsView.swift */,
 				2F434BAE296F60FE00698C1A /* PlayerView.swift */,
@@ -276,7 +276,7 @@
 				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
 				2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */,
-				2F434BAD296F3E2500698C1A /* TasksView.swift in Sources */,
+				2F434BAD296F3E2500698C1A /* MilestonesView.swift in Sources */,
 				2F36B0BF2967A5A200AC8D59 /* WeatherViewModel.swift in Sources */,
 				2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */,
 				2F434BB6296F89F100698C1A /* Extensions.swift in Sources */,
@@ -427,14 +427,15 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appe-latte.OhMyClock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -465,14 +466,15 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appe-latte.OhMyClock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

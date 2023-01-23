@@ -15,7 +15,10 @@ struct TaskRow : View {
         HStack(spacing: 10) {
             Image(systemName: completed ? "square.inset.filled" : "square")
             Text(task)
-                .font(.headline)
+                .font(.footnote)
+                .kerning(3)
+                .textCase(.uppercase)
+                .minimumScaleFactor(0.75)
         }
         .foregroundColor(np_black)
     }

@@ -173,25 +173,25 @@ struct ClockView: View {
                         Spacer(minLength: 0)
                         
                         // MARK: Toggle Day / Night
-                        
-                        VStack {
-                            Button(action: {
-                                nightMode.toggle()
-                            }, label: {
-                                Image(nightMode ? "sun" : "moon")
-                                    .font(.headline)
-                                    .foregroundColor(nightMode ? .black : .white)
-                                    .padding(7)
-                                    .background(Color.primary)
-                                    .clipShape(Circle())
-                            })
-                            
-                            Text("Day / Night")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                                .textCase(.uppercase)
-                        }
-                        .padding(.top, 30)
+//                        
+//                        VStack {
+//                            Button(action: {
+//                                nightMode.toggle()
+//                            }, label: {
+//                                Image(nightMode ? "sun" : "moon")
+//                                    .font(.headline)
+//                                    .foregroundColor(nightMode ? .black : .white)
+//                                    .padding(7)
+//                                    .background(Color.primary)
+//                                    .clipShape(Circle())
+//                            })
+//                            
+//                            Text("Day / Night")
+//                                .font(.footnote)
+//                                .fontWeight(.semibold)
+//                                .textCase(.uppercase)
+//                        }
+//                        .padding(.top, 30)
                         
                     }
                     .padding()
@@ -234,8 +234,6 @@ struct ClockView: View {
                     // MARK: Weather Information
                     
                     ZStack {
-                        np_white
-                        
                         VStack(spacing: 25) {
                             HStack {
                                 Text("Weather Information")
@@ -364,25 +362,27 @@ struct ClockView: View {
                         .padding(.top, 25)
                         
                     }
+                    
                     .frame(maxWidth: width - 20, maxHeight: 650)
+                    .background(np_white)
                     .cornerRadius(20)
                     .padding(.top, 20)
                     .edgesIgnoringSafeArea(.bottom)
-                    .onAppear {
-                        locationFetch.getCurrentLocation { location in
-                            let lat = location.latitude
-                            let lon = location.longitude
-                            let apiKey = "AIzaSyDkXur7s6FqAHIB-kaPpGlIeaFHpTNhNPo"
-                            let url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(lat),\(lon)&key=\(apiKey)"
-                            AF.request(url).responseJSON { response in
-                                switch response.result {
-                                case .success(let value):
-                                    let json = JSON(value)
-                                    let city = json["results"][0]["address_components"][3]["long_name"].stringValue
-                                    self.city = city
-                                case .failure(let error):
-                                    print(error)
-                                }
+                }
+                .onAppear {
+                    locationFetch.getCurrentLocation { location in
+                        let lat = location.latitude
+                        let lon = location.longitude
+                        let apiKey = "AIzaSyDkXur7s6FqAHIB-kaPpGlIeaFHpTNhNPo"
+                        let url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(lat),\(lon)&key=\(apiKey)"
+                        AF.request(url).responseJSON { response in
+                            switch response.result {
+                            case .success(let value):
+                                let json = JSON(value)
+                                let city = json["results"][0]["address_components"][3]["long_name"].stringValue
+                                self.city = city
+                            case .failure(let error):
+                                print(error)
                             }
                         }
                     }

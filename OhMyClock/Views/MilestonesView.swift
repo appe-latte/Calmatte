@@ -1,5 +1,5 @@
 //
-//  TasksView.swift
+//  MilestonesView.swift
 //  OhMyClock
 //
 //  Created by Stanford L. Khumalo on 2023-01-11.
@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 import RealmSwift
 
-struct TasksView: View {
+struct MilestonesView: View {
     @EnvironmentObject var realmManager : OmcRealmManager
     @State private var showAddTasksView = false
     
@@ -23,18 +23,33 @@ struct TasksView: View {
                 
                 HStack {
                     Text("Daily Milestones")
-                        .font(.largeTitle)
+                        .font(.title3)
                         .fontWeight(.bold)
-                        .foregroundColor(np_white)
+                        .kerning(7)
+                        .textCase(.uppercase)
                         .minimumScaleFactor(0.75)
                     
                     Spacer()
                     
-                    addTaskButton()
-                        .padding()
-                        .onTapGesture {
-                            showAddTasksView.toggle()
-                        }
+                    Button(action: {
+                        showAddTasksView.toggle()
+                    }, label: {
+                        Text("+Add")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .kerning(5)
+                            .textCase(.uppercase)
+                    })
+                    .padding(.vertical, 5)
+                    .foregroundColor(np_white)
+                    .frame(width: 75, height: 35)
+                    .background(np_black)
+                    .clipShape(Capsule())
+                    .overlay(
+                        Capsule(style: .continuous)
+                            .stroke(np_white, style: StrokeStyle(lineWidth: 1))
+                            .padding(2)
+                    )
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 10)
@@ -43,9 +58,9 @@ struct TasksView: View {
                 
                 HStack {
                     Text("Make a short list of achievable milestones for the day.")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        .foregroundColor(np_white)
+                        .font(.footnote)
+                        .kerning(7)
+                        .textCase(.uppercase)
                         .minimumScaleFactor(0.75)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -78,7 +93,7 @@ struct TasksView: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(np_black)
+            .background(np_white)
         }
         .blurredSheet(.init(.thickMaterial), show: $showAddTasksView) {
             //
@@ -100,7 +115,7 @@ struct TasksView: View {
 
 struct TasksView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksView()
+        MilestonesView()
             .environmentObject(OmcRealmManager())
     }
 }
@@ -110,14 +125,16 @@ struct TasksView_Previews: PreviewProvider {
 struct addTaskButton : View {
     var body: some View {
         ZStack {
-            Circle()
-                .frame(width: 40, alignment: .center)
-                .foregroundColor(np_black)
+            Rectangle()
+                .padding(.vertical, 5)
+                .foregroundColor(np_white)
+                .frame(width: 100, height: 35)
+                .background(np_black)
+                .clipShape(Capsule())
                 .overlay(
-                    Text("+")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundColor(np_white)
+                    Capsule(style: .continuous)
+                        .stroke(np_white, style: StrokeStyle(lineWidth: 1))
+                        .padding(2)
                 )
         }
         .frame(height: 40, alignment: .center)

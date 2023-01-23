@@ -34,7 +34,7 @@ struct ContentView: View {
                     Label("Meditation", image: "zen")
                 }
             
-            TasksView()
+            MilestonesView()
                 .environmentObject(realmManager)
                 .colorScheme(.light)
                 .tabItem {
