@@ -12,19 +12,16 @@ import CoreLocation
 class WeatherViewModel : NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var title : String = "_"
     @Published var descriptionText : String = "_"
-    @Published var temp : String = "_"
+    @Published var temperature : String = "_"
     @Published var timezone : String = "_"
-    @Published var feels_like : String = "_"
-    @Published var humidity : String = "_"
+    @Published var feelsLike : String = "_"
+    @Published var humidityPercentage : String = "_"
     
-    @State var latitude : Double = 0.0
-    @State var longitude : Double = 0.0
-    let locationManager = CLLocationManager()
-    let weatherAPI = WeatherAPI()
+    private let locationManager = CLLocationManager()
+    private let weatherAPI = WeatherAPI()
     
     override init() {
         super.init()
-        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -32,27 +29,28 @@ class WeatherViewModel : NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        self.latitude = location.coordinate.latitude
-        self.longitude = location.coordinate.longitude
-        fetchWeather()
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
+        fetchWeather(latitude: latitude, longitude: longitude)
     }
     
-    func fetchWeather() {
-        weatherAPI.fetchWeather(latitude: self.latitude, longitude: self.longitude) { weather in
+    private func fetchWeather(latitude: Double, longitude: Double) {
+        weatherAPI.fetchWeather(latitude: latitude, longitude: longitude) { [weak self] weather in
             DispatchQueue.main.async {
-                self.title = weather.current.weather.first?.main ?? "Missing Title"
-                self.descriptionText = weather.current.weather.first?.description ?? "Missing Title"
-                self.temp = "\(weather.current.temp)°"
-                self.timezone = weather.timezone
-                self.feels_like = "\(weather.current.feels_like)°C"
-                self.humidity = "\(weather.current.humidity)%"
+                self?.title = weather.current.weather.first?.main ?? "Missing Title"
+                self?.descriptionText = weather.current.weather.first?.description ?? "Missing Description"
+                self?.temperature = "\(weather.current.temp)°"
+                self?.timezone = weather.timezone
+                self?.feelsLike = "\(weather.current.feels_like)°C"
+                self?.humidityPercentage = "\(weather.current.humidity)%"
             }
         }
     }
 }
 
 class WeatherAPI {
-    let baseURL = "https://api.openweathermap.org/data/2.5/onecall?exclude=hourly,daily,minutely&units=metric&appid=bd0c1f8057a7f8807d1d6df0901c2163"
+    private let baseURL = "https://api.openweathermap.org/data/2.5/onecall?exclude=hourly,daily,minutely&units=metric&appid=bd0c1f8057a7f8807d1d6df0901c2163"
+    
     func fetchWeather(latitude: Double, longitude: Double, completion: @escaping (WeatherModel) -> Void) {
         guard let url = URL(string: "\(baseURL)&lat=\(latitude)&lon=\(longitude)") else { return }
         let task = URLSession.shared.dataTask(with: url) { data, _, error in

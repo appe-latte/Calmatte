@@ -28,6 +28,7 @@ struct MilestonesView: View {
                         .kerning(7)
                         .textCase(.uppercase)
                         .minimumScaleFactor(0.75)
+                        .foregroundColor(np_white)
                     
                     Spacer()
                     
@@ -41,13 +42,13 @@ struct MilestonesView: View {
                             .textCase(.uppercase)
                     })
                     .padding(.vertical, 5)
-                    .foregroundColor(np_white)
+                    .foregroundColor(np_black)
                     .frame(width: 75, height: 35)
-                    .background(np_black)
+                    .background(np_white)
                     .clipShape(Capsule())
                     .overlay(
                         Capsule(style: .continuous)
-                            .stroke(np_white, style: StrokeStyle(lineWidth: 1))
+                            .stroke(np_black, style: StrokeStyle(lineWidth: 1))
                             .padding(2)
                     )
                 }
@@ -62,6 +63,7 @@ struct MilestonesView: View {
                         .kerning(7)
                         .textCase(.uppercase)
                         .minimumScaleFactor(0.75)
+                        .foregroundColor(np_white)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 10)
@@ -93,7 +95,7 @@ struct MilestonesView: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(np_white)
+            .background(np_black)
         }
         .blurredSheet(.init(.thickMaterial), show: $showAddTasksView) {
             //

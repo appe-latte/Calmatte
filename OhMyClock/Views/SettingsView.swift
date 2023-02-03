@@ -20,91 +20,11 @@ struct SettingsView: View {
         ZStack {
             VStack(alignment: .center) {
                 Form {
-                    //                    Section(header: Text("Appearance")) {
-                    //
-                    //                        // MARK: "Buy Coffee"
-                    //
-                    //                        NavigationLink(destination: SettingsView()){
-                    //                            Image("log-out")
-                    //                                .resizable()
-                    //                                .frame(width: 30, height: 30)
-                    //                                .foregroundColor(.red)
-                    //
-                    //                            HStack {
-                    //                                Text("Light / dark Mode")
-                    //                                    .font(.headline)
-                    //                                    .fontWeight(.semibold)
-                    //                                    .foregroundColor(np_black)
-                    //
-                    //                                Spacer()
-                    //                            }
-                    //                        }
-                    //
-                    //
-                    //                        // MARK: "Write A Review"
-                    //
-                    //                        NavigationLink(destination: SettingsView()){
-                    //                            Image("log-out")
-                    //                                .resizable()
-                    //                                .frame(width: 30, height: 30)
-                    //                                .foregroundColor(.red)
-                    //
-                    //                            HStack {
-                    //                                Text("Write A Review")
-                    //                                    .font(.caption)
-                    //                                    .fontWeight(.semibold)
-                    //                                    .foregroundColor(np_black)
-                    //
-                    //                                Spacer()
-                    //                            }
-                    //                        }
-                    //
-                    //                        // MARK: "Share App"
-                    //
-                    //                        NavigationLink(destination: SettingsView()){
-                    //                            Image("log-out")
-                    //                                .resizable()
-                    //                                .frame(width: 30, height: 30)
-                    //                                .foregroundColor(.red)
-                    //
-                    //                            HStack {
-                    //                                Text("Share This App")
-                    //                                    .font(.caption)
-                    //                                    .fontWeight(.semibold)
-                    //                                    .foregroundColor(np_black)
-                    //
-                    //                                Spacer()
-                    //                            }
-                    //                        }
-                    //                    }
+                    
                     
                     // MARK: "Developer" Section
                     
                     Section(header: Text("Developer")) {
-                        
-                        // MARK: "Buy Coffee"
-                        
-                        Button(action: {
-                            openURL(URL(string: "https://www.buymeacoffee.com/appe.latte")!)
-                        }, label: {
-                            HStack {
-                                Image("usd")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .padding(5)
-                                    .foregroundColor(np_white)
-                                    .background(Color(uiColor: .systemYellow))
-                                    .clipShape(Circle())
-                                
-                                HStack {
-                                    Text("Buy A Coffee")
-                                        .font(.headline)
-                                        .foregroundColor(np_black)
-                                    
-                                    Spacer()
-                                }
-                            }
-                        })
                         
                         // MARK: "Contact Developer"
                         

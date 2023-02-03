@@ -16,9 +16,12 @@ struct MainView: View {
     
     var body: some View {
         NavigationView {
+            //        ZStack {
             ClockView(nightMode: $nightMode)
                 .navigationBarHidden(true)
                 .preferredColorScheme(nightMode ? .dark : .light)
+            //        }
+            //        .frame(maxWidth: .infinity)
         }
     }
 }
@@ -165,7 +168,6 @@ struct ClockView: View {
                                 
                                 Spacer()
                             }
-                            
                         }
                         .padding(10)
                         .padding(.top, 30)
@@ -173,25 +175,25 @@ struct ClockView: View {
                         Spacer(minLength: 0)
                         
                         // MARK: Toggle Day / Night
-//                        
-//                        VStack {
-//                            Button(action: {
-//                                nightMode.toggle()
-//                            }, label: {
-//                                Image(nightMode ? "sun" : "moon")
-//                                    .font(.headline)
-//                                    .foregroundColor(nightMode ? .black : .white)
-//                                    .padding(7)
-//                                    .background(Color.primary)
-//                                    .clipShape(Circle())
-//                            })
-//                            
-//                            Text("Day / Night")
-//                                .font(.footnote)
-//                                .fontWeight(.semibold)
-//                                .textCase(.uppercase)
-//                        }
-//                        .padding(.top, 30)
+                        
+                        VStack {
+                            Button(action: {
+                                nightMode.toggle()
+                            }, label: {
+                                Image(nightMode ? "sun" : "moon")
+                                    .font(.headline)
+                                    .foregroundColor(nightMode ? .black : .white)
+                                    .padding(7)
+                                    .background(Color.primary)
+                                    .clipShape(Circle())
+                            })
+                            
+                            Text("Day / Night")
+                                .font(.footnote)
+                                .fontWeight(.semibold)
+                                .textCase(.uppercase)
+                        }
+                        .padding(.top, 30)
                         
                     }
                     .padding()
@@ -289,11 +291,11 @@ struct ClockView: View {
                                         .foregroundColor(np_white)
                                     
                                     
-                                    Text(weatherViewModel.temp)
+                                    Text(weatherViewModel.temperature)
                                         .font(.custom("Helvetica-Bold", size: 30))
                                         .foregroundColor(np_black)
                                     
-                                    Text("Feels like: \(weatherViewModel.feels_like)")
+                                    Text("Feels like: \(weatherViewModel.feelsLike)")
                                         .font(.footnote)
                                         .fontWeight(.semibold)
                                         .textCase(.uppercase)
@@ -318,7 +320,10 @@ struct ClockView: View {
                                     
                                     Text(city)
                                         .font(.custom("Helvetica-Bold", size: 30))
+                                        .frame(width: 100)
                                         .foregroundColor(np_black)
+                                        .minimumScaleFactor(0.35)
+                                        .lineLimit(2)
                                     
                                     Text("City")
                                         .font(.footnote)
@@ -343,7 +348,7 @@ struct ClockView: View {
                                         .clipShape(RoundedRectangle(cornerRadius: 10))
                                         .foregroundColor(np_white)
                                     
-                                    Text(weatherViewModel.humidity)
+                                    Text(weatherViewModel.humidityPercentage)
                                         .font(.custom("Helvetica-Bold", size: 30))
                                         .foregroundColor(np_black)
                                     

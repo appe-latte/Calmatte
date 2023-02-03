@@ -16,13 +16,13 @@ struct MeditationView: View {
     let screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
-        ScrollView {
+//        ScrollView {
             VStack(spacing: 0) {
                 // MARK: Image
                 Image(meditationViewModel.meditation.image)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: screenWidth, height: screenHeight * 2 / 3, alignment: .top)
+                    .frame(width: screenWidth, height: screenHeight * 0.5, alignment: .top)
                 
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
@@ -50,7 +50,8 @@ struct MeditationView: View {
                             .fontWeight(.bold)
                             .kerning(10)
                             .textCase(.uppercase)
-                            .minimumScaleFactor(0.75)
+                            .minimumScaleFactor(0.6)
+                            .lineLimit(1)
                         
                         // MARK: Description
                         
@@ -119,9 +120,9 @@ struct MeditationView: View {
                     }
                 }
             }
-//            .ignoresSafeArea()
-        }
-        .ignoresSafeArea()
+            .ignoresSafeArea(edges: .top)
+//        }
+//        .ignoresSafeArea()
     }
 }
 

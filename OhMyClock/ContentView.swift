@@ -17,6 +17,7 @@ struct ContentView: View {
         tabBarTintColor.selectionIndicatorTintColor = UIColor.init(Color(red: 24 / 255, green: 24 / 255, blue: 24 / 255))
         UITabBar.appearance().scrollEdgeAppearance = tabBarTintColor
         UITabBar.appearance().standardAppearance = tabBarTintColor
+        UITabBar.appearance().backgroundColor = UIColor(Color(red: 247 / 255, green: 246 / 255, blue: 242 / 255))
         
         tabBarTintColor.configureWithTransparentBackground()
         UITabBar.appearance().standardAppearance = tabBarTintColor
@@ -30,6 +31,7 @@ struct ContentView: View {
                 }
             
             MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
+                .colorScheme(.light)
                 .tabItem {
                     Label("Meditation", image: "zen")
                 }
@@ -42,6 +44,7 @@ struct ContentView: View {
                 }
             
             SettingsView()
+                .colorScheme(.light)
                 .tabItem {
                     Label("More", image: "more")
                 }
