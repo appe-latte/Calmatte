@@ -33,7 +33,8 @@ struct AddTasksView: View {
                 
                 Button(action: {
                     if title != "" {
-                        realmManager.addMilestone(milestoneTitle: title)
+//                        realmManager.addMilestone(milestoneTitle: title)
+                        realmManager.addMilestone(title: title)
                     }
                     dismiss()
                 }, label: {

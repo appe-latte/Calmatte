@@ -16,7 +16,7 @@ struct MilestonesView: View {
     let screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
-        ZStack {
+//        ZStack {
             VStack(alignment: .leading, spacing: 10) {
                 
                 // MARK: "Heading"
@@ -96,22 +96,23 @@ struct MilestonesView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(np_black)
-        }
-        .blurredSheet(.init(.thickMaterial), show: $showAddTasksView) {
-            //
-        } content: {
-            if #available(iOS 16.0, *) {
-                AddTasksView()
-                    .environmentObject(realmManager)
-                    .preferredColorScheme(.light)
-                    .presentationDetents([.height(screenHeight / 2.5), .fraction(0.4)])
-            } else {
-                // Fallback on earlier versions
-                AddTasksView()
-                    .environmentObject(realmManager)
-                    .colorScheme(.light)
+            .blurredSheet(.init(.thickMaterial), show: $showAddTasksView) {
+                //
+            } content: {
+                if #available(iOS 16.0, *) {
+                    AddTasksView()
+                        .environmentObject(realmManager)
+                        .preferredColorScheme(.light)
+                        .presentationDetents([.height(screenHeight / 2.5), .fraction(0.4)])
+                } else {
+                    // Fallback on earlier versions
+                    AddTasksView()
+                        .environmentObject(realmManager)
+                        .colorScheme(.light)
+                }
             }
-        }
+
+//        }
     }
 }
 

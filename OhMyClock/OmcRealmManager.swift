@@ -9,95 +9,69 @@ import Foundation
 import RealmSwift
 
 class OmcRealmManager : ObservableObject {
-    private(set) var localRealm : Realm?
+    private var realm: Realm!
     @Published private(set) var milestones: [Milestone] = []
     
     init() {
         openRealm()
-        getMilestone()
+        retrieveMilestones()
     }
     
     func openRealm() {
         do {
             let config = Realm.Configuration(schemaVersion: 1)
-            
             Realm.Configuration.defaultConfiguration = config
-            
-            localRealm = try Realm()
-            
+            realm = try Realm()
         } catch {
-            print("Error: \(error)")
+            print("Error opening Realm: \(error)")
         }
     }
     
-    // MARK: "Create" function
-    
-    func addMilestone(milestoneTitle: String) {
-        if let localRealm = localRealm {
-            do {
-                try localRealm.write {
-                    let newMilestone = Milestone(value: ["title": milestoneTitle, "completed": false])
-                    localRealm.add(newMilestone)
-                    getMilestone()
-                    
-                    print("New milestone added!: \(newMilestone)")
-                }
-            } catch {
-                print("Error creating milestoone: \(error)")
+    func addMilestone(title: String) {
+        do {
+            try realm.write {
+                let newMilestone = Milestone(value: ["title": title, "completed": false])
+                realm.add(newMilestone)
+                retrieveMilestones()
+                print("New milestone added: \(newMilestone)")
             }
+        } catch {
+            print("Error adding milestone: \(error)")
         }
     }
     
-    // MARK: "Read" function
-    
-    func getMilestone() {
-        if let localRealm = localRealm {
-            let allMilestones = localRealm.objects(Milestone.self).sorted(byKeyPath: "completed")
-            
-            milestones = []
-            allMilestones.forEach { milestone in
-                milestones.append(milestone)
-            }
-        }
+    func retrieveMilestones() {
+        let allMilestones = realm.objects(Milestone.self).sorted(byKeyPath: "completed")
+        milestones = Array(allMilestones)
     }
-    
-    // MARK: "Update" function
     
     func updateMilestone(id: ObjectId, completed: Bool) {
-        if let localRealm = localRealm {
-            do {
-                let milestoneToUpdate = localRealm.objects(Milestone.self).filter(NSPredicate(format: "id == %@", id))
-                guard !milestoneToUpdate.isEmpty else { return }
-                
-                try localRealm.write {
-                    milestoneToUpdate[0].completed = completed
-                    getMilestone()
-                    
-                    print("Milestone successfully updated: \(id), status: \(completed)")
-                }
-            } catch {
-                print("Error updating Milestone \(id), error: \(error)")
+        do {
+            let milestoneToUpdate = realm.objects(Milestone.self).filter(NSPredicate(format: "id == %@", id))
+            guard !milestoneToUpdate.isEmpty else { return }
+            
+            try realm.write {
+                milestoneToUpdate[0].completed = completed
+                retrieveMilestones()
+                print("Milestone updated successfully: \(id), status: \(completed)")
             }
+        } catch {
+            print("Error updating milestone: \(error)")
         }
     }
     
-    // MARK: "Delete" function
-    
     func deleteMilestone(id: ObjectId) {
-        if let localRealm = localRealm {
-            do {
-                let milestoneToDelete = localRealm.objects(Milestone.self).filter(NSPredicate(format: "id == %@", id))
-                guard !milestoneToDelete.isEmpty else { return }
-                
-                try localRealm.write {
-                    localRealm.delete(milestoneToDelete)
-                    getMilestone()
-                    
-                    print("Deleted milestone: \(id)")
-                }
-            } catch {
-                print("Error deleting milestone \(error)")
+        do {
+            let milestoneToDelete = realm.objects(Milestone.self).filter(NSPredicate(format: "id == %@", id))
+            guard !milestoneToDelete.isEmpty else { return }
+            
+            try realm.write {
+                realm.delete(milestoneToDelete)
+                retrieveMilestones()
+                print("Milestone deleted: \(id)")
             }
+        } catch {
+            print("Error deleting milestone: \(error)")
         }
     }
 }
