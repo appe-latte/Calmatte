@@ -128,7 +128,6 @@ struct SingleFlipView: View {
 }
 
 struct ClockView: View {
-    @StateObject var weatherViewModel = WeatherViewModel()
     @EnvironmentObject var timerModel : TimerModel
     @State var city : String = ""
     
@@ -223,7 +222,7 @@ struct ClockView: View {
                                 .kerning(2)
                                 .textCase(.uppercase)
                             
-                            Text(weatherViewModel.timezone)
+                            Text("timezone")
                                 .font(.footnote)
                                 .fontWeight(.semibold)
                                 .kerning(2)
@@ -366,24 +365,6 @@ struct ClockView: View {
                     }
                     .animation(.easeInOut, value: timerModel.addNewTimer)
                 })
-                .onAppear {
-                    locationFetch.getCurrentLocation { location in
-                        let lat = location.latitude
-                        let lon = location.longitude
-                        let apiKey = "AIzaSyDkXur7s6FqAHIB-kaPpGlIeaFHpTNhNPo"
-                        let url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(lat),\(lon)&key=\(apiKey)"
-                        AF.request(url).responseJSON { response in
-                            switch response.result {
-                            case .success(let value):
-                                let json = JSON(value)
-                                let city = json["results"][0]["address_components"][3]["long_name"].stringValue
-                                self.city = city
-                            case .failure(let error):
-                                print(error)
-                            }
-                        }
-                    }
-                }
             }
             .frame(maxWidth: .infinity)
         }

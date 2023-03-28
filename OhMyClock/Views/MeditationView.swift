@@ -12,6 +12,7 @@ struct MeditationView: View {
     @StateObject var meditationViewModel : MeditationViewModel
     @State private var showPlayer = false
     @State var showPlayerSheet = false
+    @State var showTimerSheet = false
     
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
@@ -26,12 +27,9 @@ struct MeditationView: View {
                     .scaledToFill()
                     .frame(width: screenWidth, height: screenHeight * 0.6, alignment: .top)
                 
-                //                Spacer()
-                
                 ZStack {
                     VStack(spacing: 20) {
                         // MARK: Title
-                        
                         HStack {
                             Text(meditationViewModel.meditation.title)
                                 .font(.system(size: 22, weight: .heavy))
@@ -45,16 +43,14 @@ struct MeditationView: View {
                         }
                         
                         // MARK: Description
-                        
                         Text(meditationViewModel.meditation.description)
                             .font(.footnote)
                             .kerning(3)
                             .textCase(.uppercase)
                             .minimumScaleFactor(0.5)
                         
-                        HStack {
-                            Spacer()
-                            
+                        VStack {
+                            // MARK: Meditation Sound Button
                             Button(action: {
                                 //                            showPlayer = true
                                 showPlayerSheet.toggle()
@@ -66,6 +62,33 @@ struct MeditationView: View {
                                         .scaledToFill()
                                         .frame(maxWidth: 30, maxHeight: 30)
                                     Text("begin")
+                                        .font(.footnote)
+                                        .fontWeight(.semibold)
+                                        .kerning(10)
+                                        .textCase(.uppercase)
+                                }
+                                .padding(.vertical, 5)
+                                .foregroundColor(np_white)
+                                .frame(width: 200, height: 50)
+                                .background(np_black)
+                                .clipShape(Capsule())
+                                .overlay(
+                                    Capsule(style: .continuous)
+                                        .stroke(np_white, style: StrokeStyle(lineWidth: 1))
+                                        .padding(3)
+                                )
+                            })
+                            
+                            // MARK: Focus Timer Button
+                            Button(action: {
+                                showTimerSheet.toggle()
+                            }, label: {
+                                HStack {
+                                    Image("timer")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(maxWidth: 30, maxHeight: 30)
+                                    Text("Timer")
                                         .font(.footnote)
                                         .fontWeight(.semibold)
                                         .kerning(10)

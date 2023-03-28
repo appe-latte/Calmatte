@@ -20,7 +20,6 @@
 		2F36B0B82967A51900AC8D59 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0B72967A51900AC8D59 /* Models.swift */; };
 		2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0BA2967A55900AC8D59 /* ClockViewModel.swift */; };
 		2F36B0BD2967A57D00AC8D59 /* FlipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */; };
-		2F36B0BF2967A5A200AC8D59 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0BE2967A5A200AC8D59 /* WeatherViewModel.swift */; };
 		2F434BAD296F3E2500698C1A /* MilestonesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BAC296F3E2500698C1A /* MilestonesView.swift */; };
 		2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BAE296F60FE00698C1A /* PlayerView.swift */; };
 		2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */; };
@@ -53,7 +52,6 @@
 		2F36B0B72967A51900AC8D59 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		2F36B0BA2967A55900AC8D59 /* ClockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewModel.swift; sourceTree = "<group>"; };
 		2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipViewModel.swift; sourceTree = "<group>"; };
-		2F36B0BE2967A5A200AC8D59 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		2F434BAC296F3E2500698C1A /* MilestonesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestonesView.swift; sourceTree = "<group>"; };
 		2F434BAE296F60FE00698C1A /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlButton.swift; sourceTree = "<group>"; };
@@ -156,7 +154,6 @@
 			children = (
 				2F36B0BA2967A55900AC8D59 /* ClockViewModel.swift */,
 				2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */,
-				2F36B0BE2967A5A200AC8D59 /* WeatherViewModel.swift */,
 				2F434BB2296F863400698C1A /* MeditationViewModel.swift */,
 			);
 			path = ViewModels;
@@ -280,7 +277,6 @@
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
 				2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */,
 				2F434BAD296F3E2500698C1A /* MilestonesView.swift in Sources */,
-				2F36B0BF2967A5A200AC8D59 /* WeatherViewModel.swift in Sources */,
 				2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */,
 				2F434BB6296F89F100698C1A /* Extensions.swift in Sources */,
 				2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */,

@@ -14,14 +14,12 @@ struct SettingsView: View {
     @Environment(\.requestReview) var requestReview
     @State var emailAlert : Bool = false
     
+    let screenHeight = UIScreen.main.bounds.height
+    
     var body: some View {
-        let screenHeight = UIScreen.main.bounds.height
-        
         ZStack {
             VStack(alignment: .center) {
                 Form {
-                    
-                    
                     // MARK: "Developer" Section
                     
                     Section(header: Text("Developer")) {
