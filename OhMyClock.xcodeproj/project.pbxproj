@@ -32,11 +32,12 @@
 		2F54B262297C71190075E488 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B261297C71190075E488 /* RealmSwift */; };
 		2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B263297D19E20075E488 /* OmcRealmManager.swift */; };
 		2F54B266297D1AE50075E488 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B265297D1AE40075E488 /* Milestone.swift */; };
+		2F8CA71029B7A6EB00C34005 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */; };
 		2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEE581297731CE00416E54 /* TaskRow.swift */; };
-		2FF081572976950D004F2294 /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FF081562976950C004F2294 /* equilibrium.mp3 */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
 		2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50126296EA2B400813D40 /* MeditationView.swift */; };
 		2FF50129296EA33000813D40 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50128296EA33000813D40 /* SettingsView.swift */; };
+		2FF8F01329B27BD5008D7C7E /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FF8F00B29B27BD4008D7C7E /* equilibrium.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,11 +64,12 @@
 		2F54B25C297C5F0E0075E488 /* AddTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTasksView.swift; sourceTree = "<group>"; };
 		2F54B263297D19E20075E488 /* OmcRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmcRealmManager.swift; sourceTree = "<group>"; };
 		2F54B265297D1AE40075E488 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
+		2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		2FEEE581297731CE00416E54 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
-		2FF081562976950C004F2294 /* equilibrium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = equilibrium.mp3; sourceTree = "<group>"; };
 		2FF50123296E9B2800813D40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2FF50126296EA2B400813D40 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 		2FF50128296EA33000813D40 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2FF8F00B29B27BD4008D7C7E /* equilibrium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = equilibrium.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +115,7 @@
 				2F36B0A52967A40000AC8D59 /* ContentView.swift */,
 				2FF50125296EA29300813D40 /* Views */,
 				2F36B0A72967A40200AC8D59 /* Assets.xcassets */,
-				2FF081562976950C004F2294 /* equilibrium.mp3 */,
+				2FF8F00B29B27BD4008D7C7E /* equilibrium.mp3 */,
 				2F36B0A92967A40200AC8D59 /* Preview Content */,
 				2F54B263297D19E20075E488 /* OmcRealmManager.swift */,
 				2F54B265297D1AE40075E488 /* Milestone.swift */,
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				2F36B0B72967A51900AC8D59 /* Models.swift */,
+				2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -253,8 +256,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F36B0AB2967A40200AC8D59 /* Preview Assets.xcassets in Resources */,
-				2FF081572976950D004F2294 /* equilibrium.mp3 in Resources */,
 				2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */,
+				2FF8F01329B27BD5008D7C7E /* equilibrium.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +289,7 @@
 				2F36B0B82967A51900AC8D59 /* Models.swift in Sources */,
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
 				2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */,
+				2F8CA71029B7A6EB00C34005 /* TimerModel.swift in Sources */,
 				2F54B25D297C5F0E0075E488 /* AddTasksView.swift in Sources */,
 				2FF50129296EA33000813D40 /* SettingsView.swift in Sources */,
 			);

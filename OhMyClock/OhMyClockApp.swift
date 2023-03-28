@@ -10,11 +10,13 @@ import SwiftUI
 @main
 struct OhMyClockApp: App {
     @StateObject var audioManager = AudioManager()
+    @StateObject var timerModel: TimerModel = .init()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(audioManager)
+                .environmentObject(timerModel)
 //                .preferredColorScheme(.light)
         }
     }

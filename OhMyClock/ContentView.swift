@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var realmManager = OmcRealmManager()
     @State var showMenuSheet = false
+    @EnvironmentObject var timerModel : TimerModel
     
     init() {
         let tabBarTintColor = UITabBarAppearance()
@@ -56,6 +57,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(AudioManager())
+            .environmentObject(TimerModel())
     }
 }
 

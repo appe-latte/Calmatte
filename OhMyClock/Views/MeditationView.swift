@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct MeditationView: View {
     @StateObject var meditationViewModel : MeditationViewModel
@@ -16,52 +17,40 @@ struct MeditationView: View {
     let screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
-//        ScrollView {
+        ScrollView {
             VStack(spacing: 0) {
                 // MARK: Image
+                
                 Image(meditationViewModel.meditation.image)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: screenWidth, height: screenHeight * 0.5, alignment: .top)
+                    .frame(width: screenWidth, height: screenHeight * 0.6, alignment: .top)
+                
+                //                Spacer()
                 
                 ZStack {
-                    VStack(alignment: .leading, spacing: 20) {
-                        
-                        HStack {
-                            Text("Meditation Sounds")
-                                .font(.headline)
-                                .kerning(5)
-                                .fontWeight(.semibold)
-                                .textCase(.uppercase)
-                            
-                            Spacer()
-                            
-                            Text(DateComponentsFormatter.abbreviated.string(from: meditationViewModel.meditation.duration) ?? meditationViewModel.meditation.duration.formatted() + "s")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                                .kerning(5)
-                                .textCase(.uppercase)
-                        }
-                        
+                    VStack(spacing: 20) {
                         // MARK: Title
                         
-                        Text(meditationViewModel.meditation.title)
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .kerning(10)
-                            .textCase(.uppercase)
-                            .minimumScaleFactor(0.6)
-                            .lineLimit(1)
+                        HStack {
+                            Text(meditationViewModel.meditation.title)
+                                .font(.system(size: 22, weight: .heavy))
+                                .fontWeight(.bold)
+                                .kerning(10)
+                                .textCase(.uppercase)
+                                .minimumScaleFactor(0.6)
+                                .lineLimit(1)
+                            
+                            Spacer()
+                        }
                         
                         // MARK: Description
                         
                         Text(meditationViewModel.meditation.description)
                             .font(.footnote)
-                            .kerning(7)
+                            .kerning(3)
                             .textCase(.uppercase)
                             .minimumScaleFactor(0.5)
-                        
-                        // MARK: Button
                         
                         HStack {
                             Spacer()
@@ -98,13 +87,11 @@ struct MeditationView: View {
                         }
                         .padding(.vertical, 5)
                         
-                        Spacer()
-                        
                     }
                     .foregroundColor(np_black)
                     .padding(20)
                 }
-                .frame(height: screenHeight * 1 / 2)
+                .frame(height: screenHeight * 0.35)
                 .background(np_white)
                 .cornerRadius(15, corners: [.topLeft, .topRight])
                 .blurredSheet(.init(.ultraThinMaterial), show: $showPlayerSheet) {
@@ -120,9 +107,9 @@ struct MeditationView: View {
                     }
                 }
             }
-            .ignoresSafeArea(edges: .top)
-//        }
-//        .ignoresSafeArea()
+        }
+        .background(np_white)
+        .ignoresSafeArea(edges: .top)
     }
 }
 
