@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct ContentView: View {
     @StateObject var realmManager = OmcRealmManager()
@@ -18,7 +19,7 @@ struct ContentView: View {
         tabBarTintColor.selectionIndicatorTintColor = UIColor.init(Color(red: 24 / 255, green: 24 / 255, blue: 24 / 255))
         UITabBar.appearance().scrollEdgeAppearance = tabBarTintColor
         UITabBar.appearance().standardAppearance = tabBarTintColor
-        UITabBar.appearance().backgroundColor = UIColor(Color(red: 247 / 255, green: 246 / 255, blue: 242 / 255))
+        UITabBar.appearance().backgroundColor = UIColor(Color(red: 24 / 255, green: 24 / 255, blue: 24 / 255))
         
         tabBarTintColor.configureWithTransparentBackground()
         UITabBar.appearance().standardAppearance = tabBarTintColor
