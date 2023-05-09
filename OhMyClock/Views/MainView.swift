@@ -10,6 +10,7 @@ import Combine
 import Alamofire
 import SwiftyJSON
 import CoreLocation
+import WeatherKit
 
 struct MainView: View {
     @State var nightMode = false
@@ -130,6 +131,7 @@ struct SingleFlipView: View {
 struct ClockView: View {
     @EnvironmentObject var timerModel : TimerModel
     @State var city : String = ""
+    @StateObject private var vm = WeatherViewModel()
     
     @Binding var nightMode : Bool
     
@@ -234,122 +236,53 @@ struct ClockView: View {
                     
                     Spacer(minLength: 0)
                     
-                    // MARK: Focus Timer
+                    // MARK: Weather Conditions
                     
                     VStack {
-                        VStack(spacing: 10) {
-                            HStack {
-                                Text("Focus Timer")
-                                    .font(.footnote)
-                                    .fontWeight(.bold)
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                                    .foregroundColor(np_black)
-                                
-                                Spacer()
-                                
-                                Text(timerModel.timerValue)
-                                    .font(.subheadline)
-                                    .fontWeight(.bold)
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                                    .foregroundColor(np_black)
-                                    .animation(.none, value: timerModel.progress)
-                            }
+                        // Temperature
+                         VStack {
+                            Text("Temperature:")
+                                .font(.footnote)
+                                .fontWeight(.bold)
+                                .kerning(5)
+                                .textCase(.uppercase)
                             
-                            GeometryReader { geo in
-                                VStack(spacing: 5) {
-                                    ZStack {
-                                        Circle()
-                                            .fill(np_white)
-                                            .padding(-20)
-                                        
-                                        Circle()
-                                            .trim(from: 0, to: timerModel.progress)
-                                            .stroke(np_black.opacity(0.07), lineWidth: 40)
-                                        
-                                        // MARK: Shadow
-                                        
-                                        Circle()
-                                            .stroke(Color(red: 24 / 255, green: 24 / 255, blue: 24 / 255), lineWidth: 5)
-                                            .blur(radius: 5)
-                                            .padding(-1)
-                                        
-                                        Circle()
-                                            .fill(np_white)
-                                        
-                                        Circle()
-                                            .trim(from: 0, to: timerModel.progress)
-                                            .stroke(Color(red: 224 / 255, green: 20 / 255, blue: 76 / 255).opacity(0.9), lineWidth: 10)
-                                        
-                                        // MARK: Knob
-                                        
-                                        GeometryReader { geo_knob in
-                                            let size = geo_knob.size
-                                            
-                                            Circle()
-                                                .fill(np_white)
-                                                .frame(width: 30, height: 30)
-                                                .overlay(content: {
-                                                    Circle()
-                                                        .fill(np_red)
-                                                        .padding(5)
-                                                })
-                                                .frame(width: size.width, height: size.height)
-                                                .offset(x: size.height / 2)
-                                                .rotationEffect(.init(degrees: timerModel.progress * 360))
-                                        }
-                                    }
-                                    .padding(10)
-                                    .frame(height: geo.size.width * 0.8)
-                                    .rotationEffect(.init(degrees: -90))
-                                    .animation(.easeInOut, value: timerModel.progress)
-                                }
-                                .onTapGesture(perform: {
-                                    timerModel.progress = 0.5
-                                })
-                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                            }
-                            
-                            Spacer()
-                            
-                            // MARK: "Pause" button
-                            HStack {
-                                Spacer()
-                                
-                                VStack {
-                                    Button {
-                                        if timerModel.isStarted {
-                                            
-                                        } else {
-                                            timerModel.addNewTimer = true
-                                        }
-                                    } label: {
-                                        Image(systemName: !timerModel.isStarted ? "timer" :  "pause")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(maxWidth: 25, maxHeight: 25)
-                                            .padding(5)
-                                    }
-                                    .padding(.vertical, 5)
-                                    .foregroundColor(np_white)
-                                    .frame(width: 45, height: 45)
-                                    .background(np_black)
-                                    .clipShape(Circle())
-                                    .overlay(
-                                        Circle()
-                                            .stroke(np_white, style: StrokeStyle(lineWidth: 1))
-                                            .padding(3)
-                                    )
-                                    
-                                    Text("Pause")
-                                        .font(.system(size: 12, weight: .medium))
-                                }
-                            }
-                            .padding()
+                            Text("\(vm.temperature)")
+                                .font(.footnote)
+                                .fontWeight(.bold)
+                                .kerning(5)
+                                .textCase(.uppercase)
                         }
-                        .frame(width: width / 1.25, height: height * 0.45)
-                        .padding(.top, 25)
+                        
+                        // Humidity
+                        VStack {
+                           Text("Humidity:")
+                               .font(.footnote)
+                               .fontWeight(.bold)
+                               .kerning(5)
+                               .textCase(.uppercase)
+                           
+                           Text("\(vm.humidity * 100)")
+                               .font(.footnote)
+                               .fontWeight(.bold)
+                               .kerning(5)
+                               .textCase(.uppercase)
+                       }
+                        
+                        // Weather Condition
+                        VStack {
+                           Text("Weather:")
+                               .font(.footnote)
+                               .fontWeight(.bold)
+                               .kerning(5)
+                               .textCase(.uppercase)
+                           
+                           Text("\(vm.condition)")
+                               .font(.footnote)
+                               .fontWeight(.bold)
+                               .kerning(5)
+                               .textCase(.uppercase)
+                       }
                     }
                     .frame(maxWidth: width - 20, maxHeight: height * 0.65)
                     .background(np_white)
@@ -357,6 +290,133 @@ struct ClockView: View {
                     .cornerRadius(20)
                     .padding(.top, 20)
                     .edgesIgnoringSafeArea(.bottom)
+                    .task {
+                        await vm.populateWeather()
+                    }
+                    
+                    // MARK: Focus Timer
+                    
+                    //                    VStack {
+                    //                        VStack(spacing: 10) {
+                    //                            HStack {
+                    //                                Text("Focus Timer")
+                    //                                    .font(.footnote)
+                    //                                    .fontWeight(.bold)
+                    //                                    .kerning(5)
+                    //                                    .textCase(.uppercase)
+                    //                                    .foregroundColor(np_black)
+                    //
+                    //                                Spacer()
+                    //
+                    //                                Text(timerModel.timerValue)
+                    //                                    .font(.subheadline)
+                    //                                    .fontWeight(.bold)
+                    //                                    .kerning(5)
+                    //                                    .textCase(.uppercase)
+                    //                                    .foregroundColor(np_black)
+                    //                                    .animation(.none, value: timerModel.progress)
+                    //                            }
+                    //
+                    //                            GeometryReader { geo in
+                    //                                VStack(spacing: 5) {
+                    //                                    ZStack {
+                    //                                        Circle()
+                    //                                            .fill(np_white)
+                    //                                            .padding(-20)
+                    //
+                    //                                        Circle()
+                    //                                            .trim(from: 0, to: timerModel.progress)
+                    //                                            .stroke(np_black.opacity(0.07), lineWidth: 40)
+                    //
+                    //                                        // MARK: Shadow
+                    //
+                    //                                        Circle()
+                    //                                            .stroke(Color(red: 24 / 255, green: 24 / 255, blue: 24 / 255), lineWidth: 5)
+                    //                                            .blur(radius: 5)
+                    //                                            .padding(-1)
+                    //
+                    //                                        Circle()
+                    //                                            .fill(np_white)
+                    //
+                    //                                        Circle()
+                    //                                            .trim(from: 0, to: timerModel.progress)
+                    //                                            .stroke(Color(red: 224 / 255, green: 20 / 255, blue: 76 / 255).opacity(0.9), lineWidth: 10)
+                    //
+                    //                                        // MARK: Knob
+                    //
+                    //                                        GeometryReader { geo_knob in
+                    //                                            let size = geo_knob.size
+                    //
+                    //                                            Circle()
+                    //                                                .fill(np_white)
+                    //                                                .frame(width: 30, height: 30)
+                    //                                                .overlay(content: {
+                    //                                                    Circle()
+                    //                                                        .fill(np_red)
+                    //                                                        .padding(5)
+                    //                                                })
+                    //                                                .frame(width: size.width, height: size.height)
+                    //                                                .offset(x: size.height / 2)
+                    //                                                .rotationEffect(.init(degrees: timerModel.progress * 360))
+                    //                                        }
+                    //                                    }
+                    //                                    .padding(10)
+                    //                                    .frame(height: geo.size.width * 0.8)
+                    //                                    .rotationEffect(.init(degrees: -90))
+                    //                                    .animation(.easeInOut, value: timerModel.progress)
+                    //                                }
+                    //                                .onTapGesture(perform: {
+                    //                                    timerModel.progress = 0.5
+                    //                                })
+                    //                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    //                            }
+                    //
+                    //                            Spacer()
+                    //
+                    //                            // MARK: "Pause" button
+                    //                            HStack {
+                    //                                Spacer()
+                    //
+                    //                                VStack {
+                    //                                    Button {
+                    //                                        if timerModel.isStarted {
+                    //
+                    //                                        } else {
+                    //                                            timerModel.addNewTimer = true
+                    //                                        }
+                    //                                    } label: {
+                    //                                        Image(systemName: !timerModel.isStarted ? "timer" :  "pause")
+                    //                                            .resizable()
+                    //                                            .scaledToFit()
+                    //                                            .frame(maxWidth: 25, maxHeight: 25)
+                    //                                            .padding(5)
+                    //                                    }
+                    //                                    .padding(.vertical, 5)
+                    //                                    .foregroundColor(np_white)
+                    //                                    .frame(width: 45, height: 45)
+                    //                                    .background(np_black)
+                    //                                    .clipShape(Circle())
+                    //                                    .overlay(
+                    //                                        Circle()
+                    //                                            .stroke(np_white, style: StrokeStyle(lineWidth: 1))
+                    //                                            .padding(3)
+                    //                                    )
+                    //
+                    //                                    Text("Pause")
+                    //                                        .font(.system(size: 12, weight: .medium))
+                    //                                }
+                    //                            }
+                    //                            .padding()
+                    //                        }
+                    //                        .frame(width: width / 1.25, height: height * 0.45)
+                    //                        .padding(.top, 25)
+                    //                    }
+                    //                    .frame(maxWidth: width - 20, maxHeight: height * 0.65)
+                    //                    .background(np_white)
+                    //                    .ignoresSafeArea()
+                    //                    .cornerRadius(20)
+                    //                    .padding(.top, 20)
+                    //                    .edgesIgnoringSafeArea(.bottom)
                 }
                 .overlay(content: {
                     ZStack {

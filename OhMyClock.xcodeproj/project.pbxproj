@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04E82A0A1E1B002523A9 /* Weather.swift */; };
+		2F0D04EC2A0A1F0E002523A9 /* WeatherServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04EB2A0A1F0E002523A9 /* WeatherServices.swift */; };
+		2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */; };
 		2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A17F2973F0FC007DA7CC /* LocationManager.swift */; };
 		2F27A18329740143007DA7CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A18229740143007DA7CC /* Alamofire */; };
 		2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A185297401B8007DA7CC /* SwiftyJSON */; };
@@ -40,6 +43,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F0D04E82A0A1E1B002523A9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		2F0D04EB2A0A1F0E002523A9 /* WeatherServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServices.swift; sourceTree = "<group>"; };
+		2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		2F27A17F2973F0FC007DA7CC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2F27A187297402AB007DA7CC /* LocationFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetch.swift; sourceTree = "<group>"; };
 		2F36B0A02967A40000AC8D59 /* OhMyClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhMyClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F0D04EA2A0A1EF8002523A9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2F0D04EB2A0A1F0E002523A9 /* WeatherServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		2F36B0972967A40000AC8D59 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +122,7 @@
 				2F434BB4296F89D100698C1A /* Helpers */,
 				2F36B0B12967A48B00AC8D59 /* Utils */,
 				2F36B0B62967A4FD00AC8D59 /* Models */,
+				2F0D04EA2A0A1EF8002523A9 /* Services */,
 				2F36B0B92967A52500AC8D59 /* ViewModels */,
 				2F36B0A32967A40000AC8D59 /* OhMyClockApp.swift */,
 				2F36B0A52967A40000AC8D59 /* ContentView.swift */,
@@ -145,6 +160,7 @@
 			children = (
 				2F36B0B72967A51900AC8D59 /* Models.swift */,
 				2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */,
+				2F0D04E82A0A1E1B002523A9 /* Weather.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -155,6 +171,7 @@
 				2F36B0BA2967A55900AC8D59 /* ClockViewModel.swift */,
 				2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */,
 				2F434BB2296F863400698C1A /* MeditationViewModel.swift */,
+				2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -266,11 +283,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F36B0B52967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift in Sources */,
+				2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */,
 				2FF50124296E9B2800813D40 /* MainView.swift in Sources */,
 				2F36B0A62967A40000AC8D59 /* ContentView.swift in Sources */,
 				2F434BB8296F8CCA00698C1A /* AudioManager.swift in Sources */,
 				2F36B0B32967A4B000AC8D59 /* Colors.swift in Sources */,
 				2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */,
+				2F0D04EC2A0A1F0E002523A9 /* WeatherServices.swift in Sources */,
 				2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */,
 				2F36B0BD2967A57D00AC8D59 /* FlipViewModel.swift in Sources */,
 				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
@@ -281,6 +300,7 @@
 				2F434BB6296F89F100698C1A /* Extensions.swift in Sources */,
 				2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */,
 				2F54B266297D1AE50075E488 /* Milestone.swift in Sources */,
+				2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */,
 				2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */,
 				2F36B0B82967A51900AC8D59 /* Models.swift in Sources */,
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
