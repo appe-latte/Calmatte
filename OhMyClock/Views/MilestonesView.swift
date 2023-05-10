@@ -29,6 +29,7 @@ struct MilestonesView: View {
                         HStack {
                             Text("Milestones Completed:")
                                 .font(.footnote)
+                                .fontWeight(.semibold)
                                 .kerning(5)
                                 .textCase(.uppercase)
                             
@@ -39,20 +40,28 @@ struct MilestonesView: View {
                             }, label: {
                                 Text("Reset")
                                     .font(.footnote)
-                                    .fontWeight(.semibold)
                                     .kerning(5)
                                     .textCase(.uppercase)
                             })
+                            .padding(2)
+                            .foregroundColor(np_black)
+                            .frame(width: 90, height: 30)
+                            .clipShape(Capsule())
+                            .overlay(
+                                Capsule(style: .continuous)
+                                    .stroke(np_black, style: StrokeStyle(lineWidth: 1))
+                                    .padding(2)
+                            )
                         }
                         
                         var completedCount = realmManager.milestones.filter { $0.completed }.count
                         let totalCount = realmManager.milestones.count
                         let progress = Float(completedCount) / Float(totalCount)
                         
-                            ProgressView(value: progress)
-                                .tint(np_red)
-                                .scaleEffect(progress == 1.0 ? 1.5 : 1.0)
-                                .animation(.easeInOut(duration: 0.5))
+                        ProgressView(value: progress)
+                            .tint(np_red)
+                            .scaleEffect(progress == 1.0 ? 1.5 : 1.0)
+                            .animation(.easeInOut(duration: 0.5))
                     }
                     
                     // MARK: Milestones list
