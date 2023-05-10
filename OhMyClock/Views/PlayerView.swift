@@ -34,7 +34,7 @@ struct PlayerView: View {
                     PlaybackControlButton(systemName: audioManager.isPlaying ? "pause.circle.fill" : "play.circle.fill", fontSize: 50) {
                         audioManager.playPause()
                     }
-        
+                    
                     // MARK: "Stop" button
                     PlaybackControlButton(systemName: "stop.circle.fill", fontSize: 40) {
                         audioManager.stop()

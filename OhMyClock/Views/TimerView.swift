@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct TimerView: View {
-    @State private var timerDescription = "Use this feature to set some time to focus on a task or when you need to clear your mind."
-    
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
+    
+    @State private var timerDescription = "Use this feature to set some time to focus on a task or when you need to clear your mind."
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -19,15 +19,12 @@ struct TimerView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                // MARK: Timer
-                
+                // MARK: Pomodor Timer
                 VStack(spacing: 20) {
                     
                 }
                 
-                
                 // MARK: Timer Functions / Options
-                
                 VStack(alignment: .leading, spacing: 20) {
                     // MARK: Title
                     HStack {
@@ -44,7 +41,6 @@ struct TimerView: View {
                         Button(action: {
                             //
                             //
-                            
                         }, label: {
                             HStack {
                                 Image("play")

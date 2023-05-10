@@ -9,7 +9,9 @@ import Foundation
 import WeatherKit
 import CoreLocation
 
-class WeatherViewModel: ObservableObject {
+class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+    private let locationManager = CLLocationManager()
+    
     @Published private(set) var currTemp = String()
     @Published private(set) var currCondition = String()
     @Published private(set) var currHumidity = Double()
@@ -18,16 +20,32 @@ class WeatherViewModel: ObservableObject {
     @Published private(set) var hourlyForecast = [HourWeather]()
     
     private let weatherService = WeatherService()
-    private let currLocation = CLLocation(latitude: 51.049999, longitude: -114.066666)
+    private var currLocation: CLLocation? = nil
     
-    init() {
-        fetchWeather()
+    override init() {
+        super.init()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            self.currLocation = location
+            fetchWeather()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to get user's location: ", error)
     }
     
     func fetchWeather() {
+        guard let location = self.currLocation else { return }
+        
         Task {
             do {
-                let weather = try await weatherService.weather(for: currLocation)
+                let weather = try await weatherService.weather(for: location)
                 DispatchQueue.main.async {
                     self.currTemp = weather.currentWeather.temperature.formatted()
                     self.currHumidity = weather.currentWeather.humidity
@@ -81,7 +99,7 @@ class WeatherViewModel: ObservableObject {
         
         let inputDateComponents = calendar.dateComponents([.day], from: date)
         let currentDateComponents = calendar.dateComponents([.day], from: Date())
-        
+    
         if inputDateComponents == currentDateComponents {
             return "Today"
         } else {

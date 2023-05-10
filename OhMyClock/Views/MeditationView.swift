@@ -20,8 +20,7 @@ struct MeditationView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
-                // MARK: Image
-                
+                // MARK: Background Image
                 Image(meditationViewModel.meditation.image)
                     .resizable()
                     .scaledToFill()
@@ -80,7 +79,6 @@ struct MeditationView: View {
                             Spacer()
                         }
                         .padding(.vertical, 5)
-                        
                     }
                     .foregroundColor(np_white)
                     .padding(20)
@@ -124,7 +122,7 @@ extension View {
 }
 
 struct RoundedCorner: Shape {
-     
+    
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
     

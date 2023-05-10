@@ -25,7 +25,6 @@ struct ClockView: View {
                     // MARK: Date + Salutation
                     HStack {
                         VStack(spacing: 10) {
-                            
                             HStack {
                                 Text(greeting)
                                     .font(.largeTitle)
@@ -50,7 +49,6 @@ struct ClockView: View {
                         .padding(10)
                         
                         Spacer(minLength: 0)
-                        
                     }
                     .padding(5)
                     

@@ -454,6 +454,8 @@
 				INFOPLIST_FILE = OhMyClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Oh My Clock";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow \"Oh My Clock\" permission to get your location so we can deliver accurate weather and timezone information.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow \"Oh My Clock\" permission to get your location so we can deliver accurate weather and timezone information.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Required to show the name of your location and weather information\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -494,6 +496,8 @@
 				INFOPLIST_FILE = OhMyClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Oh My Clock";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow \"Oh My Clock\" permission to get your location so we can deliver accurate weather and timezone information.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow \"Oh My Clock\" permission to get your location so we can deliver accurate weather and timezone information.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Required to show the name of your location and weather information\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
