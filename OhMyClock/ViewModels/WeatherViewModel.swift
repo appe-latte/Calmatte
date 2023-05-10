@@ -12,7 +12,9 @@ import CoreLocation
 class WeatherViewModel: ObservableObject {
     @Published private(set) var currTemp = String()
     @Published private(set) var currCondition = String()
-    @Published private(set) var dailyHighLow = "H:0 L:0"
+    @Published private(set) var currHumidity = Double()
+    @Published private(set) var dailyHigh = "H:0"
+    @Published private(set) var dailyLow = "L:0"
     @Published private(set) var hourlyForecast = [HourWeather]()
     
     private let weatherService = WeatherService()
@@ -28,8 +30,10 @@ class WeatherViewModel: ObservableObject {
                 let weather = try await weatherService.weather(for: currLocation)
                 DispatchQueue.main.async {
                     self.currTemp = weather.currentWeather.temperature.formatted()
+                    self.currHumidity = weather.currentWeather.humidity
                     self.currCondition = weather.currentWeather.condition.description
-                    self.dailyHighLow = "H:\(weather.dailyForecast.forecast[0].highTemperature.formatted().dropLast())L:\(weather.dailyForecast.forecast[0].lowTemperature.formatted().dropLast())"
+                    self.dailyHigh = "High:\(weather.dailyForecast.forecast[0].highTemperature.formatted().dropLast())"
+                    self.dailyLow = "Low:\(weather.dailyForecast.forecast[0].lowTemperature.formatted().dropLast())"
                     
                     // MARK: Hourly Forecast
                     weather.hourlyForecast.forecast.forEach {

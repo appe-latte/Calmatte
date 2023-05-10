@@ -37,6 +37,7 @@
 		2F8838342A0AC64E00840F68 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8838332A0AC64E00840F68 /* TimerView.swift */; };
 		2F8CA71029B7A6EB00C34005 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */; };
 		2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEE581297731CE00416E54 /* TaskRow.swift */; };
+		2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
 		2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50126296EA2B400813D40 /* MeditationView.swift */; };
 		2FF50129296EA33000813D40 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50128296EA33000813D40 /* SettingsView.swift */; };
@@ -73,6 +74,7 @@
 		2F8838332A0AC64E00840F68 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		2FEEE581297731CE00416E54 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
+		2FF12EBB2A0B759A0097993C /* OmcModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OmcModel.xcdatamodel; sourceTree = "<group>"; };
 		2FF50123296E9B2800813D40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2FF50126296EA2B400813D40 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 		2FF50128296EA33000813D40 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				2F36B0A92967A40200AC8D59 /* Preview Content */,
 				2F54B263297D19E20075E488 /* OmcRealmManager.swift */,
 				2F54B265297D1AE40075E488 /* Milestone.swift */,
+				2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */,
 			);
 			path = OhMyClock;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				2F54B266297D1AE50075E488 /* Milestone.swift in Sources */,
 				2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */,
 				2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */,
+				2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */,
 				2F36B0B82967A51900AC8D59 /* Models.swift in Sources */,
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
 				2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */,
@@ -586,6 +590,19 @@
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2FF12EBB2A0B759A0097993C /* OmcModel.xcdatamodel */,
+			);
+			currentVersion = 2FF12EBB2A0B759A0097993C /* OmcModel.xcdatamodel */;
+			path = OmcModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2F36B0982967A40000AC8D59 /* Project object */;
 }

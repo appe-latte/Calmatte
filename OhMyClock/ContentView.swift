@@ -28,6 +28,7 @@ struct ContentView: View {
     var body: some View {
         TabView {
             MainView()
+                .colorScheme(.dark)
                 .tabItem {
                     Label("Home", image: "home")
                 }
@@ -39,6 +40,7 @@ struct ContentView: View {
                 }
             
             TimerView()
+                .colorScheme(.light)
                 .tabItem {
                     Label("Timer", image: "timer")
                 }

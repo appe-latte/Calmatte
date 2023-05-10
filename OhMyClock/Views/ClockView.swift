@@ -130,15 +130,15 @@ struct ClockView: View {
                                     .textCase(.uppercase)
                             }
                             
-                            // High + Low Temp.
+                            // Humidity
                             VStack(alignment: .leading) {
-                                Text("Highs and Lows:")
+                                Text("Humidity:")
                                     .font(.footnote)
                                     .fontWeight(.bold)
                                     .kerning(5)
                                     .textCase(.uppercase)
                                 
-                                Text("\(weatherModel.dailyHighLow)")
+                                Text("\(String(format: "%.0f", weatherModel.currHumidity * 100))%")
                                     .font(.footnote)
                                     .fontWeight(.bold)
                                     .kerning(5)
@@ -183,10 +183,10 @@ struct ClockView: View {
                     }
                     .padding(10)
                     
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 15) {
                         ScrollView(.horizontal) {
                             HStack(spacing: 15) {
-                                ForEach(weatherModel.hourlyForecast.prefix(8), id: \.time) {
+                                ForEach(weatherModel.hourlyForecast.prefix(12), id: \.time) {
                                     weather in
                                     VStack(spacing: 15) {
                                         Text(weather.time)
@@ -207,9 +207,28 @@ struct ClockView: View {
                                 }
                             }
                         }
-                        .padding(20)
+                        .padding(.horizontal, 20)
+                        .padding(.top, 20)
+                        
+                        HStack {
+                            Text("\(weatherModel.dailyHigh)")
+                                .font(.footnote)
+                                .fontWeight(.bold)
+                                .kerning(2)
+                                .textCase(.uppercase)
+                            
+                            Spacer()
+                            
+                            Text("\(weatherModel.dailyLow)")
+                                .font(.footnote)
+                                .fontWeight(.bold)
+                                .kerning(2)
+                                .textCase(.uppercase)
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 20)
                     }
-                    .frame(maxWidth: screenWidth - 20, maxHeight: screenHeight * 0.20)
+                    .frame(maxWidth: screenWidth - 20, maxHeight: screenHeight * 0.30)
                     .background(np_white)
                     .foregroundColor(np_black)
                     .ignoresSafeArea()

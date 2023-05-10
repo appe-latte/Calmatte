@@ -5,7 +5,7 @@
 //  Created by Stanford L. Khumalo on 2023-01-22.
 //
 
-import Foundation
+import SwiftUI
 import RealmSwift
 
 class OmcRealmManager : ObservableObject {
@@ -45,6 +45,21 @@ class OmcRealmManager : ObservableObject {
         milestones = Array(allMilestones)
     }
     
+    func editMilestone(id: ObjectId, title: String) {
+        do {
+            let milestoneToUpdate = realm.objects(Milestone.self).filter(NSPredicate(format: "id == %@", id))
+            guard !milestoneToUpdate.isEmpty else { return }
+            
+            try realm.write {
+                milestoneToUpdate[0].title = title
+                retrieveMilestones()
+                print("Milestone updated successfully: \(id), title: \(title)")
+            }
+        } catch {
+            print("Error updating milestone: \(error)")
+        }
+    }
+    
     func updateMilestone(id: ObjectId, completed: Bool) {
         do {
             let milestoneToUpdate = realm.objects(Milestone.self).filter(NSPredicate(format: "id == %@", id))
@@ -61,17 +76,15 @@ class OmcRealmManager : ObservableObject {
     }
     
     func deleteMilestone(id: ObjectId) {
-        do {
-            let milestoneToDelete = realm.objects(Milestone.self).filter(NSPredicate(format: "id == %@", id))
-            guard !milestoneToDelete.isEmpty else { return }
-            
-            try realm.write {
-                realm.delete(milestoneToDelete)
-                retrieveMilestones()
-                print("Milestone deleted: \(id)")
+        guard let milestone = realm.object(ofType: Milestone.self, forPrimaryKey: id) else { return }
+        try! realm.write {
+            let milestoneToDelete = realm.object(ofType: Milestone.self, forPrimaryKey: id)
+            if milestoneToDelete != nil {
+                realm.delete(milestoneToDelete!)
+                if let index = milestones.firstIndex(of: milestone) {
+                    milestones.remove(at: index)
+                }
             }
-        } catch {
-            print("Error deleting milestone: \(error)")
         }
     }
 }

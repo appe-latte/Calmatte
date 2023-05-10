@@ -11,6 +11,8 @@ struct PlayerView: View {
     @EnvironmentObject var audioManager: AudioManager
     var meditationViewModel: MeditationViewModel
     var isPreview: Bool = false
+    @State private var currentTimeString: String = "0:00"
+    @State private var timer: Timer?
     
     @Environment(\.dismiss) var dismiss
     
@@ -32,7 +34,7 @@ struct PlayerView: View {
                     PlaybackControlButton(systemName: audioManager.isPlaying ? "pause.circle.fill" : "play.circle.fill", fontSize: 50) {
                         audioManager.playPause()
                     }
-                    
+        
                     // MARK: "Stop" button
                     PlaybackControlButton(systemName: "stop.circle.fill", fontSize: 40) {
                         audioManager.stop()
@@ -40,7 +42,7 @@ struct PlayerView: View {
                     }
                     
                     // MARK: "Duration"
-                    Text(getTrackCurrentTime())
+                    Text(currentTimeString)
                         .font(.footnote)
                         .fontWeight(.semibold)
                         .kerning(5)
@@ -58,6 +60,17 @@ struct PlayerView: View {
         }
         .onAppear {
             audioManager.startPlayer(track: meditationViewModel.meditation.track, isPreview: isPreview)
+            startTimer()
+        }
+        .onDisappear {
+            timer?.invalidate()
+            timer = nil
+        }
+    }
+    
+    private func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            currentTimeString = getTrackCurrentTime()
         }
     }
     
@@ -71,11 +84,3 @@ struct PlayerView: View {
     }
 }
 
-struct PlayerView_Previews: PreviewProvider {
-    static let meditationViewModel = MeditationViewModel(meditation: Meditation.data)
-    
-    static var previews: some View {
-        PlayerView(meditationViewModel: meditationViewModel, isPreview: true)
-            .environmentObject(AudioManager())
-    }
-}

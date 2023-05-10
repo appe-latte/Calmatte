@@ -28,14 +28,11 @@ struct TimerView: View {
                 
                 // MARK: Timer Functions / Options
                 
-                VStack(spacing: 20) {
-                    
-                    Spacer()
-                    
+                VStack(alignment: .leading, spacing: 20) {
                     // MARK: Title
                     HStack {
                         Text("Focus Timer")
-                            .font(.system(size: 22, weight: .heavy))
+                            .font(.title3)
                             .fontWeight(.bold)
                             .kerning(10)
                             .textCase(.uppercase)
@@ -43,17 +40,7 @@ struct TimerView: View {
                             .lineLimit(1)
                         
                         Spacer()
-                    }
-                    
-                    // MARK: Description
-                    Text("\(timerDescription)")
-                        .font(.footnote)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .minimumScaleFactor(0.5)
-                    
-                    VStack {
-                        // MARK: Timer Buttons
+                        
                         Button(action: {
                             //
                             //
@@ -64,33 +51,37 @@ struct TimerView: View {
                                     .resizable()
                                     .scaledToFill()
                                     .frame(maxWidth: 30, maxHeight: 30)
+                                
                                 Text("start")
                                     .font(.footnote)
                                     .fontWeight(.semibold)
-                                    .kerning(10)
+                                    .kerning(7)
                                     .textCase(.uppercase)
                             }
-                            .padding(.vertical, 5)
-                            .foregroundColor(np_white)
-                            .frame(width: 200, height: 50)
-                            .background(np_black)
+                            .padding(2)
+                            .foregroundColor(np_black)
+                            .frame(width: 125, height: 35)
+                            .background(np_white)
                             .clipShape(Capsule())
                             .overlay(
                                 Capsule(style: .continuous)
-                                    .stroke(np_white, style: StrokeStyle(lineWidth: 1))
-                                    .padding(3)
+                                    .stroke(np_black, style: StrokeStyle(lineWidth: 1))
+                                    .padding(2)
                             )
                         })
-                        
-                        Spacer()
                     }
-                    .padding(.vertical, 5)
                     
+                    // MARK: Description
+                    Text("\(timerDescription)")
+                        .font(.footnote)
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .minimumScaleFactor(0.5)
                 }
                 .foregroundColor(np_white)
                 .padding(20)
             }
-            .frame(height: screenHeight * 0.35)
+            .frame(height: screenHeight * 0.20)
             .background(np_black)
             .cornerRadius(15, corners: [.topLeft, .topRight])
         }

@@ -45,7 +45,7 @@ struct FlipView: View {
             // MARK: Separator
             
             np_black
-                .frame(height: 2.5)
+                .frame(height: 3)
                 .clipShape(RoundedRectangle(cornerRadius: 2))
             
             ZStack {

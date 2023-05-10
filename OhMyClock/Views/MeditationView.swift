@@ -52,9 +52,7 @@ struct MeditationView: View {
                         VStack {
                             // MARK: Meditation Sound Button
                             Button(action: {
-                                //                            showPlayer = true
                                 showPlayerSheet.toggle()
-                                
                             }, label: {
                                 HStack {
                                     Image("play")

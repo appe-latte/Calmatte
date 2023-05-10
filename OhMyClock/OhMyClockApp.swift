@@ -17,7 +17,6 @@ struct OhMyClockApp: App {
             ContentView()
                 .environmentObject(audioManager)
                 .environmentObject(timerModel)
-//                .preferredColorScheme(.light)
         }
     }
 }
