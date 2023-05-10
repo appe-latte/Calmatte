@@ -11,8 +11,8 @@ import RealmSwift
 
 struct MilestonesView: View {
     @EnvironmentObject var realmManager : OmcRealmManager
-    @State private var milestoneDescription = "Make a short list of achievable milestones for the day."
     @State private var showAddTasksView = false
+    @State private var milestoneDescription = "Develop a positive daily routine and organize your day with simple, achievable milestones."
     
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
@@ -23,8 +23,30 @@ struct MilestonesView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                // MARK: "Display milestone items"
                 List {
+                    // MARK: Progress Meter
+                    VStack {
+                        HStack {
+                            Text("Milestones Completed:")
+                                .font(.footnote)
+                                .fontWeight(.semibold)
+                                .kerning(5)
+                                .textCase(.uppercase)
+                            
+                            Spacer()
+                        }
+                        
+                        var completedCount = realmManager.milestones.filter { $0.completed }.count
+                        let totalCount = realmManager.milestones.count
+                        let progress = Float(completedCount) / Float(totalCount)
+                        
+                        ProgressView(value: progress)
+                            .tint(np_red)
+                            .scaleEffect(progress == 1.0 ? 1.5 : 1.0)
+                            .animation(.easeInOut(duration: 0.5))
+                    }
+                    
+                    // MARK: Milestones list
                     ForEach(realmManager.milestones, id: \.id) { milestone in
                         if !milestone.isInvalidated {
                             TaskRow(task: milestone.title, completed: milestone.completed)
@@ -41,9 +63,10 @@ struct MilestonesView: View {
                         }
                     }
                 }
+                .listStyle(.plain)
                 
+                // MARK: Milestone title + "Add" button
                 VStack(spacing: 20) {
-                    // MARK: Milestone title + "Add" button
                     VStack(alignment: .leading, spacing: 20) {
                         HStack {
                             Text("Milestones")
