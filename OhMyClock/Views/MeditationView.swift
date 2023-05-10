@@ -27,7 +27,7 @@ struct MeditationView: View {
                     .scaledToFill()
                     .frame(width: screenWidth, height: screenHeight * 0.6, alignment: .top)
                 
-                ZStack {
+                ZStack(alignment: .bottom) {
                     VStack(spacing: 20) {
                         // MARK: Title
                         HStack {
@@ -79,43 +79,16 @@ struct MeditationView: View {
                                 )
                             })
                             
-                            // MARK: Focus Timer Button
-                            Button(action: {
-                                showTimerSheet.toggle()
-                            }, label: {
-                                HStack {
-                                    Image("timer")
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(maxWidth: 30, maxHeight: 30)
-                                    Text("Timer")
-                                        .font(.footnote)
-                                        .fontWeight(.semibold)
-                                        .kerning(10)
-                                        .textCase(.uppercase)
-                                }
-                                .padding(.vertical, 5)
-                                .foregroundColor(np_white)
-                                .frame(width: 200, height: 50)
-                                .background(np_black)
-                                .clipShape(Capsule())
-                                .overlay(
-                                    Capsule(style: .continuous)
-                                        .stroke(np_white, style: StrokeStyle(lineWidth: 1))
-                                        .padding(3)
-                                )
-                            })
-                            
                             Spacer()
                         }
                         .padding(.vertical, 5)
                         
                     }
-                    .foregroundColor(np_black)
+                    .foregroundColor(np_white)
                     .padding(20)
                 }
                 .frame(height: screenHeight * 0.35)
-                .background(np_white)
+                .background(np_black)
                 .cornerRadius(15, corners: [.topLeft, .topRight])
                 .blurredSheet(.init(.ultraThinMaterial), show: $showPlayerSheet) {
                     //
@@ -153,7 +126,7 @@ extension View {
 }
 
 struct RoundedCorner: Shape {
-    
+     
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
     

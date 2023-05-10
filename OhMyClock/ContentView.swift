@@ -38,6 +38,11 @@ struct ContentView: View {
                     Label("Meditation", image: "zen")
                 }
             
+            TimerView()
+                .tabItem {
+                    Label("Timer", image: "timer")
+                }
+            
             MilestonesView()
                 .environmentObject(realmManager)
                 .colorScheme(.light)

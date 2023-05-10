@@ -6,59 +6,53 @@
 //
 
 import SwiftUI
-import CoreLocation
 import WeatherKit
+import CoreLocation
 
 struct ClockView: View {
-    @EnvironmentObject var timerModel : TimerModel
-    @StateObject private var vm = WeatherViewModel()
+    @StateObject private var weatherModel = WeatherViewModel()
     let locationManager = CLLocationManager()
-    
     let viewModel = ClockViewModel()
     let locationFetch = LocationFetch()
     
-    var width = UIScreen.main.bounds.width
-    var height = UIScreen.main.bounds.height
+    var screenWidth = UIScreen.main.bounds.width
+    var screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
         ScrollView {
             ZStack {
                 VStack {
-                    
+                    // MARK: Date + Salutation
                     HStack {
                         VStack(spacing: 10) {
-                            // MARK: "Morning / Afternoon / Evening"
                             
                             HStack {
-                                    Text(greeting)
-                                        .font(.system(size: 28))
-                                        .fontWeight(.bold)
-                                        .kerning(5)
-                                        .minimumScaleFactor(0.5)
-                                        .textCase(.uppercase)
-                                    
-                                    Spacer()
-                            }
-                            
-                            // MARK: Date
-                            HStack {
-                                Text(Date().formatted(.dateTime.month().day().year()))
+                                Text(greeting)
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
                                     .kerning(5)
-//                                    .minimumScaleFactor(0.5)
+                                    .minimumScaleFactor(0.5)
+                                    .textCase(.uppercase)
+                                
+                                Spacer()
+                            }
+                            
+                            HStack {
+                                Text(Date().formatted(.dateTime.month().day().year()))
+                                    .font(.title3)
+                                    .fontWeight(.bold)
+                                    .kerning(5)
                                     .textCase(.uppercase)
                                 
                                 Spacer()
                             }
                         }
                         .padding(10)
-                        .padding(.top, 30)
                         
                         Spacer(minLength: 0)
                         
                     }
-                    .padding()
+                    .padding(5)
                     
                     HStack(spacing: 15) {
                         FlipView(viewModel: viewModel.flipViewModels[0])
@@ -69,12 +63,11 @@ struct ClockView: View {
                         
                         FlipView(viewModel: viewModel.flipViewModels[3])
                     }
-                    .frame(maxWidth: width - 20)
+                    .frame(maxWidth: screenWidth - 20)
                     
+                    // MARK: Time Zone
                     HStack {
                         Spacer()
-                        
-                        // MARK: Time Zone
                         
                         HStack(spacing: 5) {
                             Text("timezone:")
@@ -96,69 +89,136 @@ struct ClockView: View {
                     
                     Spacer(minLength: 0)
                     
-                    // MARK: Weather Conditions
+                    Divider()
+                        .padding(.top, 10)
                     
-                    VStack {
-                        // Temperature
-                        VStack {
-                            Text("Temperature:")
-                                .font(.footnote)
-                                .fontWeight(.bold)
-                                .kerning(5)
-                                .textCase(.uppercase)
-                            
-                            Text("\(vm.temperature)")
-                                .font(.footnote)
-                                .fontWeight(.bold)
-                                .kerning(5)
-                                .textCase(.uppercase)
-                        }
+                    // MARK: Weather Conditions
+                    HStack {
+                        Label("Today's Weather", systemImage: "thermometer.sun.fill")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .kerning(2)
+                            .textCase(.uppercase)
                         
-                        // Humidity
-                        VStack {
-                            Text("Humidity:")
-                                .font(.footnote)
-                                .fontWeight(.bold)
-                                .kerning(5)
-                                .textCase(.uppercase)
-                            
-                            Text("\(vm.humidity * 100)")
-                                .font(.footnote)
-                                .fontWeight(.bold)
-                                .kerning(5)
-                                .textCase(.uppercase)
-                        }
+                        Spacer()
+                    }
+                    .padding(10)
+                    
+                    HStack(spacing: 10) {
+                        Image("weather")
+                            .resizable()
+                            .renderingMode(.template)
+                            .frame(width: 100, height: 100)
+                            .padding()
                         
-                        // Weather Condition
-                        VStack {
-                            Text("Weather:")
-                                .font(.footnote)
-                                .fontWeight(.bold)
-                                .kerning(5)
-                                .textCase(.uppercase)
+                        Spacer()
+                            .frame(width: 25)
+                        
+                        VStack(alignment: .leading, spacing: 10) {
+                            // Temperature
+                            VStack(alignment: .leading) {
+                                Text("Temperature:")
+                                    .font(.footnote)
+                                    .fontWeight(.bold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                                
+                                Text("\(weatherModel.currTemp)")
+                                    .font(.footnote)
+                                    .fontWeight(.bold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                            }
                             
-                            Text("\(vm.condition)")
-                                .font(.footnote)
-                                .fontWeight(.bold)
-                                .kerning(5)
-                                .textCase(.uppercase)
+                            // High + Low Temp.
+                            VStack(alignment: .leading) {
+                                Text("Highs and Lows:")
+                                    .font(.footnote)
+                                    .fontWeight(.bold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                                
+                                Text("\(weatherModel.dailyHighLow)")
+                                    .font(.footnote)
+                                    .fontWeight(.bold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                            }
+                            
+                            // Weather Condition
+                            VStack(alignment: .leading) {
+                                Text("Condition:")
+                                    .font(.footnote)
+                                    .fontWeight(.bold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                                
+                                Text("\(weatherModel.currCondition)")
+                                    .font(.footnote)
+                                    .fontWeight(.bold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                            }
                         }
                     }
-                    .frame(maxWidth: width - 20, maxHeight: height * 0.65)
+                    .frame(maxWidth: screenWidth - 20, maxHeight: screenHeight * 0.65)
                     .background(np_white)
                     .foregroundColor(np_black)
                     .ignoresSafeArea()
                     .cornerRadius(20)
-                    .padding(.top, 20)
                     .edgesIgnoringSafeArea(.bottom)
-                    .task {
-                        await vm.populateWeather()
+                    
+                    Divider()
+                        .padding(.vertical, 10)
+                    
+                    // MARK: Hourly Forecast
+                    HStack {
+                        Label("12-Hour Forecast", systemImage: "clock")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .kerning(2)
+                            .textCase(.uppercase)
+                        
+                        Spacer()
                     }
+                    .padding(10)
+                    
+                    VStack(alignment: .leading) {
+                        ScrollView(.horizontal) {
+                            HStack(spacing: 15) {
+                                ForEach(weatherModel.hourlyForecast.prefix(8), id: \.time) {
+                                    weather in
+                                    VStack(spacing: 15) {
+                                        Text(weather.time)
+                                            .font(.headline)
+                                            .fontWeight(.semibold)
+                                            .kerning(1)
+                                            .textCase(.uppercase)
+                                        
+                                        Image(systemName: "\(weather.symbolName).fill")
+                                            .font(.title)
+                                            .foregroundColor(np_black)
+                                        
+                                        Text(weather.temperature)
+                                            .font(.headline)
+                                            .fontWeight(.semibold)
+                                            .textCase(.uppercase)
+                                    }
+                                }
+                            }
+                        }
+                        .padding(20)
+                    }
+                    .frame(maxWidth: screenWidth - 20, maxHeight: screenHeight * 0.20)
+                    .background(np_white)
+                    .foregroundColor(np_black)
+                    .ignoresSafeArea()
+                    .cornerRadius(20)
+                    .edgesIgnoringSafeArea(.bottom)
                 }
             }
             .frame(maxWidth: .infinity)
             .onAppear {
-                locationManager.delegate
                 locationManager.requestWhenInUseAuthorization()
                 locationManager.startUpdatingLocation()
             }
@@ -166,8 +226,7 @@ struct ClockView: View {
         .background(np_black)
     }
     
-    // MARK: "Greeting"
-    
+    // MARK: Salutation function
     func getTime()->String {
         let format = DateFormatter()
         format.dateFormat = "hh:mm a"
