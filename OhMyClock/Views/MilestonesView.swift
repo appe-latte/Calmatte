@@ -29,21 +29,30 @@ struct MilestonesView: View {
                         HStack {
                             Text("Milestones Completed:")
                                 .font(.footnote)
-                                .fontWeight(.semibold)
                                 .kerning(5)
                                 .textCase(.uppercase)
                             
                             Spacer()
+                            
+                            Button(action: {
+                                realmManager.resetCompletedMilestones()
+                            }, label: {
+                                Text("Reset")
+                                    .font(.footnote)
+                                    .fontWeight(.semibold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                            })
                         }
                         
                         var completedCount = realmManager.milestones.filter { $0.completed }.count
                         let totalCount = realmManager.milestones.count
                         let progress = Float(completedCount) / Float(totalCount)
                         
-                        ProgressView(value: progress)
-                            .tint(np_red)
-                            .scaleEffect(progress == 1.0 ? 1.5 : 1.0)
-                            .animation(.easeInOut(duration: 0.5))
+                            ProgressView(value: progress)
+                                .tint(np_red)
+                                .scaleEffect(progress == 1.0 ? 1.5 : 1.0)
+                                .animation(.easeInOut(duration: 0.5))
                     }
                     
                     // MARK: Milestones list

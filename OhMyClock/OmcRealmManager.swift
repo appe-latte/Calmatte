@@ -27,6 +27,7 @@ class OmcRealmManager : ObservableObject {
         }
     }
     
+    // MARK: Adds a new milestone
     func addMilestone(title: String) {
         do {
             try realm.write {
@@ -45,6 +46,7 @@ class OmcRealmManager : ObservableObject {
         milestones = Array(allMilestones)
     }
     
+    // MARK: Edit selected milestone
     func editMilestone(id: ObjectId, title: String) {
         do {
             let milestoneToUpdate = realm.objects(Milestone.self).filter(NSPredicate(format: "id == %@", id))
@@ -75,6 +77,7 @@ class OmcRealmManager : ObservableObject {
         }
     }
     
+    // MARK: Deletes a selected milestone
     func deleteMilestone(id: ObjectId) {
         guard let milestone = realm.object(ofType: Milestone.self, forPrimaryKey: id) else { return }
         try! realm.write {
@@ -87,4 +90,22 @@ class OmcRealmManager : ObservableObject {
             }
         }
     }
+    
+    func resetCompletedMilestones() {
+        do {
+            let completedMilestones = realm.objects(Milestone.self).filter("completed == true")
+            
+            try realm.write {
+                for milestone in completedMilestones {
+                    milestone.completed = false
+                }
+                
+                retrieveMilestones()
+                print("Completed milestones reset successfully.")
+            }
+        } catch {
+            print("Error resetting completed milestones: \(error)")
+        }
+    }
+
 }
