@@ -39,6 +39,7 @@
 		2FB87FA82A0C31640033B4E1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2FB87FA72A0C31640033B4E1 /* Lottie */; };
 		2FB87FAB2A0C31F30033B4E1 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FB87FAA2A0C31F30033B4E1 /* success.json */; };
 		2FB87FAD2A0C331F0033B4E1 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB87FAC2A0C331F0033B4E1 /* LottieView.swift */; };
+		2FB87FB02A0C6E1D0033B4E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */; };
 		2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEE581297731CE00416E54 /* TaskRow.swift */; };
 		2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
@@ -78,6 +79,7 @@
 		2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		2FB87FAA2A0C31F30033B4E1 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		2FB87FAC2A0C331F0033B4E1 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FEEE581297731CE00416E54 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		2FF12EBB2A0B759A0097993C /* OmcModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OmcModel.xcdatamodel; sourceTree = "<group>"; };
 		2FF50123296E9B2800813D40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				2F8838302A0AB1C800840F68 /* OhMyClock.entitlements */,
 				2F434BBB296F8F9A00698C1A /* Info.plist */,
+				2FB87FAE2A0C6E090033B4E1 /* Delegates */,
 				2FB87FA92A0C31E70033B4E1 /* Lottie */,
 				2F434BB4296F89D100698C1A /* Helpers */,
 				2F36B0B12967A48B00AC8D59 /* Utils */,
@@ -207,6 +210,14 @@
 				2FB87FAA2A0C31F30033B4E1 /* success.json */,
 			);
 			path = Lottie;
+			sourceTree = "<group>";
+		};
+		2FB87FAE2A0C6E090033B4E1 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		2FF50125296EA29300813D40 /* Views */ = {
@@ -327,6 +338,7 @@
 				2F434BAD296F3E2500698C1A /* MilestonesView.swift in Sources */,
 				2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */,
 				2F434BB6296F89F100698C1A /* Extensions.swift in Sources */,
+				2FB87FB02A0C6E1D0033B4E1 /* AppDelegate.swift in Sources */,
 				2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */,
 				2F54B266297D1AE50075E488 /* Milestone.swift in Sources */,
 				2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */,
