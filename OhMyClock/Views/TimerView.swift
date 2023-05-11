@@ -16,7 +16,7 @@ struct TimerView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            np_white
+            np_black
                 .edgesIgnoringSafeArea(.all)
             
             VStack {// MARK: Pomodoro Timer
@@ -25,37 +25,37 @@ struct TimerView: View {
                         VStack(spacing: 15) {
                             ZStack {
                                 Circle()
-                                    .fill(np_black.opacity(0.03))
+                                    .fill(np_white.opacity(0.03))
                                     .padding(-40)
                                     .ignoresSafeArea()
-                                
-                                Circle()
-                                    .trim(from: 0, to: timerModel.progress)
-                                    .stroke(np_black.opacity(0.03), lineWidth: 80)
-                                    .padding(-40)
+                                //
+                                //                                Circle()
+                                //                                    .trim(from: 0, to: timerModel.progress)
+                                //                                    .stroke(np_white.opacity(0.03), lineWidth: 80)
+                                //                                    .padding(-40)
                                 
                                 // MARK: Shadow
                                 Circle()
-                                    .stroke(np_black, lineWidth: 5)
+                                    .stroke(np_white, lineWidth: 5)
                                     .blur(radius: 15)
                                     .padding(-2)
                                 
                                 
                                 Circle()
-                                    .fill(np_black.opacity(0.03))
+                                    .fill(np_white.opacity(0.03))
                                     .padding(-40)
                                 
                                 Circle()
                                     .trim(from: 0, to: timerModel.progress)
-                                    .stroke(np_red.opacity(0.7), lineWidth: 10)
-                                    
+                                    .stroke(np_white.opacity(0.7), lineWidth: 20)
+                                
                                 
                                 // MARK: Timer Knob
                                 GeometryReader { proxy in
                                     let size = proxy.size
                                     
                                     Circle()
-                                        .fill(np_red)
+                                        .fill(np_black)
                                         .frame(width: 30, height: 30)
                                         .overlay(
                                             Circle()
@@ -68,7 +68,8 @@ struct TimerView: View {
                                 }
                                 
                                 Text(timerModel.timerValue)
-                                    .font(.largeTitle)
+                                    .font(.system(size: 60, weight: .light))
+                                    .foregroundColor(np_white)
                                     .kerning(5)
                                     .rotationEffect(.init(degrees: -90))
                                     .animation(.none, value: timerModel.progress)
@@ -78,18 +79,55 @@ struct TimerView: View {
                             .rotationEffect(.init(degrees: -90))
                             .animation(.easeInOut, value: timerModel.progress)
                             
-                            Button(action: {
-                             //
-                            }, label: {
-                                Image(systemName: "pause")
-                                    .font(.largeTitle.bold())
-                                    .foregroundColor(np_white)
-                                    .frame(width: 50, height: 50)
-                                    .background {
-                                        Circle()
-                                            .fill(np_black)
+                            
+                            HStack(spacing: 15) {
+                                
+                                // MARK: "Start" timer
+                                Button(action: {
+                                    //
+                                }, label: {
+                                    VStack {
+                                        Image("play")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .foregroundColor(np_white)
+                                            .frame(width: 50, height: 50)
+                                            .clipShape(Circle())
+                                            .overlay(
+                                                Circle()
+                                                    .stroke(np_white, lineWidth: 1))
+                                        
+                                        Text("Start")
+                                            .font(.footnote)
+                                            .kerning(3)
+                                            .textCase(.uppercase)
+                                            .minimumScaleFactor(0.5)
                                     }
-                            })
+                                })
+                                
+                                // MARK: "Pause" timer
+                                Button(action: {
+                                    //
+                                }, label: {
+                                    VStack {
+                                        Image("pause")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .foregroundColor(np_white)
+                                            .frame(width: 50, height: 50)
+                                            .clipShape(Circle())
+                                            .overlay(
+                                                Circle()
+                                                    .stroke(np_white, lineWidth: 1))
+                                        
+                                        Text("Pause")
+                                            .font(.footnote)
+                                            .kerning(3)
+                                            .textCase(.uppercase)
+                                            .minimumScaleFactor(0.5)
+                                    }
+                                })
+                            }
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     }
@@ -109,33 +147,6 @@ struct TimerView: View {
                         
                         Spacer()
                         
-                        Button(action: {
-                            //
-                            //
-                        }, label: {
-                            HStack {
-                                Image("play")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(maxWidth: 30, maxHeight: 30)
-                                
-                                Text("start")
-                                    .font(.footnote)
-                                    .fontWeight(.semibold)
-                                    .kerning(7)
-                                    .textCase(.uppercase)
-                            }
-                            .padding(2)
-                            .foregroundColor(np_black)
-                            .frame(width: 125, height: 35)
-                            .background(np_white)
-                            .clipShape(Capsule())
-                            .overlay(
-                                Capsule(style: .continuous)
-                                    .stroke(np_black, style: StrokeStyle(lineWidth: 1))
-                                    .padding(2)
-                            )
-                        })
                     }
                     
                     // MARK: Description
@@ -148,10 +159,7 @@ struct TimerView: View {
                 .foregroundColor(np_white)
                 .padding(20)
                 .frame(height: screenHeight * 0.20)
-                .background(np_black)
             }
-            
-            .cornerRadius(15, corners: [.topLeft, .topRight])
         }
     }
 }

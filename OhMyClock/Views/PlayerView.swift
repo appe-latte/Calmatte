@@ -13,58 +13,59 @@ struct PlayerView: View {
     var isPreview: Bool = false
     @State private var currentTimeString: String = "0:00"
     @State private var timer: Timer?
+    @State private var isPlaying: Bool = false
     
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
             VStack(spacing: 10) {
-                // MARK: description
-                Text("As you begin your meditative journey, remember to steady your mind and focus on your slow, deep breathing.")
-                    .font(.footnote)
-                    .fontWeight(.semibold)
-                    .kerning(7)
-                    .textCase(.uppercase)
-                    .minimumScaleFactor(0.5)
-                    .frame(maxWidth: .infinity)
                 
                 // MARK: Playback Controls
-                HStack(spacing: 30) {
+                HStack(spacing: 15) {
                     // MARK: "Play" button
-                    PlaybackControlButton(systemName: audioManager.isPlaying ? "pause.circle.fill" : "play.circle.fill", fontSize: 50) {
-                        audioManager.playPause()
+                    PlaybackControlButton(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill", fontSize: 40) {
+                        isPlaying.toggle()
+                        if isPlaying {
+                            audioManager.startPlayer(track: meditationViewModel.meditation.track, isPreview: isPreview)
+                            startTimer()
+                        } else {
+                            audioManager.playPause()
+                            stopTimer()
+                        }
                     }
                     
                     // MARK: "Stop" button
-                    PlaybackControlButton(systemName: "stop.circle.fill", fontSize: 40) {
+                    PlaybackControlButton(systemName: "stop.circle.fill", fontSize: 35) {
                         audioManager.stop()
                         dismiss()
                     }
                     
+                    Spacer()
+                    
                     // MARK: "Duration"
                     Text(currentTimeString)
-                        .font(.footnote)
+                        .font(.headline)
                         .fontWeight(.semibold)
                         .kerning(5)
                         .foregroundColor(np_black)
+                        .padding()
                 }
                 .frame(maxWidth: .infinity)
-                .padding(5)
+                .padding(10)
                 .background(np_white)
                 .clipShape(Capsule())
-                .padding(.top, 15)
+                .overlay(
+                    Capsule(style: .continuous)
+                        .stroke(np_black, lineWidth: 1)
+                        .padding(7)
+                )
                 
                 Spacer()
             }
-            .padding(20)
-        }
-        .onAppear {
-            audioManager.startPlayer(track: meditationViewModel.meditation.track, isPreview: isPreview)
-            startTimer()
         }
         .onDisappear {
-            timer?.invalidate()
-            timer = nil
+            stopTimer()
         }
     }
     
@@ -74,9 +75,14 @@ struct PlayerView: View {
         }
     }
     
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
     private func getTrackCurrentTime() -> String {
         guard let currentTime = audioManager.player?.currentTime else {
-            return "0:00"
+            return "00:00"
         }
         let minutes = Int(currentTime / 60)
         let seconds = Int(currentTime.truncatingRemainder(dividingBy: 60))

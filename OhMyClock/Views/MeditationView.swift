@@ -48,37 +48,39 @@ struct MeditationView: View {
                             .textCase(.uppercase)
                             .minimumScaleFactor(0.5)
                         
-                        VStack {
-                            // MARK: Meditation Sound Button
-                            Button(action: {
-                                showPlayerSheet.toggle()
-                            }, label: {
-                                HStack {
-                                    Image("play")
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(maxWidth: 30, maxHeight: 30)
-                                    Text("begin")
-                                        .font(.footnote)
-                                        .fontWeight(.semibold)
-                                        .kerning(10)
-                                        .textCase(.uppercase)
-                                }
-                                .padding(.vertical, 5)
-                                .foregroundColor(np_white)
-                                .frame(width: 200, height: 50)
-                                .background(np_black)
-                                .clipShape(Capsule())
-                                .overlay(
-                                    Capsule(style: .continuous)
-                                        .stroke(np_white, style: StrokeStyle(lineWidth: 1))
-                                        .padding(3)
-                                )
-                            })
-                            
-                            Spacer()
-                        }
-                        .padding(.vertical, 5)
+//                        VStack {
+//                            // MARK: Meditation Sound Button
+//                            Button(action: {
+//                                showPlayerSheet.toggle()
+//                            }, label: {
+//                                HStack {
+//                                    Image("play")
+//                                        .resizable()
+//                                        .scaledToFill()
+//                                        .frame(maxWidth: 30, maxHeight: 30)
+//                                    Text("begin")
+//                                        .font(.footnote)
+//                                        .fontWeight(.semibold)
+//                                        .kerning(10)
+//                                        .textCase(.uppercase)
+//                                }
+//                                .padding(.vertical, 5)
+//                                .foregroundColor(np_white)
+//                                .frame(width: 200, height: 50)
+//                                .background(np_black)
+//                                .clipShape(Capsule())
+//                                .overlay(
+//                                    Capsule(style: .continuous)
+//                                        .stroke(np_white, style: StrokeStyle(lineWidth: 1))
+//                                        .padding(3)
+//                                )
+//                            })
+//
+//                            Spacer()
+//                        }
+//                        .padding(.vertical, 5)
+                        
+                        PlayerView(meditationViewModel: meditationViewModel)
                     }
                     .foregroundColor(np_white)
                     .padding(20)

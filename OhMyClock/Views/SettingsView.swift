@@ -15,127 +15,204 @@ struct SettingsView: View {
     @State var emailAlert : Bool = false
     
     let screenHeight = UIScreen.main.bounds.height
+    let screenWidth = UIScreen.main.bounds.width
     
     var body: some View {
         ZStack {
+            np_black
+                .ignoresSafeArea()
+            
+            // MARK: Logo
             VStack(alignment: .center) {
-                Form {
-                    // MARK: "Developer" Section
-                    
-                    Section(header: Text("Developer")) {
-                        
-                        // MARK: "Contact Developer"
-                        
-                        Button(action: {
-                            emailAlert.toggle()
-                        }, label: {
-                            HStack {
-                                Image("message")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .padding(5)
-                                    .foregroundColor(np_white)
-                                    .background(Color(uiColor: .systemIndigo))
-                                    .clipShape(Circle())
-                                
-                                HStack {
-                                    Text("Contact Developer")
-                                        .font(.headline)
-                                        .foregroundColor(np_black)
-                                    
-                                    Spacer()
-                                }
-                            }
-                        })
-                        
-                        // MARK: "Developer Website"
-                        
-                        Button(action: {
-                            openURL(URL(string: "https://www.appe-latte.ca")!)
-                        }, label: {
-                            HStack {
-                                Image("country")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .padding(5)
-                                    .foregroundColor(np_white)
-                                    .background(Color(uiColor: .systemMint))
-                                    .clipShape(Circle())
-                                
-                                Text("Visit Our Website")
-                                    .font(.headline)
-                                    .foregroundColor(np_black)
-                                    .foregroundColor(np_black)
-                                
-                                Spacer()
-                            }
-                        })
-                        
-                        // MARK: "Write A Review"
-                        
-                        Button(action: {
-                            requestReview()
-                        }, label: {
-                            HStack {
-                                Image("like")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .padding(5)
-                                    .foregroundColor(np_white)
-                                    .background(Color(uiColor: .systemCyan))
-                                    .clipShape(Circle())
-                                
-                                HStack {
-                                    Text("Write A Review")
-                                        .font(.headline)
-                                        .foregroundColor(np_black)
-                                        .foregroundColor(np_black)
-                                    
-                                    Spacer()
-                                }
-                            }
-                        })
-                        
-                        // MARK: "Share App"
-                        
-                        Button(action: {
-                            shareSheet()
-                        }, label: {
-                            HStack {
-                                Image("share")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .padding(5)
-                                    .foregroundColor(np_white)
-                                    .background(np_red)
-                                    .clipShape(Circle())
-                                
-                                HStack {
-                                    Text("Share This App")
-                                        .font(.headline)
-                                        .foregroundColor(np_black)
-                                    
-                                    Spacer()
-                                }
-                            }
-                        })
-                    }
-                    .environment(\.defaultMinListRowHeight, rowHeight)
-                    
-                    // MARK: "App Version"
-                    HStack {
-                        Spacer()
-                        
-                        Text("App Version: \(UIApplication.appVersion!)")
-                            .font(.footnote)
-                            .foregroundColor(np_black)
-                        
-                        Spacer()
-                    }
-                }
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 150, height: 150)
+                    .foregroundColor(np_white)
+                
+                Text("Oh My Clock")
+                    .font(.title)
+                    .fontWeight(.light)
+                    .kerning(5)
+                    .textCase(.uppercase)
+                    .foregroundColor(np_white)
+                
+                Text("by: Appè Latte")
+                    .font(.caption)
+                    .fontWeight(.thin)
+                    .kerning(10)
+                    .textCase(.uppercase)
+                    .foregroundColor(np_white)
+                
+                Spacer()
             }
+            .padding(.top, 50)
             
             Spacer()
+            
+            VStack(alignment: .center, spacing: 20) {
+                
+                Spacer()
+                
+                // MARK: Settings
+                HStack {
+                    Label("Settings", systemImage: "info.bubble")
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .kerning(5)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                    
+                    Spacer()
+                }
+                .frame(width: screenWidth - 30)
+                .padding()
+                
+                // MARK: "Contact Developer"
+                Button(action: {
+                    emailAlert.toggle()
+                }, label: {
+                    HStack(spacing: 10) {
+                        Image("message")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .padding(5)
+                            .foregroundColor(np_white)
+                            .background(Color(uiColor: .systemIndigo))
+                            .clipShape(Circle())
+                        
+                        HStack {
+                            Text("Contact Developer")
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                                .kerning(5)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                            
+                            Spacer()
+                        }
+                        
+                        Image(systemName: "chevron.right")
+                    }
+                })
+                .padding(.horizontal, 20)
+                
+                Divider()
+                
+                // MARK: "Developer Website"
+                Button(action: {
+                    openURL(URL(string: "https://www.appe-latte.ca")!)
+                }, label: {
+                    HStack(spacing: 10) {
+                        Image("country")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .padding(5)
+                            .foregroundColor(np_white)
+                            .background(Color(uiColor: .systemMint))
+                            .clipShape(Circle())
+                        
+                        HStack {
+                            Text("Visit our website")
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                                .kerning(5)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                            
+                            Spacer()
+                        }
+                        
+                        Image(systemName: "chevron.right")
+                    }
+                })
+                .padding(.horizontal, 20)
+                
+                Divider()
+                
+                // MARK: "Write A Review"
+                Button(action: {
+                    requestReview()
+                }, label: {
+                    HStack(spacing: 10) {
+                        Image("like")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .padding(5)
+                            .foregroundColor(np_white)
+                            .background(Color(uiColor: .systemCyan))
+                            .clipShape(Circle())
+                        
+                        HStack {
+                            Text("Write A Review")
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                                .kerning(5)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                            
+                            Spacer()
+                        }
+                        
+                        Image(systemName: "chevron.right")
+                    }
+                })
+                .padding(.horizontal, 20)
+                
+                Divider()
+                
+                // MARK: "Share App"
+                Button(action: {
+                    shareSheet()
+                }, label: {
+                    HStack(spacing: 10) {
+                        Image("share")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .padding(5)
+                            .foregroundColor(np_white)
+                            .background(np_red)
+                            .clipShape(Circle())
+                        
+                        HStack {
+                            Text("Share")
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                                .kerning(5)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                            
+                            Spacer()
+                        }
+                        
+                        Image(systemName: "chevron.right")
+                    }
+                })
+                .padding(.horizontal, 20)
+                .padding(.bottom, 20)
+                
+                // MARK: App Version
+                HStack(spacing: 10) {
+                    Text("App Version:")
+                        .font(.caption)
+                        .fontWeight(.thin)
+                        .kerning(5)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                    
+                    Spacer()
+                    
+                    Text("\(UIApplication.appVersion!)")
+                        .font(.caption)
+                        .fontWeight(.thin)
+                        .kerning(5)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 20)
+            }
+            .padding(.bottom, 20)
             
         }
         .alert("Got an app idea?", isPresented: $emailAlert, actions: {

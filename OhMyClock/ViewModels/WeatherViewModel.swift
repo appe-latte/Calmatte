@@ -14,6 +14,7 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     @Published private(set) var currTemp = String()
     @Published private(set) var currCondition = String()
+    @Published private(set) var currWeatherSymbol = String()
     @Published private(set) var currHumidity = Double()
     @Published private(set) var dailyHigh = "H:0"
     @Published private(set) var dailyLow = "L:0"
@@ -50,6 +51,7 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                     self.currTemp = weather.currentWeather.temperature.formatted()
                     self.currHumidity = weather.currentWeather.humidity
                     self.currCondition = weather.currentWeather.condition.description
+                    self.currWeatherSymbol = weather.currentWeather.symbolName
                     self.dailyHigh = "High:\(weather.dailyForecast.forecast[0].highTemperature.formatted().dropLast())"
                     self.dailyLow = "Low:\(weather.dailyForecast.forecast[0].lowTemperature.formatted().dropLast())"
                     
@@ -99,7 +101,7 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         let inputDateComponents = calendar.dateComponents([.day], from: date)
         let currentDateComponents = calendar.dateComponents([.day], from: Date())
-    
+        
         if inputDateComponents == currentDateComponents {
             return "Today"
         } else {
