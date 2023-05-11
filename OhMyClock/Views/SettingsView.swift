@@ -27,7 +27,7 @@ struct SettingsView: View {
                 Image("logo")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 150, height: 150)
+                    .frame(width: 120, height: 120)
                     .foregroundColor(np_white)
                 
                 Text("Oh My Clock")
@@ -38,9 +38,9 @@ struct SettingsView: View {
                     .foregroundColor(np_white)
                 
                 Text("by: Appè Latte")
-                    .font(.caption)
+                    .font(.footnote)
                     .fontWeight(.thin)
-                    .kerning(10)
+                    .kerning(9.5)
                     .textCase(.uppercase)
                     .foregroundColor(np_white)
                 
