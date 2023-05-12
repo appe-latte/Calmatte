@@ -35,7 +35,6 @@ struct TimerView: View {
                                     .blur(radius: 15)
                                     .padding(-2)
                                 
-                                
                                 Circle()
                                     .fill(np_white.opacity(0.03))
                                     .padding(-40)
@@ -46,7 +45,7 @@ struct TimerView: View {
                                 Circle()
                                     .trim(from: 0, to: timerModel.progress)
                                     .stroke(np_white, style: StrokeStyle(lineWidth: 30, lineCap: .round))
-       
+                                
                                 // MARK: Timer Knob
                                 GeometryReader { proxy in
                                     let size = proxy.size
@@ -75,7 +74,6 @@ struct TimerView: View {
                             .rotationEffect(.init(degrees: -90))
                             .animation(.easeInOut, value: timerModel.progress)
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                            
                             
                             HStack(spacing: 15) {
                                 
@@ -115,7 +113,6 @@ struct TimerView: View {
                 
                 // MARK: Timer Functions / Options
                 VStack(alignment: .leading, spacing: 20) {
-                    // MARK: Title
                     HStack {
                         Text("Focus Timer")
                             .font(.title3)
@@ -145,7 +142,7 @@ struct TimerView: View {
                     np_gray
                         .opacity(timerModel.addNewTimer ? 0.25 : 0)
                         .onTapGesture {
-                            timerModel.hour = 0
+//                            timerModel.hour = 0
                             timerModel.minutes = 0
                             timerModel.seconds = 0
                             timerModel.addNewTimer = false
@@ -155,7 +152,7 @@ struct TimerView: View {
                         .frame(maxHeight: .infinity, alignment: .bottom)
                         .offset(y: timerModel.addNewTimer ? 0 : 400)
                 }
-                .animation(.easeInOut, value: timerModel.addNewTimer)
+                //                .animation(.easeInOut, value: timerModel.addNewTimer)
             })
             .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) {
                 _ in
@@ -163,13 +160,8 @@ struct TimerView: View {
                     timerModel.updateFocusTimer()
                 }
             }
-            .alert("Focus time complete", isPresented: $timerModel.isFinished) {
-                Button("New Timer", role: .cancel) {
-                    timerModel.stopFocusTimer()
-                    timerModel.addNewTimer = true
-                }
-                
-                Button("Close", role: .destructive) {
+            .alert("Focus Time Ended", isPresented: $timerModel.isFinished) {
+                Button("Close", role: .cancel) {
                     timerModel.stopFocusTimer()
                 }
             }
@@ -178,38 +170,19 @@ struct TimerView: View {
     
     @ViewBuilder
     func NewTimerView() -> some View {
-        VStack(spacing: 15) {
+        VStack(spacing: 2) {
             Text("Set Focus Time")
                 .font(.footnote)
                 .fontWeight(.semibold)
                 .foregroundColor(np_white)
                 .kerning(3)
                 .textCase(.uppercase)
-                .padding(.top, 5)
+//                .padding(.top, 5)
             
             // MARK: Time Selection
             HStack(spacing: 15) {
-                // Hours
-                Text("\(timerModel.hour) hr(s)")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(np_white)
-                    .kerning(3)
-                    .textCase(.uppercase)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 10)
-                    .background {
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(np_white, lineWidth: 1)
-                    }
-                    .contextMenu {
-                        ContextMenuOptions(maxValue: 12, hint: "hours") { value in
-                            timerModel.hour = value
-                        }
-                    }
-                
                 // Minutes
-                Text("\(timerModel.minutes) mins")
+                Text("\(timerModel.minutes) minutes")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(np_white)
@@ -222,13 +195,13 @@ struct TimerView: View {
                             .stroke(np_white, lineWidth: 1)
                     }
                     .contextMenu {
-                        ContextMenuOptions(maxValue: 60, hint: "mins") { value in
+                        ContextMenuMinutesOptions(maxValue: 60, hint: "minutes") { value in
                             timerModel.minutes = value
                         }
                     }
                 
                 // Seconds
-                Text("\(timerModel.seconds) s")
+                Text("\(timerModel.seconds) seconds")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(np_white)
@@ -241,12 +214,20 @@ struct TimerView: View {
                             .stroke(np_white, lineWidth: 1)
                     }
                     .contextMenu {
-                        ContextMenuOptions(maxValue: 60, hint: "seconds") { value in
+                        ContextMenuSecondsOptions(maxValue: 60, hint: "seconds") { value in
                             timerModel.seconds = value
                         }
                     }
             }
-            .padding(.top, 20)
+            .padding(.top, 10)
+            
+//            Text("* When selecting 'minutes', set 'seconds' to 1")
+//                .font(.system(size: 8))
+//                .fontWeight(.thin)
+//                .foregroundColor(np_white)
+//                .kerning(3)
+//                .textCase(.uppercase)
+//                .padding(10)
             
             // MARK: Save Time
             Button(action: {
@@ -258,7 +239,7 @@ struct TimerView: View {
                     .foregroundColor(np_black)
                     .kerning(5)
                     .textCase(.uppercase)
-                    .padding(.vertical)
+                    .padding(.vertical, 5)
                     .padding(.horizontal, 100)
                     .background {
                         Capsule()
@@ -280,7 +261,7 @@ struct TimerView: View {
         .background{
             RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .fill(np_black)
-                .frame(maxWidth: .infinity)
+                .frame(width: screenWidth)
                 .ignoresSafeArea()
         }
     }
@@ -289,6 +270,28 @@ struct TimerView: View {
     @ViewBuilder
     func ContextMenuOptions(maxValue: Int, hint: String, onClick: @escaping (Int) -> ())->some View {
         ForEach(0...maxValue, id: \.self) { value in
+            Button("\(value) \(hint)") {
+                onClick(value)
+            }
+        }
+    }
+    
+    // MARK: Context Menu Options for minutes -- increments of 5
+    @ViewBuilder
+    func ContextMenuMinutesOptions(maxValue: Int, hint: String, onClick: @escaping (Int) -> ()) -> some View {
+        let values = Array(stride(from: 0, through: 9, by: 1)) + Array(stride(from: 10, through: maxValue, by: 5))
+        ForEach(values, id: \.self) { value in
+            Button("\(value) \(hint)") {
+                onClick(value)
+            }
+        }
+    }
+    
+    // MARK: Context Menu Options for seconds -- increments of 5
+    @ViewBuilder
+    func ContextMenuSecondsOptions(maxValue: Int, hint: String, onClick: @escaping (Int) -> ()) -> some View {
+        let values = [0, 1, 2, 3, 4, 5] + Array(stride(from: 10, through: maxValue - 1, by: 5)) + [ 59 ]
+        ForEach(values, id: \.self) { value in
             Button("\(value) \(hint)") {
                 onClick(value)
             }

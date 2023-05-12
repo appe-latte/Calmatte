@@ -14,7 +14,7 @@ class TimerModel : NSObject, ObservableObject, UNUserNotificationCenterDelegate 
     @Published var isStarted : Bool = false
     @Published var addNewTimer : Bool = false
     
-    @Published var hour : Int = 0
+//    @Published var hour : Int = 0
     @Published var minutes : Int = 0
     @Published var seconds : Int = 0
     
@@ -46,10 +46,12 @@ class TimerModel : NSObject, ObservableObject, UNUserNotificationCenterDelegate 
     // MARK: Timer Settings
     func startFocusTimer() {
         withAnimation(.easeInOut(duration: 0.25)) { isStarted = true }
-        timerValue = "\(hour == 0 ? "" : "\(hour):")\(minutes >= 10 ? "\(minutes)" : "0\(minutes)"):\(seconds >= 10 ? "\(seconds)" : "0\(seconds)")"
+        //        timerValue = "\(hour == 0 ? "" : "\(hour):")\(minutes >= 10 ? "\(minutes)" : "0\(minutes)"):\(seconds >= 10 ? "\(seconds)" : "0\(seconds)")"
+        timerValue = "\(minutes >= 10 ? "\(minutes)" : "0\(minutes)"):\(seconds >= 10 ? "\(seconds)" : "0\(seconds)")"
         
         // Calculation for timer animation
-        totalSeconds = (hour * 3600) + (minutes * 60) + seconds
+        totalSeconds = (minutes * 60) + seconds
+        //        totalSeconds = (hour * 3600) + (minutes * 60) + seconds
         staticTotalSeconds = totalSeconds
         addNewTimer = false
         addNotification()
@@ -58,7 +60,7 @@ class TimerModel : NSObject, ObservableObject, UNUserNotificationCenterDelegate 
     func stopFocusTimer() {
         withAnimation {
             isStarted = false
-            hour = 0
+//            hour = 0
             minutes = 0
             seconds = 0
             progress = 1
@@ -73,13 +75,21 @@ class TimerModel : NSObject, ObservableObject, UNUserNotificationCenterDelegate 
         progress = CGFloat(totalSeconds) / CGFloat(staticTotalSeconds)
         progress = (progress < 0 ? 0 : progress)
         
-        hour = totalSeconds / 3600
+//        hour = totalSeconds / 3600
         minutes = (totalSeconds / 60) % 60
         seconds = (totalSeconds % 60)
         
-        timerValue = "\(hour == 0 ? "" : "\(hour):")\(minutes >= 10 ? "\(minutes)" : "0\(minutes)"):\(seconds >= 10 ? "\(seconds)" : "0\(seconds)")"
+        //        timerValue = "\(hour == 0 ? "" : "\(hour):")\(minutes >= 10 ? "\(minutes)" : "0\(minutes)"):\(seconds >= 10 ? "\(seconds)" : "0\(seconds)")"
         
-        if hour == 0 && minutes == 0 && seconds == 0 {
+        //        if hour == 0 && minutes == 0 && seconds == 0 {
+        //            isStarted = false
+        //            print("Focus Timer Complete!")
+        //            isFinished = true
+        //        }
+        
+        timerValue = "\(minutes >= 10 ? "\(minutes)" : "0\(minutes)"):\(seconds >= 10 ? "\(seconds)" : "0\(seconds)")"
+        
+        if minutes == 0 && seconds == 0 {
             isStarted = false
             print("Focus Timer Complete!")
             isFinished = true
