@@ -11,99 +11,81 @@ import AVKit
 struct MeditationView: View {
     @StateObject var meditationViewModel : MeditationViewModel
     @State private var showPlayer = false
-    @State var showPlayerSheet = false
-    @State var showTimerSheet = false
+    @State private var breathingAnimation = false
+    @State private var textBreathingAnimation = false
     
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                // MARK: Background Image
-                Image(meditationViewModel.meditation.image)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: screenWidth, height: screenHeight * 0.6, alignment: .top)
+        ZStack(alignment: .bottom) {
+            np_black
+                .edgesIgnoringSafeArea(.all)
+            
+            // MARK: Breathing action
+            VStack {
+                Circle()
+                    .fill(np_black)
+                    .frame(width: 300, height: 300)
+                    .overlay {
+                        Circle()
+                            .stroke(np_white, lineWidth: 2)
+                        
+                        Circle()
+                            .fill(np_white)
+                            .frame(width: 150, height: 150)
+                            .modifier(BreathingAnimation(isBreathing: breathingAnimation))
+                            .onAppear() {
+                                breathingAnimation = true
+                                
+                            }
+                            .overlay {
+                                Text(textBreathingAnimation ? "Breathe Out" : "Breathe In")
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_black)
+                                    .modifier(TextBreathingAnimation(isBreathing: textBreathingAnimation))
+                                    .onAppear() {
+                                        textBreathingAnimation = true
+                                        
+                                    }
+                            }
+                    }
                 
-                ZStack(alignment: .bottom) {
-                    VStack(spacing: 20) {
-                        // MARK: Title
-                        HStack {
-                            Text(meditationViewModel.meditation.title)
-                                .font(.system(size: 22, weight: .heavy))
-                                .fontWeight(.bold)
-                                .kerning(10)
-                                .textCase(.uppercase)
-                                .minimumScaleFactor(0.6)
-                                .lineLimit(1)
-                            
-                            Spacer()
-                        }
-                        
-                        // MARK: Description
-                        Text(meditationViewModel.meditation.description)
-                            .font(.footnote)
-                            .kerning(3)
-                            .textCase(.uppercase)
-                            .minimumScaleFactor(0.5)
-                        
-//                        VStack {
-//                            // MARK: Meditation Sound Button
-//                            Button(action: {
-//                                showPlayerSheet.toggle()
-//                            }, label: {
-//                                HStack {
-//                                    Image("play")
-//                                        .resizable()
-//                                        .scaledToFill()
-//                                        .frame(maxWidth: 30, maxHeight: 30)
-//                                    Text("begin")
-//                                        .font(.footnote)
-//                                        .fontWeight(.semibold)
-//                                        .kerning(10)
-//                                        .textCase(.uppercase)
-//                                }
-//                                .padding(.vertical, 5)
-//                                .foregroundColor(np_white)
-//                                .frame(width: 200, height: 50)
-//                                .background(np_black)
-//                                .clipShape(Capsule())
-//                                .overlay(
-//                                    Capsule(style: .continuous)
-//                                        .stroke(np_white, style: StrokeStyle(lineWidth: 1))
-//                                        .padding(3)
-//                                )
-//                            })
-//
-//                            Spacer()
-//                        }
-//                        .padding(.vertical, 5)
-                        
-                        PlayerView(meditationViewModel: meditationViewModel)
-                    }
-                    .foregroundColor(np_white)
-                    .padding(20)
-                }
-                .frame(height: screenHeight * 0.35)
-                .background(np_black)
-                .cornerRadius(15, corners: [.topLeft, .topRight])
-                .blurredSheet(.init(.ultraThinMaterial), show: $showPlayerSheet) {
-                    //
-                } content: {
-                    if #available(iOS 16.0, *) {
-                        PlayerView(meditationViewModel: meditationViewModel)
-                            .ignoresSafeArea()
-                            .presentationDetents([.height(screenHeight / 2.5), .fraction(0.4)])
-                    } else {
-                        // Fallback on earlier versions
-                        PlayerView(meditationViewModel: meditationViewModel)
-                    }
-                }
+                Spacer()
             }
+            .padding(.top, 100)
+            
+            // MARK: Description
+            VStack(alignment: .leading, spacing: 20) {
+                HStack {
+                    Text(meditationViewModel.meditation.title)
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .kerning(10)
+                        .textCase(.uppercase)
+                        .minimumScaleFactor(0.6)
+                        .lineLimit(1)
+                    
+                    Spacer()
+                }
+                
+                // MARK: Description
+                Text(meditationViewModel.meditation.description)
+                    .font(.footnote)
+                    .kerning(3)
+                    .textCase(.uppercase)
+                    .minimumScaleFactor(0.5)
+                
+                // MARK: Meditation Music Player
+                PlayerView(meditationViewModel: meditationViewModel)
+            }
+            .foregroundColor(np_white)
+            .padding(20)
+            .frame(height: screenHeight * 0.30)
         }
-        .background(np_white)
-        .ignoresSafeArea(edges: .top)
     }
 }
 
@@ -124,12 +106,31 @@ extension View {
 }
 
 struct RoundedCorner: Shape {
-    
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
     
     func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         return Path(path.cgPath)
+    }
+}
+
+struct BreathingAnimation: ViewModifier {
+    let isBreathing: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .scaleEffect(isBreathing ? 2.0 : 1.0)
+            .animation(Animation.easeInOut(duration: 5.0).repeatForever(autoreverses: true))
+    }
+}
+
+struct TextBreathingAnimation: ViewModifier {
+    let isBreathing: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .scaleEffect(isBreathing ? 1.5 : 1.0)
+            .animation(Animation.easeInOut(duration: 5.0).repeatForever(autoreverses: true))
     }
 }

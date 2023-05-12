@@ -142,7 +142,7 @@ struct TimerView: View {
                     np_gray
                         .opacity(timerModel.addNewTimer ? 0.25 : 0)
                         .onTapGesture {
-//                            timerModel.hour = 0
+                            //                            timerModel.hour = 0
                             timerModel.minutes = 0
                             timerModel.seconds = 0
                             timerModel.addNewTimer = false
@@ -177,7 +177,7 @@ struct TimerView: View {
                 .foregroundColor(np_white)
                 .kerning(3)
                 .textCase(.uppercase)
-//                .padding(.top, 5)
+            //                .padding(.top, 5)
             
             // MARK: Time Selection
             HStack(spacing: 15) {
@@ -221,13 +221,13 @@ struct TimerView: View {
             }
             .padding(.top, 10)
             
-//            Text("* When selecting 'minutes', set 'seconds' to 1")
-//                .font(.system(size: 8))
-//                .fontWeight(.thin)
-//                .foregroundColor(np_white)
-//                .kerning(3)
-//                .textCase(.uppercase)
-//                .padding(10)
+            //            Text("* When selecting 'minutes', set 'seconds' to 1")
+            //                .font(.system(size: 8))
+            //                .fontWeight(.thin)
+            //                .foregroundColor(np_white)
+            //                .kerning(3)
+            //                .textCase(.uppercase)
+            //                .padding(10)
             
             // MARK: Save Time
             Button(action: {
