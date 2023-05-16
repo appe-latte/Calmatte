@@ -91,74 +91,87 @@ struct ClockView: View {
                         .padding(.top, 10)
                     
                     // MARK: Weather Conditions
-                    HStack {
-                        Label("Today's Weather", systemImage: "thermometer.sun.fill")
-                            .font(.caption)
-                            .fontWeight(.bold)
-                            .kerning(2)
-                            .textCase(.uppercase)
-                        
-                        Spacer()
-                    }
-                    .padding(10)
-                    
-                    HStack(spacing: 10) {
-                        Image(systemName: "\(weatherModel.currWeatherSymbol).fill")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundColor(np_black)
-                            .frame(width: 100, height: 100)
-                            .padding()
-                        
-                        Spacer()
-                            .frame(width: 25)
-                        
-                        VStack(alignment: .leading, spacing: 10) {
-                            // Temperature
-                            VStack(alignment: .leading) {
-                                Text("Temperature:")
-                                    .font(.footnote)
-                                    .fontWeight(.bold)
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                                
-                                Text("\(weatherModel.currTemp)")
-                                    .font(.footnote)
-                                    .fontWeight(.bold)
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                            }
+                    VStack {
+                        HStack {
+                            Label("Today's Weather", systemImage: "thermometer.sun.fill")
+                                .font(.caption)
+                                .fontWeight(.bold)
+                                .kerning(2)
+                                .textCase(.uppercase)
                             
-                            // Humidity
-                            VStack(alignment: .leading) {
-                                Text("Humidity:")
-                                    .font(.footnote)
-                                    .fontWeight(.bold)
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                                
-                                Text("\(String(format: "%.0f", weatherModel.currHumidity * 100))%")
-                                    .font(.footnote)
-                                    .fontWeight(.bold)
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                            }
+                            Spacer()
+                        }
+                        .padding(10)
+                        
+                        HStack(spacing: 10) {
+                            Image(systemName: "\(weatherModel.currWeatherSymbol)")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(np_black)
+                                .frame(width: 100, height: 100)
+                                .padding()
                             
-                            // Weather Condition
-                            VStack(alignment: .leading) {
-                                Text("Condition:")
-                                    .font(.footnote)
-                                    .fontWeight(.bold)
-                                    .kerning(5)
-                                    .textCase(.uppercase)
+                            Spacer()
+                                .frame(width: 25)
+                            
+                            VStack(alignment: .leading, spacing: 10) {
+                                // Temperature
+                                VStack(alignment: .leading) {
+                                    Text("Temperature:")
+                                        .font(.footnote)
+                                        .fontWeight(.bold)
+                                        .kerning(5)
+                                        .textCase(.uppercase)
+                                    
+                                    Text("\(weatherModel.currTemp)")
+                                        .font(.footnote)
+                                        .fontWeight(.bold)
+                                        .kerning(5)
+                                        .textCase(.uppercase)
+                                }
                                 
-                                Text("\(weatherModel.currCondition)")
-                                    .font(.footnote)
-                                    .fontWeight(.bold)
-                                    .kerning(5)
-                                    .textCase(.uppercase)
+                                // Humidity
+                                VStack(alignment: .leading) {
+                                    Text("Humidity:")
+                                        .font(.footnote)
+                                        .fontWeight(.bold)
+                                        .kerning(5)
+                                        .textCase(.uppercase)
+                                    
+                                    Text("\(String(format: "%.0f", weatherModel.currHumidity * 100))%")
+                                        .font(.footnote)
+                                        .fontWeight(.bold)
+                                        .kerning(5)
+                                        .textCase(.uppercase)
+                                }
+                                
+                                // Weather Condition
+                                VStack(alignment: .leading) {
+                                    Text("Condition:")
+                                        .font(.footnote)
+                                        .fontWeight(.bold)
+                                        .kerning(5)
+                                        .textCase(.uppercase)
+                                    
+                                    Text("\(weatherModel.currCondition)")
+                                        .font(.footnote)
+                                        .fontWeight(.bold)
+                                        .kerning(5)
+                                        .textCase(.uppercase)
+                                }
                             }
                         }
+                        
+                        // MARK: WeatherKit Trademark
+                        HStack {
+                            Text("Powered by  Weather. Weather data provided by WeatherKit.")
+                                .font(.system(size: 6))
+                                .fontWeight(.semibold)
+                                .kerning(2)
+                                .textCase(.uppercase)
+                            
+                        }
+                        .padding(5)
                     }
                     .frame(maxWidth: screenWidth - 20, maxHeight: screenHeight * 0.65)
                     .background(np_white)
@@ -182,7 +195,7 @@ struct ClockView: View {
                     }
                     .padding(10)
                     
-                    VStack(alignment: .leading, spacing: 15) {
+                    VStack(spacing: 15) {
                         ScrollView(.horizontal) {
                             HStack(spacing: 15) {
                                 ForEach(weatherModel.hourlyForecast.prefix(12), id: \.time) {
@@ -194,7 +207,7 @@ struct ClockView: View {
                                             .kerning(1)
                                             .textCase(.uppercase)
                                         
-                                        Image(systemName: "\(weather.symbolName).fill")
+                                        Image(systemName: "\(weather.symbolName)")
                                             .font(.title)
                                             .foregroundColor(np_black)
                                         
@@ -209,6 +222,7 @@ struct ClockView: View {
                         .padding(.horizontal, 20)
                         .padding(.top, 20)
                         
+                        // MARK: Daily High / Low
                         HStack {
                             Text("\(weatherModel.dailyHigh)")
                                 .font(.footnote)
@@ -226,6 +240,17 @@ struct ClockView: View {
                         }
                         .padding(.horizontal, 20)
                         .padding(.bottom, 20)
+                        
+                        // MARK: WeatherKit Trademark
+                        HStack {
+                            Text("Powered by  Weather. Weather data provided by WeatherKit.")
+                                .font(.system(size: 6))
+                                .fontWeight(.semibold)
+                                .kerning(2)
+                                .textCase(.uppercase)
+                            
+                        }
+                        .padding(5)
                     }
                     .frame(maxWidth: screenWidth - 20, maxHeight: screenHeight * 0.30)
                     .background(np_white)
@@ -234,6 +259,13 @@ struct ClockView: View {
                     .cornerRadius(20)
                     .edgesIgnoringSafeArea(.bottom)
                 }
+                
+                
+                
+                
+                
+                
+                
             }
             .frame(maxWidth: .infinity)
             .onAppear {

@@ -13,6 +13,8 @@ struct TimerView: View {
     
     @EnvironmentObject var timerModel : TimerModel
     @State private var timerDescription = "Use this feature to set some time to focus on a task or when you need to clear your mind."
+    @State private var selectedSeconds = 0
+    @State private var selectedMinutes = 0
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -152,7 +154,6 @@ struct TimerView: View {
                         .frame(maxHeight: .infinity, alignment: .bottom)
                         .offset(y: timerModel.addNewTimer ? 0 : 400)
                 }
-                //                .animation(.easeInOut, value: timerModel.addNewTimer)
             })
             .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) {
                 _ in
@@ -182,52 +183,38 @@ struct TimerView: View {
             // MARK: Time Selection
             HStack(spacing: 15) {
                 // Minutes
-                Text("\(timerModel.minutes) minutes")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(np_white)
-                    .kerning(3)
-                    .textCase(.uppercase)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 10)
-                    .background {
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(np_white, lineWidth: 1)
+                Picker("Minutes", selection: $selectedMinutes) {
+                    ForEach(0..<61, id: \.self) { minute in
+                        Text("\(minute) minutes")
                     }
-                    .contextMenu {
-                        ContextMenuMinutesOptions(maxValue: 60, hint: "minutes") { value in
-                            timerModel.minutes = value
-                        }
-                    }
+                }
+                .padding(.horizontal, 10)
+                .padding(.vertical, 10)
+                .background {
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(np_white, lineWidth: 1)
+                }
+                .onChange(of: selectedMinutes) { newValue in
+                    timerModel.minutes = newValue
+                }
                 
                 // Seconds
-                Text("\(timerModel.seconds) seconds")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(np_white)
-                    .kerning(3)
-                    .textCase(.uppercase)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 10)
-                    .background {
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(np_white, lineWidth: 1)
+                Picker("Seconds", selection: $selectedSeconds) {
+                    ForEach(0..<61, id: \.self) { second in
+                        Text("\(second) seconds")
                     }
-                    .contextMenu {
-                        ContextMenuSecondsOptions(maxValue: 60, hint: "seconds") { value in
-                            timerModel.seconds = value
-                        }
-                    }
+                }
+                .padding(.horizontal, 10)
+                .padding(.vertical, 10)
+                .background {
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(np_white, lineWidth: 1)
+                }
+                .onChange(of: selectedSeconds) { newValue in
+                    timerModel.seconds = newValue
+                }
             }
             .padding(.top, 10)
-            
-            //            Text("* When selecting 'minutes', set 'seconds' to 1")
-            //                .font(.system(size: 8))
-            //                .fontWeight(.thin)
-            //                .foregroundColor(np_white)
-            //                .kerning(3)
-            //                .textCase(.uppercase)
-            //                .padding(10)
             
             // MARK: Save Time
             Button(action: {

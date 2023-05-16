@@ -22,6 +22,49 @@ struct SettingsView: View {
             np_black
                 .ignoresSafeArea()
             
+            VStack {
+                HStack {
+                    Spacer()
+                    
+                    // MARK: "Share App"
+                    Button(action: {
+                        shareSheet()
+                    }, label: {
+                        VStack(spacing: 10) {
+                            Image("share")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .padding(5)
+                                .foregroundColor(np_white)
+//                                .background(np_red)
+                                .clipShape(Circle())
+                                .overlay {
+                                    Circle()
+                                        .stroke(lineWidth: 1)
+                                        .foregroundColor(np_white)
+                                        
+                                }
+                                .padding(5)
+                            
+                            Text("Share")
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                                .kerning(5)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                            
+                        }
+                    })
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 20)
+                }
+                .padding()
+                
+                Spacer()
+            }
+            
+            Spacer()
+            
             // MARK: Logo
             VStack(alignment: .center) {
                 Image("logo")
@@ -44,6 +87,26 @@ struct SettingsView: View {
                     .textCase(.uppercase)
                     .foregroundColor(np_white)
                 
+                // MARK: App Version
+                HStack(spacing: 10) {
+                    Text("App Version:")
+                        .font(.caption)
+                        .fontWeight(.thin)
+                        .kerning(5)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                    
+                    //                    Spacer()
+                    
+                    Text("\(UIApplication.appVersion!)")
+                        .font(.caption)
+                        .fontWeight(.thin)
+                        .kerning(5)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                }
+                .padding(.horizontal, 20)
+                
                 Spacer()
             }
             .padding(.top, 50)
@@ -56,7 +119,7 @@ struct SettingsView: View {
                 
                 // MARK: Settings
                 HStack {
-                    Label("Settings", systemImage: "info.bubble")
+                    Label("Information", systemImage: "info.bubble")
                         .font(.caption)
                         .fontWeight(.bold)
                         .kerning(5)
@@ -68,6 +131,44 @@ struct SettingsView: View {
                 .frame(width: screenWidth - 30)
                 .padding()
                 
+                // MARK: "Legal Source"
+                Button(action: {
+                    openURL(URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
+                }, label: {
+                    HStack(spacing: 10) {
+                        Image("cloud")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .padding(5)
+                            .foregroundColor(np_white)
+//                            .background(Color(uiColor: .systemOrange))
+                            .clipShape(Circle())
+                            .overlay {
+                                Circle()
+                                    .stroke(lineWidth: 1)
+                                    .foregroundColor(np_white)
+                                    
+                            }
+                            .padding(5)
+                        
+                        HStack {
+                            Text("Weather Data Source")
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                                .kerning(5)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                            
+                            Spacer()
+                        }
+                        
+                        Image(systemName: "chevron.right")
+                    }
+                })
+                .padding(.horizontal, 20)
+                
+                Divider()
+                
                 // MARK: "Contact Developer"
                 Button(action: {
                     emailAlert.toggle()
@@ -78,11 +179,18 @@ struct SettingsView: View {
                             .frame(width: 30, height: 30)
                             .padding(5)
                             .foregroundColor(np_white)
-                            .background(Color(uiColor: .systemIndigo))
+//                            .background(Color(uiColor: .systemIndigo))
                             .clipShape(Circle())
+                            .overlay {
+                                Circle()
+                                    .stroke(lineWidth: 1)
+                                    .foregroundColor(np_white)
+                                    
+                            }
+                            .padding(5)
                         
                         HStack {
-                            Text("Contact Developer")
+                            Text("Contact Us")
                                 .font(.caption)
                                 .fontWeight(.semibold)
                                 .kerning(5)
@@ -109,8 +217,15 @@ struct SettingsView: View {
                             .frame(width: 30, height: 30)
                             .padding(5)
                             .foregroundColor(np_white)
-                            .background(Color(uiColor: .systemMint))
+//                            .background(Color(uiColor: .systemMint))
                             .clipShape(Circle())
+                            .overlay {
+                                Circle()
+                                    .stroke(lineWidth: 1)
+                                    .foregroundColor(np_white)
+                                    
+                            }
+                            .padding(5)
                         
                         HStack {
                             Text("Visit our website")
@@ -140,8 +255,15 @@ struct SettingsView: View {
                             .frame(width: 30, height: 30)
                             .padding(5)
                             .foregroundColor(np_white)
-                            .background(Color(uiColor: .systemCyan))
+//                            .background(Color(uiColor: .systemCyan))
                             .clipShape(Circle())
+                            .overlay {
+                                Circle()
+                                    .stroke(lineWidth: 1)
+                                    .foregroundColor(np_white)
+                                    
+                            }
+                            .padding(5)
                         
                         HStack {
                             Text("Write A Review")
@@ -161,61 +283,13 @@ struct SettingsView: View {
                 
                 Divider()
                 
-                // MARK: "Share App"
-                Button(action: {
-                    shareSheet()
-                }, label: {
-                    HStack(spacing: 10) {
-                        Image("share")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .padding(5)
-                            .foregroundColor(np_white)
-                            .background(np_red)
-                            .clipShape(Circle())
-                        
-                        HStack {
-                            Text("Share")
-                                .font(.caption)
-                                .fontWeight(.semibold)
-                                .kerning(5)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                            
-                            Spacer()
-                        }
-                        
-                        Image(systemName: "chevron.right")
-                    }
-                })
-                .padding(.horizontal, 20)
-                .padding(.bottom, 20)
-                
-                // MARK: App Version
-                HStack(spacing: 10) {
-                    Text("App Version:")
-                        .font(.caption)
-                        .fontWeight(.thin)
-                        .kerning(5)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
-                    
-                    Spacer()
-                    
-                    Text("\(UIApplication.appVersion!)")
-                        .font(.caption)
-                        .fontWeight(.thin)
-                        .kerning(5)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
-                }
-                .padding(.horizontal, 20)
-                .padding(.bottom, 20)
             }
             .padding(.bottom, 20)
             
+            Spacer()
+            
         }
-        .alert("Got an app idea?", isPresented: $emailAlert, actions: {
+        .alert("Email us to discuss your app development needs.", isPresented: $emailAlert, actions: {
             Button(action: {
                 mailto("stanford@appe-latte.ca")
             }, label: {
