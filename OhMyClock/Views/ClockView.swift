@@ -112,7 +112,7 @@ struct ClockView: View {
                         .padding(10)
                         
                         HStack(spacing: 10) {
-                            Image(systemName: "\(weatherModel.currWeatherSymbol).fill")
+                            Image(systemName: "\(weatherSymbolLabel).fill")
                                 .resizable()
                                 .scaledToFit()
                                 .foregroundColor(np_black)
