@@ -15,6 +15,14 @@ struct ClockView: View {
     let viewModel = ClockViewModel()
     let locationFetch = LocationFetch()
     
+    @State private var temperatureLabel = ""
+    @State private var humidityLabel : Double = 0.0
+    @State private var conditionLabel = ""
+    @State private var weatherSymbolLabel = ""
+    @State private var dailyHighLabel = ""
+    @State private var dailyLowLabel = ""
+    @State private var forecastHourly = ""
+    
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     
@@ -104,7 +112,7 @@ struct ClockView: View {
                         .padding(10)
                         
                         HStack(spacing: 10) {
-                            Image(systemName: "\(weatherModel.currWeatherSymbol)")
+                            Image(systemName: "\(weatherModel.currWeatherSymbol).fill")
                                 .resizable()
                                 .scaledToFit()
                                 .foregroundColor(np_black)
@@ -123,7 +131,7 @@ struct ClockView: View {
                                         .kerning(5)
                                         .textCase(.uppercase)
                                     
-                                    Text("\(weatherModel.currTemp)")
+                                    Text("\(temperatureLabel)")
                                         .font(.footnote)
                                         .fontWeight(.bold)
                                         .kerning(5)
@@ -138,7 +146,7 @@ struct ClockView: View {
                                         .kerning(5)
                                         .textCase(.uppercase)
                                     
-                                    Text("\(String(format: "%.0f", weatherModel.currHumidity * 100))%")
+                                    Text("\(String(format: "%.0f", humidityLabel * 100))%")
                                         .font(.footnote)
                                         .fontWeight(.bold)
                                         .kerning(5)
@@ -153,7 +161,7 @@ struct ClockView: View {
                                         .kerning(5)
                                         .textCase(.uppercase)
                                     
-                                    Text("\(weatherModel.currCondition)")
+                                    Text("\(conditionLabel)")
                                         .font(.footnote)
                                         .fontWeight(.bold)
                                         .kerning(5)
@@ -169,7 +177,6 @@ struct ClockView: View {
                                 .fontWeight(.semibold)
                                 .kerning(2)
                                 .textCase(.uppercase)
-                            
                         }
                         .padding(5)
                     }
@@ -207,7 +214,7 @@ struct ClockView: View {
                                             .kerning(1)
                                             .textCase(.uppercase)
                                         
-                                        Image(systemName: "\(weather.symbolName)")
+                                        Image(systemName: "\(weather.symbolName).fill")
                                             .font(.title)
                                             .foregroundColor(np_black)
                                         
@@ -224,7 +231,7 @@ struct ClockView: View {
                         
                         // MARK: Daily High / Low
                         HStack {
-                            Text("\(weatherModel.dailyHigh)")
+                            Text("\(dailyHighLabel)")
                                 .font(.footnote)
                                 .fontWeight(.bold)
                                 .kerning(2)
@@ -232,7 +239,7 @@ struct ClockView: View {
                             
                             Spacer()
                             
-                            Text("\(weatherModel.dailyLow)")
+                            Text("\(dailyLowLabel)")
                                 .font(.footnote)
                                 .fontWeight(.bold)
                                 .kerning(2)
@@ -248,7 +255,6 @@ struct ClockView: View {
                                 .fontWeight(.semibold)
                                 .kerning(2)
                                 .textCase(.uppercase)
-                            
                         }
                         .padding(5)
                     }
@@ -259,18 +265,35 @@ struct ClockView: View {
                     .cornerRadius(20)
                     .edgesIgnoringSafeArea(.bottom)
                 }
-                
-                
-                
-                
-                
-                
-                
             }
             .frame(maxWidth: .infinity)
             .onAppear {
                 locationManager.requestWhenInUseAuthorization()
                 locationManager.startUpdatingLocation()
+                weatherModel.fetchWeather()
+            }
+            .onReceive(weatherModel.objectWillChange) { _ in
+                // Update the view when weather data changes
+                // For example, update the temperature and condition labels
+                // based on the new data in the WeatherViewModel
+                
+                // Access the weather data from the WeatherViewModel and update the view accordingly
+                let updatedTemperature = weatherModel.currTemp
+                let updatedHumidity = weatherModel.currHumidity
+                let updaterWeatherSymbol = weatherModel.currWeatherSymbol
+                let updatedDailyHigh = weatherModel.dailyHigh
+                let updatedDailyLow = weatherModel.dailyLow
+                let updatedCondition = weatherModel.currCondition
+                let updatedForecast = weatherModel.hourlyForecast
+                
+                // MARK: Update Weather data
+                temperatureLabel = "\(updatedTemperature)"
+                humidityLabel = updatedHumidity
+                conditionLabel = "\(updatedCondition)"
+                dailyLowLabel = "\(updatedDailyLow)"
+                dailyHighLabel = "\(updatedDailyHigh)"
+                weatherSymbolLabel = "\(updaterWeatherSymbol)"
+                forecastHourly = "\(updatedForecast)"
             }
         }
         .background(np_black)

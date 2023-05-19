@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 @main
 struct OhMyClockApp: App {
@@ -18,11 +19,26 @@ struct OhMyClockApp: App {
     // MARK: Store last timer stamp
     @State var lastActiveTimeStamp : Date = Date()
     
+    init() {
+        // MARK: Set the screen brightness to 0.65 after 2 minutes of inactivity
+        DispatchQueue.main.asyncAfter(deadline: .now() + 120) {
+            UIScreen.main.brightness = 0.65
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(audioManager)
                 .environmentObject(timerModel)
+                .onAppear {
+                    // Prevent the screen from sleeping
+                    UIApplication.shared.isIdleTimerDisabled = true
+                }
+                .onDisappear {
+                    // Allow the screen to sleep
+                    UIApplication.shared.isIdleTimerDisabled = false
+                }
         }
         .onChange(of: phase) { newValue in
             if timerModel.isStarted {
@@ -41,16 +57,6 @@ struct OhMyClockApp: App {
                     }
                 }
             }
-        }
-    }
-    
-    init() {
-        // MARK: Disable the idle timer
-        UIApplication.shared.isIdleTimerDisabled = true
-        
-        // MARK: Set the screen brightness to 0.65 after 2 minutes of inactivity
-        DispatchQueue.main.asyncAfter(deadline: .now() + 120) {
-            UIScreen.main.brightness = 0.65
         }
     }
 }
