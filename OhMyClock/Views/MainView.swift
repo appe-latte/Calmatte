@@ -24,7 +24,6 @@ struct MainView: View {
 }
 
 struct FlipView: View {
-    
     init(viewModel: FlipViewModel) {
         self.viewModel = viewModel
     }

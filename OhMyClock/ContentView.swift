@@ -45,7 +45,7 @@ struct ContentView: View {
                     Label("Timer", image: "timer")
                 }
             
-            MilestonesView()
+            TaskManager()
                 .environmentObject(realmManager)
                 .colorScheme(.light)
                 .tabItem {

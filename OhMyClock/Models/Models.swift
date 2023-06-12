@@ -5,7 +5,7 @@
 //  Created by Stanford L. Khumalo on 2023-01-05.
 //
 
-import Foundation
+import SwiftUI
 
 struct WeatherModel : Codable {
     let current : CurrentWeather
@@ -24,7 +24,7 @@ struct WeatherInfo : Codable {
     let description : String
 }
 
-struct LocationResults: Codable {
+struct LocationResults : Codable {
     var latitude : String
     var longitude : String
     var city : String
@@ -34,4 +34,12 @@ struct LocationResults: Codable {
         case longitude
         case city
     }
+}
+
+struct TaskItem : Identifiable {
+    var id: UUID = .init()
+    var dateAdded : Date
+    var taskName : String
+    var taskDescription : String
+    var taskCategory : Category
 }

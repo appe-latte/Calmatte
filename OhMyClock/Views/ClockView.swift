@@ -15,6 +15,7 @@ struct ClockView: View {
     let viewModel = ClockViewModel()
     let locationFetch = LocationFetch()
     
+    @State private var refreshTrigger = false
     @State private var temperatureLabel = ""
     @State private var humidityLabel : Double = 0.0
     @State private var conditionLabel = ""
@@ -82,7 +83,7 @@ struct ClockView: View {
                                 .kerning(2)
                                 .textCase(.uppercase)
                             
-                            Text(Date().formatted(.dateTime.timeZone()))
+                            Text(TimeZone.current.abbreviation() ?? "")
                                 .font(.footnote)
                                 .fontWeight(.semibold)
                                 .kerning(2)
@@ -270,7 +271,7 @@ struct ClockView: View {
             .onAppear {
                 locationManager.requestWhenInUseAuthorization()
                 locationManager.startUpdatingLocation()
-                weatherModel.fetchWeather()
+                //                weatherModel.fetchWeather()
             }
             .onReceive(weatherModel.objectWillChange) { _ in
                 // Update the view when weather data changes
@@ -297,6 +298,15 @@ struct ClockView: View {
             }
         }
         .background(np_black)
+        .onAppear {
+            // Start the timer to refresh the view every 10 minutes
+            Timer.scheduledTimer(withTimeInterval: 10 * 60, repeats: true) { _ in
+                refreshTrigger.toggle()
+            }
+        }
+        .onChange(of: refreshTrigger) { _ in
+            weatherModel.fetchWeather()
+        }
     }
     
     // MARK: Salutation function

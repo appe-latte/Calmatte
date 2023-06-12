@@ -41,8 +41,8 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         // Invalidate any existing timer to prevent multiple timers running simultaneously
         stopFetchingTimer()
         
-        // Schedule a new timer to fetch weather data every 30 minutes
-        timer = Timer.scheduledTimer(withTimeInterval: 30 * 60, repeats: true) { [weak self] _ in
+        // MARK: Fetch Weather Data every 10 minutes
+        timer = Timer.scheduledTimer(withTimeInterval: 10 * 60, repeats: true) { [weak self] _ in
             self?.fetchWeather()
         }
     }
@@ -70,31 +70,33 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             do {
                 let weather = try await weatherService.weather(for: location)
                 DispatchQueue.main.async {
-                    //                    self.currTemp = weather.currentWeather.temperature.formatted()
                     self.currTemp = String(format: "%.0f°", weather.currentWeather.temperature.value)
                     self.currHumidity = weather.currentWeather.humidity
                     self.currCondition = weather.currentWeather.condition.description
                     self.currWeatherSymbol = weather.currentWeather.symbolName
-                    //                    self.dailyHigh = "High:\(weather.dailyForecast.forecast[0].highTemperature.formatted().dropLast())"
                     self.dailyHigh = "High: \(String(format: "%.0f°", weather.dailyForecast.forecast[0].highTemperature.value))"
-                    //                    self.dailyLow = "Low:\(weather.dailyForecast.forecast[0].lowTemperature.formatted().dropLast())"
                     self.dailyLow = "Low: \(String(format: "%.0f°", weather.dailyForecast.forecast[0].lowTemperature.value))"
                     
-                    
                     // MARK: Hourly Forecast
+                    self.hourlyForecast.removeAll() // Clear the existing forecast data
+                    
                     weather.hourlyForecast.forecast.forEach {
                         if self.isSameHourOrLater(date1: $0.date, date2: Date()) {
                             self.hourlyForecast.append(HourWeather(time: self.hourFormatter(date: $0.date), symbolName: $0.symbolName, temperature: "\($0.temperature.formatted().dropLast())"))
                         }
-                        
-                        self.objectWillChange.send()
                     }
                 }
             } catch {
                 print("Error fetching weather data: ", error)
             }
         }
+        
+        // Schedule a recurring timer to fetch weather data every 10 minutes
+        Timer.scheduledTimer(withTimeInterval: 10 * 60, repeats: true) { _ in
+            self.fetchWeather()
+        }
     }
+    
     
     // MARK: Weather function declaration
     
