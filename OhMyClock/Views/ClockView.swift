@@ -16,13 +16,6 @@ struct ClockView: View {
     let locationFetch = LocationFetch()
     
     @State private var refreshTrigger = false
-    @State private var temperatureLabel = ""
-    @State private var humidityLabel : Double = 0.0
-    @State private var conditionLabel = ""
-    @State private var weatherSymbolLabel = ""
-    @State private var dailyHighLabel = ""
-    @State private var dailyLowLabel = ""
-    @State private var forecastHourly = ""
     
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
@@ -99,204 +92,17 @@ struct ClockView: View {
                     Divider()
                         .padding(.top, 10)
                     
-                    // MARK: Weather Conditions
-                    VStack {
-                        HStack {
-                            Label("Today's Weather", systemImage: "thermometer.sun.fill")
-                                .font(.caption)
-                                .fontWeight(.bold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                            
-                            Spacer()
-                        }
-                        .padding(10)
-                        
-                        HStack(spacing: 10) {
-                            Image(systemName: "\(weatherSymbolLabel).fill")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(np_black)
-                                .frame(width: 100, height: 100)
-                                .padding()
-                            
-                            Spacer()
-                                .frame(width: 25)
-                            
-                            VStack(alignment: .leading, spacing: 10) {
-                                // Temperature
-                                VStack(alignment: .leading) {
-                                    Text("Temperature:")
-                                        .font(.footnote)
-                                        .fontWeight(.bold)
-                                        .kerning(5)
-                                        .textCase(.uppercase)
-                                    
-                                    Text("\(temperatureLabel)")
-                                        .font(.footnote)
-                                        .fontWeight(.bold)
-                                        .kerning(5)
-                                        .textCase(.uppercase)
-                                }
-                                
-                                // Humidity
-                                VStack(alignment: .leading) {
-                                    Text("Humidity:")
-                                        .font(.footnote)
-                                        .fontWeight(.bold)
-                                        .kerning(5)
-                                        .textCase(.uppercase)
-                                    
-                                    Text("\(String(format: "%.0f", humidityLabel * 100))%")
-                                        .font(.footnote)
-                                        .fontWeight(.bold)
-                                        .kerning(5)
-                                        .textCase(.uppercase)
-                                }
-                                
-                                // Weather Condition
-                                VStack(alignment: .leading) {
-                                    Text("Condition:")
-                                        .font(.footnote)
-                                        .fontWeight(.bold)
-                                        .kerning(5)
-                                        .textCase(.uppercase)
-                                    
-                                    Text("\(conditionLabel)")
-                                        .font(.footnote)
-                                        .fontWeight(.bold)
-                                        .kerning(5)
-                                        .textCase(.uppercase)
-                                }
-                            }
-                        }
-                        
-                        // MARK: WeatherKit Trademark
-                        HStack {
-                            Text("Powered by  Weather. Weather data provided by WeatherKit.")
-                                .font(.system(size: 6))
-                                .fontWeight(.semibold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                        }
-                        .padding(5)
-                    }
-                    .frame(maxWidth: screenWidth - 20, maxHeight: screenHeight * 0.65)
-                    .background(np_white)
-                    .foregroundColor(np_black)
-                    .ignoresSafeArea()
-                    .cornerRadius(20)
-                    .edgesIgnoringSafeArea(.bottom)
+                    // MARK: Weather Conditions Card
+                    WeatherCardFrontView()
                     
                     Divider()
                         .padding(.vertical, 10)
                     
-                    // MARK: Hourly Forecast
-                    
-                    VStack(spacing: 15) {
-                        HStack {
-                            Label("12-Hour Forecast", systemImage: "clock")
-                                .font(.caption)
-                                .fontWeight(.bold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                            
-                            Spacer()
-                        }
-                        .padding(10)
-                        
-                        ScrollView(.horizontal) {
-                            HStack(spacing: 15) {
-                                ForEach(weatherModel.hourlyForecast.prefix(12), id: \.time) {
-                                    weather in
-                                    VStack(spacing: 15) {
-                                        Text(weather.time)
-                                            .font(.headline)
-                                            .fontWeight(.semibold)
-                                            .kerning(1)
-                                            .textCase(.uppercase)
-                                        
-                                        Image(systemName: "\(weather.symbolName).fill")
-                                            .font(.title)
-                                            .foregroundColor(np_black)
-                                        
-                                        Text(weather.temperature)
-                                            .font(.headline)
-                                            .fontWeight(.semibold)
-                                            .textCase(.uppercase)
-                                    }
-                                }
-                            }
-                        }
-                        .padding(.horizontal, 20)
-//                        .padding(.top, 20)
-                        
-                        // MARK: Daily High / Low
-                        HStack {
-                            Text("\(dailyHighLabel)")
-                                .font(.footnote)
-                                .fontWeight(.bold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                            
-                            Spacer()
-                            
-                            Text("\(dailyLowLabel)")
-                                .font(.footnote)
-                                .fontWeight(.bold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                        }
-                        .padding(.horizontal, 20)
-                        .padding(.bottom, 20)
-                        
-                        // MARK: WeatherKit Trademark
-                        HStack {
-                            Text("Powered by  Weather. Weather data provided by WeatherKit.")
-                                .font(.system(size: 6))
-                                .fontWeight(.semibold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                        }
-                        .padding(5)
-                    }
-                    .frame(maxWidth: screenWidth - 20, maxHeight: screenHeight * 0.30)
-                    .background(np_white)
-                    .foregroundColor(np_black)
-                    .ignoresSafeArea()
-                    .cornerRadius(20)
-                    .edgesIgnoringSafeArea(.bottom)
+                    // MARK: Hourly Forecast Card
+                    WeatherCardBackView()
                 }
             }
             .frame(maxWidth: .infinity)
-            .onAppear {
-                locationManager.requestWhenInUseAuthorization()
-                locationManager.startUpdatingLocation()
-                //                weatherModel.fetchWeather()
-            }
-            .onReceive(weatherModel.objectWillChange) { _ in
-                // Update the view when weather data changes
-                // For example, update the temperature and condition labels
-                // based on the new data in the WeatherViewModel
-                
-                // Access the weather data from the WeatherViewModel and update the view accordingly
-                let updatedTemperature = weatherModel.currTemp
-                let updatedHumidity = weatherModel.currHumidity
-                let updaterWeatherSymbol = weatherModel.currWeatherSymbol
-                let updatedDailyHigh = weatherModel.dailyHigh
-                let updatedDailyLow = weatherModel.dailyLow
-                let updatedCondition = weatherModel.currCondition
-                let updatedForecast = weatherModel.hourlyForecast
-                
-                // MARK: Update Weather data
-                temperatureLabel = "\(updatedTemperature)"
-                humidityLabel = updatedHumidity
-                conditionLabel = "\(updatedCondition)"
-                dailyLowLabel = "\(updatedDailyLow)"
-                dailyHighLabel = "\(updatedDailyHigh)"
-                weatherSymbolLabel = "\(updaterWeatherSymbol)"
-                forecastHourly = "\(updatedForecast)"
-            }
         }
         .background(np_black)
         .onAppear {

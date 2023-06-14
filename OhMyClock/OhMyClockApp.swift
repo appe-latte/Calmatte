@@ -12,6 +12,7 @@ import UIKit
 struct OhMyClockApp: App {
     @StateObject var audioManager = AudioManager()
     @StateObject var timerModel: TimerModel = .init()
+    @State private var isActive = false
     
     // MARK: Scene phase
     @Environment(\.scenePhase) var phase
@@ -28,17 +29,21 @@ struct OhMyClockApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(audioManager)
-                .environmentObject(timerModel)
-                .onAppear {
-                    // Prevent the screen from sleeping
-                    UIApplication.shared.isIdleTimerDisabled = true
-                }
-                .onDisappear {
-                    // Allow the screen to sleep
-                    UIApplication.shared.isIdleTimerDisabled = false
-                }
+            if isActive {
+                ContentView()
+                    .environmentObject(audioManager)
+                    .environmentObject(timerModel)
+                    .onAppear {
+                        // Prevent the screen from sleeping
+                        UIApplication.shared.isIdleTimerDisabled = true
+                    }
+                    .onDisappear {
+                        // Allow the screen to sleep
+                        UIApplication.shared.isIdleTimerDisabled = false
+                    }
+            } else {
+                SplashScreenView()
+            }
         }
         .onChange(of: phase) { newValue in
             if timerModel.isStarted {

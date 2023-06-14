@@ -130,7 +130,7 @@ struct TextBreathingAnimation: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .scaleEffect(isBreathing ? 1.5 : 1.0)
+            .scaleEffect(isBreathing ? 1.25 : 1.0)
             .animation(Animation.easeInOut(duration: 5.0).repeatForever(autoreverses: true))
     }
 }

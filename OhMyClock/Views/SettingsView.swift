@@ -33,26 +33,23 @@ struct SettingsView: View {
                         VStack(spacing: 10) {
                             Image("share")
                                 .resizable()
-                                .frame(width: 30, height: 30)
+                                .frame(width: 20, height: 20)
                                 .padding(5)
                                 .foregroundColor(np_white)
-//                                .background(np_red)
                                 .clipShape(Circle())
                                 .overlay {
                                     Circle()
                                         .stroke(lineWidth: 1)
                                         .foregroundColor(np_white)
-                                        
                                 }
                                 .padding(5)
                             
                             Text("Share")
-                                .font(.caption)
+                                .font(.system(size: 12))
                                 .fontWeight(.semibold)
                                 .kerning(5)
                                 .textCase(.uppercase)
                                 .foregroundColor(np_white)
-                            
                         }
                     })
                     .padding(.horizontal, 20)
@@ -95,8 +92,6 @@ struct SettingsView: View {
                         .kerning(5)
                         .textCase(.uppercase)
                         .foregroundColor(np_white)
-                    
-                    //                    Spacer()
                     
                     Text("\(UIApplication.appVersion!)")
                         .font(.caption)
@@ -141,13 +136,12 @@ struct SettingsView: View {
                             .frame(width: 30, height: 30)
                             .padding(5)
                             .foregroundColor(np_white)
-//                            .background(Color(uiColor: .systemOrange))
                             .clipShape(Circle())
                             .overlay {
                                 Circle()
                                     .stroke(lineWidth: 1)
                                     .foregroundColor(np_white)
-                                    
+                                
                             }
                             .padding(5)
                         
@@ -179,13 +173,11 @@ struct SettingsView: View {
                             .frame(width: 30, height: 30)
                             .padding(5)
                             .foregroundColor(np_white)
-//                            .background(Color(uiColor: .systemIndigo))
                             .clipShape(Circle())
                             .overlay {
                                 Circle()
                                     .stroke(lineWidth: 1)
                                     .foregroundColor(np_white)
-                                    
                             }
                             .padding(5)
                         
@@ -217,13 +209,11 @@ struct SettingsView: View {
                             .frame(width: 30, height: 30)
                             .padding(5)
                             .foregroundColor(np_white)
-//                            .background(Color(uiColor: .systemMint))
                             .clipShape(Circle())
                             .overlay {
                                 Circle()
                                     .stroke(lineWidth: 1)
                                     .foregroundColor(np_white)
-                                    
                             }
                             .padding(5)
                         
@@ -255,13 +245,11 @@ struct SettingsView: View {
                             .frame(width: 30, height: 30)
                             .padding(5)
                             .foregroundColor(np_white)
-//                            .background(Color(uiColor: .systemCyan))
                             .clipShape(Circle())
                             .overlay {
                                 Circle()
                                     .stroke(lineWidth: 1)
                                     .foregroundColor(np_white)
-                                    
                             }
                             .padding(5)
                         
@@ -282,7 +270,6 @@ struct SettingsView: View {
                 .padding(.horizontal, 20)
                 
                 Divider()
-                
             }
             .padding(.bottom, 20)
             
@@ -291,16 +278,15 @@ struct SettingsView: View {
         }
         .alert("Email us to discuss your app development needs.", isPresented: $emailAlert, actions: {
             Button(action: {
-                mailto("stanford@appe-latte.ca")
+                mailto("hello@appe-latte.ca")
             }, label: {
                 Label("Email", systemImage: "envelope.fill")
             })
             Button("Cancel", role: .cancel, action: {})
         })
-        
     }
-    // MARK: "Email" function
     
+    // MARK: "Email" function
     func mailto(_ email: String) {
         let mailto = "mailto:\(email)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         print(mailto ?? "")
@@ -311,13 +297,11 @@ struct SettingsView: View {
 }
 
 // MARK: "App Version" extension
-
 extension UIApplication {
     static var appVersion: String? {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
 }
-
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
@@ -326,7 +310,6 @@ struct SettingsView_Previews: PreviewProvider {
 }
 
 // MARK: "Share sheet" function
-
 func shareSheet() {
     guard let data = URL(string: "https://apps.apple.com/us/app/ohmyclock/id1667124410") else { return }
     let av = UIActivityViewController(activityItems: [data], applicationActivities: nil)

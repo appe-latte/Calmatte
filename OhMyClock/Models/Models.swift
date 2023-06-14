@@ -44,3 +44,10 @@ struct TaskItem : Codable, Identifiable {
     var taskDescription: String
     var taskCategory: Category
 }
+
+enum Theme {
+    static let background = np_red
+    static let detailBackground = np_orange
+    static let text = np_green
+    static let pill = np_blue
+}

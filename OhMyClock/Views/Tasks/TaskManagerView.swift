@@ -101,10 +101,8 @@ struct TaskManagerView: View {
             }
             .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
             .ignoresSafeArea()
-            
         }
     }
-    
 }
 
 struct CardView: View {

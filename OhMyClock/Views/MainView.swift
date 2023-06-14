@@ -42,7 +42,6 @@ struct FlipView: View {
             }
             
             // MARK: Separator
-            
             np_black
                 .frame(height: 3)
                 .clipShape(RoundedRectangle(cornerRadius: 2))

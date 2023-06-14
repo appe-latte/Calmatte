@@ -44,9 +44,9 @@ struct AddTaskView: View {
                         .foregroundColor(np_black)
                 }
                 .padding(.bottom, 15)
-
+                
                 TitleView("Date")
-   
+                
                 // MARK: Date Picker
                 DatePicker("", selection: $taskDate, displayedComponents: .date)
                     .labelsHidden()
@@ -96,7 +96,7 @@ struct AddTaskView: View {
                         Image(systemName: "clock")
                             .font(.title3)
                             .foregroundColor(np_white)
-                            
+                        
                     }
                     .offset(y: -5)
                     .overlay(alignment: .bottom) {
@@ -169,7 +169,7 @@ struct AddTaskView: View {
                     }
                 }
                 .padding(.top,5)
- 
+                
                 Button {
                     // MARK: Creating Task & pass to callback
                     let task = TaskItem(dateAdded: taskDate, taskName: taskName, taskDescription: taskDescription, taskCategory: taskCategory)
@@ -232,16 +232,16 @@ class TaskManager: ObservableObject {
     }
     
     func deleteTask(_ task: TaskItem) {
-            if let index = tasks.firstIndex(where: { $0.id == task.id }) {
-                tasks.remove(at: index)
-                saveTasks()
-            }
-        }
-    
-    func deleteTasks(at indices: IndexSet) {
-            tasks.remove(atOffsets: indices)
+        if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+            tasks.remove(at: index)
             saveTasks()
         }
+    }
+    
+    func deleteTasks(at indices: IndexSet) {
+        tasks.remove(atOffsets: indices)
+        saveTasks()
+    }
     
     private func saveTasks() {
         do {
