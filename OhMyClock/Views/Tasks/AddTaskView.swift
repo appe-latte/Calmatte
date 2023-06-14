@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct AddTaskView: View {
-    /// - Callback
     var onAdd: (TaskItem) -> ()
-    /// - View Properties
+    
     @Environment(\.dismiss) private var dismiss
     @State private var taskName: String = ""
     @State private var taskDescription: String = ""
     @State private var taskDate: Date = .init()
     @State private var taskCategory: Category = .wellness
     
-    /// - Category Animation Properties
+    // MARK: Animations
     @State private var animateColor: Color = Category.wellness.color
     @State private var animate: Bool = false
     

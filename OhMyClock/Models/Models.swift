@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct WeatherModel : Codable {
     let current : CurrentWeather

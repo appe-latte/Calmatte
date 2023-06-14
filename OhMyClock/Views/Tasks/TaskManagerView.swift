@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TaskManager: View {
+struct TaskManagerView: View {
     @State private var currentDay: Date = .init()
     @State private var tasks: [TaskItem] = []
     @State private var addNewTask: Bool = false
@@ -20,9 +20,11 @@ struct TaskManager: View {
             TimelineView()
                 .padding(15)
                 .foregroundColor(np_white)
+                .background(np_black)
         }
         .safeAreaInset(edge: .top,spacing: 0) {
             HeaderView()
+                
         }
         .fullScreenCover(isPresented: $addNewTask) {
             AddTaskView { task in
@@ -128,8 +130,8 @@ struct TaskManager: View {
     /// - Header View
     @ViewBuilder
     func HeaderView() -> some View {
-        VStack{
-            HStack{
+        VStack {
+            HStack {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Today")
                         .font(.largeTitle)
@@ -138,8 +140,8 @@ struct TaskManager: View {
                         .minimumScaleFactor(0.5)
                         .textCase(.uppercase)
                     
-                    Text(Date().toString("MMMM YYYY"))
-                        .font(.title)
+                    Text(Date().formatted(.dateTime.month().day().year()))
+                        .font(.title3)
                         .fontWeight(.bold)
                         .kerning(5)
                         .textCase(.uppercase)
@@ -157,35 +159,37 @@ struct TaskManager: View {
                             .kerning(5)
                             .textCase(.uppercase)
                     }
-                    .padding(.vertical,10)
-                    .padding(.horizontal,15)
-                    .background {
-                        Capsule()
-                            .fill(np_black)
-                    }
+                    .padding(.vertical, 5)
                     .foregroundColor(np_white)
+                    .frame(width: 100, height: 35)
+                    .background(np_black)
+                    .clipShape(Capsule())
+                    .overlay(
+                        Capsule(style: .continuous)
+                            .stroke(np_white, style: StrokeStyle(lineWidth: 1))
+                            .padding(2)
+                    )
                 }
             }
-            
-            // MARK: Current Week Row
-            WeekRow()
         }
         .padding(15)
         .background {
             VStack(spacing: 0) {
                 np_white
             }
+            .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
             .ignoresSafeArea()
+
         }
     }
     
     /// - Week Row
     @ViewBuilder
-    func WeekRow()->some View{
-        HStack(spacing: 0){
-            ForEach(Calendar.current.currentWeek){ weekDay in
+    func WeekRow() -> some View {
+        HStack(spacing: 0) {
+            ForEach(Calendar.current.currentWeek) { weekDay in
                 let status = Calendar.current.isDate(weekDay.date, inSameDayAs: currentDay)
-                VStack(spacing: 6){
+                VStack(spacing: 6) {
                     Text(weekDay.string.prefix(3))
                         .font(.footnote)
                         .fontWeight(.bold)
@@ -220,8 +224,8 @@ struct TaskManager: View {
     }
 }
 
-struct TaskManager_Previews: PreviewProvider {
-    static var previews: some View {
+struct TaskManager_Previews : PreviewProvider {
+    static var previews : some View {
         ContentView()
     }
 }
@@ -251,12 +255,18 @@ extension Date {
 // MARK: Calander Extension
 extension Calendar {
     /// - Return 24 Hours in a day
-    var hours: [Date]{
+    var hours: [Date] {
         let startOfDay = self.startOfDay(for: Date())
+        let currentHour = self.component(.hour, from: Date())
         var hours: [Date] = []
-        for index in 0..<24{
-            if let date = self.date(byAdding: .hour, value: index, to: startOfDay){
-                hours.append(date)
+        
+        for index in 0..<24 {
+            if let date = self.date(bySettingHour: index, minute: 0, second: 0, of: startOfDay) {
+                if index == currentHour {
+                    hours.append(date) // Add the current hour with a special marker
+                } else {
+                    hours.append(date)
+                }
             }
         }
         
@@ -264,7 +274,7 @@ extension Calendar {
     }
     
     /// - Returns Current Week in Array Format
-    var currentWeek: [ WeekDay ] {
+    var currentWeek: [WeekDay] {
         guard let firstWeekDay = self.dateInterval(of: .weekOfMonth, for: Date())?.start else { return [] }
         var week: [ WeekDay ] = []
         for index in 0..<7 {
@@ -279,7 +289,7 @@ extension Calendar {
     }
     
     /// - Used to Store Data of Each Week Day
-    struct WeekDay: Identifiable{
+    struct WeekDay: Identifiable {
         var id: UUID = .init()
         var string: String
         var date: Date
