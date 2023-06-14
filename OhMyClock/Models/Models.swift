@@ -37,10 +37,10 @@ struct LocationResults : Codable {
     }
 }
 
-struct TaskItem : Identifiable {
+struct TaskItem : Codable, Identifiable {
     var id: UUID = .init()
-    var dateAdded : Date
-    var taskName : String
-    var taskDescription : String
-    var taskCategory : Category
+    var dateAdded: Date
+    var taskName: String
+    var taskDescription: String
+    var taskCategory: Category
 }

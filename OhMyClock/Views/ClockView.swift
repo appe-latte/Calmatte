@@ -192,18 +192,19 @@ struct ClockView: View {
                         .padding(.vertical, 10)
                     
                     // MARK: Hourly Forecast
-                    HStack {
-                        Label("12-Hour Forecast", systemImage: "clock")
-                            .font(.caption)
-                            .fontWeight(.bold)
-                            .kerning(2)
-                            .textCase(.uppercase)
-                        
-                        Spacer()
-                    }
-                    .padding(10)
                     
                     VStack(spacing: 15) {
+                        HStack {
+                            Label("12-Hour Forecast", systemImage: "clock")
+                                .font(.caption)
+                                .fontWeight(.bold)
+                                .kerning(2)
+                                .textCase(.uppercase)
+                            
+                            Spacer()
+                        }
+                        .padding(10)
+                        
                         ScrollView(.horizontal) {
                             HStack(spacing: 15) {
                                 ForEach(weatherModel.hourlyForecast.prefix(12), id: \.time) {
@@ -228,7 +229,7 @@ struct ClockView: View {
                             }
                         }
                         .padding(.horizontal, 20)
-                        .padding(.top, 20)
+//                        .padding(.top, 20)
                         
                         // MARK: Daily High / Low
                         HStack {

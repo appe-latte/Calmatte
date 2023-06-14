@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import CoreData
 import CoreLocation
 
 struct ContentView: View {
+    @ObservedObject var taskManager = TaskManager()
     @StateObject var realmManager = OmcRealmManager()
     @State var showMenuSheet = false
     @EnvironmentObject var timerModel : TimerModel
@@ -45,8 +47,7 @@ struct ContentView: View {
                     Label("Timer", image: "timer")
                 }
             
-            TaskManagerView()
-                .environmentObject(realmManager)
+            TaskManagerView(taskManager: taskManager)
                 .colorScheme(.light)
                 .tabItem {
                     Label("Milestones", image: "collections")

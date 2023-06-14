@@ -7,26 +7,57 @@
 
 import SwiftUI
 
-// MARK: Cateogry Enum with Color
-enum Category: String, CaseIterable {
-    case wellness = "Wellness"
-    case work = "Work"
-    case personal = "Personal"
-    case exercise = "Exercise"
-    case retail = "Retail"
+// MARK: Category Codable Struct
+struct CategoryCodable: Codable {
+    var name: String
+}
+
+// MARK: Category Enum with Color
+enum Category: String, CaseIterable, Codable {
+    case blue
+    case burgundy
+    case green
+    case turquiose
+    case orange
+    case purple
+    case gray
+    case pink
+    case dark_blue
+    case red
     
     var color: Color {
         switch self {
-        case .wellness:
+        case .blue:
             return np_blue
-        case .work:
-            return np_orange
-        case .personal:
-            return np_turq
-        case .exercise:
+        case .burgundy:
+            return np_burgundy
+        case .green:
             return np_green
-        case .retail:
+        case .turquiose:
+            return np_turq
+        case .orange:
+            return np_orange
+        case .purple:
             return np_purple
+        case .gray:
+            return np_gray
+        case .pink:
+            return np_pink
+        case .dark_blue:
+            return np_dark_blue
+        case .red:
+            return np_red
         }
     }
+    
+    // Helper method to convert between Category and CategoryCodable
+    func toCodable() -> CategoryCodable {
+        return CategoryCodable(name: self.rawValue)
+    }
+    
+    static func fromCodable(_ codable: CategoryCodable) -> Category? {
+        return Category(rawValue: codable.name)
+    }
 }
+
+

@@ -6,128 +6,40 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TaskManagerView: View {
+    @ObservedObject var taskManager: TaskManager
     @State private var currentDay: Date = .init()
-    @State private var tasks: [TaskItem] = []
     @State private var addNewTask: Bool = false
+    @State private var selectedTaskIndex: Int?
     
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            TimelineView()
-                .padding(15)
-                .foregroundColor(np_white)
-                .background(np_black)
+            VStack(spacing: 16) {
+                ForEach(taskManager.tasks.sorted(by: { $0.dateAdded < $1.dateAdded })) { task in
+                    CardView(taskManager: taskManager, task: task)
+                    //                        .background(task.taskCategory.color)
+                        .background(np_white)
+                        .cornerRadius(15)
+                }
+            }
+            .padding(.vertical)
         }
-        .safeAreaInset(edge: .top,spacing: 0) {
+        .safeAreaInset(edge: .top, spacing: 0) {
             HeaderView()
-                
-        }
-        .fullScreenCover(isPresented: $addNewTask) {
-            AddTaskView { task in
-                tasks.append(task)
-            }
-        }
-    }
-    
-    /// - Timeline View
-    @ViewBuilder
-    func TimelineView() -> some View {
-        ScrollViewReader { proxy in
-            let hours = Calendar.current.hours
-            let midHour = hours[hours.count / 2]
-            VStack {
-                ForEach(hours,id: \.self) { hour in
-                    TimelineViewRow(hour)
-                        .id(hour)
-                }
-            }
-            .onAppear {
-                proxy.scrollTo(midHour)
-            }
-        }
-    }
-    
-    /// - Timeline View Row
-    @ViewBuilder
-    func TimelineViewRow(_ date: Date) -> some View {
-        HStack(alignment: .top) {
-            Text(date.toString("h a"))
-                .font(.footnote)
-                .fontWeight(.bold)
-                .kerning(5)
-                .textCase(.uppercase)
-                .frame(width: screenWidth * 0.1, alignment: .leading)
             
-            /// - Filtering Tasks
-            let calendar = Calendar.current
-            let filteredTasks = tasks.filter {
-                if let hour = calendar.dateComponents([.hour], from: date).hour,
-                   let taskHour = calendar.dateComponents([.hour], from: $0.dateAdded).hour,
-                   hour == taskHour && calendar.isDate($0.dateAdded, inSameDayAs: currentDay){
-                    return true
-                }
-                return false
-            }
-            
-            if filteredTasks.isEmpty {
-                Rectangle()
-                    .stroke(np_white.opacity(0.5), style: StrokeStyle(lineWidth: 0.5, lineCap: .butt))
-                    .frame(height: 0.5)
-                    .offset(y: 10)
-            } else {
-                /// - Task View
-                VStack(spacing: 10){
-                    ForEach(filteredTasks){ task in
-                        TaskRow(task)
-                    }
-                }
-            }
         }
-        .hAlign(.leading)
-        .padding(.vertical,15)
+        .sheet(isPresented: $addNewTask) {
+            AddTaskView(taskManager: taskManager)
+        }
+        .background(np_black)
     }
     
-    /// - Task Row
-    @ViewBuilder
-    func TaskRow(_ task: TaskItem) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(task.taskName.uppercased())
-                .font(.footnote)
-                .fontWeight(.bold)
-                .kerning(5)
-                .textCase(.uppercase)
-                .foregroundColor(np_white)
-                .lineLimit(1)
-            
-            if task.taskDescription != "" {
-                Text(task.taskDescription)
-                    .font(.footnote)
-                    .fontWeight(.bold)
-                    .kerning(5)
-                    .textCase(.uppercase)
-                    .foregroundColor(task.taskCategory.color)
-                    .lineLimit(6)
-            }
-        }
-        .hAlign(.leading)
-        .padding(12)
-        .background {
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .fill(task.taskCategory.color)
-                    .frame(width: 4)
-                
-                Rectangle()
-                    .fill(task.taskCategory.color.opacity(0.25))
-            }
-        }
-    }
-    
-    /// - Header View
+    // MARK: "Header View"
     @ViewBuilder
     func HeaderView() -> some View {
         VStack {
@@ -148,6 +60,7 @@ struct TaskManagerView: View {
                 }
                 .hAlign(.leading)
                 
+                // MARK: "Add + Task" Button
                 Button {
                     addNewTask.toggle()
                 } label: {
@@ -179,48 +92,85 @@ struct TaskManagerView: View {
             }
             .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
             .ignoresSafeArea()
-
+            
         }
     }
     
-    /// - Week Row
-    @ViewBuilder
-    func WeekRow() -> some View {
-        HStack(spacing: 0) {
-            ForEach(Calendar.current.currentWeek) { weekDay in
-                let status = Calendar.current.isDate(weekDay.date, inSameDayAs: currentDay)
-                VStack(spacing: 6) {
-                    Text(weekDay.string.prefix(3))
-                        .font(.footnote)
-                        .fontWeight(.bold)
-                        .kerning(5)
-                        .textCase(.uppercase)
-                    
-                    Text(weekDay.date.toString("dd"))
-                        .font(.footnote)
-                        .fontWeight(.bold)
-                        .kerning(5)
-                        .textCase(.uppercase)
-                }
-                .overlay(alignment: .bottom, content: {
-                    if weekDay.isToday {
-                        Circle()
-                            .frame(width: 6, height: 6)
-                            .offset(y: 12)
-                    }
-                })
-                .foregroundColor(status ? np_black : np_gray)
-                .hAlign(.center)
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    withAnimation(.easeInOut(duration: 0.3)){
-                        currentDay = weekDay.date
-                    }
+}
+
+struct CardView: View {
+    @ObservedObject var taskManager: TaskManager
+    let task: TaskItem
+    
+    let screenWidth = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
+        return formatter
+    }()
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            
+            Rectangle()
+                .fill(task.taskCategory.color)
+                .frame(width: screenWidth - 20, height: 25, alignment: .topLeading)
+                .padding(.bottom, 10)
+            
+            // MARK: Date + Time
+            HStack {
+                Text(task.dateAdded.toString("hh:mm a"))
+                    .font(.footnote)
+                    .fontWeight(.semibold)
+                    .kerning(3)
+                    .textCase(.uppercase)
+                
+                Spacer()
+                
+                Text(task.dateAdded, formatter: dateFormatter)
+                    .font(.footnote)
+                    .fontWeight(.bold)
+                    .kerning(3)
+                    .textCase(.uppercase)
+            }
+            .padding(.top, 15)
+            .padding(.horizontal, 10)
+            
+            // MARK: Task Information
+            Text(task.taskName)
+                .font(.headline)
+                .fontWeight(.semibold)
+                .kerning(3)
+                .textCase(.uppercase)
+                .padding(.horizontal, 10)
+            
+            Text(task.taskDescription)
+                .font(.footnote)
+                .fontWeight(.semibold)
+                .kerning(2)
+                .textCase(.uppercase)
+                .padding(.horizontal, 10)
+            
+            // MARK: "Delete" button
+            HStack {
+                
+                Spacer()
+                
+                Button(action: {
+                    taskManager.deleteTask(task)
+                }) {
+                    Image(systemName: "trash.circle.fill")
+                        .font(.headline)
+                        .foregroundColor(np_red).opacity(0.65)
                 }
             }
+            .padding(.bottom, 5)
         }
-        .padding(.vertical, 10)
-        .padding(.horizontal, -15)
+        .frame(width: screenWidth - 30, height: screenHeight * 0.15)
+        .foregroundColor(np_black)
+        .padding(5)
     }
 }
 
@@ -252,47 +202,5 @@ extension Date {
     }
 }
 
-// MARK: Calander Extension
-extension Calendar {
-    /// - Return 24 Hours in a day
-    var hours: [Date] {
-        let startOfDay = self.startOfDay(for: Date())
-        let currentHour = self.component(.hour, from: Date())
-        var hours: [Date] = []
-        
-        for index in 0..<24 {
-            if let date = self.date(bySettingHour: index, minute: 0, second: 0, of: startOfDay) {
-                if index == currentHour {
-                    hours.append(date) // Add the current hour with a special marker
-                } else {
-                    hours.append(date)
-                }
-            }
-        }
-        
-        return hours
-    }
-    
-    /// - Returns Current Week in Array Format
-    var currentWeek: [WeekDay] {
-        guard let firstWeekDay = self.dateInterval(of: .weekOfMonth, for: Date())?.start else { return [] }
-        var week: [ WeekDay ] = []
-        for index in 0..<7 {
-            if let day = self.date(byAdding: .day, value: index, to: firstWeekDay) {
-                let weekDaySymbol : String = day.toString("EEEE")
-                let isToday = self.isDateInToday(day)
-                week.append(.init(string: weekDaySymbol, date: day,isToday: isToday))
-            }
-        }
-        
-        return week
-    }
-    
-    /// - Used to Store Data of Each Week Day
-    struct WeekDay: Identifiable {
-        var id: UUID = .init()
-        var string: String
-        var date: Date
-        var isToday: Bool = false
-    }
-}
+
+

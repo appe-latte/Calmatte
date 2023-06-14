@@ -6,18 +6,19 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct AddTaskView: View {
-    var onAdd: (TaskItem) -> ()
-    
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject var taskManager: TaskManager
+    
     @State private var taskName: String = ""
     @State private var taskDescription: String = ""
     @State private var taskDate: Date = .init()
-    @State private var taskCategory: Category = .wellness
+    @State private var taskCategory: Category = .gray
     
     // MARK: Animations
-    @State private var animateColor: Color = Category.wellness.color
+    @State private var animateColor: Color = Category.gray.color
     @State private var animate: Bool = false
     
     let screenWidth = UIScreen.main.bounds.width
@@ -25,93 +26,86 @@ struct AddTaskView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            VStack(alignment: .leading, spacing: 10) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(np_white)
-                        .contentShape(Rectangle())
+            VStack(alignment: .leading, spacing: 5) {
+                HStack(spacing: 20) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(np_black)
+                            .contentShape(Rectangle())
+                    }
+                    
+                    Text("Create New Task")
+                        .font(.footnote)
+                        .fontWeight(.bold)
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_black)
                 }
+                .padding(.bottom, 15)
 
-                Text("Create New Task")
-                    .font(.footnote)
+                TitleView("Date")
+   
+                // MARK: Date Picker
+                DatePicker("", selection: $taskDate, displayedComponents: .date)
+                    .labelsHidden()
+                    .datePickerStyle(.graphical)
+                    .font(.system(size: 10))
                     .fontWeight(.bold)
-                    .kerning(3)
+                    .accentColor(np_red)
+                    .kerning(2)
                     .textCase(.uppercase)
-                    .frame(width: screenWidth - 20, alignment: .leading)
-                    .foregroundColor(.white)
-                    .padding(.vertical,15)
+                    .frame(width: screenWidth - 50, height: screenHeight * 0.3, alignment: .leading)
+                    .padding(10)
+                    .padding(.top, 15)
                 
-                TitleView("NAME")
+                TitleView("Title")
+                    .padding(.top, 10)
                 
-                TextField("Make New Video", text: $taskName)
+                TextField("Enter task title", text: $taskName)
                     .font(.footnote)
                     .fontWeight(.bold)
                     .kerning(2)
                     .textCase(.uppercase)
                     .frame(width: screenWidth - 20)
-                    .tint(np_white)
+                    .tint(np_black)
                     .padding(.top, 2)
                 
                 Rectangle()
                     .fill(np_white.opacity(0.7))
                     .frame(height: 1)
                 
-                TitleView("DATE")
-                    .padding(.top, 15)
+                TitleView("Time")
+                    .padding(.top, 10)
                 
                 // MARK: Date + Time Pickers
                 HStack(alignment: .bottom, spacing: 5) {
-                    HStack {
-                        Text(taskDate.toString("EE dd, MMM"))
-                            .font(.footnote)
-                            .fontWeight(.bold)
-                            .kerning(2)
-                            .textCase(.uppercase)
-                            .frame(width: screenWidth * 0.35, alignment: .leading)
-                        
-                        Image(systemName: "calendar")
-                            .font(.title3)
-                            .foregroundColor(.white)
-                            .overlay {
-                                DatePicker("", selection: $taskDate,displayedComponents: [.date])
-                                    .blendMode(.destinationOver)
-                            }
-                    }
-                    .offset(y: -5)
-                    .overlay(alignment: .bottom) {
-                        Rectangle()
-                            .fill(.white.opacity(0.7))
-                            .frame(height: 1)
-                            .offset(y: 5)
-                    }
-                    
-                    HStack(spacing: 12){
+                    HStack(spacing: 3){
                         Text(taskDate.toString("hh:mm a"))
                             .font(.footnote)
                             .fontWeight(.bold)
                             .kerning(2)
                             .textCase(.uppercase)
-                            .frame(width: screenWidth * 0.35, alignment: .leading)
-                    
-                        Image(systemName: "clock")
-                            .font(.title3)
-                            .foregroundColor(np_white)
+                            .frame(width: screenWidth * 0.25, alignment: .leading)
                             .overlay {
                                 DatePicker("", selection: $taskDate,displayedComponents: [.hourAndMinute])
                                     .blendMode(.destinationOver)
                             }
+                        
+                        Image(systemName: "clock")
+                            .font(.title3)
+                            .foregroundColor(np_white)
+                            
                     }
                     .offset(y: -5)
                     .overlay(alignment: .bottom) {
                         Rectangle()
-                            .fill(.white.opacity(0.7))
+                            .fill(np_white.opacity(0.7))
                             .frame(height: 1)
                             .offset(y: 5)
                     }
                 }
-                .padding(.bottom, 15)
             }
             .hAlign(.leading)
             .padding(15)
@@ -137,37 +131,28 @@ struct AddTaskView: View {
             VStack(alignment: .leading, spacing: 10) {
                 TitleView("DESCRIPTION", np_black)
                 
-                TextField("About Your Task", text: $taskDescription)
+                TextField("Enter task title", text: $taskDescription)
                     .font(.caption)
                     .fontWeight(.bold)
                     .kerning(2)
                     .foregroundColor(np_black)
                     .textCase(.uppercase)
                     .frame(width: screenWidth - 20, alignment: .leading)
-                    .padding(.top,2)
+                    .tint(np_black)
+                    .padding(.top, 2)
                 
                 Rectangle()
                     .fill(np_black.opacity(0.2))
                     .frame(height: 1)
                 
-                TitleView("CATEGORY", np_black)
-                    .padding(.top,15)
+                TitleView("Assign Colour", np_black)
+                    .padding(.top, 10)
                 
-                LazyVGrid(columns: Array(repeating: .init(.flexible(),spacing: 20), count: 3),spacing: 15) {
+                LazyVGrid(columns: Array(repeating: .init(.flexible(),spacing: 10), count: 5), spacing: 10) {
                     ForEach(Category.allCases,id: \.rawValue){ category in
-                        Text(category.rawValue.uppercased())
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .kerning(1)
-                            .frame(width: screenWidth * 0.2, height: screenHeight * 0.1)
-                            .hAlign(.center)
-                            .padding()
-                            .background {
-                                RoundedRectangle(cornerRadius: 15, style: .continuous)
-                                    .fill(category.color)
-                            }
-                            .foregroundColor(np_black)
-                            .contentShape(Rectangle())
+                        Circle()
+                            .fill(category.color)
+                            .frame(width: 40, height: 40)
                             .onTapGesture {
                                 guard !animate else { return }
                                 animateColor = category.color
@@ -180,14 +165,15 @@ struct AddTaskView: View {
                                     taskCategory = category
                                 }
                             }
+                            .padding(.leading, 10)
                     }
                 }
                 .padding(.top,5)
-                
+ 
                 Button {
                     // MARK: Creating Task & pass to callback
                     let task = TaskItem(dateAdded: taskDate, taskName: taskName, taskDescription: taskDescription, taskCategory: taskCategory)
-                    onAdd(task)
+                    taskManager.addTask(task) // Add the task to the task manager
                     dismiss()
                 } label: {
                     Text("Create Task")
@@ -215,7 +201,7 @@ struct AddTaskView: View {
     }
     
     @ViewBuilder
-    func TitleView(_ value: String,_ color: Color = np_white.opacity(0.7)) -> some View {
+    func TitleView(_ value: String,_ color: Color = np_black.opacity(0.7)) -> some View {
         Text(value)
             .font(.caption)
             .fontWeight(.bold)
@@ -226,11 +212,55 @@ struct AddTaskView: View {
     }
 }
 
-struct AddTaskView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddTaskView { task in
-            
+class TaskManager: ObservableObject {
+    @Published private(set) var tasks: [TaskItem] = []
+    
+    init() {
+        loadTasks()
+    }
+    
+    func addTask(_ task: TaskItem) {
+        tasks.append(task)
+        saveTasks()
+    }
+    
+    func updateTask(_ task: TaskItem) {
+        if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+            tasks[index] = task
+            saveTasks()
+        }
+    }
+    
+    func deleteTask(_ task: TaskItem) {
+            if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+                tasks.remove(at: index)
+                saveTasks()
+            }
+        }
+    
+    func deleteTasks(at indices: IndexSet) {
+            tasks.remove(atOffsets: indices)
+            saveTasks()
+        }
+    
+    private func saveTasks() {
+        do {
+            let data = try JSONEncoder().encode(tasks)
+            UserDefaults.standard.set(data, forKey: "savedTasks")
+        } catch {
+            print("Error encoding tasks: \(error)")
+        }
+    }
+    
+    private func loadTasks() {
+        if let data = UserDefaults.standard.data(forKey: "savedTasks") {
+            do {
+                tasks = try JSONDecoder().decode([TaskItem].self, from: data)
+            } catch {
+                print("Error decoding tasks: \(error)")
+            }
         }
     }
 }
+
 
