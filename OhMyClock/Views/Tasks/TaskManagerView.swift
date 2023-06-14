@@ -17,6 +17,8 @@ struct TaskManagerView: View {
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     
+    @State private var milestoneDescription = "Develop a positive daily routine and organize your day with simple, achievable milestones."
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 16) {
@@ -57,6 +59,13 @@ struct TaskManagerView: View {
                         .fontWeight(.bold)
                         .kerning(5)
                         .textCase(.uppercase)
+                    
+                    // MARK: Description
+                    Text("\(milestoneDescription)")
+                        .font(.system(size: 10))
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .minimumScaleFactor(0.5)
                 }
                 .hAlign(.leading)
                 
