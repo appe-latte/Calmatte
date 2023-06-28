@@ -12,6 +12,7 @@
 		2F24A2632A4BB57C00B41C01 /* MoodRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2622A4BB57C00B41C01 /* MoodRecord.swift */; };
 		2F24A2652A4BB5E400B41C01 /* MoodTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2642A4BB5E400B41C01 /* MoodTrackingView.swift */; };
 		2F24A2672A4BB6C800B41C01 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2662A4BB6C800B41C01 /* PersistenceController.swift */; };
+		2F24A2692A4C878400B41C01 /* BreathType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2682A4C878400B41C01 /* BreathType.swift */; };
 		2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A17F2973F0FC007DA7CC /* LocationManager.swift */; };
 		2F27A18329740143007DA7CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A18229740143007DA7CC /* Alamofire */; };
 		2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A185297401B8007DA7CC /* SwiftyJSON */; };
@@ -62,6 +63,7 @@
 		2F24A2622A4BB57C00B41C01 /* MoodRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRecord.swift; sourceTree = "<group>"; };
 		2F24A2642A4BB5E400B41C01 /* MoodTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodTrackingView.swift; sourceTree = "<group>"; };
 		2F24A2662A4BB6C800B41C01 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		2F24A2682A4C878400B41C01 /* BreathType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathType.swift; sourceTree = "<group>"; };
 		2F27A17F2973F0FC007DA7CC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2F27A187297402AB007DA7CC /* LocationFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetch.swift; sourceTree = "<group>"; };
 		2F36B0A02967A40000AC8D59 /* OhMyClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhMyClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +199,7 @@
 				2F0D04E82A0A1E1B002523A9 /* Weather.swift */,
 				2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */,
 				2F24A2622A4BB57C00B41C01 /* MoodRecord.swift */,
+				2F24A2682A4C878400B41C01 /* BreathType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */,
 				2FF51E022A3A2E120035A964 /* WeatherCardBackView.swift in Sources */,
 				2F54B266297D1AE50075E488 /* Milestone.swift in Sources */,
+				2F24A2692A4C878400B41C01 /* BreathType.swift in Sources */,
 				2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */,
 				2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */,
 				2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */,

@@ -15,6 +15,8 @@ struct ContentView: View {
     @State var showMenuSheet = false
     @EnvironmentObject var timerModel : TimerModel
     
+    var audioManager = AudioManager()
+    
     init() {
         let tabBarTintColor = UITabBarAppearance()
         tabBarTintColor.configureWithOpaqueBackground()
@@ -39,6 +41,7 @@ struct ContentView: View {
             
             MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
                 .colorScheme(.light)
+                .environmentObject(audioManager)
                 .tabItem {
                     Label("Meditation", image: "zen")
                 }

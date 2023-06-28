@@ -53,6 +53,7 @@ struct ClockView: View {
                         Spacer(minLength: 0)
                     }
                     .padding(5)
+                    .foregroundColor(np_white)
                     
                     HStack(spacing: 15) {
                         FlipView(viewModel: viewModel.flipViewModels[0])
@@ -86,6 +87,7 @@ struct ClockView: View {
                     }
                     .padding(.vertical, 5)
                     .padding(.horizontal, 35)
+                    .foregroundColor(np_white)
                     
                     Spacer(minLength: 0)
                     
@@ -104,7 +106,7 @@ struct ClockView: View {
             }
             .frame(maxWidth: .infinity)
         }
-        .background(np_black)
+        .background(background())
         .onAppear {
             // Start the timer to refresh the view every 10 minutes
             Timer.scheduledTimer(withTimeInterval: 10 * 60, repeats: true) { _ in
@@ -114,6 +116,30 @@ struct ClockView: View {
         .onChange(of: refreshTrigger) { _ in
             weatherModel.fetchWeather()
         }
+    }
+    
+    // MARK: Mountain Background
+    @ViewBuilder
+    func background() -> some View {
+        GeometryReader { proxy in
+            let size = proxy.size
+            
+            Image("mountain-2")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .offset(y: -50)
+                .frame(width: size.width, height: size.height)
+                .clipped()
+                .overlay {
+                    ZStack {
+                        Rectangle()
+                            .fill(.linearGradient(colors: [.clear, np_black, np_black], startPoint: .top, endPoint: .bottom))
+                            .frame(height: size.height / 1.35)
+                            .frame(maxHeight: .infinity, alignment: .bottom)
+                    }
+                }
+        }
+        .ignoresSafeArea()
     }
     
     // MARK: Salutation function

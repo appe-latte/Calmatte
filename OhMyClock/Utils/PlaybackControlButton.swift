@@ -10,7 +10,7 @@ import SwiftUI
 struct PlaybackControlButton: View {
     var systemName : String = "Play"
     var fontSize : CGFloat = 24
-    var color : Color = np_black
+    var color : Color = np_white
     var action :  () -> Void
     
     var body: some View {

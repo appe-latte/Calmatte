@@ -38,7 +38,31 @@ struct TaskManagerView: View {
         .sheet(isPresented: $addNewTask) {
             AddTaskView(taskManager: taskManager)
         }
-        .background(np_black)
+        .background(background())
+    }
+    
+    // MARK: Mountain Background
+    @ViewBuilder
+    func background() -> some View {
+        GeometryReader { proxy in
+            let size = proxy.size
+            
+            Image("mountain-2")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .offset(y: -50)
+                .frame(width: size.width, height: size.height)
+                .clipped()
+                .overlay {
+                    ZStack {
+                        Rectangle()
+                            .fill(.linearGradient(colors: [.clear, np_black, np_black], startPoint: .top, endPoint: .bottom))
+                            .frame(height: size.height / 1.35)
+                            .frame(maxHeight: .infinity, alignment: .bottom)
+                    }
+                }
+        }
+        .ignoresSafeArea()
     }
     
     // MARK: "Header View"

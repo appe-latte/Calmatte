@@ -17,12 +17,15 @@ struct PlayerView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    let screenWidth = UIScreen.main.bounds.width
+    
     var body: some View {
         ZStack {
-            VStack(spacing: 10) {
+            HStack {
+                Spacer()
                 
                 // MARK: Playback Controls
-                HStack(spacing: 15) {
+                HStack(spacing: 10) {
                     // MARK: "Play" button
                     PlaybackControlButton(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill", fontSize: 40) {
                         isPlaying.toggle()
@@ -36,32 +39,12 @@ struct PlayerView: View {
                     }
                     
                     // MARK: "Stop" button
-                    PlaybackControlButton(systemName: "stop.circle.fill", fontSize: 35) {
+                    PlaybackControlButton(systemName: "stop.circle.fill", fontSize: 40) {
                         audioManager.stop()
                         dismiss()
                     }
-                    
-                    Spacer()
-                    
-                    // MARK: "Duration"
-                    Text(currentTimeString)
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .kerning(5)
-                        .foregroundColor(np_black)
-                        .padding()
                 }
                 .frame(maxWidth: .infinity)
-                .padding(10)
-                .background(np_white)
-                .clipShape(Capsule())
-                .overlay(
-                    Capsule(style: .continuous)
-                        .stroke(np_black, lineWidth: 1)
-                        .padding(7)
-                )
-                
-                Spacer()
             }
         }
         .onDisappear {
