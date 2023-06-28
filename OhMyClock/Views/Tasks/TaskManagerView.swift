@@ -181,11 +181,11 @@ struct CardView: View {
     }
 }
 
-struct TaskManager_Previews : PreviewProvider {
-    static var previews : some View {
-        ContentView()
-    }
-}
+//struct TaskManager_Previews : PreviewProvider {
+//    static var previews : some View {
+//        TaskManagerView()
+//    }
+//}
 
 // MARK: View Extensions
 extension View {

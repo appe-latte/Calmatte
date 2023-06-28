@@ -27,6 +27,8 @@ struct ContentView: View {
         UITabBar.appearance().standardAppearance = tabBarTintColor
     }
     
+    let persistenceController = PersistenceController.shared
+    
     var body: some View {
         TabView {
             MainView()
@@ -43,6 +45,7 @@ struct ContentView: View {
             
             TimerView()
                 .colorScheme(.light)
+                .environmentObject(TimerModel())
                 .tabItem {
                     Label("Timer", image: "timer")
                 }
@@ -51,6 +54,13 @@ struct ContentView: View {
                 .colorScheme(.light)
                 .tabItem {
                     Label("Milestones", image: "collections")
+                }
+            
+            MoodTrackingView()
+                .colorScheme(.light)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .tabItem {
+                    Label("Mood", image: "collections")
                 }
             
             SettingsView()

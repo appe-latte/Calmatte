@@ -14,6 +14,9 @@ struct OhMyClockApp: App {
     @StateObject var timerModel: TimerModel = .init()
     @State private var isActive = false
     
+    // MARK: Persistence Controller
+    let persistenceController = PersistenceController.shared
+    
     // MARK: Scene phase
     @Environment(\.scenePhase) var phase
     

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04E82A0A1E1B002523A9 /* Weather.swift */; };
 		2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */; };
+		2F24A2632A4BB57C00B41C01 /* MoodRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2622A4BB57C00B41C01 /* MoodRecord.swift */; };
+		2F24A2652A4BB5E400B41C01 /* MoodTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2642A4BB5E400B41C01 /* MoodTrackingView.swift */; };
+		2F24A2672A4BB6C800B41C01 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2662A4BB6C800B41C01 /* PersistenceController.swift */; };
 		2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A17F2973F0FC007DA7CC /* LocationManager.swift */; };
 		2F27A18329740143007DA7CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A18229740143007DA7CC /* Alamofire */; };
 		2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A185297401B8007DA7CC /* SwiftyJSON */; };
@@ -22,7 +25,6 @@
 		2F36B0B82967A51900AC8D59 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0B72967A51900AC8D59 /* Models.swift */; };
 		2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0BA2967A55900AC8D59 /* ClockViewModel.swift */; };
 		2F36B0BD2967A57D00AC8D59 /* FlipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */; };
-		2F434BAD296F3E2500698C1A /* MilestonesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BAC296F3E2500698C1A /* MilestonesView.swift */; };
 		2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BAE296F60FE00698C1A /* PlayerView.swift */; };
 		2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */; };
 		2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB2296F863400698C1A /* MeditationViewModel.swift */; };
@@ -33,7 +35,6 @@
 		2F54B262297C71190075E488 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B261297C71190075E488 /* RealmSwift */; };
 		2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B263297D19E20075E488 /* OmcRealmManager.swift */; };
 		2F54B266297D1AE50075E488 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B265297D1AE40075E488 /* Milestone.swift */; };
-		2F6C06C22A3A18CD00D2C5EF /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C06C12A3A18CD00D2C5EF /* QuoteView.swift */; };
 		2F8838322A0ABC5300840F68 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8838312A0ABC5300840F68 /* ClockView.swift */; };
 		2F8838342A0AC64E00840F68 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8838332A0AC64E00840F68 /* TimerView.swift */; };
 		2F8CA71029B7A6EB00C34005 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */; };
@@ -58,6 +59,9 @@
 /* Begin PBXFileReference section */
 		2F0D04E82A0A1E1B002523A9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		2F24A2622A4BB57C00B41C01 /* MoodRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRecord.swift; sourceTree = "<group>"; };
+		2F24A2642A4BB5E400B41C01 /* MoodTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodTrackingView.swift; sourceTree = "<group>"; };
+		2F24A2662A4BB6C800B41C01 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		2F27A17F2973F0FC007DA7CC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2F27A187297402AB007DA7CC /* LocationFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetch.swift; sourceTree = "<group>"; };
 		2F36B0A02967A40000AC8D59 /* OhMyClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhMyClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +74,6 @@
 		2F36B0B72967A51900AC8D59 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		2F36B0BA2967A55900AC8D59 /* ClockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewModel.swift; sourceTree = "<group>"; };
 		2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipViewModel.swift; sourceTree = "<group>"; };
-		2F434BAC296F3E2500698C1A /* MilestonesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestonesView.swift; sourceTree = "<group>"; };
 		2F434BAE296F60FE00698C1A /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlButton.swift; sourceTree = "<group>"; };
 		2F434BB2296F863400698C1A /* MeditationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationViewModel.swift; sourceTree = "<group>"; };
@@ -80,7 +83,6 @@
 		2F54B25C297C5F0E0075E488 /* AddTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTasksView.swift; sourceTree = "<group>"; };
 		2F54B263297D19E20075E488 /* OmcRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmcRealmManager.swift; sourceTree = "<group>"; };
 		2F54B265297D1AE40075E488 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
-		2F6C06C12A3A18CD00D2C5EF /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
 		2F8838302A0AB1C800840F68 /* OhMyClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhMyClock.entitlements; sourceTree = "<group>"; };
 		2F8838312A0ABC5300840F68 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 		2F8838332A0AC64E00840F68 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */,
 				2F0D04E82A0A1E1B002523A9 /* Weather.swift */,
 				2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */,
+				2F24A2622A4BB57C00B41C01 /* MoodRecord.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */,
+				2F24A2662A4BB6C800B41C01 /* PersistenceController.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -253,11 +257,10 @@
 				2FF51DFE2A3A2DDD0035A964 /* WeatherCard */,
 				2F8838332A0AC64E00840F68 /* TimerView.swift */,
 				2FF50126296EA2B400813D40 /* MeditationView.swift */,
-				2F434BAC296F3E2500698C1A /* MilestonesView.swift */,
 				2F54B25C297C5F0E0075E488 /* AddTasksView.swift */,
 				2FF50128296EA33000813D40 /* SettingsView.swift */,
 				2F434BAE296F60FE00698C1A /* PlayerView.swift */,
-				2F6C06C12A3A18CD00D2C5EF /* QuoteView.swift */,
+				2F24A2642A4BB5E400B41C01 /* MoodTrackingView.swift */,
 				2FB2C4FF2A37B4DD006D5A30 /* Tasks */,
 			);
 			path = Views;
@@ -366,16 +369,17 @@
 				2F434BB8296F8CCA00698C1A /* AudioManager.swift in Sources */,
 				2F36B0B32967A4B000AC8D59 /* Colors.swift in Sources */,
 				2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */,
+				2F24A2652A4BB5E400B41C01 /* MoodTrackingView.swift in Sources */,
 				2F8838322A0ABC5300840F68 /* ClockView.swift in Sources */,
 				2FB2C4FC2A37B3C4006D5A30 /* TaskCategory.swift in Sources */,
 				2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */,
+				2F24A2672A4BB6C800B41C01 /* PersistenceController.swift in Sources */,
 				2F36B0BD2967A57D00AC8D59 /* FlipViewModel.swift in Sources */,
 				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
 				2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */,
 				2FF51E042A3A42370035A964 /* SplashScreenView.swift in Sources */,
 				2F8838342A0AC64E00840F68 /* TimerView.swift in Sources */,
-				2F434BAD296F3E2500698C1A /* MilestonesView.swift in Sources */,
 				2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */,
 				2F434BB6296F89F100698C1A /* Extensions.swift in Sources */,
 				2FB87FB02A0C6E1D0033B4E1 /* AppDelegate.swift in Sources */,
@@ -384,10 +388,10 @@
 				2F54B266297D1AE50075E488 /* Milestone.swift in Sources */,
 				2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */,
 				2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */,
-				2F6C06C22A3A18CD00D2C5EF /* QuoteView.swift in Sources */,
 				2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */,
 				2F36B0B82967A51900AC8D59 /* Models.swift in Sources */,
 				2FB2C4FE2A37B401006D5A30 /* TaskManagerView.swift in Sources */,
+				2F24A2632A4BB57C00B41C01 /* MoodRecord.swift in Sources */,
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
 				2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */,
 				2FF51E002A3A2E050035A964 /* WeatherCardFrontView.swift in Sources */,
