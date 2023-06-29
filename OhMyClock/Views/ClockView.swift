@@ -17,6 +17,8 @@ struct ClockView: View {
     
     @State private var refreshTrigger = false
     
+    @ObservedObject private var moodModel = MoodModel()
+    
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     
@@ -55,6 +57,7 @@ struct ClockView: View {
                     .padding(5)
                     .foregroundColor(np_white)
                     
+                    // MARK: Flip Clock
                     HStack(spacing: 15) {
                         FlipView(viewModel: viewModel.flipViewModels[0])
                         
@@ -94,14 +97,72 @@ struct ClockView: View {
                     Divider()
                         .padding(.top, 10)
                     
-                    // MARK: Weather Conditions Card
-                    WeatherCardFrontView()
+                    // MARK: Weather Information
+                    ScrollView(.horizontal, showsIndicators: false){
+                        HStack(spacing: 15){
+                            // MARK: Weather Conditions Card
+                            WeatherCardFrontView()
+                            
+                            // MARK: Hourly Forecast Card
+                            WeatherCardBackView()
+                        }
+                        .padding(.horizontal)
+                    }
                     
                     Divider()
                         .padding(.vertical, 10)
                     
-                    // MARK: Hourly Forecast Card
-                    WeatherCardBackView()
+                    // MARK: Mood Diary
+                    VStack {
+                        HStack {
+                            Text("How do you feel today?")
+                                .font(.footnote)
+                                .fontWeight(.semibold)
+                                .kerning(2)
+                                .textCase(.uppercase)
+                            
+                            Spacer()
+                        }
+                        .foregroundColor(np_black)
+                        .padding(.leading, 20)
+                        .padding(.top, 10)
+                        
+                        MoodSelectorTileView(moodModel: moodModel)
+                    }
+                    .frame(maxWidth: screenWidth - 40, maxHeight: screenHeight * 0.65)
+                    .background(np_white)
+                    .foregroundColor(np_black)
+                    .ignoresSafeArea()
+                    .cornerRadius(20)
+                    
+                    Divider()
+                        .padding(.vertical, 10)
+                    
+                    // MARK: Mood Insights
+                    VStack {
+                        HStack {
+                            Text("Mood Insights")
+                                .font(.footnote)
+                                .fontWeight(.semibold)
+                                .kerning(2)
+                                .textCase(.uppercase)
+                            
+                            Spacer()
+                        }
+                        .foregroundColor(np_black)
+                        .padding(.leading, 20)
+                        .padding(.top, 10)
+                        
+                        MoodInsightsListView(screenWidth: screenWidth, moodModel: moodModel)
+                            .padding()
+                        
+                    }
+                    .frame(maxWidth: screenWidth - 40, maxHeight: screenHeight * 0.65)
+                    .background(np_white)
+                    .foregroundColor(np_black)
+                    .ignoresSafeArea()
+                    .cornerRadius(20)
+                    
                 }
             }
             .frame(maxWidth: .infinity)
@@ -118,13 +179,13 @@ struct ClockView: View {
         }
     }
     
-    // MARK: Mountain Background
+    // MARK: Background
     @ViewBuilder
     func background() -> some View {
         GeometryReader { proxy in
             let size = proxy.size
             
-            Image("mountain-2")
+            Image(background_theme)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .offset(y: -50)
@@ -133,14 +194,21 @@ struct ClockView: View {
                 .overlay {
                     ZStack {
                         Rectangle()
-                            .fill(.linearGradient(colors: [.clear, np_black, np_black], startPoint: .top, endPoint: .bottom))
-                            .frame(height: size.height / 1.35)
+                            .fill(.linearGradient(colors: [.clear, np_black, np_black, np_black], startPoint: .top, endPoint: .bottom))
+                            .frame(height: size.height * 0.35)
                             .frame(maxHeight: .infinity, alignment: .bottom)
                     }
                 }
+            
+            // Mask Tint
+            Rectangle()
+                .fill(np_black).opacity(0.5)
+                .frame(height: size.height)
+                .frame(maxHeight: .infinity, alignment: .bottom)
         }
         .ignoresSafeArea()
     }
+    
     
     // MARK: Salutation function
     func getTime()->String {
@@ -163,6 +231,17 @@ struct ClockView: View {
             return "Good Evening"
         default:
             return "Good Night"
+        }
+    }
+    
+    // MARK: Day / Night Theme
+    private var background_theme : String {
+        let hour = Calendar.current.component(.hour, from: Date())
+        switch hour {
+        case 5..<19:
+            return "snow-mountain"
+        default:
+            return "mountain-pond"
         }
     }
 }

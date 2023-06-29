@@ -15,7 +15,7 @@ struct BreathType : Identifiable, Hashable {
 }
 
 let sampleTypes : [BreathType] = [
-    .init(title: "Relax", color: np_white),
+    .init(title: "Relax", color: np_gray),
     .init(title: "Anxious", color: np_turq),
     .init(title: "Angry", color: np_purple)
 ]

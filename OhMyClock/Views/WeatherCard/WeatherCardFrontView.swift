@@ -35,7 +35,8 @@ struct WeatherCardFrontView: View {
                 
                 Spacer()
             }
-            .padding(10)
+            .padding(.horizontal, 10)
+            .padding(.top, 5)
             
             HStack(spacing: 10) {
                 Image(systemName: "\(weatherSymbolLabel).fill")

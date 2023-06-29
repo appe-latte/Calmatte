@@ -140,7 +140,7 @@ struct TimerView: View {
             }
             .overlay(content: {
                 ZStack {
-                    np_gray
+                    np_black
                         .opacity(timerModel.addNewTimer ? 0.25 : 0)
                         .onTapGesture {
                             //                            timerModel.hour = 0
@@ -148,6 +148,7 @@ struct TimerView: View {
                             timerModel.seconds = 0
                             timerModel.addNewTimer = false
                         }
+                        .edgesIgnoringSafeArea(.top)
                     
                     NewTimerView()
                         .frame(maxHeight: .infinity, alignment: .bottom)
@@ -168,13 +169,13 @@ struct TimerView: View {
         }
     }
     
-    // MARK: Mountain Background
+    // MARK: Background
     @ViewBuilder
     func background() -> some View {
         GeometryReader { proxy in
             let size = proxy.size
             
-            Image("mountain-2")
+            Image(background_theme)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .offset(y: -50)
@@ -183,13 +184,37 @@ struct TimerView: View {
                 .overlay {
                     ZStack {
                         Rectangle()
-                            .fill(.linearGradient(colors: [.clear, np_black, np_black], startPoint: .top, endPoint: .bottom))
-                            .frame(height: size.height / 1.35)
+                            .fill(.linearGradient(colors: [.clear, np_black, np_black, np_black], startPoint: .top, endPoint: .bottom))
+                            .frame(height: size.height * 0.35)
                             .frame(maxHeight: .infinity, alignment: .bottom)
                     }
                 }
+            
+            // Mask Tint
+            Rectangle()
+                .fill(np_black).opacity(0.5)
+                .frame(height: size.height)
+                .frame(maxHeight: .infinity, alignment: .bottom)
         }
         .ignoresSafeArea()
+    }
+    
+    // MARK: Day / Night Theme
+    func getTime()->String {
+        let format = DateFormatter()
+        format.dateFormat = "hh:mm a"
+        
+        return format.string(from: Date())
+    }
+    
+    private var background_theme : String {
+        let hour = Calendar.current.component(.hour, from: Date())
+        switch hour {
+        case 5..<19:
+            return "snow-mountain"
+        default:
+            return "mountain-pond"
+        }
     }
     
     @ViewBuilder

@@ -31,20 +31,20 @@ struct MeditationView: View {
         ZStack(alignment: .bottom) {
             // Background
             background()
-   
+            
             // Content Area
             Content()
- 
+            
         }
     }
     
-    // MARK: Mountain Background
+    // MARK: Background
     @ViewBuilder
     func background() -> some View {
         GeometryReader { proxy in
             let size = proxy.size
             
-            Image("mountain-2")
+            Image(background_theme)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .offset(y: -50)
@@ -59,16 +59,39 @@ struct MeditationView: View {
                             .frame(maxHeight: .infinity, alignment: .top)
                         
                         Rectangle()
-                            .fill(.linearGradient(colors: [.clear, np_black, np_black], startPoint: .top, endPoint: .bottom))
-                            .frame(height: size.height / 1.35)
+                            .fill(.linearGradient(colors: [.clear, np_black, np_black, np_black], startPoint: .top, endPoint: .bottom))
+                            .frame(height: size.height * 0.15)
                             .frame(maxHeight: .infinity, alignment: .bottom)
                     }
                 }
+            
+            Rectangle()
+                .fill(np_black).opacity(0.5)
+                .frame(height: size.height)
+                .frame(maxHeight: .infinity, alignment: .bottom)
         }
         .ignoresSafeArea()
     }
     
-    // MARK: .....
+    // MARK: Day / Night Theme
+    func getTime()->String {
+        let format = DateFormatter()
+        format.dateFormat = "hh:mm a"
+        
+        return format.string(from: Date())
+    }
+    
+    private var background_theme : String {
+        let hour = Calendar.current.component(.hour, from: Date())
+        switch hour {
+        case 5..<19:
+            return "snow-mountain"
+        default:
+            return "mountain-pond"
+        }
+    }
+    
+    // MARK: Content
     @ViewBuilder
     func Content() -> some View {
         VStack {
@@ -98,7 +121,7 @@ struct MeditationView: View {
             .padding(.horizontal, 20)
             .padding(.top, 5)
             .opacity(showBreatheView ? 0 : 1)
-
+            
             GeometryReader { proxy in
                 let size = proxy.size
                 
@@ -145,7 +168,7 @@ struct MeditationView: View {
                         .padding(.horizontal)
                     }
                     .opacity(showBreatheView ? 0 : 1)
-
+                    
                     HStack {
                         Button {
                             startBreathing()
@@ -214,8 +237,7 @@ struct MeditationView: View {
         .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true)) // Add repeating animation
         .frame(height: size.width - 40)
     }
-
-
+    
     private func startBreathing() {
         withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
             showBreatheView.toggle()

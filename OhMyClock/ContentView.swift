@@ -56,14 +56,7 @@ struct ContentView: View {
             TaskManagerView(taskManager: taskManager)
                 .colorScheme(.light)
                 .tabItem {
-                    Label("Milestones", image: "collections")
-                }
-            
-            MoodTrackingView()
-                .colorScheme(.light)
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .tabItem {
-                    Label("Mood", image: "collections")
+                    Label("Tasks", image: "collections")
                 }
             
             SettingsView()
