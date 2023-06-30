@@ -7,26 +7,26 @@
 
 import SwiftUI
 
-/// Shows a list of all mood types along with their count
 struct MoodInsightsListView: View {
     var screenWidth: CGFloat
     @ObservedObject var moodModel: MoodModel
-
+    
     var body: some View {
         ForEach(0..<MoodType.allCases.count, content: { index in
             HStack(spacing: 10) {
                 Text(self.moodModel.moodDetails(type: MoodType.allCases[index]).emoji)
-                    .font(.headline)
-                    .fontWeight(.bold)
+                    .font(.system(size: 35))
                     .frame(width: 40)
                 
                 ZStack {
-                    Color(.secondaryLabel).opacity(0.2)
+                    Color(.secondaryLabel)
+                        .opacity(0.2)
                     
+                    // MARK: Bars for mood count
                     HStack {
                         self.moodModel.moodDetails(type: MoodType.allCases[index]).colors.first!
                             .frame(maxWidth: self.calculateProgress(forMoodType: MoodType.allCases[index]))
-                            .cornerRadius(10)
+                            .clipShape(Capsule())
                         
                         Spacer(minLength: 0)
                     }

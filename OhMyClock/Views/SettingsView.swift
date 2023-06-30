@@ -131,7 +131,7 @@ struct SettingsView: View {
                     openURL(URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
                 }, label: {
                     HStack(spacing: 10) {
-                        Image("cloud")
+                        Image("report")
                             .resizable()
                             .frame(width: 30, height: 30)
                             .padding(5)
@@ -141,7 +141,6 @@ struct SettingsView: View {
                                 Circle()
                                     .stroke(lineWidth: 1)
                                     .foregroundColor(np_white)
-                                
                             }
                             .padding(5)
                         

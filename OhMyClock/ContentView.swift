@@ -17,7 +17,13 @@ struct ContentView: View {
     
     var audioManager = AudioManager()
     
-    init() {
+    @ObservedObject var moodModel: MoodModel
+    @Binding var tabBarSelection: Int
+    
+    init(moodModel: MoodModel = MoodModel(), tabBarSelection: Binding<Int> = .constant(0)) {
+        self.moodModel = moodModel
+        self._tabBarSelection = tabBarSelection
+        
         let tabBarTintColor = UITabBarAppearance()
         tabBarTintColor.configureWithOpaqueBackground()
         tabBarTintColor.selectionIndicatorTintColor = UIColor.init(Color(red: 24 / 255, green: 24 / 255, blue: 24 / 255))
@@ -29,11 +35,9 @@ struct ContentView: View {
         UITabBar.appearance().standardAppearance = tabBarTintColor
     }
     
-    let persistenceController = PersistenceController.shared
-    
     var body: some View {
         TabView {
-            MainView()
+            MainView(moodModel: moodModel, tabBarSelection: $tabBarSelection)
                 .colorScheme(.dark)
                 .tabItem {
                     Label("Home", image: "home")

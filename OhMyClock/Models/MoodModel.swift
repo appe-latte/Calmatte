@@ -10,19 +10,17 @@ import Foundation
 
 // MARK: Mood Types
 enum MoodType: String, CaseIterable {
-    case awful
-    case bad
+    case angry
+    case upset
     case okay
     case good
     case great
 }
 
-/// Type of insights for saved mood data
 enum InsightsType: String, CaseIterable {
     case today = "Today"
     case thisWeek = "This Week"
     
-    /// This will determine how many times a day the user can set the same mood
     var maximumMoodCheckins: Int {
         switch self {
         case .today:
@@ -35,9 +33,9 @@ enum InsightsType: String, CaseIterable {
 
 // MARK: Push Notification messages
 enum DailyPushNotification: String, CaseIterable {
-    case morning = "Hey, how are you feeling this morning?"
-    case noon = "Is your day going great so far?"
-    case evening = "Let's do one more check-in for today"
+    case morning = "Hey, just checking to see how your morning is going?"
+    case noon = "Hey, I hope your day is going well so far"
+    case evening = "Hi, how about we add one more mood check-in today?"
     
     var time: DateComponents {
         var components = DateComponents()
@@ -53,16 +51,12 @@ enum DailyPushNotification: String, CaseIterable {
     }
 }
 
-/// Main model to track mood
 class MoodModel: ObservableObject {
     
-    /// Start with `okay` mood
     @Published var moodType: MoodType = .okay
-    
-    /// Insights type change when user selects between `Today` and `This Week`
     @Published var insightsType: InsightsType = .today
     
-    /// Saved data key
+    // MARK: "Saved Data" key
     private var savedDataKey: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM, dd"
@@ -82,6 +76,7 @@ class MoodModel: ObservableObject {
                 }
             }
         }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM, dd"
         week.forEach({ keys.append(dateFormatter.string(from: $0)) })
@@ -90,12 +85,13 @@ class MoodModel: ObservableObject {
     
     /// Saved data based on the key/date
     private var savedMoodData: [String: Int]? {
-        /// Today's saved mood data
+        // MARK: Today's mood data
         if insightsType == .today {
             if let data = UserDefaults.standard.dictionary(forKey: savedDataKey) as? [String: Int] {
                 return data
             }
-        /// This week's saved mood data
+            
+            // MARK: This Week's mood data
         } else if insightsType == .thisWeek {
             var data = [String: Int]()
             thisWeekDaysSavedDataKey.forEach { (savedWeekDayDataKey) in
@@ -114,12 +110,12 @@ class MoodModel: ObservableObject {
         return nil
     }
     
-    /// Mood gradient and emoji
+    // MARK: Mood Colors + Emojis
     func moodDetails(type: MoodType? = nil) -> (colors: [Color], emoji: String) {
         switch type ?? moodType {
-        case .awful:
+        case .angry:
             return ([Color(#colorLiteral(red: 0.8357443213, green: 0.3479825258, blue: 0.05522660166, alpha: 1)), Color(#colorLiteral(red: 0.9966509938, green: 0.5569254756, blue: 0.353095293, alpha: 1))], "😡")
-        case .bad:
+        case .upset:
             return ([Color(#colorLiteral(red: 0.8351245522, green: 0.4202041626, blue: 0.04885386676, alpha: 1)), Color(#colorLiteral(red: 0.9953574538, green: 0.6651614308, blue: 0.3195463419, alpha: 1))], "😠")
         case .okay:
             return ([Color(#colorLiteral(red: 0.8664215207, green: 0.471901536, blue: 0.03596238419, alpha: 1)), Color(#colorLiteral(red: 0.9981095195, green: 0.7487973571, blue: 0.3268273473, alpha: 1))], "😐")
@@ -150,7 +146,7 @@ class MoodModel: ObservableObject {
             data[moodType.rawValue] = 1
         }
         
-        /// Save updated mood count
+        // MARK: Updated mood count saved
         UserDefaults.standard.set(data, forKey: savedDataKey)
         UserDefaults.standard.synchronize()
     }

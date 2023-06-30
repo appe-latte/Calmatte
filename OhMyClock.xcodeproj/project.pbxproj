@@ -11,7 +11,6 @@
 		2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */; };
 		2F24A2632A4BB57C00B41C01 /* MoodRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2622A4BB57C00B41C01 /* MoodRecord.swift */; };
 		2F24A2652A4BB5E400B41C01 /* MoodTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2642A4BB5E400B41C01 /* MoodTrackingView.swift */; };
-		2F24A2672A4BB6C800B41C01 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2662A4BB6C800B41C01 /* PersistenceController.swift */; };
 		2F24A2692A4C878400B41C01 /* BreathType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2682A4C878400B41C01 /* BreathType.swift */; };
 		2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A17F2973F0FC007DA7CC /* LocationManager.swift */; };
 		2F27A18329740143007DA7CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A18229740143007DA7CC /* Alamofire */; };
@@ -66,7 +65,6 @@
 		2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		2F24A2622A4BB57C00B41C01 /* MoodRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRecord.swift; sourceTree = "<group>"; };
 		2F24A2642A4BB5E400B41C01 /* MoodTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodTrackingView.swift; sourceTree = "<group>"; };
-		2F24A2662A4BB6C800B41C01 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		2F24A2682A4C878400B41C01 /* BreathType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathType.swift; sourceTree = "<group>"; };
 		2F27A17F2973F0FC007DA7CC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2F27A187297402AB007DA7CC /* LocationFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetch.swift; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 			isa = PBXGroup;
 			children = (
 				2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */,
-				2F24A2662A4BB6C800B41C01 /* PersistenceController.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -397,7 +394,6 @@
 				2F8838322A0ABC5300840F68 /* ClockView.swift in Sources */,
 				2FB2C4FC2A37B3C4006D5A30 /* TaskCategory.swift in Sources */,
 				2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */,
-				2F24A2672A4BB6C800B41C01 /* PersistenceController.swift in Sources */,
 				2F36B0BD2967A57D00AC8D59 /* FlipViewModel.swift in Sources */,
 				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
@@ -575,7 +571,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appe-latte.OhMyClock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -616,7 +612,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appe-latte.OhMyClock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

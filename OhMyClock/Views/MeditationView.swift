@@ -127,6 +127,7 @@ struct MeditationView: View {
                 
                 VStack {
                     BreatheView(size: size)
+                        .padding(.bottom, 50)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
@@ -196,6 +197,7 @@ struct MeditationView: View {
                         }
                         .padding()
                     }
+                    .padding(.bottom, 30)
                 }
                 .frame(width: size.width, height: size.height, alignment: .bottom)
                 .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) {_ in

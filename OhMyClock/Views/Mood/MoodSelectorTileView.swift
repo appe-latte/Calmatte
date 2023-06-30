@@ -7,12 +7,10 @@
 
 import SwiftUI
 
-/// Main mood selector tile with gradient background and emoji
 struct MoodSelectorTileView: View {
     private let hapticFeedback = UIImpactFeedbackGenerator()
     @ObservedObject var moodModel: MoodModel
-
-    // Main rendering function of the view
+    
     var body: some View {
         ZStack {
             self.largeGradientView
@@ -20,10 +18,9 @@ struct MoodSelectorTileView: View {
             
             VStack {
                 Spacer()
-                /// Mood emoji and slider
+                
                 self.moodEmojiSliderView
                 
-                /// Mood name with set button
                 self.saveMoodFooterView
             }
         }
@@ -33,7 +30,7 @@ struct MoodSelectorTileView: View {
     /// Large gradient view
     var largeGradientView: some View {
         LinearGradient(gradient: Gradient(colors: moodModel.moodDetails().colors),
-                   startPoint: .bottom, endPoint: .top).frame(height: UIScreen.main.bounds.width / 1.2)
+                       startPoint: .bottom, endPoint: .top).frame(height: UIScreen.main.bounds.width / 1.2)
     }
     
     /// Faded emoji text
@@ -41,20 +38,23 @@ struct MoodSelectorTileView: View {
         ZStack {
             ZStack {
                 Text(moodModel.moodType.rawValue.uppercased())
-                    .font(Font.custom("Arial", size: 80)).bold()
-                    .foregroundColor(.white)
-                    .opacity(0.5)
+                    .font(.system(size: 95))
+                    .fontWeight(.bold)
+                    .kerning(3)
+                    .textCase(.uppercase)
+                    .foregroundColor(np_white)
+                    .opacity(0.65)
             }
             .offset(y: -80)
             LinearGradient(gradient: Gradient(colors:
-                [moodModel.moodDetails().colors.first!, moodModel.moodDetails().colors.last!, moodModel.moodDetails().colors.last!.opacity(0)]),
+                                                [moodModel.moodDetails().colors.first!, moodModel.moodDetails().colors.last!, moodModel.moodDetails().colors.last!.opacity(0)]),
                            startPoint: .bottom, endPoint: .top)
-                .offset(y: -50)
-                .opacity(0.9)
+            .offset(y: -50)
+            .opacity(0.9)
         }
     }
     
-    /// Mood large emoji and slider view
+    // MARK: Emoji + Slider View
     var moodEmojiSliderView: some View {
         VStack {
             Text(moodModel.moodDetails().emoji)
@@ -66,12 +66,12 @@ struct MoodSelectorTileView: View {
         }
     }
     
-    /// Save mood gradient footer view
     var saveMoodFooterView: some View {
         ZStack {
             Color(.black).opacity(0.2).frame(height: 50)
+            
             HStack {
-                Text("I'm feeling")
+                Text("I feel:")
                     .font(.caption)
                     .kerning(3)
                     .textCase(.uppercase)
@@ -89,8 +89,8 @@ struct MoodSelectorTileView: View {
                 
                 Spacer()
                 
+                // MARK: Save Mood
                 Button(action: {
-                    /// Save the mood for today
                     self.hapticFeedback.impactOccurred()
                     self.moodModel.objectWillChange.send()
                     self.moodModel.saveMood()
@@ -102,15 +102,16 @@ struct MoodSelectorTileView: View {
                         .textCase(.uppercase)
                         .minimumScaleFactor(0.5)
                         .foregroundColor(np_white)
-                }).background(
+                })
+                .background(
                     RoundedRectangle(cornerRadius: 40)
                         .padding(EdgeInsets(top: -5, leading: -10, bottom: -5, trailing: -10))
                         .foregroundColor(.white)
                         .opacity(0.2)
                 )
-                    .padding().padding(.trailing, 10)
-                    .disabled(shouldDisableSaveButton)
-                    .opacity(shouldDisableSaveButton ? 0.4 : 1.0)
+                .padding().padding(.trailing, 10)
+                .disabled(shouldDisableSaveButton)
+                .opacity(shouldDisableSaveButton ? 0.4 : 1.0)
             }
         }
     }

@@ -221,19 +221,13 @@ struct CardView: View {
                         .foregroundColor(np_red).opacity(0.65)
                 }
             }
-            .padding(.bottom, 5)
+            .padding(.bottom, 10)
         }
         .frame(width: screenWidth - 30, height: screenHeight * 0.15)
         .foregroundColor(np_black)
         .padding(5)
     }
 }
-
-//struct TaskManager_Previews : PreviewProvider {
-//    static var previews : some View {
-//        TaskManagerView()
-//    }
-//}
 
 // MARK: View Extensions
 extension View {

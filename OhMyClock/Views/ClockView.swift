@@ -18,12 +18,13 @@ struct ClockView: View {
     @State private var refreshTrigger = false
     
     @ObservedObject private var moodModel = MoodModel()
+    @State private var insightsMode: InsightsType = .today
     
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
-        ScrollView {
+        ScrollView(.vertical, showsIndicators: false) {
             ZStack {
                 VStack {
                     // MARK: Date + Salutation
@@ -91,11 +92,9 @@ struct ClockView: View {
                     .padding(.vertical, 5)
                     .padding(.horizontal, 35)
                     .foregroundColor(np_white)
+                    .padding(.bottom, 20)
                     
                     Spacer(minLength: 0)
-                    
-                    Divider()
-                        .padding(.top, 10)
                     
                     // MARK: Weather Information
                     ScrollView(.horizontal, showsIndicators: false){
@@ -108,9 +107,7 @@ struct ClockView: View {
                         }
                         .padding(.horizontal)
                     }
-                    
-                    Divider()
-                        .padding(.vertical, 10)
+                    .padding(.bottom, 20)
                     
                     // MARK: Mood Diary
                     VStack {
@@ -134,12 +131,10 @@ struct ClockView: View {
                     .foregroundColor(np_black)
                     .ignoresSafeArea()
                     .cornerRadius(20)
-                    
-                    Divider()
-                        .padding(.vertical, 10)
+                    .padding(.bottom, 20)
                     
                     // MARK: Mood Insights
-                    VStack {
+                    VStack(spacing: 5) {
                         HStack {
                             Text("Mood Insights")
                                 .font(.footnote)
@@ -153,6 +148,14 @@ struct ClockView: View {
                         .padding(.leading, 20)
                         .padding(.top, 10)
                         
+                        // MARK: Today / This Week Picker
+                        CustomSegmentedPickerView(selection: $insightsMode, items: InsightsType.allCases)
+                            .padding()
+                            .onChange(of: insightsMode) { newValue in
+                                self.moodModel.didChangeInsights(type: newValue)
+                            }
+                        
+                        // MARK: Insights List
                         MoodInsightsListView(screenWidth: screenWidth, moodModel: moodModel)
                             .padding()
                         
@@ -200,7 +203,7 @@ struct ClockView: View {
                     }
                 }
             
-            // Mask Tint
+            // MARK: Tint
             Rectangle()
                 .fill(np_black).opacity(0.5)
                 .frame(height: size.height)
@@ -249,5 +252,35 @@ struct ClockView: View {
 struct ClockView_Previews: PreviewProvider {
     static var previews: some View {
         ClockView()
+    }
+}
+
+// MARK: Segmented Picker for "Insights"
+struct CustomSegmentedPickerView: View {
+    @Binding var selection: InsightsType
+    let items: [InsightsType]
+    
+    var body: some View {
+        HStack {
+            ForEach(items, id: \.self) { item in
+                Text(item.rawValue)
+                    .font(.footnote)
+                    .fontWeight(.semibold)
+                    .kerning(2)
+                    .textCase(.uppercase)
+                    .padding(15)
+                    .foregroundColor(self.selection == item ? np_white : np_black)
+                    .background(Capsule().fill(self.selection == item ? np_orange : Color.clear))
+                    .onTapGesture {
+                        withAnimation {
+                            self.selection = item
+                        }
+                    }
+            }
+        }
+        .background(
+            Capsule()
+                .fill(np_gray)
+                .opacity(0.2))
     }
 }

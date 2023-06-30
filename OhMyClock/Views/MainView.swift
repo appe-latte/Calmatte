@@ -14,6 +14,9 @@ import WeatherKit
 
 struct MainView: View {
     @EnvironmentObject var timerModel : TimerModel
+    @ObservedObject var moodModel: MoodModel
+    @State private var insightsMode: InsightsType = .today
+    @Binding var tabBarSelection: Int
     
     var body: some View {
         NavigationView {
@@ -121,9 +124,9 @@ struct SingleFlipView: View {
     private let type: FlipType
 }
 
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
-}
+//struct MainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainView()
+//    }
+//}
 

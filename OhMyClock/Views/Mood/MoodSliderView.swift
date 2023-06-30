@@ -4,7 +4,6 @@
 //
 //  Created by Stanford L. Khumalo on 2023-06-29.
 //
-
 import SwiftUI
 
 struct MoodSliderView: View {
@@ -12,16 +11,15 @@ struct MoodSliderView: View {
     private let hapticFeedback = UIImpactFeedbackGenerator()
     @State var didChangeDefaultMoodType: Bool = false
     @State var sliderValue: CGFloat = 45
-    
-    /// Mood model
+
     var model: MoodModel
     
     func sliderValue(forMood type: MoodType) -> CGFloat {
         let level = UIScreen.main.bounds.width / 9
         switch type {
-        case .awful:
+        case .angry:
             return 45
-        case .bad:
+        case .upset:
             return (level * 3) - 8
         case .okay:
             return (level * 5) - 22
@@ -45,35 +43,15 @@ struct MoodSliderView: View {
         return
         // MARK: Progress Bar
         ZStack {
-            
-            SliderProgress()
+            Capsule()
                 .foregroundColor(np_gray)
                 .opacity(0.2)
-                .frame(height: self.sliderDotSize - 10)
-        
-            HStack {
-                Circle()
-                    .frame(height: self.sliderDotSize / 4)
-                    .foregroundColor(np_black)
-                    .frame(maxWidth: .infinity)
-                Circle()
-                    .frame(height: self.sliderDotSize / 3.5)
-                    .foregroundColor(np_black)
-                    .frame(maxWidth: .infinity)
-                Circle()
-                    .frame(height: self.sliderDotSize / 3.2)
-                    .foregroundColor(np_black)
-                    .frame(maxWidth: .infinity)
-                Circle()
-                    .frame(height: self.sliderDotSize / 3.0)
-                    .foregroundColor(np_black)
-                    .frame(maxWidth: .infinity)
-                Circle()
-                    .frame(height: self.sliderDotSize / 3.0)
-                    .foregroundColor(np_black)
-                    .frame(maxWidth: .infinity)
-            }
-            .opacity(0.2)
+                .frame(height: 10) // this is the track
+            
+            Capsule()
+                .foregroundColor(np_white)
+                .frame(width: moodSliderValue, height: 10) // this is the progress
+                .alignmentGuide(.leading) { d in d[.leading] }
             
             // MARK: Slider Knob
             Circle()
@@ -94,19 +72,19 @@ struct MoodSliderView: View {
                     let endedValue = value.location.x + offset
                     if endedValue < level {
                         self.sliderValue = 45
-                        self.model.moodType = .awful
+                        self.model.moodType = .angry
                     } else if endedValue > level && endedValue < level * 3 {
                         if endedValue - level < ((level * 3) - endedValue) {
-                            self.sliderValue = self.sliderValue(forMood: .awful)
-                            self.model.moodType = .awful
+                            self.sliderValue = self.sliderValue(forMood: .angry)
+                            self.model.moodType = .angry
                         } else {
-                            self.sliderValue = self.sliderValue(forMood: .bad)
-                            self.model.moodType = .bad
+                            self.sliderValue = self.sliderValue(forMood: .upset)
+                            self.model.moodType = .upset
                         }
                     } else if endedValue > (level * 3) && endedValue < (level * 5) {
                         if endedValue - (level * 3) < ((level * 5) - endedValue) {
-                            self.sliderValue = self.sliderValue(forMood: .bad)
-                            self.model.moodType = .bad
+                            self.sliderValue = self.sliderValue(forMood: .upset)
+                            self.model.moodType = .upset
                         } else {
                             self.sliderValue = self.sliderValue(forMood: .okay)
                             self.model.moodType = .okay
@@ -132,23 +110,6 @@ struct MoodSliderView: View {
                         self.model.moodType = .great
                     }
                 }))
-        }
-    }
-}
-
-// MARK: Slider Shape
-struct SliderProgress: Shape {
-    func path(in rect: CGRect) -> Path {
-        Path { path in
-            let width = rect.width
-            let height = rect.height
-            path.addLines( [
-                CGPoint(x: width, y: height),
-                CGPoint(x: 0, y: height - (height / 4)),
-                CGPoint(x: 0, y: height / 4),
-                CGPoint(x: width, y: 0)
-            ])
-            path.closeSubpath()
         }
     }
 }
