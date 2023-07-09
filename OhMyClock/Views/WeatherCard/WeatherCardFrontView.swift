@@ -25,7 +25,7 @@ struct WeatherCardFrontView: View {
     var screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
-        VStack {
+        VStack(spacing: 15) {
             HStack {
                 Label("Today's Weather", systemImage: "thermometer.sun.fill")
                     .font(.caption)
@@ -35,14 +35,13 @@ struct WeatherCardFrontView: View {
                 
                 Spacer()
             }
-            .padding(.horizontal, 10)
-            .padding(.top, 5)
+            .padding(10)
             
             HStack(spacing: 10) {
                 Image(systemName: "\(weatherSymbolLabel).fill")
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(np_black)
+                    .symbolRenderingMode(.multicolor)
                     .frame(width: 100, height: 100)
                     .padding()
                 
@@ -108,8 +107,8 @@ struct WeatherCardFrontView: View {
             .padding(5)
         }
         .frame(maxWidth: screenWidth - 20, maxHeight: screenHeight * 0.65)
-        .background(np_white)
-        .foregroundColor(np_black)
+        .background(np_black)
+        .foregroundColor(np_white)
         .ignoresSafeArea()
         .cornerRadius(20)
         .edgesIgnoringSafeArea(.bottom)

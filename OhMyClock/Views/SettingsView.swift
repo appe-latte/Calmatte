@@ -24,36 +24,45 @@ struct SettingsView: View {
             
             VStack {
                 HStack {
+                    // MARK: "Developer Website"
+                    Button(action: {
+                        openURL(URL(string: "https://www.appe-latte.ca")!)
+                    }, label: {
+                        HStack(spacing: 5) {
+                            Image("country")
+                                .resizable()
+                                .frame(width: 15, height: 15)
+                                .foregroundColor(np_white)
+                            
+                                Text("our website")
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_white)
+                        }
+                    })
+
                     Spacer()
                     
                     // MARK: "Share App"
                     Button(action: {
                         shareSheet()
                     }, label: {
-                        VStack(spacing: 10) {
-                            Image("share")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .padding(5)
-                                .foregroundColor(np_white)
-                                .clipShape(Circle())
-                                .overlay {
-                                    Circle()
-                                        .stroke(lineWidth: 1)
-                                        .foregroundColor(np_white)
-                                }
-                                .padding(5)
-                            
-                            Text("Share")
-                                .font(.system(size: 12))
-                                .fontWeight(.semibold)
-                                .kerning(5)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                        }
+                            HStack {
+                                Image("share")
+                                    .resizable()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundColor(np_white)
+                                
+                                Text("Share")
+                                    .font(.system(size: 12))
+                                    .fontWeight(.semibold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_white)
+                            }
                     })
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 20)
                 }
                 .padding()
                 
@@ -63,42 +72,46 @@ struct SettingsView: View {
             Spacer()
             
             // MARK: Logo
-            VStack(alignment: .center) {
+            VStack(alignment: .center, spacing: 3) {
                 Image("logo")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 120, height: 120)
                     .foregroundColor(np_white)
                 
-                Text("Oh My Clock")
+                Text("Calmatte")
                     .font(.title)
                     .fontWeight(.light)
-                    .kerning(5)
+                    .kerning(18)
                     .textCase(.uppercase)
                     .foregroundColor(np_white)
                 
-                Text("by: Appè Latte")
-                    .font(.footnote)
+                Text("Developed with \(Image(systemName: "heart.fill")) by: Appè Latte")
+                    .font(.system(size: 10))
                     .fontWeight(.thin)
-                    .kerning(9.5)
+                    .kerning(4)
                     .textCase(.uppercase)
                     .foregroundColor(np_white)
                 
-                // MARK: App Version
+                // MARK: App Version + Build Number
                 HStack(spacing: 10) {
                     Text("App Version:")
-                        .font(.caption)
+                        .font(.system(size: 10))
                         .fontWeight(.thin)
                         .kerning(5)
                         .textCase(.uppercase)
                         .foregroundColor(np_white)
                     
-                    Text("\(UIApplication.appVersion!)")
-                        .font(.caption)
-                        .fontWeight(.thin)
-                        .kerning(5)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
+                    
+                    if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                        
+                        Text("\(UIApplication.appVersion!) (\(buildNumber))")
+                            .font(.caption)
+                            .fontWeight(.thin)
+                            .kerning(5)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                    }
                 }
                 .padding(.horizontal, 20)
                 
@@ -114,7 +127,7 @@ struct SettingsView: View {
                 
                 // MARK: Settings
                 HStack {
-                    Label("Information", systemImage: "info.bubble")
+                    Label("Settings", systemImage: "info.bubble")
                         .font(.caption)
                         .fontWeight(.bold)
                         .kerning(5)
@@ -126,23 +139,43 @@ struct SettingsView: View {
                 .frame(width: screenWidth - 30)
                 .padding()
                 
+                // MARK: "Face ID"
+                Button(action: {
+                    emailAlert.toggle()
+                }, label: {
+                    HStack(spacing: 10) {
+                        Image("scan")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .padding(5)
+                            .foregroundColor(np_white)
+                        
+                        HStack {
+                            Text("secure with faceid")
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                                .kerning(5)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                            
+                            Spacer()
+                        }
+                    }
+                })
+                .padding(.horizontal, 20)
+                
+                Divider()
+                
                 // MARK: "Legal Source"
                 Button(action: {
                     openURL(URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
                 }, label: {
                     HStack(spacing: 10) {
-                        Image("report")
+                        Image("note")
                             .resizable()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 25, height: 25)
                             .padding(5)
-                            .foregroundColor(np_white)
-                            .clipShape(Circle())
-                            .overlay {
-                                Circle()
-                                    .stroke(lineWidth: 1)
-                                    .foregroundColor(np_white)
-                            }
-                            .padding(5)
+                            .foregroundColor(np_blue)
                         
                         HStack {
                             Text("Weather Data Source")
@@ -161,63 +194,20 @@ struct SettingsView: View {
                 .padding(.horizontal, 20)
                 
                 Divider()
-                
+            
                 // MARK: "Contact Developer"
                 Button(action: {
                     emailAlert.toggle()
                 }, label: {
                     HStack(spacing: 10) {
-                        Image("message")
+                        Image("chat")
                             .resizable()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 25, height: 25)
                             .padding(5)
-                            .foregroundColor(np_white)
-                            .clipShape(Circle())
-                            .overlay {
-                                Circle()
-                                    .stroke(lineWidth: 1)
-                                    .foregroundColor(np_white)
-                            }
-                            .padding(5)
+                            .foregroundColor(np_green)
                         
                         HStack {
                             Text("Contact Us")
-                                .font(.caption)
-                                .fontWeight(.semibold)
-                                .kerning(5)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                            
-                            Spacer()
-                        }
-                        
-                        Image(systemName: "chevron.right")
-                    }
-                })
-                .padding(.horizontal, 20)
-                
-                Divider()
-                
-                // MARK: "Developer Website"
-                Button(action: {
-                    openURL(URL(string: "https://www.appe-latte.ca")!)
-                }, label: {
-                    HStack(spacing: 10) {
-                        Image("country")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .padding(5)
-                            .foregroundColor(np_white)
-                            .clipShape(Circle())
-                            .overlay {
-                                Circle()
-                                    .stroke(lineWidth: 1)
-                                    .foregroundColor(np_white)
-                            }
-                            .padding(5)
-                        
-                        HStack {
-                            Text("Visit our website")
                                 .font(.caption)
                                 .fontWeight(.semibold)
                                 .kerning(5)
@@ -239,18 +229,11 @@ struct SettingsView: View {
                     requestReview()
                 }, label: {
                     HStack(spacing: 10) {
-                        Image("like")
+                        Image("review")
                             .resizable()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 25, height: 25)
                             .padding(5)
-                            .foregroundColor(np_white)
-                            .clipShape(Circle())
-                            .overlay {
-                                Circle()
-                                    .stroke(lineWidth: 1)
-                                    .foregroundColor(np_white)
-                            }
-                            .padding(5)
+                            .foregroundColor(np_orange)
                         
                         HStack {
                             Text("Write A Review")

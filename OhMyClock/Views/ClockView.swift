@@ -98,6 +98,16 @@ struct ClockView: View {
                     
                     // MARK: Weather Information
                     ScrollView(.horizontal, showsIndicators: false){
+                        HStack {
+                            Label("Weather", systemImage: "cloud.sun.fill")
+                                .font(.footnote)
+                                .fontWeight(.semibold)
+                                .kerning(2)
+                                .textCase(.uppercase)
+                            
+                            Spacer()
+                        }
+                        .padding(.horizontal)
                         HStack(spacing: 15){
                             // MARK: Weather Conditions Card
                             WeatherCardFrontView()
@@ -110,19 +120,18 @@ struct ClockView: View {
                     .padding(.bottom, 20)
                     
                     // MARK: Mood Diary
+                    HStack {
+                        Label("How do you feel today?", systemImage: "face.dashed")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .kerning(2)
+                            .textCase(.uppercase)
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    
                     VStack {
-                        HStack {
-                            Text("How do you feel today?")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                            
-                            Spacer()
-                        }
-                        .foregroundColor(np_black)
-                        .padding(.leading, 20)
-                        .padding(.top, 10)
                         
                         MoodSelectorTileView(moodModel: moodModel)
                     }
@@ -134,19 +143,18 @@ struct ClockView: View {
                     .padding(.bottom, 20)
                     
                     // MARK: Mood Insights
-                    VStack(spacing: 5) {
-                        HStack {
-                            Text("Mood Insights")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                            
-                            Spacer()
-                        }
-                        .foregroundColor(np_black)
-                        .padding(.leading, 20)
-                        .padding(.top, 10)
+                    HStack {
+                        Label("mood insights", systemImage: "chart.xyaxis.line")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .kerning(2)
+                            .textCase(.uppercase)
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    
+                    VStack {
                         
                         // MARK: Today / This Week Picker
                         CustomSegmentedPickerView(selection: $insightsMode, items: InsightsType.allCases)

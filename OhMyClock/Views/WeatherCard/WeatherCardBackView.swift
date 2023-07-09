@@ -49,7 +49,8 @@ struct WeatherCardBackView: View {
                             
                             Image(systemName: "\(weather.symbolName).fill")
                                 .font(.title)
-                                .foregroundColor(np_black)
+//                                .foregroundColor(np_black)
+                                .symbolRenderingMode(.multicolor)
                             
                             Text(weather.temperature)
                                 .font(.headline)
@@ -91,7 +92,7 @@ struct WeatherCardBackView: View {
             .padding(5)
         }
         .frame(maxWidth: screenWidth - 20, maxHeight: screenHeight * 0.30)
-        .background(np_white)
+        .background(np_gray)
         .foregroundColor(np_black)
         .ignoresSafeArea()
         .cornerRadius(20)
