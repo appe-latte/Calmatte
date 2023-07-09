@@ -25,22 +25,8 @@ struct SplashScreenView: View {
                 VStack {
                     Image("logo")
                         .resizable()
-                        .renderingMode(.template)
-                        .frame(width: screenWidth / 3, height: screenHeight / 8)
-                        .foregroundColor(np_white)
-                    
-                    Text("Oh My Clock")
-                        .font(.title)
-                        .fontWeight(.light)
-                        .kerning(5)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
-                    
-                    Text("by: Appè Latte")
-                        .font(.footnote)
-                        .fontWeight(.thin)
-                        .kerning(9.5)
-                        .textCase(.uppercase)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: screenWidth / 2, height: screenHeight / 2)
                         .foregroundColor(np_white)
                 }
                 .scaleEffect(size)
@@ -65,47 +51,10 @@ struct SplashScreenView: View {
     func background() -> some View {
         GeometryReader { proxy in
             let size = proxy.size
-            
-            Image(background_theme)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .offset(y: -50)
-                .frame(width: size.width, height: size.height)
-                .clipped()
-                .overlay {
-                    ZStack {
-                        Rectangle()
-                            .fill(.linearGradient(colors: [.clear, np_black, np_black, np_black], startPoint: .top, endPoint: .bottom))
-                            .frame(height: size.height * 0.35)
-                            .frame(maxHeight: .infinity, alignment: .bottom)
-                    }
-                }
-            
-            // Mask Tint
-            Rectangle()
-                .fill(np_black).opacity(0.5)
-                .frame(height: size.height)
-                .frame(maxHeight: .infinity, alignment: .bottom)
+
+                        LinearGradient(gradient: Gradient(colors: [green, purple]), startPoint: .bottom, endPoint: .center)
         }
         .ignoresSafeArea()
-    }
-    
-    // MARK: Day / Night Theme
-    func getTime()->String {
-        let format = DateFormatter()
-        format.dateFormat = "hh:mm a"
-        
-        return format.string(from: Date())
-    }
-    
-    private var background_theme : String {
-        let hour = Calendar.current.component(.hour, from: Date())
-        switch hour {
-        case 5..<19:
-            return "snow-mountain"
-        default:
-            return "mountain-pond"
-        }
     }
 }
 

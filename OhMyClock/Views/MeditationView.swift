@@ -60,7 +60,7 @@ struct MeditationView: View {
                         
                         Rectangle()
                             .fill(.linearGradient(colors: [.clear, np_black, np_black, np_black], startPoint: .top, endPoint: .bottom))
-                            .frame(height: size.height * 0.15)
+                            .frame(height: size.height * 0.35)
                             .frame(maxHeight: .infinity, alignment: .bottom)
                     }
                 }

@@ -75,42 +75,35 @@ struct SettingsView: View {
             VStack(alignment: .center, spacing: 3) {
                 Image("logo")
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 120, height: 120)
-                    .foregroundColor(np_white)
-                
-                Text("Calmatte")
-                    .font(.title)
-                    .fontWeight(.light)
-                    .kerning(18)
-                    .textCase(.uppercase)
-                    .foregroundColor(np_white)
+                    .aspectRatio(contentMode: .fill)
+                    .foregroundColor(np_purple)
+                    .frame(width: 180, height: 210)
                 
                 Text("Developed with \(Image(systemName: "heart.fill")) by: Appè Latte")
                     .font(.system(size: 10))
                     .fontWeight(.thin)
                     .kerning(4)
                     .textCase(.uppercase)
-                    .foregroundColor(np_white)
+                    .foregroundColor(np_purple)
                 
                 // MARK: App Version + Build Number
                 HStack(spacing: 10) {
                     Text("App Version:")
-                        .font(.system(size: 10))
+                        .font(.system(size: 9.5))
                         .fontWeight(.thin)
                         .kerning(5)
                         .textCase(.uppercase)
-                        .foregroundColor(np_white)
+                        .foregroundColor(np_purple)
                     
                     
                     if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
                         
                         Text("\(UIApplication.appVersion!) (\(buildNumber))")
-                            .font(.caption)
-                            .fontWeight(.thin)
-                            .kerning(5)
+                            .font(.system(size: 9.5))
+                            .fontWeight(.regular)
+                            .kerning(9.5)
                             .textCase(.uppercase)
-                            .foregroundColor(np_white)
+                            .foregroundColor(np_purple)
                     }
                 }
                 .padding(.horizontal, 20)
