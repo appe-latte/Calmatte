@@ -5,17 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
-        "revision" : "78424be314842833c04bc3bef5b72e85fff99204",
-        "version" : "5.6.4"
-      }
-    },
-    {
-      "identity" : "lottie-spm",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/airbnb/lottie-spm.git",
-      "state" : {
-        "revision" : "60ea4f82fba8b4cb21a75665a889e86ed4d81c6e",
-        "version" : "4.2.0"
+        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
+        "version" : "5.7.1"
       }
     },
     {
@@ -23,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-core.git",
       "state" : {
-        "revision" : "b77443ca7fa25407869ca537bf3ae912b1427bff",
-        "version" : "12.13.0"
+        "revision" : "f1434caadda443b4ed2261b91ea4f43ab1ee2aa5",
+        "version" : "13.15.1"
       }
     },
     {
@@ -32,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-swift",
       "state" : {
-        "revision" : "b1072f3ef733108dfcc62c2001781e5d65605fbf",
-        "version" : "10.34.1"
+        "revision" : "b287dc102036ff425bd8a88483f0a5596871f05e",
+        "version" : "10.41.0"
       }
     },
     {

@@ -42,7 +42,7 @@ struct PlayerView: View {
                     PlaybackControlButton(systemName: "stop.circle.fill", fontSize: 40) {
                         audioManager.stop()
                         dismiss()
-                    }
+                    }.foregroundColor(.blue)
                 }
                 .frame(maxWidth: .infinity)
             }

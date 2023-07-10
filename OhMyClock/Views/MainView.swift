@@ -45,7 +45,7 @@ struct FlipView: View {
             }
             
             // MARK: Separator
-            np_black
+            np_arsenic
                 .frame(height: 3)
                 .clipShape(RoundedRectangle(cornerRadius: 2))
             
@@ -76,7 +76,7 @@ struct SingleFlipView: View {
         Text(text)
             .font(.custom("Helvetica-Bold", size: 100))
             .fontWeight(.heavy)
-            .foregroundColor(np_black)
+            .foregroundColor(np_arsenic)
             .fixedSize()
             .padding(type.padding, -35)
             .frame(maxWidth: 50, maxHeight: 65)
@@ -86,7 +86,9 @@ struct SingleFlipView: View {
             .clipShape(RoundedCorner(radius: 15))
             .padding(type.padding, -15.5)
             .clipped()
+            .shadow(color: np_gray, radius: 0.1, x: 5, y: 5)
     }
+        
     
     enum FlipType {
         case top

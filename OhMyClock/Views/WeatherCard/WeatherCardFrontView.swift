@@ -27,7 +27,7 @@ struct WeatherCardFrontView: View {
     var body: some View {
         VStack(spacing: 15) {
             HStack {
-                Label("Today's Weather", systemImage: "thermometer.sun.fill")
+                Label("Today", systemImage: "thermometer.sun.fill")
                     .font(.caption)
                     .fontWeight(.bold)
                     .kerning(2)
@@ -99,7 +99,7 @@ struct WeatherCardFrontView: View {
             // MARK: WeatherKit Trademark
             HStack {
                 Text("Powered by  Weather. Weather data provided by WeatherKit.")
-                    .font(.system(size: 6))
+                    .font(.system(size: 5))
                     .fontWeight(.semibold)
                     .kerning(2)
                     .textCase(.uppercase)
@@ -107,11 +107,13 @@ struct WeatherCardFrontView: View {
             .padding(5)
         }
         .frame(maxWidth: screenWidth - 20, maxHeight: screenHeight * 0.65)
-        .background(np_black)
+        .background(np_jap_indigo)
         .foregroundColor(np_white)
         .ignoresSafeArea()
         .cornerRadius(20)
         .edgesIgnoringSafeArea(.bottom)
+        .padding(.bottom, 5)
+        .shadow(color: np_gray, radius: 0.1, x: 5, y: 5)
         .onAppear {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()

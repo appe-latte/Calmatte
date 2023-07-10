@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04E82A0A1E1B002523A9 /* Weather.swift */; };
 		2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */; };
-		2F24A2632A4BB57C00B41C01 /* MoodRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2622A4BB57C00B41C01 /* MoodRecord.swift */; };
 		2F24A2652A4BB5E400B41C01 /* MoodTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2642A4BB5E400B41C01 /* MoodTrackingView.swift */; };
 		2F24A2692A4C878400B41C01 /* BreathType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2682A4C878400B41C01 /* BreathType.swift */; };
 		2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A17F2973F0FC007DA7CC /* LocationManager.swift */; };
@@ -45,9 +44,6 @@
 		2FB2C4FC2A37B3C4006D5A30 /* TaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */; };
 		2FB2C4FE2A37B401006D5A30 /* TaskManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C4FD2A37B401006D5A30 /* TaskManagerView.swift */; };
 		2FB2C5012A37B4FD006D5A30 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C5002A37B4FD006D5A30 /* AddTaskView.swift */; };
-		2FB87FA82A0C31640033B4E1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2FB87FA72A0C31640033B4E1 /* Lottie */; };
-		2FB87FAB2A0C31F30033B4E1 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FB87FAA2A0C31F30033B4E1 /* success.json */; };
-		2FB87FAD2A0C331F0033B4E1 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB87FAC2A0C331F0033B4E1 /* LottieView.swift */; };
 		2FB87FB02A0C6E1D0033B4E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */; };
 		2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEE581297731CE00416E54 /* TaskRow.swift */; };
 		2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */; };
@@ -63,7 +59,6 @@
 /* Begin PBXFileReference section */
 		2F0D04E82A0A1E1B002523A9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
-		2F24A2622A4BB57C00B41C01 /* MoodRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRecord.swift; sourceTree = "<group>"; };
 		2F24A2642A4BB5E400B41C01 /* MoodTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodTrackingView.swift; sourceTree = "<group>"; };
 		2F24A2682A4C878400B41C01 /* BreathType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathType.swift; sourceTree = "<group>"; };
 		2F27A17F2973F0FC007DA7CC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -98,8 +93,6 @@
 		2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCategory.swift; sourceTree = "<group>"; };
 		2FB2C4FD2A37B401006D5A30 /* TaskManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerView.swift; sourceTree = "<group>"; };
 		2FB2C5002A37B4FD006D5A30 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
-		2FB87FAA2A0C31F30033B4E1 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
-		2FB87FAC2A0C331F0033B4E1 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FEEE581297731CE00416E54 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		2FF12EBB2A0B759A0097993C /* OmcModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OmcModel.xcdatamodel; sourceTree = "<group>"; };
@@ -117,7 +110,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FB87FA82A0C31640033B4E1 /* Lottie in Frameworks */,
 				2F54B262297C71190075E488 /* RealmSwift in Frameworks */,
 				2F54B260297C71190075E488 /* Realm in Frameworks */,
 				2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */,
@@ -157,7 +149,6 @@
 				2F8838302A0AB1C800840F68 /* OhMyClock.entitlements */,
 				2F434BBB296F8F9A00698C1A /* Info.plist */,
 				2FB87FAE2A0C6E090033B4E1 /* Delegates */,
-				2FB87FA92A0C31E70033B4E1 /* Lottie */,
 				2F434BB4296F89D100698C1A /* Helpers */,
 				2F36B0B12967A48B00AC8D59 /* Utils */,
 				2F36B0B62967A4FD00AC8D59 /* Models */,
@@ -192,7 +183,6 @@
 				2F36B0B42967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift */,
 				2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */,
 				2FEEE581297731CE00416E54 /* TaskRow.swift */,
-				2FB87FAC2A0C331F0033B4E1 /* LottieView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -204,7 +194,6 @@
 				2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */,
 				2F0D04E82A0A1E1B002523A9 /* Weather.swift */,
 				2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */,
-				2F24A2622A4BB57C00B41C01 /* MoodRecord.swift */,
 				2F24A2682A4C878400B41C01 /* BreathType.swift */,
 				2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */,
 			);
@@ -251,14 +240,6 @@
 				2FB2C5002A37B4FD006D5A30 /* AddTaskView.swift */,
 			);
 			path = Tasks;
-			sourceTree = "<group>";
-		};
-		2FB87FA92A0C31E70033B4E1 /* Lottie */ = {
-			isa = PBXGroup;
-			children = (
-				2FB87FAA2A0C31F30033B4E1 /* success.json */,
-			);
-			path = Lottie;
 			sourceTree = "<group>";
 		};
 		2FB87FAE2A0C6E090033B4E1 /* Delegates */ = {
@@ -316,7 +297,6 @@
 				2F27A185297401B8007DA7CC /* SwiftyJSON */,
 				2F54B25F297C71190075E488 /* Realm */,
 				2F54B261297C71190075E488 /* RealmSwift */,
-				2FB87FA72A0C31640033B4E1 /* Lottie */,
 			);
 			productName = OhMyClock;
 			productReference = 2F36B0A02967A40000AC8D59 /* OhMyClock.app */;
@@ -350,7 +330,6 @@
 				2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				2FB87FA62A0C31640033B4E1 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 2F36B0A12967A40000AC8D59 /* Products */;
 			projectDirPath = "";
@@ -367,7 +346,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F36B0AB2967A40200AC8D59 /* Preview Assets.xcassets in Resources */,
-				2FB87FAB2A0C31F30033B4E1 /* success.json in Resources */,
 				2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */,
 				2FF8F01329B27BD5008D7C7E /* equilibrium.mp3 in Resources */,
 			);
@@ -381,7 +359,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FB2C5012A37B4FD006D5A30 /* AddTaskView.swift in Sources */,
-				2FB87FAD2A0C331F0033B4E1 /* LottieView.swift in Sources */,
 				2F36B0B52967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift in Sources */,
 				2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */,
 				2FA9AB472A4E147C00557FD0 /* MoodInsightsListView.swift in Sources */,
@@ -414,7 +391,6 @@
 				2F36B0B82967A51900AC8D59 /* Models.swift in Sources */,
 				2FB2C4FE2A37B401006D5A30 /* TaskManagerView.swift in Sources */,
 				2FA9AB492A4E14CB00557FD0 /* MoodSelectorTileView.swift in Sources */,
-				2F24A2632A4BB57C00B41C01 /* MoodRecord.swift in Sources */,
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
 				2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */,
 				2FF51E002A3A2E050035A964 /* WeatherCardFrontView.swift in Sources */,
@@ -556,10 +532,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OhMyClock/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Oh My Clock";
+				INFOPLIST_KEY_CFBundleDisplayName = Calmatte;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow \"Oh My Clock\" permission to get your location so we can deliver accurate weather and timezone information.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow \"Oh My Clock\" permission to get your location so we can deliver accurate weather and timezone information.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Required to show the name of your location and weather information\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -597,10 +573,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OhMyClock/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Oh My Clock";
+				INFOPLIST_KEY_CFBundleDisplayName = Calmatte;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow \"Oh My Clock\" permission to get your location so we can deliver accurate weather and timezone information.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow \"Oh My Clock\" permission to get your location so we can deliver accurate weather and timezone information.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Required to show the name of your location and weather information\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -672,14 +648,6 @@
 				minimumVersion = 10.10.0;
 			};
 		};
-		2FB87FA62A0C31640033B4E1 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -702,11 +670,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
-		};
-		2FB87FA72A0C31640033B4E1 /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2FB87FA62A0C31640033B4E1 /* XCRemoteSwiftPackageReference "lottie-spm" */;
-			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 

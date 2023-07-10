@@ -74,8 +74,12 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                     self.currHumidity = weather.currentWeather.humidity
                     self.currCondition = weather.currentWeather.condition.description
                     self.currWeatherSymbol = weather.currentWeather.symbolName
-                    self.dailyHigh = "High: \(String(format: "%.0f°", weather.dailyForecast.forecast[0].highTemperature.value))"
-                    self.dailyLow = "Low: \(String(format: "%.0f°", weather.dailyForecast.forecast[0].lowTemperature.value))"
+                    
+                    // MARK: Check for presence of values in array to ensure there is no "index out of range" error
+                    if let firstForecast = weather.dailyForecast.forecast.first {
+                        self.dailyHigh = "High: \(Int(firstForecast.highTemperature.value))°"
+                        self.dailyLow = "Low: \(Int(firstForecast.lowTemperature.value))°"
+                    }
                     
                     // MARK: Hourly Forecast
                     self.hourlyForecast.removeAll() // Clear the existing forecast data
@@ -91,7 +95,7 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             }
         }
         
-        // Schedule a recurring timer to fetch weather data every 10 minutes
+        // MARK: Schedule a recurring timer to fetch weather data every 10 minutes
         Timer.scheduledTimer(withTimeInterval: 10 * 60, repeats: true) { _ in
             self.fetchWeather()
         }

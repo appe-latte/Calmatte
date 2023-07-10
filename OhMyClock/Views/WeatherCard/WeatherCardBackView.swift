@@ -84,7 +84,7 @@ struct WeatherCardBackView: View {
             // MARK: WeatherKit Trademark
             HStack {
                 Text("Powered by  Weather. Weather data provided by WeatherKit.")
-                    .font(.system(size: 6))
+                    .font(.system(size: 5))
                     .fontWeight(.semibold)
                     .kerning(2)
                     .textCase(.uppercase)
@@ -92,11 +92,13 @@ struct WeatherCardBackView: View {
             .padding(5)
         }
         .frame(maxWidth: screenWidth - 20, maxHeight: screenHeight * 0.30)
-        .background(np_gray)
-        .foregroundColor(np_black)
+        .background(np_jap_indigo)
+        .foregroundColor(np_white)
         .ignoresSafeArea()
         .cornerRadius(20)
         .edgesIgnoringSafeArea(.bottom)
+        .padding(.bottom, 5)
+        .shadow(color: np_gray, radius: 0.1, x: 5, y: 5)
         .onAppear {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()

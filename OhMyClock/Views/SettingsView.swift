@@ -7,6 +7,7 @@
 
 import SwiftUI
 import StoreKit
+import UserNotifications
 
 struct SettingsView: View {
     @State var rowHeight = 65.0
@@ -17,9 +18,11 @@ struct SettingsView: View {
     let screenHeight = UIScreen.main.bounds.height
     let screenWidth = UIScreen.main.bounds.width
     
+    @AppStorage("RemindersEnabled") private var remindersEnabled = false
+    
     var body: some View {
         ZStack {
-            np_black
+            np_jap_indigo
                 .ignoresSafeArea()
             
             VStack {
@@ -34,34 +37,34 @@ struct SettingsView: View {
                                 .frame(width: 15, height: 15)
                                 .foregroundColor(np_white)
                             
-                                Text("our website")
-                                    .font(.caption)
-                                    .fontWeight(.semibold)
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                                    .foregroundColor(np_white)
+                            Text("our website")
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                                .kerning(5)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
                         }
                     })
-
+                    
                     Spacer()
                     
                     // MARK: "Share App"
                     Button(action: {
                         shareSheet()
                     }, label: {
-                            HStack {
-                                Image("share")
-                                    .resizable()
-                                    .frame(width: 15, height: 15)
-                                    .foregroundColor(np_white)
-                                
-                                Text("Share")
-                                    .font(.system(size: 12))
-                                    .fontWeight(.semibold)
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                                    .foregroundColor(np_white)
-                            }
+                        HStack {
+                            Image("share")
+                                .resizable()
+                                .frame(width: 15, height: 15)
+                                .foregroundColor(np_white)
+                            
+                            Text("Share")
+                                .font(.system(size: 12))
+                                .fontWeight(.semibold)
+                                .kerning(5)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
                     })
                 }
                 .padding()
@@ -76,7 +79,7 @@ struct SettingsView: View {
                 Image("logo")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .foregroundColor(np_purple)
+                    .foregroundColor(np_white)
                     .frame(width: 180, height: 210)
                 
                 Text("Developed with \(Image(systemName: "heart.fill")) by: Appè Latte")
@@ -84,7 +87,7 @@ struct SettingsView: View {
                     .fontWeight(.thin)
                     .kerning(4)
                     .textCase(.uppercase)
-                    .foregroundColor(np_purple)
+                    .foregroundColor(np_white)
                 
                 // MARK: App Version + Build Number
                 HStack(spacing: 10) {
@@ -93,7 +96,7 @@ struct SettingsView: View {
                         .fontWeight(.thin)
                         .kerning(5)
                         .textCase(.uppercase)
-                        .foregroundColor(np_purple)
+                        .foregroundColor(np_white)
                     
                     
                     if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
@@ -103,14 +106,14 @@ struct SettingsView: View {
                             .fontWeight(.regular)
                             .kerning(9.5)
                             .textCase(.uppercase)
-                            .foregroundColor(np_purple)
+                            .foregroundColor(np_white)
                     }
                 }
                 .padding(.horizontal, 20)
                 
                 Spacer()
             }
-            .padding(.top, 50)
+            .padding(.top, 75)
             
             Spacer()
             
@@ -132,32 +135,36 @@ struct SettingsView: View {
                 .frame(width: screenWidth - 30)
                 .padding()
                 
-                // MARK: "Face ID"
-                Button(action: {
-                    emailAlert.toggle()
-                }, label: {
-                    HStack(spacing: 10) {
-                        Image("scan")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .padding(5)
-                            .foregroundColor(np_white)
-                        
-                        HStack {
-                            Text("secure with faceid")
-                                .font(.caption)
-                                .fontWeight(.semibold)
-                                .kerning(5)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                            
-                            Spacer()
-                        }
-                    }
-                })
+                // MARK: "Reminders"
+                
+                HStack(spacing: 10) {
+                    Image("notification")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                        .padding(5)
+                        .foregroundColor(np_turq)
+                    
+                    Toggle("Enable Reminders", isOn: $remindersEnabled)
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                        .kerning(5)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                        .onChange(of: remindersEnabled, perform: { enabled in
+                            if enabled {
+                                requestNotificationAuthorization()
+                                sendReminderEnabledNotification()
+                            } else {
+                                cancelScheduledReminders()
+                                sendReminderDisabledNotification()
+                            }
+                        })
+                        .toggleStyle(SwitchToggleStyle(tint: Color(red: 62 / 255, green: 201 / 255, blue: 193 / 255)))
+                }
                 .padding(.horizontal, 20)
                 
                 Divider()
+                    .background(np_gray)
                 
                 // MARK: "Legal Source"
                 Button(action: {
@@ -168,7 +175,7 @@ struct SettingsView: View {
                             .resizable()
                             .frame(width: 25, height: 25)
                             .padding(5)
-                            .foregroundColor(np_blue)
+                            .foregroundColor(np_tan)
                         
                         HStack {
                             Text("Weather Data Source")
@@ -187,10 +194,20 @@ struct SettingsView: View {
                 .padding(.horizontal, 20)
                 
                 Divider()
-            
+                    .background(np_gray)
+                
                 // MARK: "Contact Developer"
                 Button(action: {
-                    emailAlert.toggle()
+                    let urlWhatsApp = "https://wa.me/15874384450?text=Hello,%20I'm%20interested%20in%20your%20app%20development%20services."
+                    
+                    guard let url = URL(string: urlWhatsApp) else { return }
+                    
+                    if UIApplication.shared.canOpenURL(url) {
+                        openURL(url)
+                    }
+                    else {
+                        print("WhatsApp not installed")
+                    }
                 }, label: {
                     HStack(spacing: 10) {
                         Image("chat")
@@ -200,7 +217,7 @@ struct SettingsView: View {
                             .foregroundColor(np_green)
                         
                         HStack {
-                            Text("Contact Us")
+                            Text("Contact Us | Whatsapp")
                                 .font(.caption)
                                 .fontWeight(.semibold)
                                 .kerning(5)
@@ -216,6 +233,7 @@ struct SettingsView: View {
                 .padding(.horizontal, 20)
                 
                 Divider()
+                    .background(np_gray)
                 
                 // MARK: "Write A Review"
                 Button(action: {
@@ -243,31 +261,104 @@ struct SettingsView: View {
                     }
                 })
                 .padding(.horizontal, 20)
-                
-                Divider()
             }
             .padding(.bottom, 20)
             
             Spacer()
             
         }
-        .alert("Email us to discuss your app development needs.", isPresented: $emailAlert, actions: {
-            Button(action: {
-                mailto("hello@appe-latte.ca")
-            }, label: {
-                Label("Email", systemImage: "envelope.fill")
-            })
-            Button("Cancel", role: .cancel, action: {})
-        })
     }
     
-    // MARK: "Email" function
-    func mailto(_ email: String) {
-        let mailto = "mailto:\(email)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        print(mailto ?? "")
-        if let url = URL(string: mailto!) {
-            openURL(url)
+    // MARK: Reminders
+    func requestNotificationAuthorization() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if granted {
+                scheduleReminders()
+            } else {
+                // Handle authorization denial or error
+            }
         }
+    }
+    
+    func scheduleReminders() {
+        let content = UNMutableNotificationContent()
+        content.title = "Log Your Mood"
+        content.body = "Don't forget to log your mood!"
+        content.sound = UNNotificationSound.default
+        
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.hour = 8
+        dateComponents.minute = 0
+        
+        for i in 0..<6 {
+            // Create a separate trigger for each reminder time
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            
+            // Create a unique identifier for each notification
+            let identifier = "moodReminder_\(i)"
+            
+            // Create a notification request
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            
+            // Schedule the notification
+            UNUserNotificationCenter.current().add(request) { (error) in
+                if let error = error {
+                    print("Error scheduling notification: \(error.localizedDescription)")
+                } else {
+                    print("Notification scheduled successfully: \(identifier)")
+                }
+            }
+            
+            // Increment the date components by 2 hours for the next reminder
+            dateComponents.hour! += 2
+            if dateComponents.hour! >= 21 {
+                // If it's 9 pm or later, reset the hour to 8 am on the next day
+                dateComponents.hour = 8
+                dateComponents.day! += 1
+            }
+        }
+    }
+    
+    func sendReminderEnabledNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Reminders Enabled"
+        content.body = "You will now receive reminders to log your mood."
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false) // Trigger notification immediately
+        
+        let request = UNNotificationRequest(identifier: "reminderEnabledNotification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print("Error scheduling notification: \(error.localizedDescription)")
+            } else {
+                print("Notification scheduled successfully: reminderEnabledNotification")
+            }
+        }
+    }
+    
+    func sendReminderDisabledNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Reminders Disabled"
+        content.body = "You have disabled reminders to log your mood."
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false) // Trigger notification immediately
+        
+        let request = UNNotificationRequest(identifier: "reminderDisabledNotification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print("Error scheduling notification: \(error.localizedDescription)")
+            } else {
+                print("Notification scheduled successfully: reminderDisabledNotification")
+            }
+        }
+    }
+    
+    
+    func cancelScheduledReminders() {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["moodReminder"])
     }
 }
 

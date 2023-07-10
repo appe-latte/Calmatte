@@ -137,10 +137,12 @@ struct ClockView: View {
                     }
                     .frame(maxWidth: screenWidth - 40, maxHeight: screenHeight * 0.65)
                     .background(np_white)
-                    .foregroundColor(np_black)
+                    .foregroundColor(np_arsenic)
                     .ignoresSafeArea()
                     .cornerRadius(20)
                     .padding(.bottom, 20)
+                    .padding(.bottom, 5)
+                    .shadow(color: np_jap_indigo, radius: 0.1, x: 5, y: 5)
                     
                     // MARK: Mood Insights
                     HStack {
@@ -170,9 +172,11 @@ struct ClockView: View {
                     }
                     .frame(maxWidth: screenWidth - 40, maxHeight: screenHeight * 0.65)
                     .background(np_white)
-                    .foregroundColor(np_black)
+                    .foregroundColor(np_arsenic)
                     .ignoresSafeArea()
                     .cornerRadius(20)
+                    .padding(.bottom, 5)
+                    .shadow(color: np_jap_indigo, radius: 0.1, x: 5, y: 5)
                     
                 }
             }
@@ -205,7 +209,7 @@ struct ClockView: View {
                 .overlay {
                     ZStack {
                         Rectangle()
-                            .fill(.linearGradient(colors: [.clear, np_black, np_black, np_black], startPoint: .top, endPoint: .bottom))
+                            .fill(.linearGradient(colors: [.clear, np_arsenic, np_arsenic], startPoint: .top, endPoint: .bottom))
                             .frame(height: size.height * 0.35)
                             .frame(maxHeight: .infinity, alignment: .bottom)
                     }
@@ -213,7 +217,7 @@ struct ClockView: View {
             
             // MARK: Tint
             Rectangle()
-                .fill(np_black).opacity(0.5)
+                .fill(np_arsenic).opacity(0.85)
                 .frame(height: size.height)
                 .frame(maxHeight: .infinity, alignment: .bottom)
         }
@@ -277,7 +281,7 @@ struct CustomSegmentedPickerView: View {
                     .kerning(2)
                     .textCase(.uppercase)
                     .padding(15)
-                    .foregroundColor(self.selection == item ? np_white : np_black)
+                    .foregroundColor(self.selection == item ? np_white : np_arsenic)
                     .background(Capsule().fill(self.selection == item ? np_orange : Color.clear))
                     .onTapGesture {
                         withAnimation {

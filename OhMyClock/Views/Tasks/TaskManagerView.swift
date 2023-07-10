@@ -24,7 +24,6 @@ struct TaskManagerView: View {
             VStack(spacing: 16) {
                 ForEach(taskManager.tasks.sorted(by: { $0.dateAdded < $1.dateAdded })) { task in
                     CardView(taskManager: taskManager, task: task)
-                    //                        .background(task.taskCategory.color)
                         .background(np_white)
                         .cornerRadius(15)
                 }
@@ -56,7 +55,7 @@ struct TaskManagerView: View {
                 .overlay {
                     ZStack {
                         Rectangle()
-                            .fill(.linearGradient(colors: [.clear, np_black, np_black, np_black], startPoint: .top, endPoint: .bottom))
+                            .fill(.linearGradient(colors: [.clear, np_arsenic, np_arsenic], startPoint: .top, endPoint: .bottom))
                             .frame(height: size.height * 0.35)
                             .frame(maxHeight: .infinity, alignment: .bottom)
                     }
@@ -64,7 +63,7 @@ struct TaskManagerView: View {
             
             // Mask Tint
             Rectangle()
-                .fill(np_black).opacity(0.5)
+                .fill(np_arsenic).opacity(0.85)
                 .frame(height: size.height)
                 .frame(maxHeight: .infinity, alignment: .bottom)
         }
@@ -114,6 +113,7 @@ struct TaskManagerView: View {
                         .kerning(3)
                         .textCase(.uppercase)
                         .minimumScaleFactor(0.5)
+                        .foregroundColor(np_black)
                 }
                 .hAlign(.leading)
                 
@@ -132,7 +132,7 @@ struct TaskManagerView: View {
                     .padding(.vertical, 5)
                     .foregroundColor(np_white)
                     .frame(width: 100, height: 35)
-                    .background(np_black)
+                    .background(np_arsenic)
                     .clipShape(Capsule())
                     .overlay(
                         Capsule(style: .continuous)
@@ -224,7 +224,7 @@ struct CardView: View {
             .padding(.bottom, 10)
         }
         .frame(width: screenWidth - 30, height: screenHeight * 0.15)
-        .foregroundColor(np_black)
+        .foregroundColor(np_arsenic)
         .padding(5)
     }
 }

@@ -20,7 +20,7 @@ struct TaskRow : View {
                 .textCase(.uppercase)
                 .minimumScaleFactor(0.75)
         }
-        .foregroundColor(np_black)
+        .foregroundColor(np_arsenic)
     }
 }
 

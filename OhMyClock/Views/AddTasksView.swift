@@ -24,7 +24,7 @@ struct AddTasksView: View {
             
             TextField("Enter milestone here...", text: $title)
                 .textFieldStyle(PlainTextFieldStyle())
-                .foregroundColor(np_black)
+                .foregroundColor(np_arsenic)
             
             // MARK: "Save" button
             
@@ -46,7 +46,7 @@ struct AddTasksView: View {
                 .padding(.vertical, 5)
                 .foregroundColor(np_white)
                 .frame(width: 100, height: 35)
-                .background(np_black)
+                .background(np_arsenic)
                 .clipShape(Capsule())
                 .overlay(
                     Capsule(style: .continuous)

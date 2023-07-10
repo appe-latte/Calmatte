@@ -15,10 +15,10 @@ struct AddTaskView: View {
     @State private var taskName: String = ""
     @State private var taskDescription: String = ""
     @State private var taskDate: Date = .init()
-    @State private var taskCategory: Category = .gray
+    @State private var taskCategory: Category = .indigo
     
     // MARK: Animations
-    @State private var animateColor: Color = Category.gray.color
+    @State private var animateColor: Color = Category.indigo.color
     @State private var animate: Bool = false
     
     let screenWidth = UIScreen.main.bounds.width
@@ -32,7 +32,7 @@ struct AddTaskView: View {
                         dismiss()
                     } label: {
                         Image(systemName: "chevron.left")
-                            .foregroundColor(np_black)
+                            .foregroundColor(np_arsenic)
                             .contentShape(Rectangle())
                     }
                     
@@ -41,7 +41,7 @@ struct AddTaskView: View {
                         .fontWeight(.bold)
                         .kerning(3)
                         .textCase(.uppercase)
-                        .foregroundColor(np_black)
+                        .foregroundColor(np_arsenic)
                 }
                 .padding(.bottom, 15)
                 
@@ -69,7 +69,7 @@ struct AddTaskView: View {
                     .kerning(2)
                     .textCase(.uppercase)
                     .frame(width: screenWidth - 20)
-                    .tint(np_black)
+                    .tint(np_arsenic)
                     .padding(.top, 2)
                 
                 Rectangle()
@@ -129,23 +129,23 @@ struct AddTaskView: View {
             }
             
             VStack(alignment: .leading, spacing: 10) {
-                TitleView("DESCRIPTION", np_black)
+                TitleView("DESCRIPTION", np_arsenic)
                 
                 TextField("Enter task title", text: $taskDescription)
                     .font(.caption)
                     .fontWeight(.bold)
                     .kerning(2)
-                    .foregroundColor(np_black)
+                    .foregroundColor(np_arsenic)
                     .textCase(.uppercase)
                     .frame(width: screenWidth - 20, alignment: .leading)
-                    .tint(np_black)
+                    .tint(np_arsenic)
                     .padding(.top, 2)
                 
                 Rectangle()
-                    .fill(np_black.opacity(0.2))
+                    .fill(np_arsenic.opacity(0.2))
                     .frame(height: 1)
                 
-                TitleView("Assign Colour", np_black)
+                TitleView("Assign Colour", np_arsenic)
                     .padding(.top, 10)
                 
                 LazyVGrid(columns: Array(repeating: .init(.flexible(),spacing: 10), count: 5), spacing: 10) {
@@ -187,7 +187,7 @@ struct AddTaskView: View {
                         .hAlign(.center)
                         .background {
                             Capsule()
-                                .fill(np_black)
+                                .fill(np_arsenic)
                         }
                 }
                 .vAlign(.bottom)
@@ -201,7 +201,7 @@ struct AddTaskView: View {
     }
     
     @ViewBuilder
-    func TitleView(_ value: String,_ color: Color = np_black.opacity(0.7)) -> some View {
+    func TitleView(_ value: String,_ color: Color = np_arsenic.opacity(0.7)) -> some View {
         Text(value)
             .font(.caption)
             .fontWeight(.bold)

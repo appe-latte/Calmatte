@@ -14,39 +14,30 @@ struct CategoryCodable: Codable {
 
 // MARK: Category Enum with Color
 enum Category: String, CaseIterable, Codable {
-    case blue
-    case burgundy
-    case green
-    case turquiose
-    case orange
-    case purple
-    case gray
-    case pink
-    case dark_blue
-    case red
+    case red, blue, green, indigo, purple, tan, pink, tuscan, turquiose, orange
     
     var color: Color {
         switch self {
+        case .red:
+            return np_red
         case .blue:
             return np_blue
-        case .burgundy:
-            return np_burgundy
         case .green:
             return np_green
+        case .indigo:
+            return np_jap_indigo
+        case .purple:
+            return np_purple
+        case .tan:
+            return np_tan
+        case .pink:
+            return np_pink
+        case .tuscan:
+            return np_tuscan
         case .turquiose:
             return np_turq
         case .orange:
             return np_orange
-        case .purple:
-            return np_purple
-        case .gray:
-            return np_gray
-        case .pink:
-            return np_pink
-        case .dark_blue:
-            return np_dark_blue
-        case .red:
-            return np_red
         }
     }
     

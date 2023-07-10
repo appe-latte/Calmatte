@@ -140,7 +140,7 @@ struct TimerView: View {
             }
             .overlay(content: {
                 ZStack {
-                    np_black
+                    np_arsenic
                         .opacity(timerModel.addNewTimer ? 0.25 : 0)
                         .onTapGesture {
                             //                            timerModel.hour = 0
@@ -184,7 +184,7 @@ struct TimerView: View {
                 .overlay {
                     ZStack {
                         Rectangle()
-                            .fill(.linearGradient(colors: [.clear, np_black, np_black, np_black], startPoint: .top, endPoint: .bottom))
+                            .fill(.linearGradient(colors: [.clear, np_arsenic, np_arsenic], startPoint: .top, endPoint: .bottom))
                             .frame(height: size.height * 0.35)
                             .frame(maxHeight: .infinity, alignment: .bottom)
                     }
@@ -192,7 +192,7 @@ struct TimerView: View {
             
             // Mask Tint
             Rectangle()
-                .fill(np_black).opacity(0.5)
+                .fill(np_arsenic).opacity(0.85)
                 .frame(height: size.height)
                 .frame(maxHeight: .infinity, alignment: .bottom)
         }
@@ -271,7 +271,7 @@ struct TimerView: View {
                 Text("Save")
                     .font(.footnote)
                     .fontWeight(.semibold)
-                    .foregroundColor(np_black)
+                    .foregroundColor(np_arsenic)
                     .kerning(5)
                     .textCase(.uppercase)
                     .padding(.vertical, 5)
@@ -283,7 +283,7 @@ struct TimerView: View {
                             .clipShape(Capsule())
                             .overlay(
                                 Capsule(style: .continuous)
-                                    .stroke(np_black, style: StrokeStyle(lineWidth: 1))
+                                    .stroke(np_arsenic, style: StrokeStyle(lineWidth: 1))
                                     .padding(2)
                             )
                     }
@@ -295,7 +295,7 @@ struct TimerView: View {
         .padding()
         .background{
             RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .fill(np_black)
+                .fill(np_arsenic)
                 .frame(width: screenWidth)
                 .ignoresSafeArea()
         }

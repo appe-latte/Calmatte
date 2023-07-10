@@ -59,14 +59,14 @@ struct MeditationView: View {
                             .frame(maxHeight: .infinity, alignment: .top)
                         
                         Rectangle()
-                            .fill(.linearGradient(colors: [.clear, np_black, np_black, np_black], startPoint: .top, endPoint: .bottom))
+                            .fill(.linearGradient(colors: [.clear, np_arsenic, np_arsenic], startPoint: .top, endPoint: .bottom))
                             .frame(height: size.height * 0.35)
                             .frame(maxHeight: .infinity, alignment: .bottom)
                     }
                 }
             
             Rectangle()
-                .fill(np_black).opacity(0.5)
+                .fill(np_arsenic).opacity(0.85)
                 .frame(height: size.height)
                 .frame(maxHeight: .infinity, alignment: .bottom)
         }
@@ -95,32 +95,76 @@ struct MeditationView: View {
     @ViewBuilder
     func Content() -> some View {
         VStack {
-            HStack {
-                Text(meditationViewModel.meditation.title)
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .kerning(10)
-                    .textCase(.uppercase)
-                    .minimumScaleFactor(0.6)
-                    .lineLimit(1)
-                    .foregroundColor(np_black)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    ForEach(sampleTypes){ type in
+                        Text(type.title)
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .minimumScaleFactor(0.5)
+                            .foregroundColor(currentType.id == type.id ? np_arsenic : np_white)
+                            .padding(15)
+                            .clipShape(Capsule())
+                            .background {
+                                ZStack {
+                                    if currentType.id == type.id {
+                                        Capsule(style: .continuous)
+                                            .fill(currentType.color)
+                                            .padding(2)
+                                            .matchedGeometryEffect(id: "TAP", in: animation)
+                                    } else {
+                                        Capsule(style: .continuous)
+                                            .stroke(np_white, style: StrokeStyle(lineWidth: 2.5))
+                                            .padding(2)
+                                    }
+                                }
+                            }
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                withAnimation(.easeInOut) {
+                                    currentType = type
+                                }
+                            }
+                    }
+                    
+                    // MARK: "Play / Stop" sound
+                    PlayerView(meditationViewModel: meditationViewModel)
+                }
+                .padding(.horizontal)
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 10)
             .opacity(showBreatheView ? 0 : 1)
+            .padding(.top, 45)
             
-            // MARK: Description
             HStack {
-                Text(meditationViewModel.meditation.description)
-                    .font(.footnote)
-                    .kerning(3)
-                    .textCase(.uppercase)
-                    .minimumScaleFactor(0.5)
+                Button {
+                    startBreathing()
+                } label: {
+                    Text(showBreatheView ? "End Exercise" : "Start Exercise")
+                        .font(.footnote)
+                        .fontWeight(.bold)
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .foregroundColor(showBreatheView ? np_white.opacity(0.75) : np_gray)
+                        .frame(width: screenWidth * 0.65, height: 50)
+                        .clipShape(Capsule())
+                        .background {
+                            if showBreatheView {
+                                Capsule(style: .continuous)
+                                    .stroke(np_white, style: StrokeStyle(lineWidth: 2.5))
+                                    .padding(2)
+                                
+                            } else {
+                                Capsule(style: .continuous)
+                                    .stroke(currentType.color, style: StrokeStyle(lineWidth: 2.5))
+                                    .padding(2)
+                            }
+                        }
+                }
+                .padding()
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 5)
-            .opacity(showBreatheView ? 0 : 1)
+//            .padding(.bottom, 30)
             
             GeometryReader { proxy in
                 let size = proxy.size
@@ -129,75 +173,33 @@ struct MeditationView: View {
                     BreatheView(size: size)
                         .padding(.bottom, 50)
                     
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 10) {
-                            ForEach(sampleTypes){ type in
-                                Text(type.title)
-                                    .font(.footnote)
-                                    .fontWeight(.semibold)
-                                    .kerning(3)
-                                    .textCase(.uppercase)
-                                    .minimumScaleFactor(0.5)
-                                    .foregroundColor(currentType.id == type.id ? np_black : np_white)
-                                    .padding(15)
-                                    .clipShape(Capsule())
-                                    .background {
-                                        ZStack {
-                                            if currentType.id == type.id {
-                                                Capsule(style: .continuous)
-                                                    .fill(currentType.color)
-                                                    .padding(2)
-                                                    .matchedGeometryEffect(id: "TAP", in: animation)
-                                            } else {
-                                                Capsule(style: .continuous)
-                                                    .stroke(np_white, style: StrokeStyle(lineWidth: 2.5))
-                                                    .padding(2)
-                                            }
-                                        }
-                                    }
-                                    .contentShape(Rectangle())
-                                    .onTapGesture {
-                                        withAnimation(.easeInOut) {
-                                            currentType = type
-                                        }
-                                    }
-                            }
-                            
-                            // MARK: "Play / Stop" sound
-                            PlayerView(meditationViewModel: meditationViewModel)
-                        }
-                        .padding(.horizontal)
+                    HStack {
+                        Text(meditationViewModel.meditation.title)
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .kerning(10)
+                            .textCase(.uppercase)
+                            .minimumScaleFactor(0.6)
+                            .lineLimit(1)
+                            .foregroundColor(np_white)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .padding(.horizontal, 20)
                     .opacity(showBreatheView ? 0 : 1)
                     
+                    // MARK: Description
                     HStack {
-                        Button {
-                            startBreathing()
-                        } label: {
-                            Text(showBreatheView ? "End Exercise" : "Start Exercise")
-                                .font(.footnote)
-                                .fontWeight(.bold)
-                                .kerning(3)
-                                .textCase(.uppercase)
-                                .foregroundColor(showBreatheView ? np_white.opacity(0.75) : np_gray)
-                                .frame(width: screenWidth * 0.65, height: 50)
-                                .clipShape(Capsule())
-                                .background {
-                                    if showBreatheView {
-                                        Capsule(style: .continuous)
-                                            .stroke(np_white, style: StrokeStyle(lineWidth: 2.5))
-                                            .padding(2)
-                                        
-                                    } else {
-                                        Capsule(style: .continuous)
-                                            .stroke(currentType.color, style: StrokeStyle(lineWidth: 2.5))
-                                            .padding(2)
-                                    }
-                                }
-                        }
-                        .padding()
+                        Text(meditationViewModel.meditation.description)
+                            .font(.footnote)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .minimumScaleFactor(0.5)
+                            .foregroundColor(np_white)
                     }
-                    .padding(.bottom, 30)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 5)
+                    .padding(.bottom, 20)
+                    .opacity(showBreatheView ? 0 : 1)
                 }
                 .frame(width: size.width, height: size.height, alignment: .bottom)
                 .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) {_ in
