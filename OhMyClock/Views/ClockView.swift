@@ -99,7 +99,7 @@ struct ClockView: View {
                     // MARK: Weather Information
                     ScrollView(.horizontal, showsIndicators: false){
                         HStack {
-                            Label("Weather", systemImage: "cloud.sun.fill")
+                            Label("Today's Weather", systemImage: "cloud.sun.fill")
                                 .font(.footnote)
                                 .fontWeight(.semibold)
                                 .kerning(2)
@@ -121,7 +121,7 @@ struct ClockView: View {
                     
                     // MARK: Mood Diary
                     HStack {
-                        Label("How do you feel today?", systemImage: "face.dashed")
+                        Label("How do you feel today?", systemImage: "face.smiling.inverse")
                             .font(.footnote)
                             .fontWeight(.semibold)
                             .kerning(2)
@@ -139,14 +139,14 @@ struct ClockView: View {
                     .background(np_white)
                     .foregroundColor(np_arsenic)
                     .ignoresSafeArea()
-                    .cornerRadius(20)
+                    .cornerRadius(10)
                     .padding(.bottom, 20)
                     .padding(.bottom, 5)
-                    .shadow(color: np_jap_indigo, radius: 0.1, x: 5, y: 5)
+                    .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
                     
                     // MARK: Mood Insights
                     HStack {
-                        Label("mood insights", systemImage: "chart.xyaxis.line")
+                        Label("mood insights", systemImage: "info.circle.fill")
                             .font(.footnote)
                             .fontWeight(.semibold)
                             .kerning(2)
@@ -171,12 +171,12 @@ struct ClockView: View {
                         
                     }
                     .frame(maxWidth: screenWidth - 40, maxHeight: screenHeight * 0.65)
-                    .background(np_white)
+                    .background(np_jap_indigo)
                     .foregroundColor(np_arsenic)
                     .ignoresSafeArea()
-                    .cornerRadius(20)
+                    .cornerRadius(10)
                     .padding(.bottom, 5)
-                    .shadow(color: np_jap_indigo, radius: 0.1, x: 5, y: 5)
+                    .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
                     
                 }
             }
@@ -281,7 +281,7 @@ struct CustomSegmentedPickerView: View {
                     .kerning(2)
                     .textCase(.uppercase)
                     .padding(15)
-                    .foregroundColor(self.selection == item ? np_white : np_arsenic)
+                    .foregroundColor(self.selection == item ? np_white : np_white)
                     .background(Capsule().fill(self.selection == item ? np_orange : Color.clear))
                     .onTapGesture {
                         withAnimation {

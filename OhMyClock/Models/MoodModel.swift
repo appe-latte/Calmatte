@@ -24,7 +24,7 @@ enum InsightsType: String, CaseIterable {
     var maximumMoodCheckins: Int {
         switch self {
         case .today:
-            return 3
+            return 7
         case .thisWeek:
             return 21
         }

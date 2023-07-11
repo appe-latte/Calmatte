@@ -18,6 +18,7 @@ struct SettingsView: View {
     let screenHeight = UIScreen.main.bounds.height
     let screenWidth = UIScreen.main.bounds.width
     
+    // MARK: Reminders
     @AppStorage("RemindersEnabled") private var remindersEnabled = false
     
     var body: some View {
@@ -76,7 +77,7 @@ struct SettingsView: View {
             
             // MARK: Logo
             VStack(alignment: .center, spacing: 3) {
-                Image("logo")
+                Image("logo-text")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .foregroundColor(np_white)
@@ -217,8 +218,15 @@ struct SettingsView: View {
                             .foregroundColor(np_green)
                         
                         HStack {
-                            Text("Contact Us | Whatsapp")
+                            Text("Let's Chat")
                                 .font(.caption)
+                                .fontWeight(.semibold)
+                                .kerning(5)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                            
+                            Text("(Whatsapp)")
+                                .font(.system(size: 8))
                                 .fontWeight(.semibold)
                                 .kerning(5)
                                 .textCase(.uppercase)

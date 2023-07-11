@@ -24,7 +24,7 @@ struct MoodSelectorTileView: View {
                 self.saveMoodFooterView
             }
         }
-        .cornerRadius(20)
+        .cornerRadius(10)
     }
     
     /// Large gradient view
@@ -68,7 +68,7 @@ struct MoodSelectorTileView: View {
     
     var saveMoodFooterView: some View {
         ZStack {
-            Color(.black).opacity(0.2).frame(height: 50)
+            np_jap_indigo.frame(height: 50)
             
             HStack {
                 Text("I feel:")

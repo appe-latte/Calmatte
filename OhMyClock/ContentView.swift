@@ -44,6 +44,7 @@ struct ContentView: View {
                     Label("Home", image: "home")
                 }
             
+            
             MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
                 .colorScheme(.light)
                 .environmentObject(audioManager)
@@ -77,7 +78,6 @@ struct ContentView: View {
                         cancelScheduledReminders()
                     }
                 }
-            
         }
     }
     
@@ -156,8 +156,7 @@ struct ContentView: View {
             }
         }
     }
-    
-    
+
     func cancelScheduledReminders() {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["moodReminder"])
     }
@@ -183,3 +182,17 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+struct CustomShape: Shape {
+    var corner : UIRectCorner
+    var radii : CGFloat
+    
+    func path(in rect : CGRect) -> Path{
+        let path = UIBezierPath(
+            roundedRect : rect,
+            byRoundingCorners: corner,
+            cornerRadii: CGSize(
+                width: radii, height: radii))
+        
+        return Path(path.cgPath)
+    }
+}

@@ -22,6 +22,7 @@ struct MoodInsightsListView: View {
                     Color(.secondaryLabel)
                         .opacity(0.2)
                     
+                    
                     // MARK: Bars for mood count
                     HStack {
                         self.moodModel.moodDetails(type: MoodType.allCases[index]).colors.first!
@@ -35,8 +36,8 @@ struct MoodInsightsListView: View {
                         .fontWeight(.bold)
                         .foregroundColor(self.moodCounterColor(type: MoodType.allCases[index]))
                 }
-                .cornerRadius(10)
                 .frame(height: 40)
+                .clipShape(Capsule())
             }
         })
     }
@@ -44,7 +45,7 @@ struct MoodInsightsListView: View {
     /// This will change the mood counter color from dark to white to look nicer on color background
     private func moodCounterColor(type: MoodType) -> Color {
         let count = self.moodModel.moodCount(type: type)
-        return count > (moodModel.insightsType == .today ? 1 : 10) ? np_white : Color(red: 24 / 255, green: 24 / 255, blue: 24 / 255)
+        return count > (moodModel.insightsType == .today ? 1 : 10) ? np_white : np_gray
     }
     
     /// This will determine the necessary width for the colored progress view

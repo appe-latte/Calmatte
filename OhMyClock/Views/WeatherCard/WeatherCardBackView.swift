@@ -26,7 +26,7 @@ struct WeatherCardBackView: View {
     var body: some View {
         VStack(spacing: 15) {
             HStack {
-                Label("12-Hour Forecast", systemImage: "clock")
+                Label("12-Hour Forecast", systemImage: "")
                     .font(.caption)
                     .fontWeight(.bold)
                     .kerning(2)
@@ -49,7 +49,7 @@ struct WeatherCardBackView: View {
                             
                             Image(systemName: "\(weather.symbolName).fill")
                                 .font(.title)
-//                                .foregroundColor(np_black)
+                            //                                .foregroundColor(np_black)
                                 .symbolRenderingMode(.multicolor)
                             
                             Text(weather.temperature)
@@ -95,10 +95,10 @@ struct WeatherCardBackView: View {
         .background(np_jap_indigo)
         .foregroundColor(np_white)
         .ignoresSafeArea()
-        .cornerRadius(20)
+        .cornerRadius(10)
         .edgesIgnoringSafeArea(.bottom)
         .padding(.bottom, 5)
-        .shadow(color: np_gray, radius: 0.1, x: 5, y: 5)
+        .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
         .onAppear {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()

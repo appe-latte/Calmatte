@@ -27,7 +27,7 @@ struct WeatherCardFrontView: View {
     var body: some View {
         VStack(spacing: 15) {
             HStack {
-                Label("Today", systemImage: "thermometer.sun.fill")
+                Label("Current Weather", systemImage: "")
                     .font(.caption)
                     .fontWeight(.bold)
                     .kerning(2)
@@ -110,10 +110,10 @@ struct WeatherCardFrontView: View {
         .background(np_jap_indigo)
         .foregroundColor(np_white)
         .ignoresSafeArea()
-        .cornerRadius(20)
+        .cornerRadius(10)
         .edgesIgnoringSafeArea(.bottom)
         .padding(.bottom, 5)
-        .shadow(color: np_gray, radius: 0.1, x: 5, y: 5)
+        .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
         .onAppear {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
