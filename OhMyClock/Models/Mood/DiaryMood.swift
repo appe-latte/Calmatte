@@ -16,6 +16,16 @@ enum EmotionState: String, Codable {
     case great
 }
 
+enum DayState: String, Codable {
+    case fun
+    case productive
+    case busy
+    case bored
+    case tiring
+    case active
+    case meh
+}
+
 enum MoodColor: String, Codable {
     case angryColor = "angryColor"
     case upsetColor = "upsetColor"
@@ -46,15 +56,17 @@ struct Emotion: Codable {
 
 struct Mood: Codable, Equatable, Identifiable {
     var id = UUID()
-    let emotion: Emotion
-    var comment: String?
-    let date: Date
-    
-    init(emotion: Emotion, comment: String?, date: Date) {
-        self.emotion = emotion
-        self.comment = comment
-        self.date = date
-    }
+        let emotion: Emotion
+        var comment: String?
+        let date: Date
+        var dayStates: [DayState] // This will store the day states
+        
+        init(emotion: Emotion, comment: String?, date: Date, dayStates: [DayState]) {
+            self.emotion = emotion
+            self.comment = comment
+            self.date = date
+            self.dayStates = dayStates
+        }
     
     var dateString: String {
         dateFormatter.string(from: date)

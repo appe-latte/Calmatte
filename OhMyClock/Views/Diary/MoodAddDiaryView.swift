@@ -21,6 +21,8 @@ struct MoodAddDiaryView: View {
     @State private var angrySelected = false
     @State private var counterLabel = "200"
     
+    @State private var dayStates: [DayState] = []
+    
     var body: some View {
         ZStack {
             np_arsenic
@@ -200,10 +202,170 @@ struct MoodAddDiaryView: View {
                     }
                 }
                 
+                // MARK: Day Type selection
+                VStack {
+                    HStack {
+                        Label("How was your day?", systemImage: "")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        Spacer()
+                    }
+                    
+                    ScrollView(.horizontal, showsIndicators: false){
+                        HStack(spacing: 15){
+                            
+                            // MARK: Fun - state
+                            VStack(spacing: 5) {
+                                Button(action: {
+                                    self.toggleDayState(.fun)
+                                }) {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(self.dayStates.contains(.fun) ? np_white : np_white.opacity(0.45))
+                                            .frame(width: 75, height: 45)
+                                            .overlay {
+                                                Text("Fun")
+                                                    .font(.system(size: 10))
+                                                    .fontWeight(.medium)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(self.dayStates.contains(.fun) ? np_jap_indigo : np_white)
+                                            }
+                                    }
+                                }
+                            }
+                            
+                            // MARK: Busy - state
+                            VStack(spacing: 5) {
+                                Button(action: {
+                                    self.toggleDayState(.busy)
+                                }) {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(self.dayStates.contains(.busy) ? np_white : np_white.opacity(0.45))
+                                            .frame(width: 75, height: 45)
+                                            .overlay {
+                                                Text("Busy")
+                                                    .font(.system(size: 10))
+                                                    .fontWeight(.medium)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(self.dayStates.contains(.busy) ? np_jap_indigo : np_white)
+                                            }
+                                    }
+                                }
+                            }
+                            
+                            // MARK: Active - state
+                            VStack(spacing: 5) {
+                                Button(action: {
+                                    self.toggleDayState(.active)
+                                }) {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(self.dayStates.contains(.active) ? np_white : np_white.opacity(0.45))
+                                            .frame(width: 75, height: 45)
+                                            .overlay {
+                                                Text("active")
+                                                    .font(.system(size: 10))
+                                                    .fontWeight(.medium)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(self.dayStates.contains(.active) ? np_jap_indigo : np_white)
+                                            }
+                                    }
+                                }
+                            }
+                            
+                            // MARK: Productive - state
+                            VStack(spacing: 5) {
+                                Button(action: {
+                                    self.toggleDayState(.productive)
+                                }) {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(self.dayStates.contains(.productive) ? np_white : np_white.opacity(0.45))
+                                            .frame(width: 75, height: 45)
+                                            .overlay {
+                                                Text("Productive")
+                                                    .font(.system(size: 10))
+                                                    .fontWeight(.medium)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(self.dayStates.contains(.productive) ? np_jap_indigo : np_white)
+                                            }
+                                    }
+                                }
+                            }
+                            
+                            // MARK: Bored - state
+                            VStack(spacing: 5) {
+                                Button(action: {
+                                    self.toggleDayState(.bored)
+                                }) {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(self.dayStates.contains(.bored) ? np_white : np_white.opacity(0.45))
+                                            .frame(width: 75, height: 45)
+                                            .overlay {
+                                                Text("Bored")
+                                                    .font(.system(size: 10))
+                                                    .fontWeight(.medium)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(self.dayStates.contains(.bored) ? np_jap_indigo : np_white)
+                                            }
+                                    }
+                                }
+                            }
+                            
+                            // MARK: Tiring - state
+                            VStack(spacing: 5) {
+                                Button(action: {
+                                    self.toggleDayState(.tiring)
+                                }) {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(self.dayStates.contains(.tiring) ? np_white : np_white.opacity(0.45))
+                                            .frame(width: 75, height: 45)
+                                            .overlay {
+                                                Text("Tiring")
+                                                    .font(.system(size: 10))
+                                                    .fontWeight(.medium)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(self.dayStates.contains(.tiring) ? np_jap_indigo : np_white)
+                                            }
+                                    }
+                                }
+                            }
+                            
+                            // MARK: Meh - state
+                            VStack(spacing: 5) {
+                                Button(action: {
+                                    self.toggleDayState(.meh)
+                                }) {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(self.dayStates.contains(.meh) ? np_white : np_white.opacity(0.45))
+                                            .frame(width: 75, height: 45)
+                                            .overlay {
+                                                Text("Meh")
+                                                    .font(.system(size: 10))
+                                                    .fontWeight(.medium)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(self.dayStates.contains(.meh) ? np_jap_indigo : np_white)
+                                            }
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+                
                 // MARK: Journal Entry
                 VStack {
                     HStack {
-                        Label("Short Event Summary", systemImage: "")
+                        Label("Summary", systemImage: "")
                             .font(.footnote)
                             .fontWeight(.semibold)
                             .kerning(2)
@@ -230,7 +392,7 @@ struct MoodAddDiaryView: View {
                 
                 // MARK: Save Diary Entry button
                 Button(action: {
-                    self.moodModelController.createMood(emotion: Emotion(state: self.emotionState, color: self.moodColor), comment: self.text, date: Date())
+                    self.moodModelController.createMood(emotion: Emotion(state: self.emotionState, color: self.moodColor), comment: self.text, date: Date(), dayStates: self.dayStates)
                     
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
@@ -256,6 +418,15 @@ struct MoodAddDiaryView: View {
         }
         .accentColor(np_black)
     }
+    
+    // MARK: - Method to toggle day state
+    func toggleDayState(_ state: DayState) {
+        if let index = dayStates.firstIndex(of: state) {
+            dayStates.remove(at: index)
+        } else {
+            dayStates.append(state)
+        }
+    }
 }
 
 struct MoodAddDiaryView_Previews: PreviewProvider {
@@ -263,6 +434,7 @@ struct MoodAddDiaryView_Previews: PreviewProvider {
         MoodAddDiaryView(moodModelController: MoodModelController(), text: "")
     }
 }
+
 
 // MARK: Multiline Text View
 struct MultiLineTextField: UIViewRepresentable {

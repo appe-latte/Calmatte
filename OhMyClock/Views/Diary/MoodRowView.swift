@@ -54,7 +54,13 @@ struct MoodRowView: View {
                 VStack(spacing: 5) {
                     moodImage()
                     
-                    Text(mood.emotion.state.rawValue)
+//                    Text(mood.emotion.state.rawValue)
+//                        .font(.system(size: 10))
+//                        .fontWeight(.regular)
+//                        .textCase(.uppercase)
+//                        .foregroundColor(np_black)
+                    
+                    Text(mood.dayStates.map { $0.rawValue }.joined(separator: ", "))
                         .font(.system(size: 10))
                         .fontWeight(.regular)
                         .textCase(.uppercase)
