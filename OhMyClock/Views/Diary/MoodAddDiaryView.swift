@@ -323,15 +323,15 @@ struct MoodRowView: View {
         
         switch mood.emotion.state {
         case .great:
-            imageName = "zen"
+            imageName = "great"
         case .good:
-            imageName = "🙂"
+            imageName = "good"
         case .okay:
-            imageName = "zen"
+            imageName = "okay"
         case .upset:
             imageName = "upset"
         case .angry:
-            imageName = "zen"
+            imageName = "angry"
         }
         return Image(imageName).resizable().frame(width: 30, height: 30)
     }
