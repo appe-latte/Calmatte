@@ -33,6 +33,7 @@
 		2F4AB6242A5DDB3600F6332F /* DiaryMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6232A5DDB3600F6332F /* DiaryMood.swift */; };
 		2F4AB6272A5DDD0D00F6332F /* MoodDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */; };
 		2F4AB6292A5DDDBE00F6332F /* MoodAddDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */; };
+		2F4AB62B2A5E5C3500F6332F /* MoodRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */; };
 		2F54B25D297C5F0E0075E488 /* AddTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B25C297C5F0E0075E488 /* AddTasksView.swift */; };
 		2F54B260297C71190075E488 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B25F297C71190075E488 /* Realm */; };
 		2F54B262297C71190075E488 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B261297C71190075E488 /* RealmSwift */; };
@@ -90,6 +91,7 @@
 		2F4AB6232A5DDB3600F6332F /* DiaryMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMood.swift; sourceTree = "<group>"; };
 		2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDiaryView.swift; sourceTree = "<group>"; };
 		2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodAddDiaryView.swift; sourceTree = "<group>"; };
+		2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRowView.swift; sourceTree = "<group>"; };
 		2F54B25C297C5F0E0075E488 /* AddTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTasksView.swift; sourceTree = "<group>"; };
 		2F54B263297D19E20075E488 /* OmcRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmcRealmManager.swift; sourceTree = "<group>"; };
 		2F54B265297D1AE40075E488 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
@@ -210,11 +212,7 @@
 				2F0D04E82A0A1E1B002523A9 /* Weather.swift */,
 				2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */,
 				2F24A2682A4C878400B41C01 /* BreathType.swift */,
-				2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */,
-				2FFBD0252A5DD7B8002C258B /* Month.swift */,
-				2F919D322A5DD83000291071 /* Day.swift */,
-				2F919D342A5DD8EA00291071 /* DiaryColors.swift */,
-				2F4AB6232A5DDB3600F6332F /* DiaryMood.swift */,
+				2F4AB62D2A5E5CEF00F6332F /* Mood */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -254,8 +252,21 @@
 			children = (
 				2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */,
 				2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */,
+				2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */,
 			);
 			path = Diary;
+			sourceTree = "<group>";
+		};
+		2F4AB62D2A5E5CEF00F6332F /* Mood */ = {
+			isa = PBXGroup;
+			children = (
+				2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */,
+				2FFBD0252A5DD7B8002C258B /* Month.swift */,
+				2F919D322A5DD83000291071 /* Day.swift */,
+				2F919D342A5DD8EA00291071 /* DiaryColors.swift */,
+				2F4AB6232A5DDB3600F6332F /* DiaryMood.swift */,
+			);
+			path = Mood;
 			sourceTree = "<group>";
 		};
 		2FA9AB412A4E0CDF00557FD0 /* Mood */ = {
@@ -347,7 +358,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					2F36B09F2967A40000AC8D59 = {
 						CreatedOnToolsVersion = 14.2;
@@ -425,6 +436,7 @@
 				2FB87FB02A0C6E1D0033B4E1 /* AppDelegate.swift in Sources */,
 				2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */,
 				2FF51E022A3A2E120035A964 /* WeatherCardBackView.swift in Sources */,
+				2F4AB62B2A5E5C3500F6332F /* MoodRowView.swift in Sources */,
 				2F54B266297D1AE50075E488 /* Milestone.swift in Sources */,
 				2F24A2692A4C878400B41C01 /* BreathType.swift in Sources */,
 				2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */,
@@ -452,6 +464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -484,6 +497,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -512,6 +526,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -544,6 +559,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

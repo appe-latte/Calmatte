@@ -50,11 +50,15 @@ struct MoodAddDiaryView: View {
                         self.upsetSelected = false
                         self.angrySelected = false
                     }) {
-                        Text("😃")
-                            .font(.system(size: 60))
-                            .foregroundColor(greatSelected ? np_green : np_black)
-                            .background(greatSelected ? np_white : Color.clear)
-                            .clipShape(Circle())
+                        ZStack {
+                            Circle()
+                                .fill(self.greatSelected ? np_white : Color.clear)
+                                .frame(width: 60, height: 60)
+
+                            Image("great")
+                                .resizable()
+                                .frame(width: 55, height: 55)
+                        }
                     }
                     
                     // MARK: Good - emotion
@@ -67,11 +71,16 @@ struct MoodAddDiaryView: View {
                         self.upsetSelected = false
                         self.angrySelected = false
                     }) {
-                        Text("🙂")
-                            .font(.system(size: 60))
-                            .foregroundColor(goodSelected ? np_green : np_black)
-                            .background(goodSelected ? np_white : Color.clear)
-                            .clipShape(Circle())
+                        ZStack {
+                            Circle()
+                                .fill(self.goodSelected ? np_white : Color.clear)
+                                .frame(width: 60, height: 60)
+
+                            Image("good")
+                                .resizable()
+                                .frame(width: 55, height: 55)
+                        }
+
                     }
                     
                     // MARK: Okay - emotion
@@ -84,11 +93,16 @@ struct MoodAddDiaryView: View {
                         self.upsetSelected = false
                         self.angrySelected = false
                     }) {
-                        Text("😐")
-                            .font(.system(size: 60))
-                            .foregroundColor(okaySelected ? np_green : np_black)
-                            .background(okaySelected ? np_white : Color.clear)
-                            .clipShape(Circle())
+                        ZStack {
+                            Circle()
+                                .fill(self.okaySelected ? np_white : Color.clear)
+                                .frame(width: 60, height: 60)
+
+                            Image("okay")
+                                .resizable()
+                                .frame(width: 55, height: 55)
+                        }
+
                     }
                     
                     // MARK: Upset - emotion
@@ -101,11 +115,15 @@ struct MoodAddDiaryView: View {
                         self.upsetSelected = true
                         self.angrySelected = false
                     }) {
-                        Text("😠")
-                            .font(.system(size: 60))
-                            .foregroundColor(upsetSelected ? np_green : np_black)
-                            .background(upsetSelected ? np_white : Color.clear)
-                            .clipShape(Circle())
+                        ZStack {
+                            Circle()
+                                .fill(self.upsetSelected ? np_white : Color.clear)
+                                .frame(width: 60, height: 60)
+
+                            Image("upset")
+                                .resizable()
+                                .frame(width: 55, height: 55)
+                        }
                     }
                     
                     // MARK: Angry - emotion
@@ -118,16 +136,23 @@ struct MoodAddDiaryView: View {
                         self.upsetSelected = false
                         self.angrySelected = true
                     }) {
-                        Text("😡")
-                            .font(.system(size: 60))
-                            .foregroundColor(angrySelected ? np_green : np_black)
-                            .background(angrySelected ? np_white : Color.clear)
-                            .clipShape(Circle())
+                        ZStack {
+                            Circle()
+                                .fill(self.angrySelected ? np_white : Color.clear)
+                                .frame(width: 60, height: 60)
+
+                            Image("angry")
+                                .resizable()
+                                .frame(width: 55, height: 55)
+                        }
                     }
                 }
                 
                 ZStack(alignment: .bottomTrailing) {
-                    MultiLineTextField(txt: $text, counterLabel: $counterLabel).frame(height: 100).cornerRadius(20)
+                    MultiLineTextField(txt: $text, counterLabel: $counterLabel)
+                        .frame(height: 100)
+                        .cornerRadius(20)
+                    
                     Text("Remaining Text: \(counterLabel)")
                         .font(.system(size: 8))
                         .fontWeight(.medium)
@@ -167,9 +192,7 @@ struct MoodAddDiaryView: View {
 }
 
 struct MoodAddDiaryView_Previews: PreviewProvider {
-    
     static var previews: some View {
-        
         MoodAddDiaryView(moodModelController: MoodModelController(), text: "")
     }
 }
@@ -269,70 +292,5 @@ struct MultiLineTextField: UIViewRepresentable {
 extension UITextView {
     func leftSpace() {
         self.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    }
-}
-
-// MARK: Mood Row
-struct MoodRowView: View {
-    var mood: Mood
-    
-    var body: some View {
-        ZStack {
-            
-            Rectangle()
-                .fill(np_white)
-                .cornerRadius(10)
-            
-            // MARK: Row Text
-            HStack(spacing: 10) {
-                VStack {
-                    Text(mood.monthString)
-                        .font(.footnote)
-                        .fontWeight(.bold)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_black)
-                    
-                    Text("\(mood.dayAsInt)")
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_black)
-                    
-                }
-                
-                Text(mood.comment ?? "No Summary")
-                    .font(.subheadline)
-                    .fontWeight(.bold)
-                    .kerning(3)
-                    .textCase(.uppercase)
-                    .foregroundColor(np_black)
-                
-                Spacer()
-                
-                moodImage()
-
-            }
-            .foregroundColor(mood.emotion.moodColor).padding()
-        }
-    }
-    
-    func moodImage() -> some View {
-        var imageName = "none"
-        
-        switch mood.emotion.state {
-        case .great:
-            imageName = "great"
-        case .good:
-            imageName = "good"
-        case .okay:
-            imageName = "okay"
-        case .upset:
-            imageName = "upset"
-        case .angry:
-            imageName = "angry"
-        }
-        return Image(imageName).resizable().frame(width: 30, height: 30)
     }
 }

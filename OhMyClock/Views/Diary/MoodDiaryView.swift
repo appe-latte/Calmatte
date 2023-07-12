@@ -14,6 +14,8 @@ struct MoodDiaryView : View {
     @State var docID = ""
     @State var remove = false
     
+    @State private var diaryDescription = "Keep a daily summary of how your day was and your mood at the end of the day."
+    
     var body: some View {
         ZStack {
             
@@ -30,7 +32,6 @@ struct MoodDiaryView : View {
                             MoodRowView(mood: mood)
                                 .listRowBackground(np_white)
                                 .padding(.vertical, 10)
-                            
                         }
                         .onDelete { (index) in
                             
@@ -59,7 +60,7 @@ struct MoodDiaryView : View {
             MoodAddDiaryView(moodModelController: self.moodModelController)
         }
     }
-
+    
     
     // MARK: Background
     @ViewBuilder
@@ -115,28 +116,21 @@ struct MoodDiaryView : View {
         VStack {
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("Today")
-                        .font(.largeTitle)
+                    Text("Mood Diary")
+                        .font(.title)
                         .fontWeight(.bold)
                         .kerning(5)
                         .minimumScaleFactor(0.5)
                         .textCase(.uppercase)
                         .foregroundColor(np_black)
                     
-                    Text(Date().formatted(.dateTime.month().day().year()))
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .kerning(5)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_black)
-                    
                     // MARK: Description
-                    //                    Text("\(milestoneDescription)")
-                    //                        .font(.system(size: 10))
-                    //                        .kerning(3)
-                    //                        .textCase(.uppercase)
-                    //                        .minimumScaleFactor(0.5)
-                    //                        .foregroundColor(np_black)
+                    Text("\(diaryDescription)")
+                        .font(.system(size: 10))
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .minimumScaleFactor(0.5)
+                        .foregroundColor(np_black)
                 }
                 .hAlign(.leading)
                 
@@ -186,7 +180,7 @@ class Host : UIHostingController<ContentView>{
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct MoodDiaryView_Previews: PreviewProvider {
     static var previews: some View {
         MoodDiaryView()
     }
