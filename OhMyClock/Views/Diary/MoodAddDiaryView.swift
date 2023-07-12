@@ -19,7 +19,7 @@ struct MoodAddDiaryView: View {
     @State private var okaySelected = false
     @State private var upsetSelected = false
     @State private var angrySelected = false
-    @State private var counterLabel = "150"
+    @State private var counterLabel = "200"
     
     var body: some View {
         ZStack {
@@ -28,7 +28,7 @@ struct MoodAddDiaryView: View {
             
             VStack(spacing: 30) {
                 HStack {
-                    Text("Add Daily Summary")
+                    Text("Add Journal Entry")
                         .font(.title2)
                         .fontWeight(.bold)
                         .kerning(5)
@@ -38,128 +38,194 @@ struct MoodAddDiaryView: View {
                     Spacer()
                 }
                 
-                HStack(spacing: 20){
-                    
-                    // MARK: Great - emotion
-                    Button(action: {
-                        self.emotionState = .great
-                        self.moodColor = .greatColor
-                        self.greatSelected = true
-                        self.goodSelected = false
-                        self.okaySelected = false
-                        self.upsetSelected = false
-                        self.angrySelected = false
-                    }) {
-                        ZStack {
-                            Circle()
-                                .fill(self.greatSelected ? np_white : Color.clear)
-                                .frame(width: 60, height: 60)
-
-                            Image("great")
-                                .resizable()
-                                .frame(width: 55, height: 55)
-                        }
+                // MARK: Emotion Selection
+                VStack {
+                    HStack {
+                        Label("How do you feel?", systemImage: "")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        Spacer()
                     }
                     
-                    // MARK: Good - emotion
-                    Button(action: {
-                        self.emotionState = .good
-                        self.moodColor = .goodColor
-                        self.greatSelected = false
-                        self.goodSelected = true
-                        self.okaySelected = false
-                        self.upsetSelected = false
-                        self.angrySelected = false
-                    }) {
-                        ZStack {
-                            Circle()
-                                .fill(self.goodSelected ? np_white : Color.clear)
-                                .frame(width: 60, height: 60)
-
-                            Image("good")
-                                .resizable()
-                                .frame(width: 55, height: 55)
+                    HStack(spacing: 15){
+                        
+                        // MARK: Great - emotion
+                        VStack(spacing: 5) {
+                            Button(action: {
+                                self.emotionState = .great
+                                self.moodColor = .greatColor
+                                self.greatSelected = true
+                                self.goodSelected = false
+                                self.okaySelected = false
+                                self.upsetSelected = false
+                                self.angrySelected = false
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(self.greatSelected ? np_white : Color.clear)
+                                        .frame(width: 65, height: 65)
+                                    
+                                    Image("great")
+                                        .resizable()
+                                        .frame(width: 55, height: 55)
+                                }
+                            }
+                            
+                            Text("Great")
+                                .font(.system(size: 10))
+                                .fontWeight(.medium)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
                         }
-
-                    }
-                    
-                    // MARK: Okay - emotion
-                    Button(action: {
-                        self.emotionState = .okay
-                        self.moodColor = .okayColor
-                        self.greatSelected = false
-                        self.goodSelected = false
-                        self.okaySelected = true
-                        self.upsetSelected = false
-                        self.angrySelected = false
-                    }) {
-                        ZStack {
-                            Circle()
-                                .fill(self.okaySelected ? np_white : Color.clear)
-                                .frame(width: 60, height: 60)
-
-                            Image("okay")
-                                .resizable()
-                                .frame(width: 55, height: 55)
+                        
+                        // MARK: Good - emotion
+                        VStack(spacing: 5){
+                            Button(action: {
+                                self.emotionState = .good
+                                self.moodColor = .goodColor
+                                self.greatSelected = false
+                                self.goodSelected = true
+                                self.okaySelected = false
+                                self.upsetSelected = false
+                                self.angrySelected = false
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(self.goodSelected ? np_white : Color.clear)
+                                        .frame(width: 65, height: 65)
+                                    
+                                    Image("good")
+                                        .resizable()
+                                        .frame(width: 55, height: 55)
+                                }
+                            }
+                            
+                            Text("Good")
+                                .font(.system(size: 10))
+                                .fontWeight(.medium)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
                         }
-
-                    }
-                    
-                    // MARK: Upset - emotion
-                    Button(action: {
-                        self.emotionState = .upset
-                        self.moodColor = .upsetColor
-                        self.greatSelected = false
-                        self.goodSelected = false
-                        self.okaySelected = false
-                        self.upsetSelected = true
-                        self.angrySelected = false
-                    }) {
-                        ZStack {
-                            Circle()
-                                .fill(self.upsetSelected ? np_white : Color.clear)
-                                .frame(width: 60, height: 60)
-
-                            Image("upset")
-                                .resizable()
-                                .frame(width: 55, height: 55)
+                        
+                        // MARK: Okay - emotion
+                        VStack(spacing: 5){
+                            Button(action: {
+                                self.emotionState = .okay
+                                self.moodColor = .okayColor
+                                self.greatSelected = false
+                                self.goodSelected = false
+                                self.okaySelected = true
+                                self.upsetSelected = false
+                                self.angrySelected = false
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(self.okaySelected ? np_white : Color.clear)
+                                        .frame(width: 65, height: 65)
+                                    
+                                    Image("okay")
+                                        .resizable()
+                                        .frame(width: 55, height: 55)
+                                }
+                            }
+                            
+                            Text("Okay")
+                                .font(.system(size: 10))
+                                .fontWeight(.medium)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
                         }
-                    }
-                    
-                    // MARK: Angry - emotion
-                    Button(action: {
-                        self.emotionState = .angry
-                        self.moodColor = .angryColor
-                        self.greatSelected = false
-                        self.goodSelected = false
-                        self.okaySelected = false
-                        self.upsetSelected = false
-                        self.angrySelected = true
-                    }) {
-                        ZStack {
-                            Circle()
-                                .fill(self.angrySelected ? np_white : Color.clear)
-                                .frame(width: 60, height: 60)
-
-                            Image("angry")
-                                .resizable()
-                                .frame(width: 55, height: 55)
+                        
+                        // MARK: Upset - emotion
+                        VStack(spacing: 5){
+                            Button(action: {
+                                self.emotionState = .upset
+                                self.moodColor = .upsetColor
+                                self.greatSelected = false
+                                self.goodSelected = false
+                                self.okaySelected = false
+                                self.upsetSelected = true
+                                self.angrySelected = false
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(self.upsetSelected ? np_white : Color.clear)
+                                        .frame(width: 65, height: 65)
+                                    
+                                    Image("upset")
+                                        .resizable()
+                                        .frame(width: 55, height: 55)
+                                }
+                            }
+                            
+                            Text("Upset")
+                                .font(.system(size: 10))
+                                .fontWeight(.medium)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
+                        
+                        // MARK: Angry - emotion
+                        VStack(spacing: 5){
+                            Button(action: {
+                                self.emotionState = .angry
+                                self.moodColor = .angryColor
+                                self.greatSelected = false
+                                self.goodSelected = false
+                                self.okaySelected = false
+                                self.upsetSelected = false
+                                self.angrySelected = true
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(self.angrySelected ? np_white : Color.clear)
+                                        .frame(width: 65, height: 65)
+                                    
+                                    Image("angry")
+                                        .resizable()
+                                        .frame(width: 55, height: 55)
+                                }
+                            }
+                            
+                            Text("Angry")
+                                .font(.system(size: 10))
+                                .fontWeight(.medium)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
                         }
                     }
                 }
                 
-                ZStack(alignment: .bottomTrailing) {
-                    MultiLineTextField(txt: $text, counterLabel: $counterLabel)
-                        .frame(height: 100)
-                        .cornerRadius(20)
+                // MARK: Journal Entry
+                VStack {
+                    HStack {
+                        Label("Short Event Summary", systemImage: "")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .kerning(2)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        Spacer()
+                    }
                     
-                    Text("Remaining Text: \(counterLabel)")
-                        .font(.system(size: 8))
-                        .fontWeight(.medium)
-                        .textCase(.uppercase)
-                        .kerning(2)
-                        .foregroundColor(np_gray)
-                        .padding([.bottom, .trailing], 8)
+                    ZStack(alignment: .bottomTrailing) {
+                        MultiLineTextField(txt: $text, counterLabel: $counterLabel)
+                            .frame(height: 100)
+                            .cornerRadius(20)
+                        
+                        Text("Remaining Text: \(counterLabel)")
+                            .font(.system(size: 8))
+                            .fontWeight(.medium)
+                            .textCase(.uppercase)
+                            .kerning(2)
+                            .foregroundColor(np_gray)
+                            .padding([.bottom, .trailing], 8)
+                    }
                 }
                 
                 // MARK: Save Diary Entry button
@@ -168,7 +234,7 @@ struct MoodAddDiaryView: View {
                     
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
-                    Text("Save Summary")
+                    Text("Save")
                         .font(.footnote)
                         .fontWeight(.bold)
                         .kerning(5)
@@ -184,10 +250,11 @@ struct MoodAddDiaryView: View {
                         .stroke(np_jap_indigo, style: StrokeStyle(lineWidth: 1))
                         .padding(2)
                 )
-                
                 Spacer()
-            }.padding()
+            }
+            .padding()
         }
+        .accentColor(np_black)
     }
 }
 
@@ -268,7 +335,6 @@ struct MultiLineTextField: UIViewRepresentable {
             self.parent.counterLabel = "\(remaining)"
         }
         
-        /* Updated for Swift 4 */
         //Runs FIRST when ever text view is about to be changed. Returns true, means allow change, false means do not allow.
         func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
             if(text == "\n") {
@@ -280,11 +346,13 @@ struct MultiLineTextField: UIViewRepresentable {
             guard text.rangeOfCharacter(from: .newlines) == nil else {
                 return false
             }
-            //Stop entry while reached 150 chars
-            return textView.text.count + (text.count - range.length) <= 150
             
+            //Stop entry while reached 200 chars
+            let existingTextLength = textView.text.utf16.count
+            let replacementTextLength = text.utf16.count
+            let rangeLength = range.length
             
-            //  return true
+            return existingTextLength + replacementTextLength - rangeLength <= 200
         }
     }
 }

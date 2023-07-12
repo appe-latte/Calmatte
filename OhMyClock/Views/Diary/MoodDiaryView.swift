@@ -2,8 +2,8 @@
 //  MoodDiaryView.swift
 //  OhMyClock
 //
-//  Created by Stanford L. Khumalo on 2023-07-11.
-//
+//  Created by Nelson Gonzalez on 3/27/20.
+//  Modified by: Stanford L. Khumalo (Appe Latte) 2023-07-11
 
 import SwiftUI
 
@@ -14,7 +14,7 @@ struct MoodDiaryView : View {
     @State var docID = ""
     @State var remove = false
     
-    @State private var diaryDescription = "Keep a daily summary of how your day was and your mood at the end of the day."
+    @State private var diaryDescription = "Each day, jot down a short summary of your day and how you were feeling when the day was over."
     
     var body: some View {
         ZStack {
@@ -26,33 +26,48 @@ struct MoodDiaryView : View {
                 if self.moodModelController.moods.isEmpty {
                     background() // to make it cover the full screen
                 } else {
+                    // Group moods by date
+                    let groupedMoods = Dictionary(grouping: self.moodModelController.moods) { (mood) -> Date in
+                        // Use Calendar to normalize to just the date (without time)
+                        let calendar = Calendar.current
+                        return calendar.startOfDay(for: mood.date)
+                    }.sorted { $0.key < $1.key } // Sort by date
+
                     List {
-                        ForEach(self.moodModelController.moods, id: \.id) { mood in
-                            
-                            MoodRowView(mood: mood)
-                                .listRowBackground(np_white)
-                                .padding(.vertical, 10)
-                        }
-                        .onDelete { (index) in
-                            
-                            self.moodModelController.deleteMood(at: index)
+                        ForEach(groupedMoods, id: \.key) { key, moods in
+                            Section(header: Text("\(key, formatter: DateFormatter())")) {
+                                ForEach(moods, id: \.id) { mood in
+                                    MoodRowView(mood: mood)
+                                        .listRowBackground(np_white)
+                                        .padding(.vertical, 10)
+                                }
+                                .onDelete { (indexSet) in
+                                    for index in indexSet {
+                                        // Assuming moods are stored as an array
+                                        if let i = self.moodModelController.moods.firstIndex(where: { $0.id == moods[index].id }) {
+                                            self.moodModelController.deleteMood(at: IndexSet(integer: i))
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     .scrollContentBackground(.hidden)
                     .onAppear {
-                        //Removes extra cells that are not being used.
-                        UITableView.appearance().tableFooterView = UIView()
                         
+                        UITableView.appearance().tableFooterView = UIView() // Removes extra cells that are not being used.
+                                        
                         //MARK: Disable selection.
-                        
+                                        
                         UITableView.appearance().allowsSelection = true
                         UITableViewCell.appearance().selectionStyle = .none
                         UITableView.appearance().showsVerticalScrollIndicator = false
                         UITableViewCell.appearance().backgroundColor = UIColor(Color(red: 214 / 255, green: 26 / 255, blue: 60 / 255))
                     }
-                    
+                                    
                     Spacer()
                 }
+
             }
         }
         .background(background())
@@ -116,7 +131,7 @@ struct MoodDiaryView : View {
         VStack {
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("Mood Diary")
+                    Text("Mood Journal")
                         .font(.title)
                         .fontWeight(.bold)
                         .kerning(5)

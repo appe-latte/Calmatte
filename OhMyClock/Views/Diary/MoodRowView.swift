@@ -13,7 +13,6 @@ struct MoodRowView: View {
     
     var body: some View {
         ZStack {
-            
             Rectangle()
                 .fill(np_white)
                 .cornerRadius(10)
@@ -22,7 +21,7 @@ struct MoodRowView: View {
             HStack(spacing: 10) {
                 VStack {
                     Text(mood.monthString)
-                        .font(.footnote)
+                        .font(.headline)
                         .fontWeight(.bold)
                         .kerning(3)
                         .textCase(.uppercase)
@@ -44,17 +43,24 @@ struct MoodRowView: View {
                 }
                 
                 Text(mood.comment ?? "No Summary")
-                    .font(.headline)
-                    .fontWeight(.bold)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
                     .textCase(.uppercase)
                     .foregroundColor(np_black)
                 
                 Spacer()
                 
-                moodImage()
-                
+                // MARK: Mood Image + Text
+                VStack(spacing: 5) {
+                    moodImage()
+                    
+                    Text(mood.emotion.state.rawValue)
+                        .font(.system(size: 10))
+                        .fontWeight(.regular)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_black)
+                }
             }
-            //            .foregroundColor(mood.emotion.moodColor)
             .padding(5)
         }
     }
