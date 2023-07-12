@@ -52,11 +52,11 @@ struct ContentView: View {
                     Label("Meditation", image: "zen")
                 }
             
-            TimerView()
-                .colorScheme(.light)
-                .environmentObject(TimerModel())
+            MoodDiaryView()
+//                .colorScheme(.light)
+//                .environmentObject(TimerModel())
                 .tabItem {
-                    Label("Timer", image: "timer")
+                    Label("Diary", image: "timer")
                 }
             
             TaskManagerView(taskManager: taskManager)

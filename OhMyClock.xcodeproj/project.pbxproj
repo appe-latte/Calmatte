@@ -29,6 +29,10 @@
 		2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB2296F863400698C1A /* MeditationViewModel.swift */; };
 		2F434BB6296F89F100698C1A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB5296F89F100698C1A /* Extensions.swift */; };
 		2F434BB8296F8CCA00698C1A /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB7296F8CCA00698C1A /* AudioManager.swift */; };
+		2F4AB6222A5DDAA400F6332F /* MoodModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6212A5DDAA400F6332F /* MoodModelController.swift */; };
+		2F4AB6242A5DDB3600F6332F /* DiaryMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6232A5DDB3600F6332F /* DiaryMood.swift */; };
+		2F4AB6272A5DDD0D00F6332F /* MoodDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */; };
+		2F4AB6292A5DDDBE00F6332F /* MoodAddDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */; };
 		2F54B25D297C5F0E0075E488 /* AddTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B25C297C5F0E0075E488 /* AddTasksView.swift */; };
 		2F54B260297C71190075E488 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B25F297C71190075E488 /* Realm */; };
 		2F54B262297C71190075E488 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B261297C71190075E488 /* RealmSwift */; };
@@ -37,6 +41,8 @@
 		2F8838322A0ABC5300840F68 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8838312A0ABC5300840F68 /* ClockView.swift */; };
 		2F8838342A0AC64E00840F68 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8838332A0AC64E00840F68 /* TimerView.swift */; };
 		2F8CA71029B7A6EB00C34005 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */; };
+		2F919D332A5DD83000291071 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F919D322A5DD83000291071 /* Day.swift */; };
+		2F919D352A5DD8EA00291071 /* DiaryColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F919D342A5DD8EA00291071 /* DiaryColors.swift */; };
 		2FA9AB432A4E0D0000557FD0 /* MoodSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9AB422A4E0D0000557FD0 /* MoodSliderView.swift */; };
 		2FA9AB452A4E0D7A00557FD0 /* MoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */; };
 		2FA9AB472A4E147C00557FD0 /* MoodInsightsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9AB462A4E147C00557FD0 /* MoodInsightsListView.swift */; };
@@ -54,6 +60,7 @@
 		2FF51E022A3A2E120035A964 /* WeatherCardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF51E012A3A2E120035A964 /* WeatherCardBackView.swift */; };
 		2FF51E042A3A42370035A964 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF51E032A3A42370035A964 /* SplashScreenView.swift */; };
 		2FF8F01329B27BD5008D7C7E /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FF8F00B29B27BD4008D7C7E /* equilibrium.mp3 */; };
+		2FFBD0262A5DD7B8002C258B /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFBD0252A5DD7B8002C258B /* Month.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +86,10 @@
 		2F434BB5296F89F100698C1A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2F434BB7296F8CCA00698C1A /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		2F434BBB296F8F9A00698C1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2F4AB6212A5DDAA400F6332F /* MoodModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodModelController.swift; sourceTree = "<group>"; };
+		2F4AB6232A5DDB3600F6332F /* DiaryMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMood.swift; sourceTree = "<group>"; };
+		2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDiaryView.swift; sourceTree = "<group>"; };
+		2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodAddDiaryView.swift; sourceTree = "<group>"; };
 		2F54B25C297C5F0E0075E488 /* AddTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTasksView.swift; sourceTree = "<group>"; };
 		2F54B263297D19E20075E488 /* OmcRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmcRealmManager.swift; sourceTree = "<group>"; };
 		2F54B265297D1AE40075E488 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
@@ -86,6 +97,8 @@
 		2F8838312A0ABC5300840F68 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 		2F8838332A0AC64E00840F68 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
+		2F919D322A5DD83000291071 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		2F919D342A5DD8EA00291071 /* DiaryColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryColors.swift; sourceTree = "<group>"; };
 		2FA9AB422A4E0D0000557FD0 /* MoodSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSliderView.swift; sourceTree = "<group>"; };
 		2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodModel.swift; sourceTree = "<group>"; };
 		2FA9AB462A4E147C00557FD0 /* MoodInsightsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodInsightsListView.swift; sourceTree = "<group>"; };
@@ -103,6 +116,7 @@
 		2FF51E012A3A2E120035A964 /* WeatherCardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCardBackView.swift; sourceTree = "<group>"; };
 		2FF51E032A3A42370035A964 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		2FF8F00B29B27BD4008D7C7E /* equilibrium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = equilibrium.mp3; sourceTree = "<group>"; };
+		2FFBD0252A5DD7B8002C258B /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +166,7 @@
 				2F434BB4296F89D100698C1A /* Helpers */,
 				2F36B0B12967A48B00AC8D59 /* Utils */,
 				2F36B0B62967A4FD00AC8D59 /* Models */,
+				2F4AB6202A5DDA8300F6332F /* Model Controller */,
 				2F0D04EA2A0A1EF8002523A9 /* Services */,
 				2F36B0B92967A52500AC8D59 /* ViewModels */,
 				2F36B0A32967A40000AC8D59 /* OhMyClockApp.swift */,
@@ -196,6 +211,10 @@
 				2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */,
 				2F24A2682A4C878400B41C01 /* BreathType.swift */,
 				2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */,
+				2FFBD0252A5DD7B8002C258B /* Month.swift */,
+				2F919D322A5DD83000291071 /* Day.swift */,
+				2F919D342A5DD8EA00291071 /* DiaryColors.swift */,
+				2F4AB6232A5DDB3600F6332F /* DiaryMood.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,6 +239,23 @@
 				2F27A187297402AB007DA7CC /* LocationFetch.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2F4AB6202A5DDA8300F6332F /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2F4AB6212A5DDAA400F6332F /* MoodModelController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		2F4AB6252A5DDCF000F6332F /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */,
+				2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */,
+			);
+			path = Diary;
 			sourceTree = "<group>";
 		};
 		2FA9AB412A4E0CDF00557FD0 /* Mood */ = {
@@ -261,6 +297,7 @@
 				2F54B25C297C5F0E0075E488 /* AddTasksView.swift */,
 				2FF50128296EA33000813D40 /* SettingsView.swift */,
 				2F434BAE296F60FE00698C1A /* PlayerView.swift */,
+				2F4AB6252A5DDCF000F6332F /* Diary */,
 				2FA9AB412A4E0CDF00557FD0 /* Mood */,
 				2FB2C4FF2A37B4DD006D5A30 /* Tasks */,
 			);
@@ -366,11 +403,14 @@
 				2F36B0A62967A40000AC8D59 /* ContentView.swift in Sources */,
 				2F434BB8296F8CCA00698C1A /* AudioManager.swift in Sources */,
 				2F36B0B32967A4B000AC8D59 /* Colors.swift in Sources */,
+				2F4AB6242A5DDB3600F6332F /* DiaryMood.swift in Sources */,
 				2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */,
 				2F24A2652A4BB5E400B41C01 /* MoodTrackingView.swift in Sources */,
 				2F8838322A0ABC5300840F68 /* ClockView.swift in Sources */,
+				2FFBD0262A5DD7B8002C258B /* Month.swift in Sources */,
 				2FB2C4FC2A37B3C4006D5A30 /* TaskCategory.swift in Sources */,
 				2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */,
+				2F919D332A5DD83000291071 /* Day.swift in Sources */,
 				2F36B0BD2967A57D00AC8D59 /* FlipViewModel.swift in Sources */,
 				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
@@ -379,6 +419,8 @@
 				2F8838342A0AC64E00840F68 /* TimerView.swift in Sources */,
 				2FA9AB432A4E0D0000557FD0 /* MoodSliderView.swift in Sources */,
 				2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */,
+				2F919D352A5DD8EA00291071 /* DiaryColors.swift in Sources */,
+				2F4AB6272A5DDD0D00F6332F /* MoodDiaryView.swift in Sources */,
 				2F434BB6296F89F100698C1A /* Extensions.swift in Sources */,
 				2FB87FB02A0C6E1D0033B4E1 /* AppDelegate.swift in Sources */,
 				2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */,
@@ -391,10 +433,12 @@
 				2F36B0B82967A51900AC8D59 /* Models.swift in Sources */,
 				2FB2C4FE2A37B401006D5A30 /* TaskManagerView.swift in Sources */,
 				2FA9AB492A4E14CB00557FD0 /* MoodSelectorTileView.swift in Sources */,
+				2F4AB6222A5DDAA400F6332F /* MoodModelController.swift in Sources */,
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
 				2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */,
 				2FF51E002A3A2E050035A964 /* WeatherCardFrontView.swift in Sources */,
 				2F8CA71029B7A6EB00C34005 /* TimerModel.swift in Sources */,
+				2F4AB6292A5DDDBE00F6332F /* MoodAddDiaryView.swift in Sources */,
 				2FA9AB452A4E0D7A00557FD0 /* MoodModel.swift in Sources */,
 				2F54B25D297C5F0E0075E488 /* AddTasksView.swift in Sources */,
 				2FF50129296EA33000813D40 /* SettingsView.swift in Sources */,
