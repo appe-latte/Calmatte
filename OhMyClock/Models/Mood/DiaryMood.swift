@@ -14,6 +14,11 @@ enum EmotionState: String, Codable {
     case okay
     case good
     case great
+    case sad
+    case low
+    case shock
+    case loved
+    case meh
 }
 
 enum DayState: String, Codable {
@@ -32,6 +37,11 @@ enum MoodColor: String, Codable {
     case okayColor = "okayColor"
     case goodColor = "goodColor"
     case greatColor = "greatColor"
+    case sadColor = "sadColor"
+    case lowColor = "lowColor"
+    case shockColor = "shockColor"
+    case lovedColor = "lovedColor"
+    case mehColor = "mehColor"
 }
 
 struct Emotion: Codable {
@@ -50,6 +60,16 @@ struct Emotion: Codable {
             return .purple
         case .greatColor:
             return .green
+        case .sadColor:
+            return .orange
+        case .lowColor:
+            return .red
+        case .shockColor:
+            return .blue
+        case .lovedColor:
+            return .gray
+        case .mehColor:
+            return .purple
         }
     }
 }

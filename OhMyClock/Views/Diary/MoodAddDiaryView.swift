@@ -18,6 +18,12 @@ struct MoodAddDiaryView: View {
     @State private var goodSelected = false
     @State private var okaySelected = false
     @State private var upsetSelected = false
+    @State private var mehSelected = false
+    @State private var sleepySelected = false
+    @State private var shockedSelected = false
+    @State private var lovedSelected = false
+    @State private var sadSelected = false
+    @State private var lowSelected = false
     @State private var angrySelected = false
     @State private var counterLabel = "200"
     
@@ -52,8 +58,8 @@ struct MoodAddDiaryView: View {
                         
                         Spacer()
                     }
-                    
-                    HStack(spacing: 15){
+                    // MARK: Stack One
+                    HStack(spacing: 10){
                         
                         // MARK: Great - emotion
                         VStack(spacing: 5) {
@@ -65,15 +71,22 @@ struct MoodAddDiaryView: View {
                                 self.okaySelected = false
                                 self.upsetSelected = false
                                 self.angrySelected = false
+                                self.sadSelected = false
+                                self.lowSelected = false
+                                self.mehSelected = false
+                                self.lovedSelected = false
+                                self.shockedSelected = false
+                                self.sleepySelected = false
                             }) {
                                 ZStack {
                                     Circle()
                                         .fill(self.greatSelected ? np_white : Color.clear)
-                                        .frame(width: 65, height: 65)
+                                        .frame(width: 70, height: 70)
                                     
                                     Image("great")
                                         .resizable()
-                                        .frame(width: 55, height: 55)
+                                        .scaledToFit()
+                                        .frame(width: 60, height: 55)
                                 }
                             }
                             
@@ -94,6 +107,12 @@ struct MoodAddDiaryView: View {
                                 self.okaySelected = false
                                 self.upsetSelected = false
                                 self.angrySelected = false
+                                self.sadSelected = false
+                                self.lowSelected = false
+                                self.mehSelected = false
+                                self.lovedSelected = false
+                                self.shockedSelected = false
+                                self.sleepySelected = false
                             }) {
                                 ZStack {
                                     Circle()
@@ -102,6 +121,7 @@ struct MoodAddDiaryView: View {
                                     
                                     Image("good")
                                         .resizable()
+                                        .scaledToFit()
                                         .frame(width: 55, height: 55)
                                 }
                             }
@@ -123,6 +143,12 @@ struct MoodAddDiaryView: View {
                                 self.okaySelected = true
                                 self.upsetSelected = false
                                 self.angrySelected = false
+                                self.sadSelected = false
+                                self.lowSelected = false
+                                self.mehSelected = false
+                                self.lovedSelected = false
+                                self.shockedSelected = false
+                                self.sleepySelected = false
                             }) {
                                 ZStack {
                                     Circle()
@@ -131,6 +157,7 @@ struct MoodAddDiaryView: View {
                                     
                                     Image("okay")
                                         .resizable()
+                                        .scaledToFit()
                                         .frame(width: 55, height: 55)
                                 }
                             }
@@ -152,6 +179,12 @@ struct MoodAddDiaryView: View {
                                 self.okaySelected = false
                                 self.upsetSelected = true
                                 self.angrySelected = false
+                                self.sadSelected = false
+                                self.lowSelected = false
+                                self.mehSelected = false
+                                self.lovedSelected = false
+                                self.shockedSelected = false
+                                self.sleepySelected = false
                             }) {
                                 ZStack {
                                     Circle()
@@ -160,6 +193,7 @@ struct MoodAddDiaryView: View {
                                     
                                     Image("upset")
                                         .resizable()
+                                        .scaledToFit()
                                         .frame(width: 55, height: 55)
                                 }
                             }
@@ -181,6 +215,12 @@ struct MoodAddDiaryView: View {
                                 self.okaySelected = false
                                 self.upsetSelected = false
                                 self.angrySelected = true
+                                self.sadSelected = false
+                                self.lowSelected = false
+                                self.mehSelected = false
+                                self.lovedSelected = false
+                                self.shockedSelected = false
+                                self.sleepySelected = false
                             }) {
                                 ZStack {
                                     Circle()
@@ -189,6 +229,7 @@ struct MoodAddDiaryView: View {
                                     
                                     Image("angry")
                                         .resizable()
+                                        .scaledToFit()
                                         .frame(width: 55, height: 55)
                                 }
                             }
@@ -200,6 +241,191 @@ struct MoodAddDiaryView: View {
                                 .foregroundColor(np_white)
                         }
                     }
+                    
+                    // MARK: Stack Two
+                    HStack(spacing: 10){
+                        
+                        // MARK: Loved - emotion
+                        VStack(spacing: 5) {
+                            Button(action: {
+                                self.emotionState = .loved
+                                self.moodColor = .lovedColor
+                                self.greatSelected = false
+                                self.goodSelected = false
+                                self.okaySelected = false
+                                self.upsetSelected = false
+                                self.angrySelected = false
+                                self.sadSelected = false
+                                self.lowSelected = false
+                                self.mehSelected = false
+                                self.lovedSelected = true
+                                self.shockedSelected = false
+                                self.sleepySelected = false
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(self.lovedSelected ? np_white : Color.clear)
+                                        .frame(width: 70, height: 70)
+                                    
+                                    Image("loved")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 60, height: 55)
+                                }
+                            }
+                            
+                            Text("Loved")
+                                .font(.system(size: 10))
+                                .fontWeight(.medium)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
+                        
+                        // MARK: Sad - emotion
+                        VStack(spacing: 5){
+                            Button(action: {
+                                self.emotionState = .sad
+                                self.moodColor = .sadColor
+                                self.greatSelected = false
+                                self.goodSelected = false
+                                self.okaySelected = false
+                                self.upsetSelected = false
+                                self.angrySelected = false
+                                self.sadSelected = true
+                                self.lowSelected = false
+                                self.mehSelected = false
+                                self.lovedSelected = false
+                                self.shockedSelected = false
+                                self.sleepySelected = false
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(self.sadSelected ? np_white : Color.clear)
+                                        .frame(width: 65, height: 65)
+                                    
+                                    Image("sad")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 55, height: 55)
+                                }
+                            }
+                            
+                            Text("Sad")
+                                .font(.system(size: 10))
+                                .fontWeight(.medium)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
+                        
+                        // MARK: Meh - emotion
+                        VStack(spacing: 5){
+                            Button(action: {
+                                self.emotionState = .meh
+                                self.moodColor = .mehColor
+                                self.greatSelected = false
+                                self.goodSelected = false
+                                self.okaySelected = false
+                                self.upsetSelected = false
+                                self.angrySelected = false
+                                self.sadSelected = false
+                                self.lowSelected = false
+                                self.mehSelected = true
+                                self.lovedSelected = false
+                                self.shockedSelected = false
+                                self.sleepySelected = false
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(self.mehSelected ? np_white : Color.clear)
+                                        .frame(width: 65, height: 65)
+                                    
+                                    Image("meh")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 55, height: 55)
+                                }
+                            }
+                            
+                            Text("Meh")
+                                .font(.system(size: 10))
+                                .fontWeight(.medium)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
+                        
+                        // MARK: Low - emotion
+                        VStack(spacing: 5){
+                            Button(action: {
+                                self.emotionState = .low
+                                self.moodColor = .lowColor
+                                self.greatSelected = false
+                                self.goodSelected = false
+                                self.okaySelected = false
+                                self.upsetSelected = false
+                                self.angrySelected = false
+                                self.sadSelected = false
+                                self.lowSelected = true
+                                self.mehSelected = false
+                                self.lovedSelected = false
+                                self.shockedSelected = false
+                                self.sleepySelected = false
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(self.lowSelected ? np_white : Color.clear)
+                                        .frame(width: 65, height: 65)
+                                    
+                                    Image("low")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 55, height: 55)
+                                }
+                            }
+                            
+                            Text("Low")
+                                .font(.system(size: 10))
+                                .fontWeight(.medium)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
+                        
+                        // MARK: Shock - emotion
+                        VStack(spacing: 5){
+                            Button(action: {
+                                self.emotionState = .shock
+                                self.moodColor = .shockColor
+                                self.greatSelected = false
+                                self.goodSelected = false
+                                self.okaySelected = false
+                                self.upsetSelected = false
+                                self.angrySelected = false
+                                self.sadSelected = false
+                                self.lowSelected = false
+                                self.mehSelected = false
+                                self.lovedSelected = false
+                                self.shockedSelected = true
+                                self.sleepySelected = false
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(self.shockedSelected ? np_white : Color.clear)
+                                        .frame(width: 65, height: 65)
+                                    
+                                    Image("shock")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 55, height: 55)
+                                }
+                            }
+                            
+                            Text("Shocked")
+                                .font(.system(size: 10))
+                                .fontWeight(.medium)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
+                    }
+                    
                 }
                 
                 // MARK: Day Type selection

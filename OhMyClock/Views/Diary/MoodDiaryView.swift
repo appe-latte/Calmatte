@@ -10,6 +10,7 @@ import SwiftUI
 struct MoodDiaryView : View {
     @ObservedObject var moodModelController = MoodModelController()
     @State var show = false
+    @State var calenShow = false
     @State var txt = ""
     @State var docID = ""
     @State var remove = false
@@ -32,7 +33,7 @@ struct MoodDiaryView : View {
                         let calendar = Calendar.current
                         return calendar.startOfDay(for: mood.date)
                     }.sorted { $0.key < $1.key } // Sort by date
-
+                    
                     List {
                         ForEach(groupedMoods, id: \.key) { key, moods in
                             Section(header: Text("\(key, formatter: DateFormatter())")) {
@@ -56,23 +57,65 @@ struct MoodDiaryView : View {
                     .onAppear {
                         
                         UITableView.appearance().tableFooterView = UIView() // Removes extra cells that are not being used.
-                                        
+                        
                         //MARK: Disable selection.
-                                        
+                        
                         UITableView.appearance().allowsSelection = true
                         UITableViewCell.appearance().selectionStyle = .none
                         UITableView.appearance().showsVerticalScrollIndicator = false
                         UITableViewCell.appearance().backgroundColor = UIColor(Color(red: 214 / 255, green: 26 / 255, blue: 60 / 255))
                     }
-                                    
+                    
                     Spacer()
                 }
-
+                
+            }
+            
+            ZStack(alignment: .bottomTrailing) {
+                VStack {
+                    Spacer()
+                    
+                    // MARK: "Calendar" Button
+                    HStack {
+                        Spacer()
+                        
+                        Button {
+                            self.txt = ""
+                            self.docID = ""
+                            self.calenShow.toggle()
+                        } label: {
+                            Circle()
+                                .fill(np_red)
+                                .frame(width: 50, height: 50)
+                                .clipShape(Circle())
+                                .overlay {
+                                    Image(systemName: "calendar")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 30, height: 30)
+                                        .foregroundColor(np_white)
+                                }
+                        }
+                        .overlay(
+                            Circle()
+                                .stroke(np_white, style: StrokeStyle(lineWidth: 1))
+                                .padding(2)
+                        )
+                    }
+                    .padding()
+                }
             }
         }
         .background(background())
         .sheet(isPresented: self.$show) {
             MoodAddDiaryView(moodModelController: self.moodModelController)
+        }
+        .sheet(isPresented: self.$calenShow) {
+            ZStack {
+                MoodCalendarView(start: Date(), monthsToShow: 1, daysSelectable: true, moodController: moodModelController)
+            }
+            .ignoresSafeArea()
+            .presentationDetents([.large, .fraction(0.85)])
         }
     }
     
@@ -131,13 +174,43 @@ struct MoodDiaryView : View {
         VStack {
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("Mood Journal")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .kerning(5)
-                        .minimumScaleFactor(0.5)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_black)
+                    HStack {
+                        Text("Mood Journal")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .kerning(2)
+                            .minimumScaleFactor(0.5)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_black)
+                        
+                        Spacer()
+                        
+                        // MARK: "Add + Diary" Button
+                        Button {
+                            self.txt = ""
+                            self.docID = ""
+                            self.show.toggle()
+                        } label: {
+                            HStack(spacing: 10){
+                                Image(systemName: "plus")
+                                Text("Add")
+                                    .font(.footnote)
+                                    .fontWeight(.bold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                            }
+                            .padding(.vertical, 5)
+                            .foregroundColor(np_white)
+                            .frame(width: 100, height: 35)
+                            .background(np_jap_indigo)
+                            .clipShape(Capsule())
+                            .overlay(
+                                Capsule(style: .continuous)
+                                    .stroke(np_white, style: StrokeStyle(lineWidth: 1))
+                                    .padding(2)
+                            )
+                        }
+                    }
                     
                     // MARK: Description
                     Text("\(diaryDescription)")
@@ -148,32 +221,6 @@ struct MoodDiaryView : View {
                         .foregroundColor(np_black)
                 }
                 .hAlign(.leading)
-                
-                // MARK: "Add + Diary" Button
-                Button {
-                    self.txt = ""
-                    self.docID = ""
-                    self.show.toggle()
-                } label: {
-                    HStack(spacing: 10){
-                        Image(systemName: "plus")
-                        Text("Add")
-                            .font(.footnote)
-                            .fontWeight(.bold)
-                            .kerning(5)
-                            .textCase(.uppercase)
-                    }
-                    .padding(.vertical, 5)
-                    .foregroundColor(np_white)
-                    .frame(width: 100, height: 35)
-                    .background(np_arsenic)
-                    .clipShape(Capsule())
-                    .overlay(
-                        Capsule(style: .continuous)
-                            .stroke(np_white, style: StrokeStyle(lineWidth: 1))
-                            .padding(2)
-                    )
-                }
             }
         }
         .padding(15)
@@ -188,7 +235,6 @@ struct MoodDiaryView : View {
 }
 
 class Host : UIHostingController<ContentView>{
-    
     override var preferredStatusBarStyle: UIStatusBarStyle{
         
         return .lightContent

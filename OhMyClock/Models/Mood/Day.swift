@@ -8,8 +8,6 @@
 import Foundation
 import SwiftUI
 
-@available(OSX 10.15, *)
-@available(iOS 13.0, *)
 class Day: ObservableObject {
 
     @Published var isSelected = false
@@ -26,12 +24,13 @@ class Day: ObservableObject {
         if isSelected {
             return colors.selectedColor
         } else if isToday {
-            return colors.todayColor
+            return np_red
         } else if disabled {
-            return colors.disabledColor
+            return np_gray
         }
-        return colors.textColor
+        return np_gray.opacity(0.35)
     }
+    
     var backgroundColor: Color {
         if isSelected {
             return colors.selectedBackgroundColor
@@ -40,7 +39,6 @@ class Day: ObservableObject {
         }
     }
     
-    //Added
     var monthString: String {
 
     let dateFormatter1 = DateFormatter()
@@ -67,6 +65,5 @@ class Day: ObservableObject {
         disabled = disable
         selectableDays = selectable
     }
-
 }
 

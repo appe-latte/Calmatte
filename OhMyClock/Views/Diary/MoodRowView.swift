@@ -53,6 +53,8 @@ struct MoodRowView: View {
                 // MARK: Mood Image + Text
                 VStack(spacing: 5) {
                     moodImage()
+                        .scaledToFit()
+                        .frame(maxWidth: 70)
                     
                     Text(mood.dayStates.map { $0.rawValue }.joined(separator: ", "))
                         .font(.system(size: 8))
@@ -80,6 +82,16 @@ struct MoodRowView: View {
             imageName = "upset"
         case .angry:
             imageName = "angry"
+        case .low:
+            imageName = "low"
+        case .meh:
+            imageName = "meh"
+        case .sad:
+            imageName = "sad"
+        case .shock:
+            imageName = "shock"
+        case .loved:
+            imageName = "loved"
         }
         return Image(imageName).resizable().frame(width: 30, height: 30)
     }

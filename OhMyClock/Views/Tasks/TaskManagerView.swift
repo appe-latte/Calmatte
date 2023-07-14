@@ -94,12 +94,40 @@ struct TaskManagerView: View {
         VStack {
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("Today")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .kerning(5)
-                        .minimumScaleFactor(0.5)
-                        .textCase(.uppercase)
+                    HStack {
+                        Text("Today")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .kerning(5)
+                            .minimumScaleFactor(0.5)
+                            .textCase(.uppercase)
+                        
+                        Spacer()
+                        
+                        // MARK: "Add + Task" Button
+                        Button {
+                            addNewTask.toggle()
+                        } label: {
+                            HStack(spacing: 10){
+                                Image(systemName: "plus")
+                                Text("Add")
+                                    .font(.footnote)
+                                    .fontWeight(.bold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                            }
+                            .padding(.vertical, 5)
+                            .foregroundColor(np_white)
+                            .frame(width: 100, height: 35)
+                            .background(np_jap_indigo)
+                            .clipShape(Capsule())
+                            .overlay(
+                                Capsule(style: .continuous)
+                                    .stroke(np_white, style: StrokeStyle(lineWidth: 1))
+                                    .padding(2)
+                            )
+                        }
+                    }
                     
                     Text(Date().formatted(.dateTime.month().day().year()))
                         .font(.title3)
@@ -116,30 +144,6 @@ struct TaskManagerView: View {
                         .foregroundColor(np_black)
                 }
                 .hAlign(.leading)
-                
-                // MARK: "Add + Task" Button
-                Button {
-                    addNewTask.toggle()
-                } label: {
-                    HStack(spacing: 10){
-                        Image(systemName: "plus")
-                        Text("Add")
-                            .font(.footnote)
-                            .fontWeight(.bold)
-                            .kerning(5)
-                            .textCase(.uppercase)
-                    }
-                    .padding(.vertical, 5)
-                    .foregroundColor(np_white)
-                    .frame(width: 100, height: 35)
-                    .background(np_arsenic)
-                    .clipShape(Capsule())
-                    .overlay(
-                        Capsule(style: .continuous)
-                            .stroke(np_white, style: StrokeStyle(lineWidth: 1))
-                            .padding(2)
-                    )
-                }
             }
         }
         .padding(15)
@@ -171,7 +175,7 @@ struct CardView: View {
             
             Rectangle()
                 .fill(task.taskCategory.color)
-                .frame(width: screenWidth - 20, height: 25, alignment: .topLeading)
+                .frame(width: screenWidth - 20, height: 30, alignment: .topLeading)
                 .padding(.bottom, 10)
             
             // MARK: Date + Time

@@ -60,6 +60,7 @@
 		2FF51E002A3A2E050035A964 /* WeatherCardFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF51DFF2A3A2E040035A964 /* WeatherCardFrontView.swift */; };
 		2FF51E022A3A2E120035A964 /* WeatherCardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF51E012A3A2E120035A964 /* WeatherCardBackView.swift */; };
 		2FF51E042A3A42370035A964 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF51E032A3A42370035A964 /* SplashScreenView.swift */; };
+		2FF87ABA2A61177A0026DF9E /* MoodCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */; };
 		2FF8F01329B27BD5008D7C7E /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FF8F00B29B27BD4008D7C7E /* equilibrium.mp3 */; };
 		2FFBD0262A5DD7B8002C258B /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFBD0252A5DD7B8002C258B /* Month.swift */; };
 /* End PBXBuildFile section */
@@ -117,6 +118,7 @@
 		2FF51DFF2A3A2E040035A964 /* WeatherCardFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCardFrontView.swift; sourceTree = "<group>"; };
 		2FF51E012A3A2E120035A964 /* WeatherCardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCardBackView.swift; sourceTree = "<group>"; };
 		2FF51E032A3A42370035A964 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCalendarView.swift; sourceTree = "<group>"; };
 		2FF8F00B29B27BD4008D7C7E /* equilibrium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = equilibrium.mp3; sourceTree = "<group>"; };
 		2FFBD0252A5DD7B8002C258B /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -253,6 +255,7 @@
 				2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */,
 				2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */,
 				2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */,
+				2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 			files = (
 				2FB2C5012A37B4FD006D5A30 /* AddTaskView.swift in Sources */,
 				2F36B0B52967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift in Sources */,
+				2FF87ABA2A61177A0026DF9E /* MoodCalendarView.swift in Sources */,
 				2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */,
 				2FA9AB472A4E147C00557FD0 /* MoodInsightsListView.swift in Sources */,
 				2FF50124296E9B2800813D40 /* MainView.swift in Sources */,
