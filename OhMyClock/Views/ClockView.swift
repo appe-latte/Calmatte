@@ -131,34 +131,10 @@ struct ClockView: View {
                     }
                     .padding(.horizontal)
                     
-                    VStack {
+                    VStack(spacing: 20) {
                         
                         MoodSelectorTileView(moodModel: moodModel)
-                    }
-                    .frame(maxWidth: screenWidth - 40, maxHeight: screenHeight * 0.65)
-                    .background(np_white)
-                    .foregroundColor(np_arsenic)
-                    .ignoresSafeArea()
-                    .cornerRadius(10)
-                    .padding(.bottom, 20)
-                    .padding(.bottom, 5)
-                    .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
-                    
-                    // MARK: Mood Insights
-                    HStack {
-                        Label("mood insights", systemImage: "info.circle.fill")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .kerning(2)
-                            .textCase(.uppercase)
                         
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    
-                    VStack {
-                        
-                        // MARK: Today / This Week Picker
                         CustomSegmentedPickerView(selection: $insightsMode, items: InsightsType.allCases)
                             .padding()
                             .onChange(of: insightsMode) { newValue in
@@ -168,16 +144,15 @@ struct ClockView: View {
                         // MARK: Insights List
                         MoodInsightsListView(screenWidth: screenWidth, moodModel: moodModel)
                             .padding()
-                        
                     }
-                    .frame(maxWidth: screenWidth - 40, maxHeight: screenHeight * 0.65)
+                    .frame(maxWidth: screenWidth - 40, maxHeight: screenHeight)
                     .background(np_jap_indigo)
                     .foregroundColor(np_arsenic)
                     .ignoresSafeArea()
                     .cornerRadius(10)
+                    .padding(.bottom, 20)
                     .padding(.bottom, 5)
                     .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
-                    
                 }
             }
             .frame(maxWidth: .infinity)

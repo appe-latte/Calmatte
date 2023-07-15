@@ -111,7 +111,7 @@ struct Month {
                 }
             }
             
-            //Increment date
+            // MARK: Increment date
             var components = calendar.dateComponents([.day], from: currentDate)
             components.day = +1
             currentDate = calendar.date(byAdding: components, to: currentDate)!
@@ -138,6 +138,4 @@ extension String {
         let date = dateFormat.date(from: self)!
         return date
     }
-    
 }
-

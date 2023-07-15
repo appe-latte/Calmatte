@@ -68,7 +68,7 @@ struct MoodSelectorTileView: View {
     
     var saveMoodFooterView: some View {
         ZStack {
-            np_jap_indigo.frame(height: 50)
+            np_arsenic.frame(height: 50)
             
             HStack {
                 Text("I feel:")
@@ -109,7 +109,8 @@ struct MoodSelectorTileView: View {
                         .foregroundColor(.white)
                         .opacity(0.2)
                 )
-                .padding().padding(.trailing, 10)
+                .padding()
+                .padding(.trailing, 10)
                 .disabled(shouldDisableSaveButton)
                 .opacity(shouldDisableSaveButton ? 0.4 : 1.0)
             }

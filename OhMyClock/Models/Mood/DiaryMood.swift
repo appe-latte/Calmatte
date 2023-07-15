@@ -100,7 +100,6 @@ struct Mood: Codable, Equatable, Identifiable {
         let month = dateFormatter1.string(from: date)
         
         return month
-        
     }
     
     var dayAsInt: Int {
@@ -111,7 +110,6 @@ struct Mood: Codable, Equatable, Identifiable {
     var year: String {
         return Calendar.current.component(.year, from: date).description
     }
-    
     
     static func == (lhs: Mood, rhs: Mood) -> Bool {
         if lhs.date == rhs.date {

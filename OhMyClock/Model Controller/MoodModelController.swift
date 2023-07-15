@@ -19,14 +19,13 @@ class MoodModelController: ObservableObject {
     }
     
     
-    //MARK: - CRUD Functions
+    //MARK: - CRUD Functions -- Mood Journal
     func createMood(emotion: Emotion, comment: String?, date: Date, dayStates: [DayState]) {
 
         let newMood = Mood(emotion: emotion, comment: comment, date: date, dayStates: dayStates)
         
         moods.append(newMood)
         saveToPersistentStore()
-    
     }
     
     func deleteMood(at offset: IndexSet) {

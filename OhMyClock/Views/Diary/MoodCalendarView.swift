@@ -119,6 +119,7 @@ struct WeekdaysView: View {
                 Spacer()
             }
             .padding(.horizontal)
+            .padding(.bottom, 10)
             
             HStack {
                 GridStack(rows: 1, columns: 7) { row, col in
@@ -131,7 +132,7 @@ struct WeekdaysView: View {
                 }
             }
         }
-        .padding(.top, 30)
+        .padding(.top, 20)
         .padding(.bottom, 20)
     }
 }
@@ -149,9 +150,9 @@ struct GridStack<Content: View>: View {
     }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 1) {
+        VStack(alignment: .center, spacing: 0) {
             ForEach(0..<rows) { row in
-                HStack(alignment: .center) {
+                HStack(alignment: .center, spacing: 0) {
                     ForEach(0..<columns) { col in
                         content(row, col)
                             .padding(1)

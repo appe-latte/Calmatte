@@ -9,11 +9,13 @@ import SwiftUI
 
 struct MoodDiaryView : View {
     @ObservedObject var moodModelController = MoodModelController()
-    @State var show = false
-    @State var calenShow = false
     @State var txt = ""
     @State var docID = ""
     @State var remove = false
+    
+    // MARK: Bottom sheets
+    @State var show = false
+    @State var calenShow = false
     
     @State private var diaryDescription = "Each day, jot down a short summary of your day and how you were feeling when the day was over."
     
@@ -38,7 +40,7 @@ struct MoodDiaryView : View {
                                 ForEach(moods, id: \.id) { mood in
                                     MoodRowView(mood: mood)
                                         .listRowBackground(np_white)
-                                        .padding(.vertical, 5)
+                                    //                                        .padding(.vertical, 5)
                                 }
                                 .onDelete { (indexSet) in
                                     for index in indexSet {
@@ -56,7 +58,6 @@ struct MoodDiaryView : View {
                         UITableView.appearance().tableFooterView = UIView() // Removes extra cells that are not being used.
                         
                         //MARK: Disable selection.
-                        
                         UITableView.appearance().allowsSelection = true
                         UITableViewCell.appearance().selectionStyle = .none
                         UITableView.appearance().showsVerticalScrollIndicator = false
