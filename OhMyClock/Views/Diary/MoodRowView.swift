@@ -39,14 +39,15 @@ struct MoodRowView: View {
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
                     }
-                    
                 }
+                .frame(maxWidth: 50)
                 
                 Text(mood.comment ?? "No Summary")
                     .font(.subheadline)
-                    .fontWeight(.medium)
+                    .fontWeight(.regular)
                     .textCase(.uppercase)
-                    .foregroundColor(np_black)
+                    .foregroundColor(np_jap_indigo)
+                    .minimumScaleFactor(0.75)
                 
                 Spacer()
                 

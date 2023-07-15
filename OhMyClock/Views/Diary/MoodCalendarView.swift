@@ -45,6 +45,7 @@ struct MoodCalendarView: View {
                     .textCase(.uppercase)
                 }
             }
+            
             Spacer()
         }
         .background(np_jap_indigo)
@@ -82,7 +83,8 @@ struct MonthView: View {
                 
                 GridStack(rows: month.monthRows, columns: month.monthDays.count) { row, col in
                     if month.monthDays[col+1]![row].dayDate == Date(timeIntervalSince1970: 0) {
-                        Text("").frame(width: 30, height: 30)
+                        Text("")
+                            .frame(width: 30, height: 30)
                     } else {
                         DayCellView(moodModelController: moodModelController,
                                     day: month.monthDays[col+1]![row])
@@ -105,14 +107,28 @@ struct WeekdaysView: View {
     let colors = DiaryColors()
     
     var body: some View {
-        HStack {
-            GridStack(rows: 1, columns: 7) { row, col in
-                Text(weekdays[col])
-                    .font(.headline)
+        VStack {
+            HStack {
+                Text("Mood Log")
+                    .font(.title2)
                     .fontWeight(.bold)
                     .kerning(3)
                     .textCase(.uppercase)
                     .foregroundColor(np_white)
+                
+                Spacer()
+            }
+            .padding(.horizontal)
+            
+            HStack {
+                GridStack(rows: 1, columns: 7) { row, col in
+                    Text(weekdays[col])
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                }
             }
         }
         .padding(.top, 30)
@@ -133,12 +149,12 @@ struct GridStack<Content: View>: View {
     }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
+        VStack(alignment: .center, spacing: 1) {
             ForEach(0..<rows) { row in
-                HStack(alignment: .center, spacing: 0) {
+                HStack(alignment: .center) {
                     ForEach(0..<columns) { col in
                         content(row, col)
-                            .padding(2)
+                            .padding(1)
                             .frame(maxWidth: .infinity)
                     }
                 }
@@ -162,6 +178,7 @@ struct DayCellView: View {
             VStack {
                 moodText()
                     .scaledToFit()
+                    .frame(width: 50, height: 50)
             }
             .background(np_arsenic)
             .clipShape(Circle())
@@ -196,7 +213,7 @@ struct DayCellView: View {
                 }
                 return Image(imageName)
                     .resizable()
-                    .frame(width: 30, height: 30)
+                    .frame(width: 35, height: 35)
                     .opacity(1)
             }
         }

@@ -53,8 +53,7 @@ struct ContentView: View {
                 }
             
             MoodDiaryView()
-//                .colorScheme(.light)
-//                .environmentObject(TimerModel())
+                .colorScheme(.light)
                 .tabItem {
                     Label("Journal", image: "bookmark")
                 }

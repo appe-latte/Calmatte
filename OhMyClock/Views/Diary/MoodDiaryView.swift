@@ -25,11 +25,9 @@ struct MoodDiaryView : View {
                 HeaderView()
                 
                 if self.moodModelController.moods.isEmpty {
-                    background() // to make it cover the full screen
+                    background()
                 } else {
-                    // Group moods by date
                     let groupedMoods = Dictionary(grouping: self.moodModelController.moods) { (mood) -> Date in
-                        // Use Calendar to normalize to just the date (without time)
                         let calendar = Calendar.current
                         return calendar.startOfDay(for: mood.date)
                     }.sorted { $0.key < $1.key } // Sort by date
@@ -40,7 +38,7 @@ struct MoodDiaryView : View {
                                 ForEach(moods, id: \.id) { mood in
                                     MoodRowView(mood: mood)
                                         .listRowBackground(np_white)
-                                        .padding(.vertical, 10)
+                                        .padding(.vertical, 5)
                                 }
                                 .onDelete { (indexSet) in
                                     for index in indexSet {
@@ -55,7 +53,6 @@ struct MoodDiaryView : View {
                     }
                     .scrollContentBackground(.hidden)
                     .onAppear {
-                        
                         UITableView.appearance().tableFooterView = UIView() // Removes extra cells that are not being used.
                         
                         //MARK: Disable selection.
@@ -68,14 +65,13 @@ struct MoodDiaryView : View {
                     
                     Spacer()
                 }
-                
             }
             
+            // MARK: Floating "Calendar" Button
             ZStack(alignment: .bottomTrailing) {
                 VStack {
                     Spacer()
                     
-                    // MARK: "Calendar" Button
                     HStack {
                         Spacer()
                         
@@ -85,20 +81,21 @@ struct MoodDiaryView : View {
                             self.calenShow.toggle()
                         } label: {
                             Circle()
-                                .fill(np_red)
+                                .fill(np_white)
                                 .frame(width: 50, height: 50)
                                 .clipShape(Circle())
                                 .overlay {
                                     Image(systemName: "calendar")
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 30, height: 30)
-                                        .foregroundColor(np_white)
+                                        .frame(width: 25, height: 25)
+                                        .foregroundColor(np_jap_indigo)
+                                        .padding(5)
                                 }
                         }
                         .overlay(
                             Circle()
-                                .stroke(np_white, style: StrokeStyle(lineWidth: 1))
+                                .stroke(np_jap_indigo, style: StrokeStyle(lineWidth: 1))
                                 .padding(2)
                         )
                     }
@@ -193,10 +190,13 @@ struct MoodDiaryView : View {
                         } label: {
                             HStack(spacing: 10){
                                 Image(systemName: "plus")
+                                    .resizable()
+                                    .frame(width: 10, height: 10)
+                                
                                 Text("Add")
                                     .font(.footnote)
                                     .fontWeight(.bold)
-                                    .kerning(5)
+                                    .kerning(2)
                                     .textCase(.uppercase)
                             }
                             .padding(.vertical, 5)

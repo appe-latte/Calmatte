@@ -28,7 +28,7 @@ class Day: ObservableObject {
         } else if disabled {
             return np_gray
         }
-        return np_gray.opacity(0.35)
+        return np_gray.opacity(0.15)
     }
     
     var backgroundColor: Color {

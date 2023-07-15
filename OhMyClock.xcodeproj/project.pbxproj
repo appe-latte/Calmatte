@@ -34,7 +34,6 @@
 		2F4AB6272A5DDD0D00F6332F /* MoodDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */; };
 		2F4AB6292A5DDDBE00F6332F /* MoodAddDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */; };
 		2F4AB62B2A5E5C3500F6332F /* MoodRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */; };
-		2F54B25D297C5F0E0075E488 /* AddTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B25C297C5F0E0075E488 /* AddTasksView.swift */; };
 		2F54B260297C71190075E488 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B25F297C71190075E488 /* Realm */; };
 		2F54B262297C71190075E488 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B261297C71190075E488 /* RealmSwift */; };
 		2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B263297D19E20075E488 /* OmcRealmManager.swift */; };
@@ -93,7 +92,6 @@
 		2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDiaryView.swift; sourceTree = "<group>"; };
 		2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodAddDiaryView.swift; sourceTree = "<group>"; };
 		2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRowView.swift; sourceTree = "<group>"; };
-		2F54B25C297C5F0E0075E488 /* AddTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTasksView.swift; sourceTree = "<group>"; };
 		2F54B263297D19E20075E488 /* OmcRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmcRealmManager.swift; sourceTree = "<group>"; };
 		2F54B265297D1AE40075E488 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		2F8838302A0AB1C800840F68 /* OhMyClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhMyClock.entitlements; sourceTree = "<group>"; };
@@ -308,7 +306,6 @@
 				2FF51DFE2A3A2DDD0035A964 /* WeatherCard */,
 				2F8838332A0AC64E00840F68 /* TimerView.swift */,
 				2FF50126296EA2B400813D40 /* MeditationView.swift */,
-				2F54B25C297C5F0E0075E488 /* AddTasksView.swift */,
 				2FF50128296EA33000813D40 /* SettingsView.swift */,
 				2F434BAE296F60FE00698C1A /* PlayerView.swift */,
 				2F4AB6252A5DDCF000F6332F /* Diary */,
@@ -456,7 +453,6 @@
 				2F8CA71029B7A6EB00C34005 /* TimerModel.swift in Sources */,
 				2F4AB6292A5DDDBE00F6332F /* MoodAddDiaryView.swift in Sources */,
 				2FA9AB452A4E0D7A00557FD0 /* MoodModel.swift in Sources */,
-				2F54B25D297C5F0E0075E488 /* AddTasksView.swift in Sources */,
 				2FF50129296EA33000813D40 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,9 +599,9 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Required to show the name of your location and weather information\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -644,9 +640,9 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Required to show the name of your location and weather information\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

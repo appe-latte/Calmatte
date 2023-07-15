@@ -42,6 +42,7 @@ struct MoodAddDiaryView: View {
                         .kerning(5)
                         .minimumScaleFactor(0.5)
                         .textCase(.uppercase)
+                        .foregroundColor(np_white)
                     
                     Spacer()
                 }

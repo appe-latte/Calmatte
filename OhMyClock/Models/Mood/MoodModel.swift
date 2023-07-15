@@ -31,26 +31,6 @@ enum InsightsType: String, CaseIterable {
     }
 }
 
-// MARK: Push Notification messages
-enum DailyPushNotification: String, CaseIterable {
-    case morning = "Hey, just checking to see how your morning is going?"
-    case noon = "Hey, I hope your day is going well so far"
-    case evening = "Hi, how about we add one more mood check-in today?"
-    
-    var time: DateComponents {
-        var components = DateComponents()
-        switch self {
-        case .morning:
-            components.hour = 9
-        case .noon:
-            components.hour = 13
-        case .evening:
-            components.hour = 15
-        }
-        return components
-    }
-}
-
 class MoodModel: ObservableObject {
     
     @Published var moodType: MoodType = .okay

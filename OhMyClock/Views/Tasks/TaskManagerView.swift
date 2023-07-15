@@ -95,8 +95,8 @@ struct TaskManagerView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
-                        Text("Today")
-                            .font(.largeTitle)
+                        Text("Daily Tasks")
+                            .font(.title)
                             .fontWeight(.bold)
                             .kerning(5)
                             .minimumScaleFactor(0.5)
@@ -110,10 +110,13 @@ struct TaskManagerView: View {
                         } label: {
                             HStack(spacing: 10){
                                 Image(systemName: "plus")
+                                    .resizable()
+                                    .frame(width: 10, height: 10)
+                                
                                 Text("Add")
                                     .font(.footnote)
                                     .fontWeight(.bold)
-                                    .kerning(5)
+                                    .kerning(2)
                                     .textCase(.uppercase)
                             }
                             .padding(.vertical, 5)

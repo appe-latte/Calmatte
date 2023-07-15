@@ -29,10 +29,10 @@ struct MeditationView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            // Background
+            // MARK: Background
             background()
             
-            // Content Area
+            // MARK: "Content" section
             Content()
             
         }
@@ -164,7 +164,6 @@ struct MeditationView: View {
                 }
                 .padding()
             }
-//            .padding(.bottom, 30)
             
             GeometryReader { proxy in
                 let size = proxy.size

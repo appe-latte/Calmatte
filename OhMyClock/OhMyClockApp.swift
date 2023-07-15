@@ -32,7 +32,7 @@ struct OhMyClockApp: App {
             if isActive {
                 ContentView()
                     .environmentObject(audioManager)
-                    .environmentObject(timerModel)
+//                    .environmentObject(timerModel)
                     .onAppear {
                         // Prevent the screen from sleeping
                         UIApplication.shared.isIdleTimerDisabled = true

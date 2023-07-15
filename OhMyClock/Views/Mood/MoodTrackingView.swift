@@ -43,7 +43,8 @@ struct MoodTrackingView: View {
             }
             .padding(.top)
             
-            Text("Mood Selection").foregroundColor(.secondary)
+            Text("Mood Selection")
+                .foregroundColor(.secondary)
             
             Picker(selection: $insightsMode, label: Text("")) {
                 ForEach(InsightsType.allCases, id: \.self) {
