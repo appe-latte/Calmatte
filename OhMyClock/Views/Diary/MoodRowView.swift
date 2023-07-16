@@ -29,7 +29,7 @@ struct MoodRowView: View {
                     
                     ZStack {
                         Circle()
-                            .fill(np_arsenic)
+                            .fill(mood.emotion.moodColor)
                             .frame(width: 40, height: 40)
                         
                         Text("\(mood.dayAsInt)")
@@ -39,15 +39,27 @@ struct MoodRowView: View {
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
                     }
+                    
+                    ZStack {
+                        Rectangle()
+                            .fill(mood.emotion.moodColor)
+                            .frame(width: 2)
+                            .edgesIgnoringSafeArea(.all)
+                    }
                 }
                 .frame(maxWidth: 50)
                 
-                Text(mood.comment ?? "No Summary")
-                    .font(.subheadline)
-                    .fontWeight(.regular)
-                    .textCase(.uppercase)
-                    .foregroundColor(np_jap_indigo)
-                    .minimumScaleFactor(0.75)
+                HStack {
+                    Text(mood.comment ?? "No Summary")
+                        .font(.system(size: 12))
+                        .fontWeight(.regular)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_jap_indigo)
+                        .minimumScaleFactor(0.75)
+                    
+                    Spacer()
+                }
+                .frame(width: 200)
                 
                 Spacer()
                 
@@ -58,9 +70,10 @@ struct MoodRowView: View {
                         .frame(maxWidth: 70)
                     
                     Text(mood.dayStates.map { $0.rawValue }.joined(separator: ", "))
-                        .font(.system(size: 8))
+                        .font(.system(size: 7))
                         .fontWeight(.regular)
                         .textCase(.uppercase)
+                        .minimumScaleFactor(0.5)
                         .foregroundColor(np_black)
                 }
                 .frame(maxWidth: 100)

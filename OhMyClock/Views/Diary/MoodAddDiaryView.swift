@@ -442,8 +442,9 @@ struct MoodAddDiaryView: View {
                         Spacer()
                     }
                     
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack(spacing: 15){
+                    // MARK: Day State - Row 1
+                    VStack {
+                        HStack(spacing: 5){
                             
                             // MARK: Fun - state
                             VStack(spacing: 5) {
@@ -535,7 +536,7 @@ struct MoodAddDiaryView: View {
                                             .fill(self.dayStates.contains(.bored) ? np_white : np_white.opacity(0.45))
                                             .frame(width: 75, height: 45)
                                             .overlay {
-                                                Text("Bored")
+                                                Text("Boring")
                                                     .font(.system(size: 10))
                                                     .fontWeight(.medium)
                                                     .textCase(.uppercase)
@@ -545,6 +546,12 @@ struct MoodAddDiaryView: View {
                                 }
                             }
                             
+                        }
+                    }
+                    
+                    // MARK: Day State - Row 2
+                    VStack {
+                        HStack(spacing: 5){
                             // MARK: Tiring - state
                             VStack(spacing: 5) {
                                 Button(action: {
@@ -585,6 +592,65 @@ struct MoodAddDiaryView: View {
                                 }
                             }
                             
+                            // MARK: Exciting - state
+                            VStack(spacing: 5) {
+                                Button(action: {
+                                    self.toggleDayState(.exciting)
+                                }) {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(self.dayStates.contains(.exciting) ? np_white : np_white.opacity(0.45))
+                                            .frame(width: 75, height: 45)
+                                            .overlay {
+                                                Text("Exciting")
+                                                    .font(.system(size: 10))
+                                                    .fontWeight(.medium)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(self.dayStates.contains(.exciting) ? np_jap_indigo : np_white)
+                                            }
+                                    }
+                                }
+                            }
+                            
+                            // MARK: Okay - state
+                            VStack(spacing: 5) {
+                                Button(action: {
+                                    self.toggleDayState(.okay)
+                                }) {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(self.dayStates.contains(.okay) ? np_white : np_white.opacity(0.45))
+                                            .frame(width: 75, height: 45)
+                                            .overlay {
+                                                Text("Okay")
+                                                    .font(.system(size: 10))
+                                                    .fontWeight(.medium)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(self.dayStates.contains(.okay) ? np_jap_indigo : np_white)
+                                            }
+                                    }
+                                }
+                            }
+                            
+                            // MARK: Sad - state
+                            VStack(spacing: 5) {
+                                Button(action: {
+                                    self.toggleDayState(.sad)
+                                }) {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(self.dayStates.contains(.sad) ? np_white : np_white.opacity(0.45))
+                                            .frame(width: 75, height: 45)
+                                            .overlay {
+                                                Text("Sad")
+                                                    .font(.system(size: 10))
+                                                    .fontWeight(.medium)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(self.dayStates.contains(.sad) ? np_jap_indigo : np_white)
+                                            }
+                                    }
+                                }
+                            }
                         }
                     }
                 }

@@ -36,28 +36,26 @@ struct MoodDiaryView : View {
                     
                     List {
                         ForEach(groupedMoods, id: \.key) { key, moods in
-                            Section(header: Text("\(key, formatter: DateFormatter())")) {
-                                ForEach(moods, id: \.id) { mood in
-                                    MoodRowView(mood: mood)
-                                        .listRowBackground(np_white)
-                                    //                                        .padding(.vertical, 5)
-                                }
-                                .onDelete { (indexSet) in
-                                    for index in indexSet {
-                                        // Assuming moods are stored as an array
-                                        if let i = self.moodModelController.moods.firstIndex(where: { $0.id == moods[index].id }) {
-                                            self.moodModelController.deleteMood(at: IndexSet(integer: i))
-                                        }
+                            ForEach(moods, id: \.id) { mood in
+                                MoodRowView(mood: mood)
+                                    .listRowBackground(np_white)
+                            }
+                            .onDelete { (indexSet) in
+                                for index in indexSet {
+                                    // Assuming moods are stored as an array
+                                    if let i = self.moodModelController.moods.firstIndex(where: { $0.id == moods[index].id }) {
+                                        self.moodModelController.deleteMood(at: IndexSet(integer: i))
                                     }
                                 }
                             }
                         }
                     }
+                    .listStyle(.insetGrouped)
                     .scrollContentBackground(.hidden)
                     .onAppear {
                         UITableView.appearance().tableFooterView = UIView() // Removes extra cells that are not being used.
                         
-                        //MARK: Disable selection.
+                        // MARK: Disable selection.
                         UITableView.appearance().allowsSelection = true
                         UITableViewCell.appearance().selectionStyle = .none
                         UITableView.appearance().showsVerticalScrollIndicator = false
@@ -237,7 +235,6 @@ struct MoodDiaryView : View {
 
 class Host : UIHostingController<ContentView>{
     override var preferredStatusBarStyle: UIStatusBarStyle{
-        
         return .lightContent
     }
 }

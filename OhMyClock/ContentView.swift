@@ -43,8 +43,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Home", image: "home")
                 }
-            
-            
+        
             MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
                 .colorScheme(.light)
                 .environmentObject(audioManager)

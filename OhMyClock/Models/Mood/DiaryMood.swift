@@ -29,6 +29,9 @@ enum DayState: String, Codable {
     case tiring
     case active
     case meh
+    case okay
+    case exciting
+    case sad
 }
 
 enum MoodColor: String, Codable {
@@ -51,25 +54,25 @@ struct Emotion: Codable {
     var moodColor: Color {
         switch color {
         case .angryColor:
-            return .red
+            return np_red
         case .upsetColor:
-            return .orange
+            return np_orange
         case .okayColor:
-            return .gray
+            return np_tan
         case .goodColor:
-            return .purple
+            return np_green
         case .greatColor:
-            return .green
+            return cov_green
         case .sadColor:
-            return .orange
+            return np_tuscan
         case .lowColor:
-            return .red
+            return np_purple
         case .shockColor:
-            return .blue
+            return np_dark_blue
         case .lovedColor:
-            return .gray
+            return np_pink
         case .mehColor:
-            return .purple
+            return np_gray
         }
     }
 }

@@ -110,7 +110,7 @@ struct WeekdaysView: View {
         VStack {
             HStack {
                 Text("Mood Log")
-                    .font(.title2)
+                    .font(.title)
                     .fontWeight(.bold)
                     .kerning(3)
                     .textCase(.uppercase)

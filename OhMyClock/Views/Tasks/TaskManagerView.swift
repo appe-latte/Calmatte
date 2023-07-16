@@ -32,7 +32,6 @@ struct TaskManagerView: View {
         }
         .safeAreaInset(edge: .top, spacing: 0) {
             HeaderView()
-            
         }
         .sheet(isPresented: $addNewTask) {
             AddTaskView(taskManager: taskManager)
@@ -175,7 +174,6 @@ struct CardView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            
             Rectangle()
                 .fill(task.taskCategory.color)
                 .frame(width: screenWidth - 20, height: 30, alignment: .topLeading)
@@ -183,22 +181,22 @@ struct CardView: View {
             
             // MARK: Date + Time
             HStack {
-                Text(task.dateAdded.toString("hh:mm a"))
-                    .font(.footnote)
-                    .fontWeight(.semibold)
-                    .kerning(3)
-                    .textCase(.uppercase)
-                
-                Spacer()
-                
                 Text(task.dateAdded, formatter: dateFormatter)
                     .font(.footnote)
                     .fontWeight(.bold)
                     .kerning(3)
                     .textCase(.uppercase)
+                
+                Spacer()
+                
+                Text(task.dateAdded.toString("hh:mm a"))
+                    .font(.footnote)
+                    .fontWeight(.semibold)
+                    .kerning(3)
+                    .textCase(.uppercase)
             }
-            .padding(.top, 15)
-            .padding(.horizontal, 10)
+            .padding(.vertical, 5)
+            .padding(.horizontal, 15)
             
             // MARK: Task Information
             Text(task.taskName)
@@ -206,18 +204,17 @@ struct CardView: View {
                 .fontWeight(.semibold)
                 .kerning(3)
                 .textCase(.uppercase)
-                .padding(.horizontal, 10)
+                .padding(.horizontal, 15)
             
             Text(task.taskDescription)
                 .font(.footnote)
                 .fontWeight(.semibold)
                 .kerning(2)
                 .textCase(.uppercase)
-                .padding(.horizontal, 10)
+                .padding(.horizontal, 15)
             
             // MARK: "Delete" button
             HStack {
-                
                 Spacer()
                 
                 Button(action: {
@@ -230,9 +227,8 @@ struct CardView: View {
             }
             .padding(.bottom, 10)
         }
-        .frame(width: screenWidth - 30, height: screenHeight * 0.15)
+        .frame(maxWidth: screenWidth - 30, maxHeight: screenHeight * 0.25)
         .foregroundColor(np_arsenic)
-        .padding(5)
     }
 }
 

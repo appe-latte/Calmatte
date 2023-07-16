@@ -99,15 +99,17 @@ struct ClockView: View {
                     // MARK: Weather Information
                     ScrollView(.horizontal, showsIndicators: false){
                         HStack {
-                            Label("Today's Weather", systemImage: "cloud.sun.fill")
+                            Label("Today's Weather", systemImage: "")
                                 .font(.footnote)
                                 .fontWeight(.semibold)
                                 .kerning(2)
                                 .textCase(.uppercase)
+                                .foregroundColor(np_white)
                             
                             Spacer()
                         }
                         .padding(.horizontal)
+                        
                         HStack(spacing: 15){
                             // MARK: Weather Conditions Card
                             WeatherCardFrontView()
@@ -119,20 +121,37 @@ struct ClockView: View {
                     }
                     .padding(.bottom, 20)
                     
+                    // MARK: Quote View
+                    VStack {
+                        HStack {
+                            Label("Quote of the day", systemImage: "")
+                                .font(.footnote)
+                                .fontWeight(.semibold)
+                                .kerning(2)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                            
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                        
+                        QuoteView()
+                    }
+                    
                     // MARK: Mood Diary
                     HStack {
-                        Label("How do you feel today?", systemImage: "face.smiling.inverse")
+                        Label("How do you feel today?", systemImage: "")
                             .font(.footnote)
                             .fontWeight(.semibold)
                             .kerning(2)
                             .textCase(.uppercase)
+                            .foregroundColor(np_white)
                         
                         Spacer()
                     }
                     .padding(.horizontal)
                     
                     VStack(spacing: 20) {
-                        
                         MoodSelectorTileView(moodModel: moodModel)
                         
                         CustomSegmentedPickerView(selection: $insightsMode, items: InsightsType.allCases)
@@ -212,15 +231,15 @@ struct ClockView: View {
         let hour = Calendar.current.component(.hour, from: Date())
         switch hour {
         case 5..<12:
-            return "Good Morning"
+            return "good morning."
         case 12:
-            return "Mid-day"
+            return "mid-day."
         case 13..<17:
-            return "Good Afternoon"
+            return "good afternoon."
         case 17..<22:
-            return "Good Evening"
+            return "good evening."
         default:
-            return "Good Night"
+            return "good night."
         }
     }
     

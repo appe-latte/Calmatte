@@ -24,16 +24,14 @@ struct MoodSelectorTileView: View {
                 self.saveMoodFooterView
             }
         }
-        .cornerRadius(10)
+//        .cornerRadius(10)
     }
     
-    /// Large gradient view
     var largeGradientView: some View {
         LinearGradient(gradient: Gradient(colors: moodModel.moodDetails().colors),
                        startPoint: .bottom, endPoint: .top).frame(height: UIScreen.main.bounds.width / 1.2)
     }
     
-    /// Faded emoji text
     var fadedMoodTextView: some View {
         ZStack {
             ZStack {
@@ -117,7 +115,6 @@ struct MoodSelectorTileView: View {
         }
     }
     
-    /// Disable save button when user selects `This Week` insights, also when the user reached maximum number of check-ins for a certain mood type
     var shouldDisableSaveButton: Bool {
         if moodModel.insightsType == .today {
             return moodModel.moodCount(type: moodModel.moodType) >= moodModel.insightsType.maximumMoodCheckins
