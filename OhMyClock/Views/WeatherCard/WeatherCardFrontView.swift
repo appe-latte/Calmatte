@@ -107,7 +107,7 @@ struct WeatherCardFrontView: View {
             .padding(5)
         }
         .frame(maxWidth: screenWidth - 40, maxHeight: screenHeight * 0.75)
-        .background(np_jap_indigo)
+        .background(.linearGradient(colors: [np_arsenic, np_jap_indigo, np_jap_indigo], startPoint: .bottom, endPoint: .top))
         .foregroundColor(np_white)
         .ignoresSafeArea()
         .cornerRadius(10)

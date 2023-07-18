@@ -70,7 +70,7 @@ struct MoodRowView: View {
                         .frame(maxWidth: 70)
                     
                     Text(mood.dayStates.map { $0.rawValue }.joined(separator: ", "))
-                        .font(.system(size: 7))
+                        .font(.system(size: 6))
                         .fontWeight(.regular)
                         .textCase(.uppercase)
                         .minimumScaleFactor(0.5)

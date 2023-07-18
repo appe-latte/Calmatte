@@ -98,7 +98,6 @@ struct AddTaskView: View {
                             .foregroundColor(np_white)
                         
                     }
-                    .offset(y: -5)
                     .overlay(alignment: .bottom) {
                         Rectangle()
                             .fill(np_white.opacity(0.7))
