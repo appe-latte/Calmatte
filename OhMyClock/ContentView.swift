@@ -9,16 +9,12 @@ import SwiftUI
 import CoreData
 import CoreLocation
 import UserNotifications
-import LocalAuthentication
 
 struct ContentView: View {
     @ObservedObject var taskManager = TaskManager()
     @StateObject var realmManager = OmcRealmManager()
     @State var showMenuSheet = false
     @EnvironmentObject var timerModel : TimerModel
-    
-    // MARK: Authentication
-    @AppStorage("status") var logged = false
     
     var audioManager = AudioManager()
     

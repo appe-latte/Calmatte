@@ -21,7 +21,7 @@ struct QuoteView: View {
         VStack {
             QuoteCard(quote: quoteOfTheDay.quote, author: quoteOfTheDay.name).padding(5)
         }
-        .background(.linearGradient(colors: [np_arsenic, np_arsenic, np_jap_indigo, np_jap_indigo, np_jap_indigo], startPoint: .bottom, endPoint: .top))
+        .background(np_jap_indigo)
         .cornerRadius(10)
         .padding(.bottom, 20)
         .padding(.bottom, 5)
@@ -62,25 +62,17 @@ struct QuoteCard : View {
                 .multilineTextAlignment(.center)
                 .padding()
             
-            // MARK: Author Name
-            ZStack() {
-                Rectangle()
-                    .fill(np_arsenic)
-                    .frame(width: screenWidth - 20, height: 50)
-                    
-                Text("~ \(author)")
-                    .font(.system(size: 10))
-                    .fontWeight(.bold)
-                    .kerning(5)
-                    .textCase(.uppercase)
-                    .foregroundColor(np_white)
-                    .padding(.top, 10)
-            }
-            .padding(.top, 20)
+            Divider()
             
+            Text("\(author)")
+                .font(.system(size: 10))
+                .fontWeight(.bold)
+                .kerning(5)
+                .textCase(.uppercase)
+                .foregroundColor(np_white)
+                .padding(.top, 15)
         }
         .frame(width: screenWidth - 40, height: screenHeight * 0.35)
-        .padding(.top, 20)
     }
 }
 

@@ -3,16 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F0199FF2A650929002A074B /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F0199FE2A650929002A074B /* quotes.json */; };
 		2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04E82A0A1E1B002523A9 /* Weather.swift */; };
 		2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */; };
 		2F24A2652A4BB5E400B41C01 /* MoodTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2642A4BB5E400B41C01 /* MoodTrackingView.swift */; };
 		2F24A2692A4C878400B41C01 /* BreathType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2682A4C878400B41C01 /* BreathType.swift */; };
 		2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A17F2973F0FC007DA7CC /* LocationManager.swift */; };
+		2F27A18329740143007DA7CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A18229740143007DA7CC /* Alamofire */; };
+		2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A185297401B8007DA7CC /* SwiftyJSON */; };
 		2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A187297402AB007DA7CC /* LocationFetch.swift */; };
 		2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0A32967A40000AC8D59 /* OhMyClockApp.swift */; };
 		2F36B0A62967A40000AC8D59 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0A52967A40000AC8D59 /* ContentView.swift */; };
@@ -33,15 +34,17 @@
 		2F4AB6272A5DDD0D00F6332F /* MoodDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */; };
 		2F4AB6292A5DDDBE00F6332F /* MoodAddDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */; };
 		2F4AB62B2A5E5C3500F6332F /* MoodRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */; };
+		2F54B260297C71190075E488 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B25F297C71190075E488 /* Realm */; };
+		2F54B262297C71190075E488 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B261297C71190075E488 /* RealmSwift */; };
 		2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B263297D19E20075E488 /* OmcRealmManager.swift */; };
 		2F54B266297D1AE50075E488 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B265297D1AE40075E488 /* Milestone.swift */; };
-		2F69D21F2A65E2A20057A3BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F69D21E2A65E2A10057A3BC /* GoogleService-Info.plist */; };
 		2F8838322A0ABC5300840F68 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8838312A0ABC5300840F68 /* ClockView.swift */; };
 		2F8838342A0AC64E00840F68 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8838332A0AC64E00840F68 /* TimerView.swift */; };
 		2F8CA71029B7A6EB00C34005 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */; };
 		2F919D332A5DD83000291071 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F919D322A5DD83000291071 /* Day.swift */; };
 		2F919D352A5DD8EA00291071 /* DiaryColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F919D342A5DD8EA00291071 /* DiaryColors.swift */; };
 		2F9EBB032A6489F900DC806A /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EBB022A6489F900DC806A /* Quote.swift */; };
+		2F9EBB052A648A5900DC806A /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F9EBB042A648A5900DC806A /* quotes.json */; };
 		2F9EBB072A648A8000DC806A /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EBB062A648A8000DC806A /* QuoteView.swift */; };
 		2FA9AB432A4E0D0000557FD0 /* MoodSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9AB422A4E0D0000557FD0 /* MoodSliderView.swift */; };
 		2FA9AB452A4E0D7A00557FD0 /* MoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */; };
@@ -78,7 +81,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2F0199FE2A650929002A074B /* quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quotes.json; sourceTree = "<group>"; };
 		2F0D04E82A0A1E1B002523A9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		2F24A2642A4BB5E400B41C01 /* MoodTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodTrackingView.swift; sourceTree = "<group>"; };
@@ -108,7 +110,6 @@
 		2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRowView.swift; sourceTree = "<group>"; };
 		2F54B263297D19E20075E488 /* OmcRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmcRealmManager.swift; sourceTree = "<group>"; };
 		2F54B265297D1AE40075E488 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
-		2F69D21E2A65E2A10057A3BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "Certificates/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		2F8838302A0AB1C800840F68 /* OhMyClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhMyClock.entitlements; sourceTree = "<group>"; };
 		2F8838312A0ABC5300840F68 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 		2F8838332A0AC64E00840F68 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -116,6 +117,7 @@
 		2F919D322A5DD83000291071 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		2F919D342A5DD8EA00291071 /* DiaryColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryColors.swift; sourceTree = "<group>"; };
 		2F9EBB022A6489F900DC806A /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		2F9EBB042A648A5900DC806A /* quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = quotes.json; path = "../../../../../../Downloads/quotesApp-master/QuotesApp/Data/quotes.json"; sourceTree = "<group>"; };
 		2F9EBB062A648A8000DC806A /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
 		2FA9AB422A4E0D0000557FD0 /* MoodSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSliderView.swift; sourceTree = "<group>"; };
 		2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodModel.swift; sourceTree = "<group>"; };
@@ -145,6 +147,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F54B262297C71190075E488 /* RealmSwift in Frameworks */,
+				2F54B260297C71190075E488 /* Realm in Frameworks */,
+				2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */,
+				2F27A18329740143007DA7CC /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +160,7 @@
 		2F0D04EA2A0A1EF8002523A9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				2F0199FE2A650929002A074B /* quotes.json */,
+				2F9EBB042A648A5900DC806A /* quotes.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -196,7 +202,6 @@
 				2FF8F00B29B27BD4008D7C7E /* equilibrium.mp3 */,
 				2F36B0A92967A40200AC8D59 /* Preview Content */,
 				2F54B263297D19E20075E488 /* OmcRealmManager.swift */,
-				2F69D21E2A65E2A10057A3BC /* GoogleService-Info.plist */,
 				2F54B265297D1AE40075E488 /* Milestone.swift */,
 				2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */,
 			);
@@ -379,6 +384,10 @@
 			);
 			name = OhMyClock;
 			packageProductDependencies = (
+				2F27A18229740143007DA7CC /* Alamofire */,
+				2F27A185297401B8007DA7CC /* SwiftyJSON */,
+				2F54B25F297C71190075E488 /* Realm */,
+				2F54B261297C71190075E488 /* RealmSwift */,
 			);
 			productName = OhMyClock;
 			productReference = 2F36B0A02967A40000AC8D59 /* OhMyClock.app */;
@@ -400,7 +409,7 @@
 				};
 			};
 			buildConfigurationList = 2F36B09B2967A40000AC8D59 /* Build configuration list for PBXProject "OhMyClock" */;
-			compatibilityVersion = "Xcode 15.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -409,10 +418,9 @@
 			);
 			mainGroup = 2F36B0972967A40000AC8D59;
 			packageReferences = (
-				2FEA2D452A65E7A300AB7FE2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				2FEA2D462A65E87300AB7FE2 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				2FEA2D472A65E89F00AB7FE2 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				2F106AE02A65ED7E00CCB6D9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 2F36B0A12967A40000AC8D59 /* Products */;
 			projectDirPath = "";
@@ -428,9 +436,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F0199FF2A650929002A074B /* quotes.json in Resources */,
+				2F9EBB052A648A5900DC806A /* quotes.json in Resources */,
 				2F36B0AB2967A40200AC8D59 /* Preview Assets.xcassets in Resources */,
-				2F69D21F2A65E2A20057A3BC /* GoogleService-Info.plist in Resources */,
 				2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */,
 				2FF8F01329B27BD5008D7C7E /* equilibrium.mp3 in Resources */,
 			);
@@ -634,7 +641,6 @@
 				INFOPLIST_FILE = OhMyClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Calmatte;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSFaceIDUsageDescription = "\"We require authentication to protect your data.\"";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Required to show the name of your location and weather information\"";
@@ -677,7 +683,6 @@
 				INFOPLIST_FILE = OhMyClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Calmatte;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSFaceIDUsageDescription = "\"We require authentication to protect your data.\"";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Required to show the name of your location and weather information\"";
@@ -727,39 +732,54 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2F106AE02A65ED7E00CCB6D9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
-			};
-		};
-		2FEA2D452A65E7A300AB7FE2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.12.0;
-			};
-		};
-		2FEA2D462A65E87300AB7FE2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
+				minimumVersion = 5.0.0;
 			};
 		};
-		2FEA2D472A65E89F00AB7FE2 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 5.0.0;
+			};
+		};
+		2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.10.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2F27A18229740143007DA7CC /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		2F27A185297401B8007DA7CC /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		2F54B25F297C71190075E488 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		2F54B261297C71190075E488 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */ = {
