@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2F06D6572A663904004DD93E /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F06D6562A663904004DD93E /* quotes.json */; };
-		2F06D65A2A663CE4004DD93E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F06D6592A663CE4004DD93E /* LoginViewModel.swift */; };
 		2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04E82A0A1E1B002523A9 /* Weather.swift */; };
 		2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */; };
+		2F11AE142A675615002FFAED /* BiometricLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F11AE132A675615002FFAED /* BiometricLoginView.swift */; };
+		2F18B4122A6654DC00F91C7B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F18B4112A6654DC00F91C7B /* GoogleService-Info.plist */; };
 		2F24A2652A4BB5E400B41C01 /* MoodTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2642A4BB5E400B41C01 /* MoodTrackingView.swift */; };
 		2F24A2692A4C878400B41C01 /* BreathType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24A2682A4C878400B41C01 /* BreathType.swift */; };
 		2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A17F2973F0FC007DA7CC /* LocationManager.swift */; };
@@ -55,6 +56,13 @@
 		2FB2C4FE2A37B401006D5A30 /* TaskManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C4FD2A37B401006D5A30 /* TaskManagerView.swift */; };
 		2FB2C5012A37B4FD006D5A30 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C5002A37B4FD006D5A30 /* AddTaskView.swift */; };
 		2FB87FB02A0C6E1D0033B4E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */; };
+		2FCD00562A66E9D2000AD649 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00552A66E9D2000AD649 /* SignUpView.swift */; };
+		2FCD005A2A6710BC000AD649 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00592A6710BC000AD649 /* AuthViewModel.swift */; };
+		2FCD005C2A67127F000AD649 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD005B2A67127F000AD649 /* User.swift */; };
+		2FCD005E2A671647000AD649 /* ProgressLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD005D2A671647000AD649 /* ProgressLoadingView.swift */; };
+		2FCD00602A671862000AD649 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD005F2A671862000AD649 /* Constants.swift */; };
+		2FCD00622A67188F000AD649 /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00612A67188F000AD649 /* AppLockViewModel.swift */; };
+		2FCD00642A671C1E000AD649 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00632A671C1E000AD649 /* LoginView.swift */; };
 		2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEE581297731CE00416E54 /* TaskRow.swift */; };
 		2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
@@ -85,9 +93,10 @@
 /* Begin PBXFileReference section */
 		1E0CEB7FFF9AB3C613B273EE /* Pods_OhMyClock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OhMyClock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F06D6562A663904004DD93E /* quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = quotes.json; path = OhMyClock/Data/quotes.json; sourceTree = SOURCE_ROOT; };
-		2F06D6592A663CE4004DD93E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		2F0D04E82A0A1E1B002523A9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		2F11AE132A675615002FFAED /* BiometricLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricLoginView.swift; sourceTree = "<group>"; };
+		2F18B4112A6654DC00F91C7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F24A2642A4BB5E400B41C01 /* MoodTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodTrackingView.swift; sourceTree = "<group>"; };
 		2F24A2682A4C878400B41C01 /* BreathType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathType.swift; sourceTree = "<group>"; };
 		2F27A17F2973F0FC007DA7CC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -131,13 +140,20 @@
 		2FB2C4FD2A37B401006D5A30 /* TaskManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerView.swift; sourceTree = "<group>"; };
 		2FB2C5002A37B4FD006D5A30 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2FCD00552A66E9D2000AD649 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		2FCD00592A6710BC000AD649 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		2FCD005B2A67127F000AD649 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2FCD005D2A671647000AD649 /* ProgressLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressLoadingView.swift; sourceTree = "<group>"; };
+		2FCD005F2A671862000AD649 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2FCD00612A67188F000AD649 /* AppLockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
+		2FCD00632A671C1E000AD649 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2FDBFC9A2A64B0C200CF96FE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		2FDBFC9C2A64B0C200CF96FE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		2FEEE581297731CE00416E54 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		2FF12EBB2A0B759A0097993C /* OmcModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OmcModel.xcdatamodel; sourceTree = "<group>"; };
 		2FF50123296E9B2800813D40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2FF50126296EA2B400813D40 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
-		2FF50128296EA33000813D40 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2FF50128296EA33000813D40 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = ../Security/SettingsView.swift; sourceTree = "<group>"; };
 		2FF51DFF2A3A2E040035A964 /* WeatherCardFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCardFrontView.swift; sourceTree = "<group>"; };
 		2FF51E012A3A2E120035A964 /* WeatherCardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCardBackView.swift; sourceTree = "<group>"; };
 		2FF51E032A3A42370035A964 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
@@ -176,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				2F36B0A22967A40000AC8D59 /* OhMyClock */,
+				2F18B4112A6654DC00F91C7B /* GoogleService-Info.plist */,
 				2FDBFC992A64B0C200CF96FE /* Frameworks */,
 				2F36B0A12967A40000AC8D59 /* Products */,
 				FCE264DC92A63B05C1E6185B /* Pods */,
@@ -231,6 +248,8 @@
 				2F36B0B42967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift */,
 				2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */,
 				2FEEE581297731CE00416E54 /* TaskRow.swift */,
+				2FCD005D2A671647000AD649 /* ProgressLoadingView.swift */,
+				2FCD005F2A671862000AD649 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -243,6 +262,7 @@
 				2F0D04E82A0A1E1B002523A9 /* Weather.swift */,
 				2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */,
 				2F24A2682A4C878400B41C01 /* BreathType.swift */,
+				2FCD005B2A67127F000AD649 /* User.swift */,
 				2F9EBB012A6489C900DC806A /* Quote */,
 				2F4AB62D2A5E5CEF00F6332F /* Mood */,
 			);
@@ -256,7 +276,8 @@
 				2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */,
 				2F434BB2296F863400698C1A /* MeditationViewModel.swift */,
 				2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */,
-				2F06D6592A663CE4004DD93E /* LoginViewModel.swift */,
+				2FCD00612A67188F000AD649 /* AppLockViewModel.swift */,
+				2FCD00592A6710BC000AD649 /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -339,6 +360,25 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		2FCD00532A66E990000AD649 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2FF50128296EA33000813D40 /* SettingsView.swift */,
+				2FCD00542A66E9B1000AD649 /* Security */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		2FCD00542A66E9B1000AD649 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD00552A66E9D2000AD649 /* SignUpView.swift */,
+				2FCD00632A671C1E000AD649 /* LoginView.swift */,
+				2F11AE132A675615002FFAED /* BiometricLoginView.swift */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
 		2FDBFC992A64B0C200CF96FE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,11 +397,11 @@
 				2FF51DFE2A3A2DDD0035A964 /* WeatherCard */,
 				2F8838332A0AC64E00840F68 /* TimerView.swift */,
 				2FF50126296EA2B400813D40 /* MeditationView.swift */,
-				2FF50128296EA33000813D40 /* SettingsView.swift */,
 				2F434BAE296F60FE00698C1A /* PlayerView.swift */,
 				2F9EBB062A648A8000DC806A /* QuoteView.swift */,
 				2F4AB6252A5DDCF000F6332F /* Diary */,
 				2FA9AB412A4E0CDF00557FD0 /* Mood */,
+				2FCD00532A66E990000AD649 /* Settings */,
 				2FB2C4FF2A37B4DD006D5A30 /* Tasks */,
 			);
 			path = Views;
@@ -382,7 +422,6 @@
 				71C548B17BD3E291DC7F07BF /* Pods-OhMyClock.debug.xcconfig */,
 				F035852F19147F0F38D6AF6C /* Pods-OhMyClock.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -398,7 +437,7 @@
 				2F36B09D2967A40000AC8D59 /* Frameworks */,
 				2F36B09E2967A40000AC8D59 /* Resources */,
 				2FDBFCAD2A64B0C400CF96FE /* Embed Foundation Extensions */,
-				90710F7AE2379A7BB3BC1099 /* [CP] Embed Pods Frameworks */,
+				FE7F33F7A9D2B7B846401530 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -440,8 +479,8 @@
 			);
 			mainGroup = 2F36B0972967A40000AC8D59;
 			packageReferences = (
-				2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire.git" */,
-				2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */,
+				2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 2F36B0A12967A40000AC8D59 /* Products */;
@@ -460,6 +499,7 @@
 			files = (
 				2F06D6572A663904004DD93E /* quotes.json in Resources */,
 				2F36B0AB2967A40200AC8D59 /* Preview Assets.xcassets in Resources */,
+				2F18B4122A6654DC00F91C7B /* GoogleService-Info.plist in Resources */,
 				2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */,
 				2FF8F01329B27BD5008D7C7E /* equilibrium.mp3 in Resources */,
 			);
@@ -490,7 +530,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		90710F7AE2379A7BB3BC1099 /* [CP] Embed Pods Frameworks */ = {
+		FE7F33F7A9D2B7B846401530 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -517,9 +557,11 @@
 				2FB2C5012A37B4FD006D5A30 /* AddTaskView.swift in Sources */,
 				2F9EBB072A648A8000DC806A /* QuoteView.swift in Sources */,
 				2F36B0B52967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift in Sources */,
+				2F11AE142A675615002FFAED /* BiometricLoginView.swift in Sources */,
 				2FF87ABA2A61177A0026DF9E /* MoodCalendarView.swift in Sources */,
 				2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */,
 				2FA9AB472A4E147C00557FD0 /* MoodInsightsListView.swift in Sources */,
+				2FCD005E2A671647000AD649 /* ProgressLoadingView.swift in Sources */,
 				2FF50124296E9B2800813D40 /* MainView.swift in Sources */,
 				2F36B0A62967A40000AC8D59 /* ContentView.swift in Sources */,
 				2F434BB8296F8CCA00698C1A /* AudioManager.swift in Sources */,
@@ -532,6 +574,7 @@
 				2FB2C4FC2A37B3C4006D5A30 /* TaskCategory.swift in Sources */,
 				2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */,
 				2F919D332A5DD83000291071 /* Day.swift in Sources */,
+				2FCD00622A67188F000AD649 /* AppLockViewModel.swift in Sources */,
 				2F36B0BD2967A57D00AC8D59 /* FlipViewModel.swift in Sources */,
 				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
@@ -546,23 +589,27 @@
 				2FB87FB02A0C6E1D0033B4E1 /* AppDelegate.swift in Sources */,
 				2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */,
 				2FF51E022A3A2E120035A964 /* WeatherCardBackView.swift in Sources */,
+				2FCD005C2A67127F000AD649 /* User.swift in Sources */,
 				2F4AB62B2A5E5C3500F6332F /* MoodRowView.swift in Sources */,
 				2F54B266297D1AE50075E488 /* Milestone.swift in Sources */,
 				2F9EBB032A6489F900DC806A /* Quote.swift in Sources */,
 				2F24A2692A4C878400B41C01 /* BreathType.swift in Sources */,
 				2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */,
+				2FCD00602A671862000AD649 /* Constants.swift in Sources */,
 				2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */,
+				2FCD00562A66E9D2000AD649 /* SignUpView.swift in Sources */,
 				2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */,
 				2F36B0B82967A51900AC8D59 /* Models.swift in Sources */,
 				2FB2C4FE2A37B401006D5A30 /* TaskManagerView.swift in Sources */,
 				2FA9AB492A4E14CB00557FD0 /* MoodSelectorTileView.swift in Sources */,
 				2F4AB6222A5DDAA400F6332F /* MoodModelController.swift in Sources */,
+				2FCD005A2A6710BC000AD649 /* AuthViewModel.swift in Sources */,
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
-				2F06D65A2A663CE4004DD93E /* LoginViewModel.swift in Sources */,
 				2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */,
 				2FF51E002A3A2E050035A964 /* WeatherCardFrontView.swift in Sources */,
 				2F8CA71029B7A6EB00C34005 /* TimerModel.swift in Sources */,
 				2F4AB6292A5DDDBE00F6332F /* MoodAddDiaryView.swift in Sources */,
+				2FCD00642A671C1E000AD649 /* LoginView.swift in Sources */,
 				2FA9AB452A4E0D7A00557FD0 /* MoodModel.swift in Sources */,
 				2FF50129296EA33000813D40 /* SettingsView.swift in Sources */,
 			);
@@ -703,6 +750,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"OhMyClock/Preview Content\"";
 				DEVELOPMENT_TEAM = QACLP69RHJ;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OhMyClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Calmatte;
@@ -746,6 +794,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"OhMyClock/Preview Content\"";
 				DEVELOPMENT_TEAM = QACLP69RHJ;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OhMyClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Calmatte;
@@ -799,7 +848,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire.git" */ = {
+		2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -807,7 +856,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */ = {
+		2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
 			requirement = {
@@ -828,12 +877,12 @@
 /* Begin XCSwiftPackageProductDependency section */
 		2F27A18229740143007DA7CC /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire.git" */;
+			package = 2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 		2F27A185297401B8007DA7CC /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */;
+			package = 2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
 		2F54B25F297C71190075E488 /* Realm */ = {

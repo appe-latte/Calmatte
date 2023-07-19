@@ -8,12 +8,17 @@
 import SwiftUI
 import WeatherKit
 import CoreLocation
+import FirebaseAuth
+import FirebaseFirestore
 
 struct ClockView: View {
     @StateObject private var weatherModel = WeatherViewModel()
     let locationManager = CLLocationManager()
     let viewModel = ClockViewModel()
     let locationFetch = LocationFetch()
+    
+    @ObservedObject var authModel = AuthViewModel()
+    @State var userFname = ""
     
     @State private var refreshTrigger = false
     
@@ -24,6 +29,8 @@ struct ClockView: View {
     var screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
+        let fullName = authModel.user?.firstName ?? ""
+        
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
                 VStack {
@@ -32,6 +39,18 @@ struct ClockView: View {
                         VStack(spacing: 10) {
                             HStack {
                                 Text(greeting)
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                    .kerning(5)
+                                    .minimumScaleFactor(0.5)
+                                    .textCase(.uppercase)
+                                
+                                Spacer()
+                            }
+                            
+                            // MARK: Username
+                            HStack {
+                                Text("\(fullName).")
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
                                     .kerning(5)
@@ -231,15 +250,15 @@ struct ClockView: View {
         let hour = Calendar.current.component(.hour, from: Date())
         switch hour {
         case 5..<12:
-            return "good morning."
+            return "good morning,"
         case 12:
-            return "mid-day."
+            return "mid-day,"
         case 13..<17:
-            return "good afternoon."
+            return "good afternoon,"
         case 17..<22:
-            return "good evening."
+            return "good evening,"
         default:
-            return "good night."
+            return "good night,"
         }
     }
     

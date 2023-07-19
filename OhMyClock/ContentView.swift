@@ -12,9 +12,7 @@ import UserNotifications
 
 struct ContentView: View {
     @ObservedObject var taskManager = TaskManager()
-    @StateObject var realmManager = OmcRealmManager()
     @State var showMenuSheet = false
-    @EnvironmentObject var timerModel : TimerModel
     
     var audioManager = AudioManager()
     
@@ -43,7 +41,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Home", image: "home")
                 }
-        
+            
             MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
                 .colorScheme(.light)
                 .environmentObject(audioManager)
@@ -154,7 +152,7 @@ struct ContentView: View {
             }
         }
     }
-
+    
     func cancelScheduledReminders() {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["moodReminder"])
     }
@@ -175,8 +173,6 @@ extension UIScreen {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(AudioManager())
-            .environmentObject(TimerModel())
     }
 }
 

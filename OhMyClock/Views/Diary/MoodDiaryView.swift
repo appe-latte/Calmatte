@@ -23,20 +23,21 @@ struct MoodDiaryView : View {
         ZStack {
             
             VStack(spacing: 0){
-                
+
                 HeaderView()
-                
+
+                // MARK: List View + Settings
                 if self.moodModelController.moods.isEmpty {
                     background()
                 } else {
                     let groupedMoods = Dictionary(grouping: self.moodModelController.moods) { (mood) -> Date in
                         let calendar = Calendar.current
                         return calendar.startOfDay(for: mood.date)
-                    }.sorted { $0.key < $1.key } // Sort by date
-                    
+                    }.sorted { $0.key > $1.key } // Reverse sort by date
+
                     List {
                         ForEach(groupedMoods, id: \.key) { key, moods in
-                            ForEach(moods, id: \.id) { mood in
+                            ForEach(moods.reversed(), id: \.id) { mood in // Reverse each group of moods
                                 MoodRowView(mood: mood)
                                     .listRowBackground(np_white)
                             }
@@ -54,17 +55,18 @@ struct MoodDiaryView : View {
                     .scrollContentBackground(.hidden)
                     .onAppear {
                         UITableView.appearance().tableFooterView = UIView() // Removes extra cells that are not being used.
-                        
+
                         // MARK: Disable selection.
                         UITableView.appearance().allowsSelection = true
                         UITableViewCell.appearance().selectionStyle = .none
                         UITableView.appearance().showsVerticalScrollIndicator = false
                         UITableViewCell.appearance().backgroundColor = UIColor(Color(red: 214 / 255, green: 26 / 255, blue: 60 / 255))
                     }
-                    
+
                     Spacer()
                 }
             }
+
             
             // MARK: Floating "Calendar" Button
             ZStack(alignment: .bottomTrailing) {

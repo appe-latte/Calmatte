@@ -7,12 +7,20 @@
 
 import SwiftUI
 import UIKit
+import FirebaseCore
+import FirebaseAuth
+import FirebaseFirestore
+import LocalAuthentication
 
 @main
 struct OhMyClockApp: App {
     @StateObject var audioManager = AudioManager()
     @StateObject var timerModel: TimerModel = .init()
     @State private var isActive = false
+    
+    // MARK: Authentication
+    @StateObject var authViewModel = AuthViewModel()
+    @StateObject var appLockViewModel = AppLockViewModel()
     
     // MARK: Scene phase
     @Environment(\.scenePhase) var phase
@@ -21,6 +29,9 @@ struct OhMyClockApp: App {
     @State var lastActiveTimeStamp : Date = Date()
     
     init() {
+        // MARK: Firebase initialization
+        FirebaseApp.configure()
+        
         // MARK: Set the screen brightness to 0.65 after 2 minutes of inactivity
         DispatchQueue.main.asyncAfter(deadline: .now() + 120) {
             UIScreen.main.brightness = 0.65
@@ -28,41 +39,55 @@ struct OhMyClockApp: App {
     }
     
     var body: some Scene {
-        WindowGroup {
-            if isActive {
-                ContentView()
-                    .environmentObject(audioManager)
-//                    .environmentObject(timerModel)
-                    .onAppear {
-                        // Prevent the screen from sleeping
-                        UIApplication.shared.isIdleTimerDisabled = true
-                    }
-                    .onDisappear {
-                        // Allow the screen to sleep
-                        UIApplication.shared.isIdleTimerDisabled = false
-                    }
-            } else {
-                SplashScreenView()
-            }
-        }
-        .onChange(of: phase) { newValue in
-            if timerModel.isStarted {
-                if newValue == .background {
-                    lastActiveTimeStamp = Date()
-                }
-                
-                if newValue == .active {
-                    let currentTimeStampDiff = Date().timeIntervalSince(lastActiveTimeStamp)
-                    if timerModel.totalSeconds - Int(currentTimeStampDiff) <= 0 {
-                        timerModel.isStarted = false
-                        timerModel.totalSeconds = 0
-                        timerModel.isFinished = true
+            WindowGroup {
+                if authViewModel.userSession != nil {
+                    if authViewModel.showSaveUserInfoView {
+                        LoginView()
+                            .environmentObject(authViewModel)
+                    } else if appLockViewModel.isAppLockEnabled && !appLockViewModel.isAppUnlocked {
+                        BiometricLoginView(appLockViewModel: appLockViewModel)
+                            .environmentObject(authViewModel)
                     } else {
-                        timerModel.totalSeconds -= Int(currentTimeStampDiff)
+                        ContentView()
+                            // Assuming AudioManager is defined somewhere in your code
+                            .environmentObject(AudioManager())
+                            .onAppear {
+                                // Prevent the screen from sleeping
+                                UIApplication.shared.isIdleTimerDisabled = true
+                            }
+                            .onDisappear {
+                                // Allow the screen to sleep
+                                UIApplication.shared.isIdleTimerDisabled = false
+                            }
+                            .environmentObject(authViewModel)
+                            .environmentObject(appLockViewModel)
                     }
+                } else {
+                    LoginView()
+                        .environmentObject(authViewModel)
                 }
             }
         }
     }
-}
 
+//        .onChange(of: phase) { newValue in
+//            if timerModel.isStarted {
+//                if newValue == .background {
+//                    lastActiveTimeStamp = Date()
+//                }
+//
+//                if newValue == .active {
+//                    let currentTimeStampDiff = Date().timeIntervalSince(lastActiveTimeStamp)
+//                    if timerModel.totalSeconds - Int(currentTimeStampDiff) <= 0 {
+//                        timerModel.isStarted = false
+//                        timerModel.totalSeconds = 0
+//                        timerModel.isFinished = true
+//                    } else {
+//                        timerModel.totalSeconds -= Int(currentTimeStampDiff)
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
+//}
