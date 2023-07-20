@@ -38,7 +38,10 @@ struct MoodTrackingView: View {
     var insightsSectionView: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text("Insights").font(.largeTitle).bold()
+                Text("Insights")
+                    .font(.largeTitle)
+                    .bold()
+                
                 Spacer()
             }
             .padding(.top)

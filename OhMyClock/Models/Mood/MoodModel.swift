@@ -10,11 +10,11 @@ import Foundation
 
 // MARK: Mood Types
 enum MoodType: String, CaseIterable {
-    case angry
-    case upset
-    case okay
-    case good
     case great
+    case happy
+    case okay
+    case sad
+    case angry
 }
 
 enum InsightsType: String, CaseIterable {
@@ -32,8 +32,7 @@ enum InsightsType: String, CaseIterable {
 }
 
 class MoodModel: ObservableObject {
-    
-    @Published var moodType: MoodType = .okay
+    @Published var moodType: MoodType = .happy
     @Published var insightsType: InsightsType = .today
     
     // MARK: "Saved Data" key
@@ -63,7 +62,7 @@ class MoodModel: ObservableObject {
         return keys
     }
     
-    /// Saved data based on the key/date
+    // MARK: Save Key / Date 
     private var savedMoodData: [String: Int]? {
         // MARK: Today's mood data
         if insightsType == .today {
@@ -93,16 +92,16 @@ class MoodModel: ObservableObject {
     // MARK: Mood Colors + Emojis
     func moodDetails(type: MoodType? = nil) -> (colors: [Color], emoji: String) {
         switch type ?? moodType {
-        case .angry:
-            return ([Color(#colorLiteral(red: 0.8357443213, green: 0.3479825258, blue: 0.05522660166, alpha: 1)), Color(#colorLiteral(red: 0.9966509938, green: 0.5569254756, blue: 0.353095293, alpha: 1))], "😡")
-        case .upset:
-            return ([Color(#colorLiteral(red: 0.8351245522, green: 0.4202041626, blue: 0.04885386676, alpha: 1)), Color(#colorLiteral(red: 0.9953574538, green: 0.6651614308, blue: 0.3195463419, alpha: 1))], "😠")
+        case .great:
+            return ([Color(#colorLiteral(red: 0.4156033397, green: 0.6713014841, blue: 0.3754302263, alpha: 1)), Color(#colorLiteral(red: 0.6896948814, green: 0.7423496842, blue: 0.3255423903, alpha: 1))], "🥳")
+        case .happy:
+            return ([Color(#colorLiteral(red: 0.8534171581, green: 0.5596296191, blue: 0.09391685575, alpha: 1)), Color(#colorLiteral(red: 1, green: 0.8204076886, blue: 0.3298537731, alpha: 1))], "😀")
         case .okay:
             return ([Color(#colorLiteral(red: 0.8664215207, green: 0.471901536, blue: 0.03596238419, alpha: 1)), Color(#colorLiteral(red: 0.9981095195, green: 0.7487973571, blue: 0.3268273473, alpha: 1))], "😐")
-        case .good:
-            return ([Color(#colorLiteral(red: 0.8534171581, green: 0.5596296191, blue: 0.09391685575, alpha: 1)), Color(#colorLiteral(red: 1, green: 0.8204076886, blue: 0.3298537731, alpha: 1))], "🙂")
-        case .great:
-            return ([Color(#colorLiteral(red: 0.4156033397, green: 0.6713014841, blue: 0.3754302263, alpha: 1)), Color(#colorLiteral(red: 0.6896948814, green: 0.7423496842, blue: 0.3255423903, alpha: 1))], "😃")
+        case .sad:
+            return ([Color(#colorLiteral(red: 0.8351245522, green: 0.4202041626, blue: 0.04885386676, alpha: 1)), Color(#colorLiteral(red: 0.9953574538, green: 0.6651614308, blue: 0.3195463419, alpha: 1))], "😔")
+        case .angry:
+            return ([Color(#colorLiteral(red: 0.8357443213, green: 0.3479825258, blue: 0.05522660166, alpha: 1)), Color(#colorLiteral(red: 0.9966509938, green: 0.5569254756, blue: 0.353095293, alpha: 1))], "😡")
         }
     }
     
