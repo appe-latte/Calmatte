@@ -56,6 +56,7 @@
 		2FB2C4FE2A37B401006D5A30 /* TaskManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C4FD2A37B401006D5A30 /* TaskManagerView.swift */; };
 		2FB2C5012A37B4FD006D5A30 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C5002A37B4FD006D5A30 /* AddTaskView.swift */; };
 		2FB87FB02A0C6E1D0033B4E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */; };
+		2FC5643D2A68B67300664FE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5643C2A68B67300664FE0 /* SceneDelegate.swift */; };
 		2FCD00562A66E9D2000AD649 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00552A66E9D2000AD649 /* SignUpView.swift */; };
 		2FCD005A2A6710BC000AD649 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00592A6710BC000AD649 /* AuthViewModel.swift */; };
 		2FCD005C2A67127F000AD649 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD005B2A67127F000AD649 /* User.swift */; };
@@ -140,6 +141,7 @@
 		2FB2C4FD2A37B401006D5A30 /* TaskManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerView.swift; sourceTree = "<group>"; };
 		2FB2C5002A37B4FD006D5A30 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2FC5643C2A68B67300664FE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2FCD00552A66E9D2000AD649 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		2FCD00592A6710BC000AD649 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		2FCD005B2A67127F000AD649 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -192,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				2F36B0A22967A40000AC8D59 /* OhMyClock */,
-				2F18B4112A6654DC00F91C7B /* GoogleService-Info.plist */,
 				2FDBFC992A64B0C200CF96FE /* Frameworks */,
 				2F36B0A12967A40000AC8D59 /* Products */,
 				FCE264DC92A63B05C1E6185B /* Pods */,
@@ -212,6 +213,7 @@
 			children = (
 				2F8838302A0AB1C800840F68 /* OhMyClock.entitlements */,
 				2F434BBB296F8F9A00698C1A /* Info.plist */,
+				2F18B4112A6654DC00F91C7B /* GoogleService-Info.plist */,
 				2FB87FAE2A0C6E090033B4E1 /* Delegates */,
 				2F434BB4296F89D100698C1A /* Helpers */,
 				2F36B0B12967A48B00AC8D59 /* Utils */,
@@ -356,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */,
+				2FC5643C2A68B67300664FE0 /* SceneDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */,
 				2F24A2652A4BB5E400B41C01 /* MoodTrackingView.swift in Sources */,
 				2F8838322A0ABC5300840F68 /* ClockView.swift in Sources */,
+				2FC5643D2A68B67300664FE0 /* SceneDelegate.swift in Sources */,
 				2FFBD0262A5DD7B8002C258B /* Month.swift in Sources */,
 				2FB2C4FC2A37B3C4006D5A30 /* TaskCategory.swift in Sources */,
 				2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */,
@@ -755,6 +759,7 @@
 				INFOPLIST_FILE = OhMyClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Calmatte;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "\"Allow FaceID to secure the app\"";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Required to show the name of your location and weather information\"";
@@ -799,6 +804,7 @@
 				INFOPLIST_FILE = OhMyClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Calmatte;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "\"Allow FaceID to secure the app\"";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Required to show the name of your location and weather information\"";

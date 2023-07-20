@@ -90,7 +90,7 @@ struct SettingsView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .foregroundColor(np_white)
-                    .frame(width: 180, height: 210)
+                    .frame(width: 150, height: 180)
                 
                 Text("Developed with \(Image(systemName: "heart.fill")) by: Appè Latte")
                     .font(.system(size: 10))
@@ -145,175 +145,179 @@ struct SettingsView: View {
                 .frame(width: screenWidth - 30)
                 .padding()
                 
-                // MARK: FaceID ON/OFF
-                VStack {
-                    HStack {
-                        Image("scan")
+                Group {
+                    // MARK: FaceID ON/OFF
+                    VStack {
+                        HStack {
+                            Image("scan")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .padding(5)
+                                .foregroundColor(np_white)
+                            
+                            Toggle("Unlock with FaceID", isOn: $appLockViewModel.isAppLockEnabled)
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                                .kerning(5)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
+                        .toggleStyle(SwitchToggleStyle(tint: Color(red: 62 / 255, green: 201 / 255, blue: 193 / 255)))
+                        .onChange(of: appLockViewModel.isAppLockEnabled, perform: { value in
+                            appLockViewModel.appLockStateChange(appLockState: value)
+                        })
+                        
+                        HStack {
+                            Text("Enable to unlock with FaceID.")
+                                .font(.system(size: 8))
+                                .fontWeight(.semibold)
+                                .kerning(5)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_gray)
+                                .padding(1)
+                                .padding(.leading, 20)
+                            
+                            Spacer()
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                    
+                    Divider()
+                        .background(np_gray)
+                    
+                    // MARK: "Reminders"
+                    HStack(spacing: 10) {
+                        Image("notification")
                             .resizable()
                             .frame(width: 25, height: 25)
                             .padding(5)
-                            .foregroundColor(np_white)
+                            .foregroundColor(np_turq)
                         
-                        Toggle("Secure App", isOn: $appLockViewModel.isAppLockEnabled)
+                        Toggle("Enable Reminders", isOn: $remindersEnabled)
                             .font(.caption)
                             .fontWeight(.semibold)
                             .kerning(5)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
+                            .onChange(of: remindersEnabled, perform: { enabled in
+                                if enabled {
+                                    requestNotificationAuthorization()
+                                    sendReminderEnabledNotification()
+                                } else {
+                                    cancelScheduledReminders()
+                                    sendReminderDisabledNotification()
+                                }
+                            })
+                            .toggleStyle(SwitchToggleStyle(tint: Color(red: 62 / 255, green: 201 / 255, blue: 193 / 255)))
                     }
-                    .toggleStyle(SwitchToggleStyle(tint: Color(red: 62 / 255, green: 201 / 255, blue: 193 / 255)))
-                    .onChange(of: appLockViewModel.isAppLockEnabled, perform: { value in
-                        appLockViewModel.appLockStateChange(appLockState: value)
-                    })
+                    .padding(.horizontal, 20)
                     
-                    HStack {
-                        Text("Use Face ID / Touch ID to unlock when re-opening the app.")
-                            .font(.system(size: 8))
-                            .fontWeight(.semibold)
-                            .kerning(5)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                        
-                        Spacer()
-                    }
-                }
-                .padding(.horizontal, 20)
-                
-                Divider()
-                    .background(np_gray)
-                
-                // MARK: "Reminders"
-                HStack(spacing: 10) {
-                    Image("notification")
-                        .resizable()
-                        .frame(width: 25, height: 25)
-                        .padding(5)
-                        .foregroundColor(np_turq)
+                    Divider()
+                        .background(np_gray)
                     
-                    Toggle("Enable Reminders", isOn: $remindersEnabled)
-                        .font(.caption)
-                        .fontWeight(.semibold)
-                        .kerning(5)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
-                        .onChange(of: remindersEnabled, perform: { enabled in
-                            if enabled {
-                                requestNotificationAuthorization()
-                                sendReminderEnabledNotification()
-                            } else {
-                                cancelScheduledReminders()
-                                sendReminderDisabledNotification()
+                    // MARK: "Legal Source"
+                    Button(action: {
+                        openURL(URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
+                    }, label: {
+                        HStack(spacing: 10) {
+                            Image("note")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .padding(5)
+                                .foregroundColor(np_tan)
+                            
+                            HStack {
+                                Text("Weather Data Source")
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_white)
+                                
+                                Spacer()
                             }
-                        })
-                        .toggleStyle(SwitchToggleStyle(tint: Color(red: 62 / 255, green: 201 / 255, blue: 193 / 255)))
+                            
+                            Image(systemName: "chevron.right")
+                        }
+                    })
+                    .padding(.horizontal, 20)
+                    
+                    Divider()
+                        .background(np_gray)
+                    
+                    // MARK: "Contact Developer"
+                    Button(action: {
+                        let urlWhatsApp = "https://wa.me/15874384450?text=Hello,%20I'm%20interested%20in%20your%20app%20development%20services."
+                        
+                        guard let url = URL(string: urlWhatsApp) else { return }
+                        
+                        if UIApplication.shared.canOpenURL(url) {
+                            openURL(url)
+                        }
+                        else {
+                            print("WhatsApp not installed")
+                        }
+                    }, label: {
+                        HStack(spacing: 10) {
+                            Image("chat")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .padding(5)
+                                .foregroundColor(np_green)
+                            
+                            HStack {
+                                Text("Let's Chat")
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_white)
+                                
+                                Text("(Whatsapp)")
+                                    .font(.system(size: 8))
+                                    .fontWeight(.semibold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_white)
+                                
+                                Spacer()
+                            }
+                            
+                            Image(systemName: "chevron.right")
+                        }
+                    })
+                    .padding(.horizontal, 20)
+                    
+                    Divider()
+                        .background(np_gray)
+                    
+                    // MARK: "Write A Review"
+                                    Button(action: {
+                                        requestReview()
+                                    }, label: {
+                                        HStack(spacing: 10) {
+                                            Image("review")
+                                                .resizable()
+                                                .frame(width: 25, height: 25)
+                                                .padding(5)
+                                                .foregroundColor(np_orange)
+                    
+                                            HStack {
+                                                Text("Write A Review")
+                                                    .font(.caption)
+                                                    .fontWeight(.semibold)
+                                                    .kerning(5)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(np_white)
+                    
+                                                Spacer()
+                                            }
+                    
+                                            Image(systemName: "chevron.right")
+                                        }
+                                    })
+                                    .padding(.horizontal, 20)
                 }
-                .padding(.horizontal, 20)
-                
-                Divider()
-                    .background(np_gray)
-                
-                // MARK: "Legal Source"
-                Button(action: {
-                    openURL(URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
-                }, label: {
-                    HStack(spacing: 10) {
-                        Image("note")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .padding(5)
-                            .foregroundColor(np_tan)
-                        
-                        HStack {
-                            Text("Weather Data Source")
-                                .font(.caption)
-                                .fontWeight(.semibold)
-                                .kerning(5)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                            
-                            Spacer()
-                        }
-                        
-                        Image(systemName: "chevron.right")
-                    }
-                })
-                .padding(.horizontal, 20)
-                
-                Divider()
-                    .background(np_gray)
-                
-                // MARK: "Contact Developer"
-                Button(action: {
-                    let urlWhatsApp = "https://wa.me/15874384450?text=Hello,%20I'm%20interested%20in%20your%20app%20development%20services."
-                    
-                    guard let url = URL(string: urlWhatsApp) else { return }
-                    
-                    if UIApplication.shared.canOpenURL(url) {
-                        openURL(url)
-                    }
-                    else {
-                        print("WhatsApp not installed")
-                    }
-                }, label: {
-                    HStack(spacing: 10) {
-                        Image("chat")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .padding(5)
-                            .foregroundColor(np_green)
-                        
-                        HStack {
-                            Text("Let's Chat")
-                                .font(.caption)
-                                .fontWeight(.semibold)
-                                .kerning(5)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                            
-                            Text("(Whatsapp)")
-                                .font(.system(size: 8))
-                                .fontWeight(.semibold)
-                                .kerning(5)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                            
-                            Spacer()
-                        }
-                        
-                        Image(systemName: "chevron.right")
-                    }
-                })
-                .padding(.horizontal, 20)
-                
-                Divider()
-                    .background(np_gray)
-                
-                // MARK: "Write A Review"
-                //                Button(action: {
-                //                    requestReview()
-                //                }, label: {
-                //                    HStack(spacing: 10) {
-                //                        Image("review")
-                //                            .resizable()
-                //                            .frame(width: 25, height: 25)
-                //                            .padding(5)
-                //                            .foregroundColor(np_orange)
-                //
-                //                        HStack {
-                //                            Text("Write A Review")
-                //                                .font(.caption)
-                //                                .fontWeight(.semibold)
-                //                                .kerning(5)
-                //                                .textCase(.uppercase)
-                //                                .foregroundColor(np_white)
-                //
-                //                            Spacer()
-                //                        }
-                //
-                //                        Image(systemName: "chevron.right")
-                //                    }
-                //                })
-                //                .padding(.horizontal, 20)
             }
             .padding(.bottom, 20)
             

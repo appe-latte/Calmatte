@@ -11,30 +11,35 @@ import LocalAuthentication
 class AppLockViewModel: ObservableObject {
     @Published var isAppLockEnabled : Bool = false
     @Published var isAppUnlocked : Bool = false
+    @Published var needsUnlock : Bool = false  // added this line
     
     init() {
         getAppLockState()
     }
+    
+    // your other functions...
+    func checkIfBioMetricAvailable() -> Bool {
+        var error : NSError?
+        let laContext = LAContext()
+        let isBiometricAvailable = laContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
+        if let error = error {
+            print(error.localizedDescription)
+        }
+        return isBiometricAvailable
+    }
+    
     func enableAppLock() {
         UserDefaults.standard.set(true,forKey: UserDefaultsKeys.isAppLockEnabled.rawValue)
         self.isAppLockEnabled = true
     }
+    
     func disableAppLock() {
         UserDefaults.standard.set(false,forKey: UserDefaultsKeys.isAppLockEnabled.rawValue)
         self.isAppLockEnabled = false
     }
+    
     func getAppLockState() {
         isAppLockEnabled = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isAppLockEnabled.rawValue)
-    }
-    
-    func checkIfBioMetricAvailable() -> Bool {
-        var error:NSError?
-        let laContext = LAContext()
-        let isBiometricAvailable = laContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error)
-        if let error = error{
-            print(error.localizedDescription)
-        }
-        return isBiometricAvailable
     }
     
     func appLockStateChange(appLockState:Bool) {
@@ -44,20 +49,22 @@ class AppLockViewModel: ObservableObject {
             if appLockState {
                 reason = "To enable this biometric security feature for added safety."
             }
-            else{
+            else {
                 reason = "To disable this biometric security feature."
             }
-            laContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason){ (success,error) in
-                if success{
-                    if appLockState{
+            laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason){ (success,error) in
+                if success {
+                    if appLockState {
                         DispatchQueue.main.async {
                             self.enableAppLock()
                             self.isAppUnlocked = true
+                            self.needsUnlock = false  // added this line
                         }
                     } else {
                         DispatchQueue.main.async {
                             self.disableAppLock()
                             self.isAppUnlocked = true
+                            self.needsUnlock = false  // added this line
                         }
                     }
                 } else {
@@ -74,11 +81,12 @@ class AppLockViewModel: ObservableObject {
     func appLockValidation(){
         let laContext = LAContext()
         if checkIfBioMetricAvailable(){
-            let reason = "Unlock to view the app."
-            laContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason){(success, error) in
+            let reason = "Unlock to use the app."
+            laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason){(success, error) in
                 if success {
                     DispatchQueue.main.async {
                         self.isAppUnlocked = true
+                        self.needsUnlock = false  // added this line
                     }
                 } else {
                     if let error = error {
@@ -95,4 +103,3 @@ class AppLockViewModel: ObservableObject {
 enum UserDefaultsKeys:String {
     case isAppLockEnabled
 }
-

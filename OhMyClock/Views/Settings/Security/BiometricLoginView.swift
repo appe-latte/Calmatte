@@ -20,19 +20,19 @@ struct BiometricLoginView: View {
             VStack(alignment: .center) {
                 Spacer()
                 
-                VStack(spacing: 10) {
-                    Image(systemName: "lock.fill")
+                VStack(spacing: 15) {
+                    Image("face-id")
                         .resizable()
-                        .imageScale(.large)
-                        .scaledToFill()
+                        .scaledToFit()
                         .frame(width: 50, height: 50)
-                        .foregroundColor(.white)
-                        .padding(.bottom, 5)
+                        .foregroundColor(np_white)
                     
-                    Text("Please unlock the app to continue.")
-                        .font(.custom("Avenir", size: 20))
+                    Text("Unlock to proceed.")
+                        .font(.subheadline)
                         .fontWeight(.bold)
-                        .foregroundColor(.white)
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
                         .padding(5)
                 }
                 
@@ -43,18 +43,19 @@ struct BiometricLoginView: View {
                     // MARK: Logout Button
                     Button(action: {
                         authViewModel.signOut()
-                    },
-                           label: {
-                        VStack {
-                            Image("turn-off-w")
+                    }, label: {
+                        HStack {
+                            Image("logout")
                                 .resizable()
-                                .frame(width: 25, height: 25)
-                                .padding(1)
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                            
                             Text("Logout")
-                                .font(.custom("Avenir", size: 16))
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                        }.padding(5)
+                                .font(.footnote)
+                                .kerning(3)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
                     })
                     
                     Spacer()
@@ -62,22 +63,25 @@ struct BiometricLoginView: View {
                     // MARK: Unlock with Face ID
                     Button(action: {
                         appLockViewModel.appLockValidation()
-                    },
-                           label: {
-                        VStack {
-                            Image("unlock-w")
+                    }, label: {
+                        HStack {
+                            Image("unlock")
                                 .resizable()
-                                .frame(width: 25, height: 25)
-                                .padding(1)
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                            
                             Text("Unlock")
-                                .font(.custom("Avenir", size: 16))
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                        }.padding(5)
+                                .font(.footnote)
+                                .kerning(3)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
                     })
-                }.padding(.horizontal, 20)
+                }
+                .padding(.horizontal, 20)
             }
         }
+        .onAppear(perform: appLockViewModel.appLockValidation) // This will call the authentication immediately when this view appears.
     }
     
     // MARK: Background

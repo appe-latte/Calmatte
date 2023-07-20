@@ -9,6 +9,7 @@ import SwiftUI
 import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
+import LocalAuthentication
 
 struct SignUpView: View {
     @State private var email: String = ""

@@ -5,8 +5,8 @@
 //  Created by Stanford L. Khumalo on 2023-01-05.
 //
 
-import SwiftUI
 import UIKit
+import SwiftUI
 import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
@@ -14,6 +14,8 @@ import LocalAuthentication
 
 @main
 struct OhMyClockApp: App {
+    @Environment(\.scenePhase) var scenePhase
+    
     @StateObject var audioManager = AudioManager()
     @StateObject var timerModel: TimerModel = .init()
     @State private var isActive = false
@@ -39,55 +41,37 @@ struct OhMyClockApp: App {
     }
     
     var body: some Scene {
-            WindowGroup {
-                if authViewModel.userSession != nil {
-                    if authViewModel.showSaveUserInfoView {
-                        LoginView()
-                            .environmentObject(authViewModel)
-                    } else if appLockViewModel.isAppLockEnabled && !appLockViewModel.isAppUnlocked {
-                        BiometricLoginView(appLockViewModel: appLockViewModel)
-                            .environmentObject(authViewModel)
-                    } else {
-                        ContentView()
-                            // Assuming AudioManager is defined somewhere in your code
-                            .environmentObject(AudioManager())
-                            .onAppear {
-                                // Prevent the screen from sleeping
-                                UIApplication.shared.isIdleTimerDisabled = true
-                            }
-                            .onDisappear {
-                                // Allow the screen to sleep
-                                UIApplication.shared.isIdleTimerDisabled = false
-                            }
-                            .environmentObject(authViewModel)
-                            .environmentObject(appLockViewModel)
-                    }
-                } else {
-                    LoginView()
+        WindowGroup {
+            if authViewModel.userSession != nil {
+                // The rest of your code...
+                if appLockViewModel.isAppLockEnabled && appLockViewModel.needsUnlock {
+                    BiometricLoginView(appLockViewModel: appLockViewModel)
                         .environmentObject(authViewModel)
+                } else {
+                    ContentView()
+                        .environmentObject(AudioManager())
+                    // The rest of your code...
                 }
+            } else {
+                LoginView()
+                    .environmentObject(authViewModel)
+            }
+        }
+        .onChange(of: scenePhase) { newScenePhase in
+            switch newScenePhase {
+            case .active:
+                // App becomes active
+                // Check whether it needs unlock
+                if appLockViewModel.needsUnlock {
+                    appLockViewModel.isAppUnlocked = false
+                }
+            case .inactive, .background:
+                // App goes to the background
+                // Mark needsUnlock as true
+                appLockViewModel.needsUnlock = true
+            @unknown default:
+                break
             }
         }
     }
-
-//        .onChange(of: phase) { newValue in
-//            if timerModel.isStarted {
-//                if newValue == .background {
-//                    lastActiveTimeStamp = Date()
-//                }
-//
-//                if newValue == .active {
-//                    let currentTimeStampDiff = Date().timeIntervalSince(lastActiveTimeStamp)
-//                    if timerModel.totalSeconds - Int(currentTimeStampDiff) <= 0 {
-//                        timerModel.isStarted = false
-//                        timerModel.totalSeconds = 0
-//                        timerModel.isFinished = true
-//                    } else {
-//                        timerModel.totalSeconds -= Int(currentTimeStampDiff)
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
-//}
+}

@@ -17,6 +17,7 @@ struct ContentView: View {
     var audioManager = AudioManager()
     
     @ObservedObject var moodModel: MoodModel
+//    @ObservedObject var appLockViewModel : AppLockViewModel
     @Binding var tabBarSelection: Int
     
     init(moodModel: MoodModel = MoodModel(), tabBarSelection: Binding<Int> = .constant(0)) {
@@ -52,16 +53,17 @@ struct ContentView: View {
             MoodDiaryView()
                 .colorScheme(.light)
                 .tabItem {
-                    Label("Journal", image: "bookmark")
+                    Label("Journal", image: "journal")
                 }
             
             TaskManagerView(taskManager: taskManager)
                 .colorScheme(.light)
                 .tabItem {
-                    Label("Tasks", image: "collections")
+                    Label("Tasks", image: "tasks")
                 }
             
             SettingsView()
+                .environmentObject(AppLockViewModel())
                 .colorScheme(.light)
                 .tabItem {
                     Label("More", image: "more")
