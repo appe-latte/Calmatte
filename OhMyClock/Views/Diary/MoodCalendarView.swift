@@ -125,23 +125,22 @@ struct StreakView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                Spacer()
-                
-                Text("Mood Log")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .kerning(3)
-                    .textCase(.uppercase)
-                    .foregroundColor(np_white)
-            }
-            .padding(.horizontal)
-            
             // MARK: Show Streak
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
+                    Text("Mood Log")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                    
+                    Spacer()
+                }
+                
+                HStack {
                     Text("Journal entry Statistics:")
-                        .font(.system(size: 15))
+                        .font(.system(size: 13))
                         .fontWeight(.bold)
                         .kerning(3)
                         .textCase(.uppercase)
@@ -159,7 +158,7 @@ struct StreakView: View {
                     
                     VStack(alignment: .leading) {
                         HStack {
-                            Text("Current Streak")
+                            Text("👑 Current Streak")
                                 .font(.system(size: 10))
                                 .fontWeight(.semibold)
                                 .kerning(3)
@@ -184,7 +183,8 @@ struct StreakView: View {
                     
                     VStack(alignment: .leading) {
                         HStack {
-                            Text("Best Streak 👑")
+                            Text("🏆 Best Streak")
+                            
                                 .font(.system(size: 10))
                                 .fontWeight(.semibold)
                                 .kerning(3)
@@ -209,7 +209,7 @@ struct StreakView: View {
                     
                     VStack(alignment: .leading) {
                         HStack {
-                            Text("Total Days")
+                            Text("📆 Total Days")
                                 .font(.system(size: 10))
                                 .fontWeight(.semibold)
                                 .kerning(3)
@@ -224,7 +224,6 @@ struct StreakView: View {
                 }
             }
             .padding(15)
-            //            .padding(.horizontal)
         }
         .padding(.top, 20)
     }
