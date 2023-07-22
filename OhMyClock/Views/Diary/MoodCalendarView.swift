@@ -22,8 +22,9 @@ struct MoodCalendarView: View {
     
     public var body: some View {
         VStack {
-            WeekdaysView()
-                .background(np_arsenic)
+            StreakView(moodModelController: moodModelController)
+                .background(LinearGradient(colors: [np_arsenic, np_arsenic, np_arsenic, np_jap_indigo], startPoint: .top, endPoint: .bottom))
+                .padding(.top, 20)
             
             ScrollView(.vertical, showsIndicators: false) {
                 MonthView(moodModelController: moodModelController, month: Month(startDate: startDate, selectableDays: selectableDays))
@@ -69,18 +70,35 @@ struct MoodCalendarView_Previews: PreviewProvider {
 struct MonthView: View {
     @ObservedObject var moodModelController: MoodModelController
     var month: Month
+    let weekdays = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+    let colors = DiaryColors()
     
     var body: some View {
         ZStack {
-            VStack {
+            VStack(spacing: 15) {
+                
+                // MARK: Month Title
                 HStack {
-                    Text("\(month.monthNameYear)")
-                        .font(.title2)
-                    
                     Spacer()
+                    
+                    Text("\(month.monthNameYear)")
+                        .font(.title)
                 }
                 .padding(.horizontal)
                 
+                // MARK: Weekdays
+                HStack {
+                    GridStack(rows: 1, columns: 7) { row, col in
+                        Text(weekdays[col])
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                    }
+                }
+                
+                // MARK: Calendar days grid
                 GridStack(rows: month.monthRows, columns: month.monthDays.count) { row, col in
                     if month.monthDays[col+1]![row].dayDate == Date(timeIntervalSince1970: 0) {
                         Text("")
@@ -101,39 +119,114 @@ struct MonthView: View {
     }
 }
 
-// MARK: - Weekday View
-struct WeekdaysView: View {
-    let weekdays = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
-    let colors = DiaryColors()
+// MARK: - Streak View
+struct StreakView: View {
+    @ObservedObject var moodModelController: MoodModelController
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             HStack {
+                Spacer()
+                
                 Text("Mood Log")
                     .font(.title)
                     .fontWeight(.bold)
                     .kerning(3)
                     .textCase(.uppercase)
                     .foregroundColor(np_white)
-                
-                Spacer()
             }
             .padding(.horizontal)
-            .padding(.bottom, 10)
             
-            HStack {
-                GridStack(rows: 1, columns: 7) { row, col in
-                    Text(weekdays[col])
-                        .font(.headline)
+            // MARK: Show Streak
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    Text("Journal entry Statistics:")
+                        .font(.system(size: 15))
                         .fontWeight(.bold)
                         .kerning(3)
                         .textCase(.uppercase)
                         .foregroundColor(np_white)
                 }
+                
+                // MARK: Current Streak
+                HStack {
+                    Text("\(moodModelController.currentStreak)")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                    
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("Current Streak")
+                                .font(.system(size: 10))
+                                .fontWeight(.semibold)
+                                .kerning(3)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
+                        
+                        Capsule()
+                            .frame(width: 250, height: 1)
+                            .foregroundColor(np_gray)
+                    }
+                }
+                
+                // MARK: Best Streak
+                HStack {
+                    Text("\(moodModelController.bestStreak)")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                    
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("Best Streak 👑")
+                                .font(.system(size: 10))
+                                .fontWeight(.semibold)
+                                .kerning(3)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
+                        
+                        Capsule()
+                            .frame(width: 250, height: 1)
+                            .foregroundColor(np_gray)
+                    }
+                }
+                
+                // MARK: Total Logging Days
+                HStack {
+                    Text("\(moodModelController.totalDaysLogged)")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                    
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("Total Days")
+                                .font(.system(size: 10))
+                                .fontWeight(.semibold)
+                                .kerning(3)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
+                        
+                        Capsule()
+                            .frame(width: 250, height: 1)
+                            .foregroundColor(np_gray)
+                    }
+                }
             }
+            .padding(15)
+            //            .padding(.horizontal)
         }
         .padding(.top, 20)
-        .padding(.bottom, 20)
     }
 }
 

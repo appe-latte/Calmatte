@@ -97,7 +97,7 @@ class MoodModel: ObservableObject {
         case .happy:
             return ([Color(#colorLiteral(red: 0.8534171581, green: 0.5596296191, blue: 0.09391685575, alpha: 1)), Color(#colorLiteral(red: 1, green: 0.8204076886, blue: 0.3298537731, alpha: 1))], "😀")
         case .okay:
-            return ([Color(#colorLiteral(red: 0.8664215207, green: 0.471901536, blue: 0.03596238419, alpha: 1)), Color(#colorLiteral(red: 0.9981095195, green: 0.7487973571, blue: 0.3268273473, alpha: 1))], "😐")
+            return ([Color(#colorLiteral(red: 0.8664215207, green: 0.471901536, blue: 0.03596238419, alpha: 1)), Color(#colorLiteral(red: 0.9981095195, green: 0.7487973571, blue: 0.3268273473, alpha: 1))], "🙂")
         case .sad:
             return ([Color(#colorLiteral(red: 0.8351245522, green: 0.4202041626, blue: 0.04885386676, alpha: 1)), Color(#colorLiteral(red: 0.9953574538, green: 0.6651614308, blue: 0.3195463419, alpha: 1))], "😔")
         case .angry:
