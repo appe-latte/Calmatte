@@ -33,31 +33,48 @@ struct LoginView: View {
                     
                     Spacer()
                     
-                    // MARK: Email Field
-                    TextField("Email", text: $email)
-                        .font(.footnote)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .minimumScaleFactor(0.5)
-                        .foregroundColor(np_white)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .strokeBorder(np_white, lineWidth: 0.5)
-                        )
-                    
-                    // MARK: Pwd Field
-                    SecureField("Password", text: $password)
-                        .font(.footnote)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .minimumScaleFactor(0.5)
-                        .foregroundColor(np_white)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .strokeBorder(np_white, lineWidth: 0.5)
-                        )
+                    VStack {
+                        // MARK: Email Field
+                        TextField("Email", text: $email)
+                            .font(.footnote)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .minimumScaleFactor(0.5)
+                            .foregroundColor(np_white)
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .strokeBorder(np_white, lineWidth: 0.5)
+                            )
+                        
+                        // MARK: Pwd Field
+                        SecureField("Password", text: $password)
+                            .font(.footnote)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .minimumScaleFactor(0.5)
+                            .foregroundColor(np_white)
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .strokeBorder(np_white, lineWidth: 0.5)
+                            )
+                        
+                        // MARK: "Forgot Password" button
+                        HStack {
+                            Spacer()
+                            
+                            NavigationLink(destination: PasswordResetView()) {
+                                Text("Forgot Password")
+                                    .font(.footnote)
+                                    .kerning(3)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_white)
+                            }
+                        }
+                        .padding(1)
+                        .padding(.bottom, 10)
+                    }
                     
                     // MARK: Error Message
                     if authViewModel.isError {
@@ -86,16 +103,24 @@ struct LoginView: View {
                     .frame(width: 150, height: 50)
                     .background(np_white)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 50)
                     
                     NavigationLink(destination: SignUpView()) {
-                        Text("Don't have an account? Sign Up")
-                            .font(.footnote)
-                            .kerning(3)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
+                        HStack {
+                            Text("Don't have an account?")
+                                .font(.footnote)
+                                .kerning(3)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_gray)
+                            
+                            Text("Sign Up")
+                                .font(.footnote)
+                                .kerning(3)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
                     }
-                    .padding(.bottom)
+                    .padding(.bottom, 10)
                 }
                 .padding()
             }

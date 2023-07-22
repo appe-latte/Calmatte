@@ -1,34 +1,24 @@
 //
-//  SignUpView.swift
+//  PasswordResetView.swift
 //  OhMyClock
 //
-//  Created by Stanford L. Khumalo on 2023-07-18.
+//  Created by Stanford L. Khumalo on 2023-07-21.
 //
 
 import SwiftUI
-import FirebaseCore
-import FirebaseAuth
-import FirebaseFirestore
-import LocalAuthentication
 
-struct SignUpView: View {
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var firstName: String = ""
-    @EnvironmentObject var authViewModel: AuthViewModel
+struct PasswordResetView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @StateObject private var passwordReset = PasswordResetViewModelImpl(
+        service: PasswordResetServiceImpl()
+    )
     
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     
-    // MARK: Form Validation
-    private var isFormValid: Bool {
-        return !email.isEmpty && !password.isEmpty && !firstName.isEmpty
-    }
-    
     var body: some View {
         ZStack {
             background()
-            
             VStack(alignment: .center, spacing: 15) {
                 // MARK: Logo
                 Image("logo-text")
@@ -41,7 +31,7 @@ struct SignUpView: View {
                 Spacer()
                 
                 HStack {
-                    Text("Registration")
+                    Text("Reset Password")
                         .font(.title2)
                         .fontWeight(.bold)
                         .kerning(5)
@@ -52,8 +42,8 @@ struct SignUpView: View {
                     Spacer()
                 }
                 
-                // MARK: Firstname field
-                TextField("First Name", text: $firstName)
+                // MARK: Email Field
+                TextField("Email", text: $passwordReset.email)
                     .font(.footnote)
                     .kerning(3)
                     .textCase(.uppercase)
@@ -64,63 +54,27 @@ struct SignUpView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .strokeBorder(np_white, lineWidth: 0.5)
                     )
+                    .keyboardType(.emailAddress)
                 
-                // MARK: Email field
-                TextField("Email", text: $email)
-                    .font(.footnote)
-                    .kerning(3)
-                    .textCase(.uppercase)
-                    .minimumScaleFactor(0.5)
-                    .foregroundColor(np_white)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .strokeBorder(np_white, lineWidth: 0.5)
-                    )
-                
-                // MARK: Pwd field
-                SecureField("Password", text: $password)
-                    .font(.footnote)
-                    .kerning(3)
-                    .textCase(.uppercase)
-                    .minimumScaleFactor(0.5)
-                    .foregroundColor(np_white)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .strokeBorder(np_white, lineWidth: 0.5)
-                    )
-                
-                // MARK: "Error Message" - duplicate account creation
-                if authViewModel.isError {
-                    Text(authViewModel.errorMsg)
-                        .font(.footnote)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .minimumScaleFactor(0.5)
-                        .foregroundColor(np_white)
-                        .padding()
-                        .background(np_red).opacity(0.2)
-                }
-                
-                // MARK: "Sign Up" button
+                // MARK: "Send Request" Button
                 Button(action: {
-                    authViewModel.userRegistration(email: email, userPwd: password, firstName: firstName)
-                }) {
-                    Text("Sign Up")
+                    passwordReset.sendPasswordReset()
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("Reset Password")
                         .font(.footnote)
                         .bold()
                         .kerning(3)
                         .textCase(.uppercase)
-                }
+                })
                 .padding(.vertical, 5)
                 .foregroundColor(np_jap_indigo)
-                .frame(width: 150, height: 50)
+                .frame(width: 200, height: 50)
                 .background(np_white)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                .disabled(!isFormValid) // disable button if form is not valid
+                .padding(.bottom, 30)
             }
-            .padding()
+            .padding(.horizontal, 20)
         }
     }
     
@@ -173,10 +127,8 @@ struct SignUpView: View {
     }
 }
 
-struct SignUpView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUpView().environmentObject(AuthViewModel())
+struct PasswordResetView_Previews : PreviewProvider {
+    static var previews : some View {
+        PasswordResetView()
     }
 }
-
-

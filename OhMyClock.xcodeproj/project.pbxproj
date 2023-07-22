@@ -32,6 +32,9 @@
 		2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB2296F863400698C1A /* MeditationViewModel.swift */; };
 		2F434BB6296F89F100698C1A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB5296F89F100698C1A /* Extensions.swift */; };
 		2F434BB8296F8CCA00698C1A /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB7296F8CCA00698C1A /* AudioManager.swift */; };
+		2F438EF52A6B139A00CDF33D /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F438EF42A6B139A00CDF33D /* PasswordResetView.swift */; };
+		2F438EF72A6B164B00CDF33D /* PasswordResetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F438EF62A6B164B00CDF33D /* PasswordResetService.swift */; };
+		2F438EF92A6B17B000CDF33D /* PasswordResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F438EF82A6B17B000CDF33D /* PasswordResetViewModel.swift */; };
 		2F4AB6222A5DDAA400F6332F /* MoodModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6212A5DDAA400F6332F /* MoodModelController.swift */; };
 		2F4AB6242A5DDB3600F6332F /* DiaryMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6232A5DDB3600F6332F /* DiaryMood.swift */; };
 		2F4AB6272A5DDD0D00F6332F /* MoodDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */; };
@@ -118,6 +121,9 @@
 		2F434BB5296F89F100698C1A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2F434BB7296F8CCA00698C1A /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		2F434BBB296F8F9A00698C1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2F438EF42A6B139A00CDF33D /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
+		2F438EF62A6B164B00CDF33D /* PasswordResetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetService.swift; sourceTree = "<group>"; };
+		2F438EF82A6B17B000CDF33D /* PasswordResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewModel.swift; sourceTree = "<group>"; };
 		2F4AB6212A5DDAA400F6332F /* MoodModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodModelController.swift; sourceTree = "<group>"; };
 		2F4AB6232A5DDB3600F6332F /* DiaryMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMood.swift; sourceTree = "<group>"; };
 		2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDiaryView.swift; sourceTree = "<group>"; };
@@ -252,6 +258,7 @@
 				2FEEE581297731CE00416E54 /* TaskRow.swift */,
 				2FCD005D2A671647000AD649 /* ProgressLoadingView.swift */,
 				2FCD005F2A671862000AD649 /* Constants.swift */,
+				2F438EF62A6B164B00CDF33D /* PasswordResetService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -280,6 +287,7 @@
 				2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */,
 				2FCD00612A67188F000AD649 /* AppLockViewModel.swift */,
 				2FCD00592A6710BC000AD649 /* AuthViewModel.swift */,
+				2F438EF82A6B17B000CDF33D /* PasswordResetViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -378,6 +386,7 @@
 				2FCD00552A66E9D2000AD649 /* SignUpView.swift */,
 				2FCD00632A671C1E000AD649 /* LoginView.swift */,
 				2F11AE132A675615002FFAED /* BiometricLoginView.swift */,
+				2F438EF42A6B139A00CDF33D /* PasswordResetView.swift */,
 			);
 			path = Security;
 			sourceTree = "<group>";
@@ -572,6 +581,7 @@
 				2F4AB6242A5DDB3600F6332F /* DiaryMood.swift in Sources */,
 				2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */,
 				2F24A2652A4BB5E400B41C01 /* MoodTrackingView.swift in Sources */,
+				2F438EF72A6B164B00CDF33D /* PasswordResetService.swift in Sources */,
 				2F8838322A0ABC5300840F68 /* ClockView.swift in Sources */,
 				2FC5643D2A68B67300664FE0 /* SceneDelegate.swift in Sources */,
 				2FFBD0262A5DD7B8002C258B /* Month.swift in Sources */,
@@ -579,6 +589,7 @@
 				2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */,
 				2F919D332A5DD83000291071 /* Day.swift in Sources */,
 				2FCD00622A67188F000AD649 /* AppLockViewModel.swift in Sources */,
+				2F438EF92A6B17B000CDF33D /* PasswordResetViewModel.swift in Sources */,
 				2F36B0BD2967A57D00AC8D59 /* FlipViewModel.swift in Sources */,
 				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
@@ -608,6 +619,7 @@
 				2FA9AB492A4E14CB00557FD0 /* MoodSelectorTileView.swift in Sources */,
 				2F4AB6222A5DDAA400F6332F /* MoodModelController.swift in Sources */,
 				2FCD005A2A6710BC000AD649 /* AuthViewModel.swift in Sources */,
+				2F438EF52A6B139A00CDF33D /* PasswordResetView.swift in Sources */,
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
 				2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */,
 				2FF51E002A3A2E050035A964 /* WeatherCardFrontView.swift in Sources */,
@@ -750,7 +762,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = OhMyClock/OhMyClock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"OhMyClock/Preview Content\"";
 				DEVELOPMENT_TEAM = QACLP69RHJ;
 				ENABLE_PREVIEWS = YES;
@@ -795,7 +807,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = OhMyClock/OhMyClock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"OhMyClock/Preview Content\"";
 				DEVELOPMENT_TEAM = QACLP69RHJ;
 				ENABLE_PREVIEWS = YES;

@@ -64,6 +64,7 @@ struct ContentView: View {
             
             SettingsView()
                 .environmentObject(AppLockViewModel())
+                .environmentObject(AuthViewModel())
                 .colorScheme(.light)
                 .tabItem {
                     Label("More", image: "more")

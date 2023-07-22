@@ -43,7 +43,6 @@ struct OhMyClockApp: App {
     var body: some Scene {
         WindowGroup {
             if authViewModel.userSession != nil {
-                // The rest of your code...
                 if appLockViewModel.isAppLockEnabled && appLockViewModel.needsUnlock {
                     BiometricLoginView(appLockViewModel: appLockViewModel)
                         .environmentObject(authViewModel)
@@ -62,16 +61,19 @@ struct OhMyClockApp: App {
             case .active:
                 // App becomes active
                 // Check whether it needs unlock
-                if appLockViewModel.needsUnlock {
+                if appLockViewModel.isAppLockEnabled && appLockViewModel.needsUnlock {
                     appLockViewModel.isAppUnlocked = false
                 }
             case .inactive, .background:
                 // App goes to the background
-                // Mark needsUnlock as true
-                appLockViewModel.needsUnlock = true
+                // Mark needsUnlock as true only if the app lock is enabled
+                if appLockViewModel.isAppLockEnabled {
+                    appLockViewModel.needsUnlock = true
+                }
             @unknown default:
                 break
             }
         }
+
     }
 }

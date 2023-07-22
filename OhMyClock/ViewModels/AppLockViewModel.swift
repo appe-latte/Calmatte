@@ -40,6 +40,10 @@ class AppLockViewModel: ObservableObject {
     
     func getAppLockState() {
         isAppLockEnabled = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isAppLockEnabled.rawValue)
+        // Check if biometric authentication is still available when app lock is enabled
+        if isAppLockEnabled && !checkIfBioMetricAvailable() {
+            disableAppLock()
+        }
     }
     
     func appLockStateChange(appLockState:Bool) {
