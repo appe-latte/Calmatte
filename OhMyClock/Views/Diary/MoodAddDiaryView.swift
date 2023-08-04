@@ -21,7 +21,7 @@ struct MoodAddDiaryView: View {
     @State private var mehSelected = false
     @State private var sleepySelected = false
     @State private var shockedSelected = false
-    @State private var lovedSelected = false
+    @State private var sickSelected = false
     @State private var sadSelected = false
     @State private var lowSelected = false
     @State private var angrySelected = false
@@ -75,7 +75,7 @@ struct MoodAddDiaryView: View {
                                 self.sadSelected = false
                                 self.lowSelected = false
                                 self.mehSelected = false
-                                self.lovedSelected = false
+                                self.sickSelected = false
                                 self.shockedSelected = false
                                 self.sleepySelected = false
                             }) {
@@ -111,7 +111,7 @@ struct MoodAddDiaryView: View {
                                 self.sadSelected = false
                                 self.lowSelected = false
                                 self.mehSelected = false
-                                self.lovedSelected = false
+                                self.sickSelected = false
                                 self.shockedSelected = false
                                 self.sleepySelected = false
                             }) {
@@ -147,7 +147,7 @@ struct MoodAddDiaryView: View {
                                 self.sadSelected = false
                                 self.lowSelected = false
                                 self.mehSelected = false
-                                self.lovedSelected = false
+                                self.sickSelected = false
                                 self.shockedSelected = false
                                 self.sleepySelected = false
                             }) {
@@ -183,7 +183,7 @@ struct MoodAddDiaryView: View {
                                 self.sadSelected = false
                                 self.lowSelected = false
                                 self.mehSelected = false
-                                self.lovedSelected = false
+                                self.sickSelected = false
                                 self.shockedSelected = false
                                 self.sleepySelected = false
                             }) {
@@ -219,7 +219,7 @@ struct MoodAddDiaryView: View {
                                 self.sadSelected = false
                                 self.lowSelected = false
                                 self.mehSelected = false
-                                self.lovedSelected = false
+                                self.sickSelected = false
                                 self.shockedSelected = false
                                 self.sleepySelected = false
                             }) {
@@ -246,11 +246,11 @@ struct MoodAddDiaryView: View {
                     // MARK: Stack Two
                     HStack(spacing: 10){
                         
-                        // MARK: Loved - emotion
+                        // MARK: Sick - emotion
                         VStack(spacing: 5) {
                             Button(action: {
-                                self.emotionState = .loved
-                                self.moodColor = .lovedColor
+                                self.emotionState = .sick
+                                self.moodColor = .sickColor
                                 self.greatSelected = false
                                 self.goodSelected = false
                                 self.okaySelected = false
@@ -259,23 +259,23 @@ struct MoodAddDiaryView: View {
                                 self.sadSelected = false
                                 self.lowSelected = false
                                 self.mehSelected = false
-                                self.lovedSelected = true
+                                self.sickSelected = true
                                 self.shockedSelected = false
                                 self.sleepySelected = false
                             }) {
                                 ZStack {
                                     Circle()
-                                        .fill(self.lovedSelected ? np_white : Color.clear)
+                                        .fill(self.sickSelected ? np_white : Color.clear)
                                         .frame(width: 70, height: 70)
                                     
-                                    Image("loved")
+                                    Image("sick")
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 60, height: 55)
                                 }
                             }
                             
-                            Text("Loved")
+                            Text("Sick")
                                 .font(.system(size: 10))
                                 .fontWeight(.medium)
                                 .textCase(.uppercase)
@@ -295,7 +295,7 @@ struct MoodAddDiaryView: View {
                                 self.sadSelected = true
                                 self.lowSelected = false
                                 self.mehSelected = false
-                                self.lovedSelected = false
+                                self.sickSelected = false
                                 self.shockedSelected = false
                                 self.sleepySelected = false
                             }) {
@@ -331,7 +331,7 @@ struct MoodAddDiaryView: View {
                                 self.sadSelected = false
                                 self.lowSelected = false
                                 self.mehSelected = true
-                                self.lovedSelected = false
+                                self.sickSelected = false
                                 self.shockedSelected = false
                                 self.sleepySelected = false
                             }) {
@@ -367,7 +367,7 @@ struct MoodAddDiaryView: View {
                                 self.sadSelected = false
                                 self.lowSelected = true
                                 self.mehSelected = false
-                                self.lovedSelected = false
+                                self.sickSelected = false
                                 self.shockedSelected = false
                                 self.sleepySelected = false
                             }) {
@@ -403,7 +403,7 @@ struct MoodAddDiaryView: View {
                                 self.sadSelected = false
                                 self.lowSelected = false
                                 self.mehSelected = false
-                                self.lovedSelected = false
+                                self.sickSelected = false
                                 self.shockedSelected = true
                                 self.sleepySelected = false
                             }) {
@@ -486,21 +486,21 @@ struct MoodAddDiaryView: View {
                                 }
                             }
                             
-                            // MARK: Active - state
+                            // MARK: Angry - state
                             VStack(spacing: 5) {
                                 Button(action: {
-                                    self.toggleDayState(.active)
+                                    self.toggleDayState(.angry)
                                 }) {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 10)
-                                            .fill(self.dayStates.contains(.active) ? np_white : np_white.opacity(0.45))
+                                            .fill(self.dayStates.contains(.angry) ? np_white : np_white.opacity(0.45))
                                             .frame(width: 75, height: 45)
                                             .overlay {
-                                                Text("active")
+                                                Text("angry")
                                                     .font(.system(size: 10))
                                                     .fontWeight(.medium)
                                                     .textCase(.uppercase)
-                                                    .foregroundColor(self.dayStates.contains(.active) ? np_jap_indigo : np_white)
+                                                    .foregroundColor(self.dayStates.contains(.angry) ? np_jap_indigo : np_white)
                                             }
                                     }
                                 }

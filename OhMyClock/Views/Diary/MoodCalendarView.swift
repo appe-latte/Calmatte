@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import FirebaseFirestore
 
 struct MoodCalendarView: View {
     @ObservedObject var moodModelController: MoodModelController
@@ -23,7 +25,7 @@ struct MoodCalendarView: View {
     public var body: some View {
         VStack {
             StreakView(moodModelController: moodModelController)
-                .background(LinearGradient(colors: [np_arsenic, np_arsenic, np_arsenic, np_jap_indigo], startPoint: .top, endPoint: .bottom))
+                .background(np_jap_indigo)
                 .padding(.top, 20)
             
             ScrollView(.vertical, showsIndicators: false) {
@@ -301,8 +303,8 @@ struct DayCellView: View {
                     imageName = "sad"
                 case .shock:
                     imageName = "shock"
-                case .loved:
-                    imageName = "loved"
+                case .sick:
+                    imageName = "sick"
                 }
                 return Image(imageName)
                     .resizable()

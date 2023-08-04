@@ -6,6 +6,9 @@
 //  Modified by: Stanford L. Khumalo (Appe Latte) 2023-07-11
 
 import SwiftUI
+import FirebaseCore
+import FirebaseAuth
+import FirebaseFirestore
 
 struct MoodDiaryView : View {
     @ObservedObject var moodModelController = MoodModelController()
@@ -42,12 +45,7 @@ struct MoodDiaryView : View {
                                     .listRowBackground(np_white)
                             }
                             .onDelete { (indexSet) in
-                                for index in indexSet {
-                                    // Assuming moods are stored as an array
-                                    if let i = self.moodModelController.moods.firstIndex(where: { $0.id == moods[index].id }) {
-                                        self.moodModelController.deleteMood(at: IndexSet(integer: i))
-                                    }
-                                }
+                                self.moodModelController.deleteMood(at: indexSet)
                             }
                         }
                     }
@@ -67,7 +65,6 @@ struct MoodDiaryView : View {
                 }
             }
 
-            
             // MARK: Floating "Calendar" Button
             ZStack(alignment: .bottomTrailing) {
                 VStack {

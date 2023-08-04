@@ -94,7 +94,7 @@ struct SettingsView: View {
                         .frame(width: 150, height: 180)
                     
                     Text("Developed with \(Image(systemName: "heart.fill")) by: Appè Latte")
-                        .font(.system(size: 10))
+                        .font(.system(size: 8))
                         .fontWeight(.thin)
                         .kerning(4)
                         .textCase(.uppercase)
@@ -103,7 +103,7 @@ struct SettingsView: View {
                     // MARK: App Version + Build Number
                     HStack(spacing: 10) {
                         Text("App Version:")
-                            .font(.system(size: 9.5))
+                            .font(.system(size: 7.5))
                             .fontWeight(.thin)
                             .kerning(5)
                             .textCase(.uppercase)
@@ -113,7 +113,7 @@ struct SettingsView: View {
                         if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
                             
                             Text("\(UIApplication.appVersion!) (\(buildNumber))")
-                                .font(.system(size: 9.5))
+                                .font(.system(size: 7.5))
                                 .fontWeight(.regular)
                                 .kerning(9.5)
                                 .textCase(.uppercase)
@@ -346,23 +346,21 @@ struct SettingsView: View {
         content.title = "Log Your Mood"
         content.body = "Don't forget to log your mood!"
         content.sound = UNNotificationSound.default
-        
+
         let calendar = Calendar.current
-        var dateComponents = DateComponents()
-        dateComponents.hour = 8
-        dateComponents.minute = 0
-        
-        for i in 0..<6 {
-            // Create a separate trigger for each reminder time
+        let reminderHours = [12, 20] // Reminders sent at mid-day and 8pm
+
+        for (index, hour) in reminderHours.enumerated() {
+            var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
+            dateComponents.hour = hour
+            dateComponents.minute = 0
+
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-            
-            // Create a unique identifier for each notification
-            let identifier = "moodReminder_\(i)"
-            
-            // Create a notification request
+
+            let identifier = "moodReminder_\(index)"
+
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-            
-            // Schedule the notification
+
             UNUserNotificationCenter.current().add(request) { (error) in
                 if let error = error {
                     print("Error scheduling notification: \(error.localizedDescription)")
@@ -370,16 +368,9 @@ struct SettingsView: View {
                     print("Notification scheduled successfully: \(identifier)")
                 }
             }
-            
-            // Increment the date components by 2 hours for the next reminder
-            dateComponents.hour! += 2
-            if dateComponents.hour! >= 21 {
-                // If it's 9 pm or later, reset the hour to 8 am on the next day
-                dateComponents.hour = 8
-                dateComponents.day! += 1
-            }
         }
     }
+
     
     func sendReminderEnabledNotification() {
         let content = UNMutableNotificationContent()

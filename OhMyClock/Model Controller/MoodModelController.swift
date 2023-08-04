@@ -7,7 +7,9 @@
 //
 
 import Foundation
-import Combine
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
 
 class MoodModelController: ObservableObject {
     
@@ -16,9 +18,11 @@ class MoodModelController: ObservableObject {
     @Published var currentStreak: Int = 0
     @Published var bestStreak: Int = 0
     @Published var totalDaysLogged: Int = 0
+    
+    let db = Firestore.firestore()
         
     init() {
-        loadFromPersistentStore()
+        loadFromFirestore()
     }
     
     //MARK: - CRUD Functions -- Mood Journal
@@ -27,18 +31,28 @@ class MoodModelController: ObservableObject {
         let newMood = Mood(emotion: emotion, comment: comment, date: date, dayStates: dayStates)
         
         moods.append(newMood)
-        saveToPersistentStore()
+        saveToFirestore()
         calculateStreaks()
     }
     
     // MARK: "Delete" mood
-    func deleteMood(at offset: IndexSet) {
-        guard let index = Array(offset).first else { return }
-        print("INDEX: \(index)")
-        moods.remove(at: index)
+    func deleteMood(at indices: IndexSet) {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
         
-        saveToPersistentStore()
-        calculateStreaks()
+        indices.forEach { index in
+            let mood = self.moods[index]
+            
+            db.collection("users").document(userID).collection("moods").document(mood.id.uuidString).delete { [weak self] err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    DispatchQueue.main.async {
+                        self?.moods.remove(at: index)
+                        self?.calculateStreaks()
+                    }
+                }
+            }
+        }
     }
 
     // MARK: "Update"
@@ -48,7 +62,7 @@ class MoodModelController: ObservableObject {
             mood.comment = comment
             
             moods[index] = mood
-            saveToPersistentStore()
+            saveToFirestore()
             calculateStreaks()
         }
     }
@@ -62,36 +76,65 @@ class MoodModelController: ObservableObject {
       return documents.appendingPathComponent("mood.plist")
     }
     
-    func saveToPersistentStore() {
-        
-        // Stars -> Data -> Plist
-        guard let url = persistentFileURL else { return }
-        
-        do {
-            let encoder = PropertyListEncoder()
-            let data = try encoder.encode(moods)
-            try data.write(to: url)
-        } catch {
-            print("Error saving stars data: \(error)")
+//    func asDictionary() throws -> [String: Any] {
+//        let data = try JSONEncoder().encode(self)
+//        guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+//            throw NSError()
+//        }
+//        return dictionary
+//    }
+    
+    // MARK: Save Journal To Firebase
+    func saveToFirestore() {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+
+        for mood in moods {
+            do {
+                let moodData = try mood.asDictionary()
+                var ref: DocumentReference? = nil
+                ref = db.collection("users").document(userID).collection("moods").addDocument(data: moodData) { err in
+                    if let err = err {
+                        print("Error adding document: \(err)")
+                    } else {
+                        print("Document added with ID: \(ref!.documentID)")
+                    }
+                }
+            } catch let error {
+                print("Error writing moods to Firestore: \(error)")
+            }
         }
     }
-    
-    func loadFromPersistentStore() {
-        
-        // Plist -> Data -> Stars
-        let fileManager = FileManager.default
-        guard let url = persistentFileURL, fileManager.fileExists(atPath: url.path) else { return }
-        
-        do {
-            let data = try Data(contentsOf: url)
-            let decoder = PropertyListDecoder()
-            moods = try decoder.decode([Mood].self, from: data)
-            calculateStreaks()
-        } catch {
-            print("error loading stars data: \(error)")
+
+    // MARK: Load Journal From Firebase
+    func loadFromFirestore() {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+
+        moods = []
+
+        db.collection("users").document(userID).collection("moods").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting moods: \(err)")
+            } else {
+                self.moods = querySnapshot?.documents.compactMap { document in
+                    let data = document.data()
+                    do {
+                        let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
+                        let decoder = JSONDecoder()
+                        let mood = try decoder.decode(Mood.self, from: jsonData)
+                        return mood
+                    } catch let error {
+                        print("Error decoding mood: \(error)")
+                        return nil
+                    }
+                } ?? []
+
+                DispatchQueue.main.async {
+                    self.calculateStreaks()
+                }
+            }
         }
     }
-    
+
     // MARK: Calculating "Streaks"
     func calculateStreaks() {
         guard !moods.isEmpty else { return }
@@ -106,18 +149,30 @@ class MoodModelController: ObservableObject {
                 continue // Skip this iteration if the mood was logged on the same day
             }
             
-            if Calendar.current.isDateInYesterday(mood.date) {
+            let dateDiff = Calendar.current.dateComponents([.day], from: lastDate!, to: mood.date).day ?? 0
+            
+            if dateDiff == 1 {
+                // the mood is logged the next day
                 currentStreak += 1
-                if currentStreak > bestStreak {
-                    bestStreak = currentStreak
-                }
-            } else {
+            } else if dateDiff > 1 {
+                // the mood is logged after skipping one or more days
                 currentStreak = 1
+            }
+            
+            if currentStreak > bestStreak {
+                bestStreak = currentStreak
             }
             
             lastDate = mood.date
         }
-        
+
+        // After going through all moods, we need to check if the last mood's date is yesterday or today
+        if let lastDate = lastDate,
+           !Calendar.current.isDateInToday(lastDate),
+           !Calendar.current.isDateInYesterday(lastDate) {
+            currentStreak = 0
+        }
+
         self.currentStreak = currentStreak
         self.bestStreak = bestStreak
         self.totalDaysLogged = sortedMoods.count

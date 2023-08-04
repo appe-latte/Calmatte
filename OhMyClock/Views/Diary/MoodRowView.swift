@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Foundation
+import FirebaseCore
+import FirebaseFirestore
 
 struct MoodRowView: View {
     var mood: Mood
@@ -21,7 +23,7 @@ struct MoodRowView: View {
             HStack(spacing: 10) {
                 VStack {
                     Text(mood.monthString)
-                        .font(.headline)
+                        .font(.footnote)
                         .fontWeight(.bold)
                         .kerning(3)
                         .textCase(.uppercase)
@@ -104,8 +106,8 @@ struct MoodRowView: View {
             imageName = "sad"
         case .shock:
             imageName = "shock"
-        case .loved:
-            imageName = "loved"
+        case .sick:
+            imageName = "sick"
         }
         return Image(imageName).resizable().frame(width: 30, height: 30)
     }

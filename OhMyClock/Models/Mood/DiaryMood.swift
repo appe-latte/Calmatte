@@ -17,7 +17,7 @@ enum EmotionState: String, Codable {
     case sad
     case low
     case shock
-    case loved
+    case sick
     case meh
 }
 
@@ -27,7 +27,7 @@ enum DayState: String, Codable {
     case busy
     case bored
     case tiring
-    case active
+    case angry
     case meh
     case okay
     case exciting
@@ -43,7 +43,7 @@ enum MoodColor: String, Codable {
     case sadColor = "sadColor"
     case lowColor = "lowColor"
     case shockColor = "shockColor"
-    case lovedColor = "lovedColor"
+    case sickColor = "sickColor"
     case mehColor = "mehColor"
 }
 
@@ -69,8 +69,8 @@ struct Emotion: Codable {
             return np_purple
         case .shockColor:
             return np_dark_blue
-        case .lovedColor:
-            return np_pink
+        case .sickColor:
+            return np_arsenic
         case .mehColor:
             return np_gray
         }
@@ -79,18 +79,26 @@ struct Emotion: Codable {
 
 struct Mood: Codable, Equatable, Identifiable {
     var id = UUID()
-        let emotion: Emotion
-        var comment: String?
-        let date: Date
-        var dayStates: [DayState] // This will store the day states
-        
-        init(emotion: Emotion, comment: String?, date: Date, dayStates: [DayState]) {
-            self.emotion = emotion
-            self.comment = comment
-            self.date = date
-            self.dayStates = dayStates
-        }
+    let emotion: Emotion
+    var comment: String?
+    let date: Date
+    var dayStates: [DayState] // This will store the day states
     
+    init(emotion: Emotion, comment: String?, date: Date, dayStates: [DayState]) {
+        self.emotion = emotion
+        self.comment = comment
+        self.date = date
+        self.dayStates = dayStates
+    }
+    
+    func asDictionary() throws -> [String: Any] {
+        let data = try JSONEncoder().encode(self)
+        guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+            throw NSError()
+        }
+        return dictionary
+    }
+
     var dateString: String {
         dateFormatter.string(from: date)
     }
@@ -122,6 +130,7 @@ struct Mood: Codable, Equatable, Identifiable {
         }
     }
 }
+
 
 let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
