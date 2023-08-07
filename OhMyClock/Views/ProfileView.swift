@@ -70,7 +70,7 @@ struct ProfileView: View {
                         Spacer()
                         
                         Button(action: {
-                            //                            self.showDobUpdateSheetView.toggle()
+                            saveFirstName()
                         }, label: {
                             Text("EDIT")
                                 .font(.footnote)
@@ -81,6 +81,7 @@ struct ProfileView: View {
                     }
                     TextField("\(firstName)", text: $firstName)
                 }
+                .onAppear(perform: loadUserFirstName)
                 
                 Divider()
                     .background(np_gray)

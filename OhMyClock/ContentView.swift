@@ -17,7 +17,7 @@ struct ContentView: View {
     var audioManager = AudioManager()
     
     @ObservedObject var moodModel: MoodModel
-//    @ObservedObject var appLockViewModel : AppLockViewModel
+    //    @ObservedObject var appLockViewModel : AppLockViewModel
     @Binding var tabBarSelection: Int
     
     init(moodModel: MoodModel = MoodModel(), tabBarSelection: Binding<Int> = .constant(0)) {
@@ -80,6 +80,17 @@ struct ContentView: View {
         }
     }
     
+    // MARK: Reminders
+    func requestNotificationAuthorization() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if granted {
+                scheduleReminders()
+            } else {
+                // Handle authorization denial or error
+            }
+        }
+    }
+    
     func scheduleReminders() {
         let content = UNMutableNotificationContent()
         content.title = "Log Your Mood"
@@ -87,21 +98,19 @@ struct ContentView: View {
         content.sound = UNNotificationSound.default
         
         let calendar = Calendar.current
-        var dateComponents = DateComponents()
-        dateComponents.hour = 8
-        dateComponents.minute = 0
+        let reminderHours = [12, 20] // Reminders sent at mid-day and 8pm
         
-        for i in 0..<6 {
-            // Create a separate trigger for each reminder time
+        for (index, hour) in reminderHours.enumerated() {
+            var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
+            dateComponents.hour = hour
+            dateComponents.minute = 0
+            
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             
-            // Create a unique identifier for each notification
-            let identifier = "moodReminder_\(i)"
+            let identifier = "moodReminder_\(index)"
             
-            // Create a notification request
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
             
-            // Schedule the notification
             UNUserNotificationCenter.current().add(request) { (error) in
                 if let error = error {
                     print("Error scheduling notification: \(error.localizedDescription)")
@@ -109,16 +118,9 @@ struct ContentView: View {
                     print("Notification scheduled successfully: \(identifier)")
                 }
             }
-            
-            // Increment the date components by 2 hours for the next reminder
-            dateComponents.hour! += 2
-            if dateComponents.hour! >= 21 {
-                // If it's 9 pm or later, reset the hour to 8 am on the next day
-                dateComponents.hour = 8
-                dateComponents.day! += 1
-            }
         }
     }
+    
     
     func sendReminderEnabledNotification() {
         let content = UNMutableNotificationContent()
@@ -159,7 +161,6 @@ struct ContentView: View {
     func cancelScheduledReminders() {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["moodReminder"])
     }
-    
 }
 
 // MARK: Screen Brightness
