@@ -88,7 +88,7 @@ struct SingleFlipView: View {
             .clipped()
             .shadow(color: np_gray, radius: 0.1, x: 5, y: 5)
     }
-        
+    
     
     enum FlipType {
         case top

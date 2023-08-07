@@ -24,7 +24,6 @@ struct PlayerView: View {
             HStack {
                 Spacer()
                 
-                // MARK: Playback Controls
                 HStack(spacing: 10) {
                     // MARK: "Play" button
                     PlaybackControlButton(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill", fontSize: 40) {

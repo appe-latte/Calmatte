@@ -14,13 +14,16 @@ import LocalAuthentication
 
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Initialize Firebase
+        FirebaseApp.configure()
+        
         application.registerForRemoteNotifications()
         
         // Request user authorization for notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             if granted {
                 // User granted permission
-                self.scheduleReminders()
+                ReminderManager.scheduleReminders()
             } else {
                 // User denied permission or something went wrong
                 // Handle accordingly
@@ -32,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         return true
     }
+
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // Pass device token to auth
@@ -47,34 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         // This notification is not auth related, developer should handle it.
-    }
-    
-    func scheduleReminders() {
-        // Create a notification content
-        let content = UNMutableNotificationContent()
-        content.title = "Log Your Mood"
-        content.body = "Don't forget to log your mood for today!"
-        content.sound = UNNotificationSound.default
-        
-        // Set the notification trigger (e.g., 8:00 PM daily)
-        var dateComponents = DateComponents()
-        dateComponents.hour = 20
-        dateComponents.minute = 0
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        
-        // Create a notification request
-        let request = UNNotificationRequest(identifier: "moodReminder", content: content, trigger: trigger)
-        
-        // Schedule the notification
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if let error = error {
-                // Handle any error in scheduling the notification
-                print("Error scheduling notification: \(error.localizedDescription)")
-            } else {
-                // Notification scheduled successfully
-                print("Notification scheduled successfully")
-            }
-        }
     }
     
     // Handle user tapping on the notification

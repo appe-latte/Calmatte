@@ -26,9 +26,9 @@ struct MoodDiaryView : View {
         ZStack {
             
             VStack(spacing: 0){
-
+                
                 HeaderView()
-
+                
                 // MARK: List View + Settings
                 if self.moodModelController.moods.isEmpty {
                     background()
@@ -37,15 +37,20 @@ struct MoodDiaryView : View {
                         let calendar = Calendar.current
                         return calendar.startOfDay(for: mood.date)
                     }.sorted { $0.key > $1.key } // Reverse sort by date
-
+                    
                     List {
-                        ForEach(groupedMoods, id: \.key) { key, moods in
-                            ForEach(moods.reversed(), id: \.id) { mood in // Reverse each group of moods
-                                MoodRowView(mood: mood)
-                                    .listRowBackground(np_white)
-                            }
-                            .onDelete { (indexSet) in
-                                self.moodModelController.deleteMood(at: indexSet)
+                        ForEach(groupedMoods.indices, id: \.self) { outerIndex in
+                            Section {
+                                ForEach(groupedMoods[outerIndex].value.reversed(), id: \.id) { mood in
+                                    MoodRowView(mood: mood)
+                                        .listRowBackground(np_white)
+                                }
+                                .onDelete { indexSet in
+                                    indexSet.forEach { index in
+                                        let mood = groupedMoods[outerIndex].value.reversed()[index]
+                                        self.moodModelController.deleteMood(withID: mood.id)
+                                    }
+                                }
                             }
                         }
                     }
@@ -53,18 +58,18 @@ struct MoodDiaryView : View {
                     .scrollContentBackground(.hidden)
                     .onAppear {
                         UITableView.appearance().tableFooterView = UIView() // Removes extra cells that are not being used.
-
+                        
                         // MARK: Disable selection.
                         UITableView.appearance().allowsSelection = true
                         UITableViewCell.appearance().selectionStyle = .none
                         UITableView.appearance().showsVerticalScrollIndicator = false
                         UITableViewCell.appearance().backgroundColor = UIColor(Color(red: 214 / 255, green: 26 / 255, blue: 60 / 255))
                     }
-
+                    
                     Spacer()
                 }
             }
-
+            
             // MARK: Floating "Calendar" Button
             ZStack(alignment: .bottomTrailing) {
                 VStack {

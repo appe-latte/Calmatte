@@ -7,8 +7,9 @@
 
 import SwiftUI
 import StoreKit
-import FirebaseCore
+import AlertToast
 import FirebaseAuth
+import FirebaseCore
 import UserNotifications
 import FirebaseFirestore
 import LocalAuthentication
@@ -29,6 +30,16 @@ struct SettingsView: View {
     
     // MARK: Reminders
     @AppStorage("RemindersEnabled") private var remindersEnabled = false
+    
+    // MARK: Alert - "Reminders" + "FaceID"
+    @State var showRemindersAlert = false
+    @State private var showAlert = false
+    @State private var remindersTitle = ""
+    @State private var remindersMessage = ""
+    
+    @State private var showAppLockAlert = false
+    @State private var appLockTitle = ""
+    @State private var appLockMessage = ""
     
     var body: some View {
         NavigationView {
@@ -163,10 +174,18 @@ struct SettingsView: View {
                                     .textCase(.uppercase)
                                     .foregroundColor(np_white)
                             }
-                            .toggleStyle(SwitchToggleStyle(tint: Color(red: 62 / 255, green: 201 / 255, blue: 193 / 255)))
                             .onChange(of: appLockViewModel.isAppLockEnabled, perform: { value in
                                 appLockViewModel.appLockStateChange(appLockState: value)
+                                if value {
+                                    appLockTitle = "Face ID Enabled"
+                                    appLockMessage = "You have enabled Face ID for this app."
+                                } else {
+                                    appLockTitle = "Face ID Disabled"
+                                    appLockMessage = "You have disabled Face ID for this app."
+                                }
+                                showAppLockAlert = true
                             })
+                            .toggleStyle(SwitchToggleStyle(tint: Color(red: 62 / 255, green: 201 / 255, blue: 193 / 255)))
                             
                             HStack {
                                 Text("Enable to unlock with FaceID.")
@@ -202,12 +221,17 @@ struct SettingsView: View {
                                 .foregroundColor(np_white)
                                 .onChange(of: remindersEnabled, perform: { enabled in
                                     if enabled {
-                                        requestNotificationAuthorization()
-                                        sendReminderEnabledNotification()
+                                        ReminderManager.requestNotificationAuthorization()
+                                        ReminderManager.sendReminderEnabledNotification()
+                                        remindersTitle = "Reminders Enabled"
+                                        remindersMessage = "You will now receive reminders to log your mood."
                                     } else {
-                                        cancelScheduledReminders()
-                                        sendReminderDisabledNotification()
+                                        ReminderManager.cancelScheduledReminders()
+                                        ReminderManager.sendReminderDisabledNotification()
+                                        remindersTitle = "Reminders Disabled"
+                                        remindersMessage = "You have disabled reminders to log your mood."
                                     }
+                                    showRemindersAlert = true
                                 })
                                 .toggleStyle(SwitchToggleStyle(tint: Color(red: 62 / 255, green: 201 / 255, blue: 193 / 255)))
                         }
@@ -325,91 +349,15 @@ struct SettingsView: View {
                 
                 Spacer()
             }
+            .toast(isPresenting:$showRemindersAlert) {
+                AlertToast(type: .regular, title: "\(remindersTitle)", subTitle: "\(remindersMessage)")
+            }
+            .toast(isPresenting:$showAppLockAlert) {
+                AlertToast(type: .regular, title: "\(appLockTitle)", subTitle: "\(appLockMessage)")
+            }
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
-    }
-    
-    // MARK: Reminders
-    func requestNotificationAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            if granted {
-                scheduleReminders()
-            } else {
-                // Handle authorization denial or error
-            }
-        }
-    }
-    
-    func scheduleReminders() {
-        let content = UNMutableNotificationContent()
-        content.title = "Log Your Mood"
-        content.body = "Don't forget to log your mood!"
-        content.sound = UNNotificationSound.default
-
-        let calendar = Calendar.current
-        let reminderHours = [12, 20] // Reminders sent at mid-day and 8pm
-
-        for (index, hour) in reminderHours.enumerated() {
-            var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
-            dateComponents.hour = hour
-            dateComponents.minute = 0
-
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-
-            let identifier = "moodReminder_\(index)"
-
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-
-            UNUserNotificationCenter.current().add(request) { (error) in
-                if let error = error {
-                    print("Error scheduling notification: \(error.localizedDescription)")
-                } else {
-                    print("Notification scheduled successfully: \(identifier)")
-                }
-            }
-        }
-    }
-
-    
-    func sendReminderEnabledNotification() {
-        let content = UNMutableNotificationContent()
-        content.title = "Reminders Enabled"
-        content.body = "You will now receive reminders to log your mood."
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false) // Trigger notification immediately
-        
-        let request = UNNotificationRequest(identifier: "reminderEnabledNotification", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if let error = error {
-                print("Error scheduling notification: \(error.localizedDescription)")
-            } else {
-                print("Notification scheduled successfully: reminderEnabledNotification")
-            }
-        }
-    }
-    
-    func sendReminderDisabledNotification() {
-        let content = UNMutableNotificationContent()
-        content.title = "Reminders Disabled"
-        content.body = "You have disabled reminders to log your mood."
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false) // Trigger notification immediately
-        
-        let request = UNNotificationRequest(identifier: "reminderDisabledNotification", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if let error = error {
-                print("Error scheduling notification: \(error.localizedDescription)")
-            } else {
-                print("Notification scheduled successfully: reminderDisabledNotification")
-            }
-        }
-    }
-    
-    func cancelScheduledReminders() {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["moodReminder"])
     }
 }
 

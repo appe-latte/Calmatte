@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 import CoreData
 import CoreLocation
 import UserNotifications
@@ -16,9 +17,11 @@ struct ContentView: View {
     
     var audioManager = AudioManager()
     
-    @ObservedObject var moodModel: MoodModel
-    //    @ObservedObject var appLockViewModel : AppLockViewModel
-    @Binding var tabBarSelection: Int
+    @EnvironmentObject var authViewModel: AuthViewModel
+       @EnvironmentObject var appLockViewModel: AppLockViewModel
+       
+       @ObservedObject var moodModel: MoodModel
+       @Binding var tabBarSelection: Int
     
     init(moodModel: MoodModel = MoodModel(), tabBarSelection: Binding<Int> = .constant(0)) {
         self.moodModel = moodModel
@@ -70,96 +73,13 @@ struct ContentView: View {
                     Label("More", image: "more")
                 }
                 .onAppear {
-                    // Check if reminders are enabled, and trigger notifications accordingly
                     if UserDefaults.standard.bool(forKey: "RemindersEnabled") {
-                        scheduleReminders()
+                        ReminderManager.scheduleReminders()
                     } else {
-                        cancelScheduledReminders()
+                        ReminderManager.cancelScheduledReminders()
                     }
                 }
         }
-    }
-    
-    // MARK: Reminders
-    func requestNotificationAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            if granted {
-                scheduleReminders()
-            } else {
-                // Handle authorization denial or error
-            }
-        }
-    }
-    
-    func scheduleReminders() {
-        let content = UNMutableNotificationContent()
-        content.title = "Log Your Mood"
-        content.body = "Don't forget to log your mood!"
-        content.sound = UNNotificationSound.default
-        
-        let calendar = Calendar.current
-        let reminderHours = [12, 20] // Reminders sent at mid-day and 8pm
-        
-        for (index, hour) in reminderHours.enumerated() {
-            var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
-            dateComponents.hour = hour
-            dateComponents.minute = 0
-            
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-            
-            let identifier = "moodReminder_\(index)"
-            
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-            
-            UNUserNotificationCenter.current().add(request) { (error) in
-                if let error = error {
-                    print("Error scheduling notification: \(error.localizedDescription)")
-                } else {
-                    print("Notification scheduled successfully: \(identifier)")
-                }
-            }
-        }
-    }
-    
-    
-    func sendReminderEnabledNotification() {
-        let content = UNMutableNotificationContent()
-        content.title = "Reminders Enabled"
-        content.body = "You will now receive reminders to log your mood."
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false) // Trigger notification immediately
-        
-        let request = UNNotificationRequest(identifier: "reminderEnabledNotification", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if let error = error {
-                print("Error scheduling notification: \(error.localizedDescription)")
-            } else {
-                print("Notification scheduled successfully: reminderEnabledNotification")
-            }
-        }
-    }
-    
-    func sendReminderDisabledNotification() {
-        let content = UNMutableNotificationContent()
-        content.title = "Reminders Disabled"
-        content.body = "You have disabled reminders to log your mood."
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false) // Trigger notification immediately
-        
-        let request = UNNotificationRequest(identifier: "reminderDisabledNotification", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if let error = error {
-                print("Error scheduling notification: \(error.localizedDescription)")
-            } else {
-                print("Notification scheduled successfully: reminderDisabledNotification")
-            }
-        }
-    }
-    
-    func cancelScheduledReminders() {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["moodReminder"])
     }
 }
 

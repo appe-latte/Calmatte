@@ -13,20 +13,21 @@ import FirebaseFirestore
 
 struct ProfileView: View {
     @EnvironmentObject var authViewModel : AuthViewModel
+    @Binding var showProfileSheet : Bool
     
     @State private var firstName = ""
     
-    // MARK: Alert
+    // MARK: Alert Toast
     @State var showDeleteAlert = false
     @State private var showAlert = false
     @State private var errTitle = ""
     @State private var errMessage = ""
     
-    // Load the current user's first name
+    // MARK: Load the current user's first name
     private func loadUserFirstName() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         Firestore.firestore().collection("users").document(userId).getDocument { document, error in
-            if let document = document, document.exists, let data = document.data(), let name = data["firstName"] as? String {
+            if let document = document, document.exists, let data = document.data(), let name = data["first_name"] as? String {
                 firstName = name
             } else if let error = error {
                 print("Error fetching user: \(error)")
@@ -34,11 +35,11 @@ struct ProfileView: View {
         }
     }
     
-    // Save the updated first name
+    // MARK: Save the updated first name
     private func saveFirstName() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         Firestore.firestore().collection("users").document(userId).updateData([
-            "firstName": firstName
+            "first_name": firstName
         ]) { error in
             if let error = error {
                 errTitle = "Error"
@@ -54,17 +55,35 @@ struct ProfileView: View {
     
     var body: some View {
         ZStack {
-            np_jap_indigo
+            np_arsenic
                 .ignoresSafeArea()
             
-            VStack {
-                // MARK: Edit Name
+            VStack(alignment: .leading, spacing: 15) {
+                
                 VStack {
                     HStack {
-                        Text("First Name: ")
+                        Text("Your Profile")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        Spacer()
+                    }
+                    .padding(.bottom, 20)
+                    
+                    // MARK: Edit First name
+                    HStack {
+                        Text("Edit Name: ")
                             .font(.footnote)
                             .kerning(3)
                             .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        TextField("\(firstName)", text: $firstName)
+                            .font(.footnote)
+                            .kerning(3)
                             .foregroundColor(np_white)
                         
                         Spacer()
@@ -72,24 +91,24 @@ struct ProfileView: View {
                         Button(action: {
                             saveFirstName()
                         }, label: {
-                            Text("EDIT")
-                                .font(.footnote)
+                            Text("Save")
+                                .font(.system(size: 10))
+                                .bold()
                                 .kerning(3)
                                 .textCase(.uppercase)
-                                .foregroundColor(np_green)
+                                .foregroundColor(np_turq)
                         })
                     }
-                    TextField("\(firstName)", text: $firstName)
                 }
                 .onAppear(perform: loadUserFirstName)
-                
+            
                 Divider()
                     .background(np_gray)
-                
                 
                 // MARK: Logout Button
                 Button(action: {
                     authViewModel.signOut()
+                    showProfileSheet = false
                 }, label: {
                     HStack(spacing: 10) {
                         Image("logout")
@@ -102,11 +121,8 @@ struct ProfileView: View {
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
-                        
-                        Image(systemName: "chevron.right")
                     }
                 })
-                .padding(.horizontal, 20)
                 
                 Divider()
                     .background(np_gray)
@@ -117,68 +133,46 @@ struct ProfileView: View {
                         Button(action: {
                             self.showDeleteAlert = true
                         }, label: {
-                            HStack {
-                                Image("trash")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .padding(1)
-                                Text("Delete My Account")
-                                    .font(.custom("Avenir", size: 17))
-                                    .fontWeight(.bold)
-                                    .foregroundColor(Color(red: 46 / 255, green: 153 / 255, blue: 168 / 255))
-                                    .padding(.leading, 15)
-                                Spacer()
-                                Image(systemName: "chevron.right")
+                            HStack(spacing: 10) {
+                                Image(systemName: "trash.circle.fill")
                                     .resizable()
                                     .scaledToFit()
-                                    .font(Font.title.weight(.semibold))
-                                    .foregroundColor(Color(.gray)).opacity(0.5)
-                                    .frame(width: 13, height: 13)
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(np_red)
+                                
+                                Text("Delete My Account")
+                                    .font(.footnote)
+                                    .kerning(3)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_white)
+                                
+                                Spacer()
                             }
-                        }).alert(isPresented:$showDeleteAlert) {
+                        })
+                        .alert(isPresented:$showDeleteAlert) {
                             Alert(
                                 title: Text("Are you sure you want to delete your account?"),
                                 primaryButton: .destructive(Text("Delete")) {
-                                    deleteUser()
+//                                    deleteUser()
+                                    authViewModel.deleteUser()
                                 },
                                 secondaryButton: .cancel()
                             )
                         }
                     }
+                    
                     Text("This action permanently deletes your account and removes all of your information from our servers.").lineLimit(nil)
-                        .foregroundColor(Color(red: 83 / 255, green: 82 / 255, blue: 116 / 255))
-                        .font(.custom("Avenir", size: 11).bold())
+                        .font(.system(size: 8))
+                        .kerning(1)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                        .padding(3)
                 }
+                
+                Divider()
+                    .background(np_gray)
             }
+            .padding(.horizontal, 20)
         }
-    }
-    
-    // MARK: Delete User functiona
-    private func deleteUser() {
-        let userId = Auth.auth().currentUser!.uid
-        Firestore.firestore().collection("users").document(userId).delete() { err in
-            if let err = err  {
-                print("Error: \(err)")
-            } else {
-                Auth.auth().currentUser!.delete { error in
-                    if let error = error {
-                        self.errTitle = "Error!"
-                        self.errMessage = "Error deleting the user: \(error)"
-                        self.showAlert = true
-                    } else {
-                        self.errTitle = "Account Deleted"
-                        self.errMessage = "Your user account has successfully been deleted"
-                        self.showAlert = true
-                        authViewModel.signOut()
-                    }
-                }
-            }
-        }
-    }
-}
-
-struct ProfileView_PreviewProvider: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
     }
 }

@@ -15,19 +15,30 @@ class AuthViewModel: ObservableObject {
     @Published var isAuthenticating = false // blocks buttons and textfields during authentication
     @Published var error: Error? // Displays error message
     @Published var user: User? // Keeps track of the user
+    @Published var isSignedIn: Bool = false
     
     @Published var isError: Bool = false
     @Published var errorMsg: String = ""
     
     @Published var showSaveUserInfoView: Bool = false
     
+    // MARK: Alert Toast
+    @State var showDeleteAlert = false
+    @State private var showAlert = false
+    @State private var errTitle = ""
+    @State private var errMessage = ""
+    
     init(){
+        // Attach listener to auth state
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+                    self.isSignedIn = user != nil
+                }
+        
         userSession = Auth.auth().currentUser
         fetchUser()
     }
     
     // MARK: User Login function
-    
     func userLogin(withEmail email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if error != nil {
@@ -68,8 +79,38 @@ class AuthViewModel: ObservableObject {
     
     // MARK:  Sign Out function
     func signOut() {
-        userSession = nil
-        try? Auth.auth().signOut()
+        do {
+            try Auth.auth().signOut()
+            isSignedIn = false
+            self.userSession = nil
+        } catch let signOutError {
+            print("Error signing out: %@", signOutError)
+        }
+    }
+    
+    // MARK: Delete User functiona
+    func deleteUser() {
+        let userId = Auth.auth().currentUser!.uid
+        Firestore.firestore().collection("users").document(userId).delete() { err in
+            if let err = err  {
+                print("Error: \(err)")
+            } else {
+                Auth.auth().currentUser!.delete { error in
+                    if let error = error {
+                        self.errTitle = "Error!"
+                        self.errMessage = "Error deleting the user: \(error)"
+                        self.showAlert = true
+                    } else {
+                        self.errTitle = "Account Deleted"
+                        self.errMessage = "Your user account has successfully been deleted"
+                        self.showAlert = true
+                        self.signOut()
+                    }
+                }
+            }
+        }
+        
+        self.userSession = nil
     }
     
     // MARK: Fetch User function

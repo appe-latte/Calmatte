@@ -46,6 +46,7 @@ struct LoginView: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .strokeBorder(np_white, lineWidth: 0.5)
                             )
+                            .keyboardType(.emailAddress)
                         
                         // MARK: Pwd Field
                         SecureField("Password", text: $password)

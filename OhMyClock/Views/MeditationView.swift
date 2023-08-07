@@ -34,7 +34,6 @@ struct MeditationView: View {
             
             // MARK: "Content" section
             Content()
-            
         }
     }
     

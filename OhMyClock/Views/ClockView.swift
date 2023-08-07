@@ -27,19 +27,46 @@ struct ClockView: View {
     
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
+    @State private var showProfileSheet = false
     
     var body: some View {
-        let fullName = authModel.user?.firstName ?? ""
+        let firstName = authModel.user?.firstName ?? ""
         
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
                 VStack {
+                    // MARK: Profile Sheet
+                    HStack {
+                        Spacer()
+                        
+                        VStack(spacing: 5) {
+                            Button(action: {
+                                self.showProfileSheet.toggle()
+                            },
+                                   label: {
+                                Image(systemName: "person.circle.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(np_gray)
+                            })
+                            
+                            Text("Profile")
+                                .font(.system(size: 8))
+                                .fontWeight(.bold)
+                                .kerning(3)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_gray)
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                    
                     // MARK: Date + Salutation
                     HStack {
                         VStack(spacing: 10) {
                             HStack {
                                 Text(greeting)
-                                    .font(.largeTitle)
+                                    .font(.system(size: 24))
                                     .fontWeight(.bold)
                                     .kerning(5)
                                     .minimumScaleFactor(0.5)
@@ -50,8 +77,8 @@ struct ClockView: View {
                             
                             // MARK: Username
                             HStack {
-                                Text("\(fullName).")
-                                    .font(.largeTitle)
+                                Text("\(firstName).")
+                                    .font(.system(size: 22))
                                     .fontWeight(.bold)
                                     .kerning(5)
                                     .minimumScaleFactor(0.5)
@@ -195,13 +222,18 @@ struct ClockView: View {
             }
             .frame(maxWidth: .infinity)
         }
-        .background(background())
-        .onAppear {
-            // Start the timer to refresh the view every 10 minutes
-            Timer.scheduledTimer(withTimeInterval: 10 * 60, repeats: true) { _ in
-                refreshTrigger.toggle()
-            }
+        .sheet(isPresented: self.$showProfileSheet) {
+            ProfileView(showProfileSheet: $showProfileSheet)
+                .environmentObject(authModel)
+                .presentationDetents([.height(screenHeight * 0.3)])
         }
+        .background(background())
+        //        .onAppear {
+        //            // Start the timer to refresh the view every 10 minutes
+        //            Timer.scheduledTimer(withTimeInterval: 10 * 60, repeats: true) { _ in
+        //                refreshTrigger.toggle()
+        //            }
+        //        }
         .onChange(of: refreshTrigger) { _ in
             weatherModel.fetchWeather()
         }

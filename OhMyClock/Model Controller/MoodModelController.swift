@@ -36,20 +36,16 @@ class MoodModelController: ObservableObject {
     }
     
     // MARK: "Delete" mood
-    func deleteMood(at indices: IndexSet) {
+    func deleteMood(withID uuid: UUID) {
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        
-        indices.forEach { index in
-            let mood = self.moods[index]
-            
-            db.collection("users").document(userID).collection("moods").document(mood.id.uuidString).delete { [weak self] err in
-                if let err = err {
-                    print("Error removing document: \(err)")
-                } else {
-                    DispatchQueue.main.async {
-                        self?.moods.remove(at: index)
-                        self?.calculateStreaks()
-                    }
+
+        db.collection("users").document(userID).collection("moods").document(uuid.uuidString).delete { [weak self] err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                DispatchQueue.main.async {
+                    self?.moods.removeAll { $0.id == uuid }
+                    self?.calculateStreaks()
                 }
             }
         }
@@ -86,24 +82,24 @@ class MoodModelController: ObservableObject {
     
     // MARK: Save Journal To Firebase
     func saveToFirestore() {
-        guard let userID = Auth.auth().currentUser?.uid else { return }
+            guard let userID = Auth.auth().currentUser?.uid else { return }
 
-        for mood in moods {
-            do {
-                let moodData = try mood.asDictionary()
-                var ref: DocumentReference? = nil
-                ref = db.collection("users").document(userID).collection("moods").addDocument(data: moodData) { err in
-                    if let err = err {
-                        print("Error adding document: \(err)")
-                    } else {
-                        print("Document added with ID: \(ref!.documentID)")
+            for mood in moods {
+                do {
+                    let moodData = try mood.asDictionary()
+                    let moodID = mood.id.uuidString
+                    db.collection("users").document(userID).collection("moods").document(moodID).setData(moodData, merge: true) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
                     }
+                } catch let error {
+                    print("Error writing moods to Firestore: \(error)")
                 }
-            } catch let error {
-                print("Error writing moods to Firestore: \(error)")
             }
         }
-    }
 
     // MARK: Load Journal From Firebase
     func loadFromFirestore() {

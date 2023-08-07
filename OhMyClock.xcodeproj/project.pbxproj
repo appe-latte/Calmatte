@@ -44,6 +44,7 @@
 		2F54B262297C71190075E488 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B261297C71190075E488 /* RealmSwift */; };
 		2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B263297D19E20075E488 /* OmcRealmManager.swift */; };
 		2F54B266297D1AE50075E488 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B265297D1AE40075E488 /* Milestone.swift */; };
+		2F64DE362A8161B9007917D2 /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64DE352A8161B9007917D2 /* ReminderManager.swift */; };
 		2F690F7C2A815137008A8ACC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F690F7B2A815137008A8ACC /* ProfileView.swift */; };
 		2F8838322A0ABC5300840F68 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8838312A0ABC5300840F68 /* ClockView.swift */; };
 		2F8838342A0AC64E00840F68 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8838332A0AC64E00840F68 /* TimerView.swift */; };
@@ -132,6 +133,7 @@
 		2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRowView.swift; sourceTree = "<group>"; };
 		2F54B263297D19E20075E488 /* OmcRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmcRealmManager.swift; sourceTree = "<group>"; };
 		2F54B265297D1AE40075E488 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
+		2F64DE352A8161B9007917D2 /* ReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderManager.swift; sourceTree = "<group>"; };
 		2F690F7B2A815137008A8ACC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2F8838302A0AB1C800840F68 /* OhMyClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhMyClock.entitlements; sourceTree = "<group>"; };
 		2F8838312A0ABC5300840F68 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */,
 				2F24A2682A4C878400B41C01 /* BreathType.swift */,
 				2FCD005B2A67127F000AD649 /* User.swift */,
+				2F64DE352A8161B9007917D2 /* ReminderManager.swift */,
 				2F9EBB012A6489C900DC806A /* Quote */,
 				2F4AB62D2A5E5CEF00F6332F /* Mood */,
 			);
@@ -602,6 +605,7 @@
 				2F8838342A0AC64E00840F68 /* TimerView.swift in Sources */,
 				2FA9AB432A4E0D0000557FD0 /* MoodSliderView.swift in Sources */,
 				2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */,
+				2F64DE362A8161B9007917D2 /* ReminderManager.swift in Sources */,
 				2F919D352A5DD8EA00291071 /* DiaryColors.swift in Sources */,
 				2F4AB6272A5DDD0D00F6332F /* MoodDiaryView.swift in Sources */,
 				2F434BB6296F89F100698C1A /* Extensions.swift in Sources */,
@@ -766,7 +770,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = OhMyClock/OhMyClock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"OhMyClock/Preview Content\"";
 				DEVELOPMENT_TEAM = QACLP69RHJ;
 				ENABLE_PREVIEWS = YES;
@@ -811,7 +815,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = OhMyClock/OhMyClock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"OhMyClock/Preview Content\"";
 				DEVELOPMENT_TEAM = QACLP69RHJ;
 				ENABLE_PREVIEWS = YES;

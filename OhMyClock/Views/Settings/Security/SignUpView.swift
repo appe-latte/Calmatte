@@ -77,6 +77,7 @@ struct SignUpView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .strokeBorder(np_white, lineWidth: 0.5)
                     )
+                    .keyboardType(.emailAddress)
                 
                 // MARK: Pwd field
                 SecureField("Password", text: $password)

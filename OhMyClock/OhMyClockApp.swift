@@ -42,31 +42,31 @@ struct OhMyClockApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if authViewModel.userSession != nil {
-                if appLockViewModel.isAppLockEnabled && appLockViewModel.needsUnlock {
-                    BiometricLoginView(appLockViewModel: appLockViewModel)
-                        .environmentObject(authViewModel)
-                } else {
-                    ContentView()
-                        .environmentObject(AudioManager())
-                    // The rest of your code...
+            Group {
+                    if authViewModel.userSession != nil {
+                        if appLockViewModel.isAppLockEnabled && appLockViewModel.needsUnlock {
+                            BiometricLoginView(appLockViewModel: appLockViewModel)
+                        } else {
+                            ContentView()
+                                .environmentObject(AudioManager())
+//                                .environmentObject(authViewModel)
+//                                .environmentObject(appLockViewModel)
+                        }
+                    } else {
+                        LoginView()
+                    }
                 }
-            } else {
-                LoginView()
-                    .environmentObject(authViewModel)
-            }
+                .environmentObject(authViewModel)
+                .environmentObject(appLockViewModel)
         }
-        .onChange(of: scenePhase) { newScenePhase in
-            switch newScenePhase {
+        .onChange(of: scenePhase) { newScenePhase in            switch newScenePhase {
             case .active:
                 // App becomes active
-                // Check whether it needs unlock
                 if appLockViewModel.isAppLockEnabled && appLockViewModel.needsUnlock {
                     appLockViewModel.isAppUnlocked = false
                 }
             case .inactive, .background:
                 // App goes to the background
-                // Mark needsUnlock as true only if the app lock is enabled
                 if appLockViewModel.isAppLockEnabled {
                     appLockViewModel.needsUnlock = true
                 }
@@ -74,6 +74,5 @@ struct OhMyClockApp: App {
                 break
             }
         }
-
     }
 }
