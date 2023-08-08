@@ -42,13 +42,9 @@
 		2F4AB62B2A5E5C3500F6332F /* MoodRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */; };
 		2F54B260297C71190075E488 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B25F297C71190075E488 /* Realm */; };
 		2F54B262297C71190075E488 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B261297C71190075E488 /* RealmSwift */; };
-		2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B263297D19E20075E488 /* OmcRealmManager.swift */; };
-		2F54B266297D1AE50075E488 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54B265297D1AE40075E488 /* Milestone.swift */; };
 		2F64DE362A8161B9007917D2 /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64DE352A8161B9007917D2 /* ReminderManager.swift */; };
 		2F690F7C2A815137008A8ACC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F690F7B2A815137008A8ACC /* ProfileView.swift */; };
 		2F8838322A0ABC5300840F68 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8838312A0ABC5300840F68 /* ClockView.swift */; };
-		2F8838342A0AC64E00840F68 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8838332A0AC64E00840F68 /* TimerView.swift */; };
-		2F8CA71029B7A6EB00C34005 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */; };
 		2F919D332A5DD83000291071 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F919D322A5DD83000291071 /* Day.swift */; };
 		2F919D352A5DD8EA00291071 /* DiaryColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F919D342A5DD8EA00291071 /* DiaryColors.swift */; };
 		2F9EBB032A6489F900DC806A /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EBB022A6489F900DC806A /* Quote.swift */; };
@@ -131,14 +127,10 @@
 		2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDiaryView.swift; sourceTree = "<group>"; };
 		2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodAddDiaryView.swift; sourceTree = "<group>"; };
 		2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRowView.swift; sourceTree = "<group>"; };
-		2F54B263297D19E20075E488 /* OmcRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmcRealmManager.swift; sourceTree = "<group>"; };
-		2F54B265297D1AE40075E488 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		2F64DE352A8161B9007917D2 /* ReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderManager.swift; sourceTree = "<group>"; };
 		2F690F7B2A815137008A8ACC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2F8838302A0AB1C800840F68 /* OhMyClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhMyClock.entitlements; sourceTree = "<group>"; };
 		2F8838312A0ABC5300840F68 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
-		2F8838332A0AC64E00840F68 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		2F919D322A5DD83000291071 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		2F919D342A5DD8EA00291071 /* DiaryColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryColors.swift; sourceTree = "<group>"; };
 		2F9EBB022A6489F900DC806A /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
@@ -238,8 +230,6 @@
 				2F36B0A72967A40200AC8D59 /* Assets.xcassets */,
 				2FF8F00B29B27BD4008D7C7E /* equilibrium.mp3 */,
 				2F36B0A92967A40200AC8D59 /* Preview Content */,
-				2F54B263297D19E20075E488 /* OmcRealmManager.swift */,
-				2F54B265297D1AE40075E488 /* Milestone.swift */,
 				2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */,
 			);
 			path = OhMyClock;
@@ -271,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				2F36B0B72967A51900AC8D59 /* Models.swift */,
-				2F8CA70F29B7A6EB00C34005 /* TimerModel.swift */,
 				2F0D04E82A0A1E1B002523A9 /* Weather.swift */,
 				2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */,
 				2F24A2682A4C878400B41C01 /* BreathType.swift */,
@@ -412,7 +401,6 @@
 				2FF50123296E9B2800813D40 /* MainView.swift */,
 				2F8838312A0ABC5300840F68 /* ClockView.swift */,
 				2FF51DFE2A3A2DDD0035A964 /* WeatherCard */,
-				2F8838332A0AC64E00840F68 /* TimerView.swift */,
 				2FF50126296EA2B400813D40 /* MeditationView.swift */,
 				2F434BAE296F60FE00698C1A /* PlayerView.swift */,
 				2F9EBB062A648A8000DC806A /* QuoteView.swift */,
@@ -602,9 +590,7 @@
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
 				2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */,
 				2FF51E042A3A42370035A964 /* SplashScreenView.swift in Sources */,
-				2F8838342A0AC64E00840F68 /* TimerView.swift in Sources */,
 				2FA9AB432A4E0D0000557FD0 /* MoodSliderView.swift in Sources */,
-				2F54B264297D19E20075E488 /* OmcRealmManager.swift in Sources */,
 				2F64DE362A8161B9007917D2 /* ReminderManager.swift in Sources */,
 				2F919D352A5DD8EA00291071 /* DiaryColors.swift in Sources */,
 				2F4AB6272A5DDD0D00F6332F /* MoodDiaryView.swift in Sources */,
@@ -614,7 +600,6 @@
 				2FF51E022A3A2E120035A964 /* WeatherCardBackView.swift in Sources */,
 				2FCD005C2A67127F000AD649 /* User.swift in Sources */,
 				2F4AB62B2A5E5C3500F6332F /* MoodRowView.swift in Sources */,
-				2F54B266297D1AE50075E488 /* Milestone.swift in Sources */,
 				2F9EBB032A6489F900DC806A /* Quote.swift in Sources */,
 				2F24A2692A4C878400B41C01 /* BreathType.swift in Sources */,
 				2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */,
@@ -631,7 +616,6 @@
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
 				2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */,
 				2FF51E002A3A2E050035A964 /* WeatherCardFrontView.swift in Sources */,
-				2F8CA71029B7A6EB00C34005 /* TimerModel.swift in Sources */,
 				2F4AB6292A5DDDBE00F6332F /* MoodAddDiaryView.swift in Sources */,
 				2FCD00642A671C1E000AD649 /* LoginView.swift in Sources */,
 				2FA9AB452A4E0D7A00557FD0 /* MoodModel.swift in Sources */,

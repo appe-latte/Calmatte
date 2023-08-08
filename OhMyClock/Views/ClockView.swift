@@ -228,12 +228,6 @@ struct ClockView: View {
                 .presentationDetents([.height(screenHeight * 0.3)])
         }
         .background(background())
-        //        .onAppear {
-        //            // Start the timer to refresh the view every 10 minutes
-        //            Timer.scheduledTimer(withTimeInterval: 10 * 60, repeats: true) { _ in
-        //                refreshTrigger.toggle()
-        //            }
-        //        }
         .onChange(of: refreshTrigger) { _ in
             weatherModel.fetchWeather()
         }

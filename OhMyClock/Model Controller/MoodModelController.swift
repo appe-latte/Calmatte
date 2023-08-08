@@ -20,14 +20,13 @@ class MoodModelController: ObservableObject {
     @Published var totalDaysLogged: Int = 0
     
     let db = Firestore.firestore()
-        
+    
     init() {
         loadFromFirestore()
     }
     
     //MARK: - CRUD Functions -- Mood Journal
     func createMood(emotion: Emotion, comment: String?, date: Date, dayStates: [DayState]) {
-
         let newMood = Mood(emotion: emotion, comment: comment, date: date, dayStates: dayStates)
         
         moods.append(newMood)
@@ -38,7 +37,7 @@ class MoodModelController: ObservableObject {
     // MARK: "Delete" mood
     func deleteMood(withID uuid: UUID) {
         guard let userID = Auth.auth().currentUser?.uid else { return }
-
+        
         db.collection("users").document(userID).collection("moods").document(uuid.uuidString).delete { [weak self] err in
             if let err = err {
                 print("Error removing document: \(err)")
@@ -50,8 +49,8 @@ class MoodModelController: ObservableObject {
             }
         }
     }
-
-    // MARK: "Update"
+    
+    // MARK: "Update" mood
     func updateMoodComment(mood: Mood, comment: String) {
         if let index = moods.firstIndex(of: mood) {
             var mood = moods[index]
@@ -65,48 +64,40 @@ class MoodModelController: ObservableObject {
     
     // MARK: Save, Load from Persistence
     private var persistentFileURL: URL? {
-      let fileManager = FileManager.default
-      guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+        let fileManager = FileManager.default
+        guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
         else { return nil }
-       
-      return documents.appendingPathComponent("mood.plist")
+        
+        return documents.appendingPathComponent("mood.plist")
     }
-    
-//    func asDictionary() throws -> [String: Any] {
-//        let data = try JSONEncoder().encode(self)
-//        guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-//            throw NSError()
-//        }
-//        return dictionary
-//    }
     
     // MARK: Save Journal To Firebase
     func saveToFirestore() {
-            guard let userID = Auth.auth().currentUser?.uid else { return }
-
-            for mood in moods {
-                do {
-                    let moodData = try mood.asDictionary()
-                    let moodID = mood.id.uuidString
-                    db.collection("users").document(userID).collection("moods").document(moodID).setData(moodData, merge: true) { err in
-                        if let err = err {
-                            print("Error writing document: \(err)")
-                        } else {
-                            print("Document successfully written!")
-                        }
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        
+        for mood in moods {
+            do {
+                let moodData = try mood.asDictionary()
+                let moodID = mood.id.uuidString
+                db.collection("users").document(userID).collection("moods").document(moodID).setData(moodData, merge: true) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
                     }
-                } catch let error {
-                    print("Error writing moods to Firestore: \(error)")
                 }
+            } catch let error {
+                print("Error writing moods to Firestore: \(error)")
             }
         }
-
+    }
+    
     // MARK: Load Journal From Firebase
     func loadFromFirestore() {
         guard let userID = Auth.auth().currentUser?.uid else { return }
-
+        
         moods = []
-
+        
         db.collection("users").document(userID).collection("moods").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting moods: \(err)")
@@ -123,14 +114,14 @@ class MoodModelController: ObservableObject {
                         return nil
                     }
                 } ?? []
-
+                
                 DispatchQueue.main.async {
                     self.calculateStreaks()
                 }
             }
         }
     }
-
+    
     // MARK: Calculating "Streaks"
     func calculateStreaks() {
         guard !moods.isEmpty else { return }
@@ -148,10 +139,8 @@ class MoodModelController: ObservableObject {
             let dateDiff = Calendar.current.dateComponents([.day], from: lastDate!, to: mood.date).day ?? 0
             
             if dateDiff == 1 {
-                // the mood is logged the next day
                 currentStreak += 1
             } else if dateDiff > 1 {
-                // the mood is logged after skipping one or more days
                 currentStreak = 1
             }
             
@@ -161,14 +150,13 @@ class MoodModelController: ObservableObject {
             
             lastDate = mood.date
         }
-
-        // After going through all moods, we need to check if the last mood's date is yesterday or today
+        
         if let lastDate = lastDate,
            !Calendar.current.isDateInToday(lastDate),
            !Calendar.current.isDateInYesterday(lastDate) {
             currentStreak = 0
         }
-
+        
         self.currentStreak = currentStreak
         self.bestStreak = bestStreak
         self.totalDaysLogged = sortedMoods.count

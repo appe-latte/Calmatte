@@ -29,10 +29,9 @@ class AuthViewModel: ObservableObject {
     @State private var errMessage = ""
     
     init(){
-        // Attach listener to auth state
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-                    self.isSignedIn = user != nil
-                }
+        Auth.auth().addStateDidChangeListener { (auth, user) in // attach listener to auth state
+            self.isSignedIn = user != nil
+        }
         
         userSession = Auth.auth().currentUser
         fetchUser()
@@ -47,15 +46,12 @@ class AuthViewModel: ObservableObject {
                 return
             }
             
-            // MARK: Shows Content View after successful login
-            self.userSession = result?.user
+            self.userSession = result?.user // shows Content View after successful login
         }
     }
     
     // MARK: User Registration function
     func userRegistration(email: String, userPwd: String, firstName: String) {
-        
-        // MARK: Upload to Firebase
         Auth.auth().createUser(withEmail: email, password: userPwd) { result, error in
             if error != nil {
                 self.isError.toggle()
@@ -74,7 +70,6 @@ class AuthViewModel: ObservableObject {
                 self.fetchUser()
             }
         }
-        
     }
     
     // MARK:  Sign Out function

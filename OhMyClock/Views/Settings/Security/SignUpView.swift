@@ -156,7 +156,7 @@ struct SignUpView: View {
     }
     
     // MARK: Day / Night Theme
-    func getTime()->String {
+    func getTime() -> String {
         let format = DateFormatter()
         format.dateFormat = "hh:mm a"
         

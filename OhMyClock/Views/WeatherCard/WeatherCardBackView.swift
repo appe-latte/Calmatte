@@ -49,7 +49,6 @@ struct WeatherCardBackView: View {
                             
                             Image(systemName: "\(weather.symbolName).fill")
                                 .font(.title)
-                            //                                .foregroundColor(np_black)
                                 .symbolRenderingMode(.multicolor)
                             
                             Text(weather.temperature)

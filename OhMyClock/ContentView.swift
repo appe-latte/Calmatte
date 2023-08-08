@@ -18,10 +18,11 @@ struct ContentView: View {
     var audioManager = AudioManager()
     
     @EnvironmentObject var authViewModel: AuthViewModel
-       @EnvironmentObject var appLockViewModel: AppLockViewModel
-       
-       @ObservedObject var moodModel: MoodModel
-       @Binding var tabBarSelection: Int
+    @EnvironmentObject var appLockViewModel: AppLockViewModel
+    
+    @ObservedObject var moodModel: MoodModel
+    @Binding var tabBarSelection: Int
+    
     
     init(moodModel: MoodModel = MoodModel(), tabBarSelection: Binding<Int> = .constant(0)) {
         self.moodModel = moodModel
@@ -66,8 +67,8 @@ struct ContentView: View {
                 }
             
             SettingsView()
-                .environmentObject(AppLockViewModel())
-                .environmentObject(AuthViewModel())
+                .environmentObject(authViewModel) // Use the existing authViewModel
+                .environmentObject(appLockViewModel) // Use the existing appLockViewModel
                 .colorScheme(.light)
                 .tabItem {
                     Label("More", image: "more")

@@ -103,7 +103,6 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     
     // MARK: Weather function declaration
-    
     func hourFormatter(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "ha"

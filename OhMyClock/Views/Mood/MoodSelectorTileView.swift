@@ -24,7 +24,6 @@ struct MoodSelectorTileView: View {
                 self.saveMoodFooterView
             }
         }
-//        .cornerRadius(10)
     }
     
     var largeGradientView: some View {

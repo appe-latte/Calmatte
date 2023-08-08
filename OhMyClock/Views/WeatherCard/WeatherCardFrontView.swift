@@ -49,7 +49,7 @@ struct WeatherCardFrontView: View {
                     .frame(width: 25)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    // Temperature
+                    // MARK: Temperature
                     VStack(alignment: .leading) {
                         Text("Temperature:")
                             .font(.footnote)
@@ -64,7 +64,7 @@ struct WeatherCardFrontView: View {
                             .textCase(.uppercase)
                     }
                     
-                    // Humidity
+                    // MARK: Humidity
                     VStack(alignment: .leading) {
                         Text("Humidity:")
                             .font(.footnote)
@@ -79,7 +79,7 @@ struct WeatherCardFrontView: View {
                             .textCase(.uppercase)
                     }
                     
-                    // Weather Condition
+                    // MARK: Weather Condition
                     VStack(alignment: .leading) {
                         Text("Condition:")
                             .font(.footnote)
@@ -144,5 +144,4 @@ struct WeatherCardFrontView: View {
             weatherModel.fetchWeather()
         }
     }
-    
 }

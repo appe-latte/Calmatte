@@ -24,8 +24,8 @@ struct PlayerView: View {
             HStack {
                 Spacer()
                 
+                // MARK: "Play" + "Stop" button
                 HStack(spacing: 10) {
-                    // MARK: "Play" button
                     PlaybackControlButton(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill", fontSize: 40) {
                         isPlaying.toggle()
                         if isPlaying {
@@ -37,7 +37,6 @@ struct PlayerView: View {
                         }
                     }
                     
-                    // MARK: "Stop" button
                     PlaybackControlButton(systemName: "stop.circle.fill", fontSize: 40) {
                         audioManager.stop()
                         dismiss()

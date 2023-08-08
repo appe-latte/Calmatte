@@ -705,6 +705,7 @@ struct MoodAddDiaryView: View {
                         .stroke(np_jap_indigo, style: StrokeStyle(lineWidth: 1))
                         .padding(2)
                 )
+                
                 Spacer()
             }
             .padding()
@@ -731,17 +732,14 @@ struct MoodAddDiaryView_Previews: PreviewProvider {
 
 // MARK: Multiline Text View
 struct MultiLineTextField: UIViewRepresentable {
-    
     @Binding var txt: String?
     @Binding var counterLabel: String
     
     func makeCoordinator() -> MultiLineTextField.Coordinator {
-        
         return MultiLineTextField.Coordinator(parent1: self)
     }
     
     func makeUIView(context: Context) -> UITextView {
-        
         let text = UITextView()
         text.isEditable = true
         text.isUserInteractionEnabled = true
@@ -757,7 +755,6 @@ struct MultiLineTextField: UIViewRepresentable {
             text.font = .systemFont(ofSize: 12)
         }
         
-        // text.textColor = .gray
         text.backgroundColor = UIColor(red: 239/255, green: 243/255, blue: 244/255, alpha: 1)
         text.font = .systemFont(ofSize: 18)
         text.returnKeyType = .done
@@ -768,8 +765,7 @@ struct MultiLineTextField: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UITextView, context: Context) {
-        
-        
+        //
     }
     
     class Coordinator: NSObject, UITextViewDelegate {
@@ -800,19 +796,18 @@ struct MultiLineTextField: UIViewRepresentable {
             self.parent.counterLabel = "\(remaining)"
         }
         
-        //Runs FIRST when ever text view is about to be changed. Returns true, means allow change, false means do not allow.
         func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
             if(text == "\n") {
                 textView.resignFirstResponder()
                 return false
             }
             
-            //Do not allow white lines (breaks)
+            // MARK: removes white spaces
             guard text.rangeOfCharacter(from: .newlines) == nil else {
                 return false
             }
             
-            //Stop entry while reached 200 chars
+            // MARK: Set text limit to 200
             let existingTextLength = textView.text.utf16.count
             let replacementTextLength = text.utf16.count
             let rangeLength = range.length

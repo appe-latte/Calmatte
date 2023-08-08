@@ -14,10 +14,7 @@ import LocalAuthentication
 
 @main
 struct OhMyClockApp: App {
-    @Environment(\.scenePhase) var scenePhase
-    
     @StateObject var audioManager = AudioManager()
-    @StateObject var timerModel: TimerModel = .init()
     @State private var isActive = false
     
     // MARK: Authentication
@@ -25,7 +22,7 @@ struct OhMyClockApp: App {
     @StateObject var appLockViewModel = AppLockViewModel()
     
     // MARK: Scene phase
-    @Environment(\.scenePhase) var phase
+    @Environment(\.scenePhase) var scenePhase
     
     // MARK: Store last timer stamp
     @State var lastActiveTimeStamp : Date = Date()
@@ -43,23 +40,22 @@ struct OhMyClockApp: App {
     var body: some Scene {
         WindowGroup {
             Group {
-                    if authViewModel.userSession != nil {
-                        if appLockViewModel.isAppLockEnabled && appLockViewModel.needsUnlock {
-                            BiometricLoginView(appLockViewModel: appLockViewModel)
-                        } else {
-                            ContentView()
-                                .environmentObject(AudioManager())
-//                                .environmentObject(authViewModel)
-//                                .environmentObject(appLockViewModel)
-                        }
+                if authViewModel.userSession != nil {
+                    if appLockViewModel.isAppLockEnabled && appLockViewModel.needsUnlock {
+                        BiometricLoginView(appLockViewModel: appLockViewModel)
                     } else {
-                        LoginView()
+                        ContentView()
+                            .environmentObject(AudioManager())
                     }
+                } else {
+                    LoginView()
                 }
-                .environmentObject(authViewModel)
-                .environmentObject(appLockViewModel)
+            }
+            .environmentObject(authViewModel)
+            .environmentObject(appLockViewModel)
         }
-        .onChange(of: scenePhase) { newScenePhase in            switch newScenePhase {
+        .onChange(of: scenePhase) { newScenePhase in
+            switch newScenePhase {
             case .active:
                 // App becomes active
                 if appLockViewModel.isAppLockEnabled && appLockViewModel.needsUnlock {

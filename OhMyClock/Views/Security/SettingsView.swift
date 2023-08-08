@@ -368,12 +368,6 @@ extension UIApplication {
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
-    }
-}
-
 // MARK: "Share sheet" function
 func shareSheet() {
     guard let data = URL(string: "https://apps.apple.com/us/app/ohmyclock/id1667124410") else { return }
