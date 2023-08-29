@@ -1,7 +1,7 @@
 # Calmatte
 <h4>A Wellness and Mindfulness app. (iOS)</h4>
 
-<h1 align="center">Hello 👋, We are Appè Latte</h1>
+<h1 align="left">Hello 👋, We are Appè Latte</h1>
 <h3 align="left">A mobile app development agency based in Calgary, AB.</h3>
 
 <h3 align="left">Project Summary:</h3>
