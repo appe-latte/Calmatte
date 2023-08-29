@@ -1,9 +1,6 @@
 # Calmatte (formerly OhMyClock)
 <h4>A Wellness and Mindfulness app. (iOS)</h4>
 
-<h1 align="left">Hello 👋, We are Appè Latte</h1>
-<h3 align="left">A mobile app development agency based in Calgary, AB.</h3>
-
 <h3 align="left">Project Summary:</h3>
 <h4 align="left">  
 <p> Introducing Calmatte, a comprehensive wellness app designed to empower you in managing and improving your mental well-being. Calmatte blends practical utility with mindful practices, creating a unique, immersive, and calming environment at your fingertips. </p>
