@@ -1,4 +1,4 @@
-# Calmatte
+# Calmatte (formerly OhMyClock)
 <h4>A Wellness and Mindfulness app. (iOS)</h4>
 
 <h1 align="left">Hello 👋, We are Appè Latte</h1>
