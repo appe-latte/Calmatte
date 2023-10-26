@@ -62,7 +62,7 @@ struct ClockView: View {
                     .padding(.horizontal, 20)
                     
                     // MARK: Date + Salutation
-                    HStack {
+                    VStack {
                         VStack(spacing: 10) {
                             HStack {
                                 Text(greeting)
@@ -100,72 +100,15 @@ struct ClockView: View {
                         .padding(10)
                         
                         Spacer(minLength: 0)
+                        
+                        // MARK: Weather Information
+                            WeatherCardFrontView()
+                            .padding(  )
                     }
                     .padding(5)
                     .foregroundColor(np_white)
                     
-                    // MARK: Flip Clock
-                    HStack(spacing: 15) {
-                        FlipView(viewModel: viewModel.flipViewModels[0])
-                        
-                        FlipView(viewModel: viewModel.flipViewModels[1])
-                        
-                        FlipView(viewModel: viewModel.flipViewModels[2])
-                        
-                        FlipView(viewModel: viewModel.flipViewModels[3])
-                    }
-                    .frame(maxWidth: screenWidth - 20)
-                    
-                    // MARK: Time Zone
-                    HStack {
-                        Spacer()
-                        
-                        HStack(spacing: 5) {
-                            Text("timezone:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                            
-                            Text(TimeZone.current.abbreviation() ?? "")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                                .kerning(2)
-                                .minimumScaleFactor(0.5)
-                                .textCase(.uppercase)
-                        }
-                    }
-                    .padding(.vertical, 5)
-                    .padding(.horizontal, 35)
-                    .foregroundColor(np_white)
-                    .padding(.bottom, 20)
-                    
-                    Spacer(minLength: 0)
-                    
-                    // MARK: Weather Information
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack {
-                            Label("Today's Weather", systemImage: "")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                            
-                            Spacer()
-                        }
-                        .padding(.horizontal)
-                        
-                        HStack(spacing: 15){
-                            // MARK: Weather Conditions Card
-                            WeatherCardFrontView()
-                            
-                            // MARK: Hourly Forecast Card
-                            WeatherCardBackView()
-                        }
-                        .padding(.horizontal)
-                    }
-                    .padding(.bottom, 20)
+                    Spacer()
                     
                     // MARK: Quote View
                     VStack {
@@ -183,41 +126,6 @@ struct ClockView: View {
                         
                         QuoteView()
                     }
-                    
-                    // MARK: Mood Diary
-                    HStack {
-                        Label("How do you feel today?", systemImage: "")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .kerning(2)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                        
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    
-                    VStack(spacing: 20) {
-                        MoodSelectorTileView(moodModel: moodModel)
-                        
-                        CustomSegmentedPickerView(selection: $insightsMode, items: InsightsType.allCases)
-                            .padding()
-                            .onChange(of: insightsMode) { newValue in
-                                self.moodModel.didChangeInsights(type: newValue)
-                            }
-                        
-                        // MARK: Insights List
-                        MoodInsightsListView(screenWidth: screenWidth, moodModel: moodModel)
-                            .padding()
-                    }
-                    .frame(maxWidth: screenWidth - 40, maxHeight: screenHeight)
-                    .background(np_jap_indigo)
-                    .foregroundColor(np_arsenic)
-                    .ignoresSafeArea()
-                    .cornerRadius(10)
-                    .padding(.bottom, 20)
-                    .padding(.bottom, 5)
-                    .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
                 }
             }
             .frame(maxWidth: .infinity)

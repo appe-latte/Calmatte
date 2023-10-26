@@ -10,15 +10,15 @@ import SwiftUI
 
 enum EmotionState: String, Codable {
     case angry
-    case upset
-    case okay
-    case good
-    case great
-    case sad
-    case low
-    case shock
-    case sick
+    case cheeky
+    case happy
+    case loved
     case meh
+    case sad
+    case sick
+    case sleepy
+    case smiling
+    case upset
 }
 
 enum DayState: String, Codable {
@@ -26,7 +26,7 @@ enum DayState: String, Codable {
     case productive
     case busy
     case bored
-    case tiring
+    case tired
     case angry
     case meh
     case okay
@@ -36,15 +36,15 @@ enum DayState: String, Codable {
 
 enum MoodColor: String, Codable {
     case angryColor = "angryColor"
-    case upsetColor = "upsetColor"
-    case okayColor = "okayColor"
-    case goodColor = "goodColor"
-    case greatColor = "greatColor"
-    case sadColor = "sadColor"
-    case lowColor = "lowColor"
-    case shockColor = "shockColor"
-    case sickColor = "sickColor"
+    case cheekyColor = "cheekyColor"
+    case happyColor = "happyColor"
+    case lovedColor = "lovedColor"
     case mehColor = "mehColor"
+    case sadColor = "sadColor"
+    case sickColor = "sickColor"
+    case sleepyColor = "sleepyColor"
+    case smilingColor = "smilingColor"
+    case upsetColor = "upsetColor"
 }
 
 struct Emotion: Codable {
@@ -55,24 +55,24 @@ struct Emotion: Codable {
         switch color {
         case .angryColor:
             return np_red
-        case .upsetColor:
+        case .cheekyColor:
+            return np_blue
+        case .happyColor:
             return np_orange
-        case .okayColor:
-            return np_tan
-        case .goodColor:
-            return np_green
-        case .greatColor:
-            return cov_green
-        case .sadColor:
-            return np_tuscan
-        case .lowColor:
-            return np_purple
-        case .shockColor:
-            return np_dark_blue
-        case .sickColor:
-            return np_arsenic
+        case .lovedColor:
+            return np_pink
         case .mehColor:
-            return np_gray
+            return np_turq
+        case .sadColor:
+            return np_purple
+        case .sickColor:
+            return np_green
+        case .sleepyColor:
+            return np_tan
+        case .smilingColor:
+            return np_yellow
+        case .upsetColor:
+            return np_tuscan
         }
     }
 }

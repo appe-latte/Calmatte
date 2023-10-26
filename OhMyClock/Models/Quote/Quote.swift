@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-struct Quote : Hashable,Decodable {
+struct Quote : Hashable, Decodable {
     let quote : String
     let name : String
 }

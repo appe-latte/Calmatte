@@ -12,22 +12,22 @@ struct MoodAddDiaryView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State var text: String? = nil
-    @State private var emotionState: EmotionState = .okay
-    @State private var moodColor: MoodColor = .okayColor
-    @State private var greatSelected = false
-    @State private var goodSelected = false
-    @State private var okaySelected = false
-    @State private var upsetSelected = false
-    @State private var mehSelected = false
-    @State private var sleepySelected = false
-    @State private var shockedSelected = false
-    @State private var sickSelected = false
-    @State private var sadSelected = false
-    @State private var lowSelected = false
+    @State private var emotionState: EmotionState = .happy
+    @State private var moodColor: MoodColor = .happyColor
     @State private var angrySelected = false
+    @State private var cheekySelected = false
+    @State private var happySelected = false
+    @State private var lovedSelected = false
+    @State private var mehSelected = false
+    @State private var sadSelected = false
+    @State private var sickSelected = false
+    @State private var sleepySelected = false
+    @State private var smilingSelected = false
+    @State private var upsetSelected = false
     @State private var counterLabel = "200"
     
     @State private var dayStates: [DayState] = []
+    let height = UIScreen.main.bounds.height
     
     var body: some View {
         ZStack {
@@ -62,256 +62,148 @@ struct MoodAddDiaryView: View {
                     // MARK: Stack One
                     HStack(spacing: 10){
                         
-                        // MARK: Great - emotion
+                        // MARK: Happy - emotion
                         VStack(spacing: 5) {
                             Button(action: {
-                                self.emotionState = .great
-                                self.moodColor = .greatColor
-                                self.greatSelected = true
-                                self.goodSelected = false
-                                self.okaySelected = false
-                                self.upsetSelected = false
+                                self.emotionState = .happy
+                                self.moodColor = .happyColor
+                                self.happySelected = true
                                 self.angrySelected = false
                                 self.sadSelected = false
-                                self.lowSelected = false
-                                self.mehSelected = false
-                                self.sickSelected = false
-                                self.shockedSelected = false
-                                self.sleepySelected = false
-                            }) {
-                                ZStack {
-                                    Circle()
-                                        .fill(self.greatSelected ? np_white : Color.clear)
-                                        .frame(width: 70, height: 70)
-                                    
-                                    Image("great")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 60, height: 55)
-                                }
-                            }
-                            
-                            Text("Great")
-                                .font(.system(size: 10))
-                                .fontWeight(.medium)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                        }
-                        
-                        // MARK: Good - emotion
-                        VStack(spacing: 5){
-                            Button(action: {
-                                self.emotionState = .good
-                                self.moodColor = .goodColor
-                                self.greatSelected = false
-                                self.goodSelected = true
-                                self.okaySelected = false
                                 self.upsetSelected = false
-                                self.angrySelected = false
-                                self.sadSelected = false
-                                self.lowSelected = false
+                                self.lovedSelected = false
                                 self.mehSelected = false
                                 self.sickSelected = false
-                                self.shockedSelected = false
+                                self.smilingSelected = false
                                 self.sleepySelected = false
+                                self.cheekySelected = false
                             }) {
                                 ZStack {
-                                    Circle()
-                                        .fill(self.goodSelected ? np_white : Color.clear)
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(self.happySelected ? np_white : Color.clear)
                                         .frame(width: 65, height: 65)
                                     
-                                    Image("good")
+                                    Image("happy")
                                         .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 55, height: 55)
+                                        .scaledToFill()
+                                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                                        .frame(width: 60, height: 60)
                                 }
                             }
+                            .padding(2)
                             
-                            Text("Good")
+                            Text("Happy")
                                 .font(.system(size: 10))
                                 .fontWeight(.medium)
                                 .textCase(.uppercase)
                                 .foregroundColor(np_white)
                         }
                         
-                        // MARK: Okay - emotion
+                        // MARK: Smiling - emotion
                         VStack(spacing: 5){
                             Button(action: {
-                                self.emotionState = .okay
-                                self.moodColor = .okayColor
-                                self.greatSelected = false
-                                self.goodSelected = false
-                                self.okaySelected = true
-                                self.upsetSelected = false
+                                self.emotionState = .smiling
+                                self.moodColor = .smilingColor
+                                self.smilingSelected = true
+                                self.happySelected = false
                                 self.angrySelected = false
                                 self.sadSelected = false
-                                self.lowSelected = false
+                                self.upsetSelected = false
+                                self.lovedSelected = false
                                 self.mehSelected = false
                                 self.sickSelected = false
-                                self.shockedSelected = false
                                 self.sleepySelected = false
+                                self.cheekySelected = false
                             }) {
                                 ZStack {
-                                    Circle()
-                                        .fill(self.okaySelected ? np_white : Color.clear)
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(self.smilingSelected ? np_white : Color.clear)
                                         .frame(width: 65, height: 65)
                                     
-                                    Image("okay")
+                                    Image("smiling")
                                         .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 55, height: 55)
+                                        .scaledToFill()
+                                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                                        .frame(width: 60, height: 60)
                                 }
                             }
+                            .padding(2)
                             
-                            Text("Okay")
+                            Text("Smiling")
                                 .font(.system(size: 10))
                                 .fontWeight(.medium)
                                 .textCase(.uppercase)
                                 .foregroundColor(np_white)
                         }
                         
-                        // MARK: Upset - emotion
+                        // MARK: Cheeky - emotion
                         VStack(spacing: 5){
                             Button(action: {
-                                self.emotionState = .upset
-                                self.moodColor = .upsetColor
-                                self.greatSelected = false
-                                self.goodSelected = false
-                                self.okaySelected = false
-                                self.upsetSelected = true
+                                self.emotionState = .cheeky
+                                self.moodColor = .cheekyColor
+                                self.cheekySelected = true
+                                self.smilingSelected = false
+                                self.happySelected = false
                                 self.angrySelected = false
                                 self.sadSelected = false
-                                self.lowSelected = false
+                                self.upsetSelected = false
+                                self.lovedSelected = false
                                 self.mehSelected = false
                                 self.sickSelected = false
-                                self.shockedSelected = false
                                 self.sleepySelected = false
                             }) {
                                 ZStack {
                                     Circle()
-                                        .fill(self.upsetSelected ? np_white : Color.clear)
+                                        .fill(self.cheekySelected ? np_white : Color.clear)
                                         .frame(width: 65, height: 65)
                                     
-                                    Image("upset")
+                                    Image("cheeky")
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 55, height: 55)
+                                        .frame(width: 60, height: 60)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                 }
                             }
+                            .padding(2)
                             
-                            Text("Upset")
+                            Text("Cheeky")
                                 .font(.system(size: 10))
                                 .fontWeight(.medium)
                                 .textCase(.uppercase)
                                 .foregroundColor(np_white)
                         }
                         
-                        // MARK: Angry - emotion
+                        // MARK: Loved - emotion
                         VStack(spacing: 5){
                             Button(action: {
-                                self.emotionState = .angry
-                                self.moodColor = .angryColor
-                                self.greatSelected = false
-                                self.goodSelected = false
-                                self.okaySelected = false
-                                self.upsetSelected = false
-                                self.angrySelected = true
-                                self.sadSelected = false
-                                self.lowSelected = false
-                                self.mehSelected = false
-                                self.sickSelected = false
-                                self.shockedSelected = false
-                                self.sleepySelected = false
-                            }) {
-                                ZStack {
-                                    Circle()
-                                        .fill(self.angrySelected ? np_white : Color.clear)
-                                        .frame(width: 65, height: 65)
-                                    
-                                    Image("angry")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 55, height: 55)
-                                }
-                            }
-                            
-                            Text("Angry")
-                                .font(.system(size: 10))
-                                .fontWeight(.medium)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                        }
-                    }
-                    
-                    // MARK: Stack Two
-                    HStack(spacing: 10){
-                        
-                        // MARK: Sick - emotion
-                        VStack(spacing: 5) {
-                            Button(action: {
-                                self.emotionState = .sick
-                                self.moodColor = .sickColor
-                                self.greatSelected = false
-                                self.goodSelected = false
-                                self.okaySelected = false
-                                self.upsetSelected = false
+                                self.emotionState = .loved
+                                self.moodColor = .lovedColor
+                                self.lovedSelected = true
+                                self.cheekySelected = false
+                                self.smilingSelected = false
+                                self.happySelected = false
                                 self.angrySelected = false
                                 self.sadSelected = false
-                                self.lowSelected = false
-                                self.mehSelected = false
-                                self.sickSelected = true
-                                self.shockedSelected = false
-                                self.sleepySelected = false
-                            }) {
-                                ZStack {
-                                    Circle()
-                                        .fill(self.sickSelected ? np_white : Color.clear)
-                                        .frame(width: 70, height: 70)
-                                    
-                                    Image("sick")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 60, height: 55)
-                                }
-                            }
-                            
-                            Text("Sick")
-                                .font(.system(size: 10))
-                                .fontWeight(.medium)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                        }
-                        
-                        // MARK: Sad - emotion
-                        VStack(spacing: 5){
-                            Button(action: {
-                                self.emotionState = .sad
-                                self.moodColor = .sadColor
-                                self.greatSelected = false
-                                self.goodSelected = false
-                                self.okaySelected = false
                                 self.upsetSelected = false
-                                self.angrySelected = false
-                                self.sadSelected = true
-                                self.lowSelected = false
                                 self.mehSelected = false
                                 self.sickSelected = false
-                                self.shockedSelected = false
                                 self.sleepySelected = false
                             }) {
                                 ZStack {
                                     Circle()
-                                        .fill(self.sadSelected ? np_white : Color.clear)
+                                        .fill(self.lovedSelected ? np_white : Color.clear)
                                         .frame(width: 65, height: 65)
                                     
-                                    Image("sad")
+                                    Image("loved")
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 55, height: 55)
+                                        .frame(width: 60, height: 60)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                 }
                             }
+                            .padding(2)
                             
-                            Text("Sad")
+                            Text("Loved")
                                 .font(.system(size: 10))
                                 .fontWeight(.medium)
                                 .textCase(.uppercase)
@@ -323,16 +215,15 @@ struct MoodAddDiaryView: View {
                             Button(action: {
                                 self.emotionState = .meh
                                 self.moodColor = .mehColor
-                                self.greatSelected = false
-                                self.goodSelected = false
-                                self.okaySelected = false
-                                self.upsetSelected = false
+                                self.mehSelected = true
+                                self.cheekySelected = false
+                                self.smilingSelected = false
+                                self.happySelected = false
                                 self.angrySelected = false
                                 self.sadSelected = false
-                                self.lowSelected = false
-                                self.mehSelected = true
+                                self.upsetSelected = false
+                                self.lovedSelected = false
                                 self.sickSelected = false
-                                self.shockedSelected = false
                                 self.sleepySelected = false
                             }) {
                                 ZStack {
@@ -343,9 +234,11 @@ struct MoodAddDiaryView: View {
                                     Image("meh")
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 55, height: 55)
+                                        .frame(width: 60, height: 60)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                 }
                             }
+                            .padding(2)
                             
                             Text("Meh")
                                 .font(.system(size: 10))
@@ -353,81 +246,198 @@ struct MoodAddDiaryView: View {
                                 .textCase(.uppercase)
                                 .foregroundColor(np_white)
                         }
+                    }
+                    
+                    // MARK: Stack Two
+                    HStack(spacing: 10){
                         
-                        // MARK: Low - emotion
-                        VStack(spacing: 5){
+                        // MARK: Angry - emotion
+                        VStack(spacing: 5) {
                             Button(action: {
-                                self.emotionState = .low
-                                self.moodColor = .lowColor
-                                self.greatSelected = false
-                                self.goodSelected = false
-                                self.okaySelected = false
-                                self.upsetSelected = false
-                                self.angrySelected = false
+                                self.emotionState = .sick
+                                self.moodColor = .sickColor
+                                self.angrySelected = true
+                                self.cheekySelected = false
+                                self.smilingSelected = false
+                                self.happySelected = false
+                                self.lovedSelected = false
                                 self.sadSelected = false
-                                self.lowSelected = true
+                                self.upsetSelected = false
                                 self.mehSelected = false
                                 self.sickSelected = false
-                                self.shockedSelected = false
                                 self.sleepySelected = false
                             }) {
                                 ZStack {
                                     Circle()
-                                        .fill(self.lowSelected ? np_white : Color.clear)
-                                        .frame(width: 65, height: 65)
+                                        .fill(self.angrySelected ? np_white : Color.clear)
+                                        .frame(width: 70, height: 70)
                                     
-                                    Image("low")
+                                    Image("angry")
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 55, height: 55)
+                                        .frame(width: 60, height: 60)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                 }
                             }
+                            .padding(2)
                             
-                            Text("Low")
+                            Text("Angry")
                                 .font(.system(size: 10))
                                 .fontWeight(.medium)
                                 .textCase(.uppercase)
                                 .foregroundColor(np_white)
                         }
                         
-                        // MARK: Shock - emotion
+                        // MARK: Upset - emotion
                         VStack(spacing: 5){
                             Button(action: {
-                                self.emotionState = .shock
-                                self.moodColor = .shockColor
-                                self.greatSelected = false
-                                self.goodSelected = false
-                                self.okaySelected = false
-                                self.upsetSelected = false
+                                self.emotionState = .upset
+                                self.moodColor = .upsetColor
+                                self.upsetSelected = true
+                                self.cheekySelected = false
+                                self.smilingSelected = false
+                                self.happySelected = false
                                 self.angrySelected = false
                                 self.sadSelected = false
-                                self.lowSelected = false
+                                self.lovedSelected = false
                                 self.mehSelected = false
                                 self.sickSelected = false
-                                self.shockedSelected = true
                                 self.sleepySelected = false
                             }) {
                                 ZStack {
                                     Circle()
-                                        .fill(self.shockedSelected ? np_white : Color.clear)
+                                        .fill(self.upsetSelected ? np_white : Color.clear)
                                         .frame(width: 65, height: 65)
                                     
-                                    Image("shock")
+                                    Image("upset")
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 55, height: 55)
+                                        .frame(width: 60, height: 60)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                 }
                             }
+                            .padding(2)
                             
-                            Text("Shocked")
+                            Text("Upset")
+                                .font(.system(size: 10))
+                                .fontWeight(.medium)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
+                        
+                        // MARK: Sad - emotion
+                        VStack(spacing: 5){
+                            Button(action: {
+                                self.emotionState = .sad
+                                self.moodColor = .sadColor
+                                self.sadSelected = true
+                                self.cheekySelected = false
+                                self.smilingSelected = false
+                                self.happySelected = false
+                                self.angrySelected = false
+                                self.lovedSelected = false
+                                self.upsetSelected = false
+                                self.mehSelected = false
+                                self.sickSelected = false
+                                self.sleepySelected = false
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(self.sadSelected ? np_white : Color.clear)
+                                        .frame(width: 65, height: 65)
+                                    
+                                    Image("sad")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 60, height: 60)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                }
+                            }
+                            .padding(2)
+                            
+                            Text("Sad")
+                                .font(.system(size: 10))
+                                .fontWeight(.medium)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
+                        
+                        // MARK: Sleepy - emotion
+                        VStack(spacing: 5){
+                            Button(action: {
+                                self.emotionState = .sleepy
+                                self.moodColor = .sleepyColor
+                                self.sleepySelected = true
+                                self.cheekySelected = false
+                                self.smilingSelected = false
+                                self.happySelected = false
+                                self.angrySelected = false
+                                self.sadSelected = false
+                                self.upsetSelected = false
+                                self.mehSelected = false
+                                self.sickSelected = false
+                                self.lovedSelected = false
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(self.sleepySelected ? np_white : Color.clear)
+                                        .frame(width: 65, height: 65)
+                                    
+                                    Image("sleepy")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 60, height: 60)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                }
+                            }
+                            .padding(2)
+                            
+                            Text("Tired")
+                                .font(.system(size: 10))
+                                .fontWeight(.medium)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
+                        
+                        // MARK: Sick - emotion
+                        VStack(spacing: 5){
+                            Button(action: {
+                                self.emotionState = .sick
+                                self.moodColor = .sickColor
+                                self.sickSelected = true
+                                self.cheekySelected = false
+                                self.smilingSelected = false
+                                self.happySelected = false
+                                self.angrySelected = false
+                                self.sadSelected = false
+                                self.upsetSelected = false
+                                self.mehSelected = false
+                                self.lovedSelected = false
+                                self.sleepySelected = false
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(self.sickSelected ? np_white : Color.clear)
+                                        .frame(width: 65, height: 65)
+                                    
+                                    Image("sick")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 60, height: 60)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                }
+                            }
+                            .padding(2)
+                            
+                            Text("Sick")
                                 .font(.system(size: 10))
                                 .fontWeight(.medium)
                                 .textCase(.uppercase)
                                 .foregroundColor(np_white)
                         }
                     }
-                    
                 }
+            
                 
                 // MARK: Day Type selection
                 VStack {
@@ -452,7 +462,7 @@ struct MoodAddDiaryView: View {
                                     self.toggleDayState(.fun)
                                 }) {
                                     ZStack {
-                                        RoundedRectangle(cornerRadius: 10)
+                                        Capsule()
                                             .fill(self.dayStates.contains(.fun) ? np_white : np_white.opacity(0.45))
                                             .frame(width: 75, height: 45)
                                             .overlay {
@@ -472,7 +482,7 @@ struct MoodAddDiaryView: View {
                                     self.toggleDayState(.busy)
                                 }) {
                                     ZStack {
-                                        RoundedRectangle(cornerRadius: 10)
+                                        Capsule()
                                             .fill(self.dayStates.contains(.busy) ? np_white : np_white.opacity(0.45))
                                             .frame(width: 75, height: 45)
                                             .overlay {
@@ -492,7 +502,7 @@ struct MoodAddDiaryView: View {
                                     self.toggleDayState(.angry)
                                 }) {
                                     ZStack {
-                                        RoundedRectangle(cornerRadius: 10)
+                                        Capsule()
                                             .fill(self.dayStates.contains(.angry) ? np_white : np_white.opacity(0.45))
                                             .frame(width: 75, height: 45)
                                             .overlay {
@@ -512,7 +522,7 @@ struct MoodAddDiaryView: View {
                                     self.toggleDayState(.productive)
                                 }) {
                                     ZStack {
-                                        RoundedRectangle(cornerRadius: 10)
+                                        Capsule()
                                             .fill(self.dayStates.contains(.productive) ? np_white : np_white.opacity(0.45))
                                             .frame(width: 75, height: 45)
                                             .overlay {
@@ -532,7 +542,7 @@ struct MoodAddDiaryView: View {
                                     self.toggleDayState(.bored)
                                 }) {
                                     ZStack {
-                                        RoundedRectangle(cornerRadius: 10)
+                                        Capsule()
                                             .fill(self.dayStates.contains(.bored) ? np_white : np_white.opacity(0.45))
                                             .frame(width: 75, height: 45)
                                             .overlay {
@@ -555,18 +565,18 @@ struct MoodAddDiaryView: View {
                             // MARK: Tiring - state
                             VStack(spacing: 5) {
                                 Button(action: {
-                                    self.toggleDayState(.tiring)
+                                    self.toggleDayState(.tired)
                                 }) {
                                     ZStack {
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .fill(self.dayStates.contains(.tiring) ? np_white : np_white.opacity(0.45))
+                                        Capsule()
+                                            .fill(self.dayStates.contains(.tired) ? np_white : np_white.opacity(0.45))
                                             .frame(width: 75, height: 45)
                                             .overlay {
                                                 Text("Tiring")
                                                     .font(.system(size: 10))
                                                     .fontWeight(.medium)
                                                     .textCase(.uppercase)
-                                                    .foregroundColor(self.dayStates.contains(.tiring) ? np_jap_indigo : np_white)
+                                                    .foregroundColor(self.dayStates.contains(.tired) ? np_jap_indigo : np_white)
                                             }
                                     }
                                 }
@@ -578,7 +588,7 @@ struct MoodAddDiaryView: View {
                                     self.toggleDayState(.meh)
                                 }) {
                                     ZStack {
-                                        RoundedRectangle(cornerRadius: 10)
+                                        Capsule()
                                             .fill(self.dayStates.contains(.meh) ? np_white : np_white.opacity(0.45))
                                             .frame(width: 75, height: 45)
                                             .overlay {
@@ -598,7 +608,7 @@ struct MoodAddDiaryView: View {
                                     self.toggleDayState(.exciting)
                                 }) {
                                     ZStack {
-                                        RoundedRectangle(cornerRadius: 10)
+                                        Capsule()
                                             .fill(self.dayStates.contains(.exciting) ? np_white : np_white.opacity(0.45))
                                             .frame(width: 75, height: 45)
                                             .overlay {
@@ -618,7 +628,7 @@ struct MoodAddDiaryView: View {
                                     self.toggleDayState(.okay)
                                 }) {
                                     ZStack {
-                                        RoundedRectangle(cornerRadius: 10)
+                                        Capsule()
                                             .fill(self.dayStates.contains(.okay) ? np_white : np_white.opacity(0.45))
                                             .frame(width: 75, height: 45)
                                             .overlay {
@@ -638,7 +648,7 @@ struct MoodAddDiaryView: View {
                                     self.toggleDayState(.sad)
                                 }) {
                                     ZStack {
-                                        RoundedRectangle(cornerRadius: 10)
+                                        Capsule()
                                             .fill(self.dayStates.contains(.sad) ? np_white : np_white.opacity(0.45))
                                             .frame(width: 75, height: 45)
                                             .overlay {
@@ -670,7 +680,7 @@ struct MoodAddDiaryView: View {
                     
                     ZStack(alignment: .bottomTrailing) {
                         MultiLineTextField(txt: $text, counterLabel: $counterLabel)
-                            .frame(height: 100)
+                            .frame(height: 200)
                             .cornerRadius(20)
                         
                         Text("Remaining Text: \(counterLabel)")
@@ -723,11 +733,11 @@ struct MoodAddDiaryView: View {
     }
 }
 
-struct MoodAddDiaryView_Previews: PreviewProvider {
-    static var previews: some View {
-        MoodAddDiaryView(moodModelController: MoodModelController(), text: "")
-    }
-}
+//struct MoodAddDiaryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MoodAddDiaryView(moodModelController: MoodModelController(), text: "")
+//    }
+//}
 
 
 // MARK: Multiline Text View

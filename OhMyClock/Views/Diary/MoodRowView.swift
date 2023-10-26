@@ -88,26 +88,26 @@ struct MoodRowView: View {
         var imageName = "none"
         
         switch mood.emotion.state {
-        case .great:
-            imageName = "great"
-        case .good:
-            imageName = "good"
-        case .okay:
-            imageName = "okay"
+        case .happy:
+            imageName = "happy"
+        case .sad:
+            imageName = "sad"
+        case .cheeky:
+            imageName = "cheeky"
         case .upset:
             imageName = "upset"
         case .angry:
             imageName = "angry"
-        case .low:
-            imageName = "low"
+        case .sleepy:
+            imageName = "sleepy"
+        case .loved:
+            imageName = "loved"
         case .meh:
             imageName = "meh"
-        case .sad:
-            imageName = "sad"
-        case .shock:
-            imageName = "shock"
         case .sick:
             imageName = "sick"
+        case .smiling:
+            imageName = "smiling"
         }
         return Image(imageName).resizable().frame(width: 30, height: 30)
     }
