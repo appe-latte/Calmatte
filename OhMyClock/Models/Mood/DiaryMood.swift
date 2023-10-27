@@ -34,7 +34,7 @@ enum DayState: String, Codable {
     case sad
 }
 
-enum MoodColor: String, Codable {
+enum MoodColor: String, Codable, CaseIterable {
     case angryColor = "angryColor"
     case cheekyColor = "cheekyColor"
     case happyColor = "happyColor"

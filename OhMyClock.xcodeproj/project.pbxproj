@@ -49,6 +49,7 @@
 		2F919D352A5DD8EA00291071 /* DiaryColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F919D342A5DD8EA00291071 /* DiaryColors.swift */; };
 		2F9EBB032A6489F900DC806A /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EBB022A6489F900DC806A /* Quote.swift */; };
 		2F9EBB072A648A8000DC806A /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EBB062A648A8000DC806A /* QuoteView.swift */; };
+		2FA38A9F2AEB0E6A00BE57F0 /* CustomHeaderShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA38A9E2AEB0E6A00BE57F0 /* CustomHeaderShape.swift */; };
 		2FA9AB432A4E0D0000557FD0 /* MoodSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9AB422A4E0D0000557FD0 /* MoodSliderView.swift */; };
 		2FA9AB452A4E0D7A00557FD0 /* MoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */; };
 		2FA9AB472A4E147C00557FD0 /* MoodInsightsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9AB462A4E147C00557FD0 /* MoodInsightsListView.swift */; };
@@ -135,6 +136,7 @@
 		2F919D342A5DD8EA00291071 /* DiaryColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryColors.swift; sourceTree = "<group>"; };
 		2F9EBB022A6489F900DC806A /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		2F9EBB062A648A8000DC806A /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
+		2FA38A9E2AEB0E6A00BE57F0 /* CustomHeaderShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderShape.swift; sourceTree = "<group>"; };
 		2FA9AB422A4E0D0000557FD0 /* MoodSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSliderView.swift; sourceTree = "<group>"; };
 		2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodModel.swift; sourceTree = "<group>"; };
 		2FA9AB462A4E147C00557FD0 /* MoodInsightsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodInsightsListView.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				2FCD005D2A671647000AD649 /* ProgressLoadingView.swift */,
 				2FCD005F2A671862000AD649 /* Constants.swift */,
 				2F438EF62A6B164B00CDF33D /* PasswordResetService.swift */,
+				2FA38A9E2AEB0E6A00BE57F0 /* CustomHeaderShape.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -611,6 +614,7 @@
 				2FB2C4FE2A37B401006D5A30 /* TaskManagerView.swift in Sources */,
 				2FA9AB492A4E14CB00557FD0 /* MoodSelectorTileView.swift in Sources */,
 				2F4AB6222A5DDAA400F6332F /* MoodModelController.swift in Sources */,
+				2FA38A9F2AEB0E6A00BE57F0 /* CustomHeaderShape.swift in Sources */,
 				2FCD005A2A6710BC000AD649 /* AuthViewModel.swift in Sources */,
 				2F438EF52A6B139A00CDF33D /* PasswordResetView.swift in Sources */,
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
