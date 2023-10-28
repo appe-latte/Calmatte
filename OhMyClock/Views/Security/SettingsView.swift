@@ -287,7 +287,7 @@ struct SettingsView: View {
                         
                         // MARK: "Contact Developer"
                         Button(action: {
-                            let urlWhatsApp = "https://wa.me/15874384450?text=Hello,%20I'm%20interested%20in%20your%20app%20development%20services."
+                            let urlWhatsApp = "https://wa.me/14033711142?text=Hello,%20I'm%20interested%20in%20your%20app%20development%20services."
                             
                             guard let url = URL(string: urlWhatsApp) else { return }
                             

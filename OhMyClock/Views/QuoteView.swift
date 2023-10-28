@@ -72,7 +72,7 @@ struct QuoteCard : View {
                 .foregroundColor(np_white)
                 .padding(.top, 15)
         }
-        .frame(width: screenWidth - 40, height: screenHeight * 0.35)
+        .frame(width: screenWidth - 40, height: screenHeight * 0.3)
     }
 }
 

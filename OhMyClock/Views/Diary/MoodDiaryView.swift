@@ -99,7 +99,7 @@ struct MoodDiaryView : View {
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
-                        Text("Mood Journal")
+                        Text("Mood Timeline")
                             .font(.title)
                             .fontWeight(.bold)
                             .kerning(2)

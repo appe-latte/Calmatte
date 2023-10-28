@@ -30,11 +30,6 @@ struct OhMyClockApp: App {
     init() {
         // MARK: Firebase initialization
         FirebaseApp.configure()
-        
-        // MARK: Set the screen brightness to 0.65 after 2 minutes of inactivity
-        DispatchQueue.main.asyncAfter(deadline: .now() + 120) {
-            UIScreen.main.brightness = 0.65
-        }
     }
     
     var body: some Scene {

@@ -45,24 +45,8 @@ struct TaskManagerView: View {
         GeometryReader { proxy in
             let size = proxy.size
             
-            Image(background_theme)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .offset(y: -50)
-                .frame(width: size.width, height: size.height)
-                .clipped()
-                .overlay {
-                    ZStack {
-                        Rectangle()
-                            .fill(.linearGradient(colors: [.clear, np_arsenic, np_arsenic], startPoint: .top, endPoint: .bottom))
-                            .frame(height: size.height * 0.35)
-                            .frame(maxHeight: .infinity, alignment: .bottom)
-                    }
-                }
-            
-            // Mask Tint
             Rectangle()
-                .fill(np_arsenic).opacity(0.85)
+                .fill(np_arsenic)
                 .frame(height: size.height)
                 .frame(maxHeight: .infinity, alignment: .bottom)
         }
@@ -75,16 +59,6 @@ struct TaskManagerView: View {
         format.dateFormat = "hh:mm a"
         
         return format.string(from: Date())
-    }
-    
-    private var background_theme : String {
-        let hour = Calendar.current.component(.hour, from: Date())
-        switch hour {
-        case 5..<19:
-            return "snow-mountain"
-        default:
-            return "mountain-pond"
-        }
     }
     
     // MARK: "Header View"
@@ -100,6 +74,7 @@ struct TaskManagerView: View {
                             .kerning(5)
                             .minimumScaleFactor(0.5)
                             .textCase(.uppercase)
+                            .foregroundColor(np_white)
                         
                         Spacer()
                         
@@ -119,15 +94,11 @@ struct TaskManagerView: View {
                                     .textCase(.uppercase)
                             }
                             .padding(.vertical, 5)
-                            .foregroundColor(np_white)
+                            .foregroundColor(np_jap_indigo)
                             .frame(width: 100, height: 35)
-                            .background(np_jap_indigo)
-                            .clipShape(Capsule())
-                            .overlay(
-                                Capsule(style: .continuous)
-                                    .stroke(np_white, style: StrokeStyle(lineWidth: 1))
-                                    .padding(2)
-                            )
+                            .background(np_white)
+                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                            
                         }
                     }
                     
@@ -136,6 +107,7 @@ struct TaskManagerView: View {
                         .fontWeight(.bold)
                         .kerning(5)
                         .textCase(.uppercase)
+                        .foregroundColor(np_white)
                     
                     // MARK: Description
                     Text("\(milestoneDescription)")
@@ -143,7 +115,7 @@ struct TaskManagerView: View {
                         .kerning(3)
                         .textCase(.uppercase)
                         .minimumScaleFactor(0.5)
-                        .foregroundColor(np_black)
+                        .foregroundColor(np_white)
                 }
                 .hAlign(.leading)
             }
@@ -151,7 +123,7 @@ struct TaskManagerView: View {
         .padding(15)
         .background {
             VStack(spacing: 0) {
-                np_white
+                np_jap_indigo
             }
             .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
             .ignoresSafeArea()

@@ -84,17 +84,6 @@ struct ContentView: View {
     }
 }
 
-// MARK: Screen Brightness
-extension UIScreen {
-    func setBrightnessLevel() {
-        if UIApplication.shared.isIdleTimerDisabled {
-            self.brightness = 0.2 // Set the brightness level to 20% when the idle timer is disabled
-        } else {
-            self.brightness = 1.0 // Set the brightness level to 100% when the idle timer is enabled
-        }
-    }
-}
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
