@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum EmotionState: String, Codable {
+enum EmotionState: String, Codable, CaseIterable {
     case angry
     case cheeky
     case happy
@@ -22,16 +22,11 @@ enum EmotionState: String, Codable {
 }
 
 enum DayState: String, Codable {
-    case fun
-    case productive
-    case busy
-    case bored
-    case tired
-    case angry
-    case meh
+    case amazing
+    case good
     case okay
-    case exciting
-    case sad
+    case bad
+    case terrible
 }
 
 enum MoodColor: String, Codable, CaseIterable {

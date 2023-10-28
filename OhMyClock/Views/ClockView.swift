@@ -9,10 +9,12 @@ import SwiftUI
 import WeatherKit
 import CoreLocation
 import FirebaseAuth
+import FirebaseCore
 import FirebaseFirestore
 
 struct ClockView: View {
     @StateObject private var weatherModel = WeatherViewModel()
+    @ObservedObject var moodModelController = MoodModelController()
     let locationManager = CLLocationManager()
     let viewModel = ClockViewModel()
     let locationFetch = LocationFetch()
@@ -28,6 +30,10 @@ struct ClockView: View {
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     @State private var showProfileSheet = false
+    
+    @State private var temperatureLabel = ""
+    @State private var humidityLabel : Double = 0.0
+    @State private var conditionLabel = ""
     
     var body: some View {
         let firstName = authModel.user?.firstName ?? ""
@@ -59,56 +65,86 @@ struct ClockView: View {
                                 .foregroundColor(np_gray)
                         }
                     }
-                    .padding(.horizontal, 20)
+                    .padding(20)
                     
                     // MARK: Date + Salutation
-                    VStack {
-                        VStack(spacing: 10) {
+                    VStack(spacing: 10) {
+                        HStack {
+                            Text(greeting)
+                                .font(.system(size: 24))
+                                .fontWeight(.bold)
+                                .kerning(5)
+                                .minimumScaleFactor(0.5)
+                                .textCase(.uppercase)
+                            
+                            Spacer()
+                        }
+                        .padding(.leading, 10)
+                        
+                        // MARK: Username
+                        HStack {
+                            Text("\(firstName).")
+                                .font(.system(size: 22))
+                                .fontWeight(.bold)
+                                .kerning(5)
+                                .minimumScaleFactor(0.5)
+                                .textCase(.uppercase)
+                            
+                            Spacer()
+                        }
+                        .padding(.leading, 10)
+                        
+                        // MARK: Weather Info.
+                        HStack {
                             HStack {
-                                Text(greeting)
-                                    .font(.system(size: 24))
+                                Text("Temp.")
+                                    .font(.system(size: 8))
                                     .fontWeight(.bold)
                                     .kerning(5)
-                                    .minimumScaleFactor(0.5)
                                     .textCase(.uppercase)
                                 
-                                Spacer()
+                                Text("\(temperatureLabel)")
+                                    .font(.system(size: 8))
+                                    .fontWeight(.bold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
                             }
                             
-                            // MARK: Username
                             HStack {
-                                Text("\(firstName).")
-                                    .font(.system(size: 22))
+                                Text("Hum.")
+                                    .font(.system(size: 8))
                                     .fontWeight(.bold)
                                     .kerning(5)
-                                    .minimumScaleFactor(0.5)
                                     .textCase(.uppercase)
                                 
-                                Spacer()
+                                Text("\(String(format: "%.0f", humidityLabel * 100))%")
+                                    .font(.system(size: 8))
+                                    .fontWeight(.bold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
                             }
                             
                             HStack {
-                                Text(Date().formatted(.dateTime.month().day().year()))
-                                    .font(.title3)
+                                Text("•")
+                                    .font(.system(size: 8))
                                     .fontWeight(.bold)
                                     .kerning(5)
                                     .textCase(.uppercase)
                                 
-                                Spacer()
+                                Text("\(conditionLabel)")
+                                    .font(.system(size: 8))
+                                    .fontWeight(.bold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
                             }
                         }
-                        .padding(10)
-                        
-                        Spacer(minLength: 0)
-                        
-                        // MARK: Weather Information
-                            WeatherCardFrontView()
-                            .padding(  )
+                        .frame(width: screenWidth, height: 20)
+                        .background(np_white)
+                        .foregroundColor(np_jap_indigo)
                     }
-                    .padding(5)
-                    .foregroundColor(np_white)
                     
                     Spacer()
+                        .frame(height: 30)
                     
                     // MARK: Quote View
                     VStack {
@@ -126,6 +162,31 @@ struct ClockView: View {
                         
                         QuoteView()
                     }
+                    
+                    // MARK: Month View
+                    VStack {
+                        HStack {
+                            Label("This Month", systemImage: "")
+                                .font(.footnote)
+                                .fontWeight(.semibold)
+                                .kerning(2)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                            
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                        
+                        MoodCalendarView(start: Date(), monthsToShow: 1, daysSelectable: true, moodController: moodModelController)
+                            .frame(maxWidth: screenWidth - 40, maxHeight: screenHeight * 0.75)
+                            .background(np_jap_indigo)
+                            .foregroundColor(np_white)
+                            .ignoresSafeArea()
+                            .cornerRadius(10)
+                            .edgesIgnoringSafeArea(.bottom)
+                            .padding(.bottom, 5)
+                            .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
+                    }
                 }
             }
             .frame(maxWidth: .infinity)
@@ -136,6 +197,26 @@ struct ClockView: View {
                 .presentationDetents([.height(screenHeight * 0.3)])
         }
         .background(background())
+        .onAppear {
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+        .onReceive(weatherModel.objectWillChange) { _ in
+            let updatedTemperature = weatherModel.currTemp
+            let updatedHumidity = weatherModel.currHumidity
+            let updatedCondition = weatherModel.currCondition
+            
+            // MARK: Update Weather data
+            temperatureLabel = "\(updatedTemperature)"
+            humidityLabel = updatedHumidity
+            conditionLabel = "\(updatedCondition)"
+        }
+        .onAppear {
+            // Start the timer to refresh the view every 10 minutes
+            Timer.scheduledTimer(withTimeInterval: 10 * 60, repeats: true) { _ in
+                refreshTrigger.toggle()
+            }
+        }
         .onChange(of: refreshTrigger) { _ in
             weatherModel.fetchWeather()
         }
@@ -147,24 +228,8 @@ struct ClockView: View {
         GeometryReader { proxy in
             let size = proxy.size
             
-            Image(background_theme)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .offset(y: -50)
-                .frame(width: size.width, height: size.height)
-                .clipped()
-                .overlay {
-                    ZStack {
-                        Rectangle()
-                            .fill(.linearGradient(colors: [.clear, np_arsenic, np_arsenic], startPoint: .top, endPoint: .bottom))
-                            .frame(height: size.height * 0.35)
-                            .frame(maxHeight: .infinity, alignment: .bottom)
-                    }
-                }
-            
-            // MARK: Tint
             Rectangle()
-                .fill(np_arsenic).opacity(0.85)
+                .fill(np_arsenic)
                 .frame(height: size.height)
                 .frame(maxHeight: .infinity, alignment: .bottom)
         }
@@ -193,17 +258,6 @@ struct ClockView: View {
             return "good evening,"
         default:
             return "good night,"
-        }
-    }
-    
-    // MARK: Day / Night Theme
-    private var background_theme : String {
-        let hour = Calendar.current.component(.hour, from: Date())
-        switch hour {
-        case 5..<19:
-            return "snow-mountain"
-        default:
-            return "mountain-pond"
         }
     }
 }

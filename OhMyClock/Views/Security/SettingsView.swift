@@ -244,25 +244,40 @@ struct SettingsView: View {
                         Button(action: {
                             openURL(URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
                         }, label: {
-                            HStack(spacing: 10) {
-                                Image("note")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .padding(5)
-                                    .foregroundColor(np_tan)
+                            VStack {
+                                HStack(spacing: 10) {
+                                    Image("note")
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                        .padding(5)
+                                        .foregroundColor(np_tan)
+                                    
+                                    HStack {
+                                        Text("Weather Data Source")
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .kerning(5)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(np_white)
+                                        
+                                        Spacer()
+                                    }
+                                    
+                                    Image(systemName: "chevron.right")
+                                }
                                 
                                 HStack {
-                                    Text("Weather Data Source")
-                                        .font(.caption)
+                                    Text("Powered by  Weather. Weather data provided by WeatherKit.")
+                                        .font(.system(size: 6))
                                         .fontWeight(.semibold)
                                         .kerning(5)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_white)
+                                        .foregroundColor(np_gray)
+                                        .padding(1)
+                                        .padding(.leading, 20)
                                     
                                     Spacer()
                                 }
-                                
-                                Image(systemName: "chevron.right")
                             }
                         })
                         .padding(.horizontal, 20)

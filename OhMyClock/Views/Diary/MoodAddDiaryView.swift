@@ -41,12 +41,18 @@ struct MoodAddDiaryView: View {
                     .overlay {
                         HStack(alignment: .center) {
                             Text("\(emotionState.rawValue)")
-                                .font(.system(size: 75, weight: .heavy))
+                                .font(.system(size: 50, weight: .heavy))
                                 .fontWeight(.bold)
                                 .kerning(5)
                                 .minimumScaleFactor(0.5)
                                 .textCase(.uppercase)
                                 .foregroundColor(np_white)
+                            
+                            Image("\(emotionState.rawValue)")
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                                .frame(width: 65, height: 60)
                         }
                         .frame(width: width, height: height * 0.2)
                         .padding(.top, 35)
@@ -68,6 +74,7 @@ struct MoodAddDiaryView: View {
                                         
                                         Spacer()
                                     }
+                                    
                                     // MARK: Stack One
                                     HStack(spacing: 10){
                                         
@@ -100,14 +107,8 @@ struct MoodAddDiaryView: View {
                                                         )
                                                 }
                                             }
-                                            .padding(2)
-                                            
-                                            Text("Happy")
-                                                .font(.system(size: 10))
-                                                .fontWeight(.medium)
-                                                .textCase(.uppercase)
-                                                .foregroundColor(np_white)
                                         }
+                                        .padding(2)
                                         
                                         // MARK: Smiling - emotion
                                         VStack(spacing: 5){
@@ -138,14 +139,8 @@ struct MoodAddDiaryView: View {
                                                         )
                                                 }
                                             }
-                                            .padding(2)
-                                            
-                                            Text("Smiling")
-                                                .font(.system(size: 10))
-                                                .fontWeight(.medium)
-                                                .textCase(.uppercase)
-                                                .foregroundColor(np_white)
                                         }
+                                        .padding(2)
                                         
                                         // MARK: Cheeky - emotion
                                         VStack(spacing: 5){
@@ -176,14 +171,8 @@ struct MoodAddDiaryView: View {
                                                         )
                                                 }
                                             }
-                                            .padding(2)
-                                            
-                                            Text("Cheeky")
-                                                .font(.system(size: 10))
-                                                .fontWeight(.medium)
-                                                .textCase(.uppercase)
-                                                .foregroundColor(np_white)
                                         }
+                                        .padding(2)
                                         
                                         // MARK: Loved - emotion
                                         VStack(spacing: 5){
@@ -214,14 +203,8 @@ struct MoodAddDiaryView: View {
                                                         )
                                                 }
                                             }
-                                            .padding(2)
-                                            
-                                            Text("Loved")
-                                                .font(.system(size: 10))
-                                                .fontWeight(.medium)
-                                                .textCase(.uppercase)
-                                                .foregroundColor(np_white)
                                         }
+                                        .padding(2)
                                         
                                         // MARK: Meh - emotion
                                         VStack(spacing: 5){
@@ -252,14 +235,8 @@ struct MoodAddDiaryView: View {
                                                         )
                                                 }
                                             }
-                                            .padding(2)
-                                            
-                                            Text("Meh")
-                                                .font(.system(size: 10))
-                                                .fontWeight(.medium)
-                                                .textCase(.uppercase)
-                                                .foregroundColor(np_white)
                                         }
+                                        .padding(2)
                                     }
                                     
                                     // MARK: Stack Two
@@ -268,8 +245,8 @@ struct MoodAddDiaryView: View {
                                         // MARK: Angry - emotion
                                         VStack(spacing: 5) {
                                             Button(action: {
-                                                self.emotionState = .sick
-                                                self.moodColor = .sickColor
+                                                self.emotionState = .angry
+                                                self.moodColor = .angryColor
                                                 self.angrySelected = true
                                                 self.cheekySelected = false
                                                 self.smilingSelected = false
@@ -294,14 +271,8 @@ struct MoodAddDiaryView: View {
                                                         )
                                                 }
                                             }
-                                            .padding(2)
-                                            
-                                            Text("Angry")
-                                                .font(.system(size: 10))
-                                                .fontWeight(.medium)
-                                                .textCase(.uppercase)
-                                                .foregroundColor(np_white)
                                         }
+                                        .padding(2)
                                         
                                         // MARK: Upset - emotion
                                         VStack(spacing: 5){
@@ -332,14 +303,8 @@ struct MoodAddDiaryView: View {
                                                         )
                                                 }
                                             }
-                                            .padding(2)
-                                            
-                                            Text("Upset")
-                                                .font(.system(size: 10))
-                                                .fontWeight(.medium)
-                                                .textCase(.uppercase)
-                                                .foregroundColor(np_white)
                                         }
+                                        .padding(2)
                                         
                                         // MARK: Sad - emotion
                                         VStack(spacing: 5){
@@ -370,14 +335,8 @@ struct MoodAddDiaryView: View {
                                                         )
                                                 }
                                             }
-                                            .padding(2)
-                                            
-                                            Text("Sad")
-                                                .font(.system(size: 10))
-                                                .fontWeight(.medium)
-                                                .textCase(.uppercase)
-                                                .foregroundColor(np_white)
                                         }
+                                        .padding(2)
                                         
                                         // MARK: Sleepy - emotion
                                         VStack(spacing: 5){
@@ -408,14 +367,8 @@ struct MoodAddDiaryView: View {
                                                         )
                                                 }
                                             }
-                                            .padding(2)
-                                            
-                                            Text("Tired")
-                                                .font(.system(size: 10))
-                                                .fontWeight(.medium)
-                                                .textCase(.uppercase)
-                                                .foregroundColor(np_white)
                                         }
+                                        .padding(2)
                                         
                                         // MARK: Sick - emotion
                                         VStack(spacing: 5){
@@ -446,17 +399,10 @@ struct MoodAddDiaryView: View {
                                                         )
                                                 }
                                             }
-                                            .padding(2)
-                                            
-                                            Text("Sick")
-                                                .font(.system(size: 10))
-                                                .fontWeight(.medium)
-                                                .textCase(.uppercase)
-                                                .foregroundColor(np_white)
                                         }
+                                        .padding(2)
                                     }
                                 }
-                                
                                 
                                 // MARK: Day Type selection
                                 VStack {
@@ -471,171 +417,45 @@ struct MoodAddDiaryView: View {
                                         Spacer()
                                     }
                                     
-                                    // MARK: Day State - Row 1
+                                    // MARK: Day State
                                     VStack {
                                         HStack(spacing: 5){
                                             
-                                            // MARK: Fun - state
+                                            // MARK: Amazing - state
                                             VStack(spacing: 5) {
                                                 Button(action: {
-                                                    self.toggleDayState(.fun)
+                                                    self.toggleDayState(.amazing)
                                                 }) {
                                                     ZStack {
                                                         Capsule()
-                                                            .fill(self.dayStates.contains(.fun) ? np_white : np_white.opacity(0.45))
+                                                            .fill(self.dayStates.contains(.amazing) ? np_green : np_green.opacity(0.5))
                                                             .frame(width: 75, height: 45)
                                                             .overlay {
-                                                                Text("Fun")
+                                                                Text("Amazing")
                                                                     .font(.system(size: 10))
                                                                     .fontWeight(.medium)
                                                                     .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.fun) ? np_jap_indigo : np_white)
+                                                                    .foregroundColor(self.dayStates.contains(.amazing) ? np_beige : np_jap_indigo)
                                                             }
                                                     }
                                                 }
                                             }
                                             
-                                            // MARK: Busy - state
+                                            // MARK: Good - state
                                             VStack(spacing: 5) {
                                                 Button(action: {
-                                                    self.toggleDayState(.busy)
+                                                    self.toggleDayState(.good)
                                                 }) {
                                                     ZStack {
                                                         Capsule()
-                                                            .fill(self.dayStates.contains(.busy) ? np_white : np_white.opacity(0.45))
+                                                            .fill(self.dayStates.contains(.good) ? np_turq : np_turq.opacity(0.5))
                                                             .frame(width: 75, height: 45)
                                                             .overlay {
-                                                                Text("Busy")
+                                                                Text("Good")
                                                                     .font(.system(size: 10))
                                                                     .fontWeight(.medium)
                                                                     .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.busy) ? np_jap_indigo : np_white)
-                                                            }
-                                                    }
-                                                }
-                                            }
-                                            
-                                            // MARK: Angry - state
-                                            VStack(spacing: 5) {
-                                                Button(action: {
-                                                    self.toggleDayState(.angry)
-                                                }) {
-                                                    ZStack {
-                                                        Capsule()
-                                                            .fill(self.dayStates.contains(.angry) ? np_white : np_white.opacity(0.45))
-                                                            .frame(width: 75, height: 45)
-                                                            .overlay {
-                                                                Text("angry")
-                                                                    .font(.system(size: 10))
-                                                                    .fontWeight(.medium)
-                                                                    .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.angry) ? np_jap_indigo : np_white)
-                                                            }
-                                                    }
-                                                }
-                                            }
-                                            
-                                            // MARK: Productive - state
-                                            VStack(spacing: 5) {
-                                                Button(action: {
-                                                    self.toggleDayState(.productive)
-                                                }) {
-                                                    ZStack {
-                                                        Capsule()
-                                                            .fill(self.dayStates.contains(.productive) ? np_white : np_white.opacity(0.45))
-                                                            .frame(width: 75, height: 45)
-                                                            .overlay {
-                                                                Text("Productive")
-                                                                    .font(.system(size: 10))
-                                                                    .fontWeight(.medium)
-                                                                    .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.productive) ? np_jap_indigo : np_white)
-                                                            }
-                                                    }
-                                                }
-                                            }
-                                            
-                                            // MARK: Bored - state
-                                            VStack(spacing: 5) {
-                                                Button(action: {
-                                                    self.toggleDayState(.bored)
-                                                }) {
-                                                    ZStack {
-                                                        Capsule()
-                                                            .fill(self.dayStates.contains(.bored) ? np_white : np_white.opacity(0.45))
-                                                            .frame(width: 75, height: 45)
-                                                            .overlay {
-                                                                Text("Boring")
-                                                                    .font(.system(size: 10))
-                                                                    .fontWeight(.medium)
-                                                                    .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.bored) ? np_jap_indigo : np_white)
-                                                            }
-                                                    }
-                                                }
-                                            }
-                                            
-                                        }
-                                    }
-                                    
-                                    // MARK: Day State - Row 2
-                                    VStack {
-                                        HStack(spacing: 5){
-                                            // MARK: Tiring - state
-                                            VStack(spacing: 5) {
-                                                Button(action: {
-                                                    self.toggleDayState(.tired)
-                                                }) {
-                                                    ZStack {
-                                                        Capsule()
-                                                            .fill(self.dayStates.contains(.tired) ? np_white : np_white.opacity(0.45))
-                                                            .frame(width: 75, height: 45)
-                                                            .overlay {
-                                                                Text("Tiring")
-                                                                    .font(.system(size: 10))
-                                                                    .fontWeight(.medium)
-                                                                    .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.tired) ? np_jap_indigo : np_white)
-                                                            }
-                                                    }
-                                                }
-                                            }
-                                            
-                                            // MARK: Meh - state
-                                            VStack(spacing: 5) {
-                                                Button(action: {
-                                                    self.toggleDayState(.meh)
-                                                }) {
-                                                    ZStack {
-                                                        Capsule()
-                                                            .fill(self.dayStates.contains(.meh) ? np_white : np_white.opacity(0.45))
-                                                            .frame(width: 75, height: 45)
-                                                            .overlay {
-                                                                Text("Meh")
-                                                                    .font(.system(size: 10))
-                                                                    .fontWeight(.medium)
-                                                                    .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.meh) ? np_jap_indigo : np_white)
-                                                            }
-                                                    }
-                                                }
-                                            }
-                                            
-                                            // MARK: Exciting - state
-                                            VStack(spacing: 5) {
-                                                Button(action: {
-                                                    self.toggleDayState(.exciting)
-                                                }) {
-                                                    ZStack {
-                                                        Capsule()
-                                                            .fill(self.dayStates.contains(.exciting) ? np_white : np_white.opacity(0.45))
-                                                            .frame(width: 75, height: 45)
-                                                            .overlay {
-                                                                Text("Exciting")
-                                                                    .font(.system(size: 10))
-                                                                    .fontWeight(.medium)
-                                                                    .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.exciting) ? np_jap_indigo : np_white)
+                                                                    .foregroundColor(self.dayStates.contains(.good) ? np_beige : np_jap_indigo)
                                                             }
                                                     }
                                                 }
@@ -648,34 +468,54 @@ struct MoodAddDiaryView: View {
                                                 }) {
                                                     ZStack {
                                                         Capsule()
-                                                            .fill(self.dayStates.contains(.okay) ? np_white : np_white.opacity(0.45))
+                                                            .fill(self.dayStates.contains(.okay) ? np_yellow : np_yellow.opacity(0.5))
                                                             .frame(width: 75, height: 45)
                                                             .overlay {
-                                                                Text("Okay")
+                                                                Text("okay")
                                                                     .font(.system(size: 10))
                                                                     .fontWeight(.medium)
                                                                     .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.okay) ? np_jap_indigo : np_white)
+                                                                    .foregroundColor(self.dayStates.contains(.okay) ? np_beige : np_jap_indigo)
                                                             }
                                                     }
                                                 }
                                             }
                                             
-                                            // MARK: Sad - state
+                                            // MARK: Bad - state
                                             VStack(spacing: 5) {
                                                 Button(action: {
-                                                    self.toggleDayState(.sad)
+                                                    self.toggleDayState(.bad)
                                                 }) {
                                                     ZStack {
                                                         Capsule()
-                                                            .fill(self.dayStates.contains(.sad) ? np_white : np_white.opacity(0.45))
+                                                            .fill(self.dayStates.contains(.bad) ? np_orange : np_orange.opacity(0.5))
                                                             .frame(width: 75, height: 45)
                                                             .overlay {
-                                                                Text("Sad")
+                                                                Text("Bad")
                                                                     .font(.system(size: 10))
                                                                     .fontWeight(.medium)
                                                                     .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.sad) ? np_jap_indigo : np_white)
+                                                                    .foregroundColor(self.dayStates.contains(.bad) ? np_beige : np_jap_indigo)
+                                                            }
+                                                    }
+                                                }
+                                            }
+                                            
+                                            // MARK: Terrible - state
+                                            VStack(spacing: 5) {
+                                                Button(action: {
+                                                    self.toggleDayState(.terrible)
+                                                }) {
+                                                    ZStack {
+                                                        Capsule()
+                                                            .fill(self.dayStates.contains(.terrible) ? np_red : np_red.opacity(0.5))
+                                                            .frame(width: 75, height: 45)
+                                                            .overlay {
+                                                                Text("Terrible")
+                                                                    .font(.system(size: 10))
+                                                                    .fontWeight(.medium)
+                                                                    .textCase(.uppercase)
+                                                                    .foregroundColor(self.dayStates.contains(.terrible) ? np_beige : np_jap_indigo)
                                                             }
                                                     }
                                                 }
@@ -725,15 +565,10 @@ struct MoodAddDiaryView: View {
                                         .textCase(.uppercase)
                                 })
                                 .padding(.vertical, 5)
-                                .foregroundColor(np_jap_indigo)
+                                .foregroundColor(np_beige)
                                 .frame(width: 250, height: 50)
-                                .background(np_white)
-                                .clipShape(Capsule())
-                                .overlay(
-                                    Capsule(style: .continuous)
-                                        .stroke(np_jap_indigo, style: StrokeStyle(lineWidth: 1))
-                                        .padding(2)
-                                )
+                                .background(selectedEmotion.moodColor)
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
                                 
                                 Spacer()
                             }
@@ -742,7 +577,7 @@ struct MoodAddDiaryView: View {
                     }
             }
         }
-        .accentColor(np_black)
+        .accentColor(np_white)
     }
     
     // MARK: - Method to toggle day state
@@ -761,7 +596,7 @@ struct MoodAddDiaryView: View {
             let size = proxy.size
             
             Rectangle()
-                .fill(np_arsenic)
+                .fill(np_jap_indigo)
                 .frame(height: size.height)
                 .frame(maxHeight: .infinity, alignment: .bottom)
         }
@@ -785,14 +620,14 @@ struct MultiLineTextField: UIViewRepresentable {
         
         if self.txt != "" {
             text.text = self.txt
-            text.textColor = UIColor(Color(red: 27 / 255, green: 27 / 255, blue: 27 / 255))
+            text.textColor = UIColor(Color(red: 249 / 255, green: 249 / 255, blue: 243 / 255))
         } else {
             text.text = "Enter short mood summary"
             text.textColor = UIColor(Color(red: 169 / 255, green: 169 / 255, blue: 169 / 255))
             text.font = .systemFont(ofSize: 12)
         }
         
-        text.backgroundColor = UIColor(red: 239/255, green: 243/255, blue: 244/255, alpha: 1)
+        text.backgroundColor = UIColor(red: 59 / 255, green: 68 / 255, blue: 79 / 255, alpha: 1)
         text.font = .systemFont(ofSize: 18)
         text.returnKeyType = .done
         text.delegate = context.coordinator

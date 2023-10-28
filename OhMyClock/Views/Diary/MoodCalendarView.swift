@@ -24,29 +24,24 @@ struct MoodCalendarView: View {
     
     public var body: some View {
         VStack {
-            StreakView(moodModelController: moodModelController)
-                .background(np_jap_indigo)
-                .padding(.top, 20)
+            MonthView(moodModelController: moodModelController, month: Month(startDate: startDate, selectableDays: selectableDays))
+                .font(.headline)
+                .fontWeight(.bold)
+                .kerning(3)
+                .textCase(.uppercase)
+                .foregroundColor(np_white)
+                .padding(20)
             
-            ScrollView(.vertical, showsIndicators: false) {
-                MonthView(moodModelController: moodModelController, month: Month(startDate: startDate, selectableDays: selectableDays))
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .kerning(3)
-                    .textCase(.uppercase)
-                    .foregroundColor(np_white)
-                
-                if monthsToDisplay > 1 {
-                    ForEach(1..<monthsToDisplay) {
-                        MonthView(moodModelController: moodModelController,
-                                  month: Month(startDate: nextMonth(currentMonth: startDate, add: $0),
-                                               selectableDays: selectableDays))
-                    }
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .kerning(3)
-                    .textCase(.uppercase)
+            if monthsToDisplay > 1 {
+                ForEach(1..<monthsToDisplay) {
+                    MonthView(moodModelController: moodModelController,
+                              month: Month(startDate: nextMonth(currentMonth: startDate, add: $0),
+                                           selectableDays: selectableDays))
                 }
+                .font(.headline)
+                .fontWeight(.bold)
+                .kerning(3)
+                .textCase(.uppercase)
             }
             
             Spacer()
@@ -72,19 +67,19 @@ struct MoodCalendarView_Previews: PreviewProvider {
 struct MonthView: View {
     @ObservedObject var moodModelController: MoodModelController
     var month: Month
-    let weekdays = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+    let weekdays = ["S", "M", "T", "W", "T", "F", "S"]
     let colors = DiaryColors()
     
     var body: some View {
         ZStack {
-            VStack(spacing: 15) {
+            VStack(spacing: 10) {
                 
                 // MARK: Month Title
                 HStack {
                     Spacer()
                     
                     Text("\(month.monthNameYear)")
-                        .font(.title)
+                        .font(.largeTitle)
                 }
                 .padding(.horizontal)
                 
@@ -104,7 +99,7 @@ struct MonthView: View {
                 GridStack(rows: month.monthRows, columns: month.monthDays.count) { row, col in
                     if month.monthDays[col+1]![row].dayDate == Date(timeIntervalSince1970: 0) {
                         Text("")
-                            .frame(width: 30, height: 30)
+                            .frame(width: 20, height: 20)
                     } else {
                         DayCellView(moodModelController: moodModelController,
                                     day: month.monthDays[col+1]![row])
@@ -118,116 +113,6 @@ struct MonthView: View {
             .padding(.bottom, 10)
         }
         .background(np_jap_indigo)
-    }
-}
-
-// MARK: - Streak View
-struct StreakView: View {
-    @ObservedObject var moodModelController: MoodModelController
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            // MARK: Show Streak
-            VStack(alignment: .leading, spacing: 10) {
-                HStack {
-                    Text("Mood Log")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
-                    
-                    Spacer()
-                }
-                
-                HStack {
-                    Text("Journal entry Statistics:")
-                        .font(.system(size: 13))
-                        .fontWeight(.bold)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
-                }
-                
-                // MARK: Current Streak
-                HStack {
-                    Text("\(moodModelController.currentStreak)")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
-                    
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("👑 Current Streak")
-                                .font(.system(size: 10))
-                                .fontWeight(.semibold)
-                                .kerning(3)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                        }
-                        
-                        Capsule()
-                            .frame(width: 250, height: 1)
-                            .foregroundColor(np_gray)
-                    }
-                }
-                
-                // MARK: Best Streak
-                HStack {
-                    Text("\(moodModelController.bestStreak)")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
-                    
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("🏆 Best Streak")
-                            
-                                .font(.system(size: 10))
-                                .fontWeight(.semibold)
-                                .kerning(3)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                        }
-                        
-                        Capsule()
-                            .frame(width: 250, height: 1)
-                            .foregroundColor(np_gray)
-                    }
-                }
-                
-                // MARK: Total Logging Days
-                HStack {
-                    Text("\(moodModelController.totalDaysLogged)")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
-                    
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("📆 Total Days")
-                                .font(.system(size: 10))
-                                .fontWeight(.semibold)
-                                .kerning(3)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                        }
-                        
-                        Capsule()
-                            .frame(width: 250, height: 1)
-                            .foregroundColor(np_gray)
-                    }
-                }
-            }
-            .padding(15)
-        }
-        .padding(.top, 20)
     }
 }
 
@@ -266,14 +151,15 @@ struct DayCellView: View {
     var body: some View {
         VStack {
             Text(day.dayName)
-                .frame(width: 40, height: 40)
+                .frame(width: 30, height: 30)
                 .foregroundColor(day.textColor)
                 .clipped()
             
             VStack {
                 moodText()
                     .scaledToFit()
-                    .frame(width: 50, height: 50)
+                    .frame(width: 40, height: 40)
+                    .clipShape(Circle())
             }
             .background(np_arsenic)
             .clipShape(Circle())
@@ -308,13 +194,17 @@ struct DayCellView: View {
                 }
                 return Image(imageName)
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 35, height: 35)
+                    .clipShape(Circle())
                     .opacity(1)
             }
         }
         return Image(imageName)
             .resizable()
-            .frame(width: 30, height: 30)
+            .scaledToFill()
+            .frame(width: 20, height: 20)
+            .clipShape(Circle())
             .opacity(0)
     }
 }

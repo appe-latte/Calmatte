@@ -22,7 +22,6 @@ struct SplashScreenView: View {
             ZStack {
                 background()
                 
-                
                 VStack {
                     Image("logo-text")
                         .resizable()
@@ -54,24 +53,8 @@ struct SplashScreenView: View {
         GeometryReader { proxy in
             let size = proxy.size
             
-            Image(background_theme)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .offset(y: -50)
-                .frame(width: size.width, height: size.height)
-                .clipped()
-                .overlay {
-                    ZStack {
-                        Rectangle()
-                            .fill(.linearGradient(colors: [.clear, np_arsenic, np_arsenic], startPoint: .top, endPoint: .bottom))
-                            .frame(height: size.height * 0.35)
-                            .frame(maxHeight: .infinity, alignment: .bottom)
-                    }
-                }
-            
-            // Mask Tint
             Rectangle()
-                .fill(np_arsenic).opacity(0.85)
+                .fill(np_jap_indigo)
                 .frame(height: size.height)
                 .frame(maxHeight: .infinity, alignment: .bottom)
         }
@@ -84,16 +67,6 @@ struct SplashScreenView: View {
         format.dateFormat = "hh:mm a"
         
         return format.string(from: Date())
-    }
-    
-    private var background_theme : String {
-        let hour = Calendar.current.component(.hour, from: Date())
-        switch hour {
-        case 5..<19:
-            return "snow-mountain"
-        default:
-            return "mountain-pond"
-        }
     }
 }
 

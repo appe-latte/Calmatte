@@ -18,6 +18,7 @@
 		2F27A18329740143007DA7CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A18229740143007DA7CC /* Alamofire */; };
 		2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A185297401B8007DA7CC /* SwiftyJSON */; };
 		2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A187297402AB007DA7CC /* LocationFetch.swift */; };
+		2F32D09B2AECCCE8001E1324 /* LastMonthsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F32D09A2AECCCE8001E1324 /* LastMonthsView.swift */; };
 		2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0A32967A40000AC8D59 /* OhMyClockApp.swift */; };
 		2F36B0A62967A40000AC8D59 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0A52967A40000AC8D59 /* ContentView.swift */; };
 		2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F36B0A72967A40200AC8D59 /* Assets.xcassets */; };
@@ -71,8 +72,6 @@
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
 		2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50126296EA2B400813D40 /* MeditationView.swift */; };
 		2FF50129296EA33000813D40 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50128296EA33000813D40 /* SettingsView.swift */; };
-		2FF51E002A3A2E050035A964 /* WeatherCardFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF51DFF2A3A2E040035A964 /* WeatherCardFrontView.swift */; };
-		2FF51E022A3A2E120035A964 /* WeatherCardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF51E012A3A2E120035A964 /* WeatherCardBackView.swift */; };
 		2FF51E042A3A42370035A964 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF51E032A3A42370035A964 /* SplashScreenView.swift */; };
 		2FF87ABA2A61177A0026DF9E /* MoodCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */; };
 		2FF8F01329B27BD5008D7C7E /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FF8F00B29B27BD4008D7C7E /* equilibrium.mp3 */; };
@@ -104,6 +103,7 @@
 		2F24A2682A4C878400B41C01 /* BreathType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathType.swift; sourceTree = "<group>"; };
 		2F27A17F2973F0FC007DA7CC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2F27A187297402AB007DA7CC /* LocationFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetch.swift; sourceTree = "<group>"; };
+		2F32D09A2AECCCE8001E1324 /* LastMonthsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMonthsView.swift; sourceTree = "<group>"; };
 		2F36B0A02967A40000AC8D59 /* OhMyClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhMyClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F36B0A32967A40000AC8D59 /* OhMyClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhMyClockApp.swift; sourceTree = "<group>"; };
 		2F36B0A52967A40000AC8D59 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -160,8 +160,6 @@
 		2FF50123296E9B2800813D40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2FF50126296EA2B400813D40 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 		2FF50128296EA33000813D40 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = ../Security/SettingsView.swift; sourceTree = "<group>"; };
-		2FF51DFF2A3A2E040035A964 /* WeatherCardFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCardFrontView.swift; sourceTree = "<group>"; };
-		2FF51E012A3A2E120035A964 /* WeatherCardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCardBackView.swift; sourceTree = "<group>"; };
 		2FF51E032A3A42370035A964 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCalendarView.swift; sourceTree = "<group>"; };
 		2FF8F00B29B27BD4008D7C7E /* equilibrium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = equilibrium.mp3; sourceTree = "<group>"; };
@@ -315,6 +313,7 @@
 				2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */,
 				2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */,
 				2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */,
+				2F32D09A2AECCCE8001E1324 /* LastMonthsView.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -403,7 +402,6 @@
 			children = (
 				2FF50123296E9B2800813D40 /* MainView.swift */,
 				2F8838312A0ABC5300840F68 /* ClockView.swift */,
-				2FF51DFE2A3A2DDD0035A964 /* WeatherCard */,
 				2FF50126296EA2B400813D40 /* MeditationView.swift */,
 				2F434BAE296F60FE00698C1A /* PlayerView.swift */,
 				2F9EBB062A648A8000DC806A /* QuoteView.swift */,
@@ -414,15 +412,6 @@
 				2FB2C4FF2A37B4DD006D5A30 /* Tasks */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		2FF51DFE2A3A2DDD0035A964 /* WeatherCard */ = {
-			isa = PBXGroup;
-			children = (
-				2FF51DFF2A3A2E040035A964 /* WeatherCardFrontView.swift */,
-				2FF51E012A3A2E120035A964 /* WeatherCardBackView.swift */,
-			);
-			path = WeatherCard;
 			sourceTree = "<group>";
 		};
 		FCE264DC92A63B05C1E6185B /* Pods */ = {
@@ -600,7 +589,6 @@
 				2F434BB6296F89F100698C1A /* Extensions.swift in Sources */,
 				2FB87FB02A0C6E1D0033B4E1 /* AppDelegate.swift in Sources */,
 				2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */,
-				2FF51E022A3A2E120035A964 /* WeatherCardBackView.swift in Sources */,
 				2FCD005C2A67127F000AD649 /* User.swift in Sources */,
 				2F4AB62B2A5E5C3500F6332F /* MoodRowView.swift in Sources */,
 				2F9EBB032A6489F900DC806A /* Quote.swift in Sources */,
@@ -615,11 +603,11 @@
 				2FA9AB492A4E14CB00557FD0 /* MoodSelectorTileView.swift in Sources */,
 				2F4AB6222A5DDAA400F6332F /* MoodModelController.swift in Sources */,
 				2FA38A9F2AEB0E6A00BE57F0 /* CustomHeaderShape.swift in Sources */,
+				2F32D09B2AECCCE8001E1324 /* LastMonthsView.swift in Sources */,
 				2FCD005A2A6710BC000AD649 /* AuthViewModel.swift in Sources */,
 				2F438EF52A6B139A00CDF33D /* PasswordResetView.swift in Sources */,
 				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
 				2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */,
-				2FF51E002A3A2E050035A964 /* WeatherCardFrontView.swift in Sources */,
 				2F4AB6292A5DDDBE00F6332F /* MoodAddDiaryView.swift in Sources */,
 				2FCD00642A671C1E000AD649 /* LoginView.swift in Sources */,
 				2FA9AB452A4E0D7A00557FD0 /* MoodModel.swift in Sources */,

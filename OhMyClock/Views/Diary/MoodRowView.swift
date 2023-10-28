@@ -70,6 +70,7 @@ struct MoodRowView: View {
                     moodImage()
                         .scaledToFit()
                         .frame(maxWidth: 70)
+                        .clipShape(Circle())
                     
                     Text(mood.dayStates.map { $0.rawValue }.joined(separator: ", "))
                         .font(.system(size: 7))
