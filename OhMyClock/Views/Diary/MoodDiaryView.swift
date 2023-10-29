@@ -24,7 +24,6 @@ struct MoodDiaryView : View {
     
     var body: some View {
         ZStack {
-            
             VStack(spacing: 0){
                 
                 HeaderView()
@@ -54,7 +53,7 @@ struct MoodDiaryView : View {
                             }
                         }
                     }
-                    .listStyle(.insetGrouped)
+                    .listStyle(.plain)
                     .scrollContentBackground(.hidden)
                     .onAppear {
                         UITableView.appearance().tableFooterView = UIView() // Removes extra cells that are not being used.
@@ -69,7 +68,7 @@ struct MoodDiaryView : View {
                     Spacer()
                 }
             }
-
+            
         }
         .background(background())
         .sheet(isPresented: self.$show) {
