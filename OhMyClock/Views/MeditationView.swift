@@ -43,51 +43,12 @@ struct MeditationView: View {
         GeometryReader { proxy in
             let size = proxy.size
             
-            Image(background_theme)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .offset(y: -50)
-                .frame(width: size.width, height: size.height)
-                .clipped()
-                .blur(radius: startAnimation ? 4 : 0, opaque: true)
-                .overlay {
-                    ZStack {
-                        Rectangle()
-                            .fill(.linearGradient(colors: [currentType.color.opacity(0.9), .clear, .clear], startPoint: .top, endPoint: .bottom))
-                            .frame(height: size.height / 1.5)
-                            .frame(maxHeight: .infinity, alignment: .top)
-                        
-                        Rectangle()
-                            .fill(.linearGradient(colors: [.clear, np_arsenic, np_arsenic], startPoint: .top, endPoint: .bottom))
-                            .frame(height: size.height * 0.35)
-                            .frame(maxHeight: .infinity, alignment: .bottom)
-                    }
-                }
-            
             Rectangle()
-                .fill(np_arsenic).opacity(0.85)
+                .fill(np_arsenic)
                 .frame(height: size.height)
                 .frame(maxHeight: .infinity, alignment: .bottom)
         }
         .ignoresSafeArea()
-    }
-    
-    // MARK: Day / Night Theme
-    func getTime()->String {
-        let format = DateFormatter()
-        format.dateFormat = "hh:mm a"
-        
-        return format.string(from: Date())
-    }
-    
-    private var background_theme : String {
-        let hour = Calendar.current.component(.hour, from: Date())
-        switch hour {
-        case 5..<19:
-            return "snow-mountain"
-        default:
-            return "mountain-pond"
-        }
     }
     
     // MARK: Content

@@ -47,6 +47,18 @@ struct ContentView: View {
                     Label("Home", image: "home")
                 }
             
+            MoodDiaryView()
+                .colorScheme(.light)
+                .tabItem {
+                    Label("Reports", image: "report")
+                }
+            
+            MoodDiaryView()
+                .colorScheme(.light)
+                .tabItem {
+                    Label("Journal", image: "calendar")
+                }
+            
             MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
                 .colorScheme(.light)
                 .environmentObject(audioManager)
@@ -54,31 +66,10 @@ struct ContentView: View {
                     Label("Meditation", image: "zen")
                 }
             
-            MoodDiaryView()
-                .colorScheme(.light)
-                .tabItem {
-                    Label("Journal", image: "journal")
-                }
-            
             TaskManagerView(taskManager: taskManager)
                 .colorScheme(.light)
                 .tabItem {
-                    Label("Tasks", image: "tasks")
-                }
-            
-            SettingsView()
-                .environmentObject(authViewModel) // Use the existing authViewModel
-                .environmentObject(appLockViewModel) // Use the existing appLockViewModel
-                .colorScheme(.light)
-                .tabItem {
-                    Label("More", image: "more")
-                }
-                .onAppear {
-                    if UserDefaults.standard.bool(forKey: "RemindersEnabled") {
-                        ReminderManager.scheduleReminders()
-                    } else {
-                        ReminderManager.cancelScheduledReminders()
-                    }
+                    Label("Tasks", image: "paper")
                 }
         }
     }

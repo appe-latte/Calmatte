@@ -79,7 +79,9 @@ struct MonthView: View {
                     Spacer()
                     
                     Text("\(month.monthNameYear)")
-                        .font(.largeTitle)
+                        .font(.title)
+                        .scaledToFill()
+                        .minimumScaleFactor(0.5)
                 }
                 .padding(.horizontal)
                 

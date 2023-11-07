@@ -22,8 +22,11 @@ struct MainView: View {
     @StateObject private var weatherModel = WeatherViewModel()
     @Binding var tabBarSelection: Int
     
+    @EnvironmentObject var appLockViewModel: AppLockViewModel
+    
     @State private var insightsMode: InsightsType = .today
     @State private var showProfileSheet = false
+    @State private var showSettingsSheet = false
     @State private var temperatureLabel = ""
     @State private var humidityLabel : Double = 0.0
     @State private var conditionLabel = ""
@@ -45,20 +48,47 @@ struct MainView: View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
                 VStack {
-                    // MARK: Profile Sheet
+                    // MARK: Profile / Settings Sheet
                     HStack {
+                        VStack(spacing: 5) {
+                            Button(action: {
+                                self.showProfileSheet.toggle()
+                            }, label: {
+                                HStack {
+                                    Image("user-id")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 15, height: 15)
+                                        .foregroundColor(np_white)
+                                    
+                                    Text("Profile")
+                                        .font(.system(size: 11))
+                                        .fontWeight(.bold)
+                                        .kerning(3)
+                                        .textCase(.uppercase)
+                                        .foregroundColor(np_white)
+                                }
+                            })
+                        }
+                        
                         Spacer()
                         
                         VStack(spacing: 5) {
                             Button(action: {
-                                self.showProfileSheet.toggle()
-                            },
-                                   label: {
-                                Image(systemName: "person.circle.fill")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 35, height: 35)
-                                    .foregroundColor(np_gray)
+                                self.showSettingsSheet.toggle()
+                            }, label: {
+                                HStack {
+                                    Image(systemName: "gearshape.fill")
+                                        .font(.system(size: 11))
+                                        .foregroundColor(np_white)
+                                    
+                                    Text("Settings")
+                                        .font(.system(size: 11))
+                                        .fontWeight(.bold)
+                                        .kerning(3)
+                                        .textCase(.uppercase)
+                                        .foregroundColor(np_white)
+                                }
                             })
                         }
                     }
@@ -68,6 +98,7 @@ struct MainView: View {
                     VStack(spacing: 10) {
                         HStack {
                             Text(greeting)
+                                .scaledToFill()
                                 .font(.system(size: 24))
                                 .fontWeight(.bold)
                                 .kerning(5)
@@ -81,6 +112,7 @@ struct MainView: View {
                         // MARK: Username
                         HStack {
                             Text("\(firstName).")
+                                .scaledToFill()
                                 .font(.system(size: 22))
                                 .fontWeight(.bold)
                                 .kerning(5)
@@ -192,6 +224,19 @@ struct MainView: View {
             ProfileView(showProfileSheet: $showProfileSheet)
                 .environmentObject(authModel)
                 .presentationDetents([.height(height * 0.3)])
+        }
+        .sheet(isPresented: self.$showSettingsSheet) {
+            SettingsView()
+                .environmentObject(authModel) // Use the existing authViewModel
+                .environmentObject(appLockViewModel) // Use the existing appLockViewModel
+                .onAppear {
+                    if UserDefaults.standard.bool(forKey: "RemindersEnabled") {
+                        ReminderManager.scheduleReminders()
+                    } else {
+                        ReminderManager.cancelScheduledReminders()
+                    }
+                }
+                .presentationDetents([.height(height)])
         }
         .background(background())
         .onAppear {
