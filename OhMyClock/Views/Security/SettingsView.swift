@@ -114,6 +114,45 @@ struct SettingsView: View {
                     }
                     .padding(.horizontal, 20)
                     
+                    // MARK: Social Media links
+                    HStack(spacing: 10) {
+                        
+                        // MARK: Instagram
+                        Button(action: {
+                            openURL(URL(string: "https://www.instagram.com/appe.latte")!)
+                        }, label: {
+                            Image("instagram")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(np_white)
+                        })
+                        
+                        // MARK: Twitter
+                        Button(action: {
+                            openURL(URL(string: "https://www.twitter.com/appe_latte")!)
+                        }, label: {
+                            Image("twitter")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(np_white)
+                        })
+                        
+                        // MARK: "Share This App"
+//                        Button(action: {
+//                            shareSheet()
+//                        }, label: {
+//                            Text("Share")
+//                                .font(.system(size: 11))
+//                                .fontWeight(.bold)
+//                                .kerning(3)
+//                                .textCase(.uppercase)
+//                                .foregroundColor(np_white)
+//                        })
+                    }
+                    .padding(5)
+                    
                     Spacer()
                 }
                 .padding(.top, 75)
@@ -259,36 +298,6 @@ struct SettingsView: View {
                                     
                                     Spacer()
                                 }
-                            }
-                        })
-                        .padding(.horizontal, 20)
-                        
-                        Divider()
-                            .background(np_gray)
-                        
-                        // MARK: "Share App"
-                        Button(action: {
-                            shareSheet()
-                        }, label: {
-                            HStack(spacing: 10) {
-                                Image("share")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .padding(5)
-                                    .foregroundColor(np_green)
-                                
-                                HStack {
-                                    Text("Share This App")
-                                        .font(.caption)
-                                        .fontWeight(.semibold)
-                                        .kerning(5)
-                                        .textCase(.uppercase)
-                                        .foregroundColor(np_white)
-                                    
-                                    Spacer()
-                                }
-                                
-                                Image(systemName: "chevron.right")
                             }
                         })
                         .padding(.horizontal, 20)

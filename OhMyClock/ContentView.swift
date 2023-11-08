@@ -72,13 +72,13 @@ struct ContentView: View {
                     tabItem(icon: "home", selectedIcon: "home", text: "Home", index: 0)
                     Spacer()
                     
-                    tabItem(icon: "report", selectedIcon: "report", text: "Analytics", index: 1)
+                    tabItem(icon: "report", selectedIcon: "report", text: "Reports", index: 1)
                     Spacer()
                     
                     tabItem(icon: "calendar", selectedIcon: "calendar", text: "Journal", index: 2)
                     Spacer()
                     
-                    tabItem(icon: "zen", selectedIcon: "zen", text: "Meditation", index: 3)
+                    tabItem(icon: "zen", selectedIcon: "zen", text: "Wellness", index: 3)
                     Spacer()
                     
                     tabItem(icon: "paper", selectedIcon: "paper", text: "Tasks", index: 4)
