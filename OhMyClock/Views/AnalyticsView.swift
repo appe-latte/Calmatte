@@ -72,7 +72,7 @@ struct AnalyticsView: View {
                                     .fontWeight(.bold)
                                     .kerning(3)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                             }
                             .listRowBackground(state.color) // This will set the background color for the entire row
                         }
@@ -80,7 +80,6 @@ struct AnalyticsView: View {
                         .scrollContentBackground(.hidden)
                         .scrollDisabled(true)
                         .environment(\.defaultMinListRowHeight, 55)
-                        
                     }
                     .frame(height: 400)
                     

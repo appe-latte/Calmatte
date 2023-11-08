@@ -55,6 +55,7 @@ struct MoodDiaryView : View {
                     }
                     .listStyle(InsetGroupedListStyle())
                     .scrollContentBackground(.hidden)
+                    .environment(\.defaultMinListRowHeight, 200)
                     .padding(.bottom, 5)
                     .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
                     .onAppear {
@@ -70,7 +71,6 @@ struct MoodDiaryView : View {
                     Spacer()
                 }
             }
-            
         }
         .background(background())
         .sheet(isPresented: self.$show) {

@@ -15,11 +15,6 @@ struct MoodRowView: View {
     
     var body: some View {
         ZStack {
-            //            Rectangle()
-            //                .fill(np_tan)
-            //                .cornerRadius(10)
-            
-            // MARK: Row Text
             HStack(spacing: 10) {
                 VStack {
                     Text(mood.monthString)
@@ -35,8 +30,8 @@ struct MoodRowView: View {
                             .frame(width: 40, height: 40)
                         
                         Text("\(mood.dayAsInt)")
-                            .font(.headline)
-                            .fontWeight(.bold)
+                            .font(.system(size: 20))
+                            .fontWeight(.heavy)
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
@@ -48,39 +43,39 @@ struct MoodRowView: View {
                             .frame(width: 2)
                             .edgesIgnoringSafeArea(.all)
                     }
+                    
+                    // MARK: Mood Image + Text
+                    VStack(spacing: 5) {
+                        moodImage()
+                            .scaledToFit()
+                            .frame(maxWidth: 70)
+                            .clipShape(Circle())
+                        
+                        Text(mood.dayStates.map { $0.rawValue }.joined(separator: ", "))
+                            .font(.system(size: 8))
+                            .fontWeight(.semibold)
+                            .textCase(.uppercase)
+                            .minimumScaleFactor(0.5)
+                            .foregroundColor(np_white)
+                    }
+                    .frame(maxWidth: 100)
                 }
                 .frame(maxWidth: 50)
                 
+                // MARK: Summary
                 HStack {
                     Text(mood.comment ?? "No Summary")
-                        .font(.system(size: 12))
-                        .fontWeight(.regular)
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .lineLimit(7)
+                        .multilineTextAlignment(.leading)
                         .textCase(.uppercase)
                         .foregroundColor(np_white)
                         .minimumScaleFactor(0.75)
-                        .lineLimit(7)
                     
                     Spacer()
                 }
-                .frame(width: 200)
-                
-                Spacer()
-                
-                // MARK: Mood Image + Text
-                VStack(spacing: 5) {
-                    moodImage()
-                        .scaledToFit()
-                        .frame(maxWidth: 70)
-                        .clipShape(Circle())
-                    
-                    Text(mood.dayStates.map { $0.rawValue }.joined(separator: ", "))
-                        .font(.system(size: 8))
-                        .fontWeight(.semibold)
-                        .textCase(.uppercase)
-                        .minimumScaleFactor(0.5)
-                        .foregroundColor(np_white)
-                }
-                .frame(maxWidth: 100)
+                .frame(width: 250, height: 150)
             }
             .padding(5)
         }
