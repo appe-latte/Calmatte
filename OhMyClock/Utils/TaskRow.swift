@@ -26,6 +26,6 @@ struct TaskRow : View {
 
 struct TaskRow_Previews: PreviewProvider {
     static var previews: some View {
-        TaskRow(task: "Morning Meditation", completed: true)
+        TaskRow(task: "Task", completed: true)
     }
 }

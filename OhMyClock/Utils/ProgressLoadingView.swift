@@ -13,20 +13,21 @@ struct ProgressLoadingView: View {
     var body: some View {
         ZStack {
             GeometryReader { geo in
-                Image("background")
-                    .resizable()
+                Rectangle()
+                    .fill(np_arsenic)
                     .aspectRatio(contentMode: .fill)
                     .frame(width: geo.size.width, height: geo.size.height)
-            }.edgesIgnoringSafeArea(.all)
+            }
+            .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 1){
                 ProgressView()
                     .frame(width: 60, height: 60)
-                    .progressViewStyle(CircularProgressViewStyle(tint: np_turq))
+                    .progressViewStyle(CircularProgressViewStyle(tint: np_gray))
                     .scaleEffect(2)
                 
                 Text("Please Wait")
-                    .foregroundColor(np_green)
+                    .foregroundColor(np_white)
                     .font(.custom("Avenir", size: 12).bold())
             }
             .frame(width: 80, height: 100)

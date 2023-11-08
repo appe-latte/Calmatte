@@ -9,37 +9,15 @@ import Foundation
 import SwiftUI
 
 enum EmotionState: String, Codable, CaseIterable {
-    case angry
-    case cheeky
-    case happy
-    case loved
-    case meh
-    case sad
-    case sick
-    case sleepy
-    case smiling
-    case upset
+    case angry, cheeky, happy, loved, meh, sad, sick, sleepy, smiling, upset
 }
 
 enum DayState: String, Codable {
-    case amazing
-    case good
-    case okay
-    case bad
-    case terrible
+    case amazing, good, okay, bad, terrible
 }
 
 enum MoodColor: String, Codable, CaseIterable {
-    case angryColor = "angryColor"
-    case cheekyColor = "cheekyColor"
-    case happyColor = "happyColor"
-    case lovedColor = "lovedColor"
-    case mehColor = "mehColor"
-    case sadColor = "sadColor"
-    case sickColor = "sickColor"
-    case sleepyColor = "sleepyColor"
-    case smilingColor = "smilingColor"
-    case upsetColor = "upsetColor"
+    case angryColor = "angryColor", cheekyColor = "cheekyColor", happyColor = "happyColor", lovedColor = "lovedColor", mehColor = "mehColor", sadColor = "sadColor", sickColor = "sickColor", sleepyColor = "sleepyColor", smilingColor = "smilingColor", upsetColor = "upsetColor"
 }
 
 struct Emotion: Codable {
@@ -93,7 +71,7 @@ struct Mood: Codable, Equatable, Identifiable {
         }
         return dictionary
     }
-
+    
     var dateString: String {
         dateFormatter.string(from: date)
     }

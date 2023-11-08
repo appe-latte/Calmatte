@@ -58,10 +58,12 @@ struct MoodRowView: View {
                         .textCase(.uppercase)
                         .foregroundColor(np_jap_indigo)
                         .minimumScaleFactor(0.75)
+                        .lineLimit(7)
                     
                     Spacer()
                 }
                 .frame(width: 200)
+                
                 
                 Spacer()
                 

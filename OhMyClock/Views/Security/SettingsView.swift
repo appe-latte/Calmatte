@@ -85,12 +85,28 @@ struct SettingsView: View {
                         .foregroundColor(np_white)
                         .frame(width: 150, height: 180)
                     
-                    Text("Developed with \(Image(systemName: "heart.fill")) by: Appè Latte")
-                        .font(.system(size: 8))
-                        .fontWeight(.thin)
-                        .kerning(4)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
+                    HStack {
+                        Text("Developed with")
+                            .font(.system(size: 8))
+                            .fontWeight(.thin)
+                            .kerning(4)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        Text("\(Image(systemName: "heart.fill"))")
+                            .font(.system(size: 8))
+                            .fontWeight(.thin)
+                            .kerning(4)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_red)
+                        
+                        Text("by: Appè Latte")
+                            .font(.system(size: 8))
+                            .fontWeight(.thin)
+                            .kerning(4)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                    }
                     
                     // MARK: App Version + Build Number
                     HStack(spacing: 10) {
@@ -125,7 +141,7 @@ struct SettingsView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 20, height: 20)
-                                .foregroundColor(np_white)
+                                .foregroundColor(np_gray)
                         })
                         
                         // MARK: Twitter
@@ -136,7 +152,7 @@ struct SettingsView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 20, height: 20)
-                                .foregroundColor(np_white)
+                                .foregroundColor(np_gray)
                         })
                         
                         // MARK: "Share This App"

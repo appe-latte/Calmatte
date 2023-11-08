@@ -29,24 +29,6 @@ extension DateComponentsFormatter {
     }()
 }
 
-extension View {
-    // MARK: "blurredSheet"
-    
-    func blurredSheet<Content: View>(_ style: AnyShapeStyle, show: Binding<Bool>, onDismiss: @escaping ()->(), @ViewBuilder content: @escaping ()->Content)-> some View {
-        self
-            .sheet(isPresented: show, onDismiss: onDismiss) {
-                content()
-                    .background(RemoveBackgroundColour())
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background {
-                        Rectangle()
-                            .fill(style)
-                            .ignoresSafeArea(.container, edges: .all)
-                    }
-            }
-    }
-}
-
 // MARK: Helper View
 fileprivate struct RemoveBackgroundColour: UIViewRepresentable {
     func makeUIView(context: Context) -> UIView {

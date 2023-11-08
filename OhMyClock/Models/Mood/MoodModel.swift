@@ -10,11 +10,7 @@ import Foundation
 
 // MARK: Mood Types
 enum MoodType: String, CaseIterable {
-    case great
-    case happy
-    case okay
-    case sad
-    case angry
+    case great, happy, okay, sad, angry
 }
 
 enum InsightsType: String, CaseIterable {

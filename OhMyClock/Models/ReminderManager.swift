@@ -50,7 +50,6 @@ class ReminderManager {
         }
     }
 
-    
     static func sendReminderEnabledNotification() {
         let content = UNMutableNotificationContent()
         content.title = "Reminders Enabled"

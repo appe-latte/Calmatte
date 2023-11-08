@@ -53,7 +53,7 @@ struct AddTaskView: View {
                     .datePickerStyle(.graphical)
                     .font(.system(size: 10))
                     .fontWeight(.bold)
-                    .accentColor(np_red)
+                    .accentColor(np_arsenic)
                     .kerning(2)
                     .textCase(.uppercase)
                     .frame(width: screenWidth - 50, height: screenHeight * 0.3, alignment: .leading)
@@ -148,7 +148,7 @@ struct AddTaskView: View {
                 TitleView("Assign Colour", np_arsenic)
                     .padding(.top, 10)
                 
-                LazyVGrid(columns: Array(repeating: .init(.flexible(),spacing: 10), count: 5), spacing: 10) {
+                LazyVGrid(columns: Array(repeating: .init(.flexible(),spacing: 10), count: 4), spacing: 10) {
                     ForEach(Category.allCases,id: \.rawValue){ category in
                         Circle()
                             .fill(category.color)
