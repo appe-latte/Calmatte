@@ -427,7 +427,7 @@ struct MoodAddDiaryView: View {
                                                     self.toggleDayState(.amazing)
                                                 }) {
                                                     ZStack {
-                                                        Capsule()
+                                                        RoundedRectangle(cornerRadius: 10)
                                                             .fill(self.dayStates.contains(.amazing) ? np_green : np_green.opacity(0.5))
                                                             .frame(width: 75, height: 45)
                                                             .overlay {
@@ -447,7 +447,7 @@ struct MoodAddDiaryView: View {
                                                     self.toggleDayState(.good)
                                                 }) {
                                                     ZStack {
-                                                        Capsule()
+                                                        RoundedRectangle(cornerRadius: 10)
                                                             .fill(self.dayStates.contains(.good) ? np_turq : np_turq.opacity(0.5))
                                                             .frame(width: 75, height: 45)
                                                             .overlay {
@@ -467,7 +467,7 @@ struct MoodAddDiaryView: View {
                                                     self.toggleDayState(.okay)
                                                 }) {
                                                     ZStack {
-                                                        Capsule()
+                                                        RoundedRectangle(cornerRadius: 10)
                                                             .fill(self.dayStates.contains(.okay) ? np_yellow : np_yellow.opacity(0.5))
                                                             .frame(width: 75, height: 45)
                                                             .overlay {
@@ -487,7 +487,7 @@ struct MoodAddDiaryView: View {
                                                     self.toggleDayState(.bad)
                                                 }) {
                                                     ZStack {
-                                                        Capsule()
+                                                        RoundedRectangle(cornerRadius: 10)
                                                             .fill(self.dayStates.contains(.bad) ? np_orange : np_orange.opacity(0.5))
                                                             .frame(width: 75, height: 45)
                                                             .overlay {
@@ -507,7 +507,7 @@ struct MoodAddDiaryView: View {
                                                     self.toggleDayState(.terrible)
                                                 }) {
                                                     ZStack {
-                                                        Capsule()
+                                                        RoundedRectangle(cornerRadius: 10)
                                                             .fill(self.dayStates.contains(.terrible) ? np_red : np_red.opacity(0.5))
                                                             .frame(width: 75, height: 45)
                                                             .overlay {
@@ -527,7 +527,7 @@ struct MoodAddDiaryView: View {
                                 // MARK: Journal Entry
                                 VStack {
                                     HStack {
-                                        Label("Summary", systemImage: "")
+                                        Label("Today's Note", systemImage: "")
                                             .font(.footnote)
                                             .fontWeight(.semibold)
                                             .kerning(2)

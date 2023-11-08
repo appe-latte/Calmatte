@@ -15,10 +15,10 @@ struct AddTaskView: View {
     @State private var taskName: String = ""
     @State private var taskDescription: String = ""
     @State private var taskDate: Date = .init()
-    @State private var taskCategory: Category = .indigo
+    @State private var taskCategory: Category = .tan
     
     // MARK: Animations
-    @State private var animateColor: Color = Category.indigo.color
+    @State private var animateColor: Color = Category.tan.color
     @State private var animate: Bool = false
     
     let screenWidth = UIScreen.main.bounds.width

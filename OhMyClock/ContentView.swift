@@ -104,7 +104,7 @@ struct ContentView: View {
                 Image(selectedTab == index ? selectedIcon : icon)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 25, height: 25)
+                    .frame(width: 20, height: 20)
                     .foregroundColor(np_white)
                 
                 Text(text)
