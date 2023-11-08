@@ -76,7 +76,6 @@ struct MoodDiaryView : View {
         }
     }
     
-    
     // MARK: Background
     @ViewBuilder
     func background() -> some View {
@@ -129,7 +128,7 @@ struct MoodDiaryView : View {
                             .foregroundColor(np_jap_indigo)
                             .frame(width: 100, height: 35)
                             .background(np_white)
-                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                     }
                     
@@ -149,7 +148,7 @@ struct MoodDiaryView : View {
             VStack(spacing: 0) {
                 np_jap_indigo
             }
-            .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
+            .cornerRadius(10, corners: [.bottomLeft, .bottomRight])
             .ignoresSafeArea()
         }
     }

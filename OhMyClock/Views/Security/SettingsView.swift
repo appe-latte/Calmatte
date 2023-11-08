@@ -69,25 +69,6 @@ struct SettingsView: View {
                         })
                         
                         Spacer()
-                        
-                        // MARK: "Share App"
-                        Button(action: {
-                            shareSheet()
-                        }, label: {
-                            HStack {
-                                Image("share")
-                                    .resizable()
-                                    .frame(width: 15, height: 15)
-                                    .foregroundColor(np_white)
-                                
-                                Text("Share")
-                                    .font(.system(size: 12))
-                                    .fontWeight(.semibold)
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                                    .foregroundColor(np_white)
-                            }
-                        })
                     }
                     .padding()
                     
@@ -285,36 +266,20 @@ struct SettingsView: View {
                         Divider()
                             .background(np_gray)
                         
-                        // MARK: "Contact Developer"
+                        // MARK: "Share App"
                         Button(action: {
-                            let urlWhatsApp = "https://wa.me/14033711142?text=Hello,%20I'm%20interested%20in%20your%20app%20development%20services."
-                            
-                            guard let url = URL(string: urlWhatsApp) else { return }
-                            
-                            if UIApplication.shared.canOpenURL(url) {
-                                openURL(url)
-                            }
-                            else {
-                                print("WhatsApp not installed")
-                            }
+                            shareSheet()
                         }, label: {
                             HStack(spacing: 10) {
-                                Image("chat")
+                                Image("share")
                                     .resizable()
                                     .frame(width: 25, height: 25)
                                     .padding(5)
                                     .foregroundColor(np_green)
                                 
                                 HStack {
-                                    Text("Let's Chat")
+                                    Text("Share This App")
                                         .font(.caption)
-                                        .fontWeight(.semibold)
-                                        .kerning(5)
-                                        .textCase(.uppercase)
-                                        .foregroundColor(np_white)
-                                    
-                                    Text("(Whatsapp)")
-                                        .font(.system(size: 8))
                                         .fontWeight(.semibold)
                                         .kerning(5)
                                         .textCase(.uppercase)

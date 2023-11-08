@@ -186,7 +186,7 @@ struct AddTaskView: View {
                         .padding(.vertical,15)
                         .hAlign(.center)
                         .background {
-                            Capsule()
+                            RoundedRectangle(cornerRadius: 10)
                                 .fill(np_arsenic)
                         }
                 }

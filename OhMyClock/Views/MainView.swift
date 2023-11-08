@@ -33,6 +33,12 @@ struct MainView: View {
     @State private var refreshTrigger = false
     @State var userFname = ""
     
+    @State var txt = ""
+    @State var docID = ""
+    @State var remove = false
+    
+    @State var showJournalEntry = false
+    
     // Constants
     let locationManager = CLLocationManager()
     let viewModel = ClockViewModel()
@@ -175,6 +181,26 @@ struct MainView: View {
                     Spacer()
                         .frame(height: 30)
                     
+                    // MARK: "Add Journal Entry" Button
+                    Button {
+                        self.txt = ""
+                        self.docID = ""
+                        self.showJournalEntry.toggle()
+                    } label: {
+                        Text("Log Daily Mood")
+                            .font(.footnote)
+                            .fontWeight(.bold)
+                            .kerning(2)
+                            .textCase(.uppercase)
+                    }
+                    .padding(.vertical, 5)
+                    .foregroundColor(np_jap_indigo)
+                    .frame(width: width - 40, height: 35)
+                    .background(np_white)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
+                    .padding(.bottom, 30)
+                    
                     // MARK: Quote View
                     VStack {
                         HStack {
@@ -224,6 +250,9 @@ struct MainView: View {
             ProfileView(showProfileSheet: $showProfileSheet)
                 .environmentObject(authModel)
                 .presentationDetents([.height(height * 0.3)])
+        }
+        .sheet(isPresented: self.$showJournalEntry) {
+            MoodAddDiaryView(moodModelController: self.moodModelController)
         }
         .sheet(isPresented: self.$showSettingsSheet) {
             SettingsView()

@@ -97,7 +97,7 @@ struct TaskManagerView: View {
                             .foregroundColor(np_jap_indigo)
                             .frame(width: 100, height: 35)
                             .background(np_white)
-                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                             
                         }
                     }

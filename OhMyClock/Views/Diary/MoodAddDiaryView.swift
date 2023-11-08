@@ -391,7 +391,7 @@ struct MoodAddDiaryView: View {
                                                     Image("sick")
                                                         .resizable()
                                                         .scaledToFill()
-                                                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                                         .frame(width: 65, height: 60)
                                                         .overlay(
                                                             RoundedRectangle(cornerRadius: 15)
