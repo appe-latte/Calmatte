@@ -31,8 +31,8 @@ struct MainView: View {
     @State private var humidityLabel : Double = 0.0
     @State private var conditionLabel = ""
     @State private var refreshTrigger = false
-    @State var userFname = ""
     
+    @State var userFname = ""
     @State var txt = ""
     @State var docID = ""
     @State var remove = false
@@ -41,10 +41,8 @@ struct MainView: View {
     
     // Constants
     let locationManager = CLLocationManager()
-//    let viewModel = ClockViewModel()
     let locationFetch = LocationFetch()
     
-    // VAriables
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     

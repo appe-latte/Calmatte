@@ -12,12 +12,11 @@ import FirebaseAuth
 
 struct AnalyticsView: View {
     @ObservedObject var moodModelController: MoodModelController
+    @ObservedObject var moodCount: DayStateViewModel = DayStateViewModel()
+    
     let startDate: Date
     let monthsToDisplay: Int
     var selectableDays: Bool
-    @ObservedObject var moodCount: DayStateViewModel = DayStateViewModel()
-    
-    
     
     @State private var reportDescription = "Here's a summary of your mood statistics over time."
     
@@ -38,85 +37,90 @@ struct AnalyticsView: View {
                 StreakView(moodModelController: moodModelController)
                     .padding(.vertical, 20)
                 
-                // MARK: Mood Count Summary
-                VStack {
-                    HStack {
-                        Label("Mood Count", systemImage: "")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .kerning(2)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                        
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    
-                    Divider()
-                        .foregroundColor(np_white)
-                        .padding(.vertical, 10)
-                    
-                    List(DayState.allCases, id: \.self) { state in
+                ScrollView(.vertical, showsIndicators: false){
+                    // MARK: Mood Count Summary
+                    VStack {
                         HStack {
-                            Text(state.displayString)
-                                .font(.headline)
+                            Label("Mood Count", systemImage: "")
+                                .font(.footnote)
                                 .fontWeight(.semibold)
-                                .kerning(3)
+                                .kerning(2)
                                 .textCase(.uppercase)
                                 .foregroundColor(np_white)
                             
                             Spacer()
+                        }
+                        .padding(.horizontal)
+                        
+                        Divider()
+                            .foregroundColor(np_white)
+                            .padding(.vertical, 10)
+                        
+                        List(DayState.allCases, id: \.self) { state in
+                            HStack {
+                                Text(state.displayString)
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                    .kerning(3)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_white)
+                                
+                                Spacer()
+                                
+                                Text("\(moodCount.frequency(for: state))")
+                                    .font(.headline)
+                                    .fontWeight(.bold)
+                                    .kerning(3)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_jap_indigo)
+                            }
+                            .listRowBackground(state.color) // This will set the background color for the entire row
+                        }
+                        .listStyle(InsetGroupedListStyle())
+                        .scrollContentBackground(.hidden)
+                        .scrollDisabled(true)
+                        .environment(\.defaultMinListRowHeight, 55)
+                        
+                    }
+                    .frame(height: 400)
+                    
+                    // MARK: Last 3 months
+                    VStack {
+                        HStack {
+                            Label("Last 3 Months", systemImage: "")
+                                .font(.footnote)
+                                .fontWeight(.semibold)
+                                .kerning(2)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
                             
-                            Text("\(moodCount.frequency(for: state))")
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                        
+                        Divider()
+                            .foregroundColor(np_white)
+                            .padding(.vertical, 10)
+                        
+                        // MARK: Last Months Statistics
+                        ScrollView(.vertical, showsIndicators: false) {
+                            ForEach((0..<3).reversed(), id: \.self) { monthOffset in
+                                ThreeMonthView(
+                                    moodModelController: moodModelController,
+                                    month: Month(
+                                        startDate: previousMonth(from: startDate, subtract: monthOffset),
+                                        selectableDays: selectableDays
+                                    )
+                                )
                                 .font(.headline)
                                 .fontWeight(.bold)
                                 .kerning(3)
                                 .textCase(.uppercase)
-                                .foregroundColor(np_jap_indigo)
-                        }
-                        .listRowBackground(state.color) // This will set the background color for the entire row
-                    }
-                    .listStyle(.insetGrouped)
-                    .scrollContentBackground(.hidden)
-                    .environment(\.defaultMinListRowHeight, 80)
-                    .frame(height: 200)
-                }
-                
-                // MARK: Last 3 months
-                VStack {
-                    HStack {
-                        Label("Last 3 Months", systemImage: "")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .kerning(2)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                        
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    
-                    Divider()
-                        .foregroundColor(np_white)
-                        .padding(.vertical, 10)
-                    
-                    // MARK: Last Months Statistics
-                    ScrollView(.vertical, showsIndicators: false) {
-                        ForEach((0..<3).reversed(), id: \.self) { monthOffset in
-                            ThreeMonthView(
-                                moodModelController: moodModelController,
-                                month: Month(
-                                    startDate: previousMonth(from: startDate, subtract: monthOffset),
-                                    selectableDays: selectableDays
-                                )
-                            )
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .kerning(3)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
+                                .foregroundColor(np_white)
+                            }
                         }
                     }
+                    .padding(.vertical, 10)
                 }
             }
         }

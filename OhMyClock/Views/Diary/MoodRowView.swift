@@ -15,9 +15,9 @@ struct MoodRowView: View {
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(np_white)
-                .cornerRadius(10)
+            //            Rectangle()
+            //                .fill(np_tan)
+            //                .cornerRadius(10)
             
             // MARK: Row Text
             HStack(spacing: 10) {
@@ -27,7 +27,7 @@ struct MoodRowView: View {
                         .fontWeight(.bold)
                         .kerning(3)
                         .textCase(.uppercase)
-                        .foregroundColor(np_black)
+                        .foregroundColor(np_white)
                     
                     ZStack {
                         Circle()
@@ -56,14 +56,13 @@ struct MoodRowView: View {
                         .font(.system(size: 12))
                         .fontWeight(.regular)
                         .textCase(.uppercase)
-                        .foregroundColor(np_jap_indigo)
+                        .foregroundColor(np_white)
                         .minimumScaleFactor(0.75)
                         .lineLimit(7)
                     
                     Spacer()
                 }
                 .frame(width: 200)
-                
                 
                 Spacer()
                 
@@ -75,11 +74,11 @@ struct MoodRowView: View {
                         .clipShape(Circle())
                     
                     Text(mood.dayStates.map { $0.rawValue }.joined(separator: ", "))
-                        .font(.system(size: 7))
-                        .fontWeight(.regular)
+                        .font(.system(size: 8))
+                        .fontWeight(.semibold)
                         .textCase(.uppercase)
                         .minimumScaleFactor(0.5)
-                        .foregroundColor(np_black)
+                        .foregroundColor(np_white)
                 }
                 .frame(maxWidth: 100)
             }
