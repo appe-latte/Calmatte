@@ -26,7 +26,8 @@ struct MoodAddDiaryView: View {
     @State private var upsetSelected = false
     @State private var counterLabel = "200"
     
-    @State private var dayStates: [DayState] = []
+    //    @State private var dayStates: [DayState] = []
+    @State private var selectedDayState: DayState? = nil
     @State private var selectedEmotion = Emotion(state: .happy, color: .happyColor)
     
     let height = UIScreen.main.bounds.height
@@ -65,7 +66,7 @@ struct MoodAddDiaryView: View {
                                 // MARK: Emotion Selection
                                 VStack {
                                     HStack {
-                                        Label("How do you feel?", systemImage: "")
+                                        Label("Emotions", systemImage: "")
                                             .font(.footnote)
                                             .fontWeight(.semibold)
                                             .kerning(3)
@@ -422,104 +423,19 @@ struct MoodAddDiaryView: View {
                                         HStack(spacing: 5){
                                             
                                             // MARK: Amazing - state
-                                            VStack(spacing: 5) {
-                                                Button(action: {
-                                                    self.toggleDayState(.amazing)
-                                                }) {
-                                                    ZStack {
-                                                        RoundedRectangle(cornerRadius: 10)
-                                                            .fill(self.dayStates.contains(.amazing) ? np_green : np_green.opacity(0.5))
-                                                            .frame(width: 75, height: 45)
-                                                            .overlay {
-                                                                Text("Amazing")
-                                                                    .font(.system(size: 10))
-                                                                    .fontWeight(.medium)
-                                                                    .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.amazing) ? np_beige : np_jap_indigo)
-                                                            }
-                                                    }
-                                                }
-                                            }
+                                            DayStateButton(state: .amazing, selectedState: $selectedDayState)
                                             
                                             // MARK: Good - state
-                                            VStack(spacing: 5) {
-                                                Button(action: {
-                                                    self.toggleDayState(.good)
-                                                }) {
-                                                    ZStack {
-                                                        RoundedRectangle(cornerRadius: 10)
-                                                            .fill(self.dayStates.contains(.good) ? np_turq : np_turq.opacity(0.5))
-                                                            .frame(width: 75, height: 45)
-                                                            .overlay {
-                                                                Text("Good")
-                                                                    .font(.system(size: 10))
-                                                                    .fontWeight(.medium)
-                                                                    .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.good) ? np_beige : np_jap_indigo)
-                                                            }
-                                                    }
-                                                }
-                                            }
+                                            DayStateButton(state: .good, selectedState: $selectedDayState)
                                             
                                             // MARK: Okay - state
-                                            VStack(spacing: 5) {
-                                                Button(action: {
-                                                    self.toggleDayState(.okay)
-                                                }) {
-                                                    ZStack {
-                                                        RoundedRectangle(cornerRadius: 10)
-                                                            .fill(self.dayStates.contains(.okay) ? np_yellow : np_yellow.opacity(0.5))
-                                                            .frame(width: 75, height: 45)
-                                                            .overlay {
-                                                                Text("okay")
-                                                                    .font(.system(size: 10))
-                                                                    .fontWeight(.medium)
-                                                                    .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.okay) ? np_beige : np_jap_indigo)
-                                                            }
-                                                    }
-                                                }
-                                            }
+                                            DayStateButton(state: .okay, selectedState: $selectedDayState)
                                             
                                             // MARK: Bad - state
-                                            VStack(spacing: 5) {
-                                                Button(action: {
-                                                    self.toggleDayState(.bad)
-                                                }) {
-                                                    ZStack {
-                                                        RoundedRectangle(cornerRadius: 10)
-                                                            .fill(self.dayStates.contains(.bad) ? np_orange : np_orange.opacity(0.5))
-                                                            .frame(width: 75, height: 45)
-                                                            .overlay {
-                                                                Text("Bad")
-                                                                    .font(.system(size: 10))
-                                                                    .fontWeight(.medium)
-                                                                    .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.bad) ? np_beige : np_jap_indigo)
-                                                            }
-                                                    }
-                                                }
-                                            }
+                                            DayStateButton(state: .bad, selectedState: $selectedDayState)
                                             
                                             // MARK: Terrible - state
-                                            VStack(spacing: 5) {
-                                                Button(action: {
-                                                    self.toggleDayState(.terrible)
-                                                }) {
-                                                    ZStack {
-                                                        RoundedRectangle(cornerRadius: 10)
-                                                            .fill(self.dayStates.contains(.terrible) ? np_red : np_red.opacity(0.5))
-                                                            .frame(width: 75, height: 45)
-                                                            .overlay {
-                                                                Text("Terrible")
-                                                                    .font(.system(size: 10))
-                                                                    .fontWeight(.medium)
-                                                                    .textCase(.uppercase)
-                                                                    .foregroundColor(self.dayStates.contains(.terrible) ? np_beige : np_jap_indigo)
-                                                            }
-                                                    }
-                                                }
-                                            }
+                                            DayStateButton(state: .terrible, selectedState: $selectedDayState)
                                         }
                                     }
                                 }
@@ -554,7 +470,10 @@ struct MoodAddDiaryView: View {
                                 
                                 // MARK: Save Diary Entry button
                                 Button(action: {
-                                    self.moodModelController.createMood(emotion: Emotion(state: self.emotionState, color: self.moodColor), comment: self.text, date: Date(), dayStates: self.dayStates)
+                                    if let dayState = self.selectedDayState {
+                                        // Pass dayState directly, not as an array
+                                        self.moodModelController.createMood(emotion: selectedEmotion, comment: self.text, date: Date(), dayState: dayState)
+                                    }
                                     
                                     self.presentationMode.wrappedValue.dismiss()
                                 }, label: {
@@ -578,15 +497,6 @@ struct MoodAddDiaryView: View {
             }
         }
         .accentColor(np_white)
-    }
-    
-    // MARK: - Method to toggle day state
-    func toggleDayState(_ state: DayState) {
-        if let index = dayStates.firstIndex(of: state) {
-            dayStates.remove(at: index)
-        } else {
-            dayStates.append(state)
-        }
     }
     
     // MARK: Background
@@ -694,3 +604,44 @@ extension UITextView {
         self.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
 }
+
+// MARK: - DayState Button View
+struct DayStateButton: View {
+    let state: DayState
+    @Binding var selectedState: DayState?
+    
+    var fillColor: Color {
+        switch state {
+        case .amazing:
+            return np_green
+        case .good:
+            return np_turq
+        case .okay:
+            return np_yellow
+        case .bad:
+            return np_orange
+        case .terrible:
+            return np_red
+        }
+    }
+    
+    var body: some View {
+        Button(action: {
+            self.selectedState = self.selectedState == state ? nil : state
+        }) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(self.selectedState == state ? fillColor : fillColor.opacity(0.5))
+                    .frame(width: 75, height: 45)
+                    .overlay {
+                        Text(state.displayString)
+                            .font(.system(size: 10))
+                            .fontWeight(.medium)
+                            .textCase(.uppercase)
+                            .foregroundColor(self.selectedState == state ? Color.white : Color.gray)
+                    }
+            }
+        }
+    }
+}
+

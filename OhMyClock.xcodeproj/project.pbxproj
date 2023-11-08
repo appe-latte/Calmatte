@@ -24,8 +24,6 @@
 		2F36B0B32967A4B000AC8D59 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0B22967A4B000AC8D59 /* Colors.swift */; };
 		2F36B0B52967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0B42967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift */; };
 		2F36B0B82967A51900AC8D59 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0B72967A51900AC8D59 /* Models.swift */; };
-		2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0BA2967A55900AC8D59 /* ClockViewModel.swift */; };
-		2F36B0BD2967A57D00AC8D59 /* FlipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */; };
 		2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BAE296F60FE00698C1A /* PlayerView.swift */; };
 		2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */; };
 		2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F434BB2296F863400698C1A /* MeditationViewModel.swift */; };
@@ -41,6 +39,7 @@
 		2F4AB62B2A5E5C3500F6332F /* MoodRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */; };
 		2F54B260297C71190075E488 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B25F297C71190075E488 /* Realm */; };
 		2F54B262297C71190075E488 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B261297C71190075E488 /* RealmSwift */; };
+		2F5B2EC82AFC00DF00778727 /* DayStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B2EC72AFC00DF00778727 /* DayStateViewModel.swift */; };
 		2F6083432AFACDA1004A7F95 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */; };
 		2F64DE362A8161B9007917D2 /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64DE352A8161B9007917D2 /* ReminderManager.swift */; };
 		2F690F7C2A815137008A8ACC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F690F7B2A815137008A8ACC /* ProfileView.swift */; };
@@ -105,8 +104,6 @@
 		2F36B0B22967A4B000AC8D59 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2F36B0B42967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+TimeFormatter.swift"; sourceTree = "<group>"; };
 		2F36B0B72967A51900AC8D59 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		2F36B0BA2967A55900AC8D59 /* ClockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewModel.swift; sourceTree = "<group>"; };
-		2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipViewModel.swift; sourceTree = "<group>"; };
 		2F434BAE296F60FE00698C1A /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlButton.swift; sourceTree = "<group>"; };
 		2F434BB2296F863400698C1A /* MeditationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationViewModel.swift; sourceTree = "<group>"; };
@@ -121,6 +118,7 @@
 		2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDiaryView.swift; sourceTree = "<group>"; };
 		2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodAddDiaryView.swift; sourceTree = "<group>"; };
 		2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRowView.swift; sourceTree = "<group>"; };
+		2F5B2EC72AFC00DF00778727 /* DayStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStateViewModel.swift; sourceTree = "<group>"; };
 		2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		2F64DE352A8161B9007917D2 /* ReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderManager.swift; sourceTree = "<group>"; };
 		2F690F7B2A815137008A8ACC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -266,13 +264,12 @@
 		2F36B0B92967A52500AC8D59 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				2F36B0BA2967A55900AC8D59 /* ClockViewModel.swift */,
-				2F36B0BC2967A57D00AC8D59 /* FlipViewModel.swift */,
 				2F434BB2296F863400698C1A /* MeditationViewModel.swift */,
 				2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */,
 				2FCD00612A67188F000AD649 /* AppLockViewModel.swift */,
 				2FCD00592A6710BC000AD649 /* AuthViewModel.swift */,
 				2F438EF82A6B17B000CDF33D /* PasswordResetViewModel.swift */,
+				2F5B2EC72AFC00DF00778727 /* DayStateViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -551,8 +548,8 @@
 				2F919D332A5DD83000291071 /* Day.swift in Sources */,
 				2FCD00622A67188F000AD649 /* AppLockViewModel.swift in Sources */,
 				2F438EF92A6B17B000CDF33D /* PasswordResetViewModel.swift in Sources */,
-				2F36B0BD2967A57D00AC8D59 /* FlipViewModel.swift in Sources */,
 				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
+				2F5B2EC82AFC00DF00778727 /* DayStateViewModel.swift in Sources */,
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
 				2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */,
 				2FF51E042A3A42370035A964 /* SplashScreenView.swift in Sources */,
@@ -578,7 +575,6 @@
 				2FA38A9F2AEB0E6A00BE57F0 /* CustomHeaderShape.swift in Sources */,
 				2FCD005A2A6710BC000AD649 /* AuthViewModel.swift in Sources */,
 				2F438EF52A6B139A00CDF33D /* PasswordResetView.swift in Sources */,
-				2F36B0BB2967A55900AC8D59 /* ClockViewModel.swift in Sources */,
 				2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */,
 				2F4AB6292A5DDDBE00F6332F /* MoodAddDiaryView.swift in Sources */,
 				2FCD00642A671C1E000AD649 /* LoginView.swift in Sources */,

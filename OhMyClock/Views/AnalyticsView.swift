@@ -8,12 +8,16 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseAuth
 
 struct AnalyticsView: View {
     @ObservedObject var moodModelController: MoodModelController
     let startDate: Date
     let monthsToDisplay: Int
     var selectableDays: Bool
+    @ObservedObject var moodCount: DayStateViewModel = DayStateViewModel()
+    
+    
     
     @State private var reportDescription = "Here's a summary of your mood statistics over time."
     
@@ -34,6 +38,51 @@ struct AnalyticsView: View {
                 StreakView(moodModelController: moodModelController)
                     .padding(.vertical, 20)
                 
+                // MARK: Mood Count Summary
+                VStack {
+                    HStack {
+                        Label("Mood Count", systemImage: "")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .kerning(2)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    
+                    Divider()
+                        .foregroundColor(np_white)
+                        .padding(.vertical, 10)
+                    
+                    List(DayState.allCases, id: \.self) { state in
+                        HStack {
+                            Text(state.displayString)
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .kerning(3)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                            
+                            Spacer()
+                            
+                            Text("\(moodCount.frequency(for: state))")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .kerning(3)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_jap_indigo)
+                        }
+                        .listRowBackground(state.color) // This will set the background color for the entire row
+                    }
+                    .listStyle(.insetGrouped)
+                    .scrollContentBackground(.hidden)
+                    .environment(\.defaultMinListRowHeight, 80)
+                    .frame(height: 200)
+                }
+                
+                // MARK: Last 3 months
                 VStack {
                     HStack {
                         Label("Last 3 Months", systemImage: "")
@@ -297,5 +346,27 @@ struct ThreeMonthView: View {
             .padding(.bottom, 10)
         }
         .background(np_arsenic)
+    }
+}
+
+extension DayState {
+    var displayString: String {
+        switch self {
+        case .amazing: return "Amazing"
+        case .good: return "Good"
+        case .okay: return "Okay"
+        case .bad: return "Bad"
+        case .terrible: return "Terrible"
+        }
+    }
+    
+    var color: Color {
+        switch self {
+        case .amazing: return np_green
+        case .good: return np_turq
+        case .okay: return np_yellow
+        case .bad: return np_orange
+        case .terrible: return np_red
+        }
     }
 }

@@ -12,7 +12,7 @@ enum EmotionState: String, Codable, CaseIterable {
     case angry, cheeky, happy, loved, meh, sad, sick, sleepy, smiling, upset
 }
 
-enum DayState: String, Codable {
+enum DayState: String, Codable, CaseIterable {
     case amazing, good, okay, bad, terrible
 }
 

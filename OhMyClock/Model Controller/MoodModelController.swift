@@ -25,14 +25,16 @@ class MoodModelController: ObservableObject {
         loadFromFirestore()
     }
     
-    //MARK: - CRUD Functions -- Mood Journal
-    func createMood(emotion: Emotion, comment: String?, date: Date, dayStates: [DayState]) {
-        let newMood = Mood(emotion: emotion, comment: comment, date: date, dayStates: dayStates)
+    // MARK: - Create Mood / Day State
+    func createMood(emotion: Emotion, comment: String?, date: Date, dayState: DayState) {
+        // Wrap the single dayState in an array when initializing the Mood object
+        let newMood = Mood(emotion: emotion, comment: comment, date: date, dayStates: [dayState])
         
         moods.append(newMood)
         saveToFirestore()
         calculateStreaks()
     }
+
     
     // MARK: "Delete" mood
     func deleteMood(withID uuid: UUID) {
@@ -160,5 +162,19 @@ class MoodModelController: ObservableObject {
         self.currentStreak = currentStreak
         self.bestStreak = bestStreak
         self.totalDaysLogged = sortedMoods.count
+    }
+    
+    // MARK: Calculate Mood count
+    func calculateMoodStates() -> [String: Int] {
+        var moodStatesCount = [String: Int]()
+        
+        for mood in moods {
+            for state in mood.dayStates {
+                let stateKey = "\(state)" // Convert the DayState to a String
+                moodStatesCount[stateKey, default: 0] += 1
+            }
+        }
+        
+        return moodStatesCount
     }
 }

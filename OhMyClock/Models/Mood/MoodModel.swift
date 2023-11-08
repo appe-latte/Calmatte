@@ -85,47 +85,6 @@ class MoodModel: ObservableObject {
         return nil
     }
     
-    // MARK: Mood Colors + Emojis
-    func moodDetails(type: MoodType? = nil) -> (colors: [Color], emoji: String) {
-        switch type ?? moodType {
-        case .great:
-            return ([Color(#colorLiteral(red: 0.4156033397, green: 0.6713014841, blue: 0.3754302263, alpha: 1)), Color(#colorLiteral(red: 0.6896948814, green: 0.7423496842, blue: 0.3255423903, alpha: 1))], "🥳")
-        case .happy:
-            return ([Color(#colorLiteral(red: 0.8534171581, green: 0.5596296191, blue: 0.09391685575, alpha: 1)), Color(#colorLiteral(red: 1, green: 0.8204076886, blue: 0.3298537731, alpha: 1))], "😀")
-        case .okay:
-            return ([Color(#colorLiteral(red: 0.8664215207, green: 0.471901536, blue: 0.03596238419, alpha: 1)), Color(#colorLiteral(red: 0.9981095195, green: 0.7487973571, blue: 0.3268273473, alpha: 1))], "🙂")
-        case .sad:
-            return ([Color(#colorLiteral(red: 0.8351245522, green: 0.4202041626, blue: 0.04885386676, alpha: 1)), Color(#colorLiteral(red: 0.9953574538, green: 0.6651614308, blue: 0.3195463419, alpha: 1))], "😔")
-        case .angry:
-            return ([Color(#colorLiteral(red: 0.8357443213, green: 0.3479825258, blue: 0.05522660166, alpha: 1)), Color(#colorLiteral(red: 0.9966509938, green: 0.5569254756, blue: 0.353095293, alpha: 1))], "😡")
-        }
-    }
-    
-    /// Get mood insights for mood type based on the saved data/key
-    func moodCount(type: MoodType) -> Int {
-        if let count = savedMoodData?[type.rawValue] {
-            return count > insightsType.maximumMoodCheckins ? insightsType.maximumMoodCheckins : count
-        }
-        return 0
-    }
-    
-    // MARK: - User's intent/actions
-    func saveMood() {
-        /// Get existing saved mood details for today's date
-        var data = savedMoodData ?? [String: Int]()
-        
-        /// Append the new mood to the saved data
-        if let moodCount = data[moodType.rawValue] {
-            data[moodType.rawValue] = moodCount + 1
-        } else {
-            data[moodType.rawValue] = 1
-        }
-        
-        // MARK: Updated mood count saved
-        UserDefaults.standard.set(data, forKey: savedDataKey)
-        UserDefaults.standard.synchronize()
-    }
-    
     func didChangeInsights(type: InsightsType) {
         insightsType = type
     }

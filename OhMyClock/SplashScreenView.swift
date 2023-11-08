@@ -60,14 +60,6 @@ struct SplashScreenView: View {
         }
         .ignoresSafeArea()
     }
-    
-    // MARK: Day / Night Theme
-    func getTime() -> String {
-        let format = DateFormatter()
-        format.dateFormat = "hh:mm a"
-        
-        return format.string(from: Date())
-    }
 }
 
 struct SplashScreenView_Previews: PreviewProvider {

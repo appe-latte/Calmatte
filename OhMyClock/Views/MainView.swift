@@ -41,7 +41,7 @@ struct MainView: View {
     
     // Constants
     let locationManager = CLLocationManager()
-    let viewModel = ClockViewModel()
+//    let viewModel = ClockViewModel()
     let locationFetch = LocationFetch()
     
     // VAriables
