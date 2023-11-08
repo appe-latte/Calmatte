@@ -97,9 +97,10 @@ struct ContentView: View {
         }) {
             VStack {
                 Circle()
-                    .fill(selectedTab == index ? np_white : np_arsenic)
+                    .fill(np_white)
                     .frame(width: 7, height: 7)
                     .clipShape(Circle())
+                    .opacity(selectedTab == index ? 1.0 : 0.25)
                 
                 Image(selectedTab == index ? selectedIcon : icon)
                     .resizable()
@@ -112,6 +113,7 @@ struct ContentView: View {
                     .foregroundColor(selectedTab == index ? np_gray : np_white)
                     .textCase(.uppercase)
                     .kerning(2)
+//                    .opacity(selectedTab == index ? 1.0 : 0.0)
             }
         }
     }
