@@ -15,55 +15,53 @@ import LocalAuthentication
 @main
 struct OhMyClockApp: App {
     @StateObject var audioManager = AudioManager()
-    @State private var isActive = false
-    
-    // MARK: Authentication
     @StateObject var authViewModel = AuthViewModel()
     @StateObject var appLockViewModel = AppLockViewModel()
-    
-    // MARK: Scene phase
+    @StateObject var moodModelController = MoodModelController()
+
     @Environment(\.scenePhase) var scenePhase
-    
-    // MARK: Store last timer stamp
-    @State var lastActiveTimeStamp : Date = Date()
-    
+
     init() {
-        // MARK: Firebase initialization
         FirebaseApp.configure()
     }
-    
+
     var body: some Scene {
         WindowGroup {
-            Group {
-                if authViewModel.userSession != nil {
-                    if appLockViewModel.isAppLockEnabled && appLockViewModel.needsUnlock {
-                        BiometricLoginView(appLockViewModel: appLockViewModel)
-                    } else {
-                        ContentView()
-                            .environmentObject(AudioManager())
-                    }
-                } else {
-                    LoginView()
-                }
-            }
-            .environmentObject(authViewModel)
-            .environmentObject(appLockViewModel)
+            contentView
+                .environmentObject(audioManager)
+                .environmentObject(authViewModel)
+                .environmentObject(appLockViewModel)
+                .environmentObject(moodModelController)
         }
-        .onChange(of: scenePhase) { newScenePhase in
-            switch newScenePhase {
-            case .active:
-                // App becomes active
-                if appLockViewModel.isAppLockEnabled && appLockViewModel.needsUnlock {
-                    appLockViewModel.isAppUnlocked = false
-                }
-            case .inactive, .background:
-                // App goes to the background
-                if appLockViewModel.isAppLockEnabled {
-                    appLockViewModel.needsUnlock = true
-                }
-            @unknown default:
-                break
+        .onChange(of: scenePhase, perform: handleScenePhase)
+    }
+
+    @ViewBuilder
+    private var contentView: some View {
+        if authViewModel.userSession != nil {
+            if appLockViewModel.isAppLockEnabled && appLockViewModel.needsUnlock {
+                BiometricLoginView(appLockViewModel: appLockViewModel)
+            } else {
+                ContentView()
             }
+        } else {
+            LoginView()
+        }
+    }
+
+    private func handleScenePhase(_ newScenePhase: ScenePhase) {
+        switch newScenePhase {
+        case .active:
+            if appLockViewModel.isAppLockEnabled {
+                appLockViewModel.isAppUnlocked = false
+            }
+        case .inactive, .background:
+            if appLockViewModel.isAppLockEnabled {
+                appLockViewModel.needsUnlock = true
+            }
+        @unknown default:
+            break
         }
     }
 }
+

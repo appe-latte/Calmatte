@@ -124,6 +124,11 @@ struct AnalyticsView: View {
             }
         }
         .background(np_jap_indigo)
+        .onAppear {
+            if moodModelController.moods.isEmpty {
+                moodModelController.loadFromFirestore()
+            }
+        }
     }
     
     // MARK: Background
@@ -216,79 +221,83 @@ struct StreakView: View {
                     Spacer()
                 }
                 
-                // MARK: Current Streak
-                HStack {
-                    Text("\(moodModelController.currentStreak)")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
-                    
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("👑 Current Streak")
-                                .font(.system(size: 10))
-                                .fontWeight(.semibold)
-                                .kerning(3)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                        }
-                        
-                        Capsule()
-                            .frame(width: 250, height: 1)
-                            .foregroundColor(np_gray)
-                    }
-                }
+                Divider()
+                    .foregroundColor(np_white)
+                    .padding(.vertical, 10)
                 
-                // MARK: Best Streak
                 HStack {
-                    Text("\(moodModelController.bestStreak)")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
-                    
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("🏆 Best Streak")
-                            
-                                .font(.system(size: 10))
-                                .fontWeight(.semibold)
-                                .kerning(3)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                        }
+                    // MARK: Current Streak
+                    VStack(alignment: .center, spacing: 15) {
                         
-                        Capsule()
-                            .frame(width: 250, height: 1)
-                            .foregroundColor(np_gray)
+                        Text("👑")
+                            .font(.largeTitle)
+                            .fontWeight(.semibold)
+                        
+                        Text("Current Streak")
+                            .font(.system(size: 10))
+                            .fontWeight(.semibold)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        
+                        Text("\(moodModelController.currentStreak)")
+                            .font(.title)
+                            .fontWeight(.heavy)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
                     }
-                }
-                
-                // MARK: Total Logging Days
-                HStack {
-                    Text("\(moodModelController.totalDaysLogged)")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
                     
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("📆 Total Days")
-                                .font(.system(size: 10))
-                                .fontWeight(.semibold)
-                                .kerning(3)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                        }
+                    Capsule()
+                        .frame(width: 0.5, height: 100)
+                        .foregroundColor(np_gray)
+                    
+                    // MARK: Best Streak
+                    VStack(alignment: .center, spacing: 15) {
+                        Text("🏆")
+                            .font(.largeTitle)
+                            .fontWeight(.semibold)
                         
-                        Capsule()
-                            .frame(width: 250, height: 1)
-                            .foregroundColor(np_gray)
+                        Text("Best Streak")
+                            .font(.system(size: 10))
+                            .fontWeight(.semibold)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        
+                        Text("\(moodModelController.bestStreak)")
+                            .font(.title)
+                            .fontWeight(.heavy)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                    }
+                    
+                    Capsule()
+                        .frame(width: 0.5, height: 100)
+                        .foregroundColor(np_gray)
+                    
+                    // MARK: Best Streak
+                    VStack(alignment: .center, spacing: 15) {
+                        Text("📆")
+                            .font(.largeTitle)
+                            .fontWeight(.semibold)
+                        
+                        Text("Total Days")
+                            .font(.system(size: 10))
+                            .fontWeight(.semibold)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        Text("\(moodModelController.totalDaysLogged)")
+                            .font(.title)
+                            .fontWeight(.heavy)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
                     }
                 }
             }

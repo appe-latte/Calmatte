@@ -20,6 +20,7 @@ struct ContentView: View {
     
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var appLockViewModel: AppLockViewModel
+    @StateObject private var moodModelController = MoodModelController()
     
     @ObservedObject var moodModel: MoodModel
     @Binding var tabBarSelection: Int
@@ -54,7 +55,7 @@ struct ContentView: View {
         VStack(spacing: 0) {
             switch selectedTab {
             case 0: MainView(moodModel: moodModel, tabBarSelection: $tabBarSelection)
-            case 1: AnalyticsView(start: Date(), monthsToShow: 2, moodController: MoodModelController())
+            case 1: AnalyticsView(start: Date(), monthsToShow: 2, moodController: MoodModelController()).environmentObject(moodModelController)
             case 2: MoodDiaryView()
             case 3: MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
             case 4: TaskManagerView(taskManager: taskManager)

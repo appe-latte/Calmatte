@@ -119,7 +119,6 @@ struct SettingsView: View {
                         
                         
                         if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-                            
                             Text("\(UIApplication.appVersion!) (\(buildNumber))")
                                 .font(.system(size: 7.5))
                                 .fontWeight(.regular)
@@ -144,6 +143,17 @@ struct SettingsView: View {
                                 .foregroundColor(np_gray)
                         })
                         
+                        // MARK: Facebook
+                        Button(action: {
+                            openURL(URL(string: "https://www.facebook.com/appelatteltd")!)
+                        }, label: {
+                            Image("facebook")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(np_gray)
+                        })
+                        
                         // MARK: Twitter
                         Button(action: {
                             openURL(URL(string: "https://www.twitter.com/appe_latte")!)
@@ -156,16 +166,16 @@ struct SettingsView: View {
                         })
                         
                         // MARK: "Share This App"
-//                        Button(action: {
-//                            shareSheet()
-//                        }, label: {
-//                            Text("Share")
-//                                .font(.system(size: 11))
-//                                .fontWeight(.bold)
-//                                .kerning(3)
-//                                .textCase(.uppercase)
-//                                .foregroundColor(np_white)
-//                        })
+                        //                        Button(action: {
+                        //                            shareSheet()
+                        //                        }, label: {
+                        //                            Text("Share")
+                        //                                .font(.system(size: 11))
+                        //                                .fontWeight(.bold)
+                        //                                .kerning(3)
+                        //                                .textCase(.uppercase)
+                        //                                .foregroundColor(np_white)
+                        //                        })
                     }
                     .padding(5)
                     
@@ -347,7 +357,6 @@ struct SettingsView: View {
                             }
                         })
                         .padding(.horizontal, 20)
-                        
                     }
                 }
                 .padding(.bottom, 20)

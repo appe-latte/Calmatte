@@ -55,7 +55,7 @@ struct ProfileView: View {
     
     var body: some View {
         ZStack {
-            np_arsenic
+            np_jap_indigo
                 .ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: 15) {
