@@ -13,43 +13,47 @@ import FirebaseFirestore
 struct MoodRowView: View {
     var mood: Mood
     
+    let width = UIScreen.main.bounds.width
+    
     var body: some View {
         ZStack {
-            HStack(spacing: 10) {
-                VStack {
-                    Text(mood.monthString)
-                        .font(.footnote)
-                        .fontWeight(.bold)
-                        .kerning(3)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
+            VStack(spacing: 10) {
+                // MARK: Date
+                HStack {
+                    Spacer()
                     
-                    ZStack {
-                        Circle()
-                            .fill(mood.emotion.moodColor)
-                            .frame(width: 40, height: 40)
+                    HStack {
+                        Text(mood.monthString)
                         
-                        Text("\(mood.dayAsInt)")
-                            .font(.system(size: 20))
-                            .fontWeight(.heavy)
-                            .kerning(3)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
+                        Text("\(mood.dayAsInt),")
+                        
+                        Text("\(mood.year)")
                     }
-                    
-                    ZStack {
+                    .frame(maxWidth: 100, maxHeight:20)
+                    .background(np_white)
+                    .clipShape(Capsule())
+                }
+                .font(.caption2)
+                .fontWeight(.semibold)
+                .textCase(.uppercase)
+                .foregroundColor(np_jap_indigo)
+                
+                HStack(alignment: .top, spacing: 10) {
+                    // MARK: Emotion
+                    VStack(spacing: 5) {
+                        moodImage()
+                            .scaledToFit()
+                            .frame(maxWidth: 90)
+                            .clipShape(Circle())
+                        
                         Rectangle()
                             .fill(mood.emotion.moodColor)
                             .frame(width: 2)
                             .edgesIgnoringSafeArea(.all)
-                    }
-                    
-                    // MARK: Mood Image + Text
-                    VStack(spacing: 5) {
-                        moodImage()
-                            .scaledToFit()
-                            .frame(maxWidth: 70)
-                            .clipShape(Circle())
+                        
+                        Circle()
+                            .fill(mood.emotion.moodColor)
+                            .frame(width: 10, height: 10)
                         
                         Text(mood.dayStates.map { $0.rawValue }.joined(separator: ", "))
                             .font(.system(size: 8))
@@ -58,25 +62,31 @@ struct MoodRowView: View {
                             .minimumScaleFactor(0.5)
                             .foregroundColor(np_white)
                     }
-                    .frame(maxWidth: 100)
-                }
-                .frame(maxWidth: 50)
-                
-                // MARK: Summary
-                HStack {
-                    Text(mood.comment ?? "No Summary")
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                        .lineLimit(7)
-                        .multilineTextAlignment(.leading)
-                        .textCase(.uppercase)
-                        .foregroundColor(np_white)
-                        .minimumScaleFactor(0.75)
+                    .frame(maxWidth: 125)
+                    .padding(5)
                     
-                    Spacer()
+                    
+                    // MARK: Summary
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack {
+                            Text(mood.comment ?? "No Summary")
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .lineLimit(7)
+                                .multilineTextAlignment(.leading)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                                .minimumScaleFactor(0.75)
+                            
+                            Spacer()
+                        }
+                        
+                        Spacer()
+                    }
+                    .frame(width: width * 0.6, height: 150)
                 }
-                .frame(width: 250, height: 150)
             }
+            .frame(maxWidth: .infinity)
             .padding(5)
         }
     }

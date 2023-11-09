@@ -55,7 +55,7 @@ struct MoodDiaryView : View {
                     }
                     .listStyle(InsetGroupedListStyle())
                     .scrollContentBackground(.hidden)
-                    .environment(\.defaultMinListRowHeight, 200)
+                    .environment(\.defaultMinListRowHeight, 150)
                     .padding(.bottom, 5)
                     .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
                     .onAppear {
