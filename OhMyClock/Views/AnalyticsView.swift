@@ -37,7 +37,7 @@ struct AnalyticsView: View {
                 
                 ScrollView(.vertical, showsIndicators: false){
                     StreakView(moodModelController: moodModelController)
-                        .padding(.vertical, 20)
+                        .padding(.top, 20)
                     
                     ChartView()
                         .frame(height: 500)
@@ -186,22 +186,20 @@ struct StreakView: View {
                     .foregroundColor(np_white)
                     .padding(.vertical, 10)
                 
-                HStack {
+                HStack(spacing: 30) {
                     // MARK: Current Streak
                     VStack(alignment: .center, spacing: 15) {
-                        
-                        Text("👑")
-                            .font(.largeTitle)
-                            .fontWeight(.semibold)
-                        
-                        Text("Current Streak")
+                        Text("Current")
                             .font(.system(size: 10))
                             .fontWeight(.semibold)
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
                         
-                        
+                        Text("👑")
+                            .font(.largeTitle)
+                            .fontWeight(.semibold)
+    
                         Text("\(moodModelController.currentStreak)")
                             .font(.title)
                             .fontWeight(.heavy)
@@ -216,18 +214,17 @@ struct StreakView: View {
                     
                     // MARK: Best Streak
                     VStack(alignment: .center, spacing: 15) {
-                        Text("🏆")
-                            .font(.largeTitle)
-                            .fontWeight(.semibold)
-                        
-                        Text("Best Streak")
+                        Text("Best")
                             .font(.system(size: 10))
                             .fontWeight(.semibold)
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
                         
-                        
+                        Text("🏆")
+                            .font(.largeTitle)
+                            .fontWeight(.semibold)
+
                         Text("\(moodModelController.bestStreak)")
                             .font(.title)
                             .fontWeight(.heavy)
@@ -242,17 +239,17 @@ struct StreakView: View {
                     
                     // MARK: Best Streak
                     VStack(alignment: .center, spacing: 15) {
-                        Text("📆")
-                            .font(.largeTitle)
-                            .fontWeight(.semibold)
-                        
-                        Text("Total Days")
+                        Text("Total")
                             .font(.system(size: 10))
                             .fontWeight(.semibold)
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
                         
+                        Text("📆")
+                            .font(.largeTitle)
+                            .fontWeight(.semibold)
+  
                         Text("\(moodModelController.totalDaysLogged)")
                             .font(.title)
                             .fontWeight(.heavy)
@@ -261,6 +258,7 @@ struct StreakView: View {
                             .foregroundColor(np_white)
                     }
                 }
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
             }
             .padding(.horizontal, 15)
         }
