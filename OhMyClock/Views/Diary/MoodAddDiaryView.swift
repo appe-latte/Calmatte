@@ -27,7 +27,7 @@ struct MoodAddDiaryView: View {
     @State private var counterLabel = "200"
     
     //    @State private var dayStates: [DayState] = []
-    @State private var selectedDayState: DayState? = nil
+    @State private var selectedDayState: DayMoodState? = nil
     @State private var selectedEmotion = Emotion(state: .happy, color: .happyColor)
     
     let height = UIScreen.main.bounds.height
@@ -472,7 +472,7 @@ struct MoodAddDiaryView: View {
                                 Button(action: {
                                     if let dayState = self.selectedDayState {
                                         // Pass dayState directly, not as an array
-                                        self.moodModelController.createMood(emotion: selectedEmotion, comment: self.text, date: Date(), dayState: dayState)
+                                        self.moodModelController.createMood(emotion: Emotion(state: self.emotionState, color: self.moodColor), comment: self.text, date: Date(), dayState: dayState)
                                     }
                                     
                                     self.presentationMode.wrappedValue.dismiss()
@@ -607,8 +607,8 @@ extension UITextView {
 
 // MARK: - DayState Button View
 struct DayStateButton: View {
-    let state: DayState
-    @Binding var selectedState: DayState?
+    let state: DayMoodState
+    @Binding var selectedState: DayMoodState?
     
     var fillColor: Color {
         switch state {

@@ -12,7 +12,7 @@ enum EmotionState: String, Codable, CaseIterable {
     case angry, cheeky, happy, loved, meh, sad, sick, sleepy, smiling, upset
 }
 
-enum DayState: String, Codable, CaseIterable {
+enum DayMoodState: String, Codable, CaseIterable {
     case amazing, good, okay, bad, terrible
 }
 
@@ -55,9 +55,9 @@ struct Mood: Codable, Equatable, Identifiable {
     let emotion: Emotion
     var comment: String?
     let date: Date
-    var dayStates: [DayState] // This will store the day states
+    var dayStates: [DayMoodState] // This will store the day states
     
-    init(emotion: Emotion, comment: String?, date: Date, dayStates: [DayState]) {
+    init(emotion: Emotion, comment: String?, date: Date, dayStates: [DayMoodState]) {
         self.emotion = emotion
         self.comment = comment
         self.date = date

@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class DayStateViewModel: ObservableObject {
-    @Published var dayStateFrequencies: [DayState: Int] = [:]
+    @Published var dayStateFrequencies: [DayMoodState: Int] = [:]
     
     init() {
         loadDayStateFrequencies()
@@ -27,13 +27,13 @@ class DayStateViewModel: ObservableObject {
                 return
             }
             
-            var newFrequencies = [DayState: Int]()
+            var newFrequencies = [DayMoodState: Int]()
 
             for document in querySnapshot!.documents {
                 // Assuming 'dayStates' is an array of strings
                 if let dayStatesArray = document.data()["dayStates"] as? [String] {
                     for dayStateString in dayStatesArray {
-                        if let dayState = DayState(rawValue: dayStateString) {
+                        if let dayState = DayMoodState(rawValue: dayStateString) {
                             newFrequencies[dayState, default: 0] += 1
                         }
                     }
@@ -46,7 +46,7 @@ class DayStateViewModel: ObservableObject {
         }
     }
     
-    func frequency(for state: DayState) -> Int {
+    func frequency(for state: DayMoodState) -> Int {
         return dayStateFrequencies[state, default: 0]
     }
 }

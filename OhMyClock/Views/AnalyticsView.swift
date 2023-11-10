@@ -45,10 +45,10 @@ struct AnalyticsView: View {
                     // MARK: Last 3 months
                     VStack {
                         HStack {
-                            Label("Last 3 Months", systemImage: "")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                                .kerning(2)
+                            Label("Last Month:", systemImage: "")
+                                .font(.system(size: 13))
+                                .fontWeight(.bold)
+                                .kerning(3)
                                 .textCase(.uppercase)
                                 .foregroundColor(np_white)
                             
@@ -56,26 +56,20 @@ struct AnalyticsView: View {
                         }
                         .padding(.horizontal)
                         
-                        Divider()
-                            .foregroundColor(np_white)
-                            .padding(.vertical, 10)
-                        
                         // MARK: Last Months Statistics
-                        ScrollView(.vertical, showsIndicators: false) {
-                            ForEach((0..<3).reversed(), id: \.self) { monthOffset in
-                                ThreeMonthView(
-                                    moodModelController: moodModelController,
-                                    month: Month(
-                                        startDate: previousMonth(from: startDate, subtract: monthOffset),
-                                        selectableDays: selectableDays
-                                    )
+                        ForEach((1..<2).reversed(), id: \.self) { monthOffset in
+                            LastMonthView(
+                                moodModelController: moodModelController,
+                                month: Month(
+                                    startDate: previousMonth(from: startDate, subtract: monthOffset),
+                                    selectableDays: selectableDays
                                 )
-                                .font(.headline)
-                                .fontWeight(.bold)
-                                .kerning(3)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                            }
+                            )
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
                         }
                     }
                     .padding(.vertical, 10)
@@ -108,7 +102,7 @@ struct AnalyticsView: View {
     @ViewBuilder
     func HeaderView() -> some View {
         let firstName = authModel.user?.firstName ?? ""
-
+        
         VStack {
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
@@ -130,7 +124,7 @@ struct AnalyticsView: View {
                         .kerning(3)
                         .textCase(.uppercase)
                         .minimumScaleFactor(0.5)
-                        .foregroundColor(np_white)
+                        .foregroundColor(np_gray)
                 }
                 .hAlign(.leading)
             }
@@ -182,10 +176,6 @@ struct StreakView: View {
                     Spacer()
                 }
                 
-                Divider()
-                    .foregroundColor(np_white)
-                    .padding(.vertical, 10)
-                
                 HStack(spacing: 30) {
                     // MARK: Current Streak
                     VStack(alignment: .center, spacing: 15) {
@@ -199,7 +189,7 @@ struct StreakView: View {
                         Text("👑")
                             .font(.largeTitle)
                             .fontWeight(.semibold)
-    
+                        
                         Text("\(moodModelController.currentStreak)")
                             .font(.title)
                             .fontWeight(.heavy)
@@ -224,7 +214,7 @@ struct StreakView: View {
                         Text("🏆")
                             .font(.largeTitle)
                             .fontWeight(.semibold)
-
+                        
                         Text("\(moodModelController.bestStreak)")
                             .font(.title)
                             .fontWeight(.heavy)
@@ -249,7 +239,7 @@ struct StreakView: View {
                         Text("📆")
                             .font(.largeTitle)
                             .fontWeight(.semibold)
-  
+                        
                         Text("\(moodModelController.totalDaysLogged)")
                             .font(.title)
                             .fontWeight(.heavy)
@@ -266,7 +256,7 @@ struct StreakView: View {
 }
 
 // MARK: - 3 Month View
-struct ThreeMonthView: View {
+struct LastMonthView: View {
     @ObservedObject var moodModelController: MoodModelController
     var month: Month
     let weekdays = ["S", "M", "T", "W", "T", "F", "S"]
@@ -352,6 +342,15 @@ struct ChartView: View {
         moodData.reduce(0) { $0 + $1.count }
     }
     
+    private func percentage(for emotion: DayMoodState?) -> String {
+        guard let emotion = emotion, totalMoodCount > 0 else {
+            return "0%" // Handle the case where totalMoodCount is zero or emotion is nil
+        }
+        let count = moodCount.frequency(for: emotion) // frequency returns a non-optional Int
+        let percentage = (Double(count) / totalMoodCount) * 100
+        return String(format: "%.0f%%", percentage) // Format the percentage to 1 decimal place
+    }
+    
     // Convert counts to percentages of the total
     private var moodDataInPercentages: [MoodDataModel] {
         // Ensure we're not dividing by zero
@@ -374,6 +373,20 @@ struct ChartView: View {
         ZStack {
             // MARK: Mood Count Summary
             VStack(alignment: .center, spacing: 10) {
+                HStack {
+                    Text("Mood Analysis:")
+                        .font(.system(size: 13))
+                        .fontWeight(.bold)
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                    
+                    Spacer()
+                }
+                
+                Spacer()
+                    .frame(height: 50)
+                
                 DonutChart(data: moodDataInPercentages)
                 
                 Spacer()
@@ -381,108 +394,30 @@ struct ChartView: View {
                 
                 // MARK: Chart Key
                 HStack(spacing: 30) {
-                    // Amazing
-                    VStack {
-                        Circle()
-                            .fill(np_green)
-                            .frame(width: 30)
-                        
-                        Text("Amazing")
-                            .font(.caption2)
-                            .fontWeight(.regular)
-                            .kerning(1)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                        
-                        Text("x\(moodCount.frequency(for: .amazing))")
-                            .font(.subheadline)
-                            .fontWeight(.heavy)
-                            .kerning(3)
-                            .foregroundColor(np_white)
-                    }
-                    
-                    // Good
-                    VStack {
-                        Circle()
-                            .fill(np_turq)
-                            .frame(width: 30)
-                        
-                        Text("Good")
-                            .font(.caption2)
-                            .fontWeight(.regular)
-                            .kerning(1)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                        
-                        Text("x\(moodCount.frequency(for: .good))")
-                            .font(.subheadline)
-                            .fontWeight(.heavy)
-                            .kerning(3)
-                            .foregroundColor(np_white)
-                    }
-                    
-                    // Okay
-                    VStack {
-                        Circle()
-                            .fill(np_yellow)
-                            .frame(width: 30)
-                        
-                        Text("Okay")
-                            .font(.caption2)
-                            .fontWeight(.regular)
-                            .kerning(1)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                        
-                        Text("x\(moodCount.frequency(for: .okay))")
-                            .font(.subheadline)
-                            .fontWeight(.heavy)
-                            .kerning(3)
-                            .foregroundColor(np_white)
-                    }
-                    
-                    // Bad
-                    VStack {
-                        Circle()
-                            .fill(np_orange)
-                            .frame(width: 30)
-                        
-                        Text("Bad")
-                            .font(.caption2)
-                            .fontWeight(.regular)
-                            .kerning(1)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                        
-                        Text("x\(moodCount.frequency(for: .bad))")
-                            .font(.subheadline)
-                            .fontWeight(.heavy)
-                            .kerning(3)
-                            .foregroundColor(np_white)
-                    }
-                    
-                    // Terrible
-                    VStack {
-                        Circle()
-                            .fill(np_red)
-                            .frame(width: 30)
-                        
-                        Text("Terrible")
-                            .font(.caption2)
-                            .fontWeight(.regular)
-                            .kerning(1)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                        
-                        Text("x\(moodCount.frequency(for: .terrible))")
-                            .font(.subheadline)
-                            .fontWeight(.heavy)
-                            .kerning(3)
-                            .foregroundColor(np_white)
+                    ForEach(moodDataInPercentages, id: \.id) { mood in
+                        VStack {
+                            Circle()
+                                .fill(mood.color)
+                                .frame(width: 30)
+                            
+                            Text(mood.emotion)
+                                .font(.caption2)
+                                .fontWeight(.regular)
+                                .kerning(1)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                            
+                            Text(percentage(for: DayMoodState(rawValue: mood.emotion.lowercased()) ?? .none))
+                                .font(.subheadline)
+                                .fontWeight(.heavy)
+                                .kerning(3)
+                                .foregroundColor(np_white)
+                        }
                     }
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
             }
+            .padding(.horizontal, 15)
         }
     }
 }
@@ -514,8 +449,7 @@ struct DonutChart: View {
     }
 }
 
-
-extension DayState {
+extension DayMoodState {
     var displayString: String {
         switch self {
         case .amazing: return "Amazing"

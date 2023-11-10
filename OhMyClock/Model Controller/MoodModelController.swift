@@ -26,7 +26,7 @@ class MoodModelController: ObservableObject {
     }
     
     // MARK: - Create Mood / Day State
-    func createMood(emotion: Emotion, comment: String?, date: Date, dayState: DayState) {
+    func createMood(emotion: Emotion, comment: String?, date: Date, dayState: DayMoodState) {
         // Wrap the single dayState in an array when initializing the Mood object
         let newMood = Mood(emotion: emotion, comment: comment, date: date, dayStates: [dayState])
         
@@ -35,7 +35,6 @@ class MoodModelController: ObservableObject {
         calculateStreaks()
     }
 
-    
     // MARK: "Delete" mood
     func deleteMood(withID uuid: UUID) {
         guard let userID = Auth.auth().currentUser?.uid else { return }

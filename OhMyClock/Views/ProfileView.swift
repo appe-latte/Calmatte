@@ -101,7 +101,7 @@ struct ProfileView: View {
                     }
                 }
                 .onAppear(perform: loadUserFirstName)
-            
+                
                 Divider()
                     .background(np_gray)
                 
@@ -153,7 +153,6 @@ struct ProfileView: View {
                             Alert(
                                 title: Text("Are you sure you want to delete your account?"),
                                 primaryButton: .destructive(Text("Delete")) {
-//                                    deleteUser()
                                     authViewModel.deleteUser()
                                 },
                                 secondaryButton: .cancel()

@@ -25,7 +25,6 @@ struct MoodDiaryView : View {
     var body: some View {
         ZStack {
             VStack(spacing: 0){
-                
                 HeaderView()
                 
                 // MARK: List View + Settings
@@ -110,28 +109,20 @@ struct MoodDiaryView : View {
                         Spacer()
                         
                         // MARK: "Add + Diary" Button
-                        Button {
+                        Button(action: {
                             self.txt = ""
                             self.docID = ""
                             self.show.toggle()
-                        } label: {
-                            HStack(spacing: 10){
-                                Image(systemName: "plus")
-                                    .resizable()
-                                    .frame(width: 10, height: 10)
-                                
-                                Text("Add")
-                                    .font(.footnote)
-                                    .fontWeight(.bold)
-                                    .kerning(2)
-                                    .textCase(.uppercase)
-                            }
-                            .padding(.vertical, 5)
-                            .foregroundColor(np_jap_indigo)
-                            .frame(width: 100, height: 35)
-                            .background(np_white)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                        }
+                        }, label: {
+                            Image(systemName: "plus.circle.fill")
+                                .font(.system(size: 30))
+                                .foregroundColor(np_jap_indigo)
+                        })
+                        .padding(5)
+                        .frame(width: 35, height: 35)
+                        .background(np_white)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
                     }
                     
                     // MARK: Description
@@ -140,7 +131,7 @@ struct MoodDiaryView : View {
                         .kerning(3)
                         .textCase(.uppercase)
                         .minimumScaleFactor(0.5)
-                        .foregroundColor(np_white)
+                        .foregroundColor(np_gray)
                 }
                 .hAlign(.leading)
             }

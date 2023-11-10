@@ -53,48 +53,21 @@ struct MainView: View {
             ZStack {
                 VStack {
                     // MARK: Profile / Settings Sheet
-                    HStack {
-                        VStack(spacing: 5) {
-                            Button(action: {
-                                self.showProfileSheet.toggle()
-                            }, label: {
-                                HStack {
-                                    Image("user-id")
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 15, height: 15)
-                                        .foregroundColor(np_white)
-                                    
-                                    Text("Profile")
-                                        .font(.system(size: 11))
-                                        .fontWeight(.bold)
-                                        .kerning(3)
-                                        .textCase(.uppercase)
-                                        .foregroundColor(np_white)
-                                }
-                            })
-                        }
-                        
+                    HStack(spacing: 30) {
                         Spacer()
                         
-                        VStack(spacing: 5) {
-                            Button(action: {
-                                self.showSettingsSheet.toggle()
-                            }, label: {
-                                HStack {
-                                    Image(systemName: "gearshape.fill")
-                                        .font(.system(size: 11))
-                                        .foregroundColor(np_white)
-                                    
-                                    Text("Settings")
-                                        .font(.system(size: 11))
-                                        .fontWeight(.bold)
-                                        .kerning(3)
-                                        .textCase(.uppercase)
-                                        .foregroundColor(np_white)
-                                }
-                            })
-                        }
+                        Button(action: {
+                            self.showSettingsSheet.toggle()
+                        }, label: {
+                            Image(systemName: "gearshape.circle.fill")
+                                .font(.system(size: 25))
+                                .foregroundColor(np_jap_indigo)
+                        })
+                        .padding(5)
+                        .frame(width: 30, height: 30)
+                        .background(np_gray)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
                     }
                     .padding(10)
                     
@@ -179,24 +152,41 @@ struct MainView: View {
                     Spacer()
                         .frame(height: 30)
                     
-                    // MARK: "Add Journal Entry" Button
-                    Button {
-                        self.txt = ""
-                        self.docID = ""
-                        self.showJournalEntry.toggle()
-                    } label: {
-                        Text("Log Daily Mood")
-                            .font(.footnote)
-                            .fontWeight(.bold)
-                            .kerning(2)
-                            .textCase(.uppercase)
+                    HStack {
+                        // MARK: Profile Sheet
+                        Button(action: {
+                            self.showProfileSheet.toggle()
+                        }, label: {
+                            Image(systemName: "person.circle.fill")
+                                .font(.system(size: 30))
+                                .foregroundColor(np_jap_indigo)
+                        })
+                        .padding(.vertical, 5)
+                        .frame(width: 35, height: 35)
+                        .background(np_gray)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
+                        
+                        // MARK: "Add Journal Entry" Button
+                        Button {
+                            self.txt = ""
+                            self.docID = ""
+                            self.showJournalEntry.toggle()
+                        } label: {
+                            Text("Log Daily Mood")
+                                .font(.footnote)
+                                .fontWeight(.bold)
+                                .kerning(2)
+                                .textCase(.uppercase)
+                        }
+                        .padding(.vertical, 5)
+                        .foregroundColor(np_jap_indigo)
+                        .frame(width: width * 0.85, height: 35)
+                        .background(np_white)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
                     }
-                    .padding(.vertical, 5)
-                    .foregroundColor(np_jap_indigo)
-                    .frame(width: width - 40, height: 35)
-                    .background(np_white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
+                    .frame(width: width - 40)
                     .padding(.bottom, 30)
                     
                     // MARK: Quote View
@@ -329,34 +319,3 @@ struct MainView: View {
         }
     }
 }
-
-// MARK: Segmented Picker for "Insights"
-struct CustomSegmentedPickerView: View {
-    @Binding var selection: InsightsType
-    let items: [InsightsType]
-    
-    var body: some View {
-        HStack {
-            ForEach(items, id: \.self) { item in
-                Text(item.rawValue)
-                    .font(.footnote)
-                    .fontWeight(.semibold)
-                    .kerning(2)
-                    .textCase(.uppercase)
-                    .padding(15)
-                    .foregroundColor(self.selection == item ? np_white : np_white)
-                    .background(Capsule().fill(self.selection == item ? np_orange : Color.clear))
-                    .onTapGesture {
-                        withAnimation {
-                            self.selection = item
-                        }
-                    }
-            }
-        }
-        .background(
-            Capsule()
-                .fill(np_gray)
-                .opacity(0.2))
-    }
-}
-

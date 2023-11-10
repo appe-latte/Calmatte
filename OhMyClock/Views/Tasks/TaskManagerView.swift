@@ -54,7 +54,7 @@ struct TaskManagerView: View {
     }
     
     // MARK: Day / Night Theme
-    func getTime()->String {
+    func getTime() -> String {
         let format = DateFormatter()
         format.dateFormat = "hh:mm a"
         
@@ -79,27 +79,18 @@ struct TaskManagerView: View {
                         Spacer()
                         
                         // MARK: "Add + Task" Button
-                        Button {
+                        Button(action: {
                             addNewTask.toggle()
-                        } label: {
-                            HStack(spacing: 10){
-                                Image(systemName: "plus")
-                                    .resizable()
-                                    .frame(width: 10, height: 10)
-                                
-                                Text("Add")
-                                    .font(.footnote)
-                                    .fontWeight(.bold)
-                                    .kerning(2)
-                                    .textCase(.uppercase)
-                            }
-                            .padding(.vertical, 5)
-                            .foregroundColor(np_jap_indigo)
-                            .frame(width: 100, height: 35)
-                            .background(np_white)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            
-                        }
+                        }, label: {
+                            Image(systemName: "plus.circle.fill")
+                                .font(.system(size: 30))
+                                .foregroundColor(np_jap_indigo)
+                        })
+                        .padding(5)
+                        .frame(width: 35, height: 35)
+                        .background(np_white)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
                     }
                     
                     Text(Date().formatted(.dateTime.month().day().year()))
@@ -115,7 +106,7 @@ struct TaskManagerView: View {
                         .kerning(3)
                         .textCase(.uppercase)
                         .minimumScaleFactor(0.5)
-                        .foregroundColor(np_white)
+                        .foregroundColor(np_gray)
                 }
                 .hAlign(.leading)
             }
