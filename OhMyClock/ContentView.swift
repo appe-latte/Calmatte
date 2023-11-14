@@ -21,6 +21,7 @@ struct ContentView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var appLockViewModel: AppLockViewModel
     @StateObject private var moodModelController = MoodModelController()
+    @StateObject var progressView = AppViewModel()
     
     @ObservedObject var moodModel: MoodModel
     @Binding var tabBarSelection: Int
@@ -87,9 +88,15 @@ struct ContentView: View {
                 .padding(.horizontal, 30)
                 .frame(height: 60)
             }
+            if progressView.isLoading {
+                            ProgressLoadingView()
+                        }
         }
         .background(np_arsenic)
         .ignoresSafeArea(.all, edges: .bottom)
+        .onAppear {
+            progressView.loadData()
+                }
     }
     
     private func tabItem(icon: String, selectedIcon: String, text: String, index: Int) -> some View {

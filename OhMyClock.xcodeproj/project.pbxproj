@@ -49,6 +49,7 @@
 		2F9EBB072A648A8000DC806A /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EBB062A648A8000DC806A /* QuoteView.swift */; };
 		2FA38A9F2AEB0E6A00BE57F0 /* CustomHeaderShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA38A9E2AEB0E6A00BE57F0 /* CustomHeaderShape.swift */; };
 		2FA9AB452A4E0D7A00557FD0 /* MoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */; };
+		2FAD51EB2B0425F400D28A3C /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD51EA2B0425F400D28A3C /* AppViewModel.swift */; };
 		2FB2C4FC2A37B3C4006D5A30 /* TaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */; };
 		2FB2C4FE2A37B401006D5A30 /* TaskManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C4FD2A37B401006D5A30 /* TaskManagerView.swift */; };
 		2FB2C5012A37B4FD006D5A30 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C5002A37B4FD006D5A30 /* AddTaskView.swift */; };
@@ -129,6 +130,7 @@
 		2F9EBB062A648A8000DC806A /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
 		2FA38A9E2AEB0E6A00BE57F0 /* CustomHeaderShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderShape.swift; sourceTree = "<group>"; };
 		2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodModel.swift; sourceTree = "<group>"; };
+		2FAD51EA2B0425F400D28A3C /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCategory.swift; sourceTree = "<group>"; };
 		2FB2C4FD2A37B401006D5A30 /* TaskManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerView.swift; sourceTree = "<group>"; };
 		2FB2C5002A37B4FD006D5A30 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -238,7 +240,6 @@
 				2F36B0B42967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift */,
 				2F434BB0296F63F000698C1A /* PlaybackControlButton.swift */,
 				2FEEE581297731CE00416E54 /* TaskRow.swift */,
-				2FCD005D2A671647000AD649 /* ProgressLoadingView.swift */,
 				2FCD005F2A671862000AD649 /* Constants.swift */,
 				2F438EF62A6B164B00CDF33D /* PasswordResetService.swift */,
 				2FA38A9E2AEB0E6A00BE57F0 /* CustomHeaderShape.swift */,
@@ -270,6 +271,7 @@
 				2FCD00592A6710BC000AD649 /* AuthViewModel.swift */,
 				2F438EF82A6B17B000CDF33D /* PasswordResetViewModel.swift */,
 				2F5B2EC72AFC00DF00778727 /* DayStateViewModel.swift */,
+				2FAD51EA2B0425F400D28A3C /* AppViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -381,6 +383,7 @@
 				2F9EBB062A648A8000DC806A /* QuoteView.swift */,
 				2F690F7B2A815137008A8ACC /* ProfileView.swift */,
 				2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */,
+				2FCD005D2A671647000AD649 /* ProgressLoadingView.swift */,
 				2F4AB6252A5DDCF000F6332F /* Diary */,
 				2FCD00532A66E990000AD649 /* Settings */,
 				2FB2C4FF2A37B4DD006D5A30 /* Tasks */,
@@ -528,6 +531,7 @@
 			files = (
 				2FB2C5012A37B4FD006D5A30 /* AddTaskView.swift in Sources */,
 				2F9EBB072A648A8000DC806A /* QuoteView.swift in Sources */,
+				2FAD51EB2B0425F400D28A3C /* AppViewModel.swift in Sources */,
 				2F36B0B52967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift in Sources */,
 				2F11AE142A675615002FFAED /* BiometricLoginView.swift in Sources */,
 				2FF87ABA2A61177A0026DF9E /* MoodCalendarView.swift in Sources */,

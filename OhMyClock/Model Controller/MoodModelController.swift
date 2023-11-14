@@ -126,43 +126,45 @@ class MoodModelController: ObservableObject {
     // MARK: Calculating "Streaks"
     func calculateStreaks() {
         guard !moods.isEmpty else { return }
-        
+
+        let calendar = Calendar.current
         let sortedMoods = moods.sorted(by: { $0.date < $1.date })
-        var currentStreak = 1
-        var bestStreak = 1
-        var lastDate: Date? = sortedMoods.first?.date
-        
-        for mood in sortedMoods.dropFirst() {
-            if Calendar.current.isDate(mood.date, inSameDayAs: lastDate!) {
-                continue // Skip this iteration if the mood was logged on the same day
-            }
-            
-            let dateDiff = Calendar.current.dateComponents([.day], from: lastDate!, to: mood.date).day ?? 0
-            
-            if dateDiff == 1 {
-                currentStreak += 1
-            } else if dateDiff > 1 {
+        var currentStreak = 0
+        var bestStreak = 0
+        var lastDate: Date?
+
+        for mood in sortedMoods {
+            if let lastDateUnwrapped = lastDate {
+                if calendar.isDate(mood.date, inSameDayAs: lastDateUnwrapped) {
+                    continue // Skip if the mood was logged on the same day
+                }
+
+                let dateDiff = calendar.dateComponents([.day], from: lastDateUnwrapped, to: mood.date).day ?? 0
+                if dateDiff == 1 {
+                    currentStreak += 1
+                } else {
+                    currentStreak = 1
+                }
+            } else {
+                // Start the streak if this is the first mood entry
                 currentStreak = 1
             }
-            
-            if currentStreak > bestStreak {
-                bestStreak = currentStreak
-            }
-            
+
             lastDate = mood.date
+            bestStreak = max(bestStreak, currentStreak)
         }
-        
-        if let lastDate = lastDate,
-           !Calendar.current.isDateInToday(lastDate),
-           !Calendar.current.isDateInYesterday(lastDate) {
+
+        // Check if the last mood logged was today or yesterday
+        if let lastMoodDate = sortedMoods.last?.date,
+           !(calendar.isDateInToday(lastMoodDate) || calendar.isDateInYesterday(lastMoodDate)) {
             currentStreak = 0
         }
-        
+
         self.currentStreak = currentStreak
         self.bestStreak = bestStreak
         self.totalDaysLogged = sortedMoods.count
     }
-    
+
     // MARK: Calculate Mood count
     func calculateMoodStates() -> [String: Int] {
         var moodStatesCount = [String: Int]()

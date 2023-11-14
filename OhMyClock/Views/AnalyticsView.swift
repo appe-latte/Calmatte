@@ -347,8 +347,8 @@ struct ChartView: View {
             return "0%" // Handle the case where totalMoodCount is zero or emotion is nil
         }
         let count = moodCount.frequency(for: emotion) // frequency returns a non-optional Int
-        let percentage = (Double(count) / totalMoodCount) * 100
-        return String(format: "%.0f%%", percentage) // Format the percentage to 1 decimal place
+        let roundedPercentage = (Double(count) / totalMoodCount * 100).rounded(.toNearestOrEven)
+        return String(format: "%.0f%%", roundedPercentage)
     }
     
     // Convert counts to percentages of the total
@@ -364,7 +364,8 @@ struct ChartView: View {
         
         return moodData.map { mood in
             var moodCopy = mood
-            moodCopy.count = (mood.count / totalMoodCount) * 100
+            let percentage = (mood.count / totalMoodCount * 100)
+            moodCopy.count = percentage
             return moodCopy
         }
     }
