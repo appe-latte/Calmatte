@@ -26,10 +26,17 @@ struct SettingsView: View {
     
     let screenHeight = UIScreen.main.bounds.height
     let screenWidth = UIScreen.main.bounds.width
-    @State var rowHeight = 65.0
+    @State var rowHeight = 55.0
     
     // MARK: Reminders
-    @AppStorage("RemindersEnabled") private var remindersEnabled = false
+    @AppStorage("RemindersEnabled") private var remindersEnabled: Bool = false
+    @State private var selectedDate: Date = Date()
+    //    @State private var reminderTime: Date = Date()
+    @AppStorage("reminderTime") private var reminderTimeDouble: Double = Date().timeIntervalSince1970
+    private var reminderTime: Date {
+        get { Date(timeIntervalSince1970: reminderTimeDouble) }
+        set { reminderTimeDouble = newValue.timeIntervalSince1970 }
+    }
     
     // MARK: Alert - "Reminders" + "FaceID"
     @State var showRemindersAlert = false
@@ -42,6 +49,7 @@ struct SettingsView: View {
     @State private var appLockMessage = ""
     
     @State private var firstName = ""
+    @Binding var showProfileSheet : Bool
     
     // MARK: Load the current user's first name
     private func loadUserFirstName() {
@@ -120,7 +128,7 @@ struct SettingsView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .foregroundColor(np_white)
-                        .frame(width: 150, height: 180)
+                        .frame(width: 100, height: 130)
                     
                     HStack {
                         Text("Developed with")
@@ -153,7 +161,6 @@ struct SettingsView: View {
                             .kerning(5)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
-                        
                         
                         if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
                             Text("\(UIApplication.appVersion!) (\(buildNumber))")
@@ -212,7 +219,6 @@ struct SettingsView: View {
                 
                 // MARK: Settings
                 VStack(alignment: .center, spacing: 20) {
-                    
                     Spacer()
                     
                     // MARK: Settings
@@ -318,34 +324,56 @@ struct SettingsView: View {
                             .background(np_gray)
                         
                         // MARK: "Reminders"
-                        HStack(spacing: 10) {
-                            Image("notification")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .padding(5)
-                                .foregroundColor(np_orange)
+                        VStack {
+                            HStack(spacing: 10) {
+                                Image("notification")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                    .padding(5)
+                                    .foregroundColor(np_orange)
+                                
+                                Toggle("Enable Reminders", isOn: $remindersEnabled)
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_white)
+                                    .onChange(of: remindersEnabled, perform: { enabled in
+                                        if enabled {
+                                            ReminderManager.requestNotificationAuthorization()
+                                            ReminderManager.sendReminderEnabledNotification()
+                                            remindersTitle = "Reminders Enabled"
+                                            remindersMessage = "You will now receive reminders to log your mood."
+                                        } else {
+                                            ReminderManager.cancelScheduledReminders()
+                                            ReminderManager.sendReminderDisabledNotification()
+                                            remindersTitle = "Reminders Disabled"
+                                            remindersMessage = "You have disabled reminders to log your mood."
+                                        }
+                                        showRemindersAlert = true
+                                    })
+                                    .toggleStyle(SwitchToggleStyle(tint: Color(red: 236 / 255, green: 151 / 255, blue: 48 / 255)))
+                            }
                             
-                            Toggle("Enable Reminders", isOn: $remindersEnabled)
-                                .font(.caption)
-                                .fontWeight(.semibold)
-                                .kerning(5)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                                .onChange(of: remindersEnabled, perform: { enabled in
-                                    if enabled {
-                                        ReminderManager.requestNotificationAuthorization()
-                                        ReminderManager.sendReminderEnabledNotification()
-                                        remindersTitle = "Reminders Enabled"
-                                        remindersMessage = "You will now receive reminders to log your mood."
-                                    } else {
-                                        ReminderManager.cancelScheduledReminders()
-                                        ReminderManager.sendReminderDisabledNotification()
-                                        remindersTitle = "Reminders Disabled"
-                                        remindersMessage = "You have disabled reminders to log your mood."
-                                    }
-                                    showRemindersAlert = true
-                                })
-                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 236 / 255, green: 151 / 255, blue: 48 / 255)))
+                            HStack {
+                                Spacer()
+                                
+                                DatePicker("Reminder Time:", selection: $selectedDate, displayedComponents: .hourAndMinute)
+                                    .font(.system(size: 12))
+                                    .fontWeight(.semibold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_gray)
+                                    .padding(1)
+                                    .tint(np_orange)
+                                    .onChange(of: reminderTime, perform: { _ in
+                                        setDailyReminder()
+                                    })
+                                    .onChange(of: selectedDate, perform: { newValue in
+                                        reminderTimeDouble = newValue.timeIntervalSince1970
+                                        setDailyReminder()
+                                    })
+                            }
                         }
                         .padding(.horizontal, 20)
                         
@@ -400,6 +428,7 @@ struct SettingsView: View {
                         // MARK: "Logout" Button
                         Button(action: {
                             authViewModel.signOut()
+                            showProfileSheet = false
                         }, label: {
                             HStack(spacing: 10) {
                                 Image("logout")
@@ -468,6 +497,7 @@ struct SettingsView: View {
                 
                 Spacer()
             }
+            .onAppear(perform: requestNotificationPermission)
             .toast(isPresenting:$showRemindersAlert) {
                 AlertToast(type: .regular, title: "\(remindersTitle)", subTitle: "\(remindersMessage)")
             }
@@ -477,6 +507,33 @@ struct SettingsView: View {
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    private func requestNotificationPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                print("Permission granted")
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func setDailyReminder() {
+        let content = UNMutableNotificationContent()
+        content.title = "Mood Log Reminder"
+        content.body = "It's time for you to log your mood."
+        
+        let triggerDate = Calendar.current.dateComponents([.hour, .minute], from: reminderTime)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: "moodLogReminder", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 

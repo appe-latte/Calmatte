@@ -37,6 +37,7 @@ struct MainView: View {
     @State var remove = false
     
     @State var showJournalEntry = false
+    @State private var showProfileSheet = false
     
     // Constants
     let locationManager = CLLocationManager()
@@ -227,7 +228,7 @@ struct MainView: View {
             MoodAddDiaryView(moodModelController: self.moodModelController)
         }
         .sheet(isPresented: self.$showSettingsSheet) {
-            SettingsView()
+            SettingsView(showProfileSheet: $showProfileSheet)
                 .environmentObject(authModel) // Use the existing authViewModel
                 .environmentObject(appLockViewModel) // Use the existing appLockViewModel
                 .onAppear {

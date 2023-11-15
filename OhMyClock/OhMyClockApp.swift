@@ -18,13 +18,13 @@ struct OhMyClockApp: App {
     @StateObject var authViewModel = AuthViewModel()
     @StateObject var appLockViewModel = AppLockViewModel()
     @StateObject var moodModelController = MoodModelController()
-
+    
     @Environment(\.scenePhase) var scenePhase
-
+    
     init() {
         FirebaseApp.configure()
     }
-
+    
     var body: some Scene {
         WindowGroup {
             contentView
@@ -35,7 +35,7 @@ struct OhMyClockApp: App {
         }
         .onChange(of: scenePhase, perform: handleScenePhase)
     }
-
+    
     @ViewBuilder
     private var contentView: some View {
         if authViewModel.userSession != nil {
@@ -48,7 +48,7 @@ struct OhMyClockApp: App {
             LoginView()
         }
     }
-
+    
     private func handleScenePhase(_ newScenePhase: ScenePhase) {
         switch newScenePhase {
         case .active:
