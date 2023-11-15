@@ -625,21 +625,40 @@ struct DayStateButton: View {
         }
     }
     
+    var stateIcon: String {
+        switch state {
+        case .amazing:
+            return "amazing"
+        case .good:
+            return "happy-icon"
+        case .okay:
+            return "okay"
+        case .bad:
+            return "bad"
+        case .terrible:
+            return "terrible"
+        }
+    }
+    
     var body: some View {
         Button(action: {
             self.selectedState = self.selectedState == state ? nil : state
         }) {
             ZStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(self.selectedState == state ? fillColor : fillColor.opacity(0.5))
-                    .frame(width: 75, height: 45)
-                    .overlay {
-                        Text(state.displayString)
-                            .font(.system(size: 10))
-                            .fontWeight(.medium)
-                            .textCase(.uppercase)
-                            .foregroundColor(self.selectedState == state ? Color.white : Color.gray)
-                    }
+
+                VStack(spacing: 5) {
+                    Image(self.selectedState == state ? stateIcon : stateIcon)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 60, height: 60)
+                        .foregroundColor(self.selectedState == state ? fillColor : np_arsenic)
+                    
+                    Text(state.displayString)
+                        .font(.system(size: 10))
+                        .fontWeight(.semibold)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                }
             }
         }
     }

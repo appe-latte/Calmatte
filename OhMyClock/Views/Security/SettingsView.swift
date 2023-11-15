@@ -21,7 +21,7 @@ struct SettingsView: View {
     
     // MARK: Authentication
     @EnvironmentObject var appLockViewModel : AppLockViewModel
-    @EnvironmentObject var authViewModel : AuthViewModel
+    @EnvironmentObject var authModel : AuthViewModel
     var isAppLockEnabled = false
     
     let screenHeight = UIScreen.main.bounds.height
@@ -427,7 +427,7 @@ struct SettingsView: View {
                         
                         // MARK: "Logout" Button
                         Button(action: {
-                            authViewModel.signOut()
+                            authModel.signOut()
                             showProfileSheet = false
                         }, label: {
                             HStack(spacing: 10) {
@@ -452,6 +452,7 @@ struct SettingsView: View {
                             }
                         })
                         .padding(.horizontal, 20)
+                        .environmentObject(authModel)
                         
                         Divider()
                             .background(np_gray)
@@ -486,7 +487,7 @@ struct SettingsView: View {
                             Alert(
                                 title: Text("Are you sure you want to delete your account?"),
                                 primaryButton: .destructive(Text("Delete")) {
-                                    authViewModel.deleteUser()
+                                    authModel.deleteUser()
                                 },
                                 secondaryButton: .cancel()
                             )
