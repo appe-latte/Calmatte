@@ -14,6 +14,7 @@ import Charts
 struct AnalyticsView: View {
     @ObservedObject var moodModelController: MoodModelController
     @ObservedObject var authModel = AuthViewModel()
+    @StateObject var progressViewModel = AppViewModel()
     
     let startDate: Date
     let monthsToDisplay: Int
@@ -75,12 +76,18 @@ struct AnalyticsView: View {
                     .padding(.vertical, 10)
                 }
             }
+            
+            if progressViewModel.isLoading {
+                ProgressLoadingView()
+            }
         }
         .background(np_jap_indigo)
         .onAppear {
             if moodModelController.moods.isEmpty {
                 moodModelController.loadFromFirestore()
             }
+            
+            progressViewModel.loadData()
         }
     }
     

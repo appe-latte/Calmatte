@@ -53,47 +53,50 @@ struct ContentView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            switch selectedTab {
-            case 0: MainView(moodModel: moodModel, tabBarSelection: $tabBarSelection)
-            case 1: AnalyticsView(start: Date(), monthsToShow: 2, moodController: MoodModelController()).environmentObject(moodModelController)
-            case 2: MoodDiaryView()
-            case 3: MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
-            case 4: TaskManagerView(taskManager: taskManager)
-            default: Text("Not found")
-            }
-            
-            // MARK: Custom Tab Bar
-            ZStack {
-                Rectangle()
-                    .fill(np_jap_indigo)
-                    .frame(width: width, height: 90)
-                    .cornerRadius(15, corners: [.topRight, .topLeft])
-                
-                HStack {
-                    tabItem(icon: "home", selectedIcon: "home", text: "Home", index: 0)
-                    Spacer()
-                    
-                    tabItem(icon: "report", selectedIcon: "report", text: "Reports", index: 1)
-                    Spacer()
-                    
-                    tabItem(icon: "calendar", selectedIcon: "calendar", text: "Journal", index: 2)
-                    Spacer()
-                    
-                    tabItem(icon: "zen", selectedIcon: "zen", text: "Wellness", index: 3)
-                    Spacer()
-                    
-                    tabItem(icon: "paper", selectedIcon: "paper", text: "Tasks", index: 4)
+        ZStack {
+            VStack(spacing: 0) {
+                switch selectedTab {
+                case 0: MainView(moodModel: moodModel, tabBarSelection: $tabBarSelection)
+                case 1: AnalyticsView(start: Date(), monthsToShow: 2, moodController: MoodModelController()).environmentObject(moodModelController)
+                case 2: MoodDiaryView()
+                case 3: MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
+                case 4: TaskManagerView(taskManager: taskManager)
+                default: Text("Not found")
                 }
-                .padding(.horizontal, 30)
-                .frame(height: 60)
+                
+                // MARK: Custom Tab Bar
+                ZStack {
+                    Rectangle()
+                        .fill(np_jap_indigo)
+                        .frame(width: width, height: 90)
+                        .cornerRadius(15, corners: [.topRight, .topLeft])
+                    
+                    HStack {
+                        tabItem(icon: "home", selectedIcon: "home", text: "Home", index: 0)
+                        Spacer()
+                        
+                        tabItem(icon: "report", selectedIcon: "report", text: "Reports", index: 1)
+                        Spacer()
+                        
+                        tabItem(icon: "calendar", selectedIcon: "calendar", text: "Journal", index: 2)
+                        Spacer()
+                        
+                        tabItem(icon: "zen", selectedIcon: "zen", text: "Wellness", index: 3)
+                        Spacer()
+                        
+                        tabItem(icon: "paper", selectedIcon: "paper", text: "Tasks", index: 4)
+                    }
+                    .padding(.horizontal, 30)
+                    .frame(height: 60)
+                }
             }
+            .background(np_arsenic)
+            .ignoresSafeArea(.all, edges: .bottom)
+            
             if progressView.isLoading {
                             ProgressLoadingView()
                         }
         }
-        .background(np_arsenic)
-        .ignoresSafeArea(.all, edges: .bottom)
         .onAppear {
             progressView.loadData()
                 }

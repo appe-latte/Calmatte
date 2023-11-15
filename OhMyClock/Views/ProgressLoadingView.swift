@@ -12,14 +12,33 @@ import SwiftUI
 struct ProgressLoadingView: View {
     var body: some View {
         ZStack {
-            np_jap_indigo.edgesIgnoringSafeArea(.all)
+            background()
+                .edgesIgnoringSafeArea(.all)
             
-            ProgressView("Loading...")
+            ProgressView("Loading")
                 .progressViewStyle(CircularProgressViewStyle(tint: np_white))
-                .frame(width: 100, height: 100)
+                .frame(width: 150, height: 125)
                 .background(np_arsenic)
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+                .font(.subheadline)
+                .fontWeight(.semibold)
+                .kerning(3)
+                .textCase(.uppercase)
                 .foregroundColor(np_white)
-                .cornerRadius(10)
         }
+    }
+    
+    // MARK: Background
+    @ViewBuilder
+    func background() -> some View {
+        GeometryReader { proxy in
+            let size = proxy.size
+            
+            Rectangle()
+                .fill(np_jap_indigo)
+                .frame(height: size.height)
+                .frame(maxHeight: .infinity, alignment: .bottom)
+        }
+        .ignoresSafeArea()
     }
 }
