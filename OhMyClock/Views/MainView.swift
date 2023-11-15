@@ -25,7 +25,6 @@ struct MainView: View {
     @EnvironmentObject var appLockViewModel: AppLockViewModel
     
     @State private var insightsMode: InsightsType = .today
-    @State private var showProfileSheet = false
     @State private var showSettingsSheet = false
     @State private var temperatureLabel = ""
     @State private var humidityLabel : Double = 0.0
@@ -52,22 +51,29 @@ struct MainView: View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
                 VStack {
-                    // MARK: Profile / Settings Sheet
+                    // MARK: "Share" / Settings Sheets
                     HStack(spacing: 30) {
+                        Button(action: {
+                            shareSheet()
+                        }, label: {
+                            Image("share")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .padding(5)
+                                .foregroundColor(np_white)
+                        })
+                        
                         Spacer()
                         
                         Button(action: {
                             self.showSettingsSheet.toggle()
                         }, label: {
-                            Image(systemName: "gearshape.circle.fill")
-                                .font(.system(size: 25))
-                                .foregroundColor(np_jap_indigo)
+                            Image("settings")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .padding(5)
+                                .foregroundColor(np_white)
                         })
-                        .padding(5)
-                        .frame(width: 30, height: 30)
-                        .background(np_gray)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
                     }
                     .padding(10)
                     
@@ -152,41 +158,24 @@ struct MainView: View {
                     Spacer()
                         .frame(height: 30)
                     
-                    HStack {
-                        // MARK: Profile Sheet
-                        Button(action: {
-                            self.showProfileSheet.toggle()
-                        }, label: {
-                            Image(systemName: "person.circle.fill")
-                                .font(.system(size: 30))
-                                .foregroundColor(np_jap_indigo)
-                        })
-                        .padding(.vertical, 5)
-                        .frame(width: 35, height: 35)
-                        .background(np_gray)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
-                        
-                        // MARK: "Add Journal Entry" Button
-                        Button {
-                            self.txt = ""
-                            self.docID = ""
-                            self.showJournalEntry.toggle()
-                        } label: {
-                            Text("Log Daily Mood")
-                                .font(.footnote)
-                                .fontWeight(.bold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                        }
-                        .padding(.vertical, 5)
-                        .foregroundColor(np_jap_indigo)
-                        .frame(width: width * 0.85, height: 35)
-                        .background(np_white)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
+                    // MARK: "Add Journal Entry" Button
+                    Button {
+                        self.txt = ""
+                        self.docID = ""
+                        self.showJournalEntry.toggle()
+                    } label: {
+                        Text("Log Daily Mood")
+                            .font(.footnote)
+                            .fontWeight(.bold)
+                            .kerning(2)
+                            .textCase(.uppercase)
                     }
-                    .frame(width: width - 40)
+                    .padding(.vertical, 5)
+                    .foregroundColor(np_jap_indigo)
+                    .frame(width: width - 40, height: 35)
+                    .background(np_white)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
                     .padding(.bottom, 30)
                     
                     // MARK: Quote View
@@ -233,11 +222,6 @@ struct MainView: View {
                 }
             }
             .frame(maxWidth: .infinity)
-        }
-        .sheet(isPresented: self.$showProfileSheet) {
-            ProfileView(showProfileSheet: $showProfileSheet)
-                .environmentObject(authModel)
-                .presentationDetents([.height(height * 0.3)])
         }
         .sheet(isPresented: self.$showJournalEntry) {
             MoodAddDiaryView(moodModelController: self.moodModelController)
@@ -318,4 +302,11 @@ struct MainView: View {
             return "good night,"
         }
     }
+}
+
+// MARK: "Share sheet" function
+func shareSheet() {
+    guard let data = URL(string: "https://apps.apple.com/us/app/ohmyclock/id1667124410") else { return }
+    let av = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+    UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
 }

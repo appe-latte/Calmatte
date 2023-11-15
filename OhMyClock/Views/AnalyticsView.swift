@@ -76,17 +76,12 @@ struct AnalyticsView: View {
                     .padding(.vertical, 10)
                 }
             }
-            
-            if progressViewModel.isLoading {
-                ProgressLoadingView()
-            }
         }
         .background(np_jap_indigo)
         .onAppear {
             if moodModelController.moods.isEmpty {
                 moodModelController.loadFromFirestore()
             }
-            
             progressViewModel.loadData()
         }
     }

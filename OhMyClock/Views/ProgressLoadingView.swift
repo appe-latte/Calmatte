@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 struct ProgressLoadingView: View {
     var body: some View {
         ZStack {
@@ -36,7 +35,6 @@ struct ProgressLoadingView: View {
             
             Rectangle()
                 .fill(np_jap_indigo)
-                .frame(height: size.height)
                 .frame(maxHeight: .infinity, alignment: .bottom)
         }
         .ignoresSafeArea()

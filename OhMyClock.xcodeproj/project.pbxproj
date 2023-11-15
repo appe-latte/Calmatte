@@ -42,7 +42,6 @@
 		2F5B2EC82AFC00DF00778727 /* DayStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B2EC72AFC00DF00778727 /* DayStateViewModel.swift */; };
 		2F6083432AFACDA1004A7F95 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */; };
 		2F64DE362A8161B9007917D2 /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64DE352A8161B9007917D2 /* ReminderManager.swift */; };
-		2F690F7C2A815137008A8ACC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F690F7B2A815137008A8ACC /* ProfileView.swift */; };
 		2F919D332A5DD83000291071 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F919D322A5DD83000291071 /* Day.swift */; };
 		2F919D352A5DD8EA00291071 /* DiaryColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F919D342A5DD8EA00291071 /* DiaryColors.swift */; };
 		2F9EBB032A6489F900DC806A /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EBB022A6489F900DC806A /* Quote.swift */; };
@@ -122,7 +121,6 @@
 		2F5B2EC72AFC00DF00778727 /* DayStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStateViewModel.swift; sourceTree = "<group>"; };
 		2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		2F64DE352A8161B9007917D2 /* ReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderManager.swift; sourceTree = "<group>"; };
-		2F690F7B2A815137008A8ACC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2F8838302A0AB1C800840F68 /* OhMyClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhMyClock.entitlements; sourceTree = "<group>"; };
 		2F919D322A5DD83000291071 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		2F919D342A5DD8EA00291071 /* DiaryColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryColors.swift; sourceTree = "<group>"; };
@@ -381,7 +379,6 @@
 				2FF50126296EA2B400813D40 /* MeditationView.swift */,
 				2F434BAE296F60FE00698C1A /* PlayerView.swift */,
 				2F9EBB062A648A8000DC806A /* QuoteView.swift */,
-				2F690F7B2A815137008A8ACC /* ProfileView.swift */,
 				2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */,
 				2FCD005D2A671647000AD649 /* ProgressLoadingView.swift */,
 				2F4AB6252A5DDCF000F6332F /* Diary */,
@@ -546,7 +543,6 @@
 				2F438EF72A6B164B00CDF33D /* PasswordResetService.swift in Sources */,
 				2FC5643D2A68B67300664FE0 /* SceneDelegate.swift in Sources */,
 				2FFBD0262A5DD7B8002C258B /* Month.swift in Sources */,
-				2F690F7C2A815137008A8ACC /* ProfileView.swift in Sources */,
 				2FB2C4FC2A37B3C4006D5A30 /* TaskCategory.swift in Sources */,
 				2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */,
 				2F919D332A5DD83000291071 /* Day.swift in Sources */,

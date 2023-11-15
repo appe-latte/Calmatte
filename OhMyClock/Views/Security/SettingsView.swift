@@ -41,6 +41,43 @@ struct SettingsView: View {
     @State private var appLockTitle = ""
     @State private var appLockMessage = ""
     
+    @State private var firstName = ""
+    
+    // MARK: Load the current user's first name
+    private func loadUserFirstName() {
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        Firestore.firestore().collection("users").document(userId).getDocument { document, error in
+            if let document = document, document.exists, let data = document.data(), let name = data["first_name"] as? String {
+                firstName = name
+            } else if let error = error {
+                print("Error fetching user: \(error)")
+            }
+        }
+    }
+    
+    // MARK: Alert Toast
+    @State var showDeleteAlert = false
+    @State private var errTitle = ""
+    @State private var errMessage = ""
+    
+    // MARK: Save the updated first name
+    private func saveFirstName() {
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        Firestore.firestore().collection("users").document(userId).updateData([
+            "first_name": firstName
+        ]) { error in
+            if let error = error {
+                errTitle = "Error"
+                errMessage = "An error occurred: \(error.localizedDescription)"
+                showAlert = true
+            } else {
+                errTitle = "Success"
+                errMessage = "Successfully updated your name."
+                showAlert = true
+            }
+        }
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -164,27 +201,16 @@ struct SettingsView: View {
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(np_gray)
                         })
-                        
-                        // MARK: "Share This App"
-                        //                        Button(action: {
-                        //                            shareSheet()
-                        //                        }, label: {
-                        //                            Text("Share")
-                        //                                .font(.system(size: 11))
-                        //                                .fontWeight(.bold)
-                        //                                .kerning(3)
-                        //                                .textCase(.uppercase)
-                        //                                .foregroundColor(np_white)
-                        //                        })
                     }
                     .padding(5)
                     
                     Spacer()
                 }
-                .padding(.top, 75)
+                .padding(.top, 25)
                 
                 Spacer()
                 
+                // MARK: Settings
                 VStack(alignment: .center, spacing: 20) {
                     
                     Spacer()
@@ -204,6 +230,46 @@ struct SettingsView: View {
                     .padding()
                     
                     Group {
+                        // MARK: "edit" name
+                        VStack {
+                            HStack {
+                                Image("edit")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                    .padding(5)
+                                    .foregroundColor(np_turq)
+                                
+                                Text("Edit Name: ")
+                                    .font(.footnote)
+                                    .kerning(3)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_white)
+                                
+                                TextField("\(firstName)", text: $firstName)
+                                    .font(.footnote)
+                                    .kerning(3)
+                                    .foregroundColor(np_white)
+                                
+                                Spacer()
+                                
+                                Button(action: {
+                                    saveFirstName()
+                                }, label: {
+                                    Text("Save")
+                                        .font(.system(size: 10))
+                                        .bold()
+                                        .kerning(3)
+                                        .textCase(.uppercase)
+                                        .foregroundColor(np_turq)
+                                })
+                            }
+                        }
+                        .onAppear(perform: loadUserFirstName)
+                        .padding(.horizontal, 20)
+                        
+                        Divider()
+                            .background(np_gray)
+                        
                         // MARK: FaceID ON/OFF
                         VStack {
                             HStack {
@@ -257,7 +323,7 @@ struct SettingsView: View {
                                 .resizable()
                                 .frame(width: 25, height: 25)
                                 .padding(5)
-                                .foregroundColor(np_turq)
+                                .foregroundColor(np_orange)
                             
                             Toggle("Enable Reminders", isOn: $remindersEnabled)
                                 .font(.caption)
@@ -279,7 +345,7 @@ struct SettingsView: View {
                                     }
                                     showRemindersAlert = true
                                 })
-                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 62 / 255, green: 201 / 255, blue: 193 / 255)))
+                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 236 / 255, green: 151 / 255, blue: 48 / 255)))
                         }
                         .padding(.horizontal, 20)
                         
@@ -331,19 +397,19 @@ struct SettingsView: View {
                         Divider()
                             .background(np_gray)
                         
-                        // MARK: "Write A Review"
+                        // MARK: "Logout" Button
                         Button(action: {
-                            requestReview()
+                            authViewModel.signOut()
                         }, label: {
                             HStack(spacing: 10) {
-                                Image("review")
+                                Image("logout")
                                     .resizable()
                                     .frame(width: 25, height: 25)
                                     .padding(5)
-                                    .foregroundColor(np_orange)
+                                    .foregroundColor(np_turq)
                                 
                                 HStack {
-                                    Text("Write A Review")
+                                    Text("Logout")
                                         .font(.caption)
                                         .fontWeight(.semibold)
                                         .kerning(5)
@@ -357,6 +423,45 @@ struct SettingsView: View {
                             }
                         })
                         .padding(.horizontal, 20)
+                        
+                        Divider()
+                            .background(np_gray)
+                        
+                        // MARK: "Logout" Button
+                        Button(action: {
+                            self.showDeleteAlert = true
+                        }, label: {
+                            HStack(spacing: 10) {
+                                Image("trash")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                    .padding(5)
+                                    .foregroundColor(np_red)
+                                
+                                HStack {
+                                    Text("Delete My Account")
+                                        .font(.caption)
+                                        .fontWeight(.semibold)
+                                        .kerning(5)
+                                        .textCase(.uppercase)
+                                        .foregroundColor(np_white)
+                                    
+                                    Spacer()
+                                }
+                                
+                                Image(systemName: "chevron.right")
+                            }
+                        })
+                        .padding(.horizontal, 20)
+                        .alert(isPresented:$showDeleteAlert) {
+                            Alert(
+                                title: Text("Are you sure you want to delete your account?"),
+                                primaryButton: .destructive(Text("Delete")) {
+                                    authViewModel.deleteUser()
+                                },
+                                secondaryButton: .cancel()
+                            )
+                        }
                     }
                 }
                 .padding(.bottom, 20)
@@ -380,11 +485,4 @@ extension UIApplication {
     static var appVersion: String? {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
-}
-
-// MARK: "Share sheet" function
-func shareSheet() {
-    guard let data = URL(string: "https://apps.apple.com/us/app/ohmyclock/id1667124410") else { return }
-    let av = UIActivityViewController(activityItems: [data], applicationActivities: nil)
-    UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
 }
