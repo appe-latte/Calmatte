@@ -83,8 +83,8 @@ struct MainView: View {
                         HStack {
                             Text(greeting)
                                 .scaledToFill()
-                                .font(.system(size: 24))
-                                .fontWeight(.bold)
+                                .font(.custom("Butler", size: 27))
+//                                .fontWeight(.bold)
                                 .kerning(5)
                                 .minimumScaleFactor(0.5)
                                 .textCase(.uppercase)
@@ -97,7 +97,7 @@ struct MainView: View {
                         HStack {
                             Text("\(firstName).")
                                 .scaledToFill()
-                                .font(.system(size: 22))
+                                .font(.custom("Butler", size: 36))
                                 .fontWeight(.bold)
                                 .kerning(5)
                                 .minimumScaleFactor(0.5)
@@ -182,7 +182,7 @@ struct MainView: View {
                     // MARK: Quote View
                     VStack {
                         HStack {
-                            Label("Quote of the day", systemImage: "")
+                            Label("Daily Affirmation:", systemImage: "")
                                 .font(.footnote)
                                 .fontWeight(.semibold)
                                 .kerning(2)
@@ -193,7 +193,7 @@ struct MainView: View {
                         }
                         .padding(.horizontal)
                         
-                        QuoteView()
+                        AffirmationView()
                     }
                     
                     // MARK: Month View
@@ -281,7 +281,7 @@ struct MainView: View {
     }
     
     // MARK: Salutation function
-    func getTime()->String {
+    func getTime() -> String {
         let format = DateFormatter()
         format.dateFormat = "hh:mm a"
         

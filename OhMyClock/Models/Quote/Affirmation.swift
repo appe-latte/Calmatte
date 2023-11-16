@@ -9,12 +9,11 @@ import Foundation
 import SwiftUI
 import UIKit
 
-struct Quote : Hashable, Decodable {
-    let quote : String
-    let name : String
+struct Affirmation : Hashable, Decodable {
+    let affirmation : String
 }
 
-let quoteData: [Quote] = load("quotes.json")
+let affirmData: [Affirmation] = load("affirmation.json")
 
 func load<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T {
     let data: Data

@@ -567,7 +567,6 @@ struct MultiLineTextField: UIViewRepresentable {
         }
         
         func textViewDidChange(_ textView: UITextView) {
-            
             self.parent.txt = textView.text
             
             // MARK: Character length calculation
@@ -645,7 +644,6 @@ struct DayStateButton: View {
             self.selectedState = self.selectedState == state ? nil : state
         }) {
             ZStack {
-
                 VStack(spacing: 5) {
                     Image(self.selectedState == state ? stateIcon : stateIcon)
                         .resizable()

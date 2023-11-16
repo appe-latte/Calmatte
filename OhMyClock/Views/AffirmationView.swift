@@ -7,19 +7,19 @@
 
 import SwiftUI
 
-struct QuoteView: View {
-    let quotes : [Quote] = quoteData
+struct AffirmationView: View {
+    let affirmation : [Affirmation] = affirmData
     
     // MARK: 'Quote of the day' generation
-    var quoteOfTheDay: Quote {
+    var dailyAffirmation: Affirmation {
         let dayOfYear = Calendar.current.ordinality(of: .day, in: .year, for: Date())
-        let index = (dayOfYear! - 1) % quotes.count
-        return quotes[index]
+        let index = (dayOfYear! - 1) % affirmation.count
+        return affirmation[index]
     }
     
     var body: some View {
         VStack {
-            QuoteCard(quote: quoteOfTheDay.quote, author: quoteOfTheDay.name).padding(5)
+            AffirmationCard(affirmation: dailyAffirmation.affirmation).padding(5)
         }
         .background(np_jap_indigo)
         .cornerRadius(10)
@@ -30,9 +30,8 @@ struct QuoteView: View {
 }
 
 // MARK: Quote Card
-struct QuoteCard : View {
-    var quote : String
-    var author : String
+struct AffirmationCard : View {
+    var affirmation : String
     
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
@@ -52,8 +51,8 @@ struct QuoteCard : View {
                 .padding(.bottom, 5)
                 .foregroundColor(np_white)
             
-            Text(#""\#(quote)""#)
-                .font(.footnote)
+            Text(#""\#(affirmation)""#)
+                .font(.custom("Analogist", size: 20))
                 .fontWeight(.semibold)
                 .kerning(3)
                 .textCase(.uppercase)
@@ -61,23 +60,13 @@ struct QuoteCard : View {
                 .foregroundColor(np_white)
                 .multilineTextAlignment(.center)
                 .padding()
-            
-            Divider()
-            
-            Text("\(author)")
-                .font(.system(size: 10))
-                .fontWeight(.bold)
-                .kerning(5)
-                .textCase(.uppercase)
-                .foregroundColor(np_white)
-                .padding(.top, 15)
         }
-        .frame(width: screenWidth - 40, height: screenHeight * 0.3)
+        .frame(width: screenWidth - 40, height: screenHeight * 0.3, alignment: .center)
     }
 }
 
 struct QuoteView_Previews : PreviewProvider {
     static var previews: some View {
-        QuoteView()
+        AffirmationView()
     }
 }
