@@ -657,7 +657,7 @@ struct DayStateButton: View {
                         .font(.system(size: 10))
                         .fontWeight(.semibold)
                         .textCase(.uppercase)
-                        .foregroundColor(np_white)
+                        .foregroundColor(self.selectedState == state ? fillColor : np_white)
                 }
             }
         }

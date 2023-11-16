@@ -31,8 +31,6 @@ struct ProgressLoadingView: View {
     @ViewBuilder
     func background() -> some View {
         GeometryReader { proxy in
-            let size = proxy.size
-            
             Rectangle()
                 .fill(np_jap_indigo)
                 .frame(maxHeight: .infinity, alignment: .bottom)
