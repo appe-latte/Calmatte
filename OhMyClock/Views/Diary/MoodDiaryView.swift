@@ -99,11 +99,8 @@ struct MoodDiaryView : View {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
                         Text("Mood Timeline")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .kerning(2)
+                            .font(.custom("Butler", size: 27))
                             .minimumScaleFactor(0.5)
-                            .textCase(.uppercase)
                             .foregroundColor(np_white)
                         
                         Spacer()
@@ -114,22 +111,21 @@ struct MoodDiaryView : View {
                             self.docID = ""
                             self.show.toggle()
                         }, label: {
-                            Image(systemName: "plus.circle.fill")
-                                .font(.system(size: 30))
-                                .foregroundColor(np_jap_indigo)
+                            Image("add")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 40, height: 40)
+                                .foregroundColor(np_white)
+                                .padding(5)
                         })
+                        .frame(width: 40, height: 40)
                         .padding(5)
-                        .frame(width: 35, height: 35)
-                        .background(np_white)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
                     }
                     
                     // MARK: Description
                     Text("\(diaryDescription)")
-                        .font(.system(size: 10))
+                        .font(.custom("Butler", size: 16))
                         .kerning(3)
-                        .textCase(.uppercase)
                         .minimumScaleFactor(0.5)
                         .foregroundColor(np_gray)
                 }

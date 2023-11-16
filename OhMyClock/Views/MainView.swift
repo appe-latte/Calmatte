@@ -84,7 +84,7 @@ struct MainView: View {
                             Text(greeting)
                                 .scaledToFill()
                                 .font(.custom("Butler", size: 27))
-//                                .fontWeight(.bold)
+                                .fontWeight(.bold)
                                 .kerning(5)
                                 .minimumScaleFactor(0.5)
                                 .textCase(.uppercase)
@@ -111,46 +111,36 @@ struct MainView: View {
                         HStack {
                             HStack {
                                 Text("Temp.")
-                                    .font(.system(size: 8))
-                                    .fontWeight(.bold)
                                     .kerning(5)
                                     .textCase(.uppercase)
                                 
                                 Text("\(temperatureLabel)")
-                                    .font(.system(size: 8))
-                                    .fontWeight(.bold)
                                     .kerning(5)
                                     .textCase(.uppercase)
                             }
                             
                             HStack {
                                 Text("Hum.")
-                                    .font(.system(size: 8))
-                                    .fontWeight(.bold)
                                     .kerning(5)
                                     .textCase(.uppercase)
                                 
                                 Text("\(String(format: "%.0f", humidityLabel * 100))%")
-                                    .font(.system(size: 8))
-                                    .fontWeight(.bold)
                                     .kerning(5)
                                     .textCase(.uppercase)
                             }
                             
                             HStack {
                                 Text("•")
-                                    .font(.system(size: 8))
-                                    .fontWeight(.bold)
                                     .kerning(5)
                                     .textCase(.uppercase)
                                 
                                 Text("\(conditionLabel)")
-                                    .font(.system(size: 8))
-                                    .fontWeight(.bold)
                                     .kerning(5)
                                     .textCase(.uppercase)
                             }
                         }
+                        .font(.system(size: 8))
+                        .fontWeight(.bold)
                         .frame(width: width, height: 20)
                         .background(np_white)
                         .foregroundColor(np_jap_indigo)
@@ -233,7 +223,9 @@ struct MainView: View {
                 .environmentObject(appLockViewModel) // Use the existing appLockViewModel
                 .onAppear {
                     if UserDefaults.standard.bool(forKey: "RemindersEnabled") {
-                        ReminderManager.scheduleReminders()
+                        let reminderTimeDouble = UserDefaults.standard.double(forKey: "reminderTime")
+                        let reminderTime = Date(timeIntervalSince1970: reminderTimeDouble)
+                        ReminderManager.scheduleReminders(for: reminderTime)
                     } else {
                         ReminderManager.cancelScheduledReminders()
                     }
@@ -293,9 +285,7 @@ struct MainView: View {
         switch hour {
         case 5..<12:
             return "good morning,"
-        case 12:
-            return "mid-day,"
-        case 13..<17:
+        case 12..<17:
             return "good afternoon,"
         case 17..<22:
             return "good evening,"

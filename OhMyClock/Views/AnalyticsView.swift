@@ -66,10 +66,6 @@ struct AnalyticsView: View {
                                     selectableDays: selectableDays
                                 )
                             )
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .kerning(3)
-                            .textCase(.uppercase)
                             .foregroundColor(np_white)
                         }
                     }
@@ -78,12 +74,6 @@ struct AnalyticsView: View {
             }
         }
         .background(np_jap_indigo)
-        .onAppear {
-            if moodModelController.moods.isEmpty {
-                moodModelController.loadFromFirestore()
-            }
-            progressViewModel.loadData()
-        }
     }
     
     // MARK: Background
@@ -110,11 +100,9 @@ struct AnalyticsView: View {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
                         Text("\(firstName)'s Report")
-                            .font(.title)
-                            .fontWeight(.bold)
+                            .font(.custom("Butler", size: 27))
                             .kerning(2)
                             .minimumScaleFactor(0.5)
-                            .textCase(.uppercase)
                             .foregroundColor(np_white)
                         
                         Spacer()
@@ -122,9 +110,8 @@ struct AnalyticsView: View {
                     
                     // MARK: Description
                     Text("\(reportDescription)")
-                        .font(.system(size: 10))
+                        .font(.custom("Butler", size: 16))
                         .kerning(3)
-                        .textCase(.uppercase)
                         .minimumScaleFactor(0.5)
                         .foregroundColor(np_gray)
                 }
@@ -182,8 +169,7 @@ struct StreakView: View {
                     // MARK: Current Streak
                     VStack(alignment: .center, spacing: 15) {
                         Text("Current")
-                            .font(.system(size: 10))
-                            .fontWeight(.semibold)
+                            .font(.custom("Butler", size: 12))
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
@@ -193,10 +179,8 @@ struct StreakView: View {
                             .fontWeight(.semibold)
                         
                         Text("\(moodModelController.currentStreak)")
-                            .font(.title)
-                            .fontWeight(.heavy)
-                            .kerning(3)
-                            .textCase(.uppercase)
+                            .font(.custom("Butler", size: 30))
+                            .foregroundColor(np_white)
                             .foregroundColor(np_white)
                     }
                     
@@ -207,7 +191,7 @@ struct StreakView: View {
                     // MARK: Best Streak
                     VStack(alignment: .center, spacing: 15) {
                         Text("Best")
-                            .font(.system(size: 10))
+                            .font(.custom("Butler", size: 12))
                             .fontWeight(.semibold)
                             .kerning(3)
                             .textCase(.uppercase)
@@ -218,10 +202,8 @@ struct StreakView: View {
                             .fontWeight(.semibold)
                         
                         Text("\(moodModelController.bestStreak)")
-                            .font(.title)
-                            .fontWeight(.heavy)
-                            .kerning(3)
-                            .textCase(.uppercase)
+                            .font(.custom("Butler", size: 30))
+                            .foregroundColor(np_white)
                             .foregroundColor(np_white)
                     }
                     
@@ -232,7 +214,7 @@ struct StreakView: View {
                     // MARK: Best Streak
                     VStack(alignment: .center, spacing: 15) {
                         Text("Total")
-                            .font(.system(size: 10))
+                            .font(.custom("Butler", size: 12))
                             .fontWeight(.semibold)
                             .kerning(3)
                             .textCase(.uppercase)
@@ -243,10 +225,7 @@ struct StreakView: View {
                             .fontWeight(.semibold)
                         
                         Text("\(moodModelController.totalDaysLogged)")
-                            .font(.title)
-                            .fontWeight(.heavy)
-                            .kerning(3)
-                            .textCase(.uppercase)
+                            .font(.custom("Butler", size: 30))
                             .foregroundColor(np_white)
                     }
                 }
@@ -273,7 +252,8 @@ struct LastMonthView: View {
                     Spacer()
                     
                     Text("\(month.monthNameYear)")
-                        .font(.title)
+                        .font(.custom("Butler", size: 24))
+                        .textCase(.uppercase)
                         .scaledToFill()
                         .minimumScaleFactor(0.5)
                 }
@@ -283,10 +263,7 @@ struct LastMonthView: View {
                 HStack {
                     GridStack(rows: 1, columns: 7) { row, col in
                         Text(weekdays[col])
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .kerning(3)
-                            .textCase(.uppercase)
+                            .font(.custom("Butler", size: 18))
                             .foregroundColor(np_white)
                     }
                 }
@@ -301,10 +278,7 @@ struct LastMonthView: View {
                                     day: month.monthDays[col+1]![row])
                     }
                 }
-                .font(.headline)
-                .fontWeight(.bold)
-                .kerning(3)
-                .textCase(.uppercase)
+                .font(.custom("Butler", size: 20))
             }
             .padding(.bottom, 10)
         }

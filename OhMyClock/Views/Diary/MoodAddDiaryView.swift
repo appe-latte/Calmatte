@@ -66,7 +66,7 @@ struct MoodAddDiaryView: View {
                                 // MARK: Emotion Selection
                                 VStack {
                                     HStack {
-                                        Label("Emotions", systemImage: "")
+                                        Label("How are you feeling?", systemImage: "")
                                             .font(.footnote)
                                             .fontWeight(.semibold)
                                             .kerning(3)

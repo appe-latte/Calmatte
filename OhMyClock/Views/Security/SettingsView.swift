@@ -92,148 +92,10 @@ struct SettingsView: View {
                 np_jap_indigo
                     .ignoresSafeArea()
                 
-                VStack {
-                    HStack {
-                        // MARK: "Developer Website"
-                        Button(action: {
-                            openURL(URL(string: "https://www.appe-latte.ca")!)
-                        }, label: {
-                            HStack(spacing: 5) {
-                                Image("country")
-                                    .resizable()
-                                    .frame(width: 15, height: 15)
-                                    .foregroundColor(np_white)
-                                
-                                Text("our website")
-                                    .font(.caption)
-                                    .fontWeight(.semibold)
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                                    .foregroundColor(np_white)
-                            }
-                        })
-                        
-                        Spacer()
-                    }
-                    .padding()
-                    
-                    Spacer()
-                }
-                
-                Spacer()
-                
-                // MARK: Logo
-                VStack(alignment: .center, spacing: 3) {
-                    Image("logo-text")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .foregroundColor(np_white)
-                        .frame(width: 100, height: 130)
-                    
-                    HStack {
-                        Text("Developed with")
-                            .font(.system(size: 8))
-                            .fontWeight(.thin)
-                            .kerning(4)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                        
-                        Text("\(Image(systemName: "heart.fill"))")
-                            .font(.system(size: 8))
-                            .fontWeight(.thin)
-                            .kerning(4)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_red)
-                        
-                        Text("by: Appè Latte")
-                            .font(.system(size: 8))
-                            .fontWeight(.thin)
-                            .kerning(4)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                    }
-                    
-                    // MARK: App Version + Build Number
-                    HStack(spacing: 10) {
-                        Text("App Version:")
-                            .font(.system(size: 7.5))
-                            .fontWeight(.thin)
-                            .kerning(5)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                        
-                        if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-                            Text("\(UIApplication.appVersion!) (\(buildNumber))")
-                                .font(.system(size: 7.5))
-                                .fontWeight(.regular)
-                                .kerning(9.5)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                        }
-                    }
-                    .padding(.horizontal, 20)
-                    
-                    // MARK: Social Media links
-                    HStack(spacing: 10) {
-                        
-                        // MARK: Instagram
-                        Button(action: {
-                            openURL(URL(string: "https://www.instagram.com/appe.latte")!)
-                        }, label: {
-                            Image("instagram")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(np_gray)
-                        })
-                        
-                        // MARK: Facebook
-                        Button(action: {
-                            openURL(URL(string: "https://www.facebook.com/appelatteltd")!)
-                        }, label: {
-                            Image("facebook")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(np_gray)
-                        })
-                        
-                        // MARK: Twitter
-                        Button(action: {
-                            openURL(URL(string: "https://www.twitter.com/appe_latte")!)
-                        }, label: {
-                            Image("twitter")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(np_gray)
-                        })
-                    }
-                    .padding(5)
-                    
-                    Spacer()
-                }
-                .padding(.top, 25)
-                
-                Spacer()
-                
                 // MARK: Settings
                 VStack(alignment: .center, spacing: 20) {
-                    Spacer()
-                    
-                    // MARK: Settings
-                    HStack {
-                        Label("Settings", systemImage: "info.bubble")
-                            .font(.caption)
-                            .fontWeight(.bold)
-                            .kerning(5)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                        
-                        Spacer()
-                    }
-                    .frame(width: screenWidth - 30)
-                    .padding()
+                    HeaderView()
+                        .padding(.top, 30)
                     
                     Group {
                         // MARK: "edit" name
@@ -312,7 +174,6 @@ struct SettingsView: View {
                                     .kerning(5)
                                     .textCase(.uppercase)
                                     .foregroundColor(np_gray)
-                                    .padding(1)
                                     .padding(.leading, 20)
                                 
                                 Spacer()
@@ -340,7 +201,7 @@ struct SettingsView: View {
                                     .foregroundColor(np_white)
                                     .onChange(of: remindersEnabled, perform: { enabled in
                                         if enabled {
-                                            ReminderManager.requestNotificationAuthorization()
+                                            ReminderManager.requestNotificationAuthorization(reminderTime: reminderTime)
                                             ReminderManager.sendReminderEnabledNotification()
                                             remindersTitle = "Reminders Enabled"
                                             remindersMessage = "You will now receive reminders to log your mood."
@@ -359,12 +220,12 @@ struct SettingsView: View {
                                 Spacer()
                                 
                                 DatePicker("Reminder Time:", selection: $selectedDate, displayedComponents: .hourAndMinute)
-                                    .font(.system(size: 12))
+                                    .font(.system(size: 8))
                                     .fontWeight(.semibold)
                                     .kerning(5)
                                     .textCase(.uppercase)
                                     .foregroundColor(np_gray)
-                                    .padding(1)
+                                    .padding(.leading, 20)
                                     .tint(np_orange)
                                     .onChange(of: reminderTime, perform: { _ in
                                         setDailyReminder()
@@ -492,11 +353,105 @@ struct SettingsView: View {
                                 secondaryButton: .cancel()
                             )
                         }
+                        
+                        Divider()
+                            .background(np_gray)
                     }
+                    
+                    // MARK: Logo
+                    VStack(alignment: .center, spacing: 3) {
+                        Image("logo-text")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .foregroundColor(np_white)
+                            .frame(width: 100, height: 130)
+                        
+                        HStack {
+                            Text("Developed with")
+                                .font(.system(size: 8))
+                                .fontWeight(.thin)
+                                .kerning(4)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                            
+                            Text("\(Image(systemName: "heart.fill"))")
+                                .font(.system(size: 8))
+                                .fontWeight(.thin)
+                                .kerning(4)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_red)
+                            
+                            Text("by: Appè Latte")
+                                .font(.system(size: 8))
+                                .fontWeight(.thin)
+                                .kerning(4)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                        }
+                        
+                        // MARK: App Version + Build Number
+                        HStack(spacing: 10) {
+                            Text("App Version:")
+                                .font(.system(size: 7.5))
+                                .fontWeight(.thin)
+                                .kerning(5)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                            
+                            if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                                Text("\(UIApplication.appVersion!) (\(buildNumber))")
+                                    .font(.system(size: 7.5))
+                                    .fontWeight(.regular)
+                                    .kerning(9.5)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_white)
+                            }
+                        }
+                        .padding(.horizontal, 20)
+                        
+                        // MARK: Social Media links
+                        HStack(spacing: 10) {
+                            
+                            // MARK: Instagram
+                            Button(action: {
+                                openURL(URL(string: "https://www.instagram.com/appe.latte")!)
+                            }, label: {
+                                Image("instagram")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(np_gray)
+                            })
+                            
+                            // MARK: Facebook
+                            Button(action: {
+                                openURL(URL(string: "https://www.facebook.com/appelatteltd")!)
+                            }, label: {
+                                Image("facebook")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(np_gray)
+                            })
+                            
+                            // MARK: Twitter
+                            Button(action: {
+                                openURL(URL(string: "https://www.twitter.com/appe_latte")!)
+                            }, label: {
+                                Image("twitter")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(np_gray)
+                            })
+                        }
+                        .padding(5)
+                        
+                        Spacer()
+                    }
+                    .padding(.top, 25)
                 }
-                .padding(.bottom, 20)
-                
-                Spacer()
+                .frame(alignment: .topLeading)
             }
             .onAppear(perform: requestNotificationPermission)
             .toast(isPresenting:$showRemindersAlert) {
@@ -508,6 +463,34 @@ struct SettingsView: View {
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    // MARK: "Header View"
+    @ViewBuilder
+    func HeaderView() -> some View {
+        VStack {
+            HStack {
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack {
+                        Text("Profile Settings")
+                            .font(.custom("Butler", size: 27))
+                            .minimumScaleFactor(0.5)
+                            .foregroundColor(np_white)
+                        
+                        Spacer()
+                    }
+                }
+                .hAlign(.leading)
+            }
+        }
+        .padding(15)
+        .background {
+            VStack(spacing: 0) {
+                np_jap_indigo
+            }
+            .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
+            .ignoresSafeArea()
+        }
     }
     
     private func requestNotificationPermission() {

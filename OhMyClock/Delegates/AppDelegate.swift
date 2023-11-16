@@ -26,8 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         application.registerForRemoteNotifications()
         
+        // Fetch the reminder time from UserDefaults
+        let reminderTimeDouble = UserDefaults.standard.double(forKey: "reminderTime")
+        let selectedReminderTime = reminderTimeDouble > 0 ? Date(timeIntervalSince1970: reminderTimeDouble) : Date()
+        
         // Request user authorization for notifications
-        requestNotificationAuthorization(application: application)
+        requestNotificationAuthorization(application: application, selectedReminderTime: selectedReminderTime)
         
         // Set the delegate for user notification center
         UNUserNotificationCenter.current().delegate = self
@@ -36,11 +40,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     // MARK: - Notification Authorization
-    private func requestNotificationAuthorization(application: UIApplication) {
+    private func requestNotificationAuthorization(application: UIApplication, selectedReminderTime: Date) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             if granted {
                 // User granted permission
-                ReminderManager.scheduleReminders()
+                ReminderManager.scheduleReminders(for: selectedReminderTime)
             } else {
                 // User denied permission or something went wrong
                 // Handle accordingly

@@ -69,11 +69,8 @@ struct TaskManagerView: View {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
                         Text("Daily Tasks")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .kerning(5)
+                            .font(.custom("Butler", size: 27))
                             .minimumScaleFactor(0.5)
-                            .textCase(.uppercase)
                             .foregroundColor(np_white)
                         
                         Spacer()
@@ -82,29 +79,25 @@ struct TaskManagerView: View {
                         Button(action: {
                             addNewTask.toggle()
                         }, label: {
-                            Image(systemName: "plus.circle.fill")
-                                .font(.system(size: 30))
-                                .foregroundColor(np_jap_indigo)
+                            Image("add")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 40, height: 40)
+                                .foregroundColor(np_white)
+                                .padding(5)
                         })
-                        .padding(5)
-                        .frame(width: 35, height: 35)
-                        .background(np_white)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
+                        .frame(width: 40, height: 40)
                     }
                     
                     Text(Date().formatted(.dateTime.month().day().year()))
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .kerning(5)
-                        .textCase(.uppercase)
+                        .font(.custom("Butler", size: 24))
+                        .minimumScaleFactor(0.5)
                         .foregroundColor(np_white)
                     
                     // MARK: Description
                     Text("\(milestoneDescription)")
-                        .font(.system(size: 10))
+                        .font(.custom("Butler", size: 16))
                         .kerning(3)
-                        .textCase(.uppercase)
                         .minimumScaleFactor(0.5)
                         .foregroundColor(np_gray)
                 }

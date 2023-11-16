@@ -33,7 +33,7 @@ struct MoodRowView: View {
                                 .fontWeight(.semibold)
                                 .textCase(.uppercase)
                                 .minimumScaleFactor(0.5)
-                                .foregroundColor(np_jap_indigo)
+                                .foregroundColor(np_white)
                         }
                     }
                 

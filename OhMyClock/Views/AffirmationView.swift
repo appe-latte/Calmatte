@@ -41,13 +41,13 @@ struct AffirmationCard : View {
             Image("right-quote")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 150, height: 150)
+                .frame(width: 120, height: 120)
                 .clipShape(Circle())
                 .overlay {
                     Circle().stroke(np_white,lineWidth: 2)
                         .padding(40)
                 }
-                .frame(width: 75, height: 75, alignment: .center)
+                .frame(width: 60, height: 60, alignment: .center)
                 .padding(.bottom, 5)
                 .foregroundColor(np_white)
             

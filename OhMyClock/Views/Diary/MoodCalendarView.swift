@@ -25,10 +25,6 @@ struct MoodCalendarView: View {
     public var body: some View {
         VStack {
             MonthView(moodModelController: moodModelController, month: Month(startDate: startDate, selectableDays: selectableDays))
-                .font(.headline)
-                .fontWeight(.bold)
-                .kerning(3)
-                .textCase(.uppercase)
                 .foregroundColor(np_white)
                 .padding(20)
             
@@ -38,10 +34,6 @@ struct MoodCalendarView: View {
                               month: Month(startDate: nextMonth(currentMonth: startDate, add: $0),
                                            selectableDays: selectableDays))
                 }
-                .font(.headline)
-                .fontWeight(.bold)
-                .kerning(3)
-                .textCase(.uppercase)
             }
             
             Spacer()
@@ -79,7 +71,8 @@ struct MonthView: View {
                     Spacer()
                     
                     Text("\(month.monthNameYear)")
-                        .font(.title)
+                        .font(.custom("Butler", size: 24))
+                        .textCase(.uppercase)
                         .scaledToFill()
                         .minimumScaleFactor(0.5)
                 }
@@ -89,10 +82,7 @@ struct MonthView: View {
                 HStack {
                     GridStack(rows: 1, columns: 7) { row, col in
                         Text(weekdays[col])
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .kerning(3)
-                            .textCase(.uppercase)
+                            .font(.custom("Butler", size: 18))
                             .foregroundColor(np_white)
                     }
                 }
@@ -107,10 +97,7 @@ struct MonthView: View {
                                     day: month.monthDays[col+1]![row])
                     }
                 }
-                .font(.headline)
-                .fontWeight(.bold)
-                .kerning(3)
-                .textCase(.uppercase)
+                .font(.custom("Butler", size: 20))
             }
             .padding(.bottom, 10)
         }

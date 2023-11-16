@@ -57,7 +57,9 @@ struct ContentView: View {
             VStack(spacing: 0) {
                 switch selectedTab {
                 case 0: MainView(moodModel: moodModel, tabBarSelection: $tabBarSelection)
-                case 1: AnalyticsView(start: Date(), monthsToShow: 2, moodController: MoodModelController()).environmentObject(moodModelController)
+                case 1: AnalyticsView(start: Date(), monthsToShow: 2, moodController: MoodModelController()).environmentObject(moodModelController).onAppear {
+                    progressView.loadData()
+                        }
                 case 2: MoodDiaryView()
                 case 3: MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
                 case 4: TaskManagerView(taskManager: taskManager)
