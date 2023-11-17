@@ -143,6 +143,7 @@ class MoodModelController: ObservableObject {
                 if dateDiff == 1 {
                     currentStreak += 1
                 } else {
+                    // Reset current streak if there's a gap of more than one day
                     currentStreak = 1
                 }
             } else {
@@ -154,10 +155,16 @@ class MoodModelController: ObservableObject {
             bestStreak = max(bestStreak, currentStreak)
         }
 
-        // Check if the last mood logged was today or yesterday
-        if let lastMoodDate = sortedMoods.last?.date,
-           !(calendar.isDateInToday(lastMoodDate) || calendar.isDateInYesterday(lastMoodDate)) {
-            currentStreak = 0
+        // Adjust the current streak based on the date of the last logged mood
+        if let lastMoodDate = sortedMoods.last?.date {
+            if calendar.isDateInToday(lastMoodDate) {
+                // Current streak remains as calculated if the last mood was logged today
+            } else if calendar.isDateInYesterday(lastMoodDate) {
+                // Current streak remains as calculated if the last mood was logged yesterday
+            } else {
+                // Reset current streak to 0 if there's a gap
+                currentStreak = 0
+            }
         }
 
         self.currentStreak = currentStreak
@@ -177,5 +184,16 @@ class MoodModelController: ObservableObject {
         }
         
         return moodStatesCount
+    }
+    
+    // MARK: Top Mood
+    func calculateTopMood(moods: [Mood]) -> EmotionState? {
+        var moodCount = [EmotionState: Int]()
+
+        for mood in moods {
+            moodCount[mood.emotion.state, default: 0] += 1
+        }
+
+        return moodCount.max(by: { $0.value < $1.value })?.key
     }
 }

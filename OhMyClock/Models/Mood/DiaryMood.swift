@@ -8,8 +8,33 @@
 import Foundation
 import SwiftUI
 
-enum EmotionState: String, Codable, CaseIterable {
+enum EmotionState: String, Codable, CaseIterable, CustomStringConvertible {
     case angry, cheeky, happy, loved, meh, sad, sick, sleepy, smiling, upset
+    
+    var description: String {
+        switch self {
+        case .angry:
+            return "angry"
+        case .cheeky:
+            return "cheeky"
+        case .happy:
+            return "happy"
+        case .loved:
+            return "loved"
+        case .meh:
+            return "meh"
+        case .sad:
+            return "sad"
+        case .sick:
+            return "sick"
+        case .sleepy:
+            return "sleepy"
+        case .smiling:
+            return "smiling"
+        case .upset:
+            return "upset"
+        }
+    }
 }
 
 enum DayMoodState: String, Codable, CaseIterable {

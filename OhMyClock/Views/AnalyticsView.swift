@@ -164,6 +164,7 @@ struct StreakView: View {
                     
                     Spacer()
                 }
+                .padding(.horizontal, 10)
                 
                 HStack(spacing: 30) {
                     // MARK: Current Streak
@@ -211,27 +212,32 @@ struct StreakView: View {
                         .frame(width: 0.5, height: 100)
                         .foregroundColor(np_gray)
                     
-                    // MARK: Best Streak
-                    VStack(alignment: .center, spacing: 15) {
-                        Text("Total")
+                    // MARK: Top Emotion
+                    VStack(spacing: 15) {
+                        Text("Top Emotion")
                             .font(.custom("Butler", size: 12))
                             .fontWeight(.semibold)
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
                         
-                        Text("📆")
-                            .font(.largeTitle)
-                            .fontWeight(.semibold)
-                        
-                        Text("\(moodModelController.totalDaysLogged)")
-                            .font(.custom("Butler", size: 30))
-                            .foregroundColor(np_white)
+                        if let topMoodState = moodModelController.calculateTopMood(moods: moodModelController.moods) {
+                            Image(String(describing: topMoodState))
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .frame(width: 50, height: 85)
+                        } else {
+                            Text("-")
+                                .font(.subheadline)
+                                .foregroundColor(np_white)
+                        }
                     }
+                    .frame(alignment: .center)
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
             }
-            .padding(.horizontal, 15)
+            .padding(.horizontal, 5)
         }
     }
 }
@@ -245,7 +251,7 @@ struct LastMonthView: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 10) {
+            VStack {
                 
                 // MARK: Month Title
                 HStack {
@@ -351,7 +357,7 @@ struct ChartView: View {
             // MARK: Mood Count Summary
             VStack(alignment: .center, spacing: 10) {
                 HStack {
-                    Text("Mood Analysis:")
+                    Text("Mood Chart:")
                         .font(.system(size: 13))
                         .fontWeight(.bold)
                         .kerning(3)
