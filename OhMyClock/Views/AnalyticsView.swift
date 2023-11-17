@@ -66,6 +66,7 @@ struct AnalyticsView: View {
                                     selectableDays: selectableDays
                                 )
                             )
+                            .padding()
                             .foregroundColor(np_white)
                         }
                     }
@@ -204,7 +205,6 @@ struct StreakView: View {
                         
                         Text("\(moodModelController.bestStreak)")
                             .font(.custom("Butler", size: 30))
-                            .foregroundColor(np_white)
                             .foregroundColor(np_white)
                     }
                     

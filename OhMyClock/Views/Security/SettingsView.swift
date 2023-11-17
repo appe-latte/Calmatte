@@ -24,32 +24,30 @@ struct SettingsView: View {
     @EnvironmentObject var authModel : AuthViewModel
     var isAppLockEnabled = false
     
-    let screenHeight = UIScreen.main.bounds.height
-    let screenWidth = UIScreen.main.bounds.width
-    @State var rowHeight = 55.0
-    
     // MARK: Reminders
     @AppStorage("RemindersEnabled") private var remindersEnabled: Bool = false
     @State private var selectedDate: Date = Date()
-    //    @State private var reminderTime: Date = Date()
     @AppStorage("reminderTime") private var reminderTimeDouble: Double = Date().timeIntervalSince1970
     private var reminderTime: Date {
         get { Date(timeIntervalSince1970: reminderTimeDouble) }
         set { reminderTimeDouble = newValue.timeIntervalSince1970 }
     }
     
-    // MARK: Alert - "Reminders" + "FaceID"
+    // MARK: Alert - "Reminders" / "FaceID"
     @State var showRemindersAlert = false
     @State private var showAlert = false
     @State private var remindersTitle = ""
     @State private var remindersMessage = ""
-    
     @State private var showAppLockAlert = false
     @State private var appLockTitle = ""
     @State private var appLockMessage = ""
     
     @State private var firstName = ""
     @Binding var showProfileSheet : Bool
+    
+    let screenHeight = UIScreen.main.bounds.height
+    let screenWidth = UIScreen.main.bounds.width
+    @State var rowHeight = 55.0
     
     // MARK: Load the current user's first name
     private func loadUserFirstName() {
@@ -220,20 +218,21 @@ struct SettingsView: View {
                                 Spacer()
                                 
                                 DatePicker("Reminder Time:", selection: $selectedDate, displayedComponents: .hourAndMinute)
-                                    .font(.system(size: 8))
-                                    .fontWeight(.semibold)
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                                    .foregroundColor(np_gray)
-                                    .padding(.leading, 20)
-                                    .tint(np_orange)
-                                    .onChange(of: reminderTime, perform: { _ in
-                                        setDailyReminder()
-                                    })
-                                    .onChange(of: selectedDate, perform: { newValue in
-                                        reminderTimeDouble = newValue.timeIntervalSince1970
-                                        setDailyReminder()
-                                    })
+                                            .font(.system(size: 8))
+                                            .fontWeight(.semibold)
+                                            .kerning(5)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(np_gray)
+                                            .padding(.leading, 20)
+                                            .tint(np_orange)
+                                            .onAppear {
+                                                // Initialize selectedDate with the stored time
+                                                selectedDate = Date(timeIntervalSince1970: reminderTimeDouble)
+                                            }
+                                            .onChange(of: selectedDate, perform: { newValue in
+                                                reminderTimeDouble = newValue.timeIntervalSince1970
+                                                setDailyReminder()
+                                            })
                             }
                         }
                         .padding(.horizontal, 20)
