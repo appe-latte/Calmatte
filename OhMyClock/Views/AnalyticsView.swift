@@ -40,6 +40,8 @@ struct AnalyticsView: View {
                     StreakView(moodModelController: moodModelController)
                         .padding(.top, 20)
                     
+                    MoodCountView()
+                    
                     ChartView()
                         .frame(height: 500)
                     
@@ -155,7 +157,7 @@ struct StreakView: View {
             // MARK: Show Streak
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
-                    Text("Streak Count:")
+                    Text("History:")
                         .font(.system(size: 13))
                         .fontWeight(.bold)
                         .kerning(3)
@@ -189,7 +191,6 @@ struct StreakView: View {
                         .frame(width: 0.5, height: 100)
                         .foregroundColor(np_gray)
                     
-                    
                     VStack(alignment: .center, spacing: 15) {
                         Text("Total")
                             .font(.custom("Butler", size: 12))
@@ -206,10 +207,6 @@ struct StreakView: View {
                             .font(.custom("Butler", size: 30))
                             .foregroundColor(np_white)
                     }
-                    
-                    Capsule()
-                        .frame(width: 0.5, height: 100)
-                        .foregroundColor(np_gray)
                     
                     Capsule()
                         .frame(width: 0.5, height: 100)
@@ -313,7 +310,8 @@ struct ChartView: View {
             .init(emotion: "Good", count: Double(moodCount.frequency(for: .good)), color: np_turq),
             .init(emotion: "Okay", count: Double(moodCount.frequency(for: .okay)), color: np_yellow),
             .init(emotion: "Bad", count: Double(moodCount.frequency(for: .bad)), color: np_orange),
-            .init(emotion: "Terrible", count: Double(moodCount.frequency(for: .terrible)), color: np_red)
+            .init(emotion: "Terrible", count: Double(moodCount.frequency(for: .terrible)), color: np_red),
+            .init(emotion: "Meh", count: Double(moodCount.frequency(for: .meh)), color: np_purple)
         ]
     }
     
@@ -379,7 +377,7 @@ struct ChartView: View {
                     .frame(height: 50)
                 
                 // MARK: Chart Key
-                HStack(spacing: 30) {
+                HStack(spacing: 20) {
                     ForEach(moodDataInPercentages, id: \.id) { mood in
                         VStack {
                             Circle()
@@ -387,14 +385,14 @@ struct ChartView: View {
                                 .frame(width: 30)
                             
                             Text(mood.emotion)
-                                .font(.caption2)
+                                .font(.system(size: 10))
                                 .fontWeight(.regular)
                                 .kerning(1)
                                 .textCase(.uppercase)
                                 .foregroundColor(np_white)
                             
                             Text(percentage(for: DayMoodState(rawValue: mood.emotion.lowercased()) ?? .none))
-                                .font(.subheadline)
+                                .font(.system(size: 14))
                                 .fontWeight(.heavy)
                                 .kerning(3)
                                 .foregroundColor(np_white)
@@ -443,6 +441,7 @@ extension DayMoodState {
         case .okay: return "Okay"
         case .bad: return "Bad"
         case .terrible: return "Terrible"
+        case .meh: return "Meh"
         }
     }
     
@@ -453,6 +452,7 @@ extension DayMoodState {
         case .okay: return np_yellow
         case .bad: return np_orange
         case .terrible: return np_red
+        case .meh: return np_purple
         }
     }
 }

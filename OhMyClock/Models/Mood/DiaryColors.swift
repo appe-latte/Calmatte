@@ -9,14 +9,13 @@ import Foundation
 import SwiftUI
 
 class DiaryColors: ObservableObject {
-
-    //Foreground
+    // MARK: Foreground
     @Published var textColor: Color = np_black
     @Published var todayColor: Color = np_red
     @Published var disabledColor: Color = np_gray
     @Published var selectedColor: Color = cov_green
 
-    //Background
+    // MARK: Background
     @Published var backgroundColor: Color = Color.clear
     @Published var weekdayBackgroundColor: Color = Color.clear
     @Published var selectedBackgroundColor: Color = np_tan

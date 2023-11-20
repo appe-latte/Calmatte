@@ -436,6 +436,9 @@ struct MoodAddDiaryView: View {
                                             
                                             // MARK: Terrible - state
                                             DayStateButton(state: .terrible, selectedState: $selectedDayState)
+                                            
+                                            // MARK: Meh - state
+                                            DayStateButton(state: .meh, selectedState: $selectedDayState)
                                         }
                                     }
                                 }
@@ -621,6 +624,8 @@ struct DayStateButton: View {
             return np_orange
         case .terrible:
             return np_red
+        case .meh:
+            return np_purple
         }
     }
     
@@ -636,6 +641,8 @@ struct DayStateButton: View {
             return "bad"
         case .terrible:
             return "terrible"
+        case .meh:
+            return "meh-icon"
         }
     }
     

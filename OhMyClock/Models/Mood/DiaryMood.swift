@@ -38,7 +38,7 @@ enum EmotionState: String, Codable, CaseIterable, CustomStringConvertible {
 }
 
 enum DayMoodState: String, Codable, CaseIterable {
-    case amazing, good, okay, bad, terrible
+    case amazing, good, okay, bad, terrible, meh
 }
 
 enum MoodColor: String, Codable, CaseIterable {

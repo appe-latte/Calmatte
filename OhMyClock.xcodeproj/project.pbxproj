@@ -65,6 +65,7 @@
 		2FCD00622A67188F000AD649 /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00612A67188F000AD649 /* AppLockViewModel.swift */; };
 		2FCD00642A671C1E000AD649 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00632A671C1E000AD649 /* LoginView.swift */; };
 		2FD9FB782B0BCEB500E4FBD4 /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FD9FB772B0BCEB500E4FBD4 /* equilibrium.mp3 */; };
+		2FD9FB7A2B0BE1AA00E4FBD4 /* MoodCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9FB792B0BE1AA00E4FBD4 /* MoodCountView.swift */; };
 		2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEE581297731CE00416E54 /* TaskRow.swift */; };
 		2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
@@ -148,6 +149,7 @@
 		2FCD00612A67188F000AD649 /* AppLockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
 		2FCD00632A671C1E000AD649 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2FD9FB772B0BCEB500E4FBD4 /* equilibrium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = equilibrium.mp3; sourceTree = "<group>"; };
+		2FD9FB792B0BE1AA00E4FBD4 /* MoodCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCountView.swift; sourceTree = "<group>"; };
 		2FDBFC9A2A64B0C200CF96FE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		2FDBFC9C2A64B0C200CF96FE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		2FEEE581297731CE00416E54 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				2F434BB7296F8CCA00698C1A /* AudioManager.swift */,
 				2F27A17F2973F0FC007DA7CC /* LocationManager.swift */,
 				2F27A187297402AB007DA7CC /* LocationFetch.swift */,
+				2FD9FB792B0BE1AA00E4FBD4 /* MoodCountView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
 				2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */,
 				2FF51E042A3A42370035A964 /* SplashScreenView.swift in Sources */,
+				2FD9FB7A2B0BE1AA00E4FBD4 /* MoodCountView.swift in Sources */,
 				2F64DE362A8161B9007917D2 /* ReminderManager.swift in Sources */,
 				2F919D352A5DD8EA00291071 /* DiaryColors.swift in Sources */,
 				2F4AB6272A5DDD0D00F6332F /* MoodDiaryView.swift in Sources */,

@@ -185,4 +185,15 @@ class MoodModelController: ObservableObject {
         
         return moodStatesCount
     }
+    
+    // MARK: Top Mood
+    func calculateTopMood(moods: [Mood]) -> EmotionState? {
+        var moodCount = [EmotionState: Int]()
+
+        for mood in moods {
+            moodCount[mood.emotion.state, default: 0] += 1
+        }
+
+        return moodCount.max(by: { $0.value < $1.value })?.key
+    }
 }
