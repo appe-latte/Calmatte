@@ -22,19 +22,19 @@ class ReminderManager {
     
     static func scheduleReminders(for reminderTime: Date) {
         let content = UNMutableNotificationContent()
-        content.title = "Log Your Mood"
+        content.title = "Calmatte App"
         content.body = "It's time for you to log your mood."
         content.sound = UNNotificationSound.default
-
+        
         let calendar = Calendar.current
         var dateComponents = calendar.dateComponents([.hour, .minute], from: reminderTime)
         dateComponents.second = 0
-
+        
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let identifier = "moodReminder"
-
+        
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-
+        
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
                 print("Error scheduling notification: \(error.localizedDescription)")
@@ -43,7 +43,7 @@ class ReminderManager {
             }
         }
     }
-
+    
     static func sendReminderEnabledNotification() {
         let content = UNMutableNotificationContent()
         content.title = "Reminders Enabled"

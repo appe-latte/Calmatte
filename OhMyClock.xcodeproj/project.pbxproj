@@ -64,6 +64,7 @@
 		2FCD00602A671862000AD649 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD005F2A671862000AD649 /* Constants.swift */; };
 		2FCD00622A67188F000AD649 /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00612A67188F000AD649 /* AppLockViewModel.swift */; };
 		2FCD00642A671C1E000AD649 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00632A671C1E000AD649 /* LoginView.swift */; };
+		2FD9FB782B0BCEB500E4FBD4 /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FD9FB772B0BCEB500E4FBD4 /* equilibrium.mp3 */; };
 		2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEE581297731CE00416E54 /* TaskRow.swift */; };
 		2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
@@ -71,7 +72,6 @@
 		2FF50129296EA33000813D40 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50128296EA33000813D40 /* SettingsView.swift */; };
 		2FF51E042A3A42370035A964 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF51E032A3A42370035A964 /* SplashScreenView.swift */; };
 		2FF87ABA2A61177A0026DF9E /* MoodCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */; };
-		2FF8F01329B27BD5008D7C7E /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FF8F00B29B27BD4008D7C7E /* equilibrium.mp3 */; };
 		2FFBD0262A5DD7B8002C258B /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFBD0252A5DD7B8002C258B /* Month.swift */; };
 		D130FD8150574B3AB4BB697C /* Pods_OhMyClock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0CEB7FFF9AB3C613B273EE /* Pods_OhMyClock.framework */; };
 /* End PBXBuildFile section */
@@ -147,6 +147,7 @@
 		2FCD005F2A671862000AD649 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2FCD00612A67188F000AD649 /* AppLockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
 		2FCD00632A671C1E000AD649 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		2FD9FB772B0BCEB500E4FBD4 /* equilibrium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = equilibrium.mp3; sourceTree = "<group>"; };
 		2FDBFC9A2A64B0C200CF96FE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		2FDBFC9C2A64B0C200CF96FE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		2FEEE581297731CE00416E54 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
@@ -156,7 +157,6 @@
 		2FF50128296EA33000813D40 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = ../Security/SettingsView.swift; sourceTree = "<group>"; };
 		2FF51E032A3A42370035A964 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCalendarView.swift; sourceTree = "<group>"; };
-		2FF8F00B29B27BD4008D7C7E /* equilibrium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = equilibrium.mp3; sourceTree = "<group>"; };
 		2FFBD0252A5DD7B8002C258B /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		71C548B17BD3E291DC7F07BF /* Pods-OhMyClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhMyClock.debug.xcconfig"; path = "Target Support Files/Pods-OhMyClock/Pods-OhMyClock.debug.xcconfig"; sourceTree = "<group>"; };
 		F035852F19147F0F38D6AF6C /* Pods-OhMyClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhMyClock.release.xcconfig"; path = "Target Support Files/Pods-OhMyClock/Pods-OhMyClock.release.xcconfig"; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 				2FF51E032A3A42370035A964 /* SplashScreenView.swift */,
 				2FF50125296EA29300813D40 /* Views */,
 				2F36B0A72967A40200AC8D59 /* Assets.xcassets */,
-				2FF8F00B29B27BD4008D7C7E /* equilibrium.mp3 */,
+				2FD9FB772B0BCEB500E4FBD4 /* equilibrium.mp3 */,
 				2F6BFD942B068B2900BE9D03 /* Analogist.otf */,
 				2F6BFD932B068B2900BE9D03 /* Analogist.ttf */,
 				2F6BFD992B068E6400BE9D03 /* Butler.otf */,
@@ -483,8 +483,8 @@
 				2F18B4122A6654DC00F91C7B /* GoogleService-Info.plist in Resources */,
 				2F6BFD952B068B2900BE9D03 /* Analogist.ttf in Resources */,
 				2F6BFD9A2B068E6400BE9D03 /* Butler.otf in Resources */,
+				2FD9FB782B0BCEB500E4FBD4 /* equilibrium.mp3 in Resources */,
 				2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */,
-				2FF8F01329B27BD5008D7C7E /* equilibrium.mp3 in Resources */,
 				2F6BFD962B068B2900BE9D03 /* Analogist.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

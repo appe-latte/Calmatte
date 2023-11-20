@@ -66,7 +66,6 @@ struct AnalyticsView: View {
                                     selectableDays: selectableDays
                                 )
                             )
-                            .padding()
                             .foregroundColor(np_white)
                         }
                     }
@@ -190,23 +189,27 @@ struct StreakView: View {
                         .frame(width: 0.5, height: 100)
                         .foregroundColor(np_gray)
                     
-                    // MARK: Best Streak
+                    
                     VStack(alignment: .center, spacing: 15) {
-                        Text("Best")
+                        Text("Total")
                             .font(.custom("Butler", size: 12))
                             .fontWeight(.semibold)
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
                         
-                        Text("🏆")
+                        Text("📆")
                             .font(.largeTitle)
                             .fontWeight(.semibold)
                         
-                        Text("\(moodModelController.bestStreak)")
+                        Text("\(moodModelController.totalDaysLogged)")
                             .font(.custom("Butler", size: 30))
                             .foregroundColor(np_white)
                     }
+                    
+                    Capsule()
+                        .frame(width: 0.5, height: 100)
+                        .foregroundColor(np_gray)
                     
                     Capsule()
                         .frame(width: 0.5, height: 100)

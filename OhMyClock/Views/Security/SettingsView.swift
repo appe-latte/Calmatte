@@ -28,6 +28,7 @@ struct SettingsView: View {
     @AppStorage("RemindersEnabled") private var remindersEnabled: Bool = false
     @State private var selectedDate: Date = Date()
     @AppStorage("reminderTime") private var reminderTimeDouble: Double = Date().timeIntervalSince1970
+    
     private var reminderTime: Date {
         get { Date(timeIntervalSince1970: reminderTimeDouble) }
         set { reminderTimeDouble = newValue.timeIntervalSince1970 }
@@ -504,7 +505,7 @@ struct SettingsView: View {
     
     private func setDailyReminder() {
         let content = UNMutableNotificationContent()
-        content.title = "Mood Log Reminder"
+        content.title = "Calmatte App"
         content.body = "It's time for you to log your mood."
         
         let triggerDate = Calendar.current.dateComponents([.hour, .minute], from: reminderTime)
