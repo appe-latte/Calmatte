@@ -37,7 +37,7 @@ struct MoodCountView: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 10) {
+            VStack(spacing: 20) {
                 HStack {
                     Label("Mood Cards:", systemImage: "")
                         .font(.system(size: 13))

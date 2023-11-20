@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import UserNotifications
 
 struct AddTaskView: View {
     @Environment(\.dismiss) private var dismiss
@@ -216,18 +217,22 @@ class TaskManager: ObservableObject {
     @Published private(set) var tasks: [TaskItem] = []
     
     init() {
+        requestNotificationPermission()
         loadTasks()
     }
     
     func addTask(_ task: TaskItem) {
         tasks.append(task)
         saveTasks()
+        scheduleNotification(for: task)
     }
     
     func updateTask(_ task: TaskItem) {
         if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+            let oldTask = tasks[index]
             tasks[index] = task
             saveTasks()
+            updateNotification(for: oldTask, with: task)
         }
     }
     
@@ -235,12 +240,15 @@ class TaskManager: ObservableObject {
         if let index = tasks.firstIndex(where: { $0.id == task.id }) {
             tasks.remove(at: index)
             saveTasks()
+            removeNotification(for: task)
         }
     }
     
     func deleteTasks(at indices: IndexSet) {
+        let tasksToDelete = indices.compactMap { tasks[$0] }
         tasks.remove(atOffsets: indices)
         saveTasks()
+        tasksToDelete.forEach(removeNotification)
     }
     
     private func saveTasks() {
@@ -260,5 +268,41 @@ class TaskManager: ObservableObject {
                 print("Error decoding tasks: \(error)")
             }
         }
+    }
+    
+    private func requestNotificationPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if granted {
+                print("Notification permission granted.")
+            } else if let error = error {
+                print("Notification permission error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func scheduleNotification(for task: TaskItem) {
+        let content = UNMutableNotificationContent()
+        content.title = "Calmatte App: Task Reminder"
+        content.body = task.taskName
+        content.sound = UNNotificationSound.default
+        
+        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: task.dateAdded)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: task.id.uuidString, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling notification: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func removeNotification(for task: TaskItem) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [task.id.uuidString])
+    }
+    
+    private func updateNotification(for oldTask: TaskItem, with newTask: TaskItem) {
+        removeNotification(for: oldTask)
+        scheduleNotification(for: newTask)
     }
 }

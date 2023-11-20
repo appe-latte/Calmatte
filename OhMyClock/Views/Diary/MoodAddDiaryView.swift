@@ -26,7 +26,6 @@ struct MoodAddDiaryView: View {
     @State private var upsetSelected = false
     @State private var counterLabel = "200"
     
-    //    @State private var dayStates: [DayState] = []
     @State private var selectedDayState: DayMoodState? = nil
     @State private var selectedEmotion = Emotion(state: .happy, color: .happyColor)
     

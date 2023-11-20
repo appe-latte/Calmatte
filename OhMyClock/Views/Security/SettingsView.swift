@@ -505,7 +505,7 @@ struct SettingsView: View {
     
     private func setDailyReminder() {
         let content = UNMutableNotificationContent()
-        content.title = "Calmatte App"
+        content.title = "Calmatte App: Journal Reminder"
         content.body = "It's time for you to log your mood."
         
         let triggerDate = Calendar.current.dateComponents([.hour, .minute], from: reminderTime)
