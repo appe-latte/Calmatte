@@ -429,20 +429,20 @@ struct ChartView: View {
                 // MARK: Chart Key
                 HStack(spacing: 20) {
                     ForEach(moodDataInPercentages, id: \.id) { mood in
-                        VStack {
-                            Circle()
+                        VStack(spacing: 5) {
+                            RoundedRectangle(cornerRadius: 10)
                                 .fill(mood.color)
-                                .frame(width: 30)
+                                .frame(height: 30)
                             
                             Text(mood.emotion)
-                                .font(.system(size: 10))
+                                .font(.system(size: 8))
                                 .fontWeight(.regular)
                                 .kerning(1)
                                 .textCase(.uppercase)
                                 .foregroundColor(np_white)
                             
                             Text(percentage(for: DayMoodState(rawValue: mood.emotion.lowercased()) ?? .none))
-                                .font(.system(size: 14))
+                                .font(.system(size: 12))
                                 .fontWeight(.heavy)
                                 .kerning(3)
                                 .foregroundColor(np_white)

@@ -144,13 +144,18 @@ struct DayCellView: View {
                 .clipped()
             
             VStack {
-                moodText()
-                    .scaledToFit()
-                    .frame(width: 40, height: 40)
-                    .clipShape(Circle())
+                if let mood = moodModelController.moods.first(where: {$0.monthString == day.monthString && $0.dayAsInt == day.dayAsInt && $0.year == day.year}) {
+                    moodText()
+                        .scaledToFit()
+                        .frame(width: 40, height: 40)
+                } else {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(np_gray)
+                        .opacity(0.15)
+                        .frame(width: 40, height: 40)
+                }
             }
             .background(np_arsenic)
-            .clipShape(Circle())
         }
     }
     
@@ -184,7 +189,7 @@ struct DayCellView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 35, height: 35)
-                    .clipShape(Circle())
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                     .opacity(1)
             }
         }
@@ -192,7 +197,7 @@ struct DayCellView: View {
             .resizable()
             .scaledToFill()
             .frame(width: 20, height: 20)
-            .clipShape(Circle())
-            .opacity(0)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .opacity(0.1)
     }
 }

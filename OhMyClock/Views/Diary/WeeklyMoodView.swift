@@ -83,9 +83,9 @@ struct DayMoodView: View {
             if let mood = moodForDate(date) {
                 moodImageView(mood: mood)
                     .frame(width: 40, height: 40)
-                    .clipShape(Circle())
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
             } else {
-                Circle()
+                RoundedRectangle(cornerRadius: 10)
                     .fill(np_gray)
                     .opacity(0.15)
                     .frame(width: 40, height: 40)
