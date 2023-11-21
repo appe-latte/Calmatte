@@ -55,7 +55,7 @@ struct MoodCountView: View {
                     // "Amazing" Count
                     RoundedRectangle(cornerRadius: 15)
                         .fill(np_green.opacity(0.1))
-                        .frame(width: 150, height: 175)
+                        .frame(width: 175, height: 175)
                         .overlay {
                             VStack(spacing: 20) {
                                 Circle()
@@ -80,7 +80,7 @@ struct MoodCountView: View {
                     // "Good" Count
                     RoundedRectangle(cornerRadius: 15)
                         .fill(np_turq.opacity(0.1))
-                        .frame(width: 150, height: 175)
+                        .frame(width: 175, height: 175)
                         .overlay {
                             VStack(spacing: 20) {
                                 Circle()
@@ -108,7 +108,7 @@ struct MoodCountView: View {
                     // "Okay" Count
                     RoundedRectangle(cornerRadius: 15)
                         .fill(np_yellow.opacity(0.1))
-                        .frame(width: 150, height: 175)
+                        .frame(width: 175, height: 175)
                         .overlay {
                             VStack(spacing: 20) {
                                 Circle()
@@ -133,7 +133,7 @@ struct MoodCountView: View {
                     // "Meh" Count
                     RoundedRectangle(cornerRadius: 15)
                         .fill(np_purple.opacity(0.1))
-                        .frame(width: 150, height: 175)
+                        .frame(width: 175, height: 175)
                         .overlay {
                             VStack(spacing: 20) {
                                 Circle()
@@ -161,7 +161,7 @@ struct MoodCountView: View {
                     // "Bad" Count
                     RoundedRectangle(cornerRadius: 15)
                         .fill(np_orange.opacity(0.1))
-                        .frame(width: 150, height: 175)
+                        .frame(width: 175, height: 175)
                         .overlay {
                             VStack(spacing: 20) {
                                 Circle()
@@ -186,7 +186,7 @@ struct MoodCountView: View {
                     // "Terrible" Count
                     RoundedRectangle(cornerRadius: 15)
                         .fill(np_red.opacity(0.1))
-                        .frame(width: 150, height: 175)
+                        .frame(width: 175, height: 175)
                         .overlay {
                             VStack(spacing: 20) {
                                 Circle()

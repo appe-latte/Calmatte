@@ -34,7 +34,7 @@ class MoodModelController: ObservableObject {
         saveToFirestore()
         calculateStreaks()
     }
-
+    
     // MARK: "Delete" mood
     func deleteMood(withID uuid: UUID) {
         guard let userID = Auth.auth().currentUser?.uid else { return }
@@ -126,19 +126,19 @@ class MoodModelController: ObservableObject {
     // MARK: Calculating "Streaks"
     func calculateStreaks() {
         guard !moods.isEmpty else { return }
-
+        
         let calendar = Calendar.current
         let sortedMoods = moods.sorted(by: { $0.date < $1.date })
         var currentStreak = 0
         var bestStreak = 0
         var lastDate: Date?
-
+        
         for mood in sortedMoods {
             if let lastDateUnwrapped = lastDate {
                 if calendar.isDate(mood.date, inSameDayAs: lastDateUnwrapped) {
                     continue // Skip if the mood was logged on the same day
                 }
-
+                
                 let dateDiff = calendar.dateComponents([.day], from: lastDateUnwrapped, to: mood.date).day ?? 0
                 if dateDiff == 1 {
                     currentStreak += 1
@@ -150,11 +150,11 @@ class MoodModelController: ObservableObject {
                 // Start the streak if this is the first mood entry
                 currentStreak = 1
             }
-
+            
             lastDate = mood.date
             bestStreak = max(bestStreak, currentStreak)
         }
-
+        
         // Adjust the current streak based on the date of the last logged mood
         if let lastMoodDate = sortedMoods.last?.date {
             if calendar.isDateInToday(lastMoodDate) {
@@ -166,12 +166,12 @@ class MoodModelController: ObservableObject {
                 currentStreak = 0
             }
         }
-
+        
         self.currentStreak = currentStreak
         self.bestStreak = bestStreak
         self.totalDaysLogged = sortedMoods.count
     }
-
+    
     // MARK: Calculate Mood count
     func calculateMoodStates() -> [String: Int] {
         var moodStatesCount = [String: Int]()
@@ -189,11 +189,27 @@ class MoodModelController: ObservableObject {
     // MARK: Top Mood
     func calculateTopMood(moods: [Mood]) -> EmotionState? {
         var moodCount = [EmotionState: Int]()
-
+        
         for mood in moods {
             moodCount[mood.emotion.state, default: 0] += 1
         }
-
+        
         return moodCount.max(by: { $0.value < $1.value })?.key
+    }
+    
+    // MARK: Least Recurring Mood
+    func calculateLeastCommonMood(moods: [Mood]) -> EmotionState? {
+        var moodCount = [EmotionState: Int]()
+        
+        // Counting the occurrences of each mood
+        for mood in moods {
+            let state = mood.emotion.state
+            moodCount[state] = (moodCount[state] ?? 0) + 1
+        }
+        
+        // Finding the mood with the minimum count
+        let leastCommonMood = moodCount.min { $0.value < $1.value }?.key
+        
+        return leastCommonMood
     }
 }

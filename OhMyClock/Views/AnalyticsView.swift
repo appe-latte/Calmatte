@@ -157,7 +157,7 @@ struct StreakView: View {
             // MARK: Show Streak
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
-                    Text("History:")
+                    Text("Statistics:")
                         .font(.system(size: 13))
                         .fontWeight(.bold)
                         .kerning(3)
@@ -170,26 +170,26 @@ struct StreakView: View {
                 
                 HStack(spacing: 30) {
                     // MARK: Current Streak
-                    VStack(alignment: .center, spacing: 15) {
-                        Text("Current")
-                            .font(.custom("Butler", size: 12))
-                            .kerning(3)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                        
-                        Text("👑")
-                            .font(.largeTitle)
-                            .fontWeight(.semibold)
-                        
-                        Text("\(moodModelController.currentStreak)")
-                            .font(.custom("Butler", size: 30))
-                            .foregroundColor(np_white)
-                            .foregroundColor(np_white)
-                    }
-                    
-                    Capsule()
-                        .frame(width: 0.5, height: 100)
-                        .foregroundColor(np_gray)
+//                    VStack(alignment: .center, spacing: 15) {
+//                        Text("Current")
+//                            .font(.custom("Butler", size: 12))
+//                            .kerning(3)
+//                            .textCase(.uppercase)
+//                            .foregroundColor(np_white)
+//                        
+//                        Text("👑")
+//                            .font(.largeTitle)
+//                            .fontWeight(.semibold)
+//                        
+//                        Text("\(moodModelController.currentStreak)")
+//                            .font(.custom("Butler", size: 30))
+//                            .foregroundColor(np_white)
+//                            .foregroundColor(np_white)
+//                    }
+//                    
+//                    Capsule()
+//                        .frame(width: 0.5, height: 100)
+//                        .foregroundColor(np_gray)
                     
                     VStack(alignment: .center, spacing: 15) {
                         Text("Total")
@@ -212,9 +212,9 @@ struct StreakView: View {
                         .frame(width: 0.5, height: 100)
                         .foregroundColor(np_gray)
                     
-                    // MARK: Top Emotion
+                    // MARK: Top Recurring Emotion
                     VStack(spacing: 15) {
-                        Text("Top Emotion")
+                        Text("Most")
                             .font(.custom("Butler", size: 12))
                             .fontWeight(.semibold)
                             .kerning(3)
@@ -223,6 +223,33 @@ struct StreakView: View {
                         
                         if let topMoodState = moodModelController.calculateTopMood(moods: moodModelController.moods) {
                             Image(String(describing: topMoodState))
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .frame(width: 50, height: 85)
+                        } else {
+                            Text("-")
+                                .font(.subheadline)
+                                .foregroundColor(np_white)
+                        }
+                    }
+                    .frame(alignment: .center)
+                    
+                    Capsule()
+                        .frame(width: 0.5, height: 100)
+                        .foregroundColor(np_gray)
+                    
+                    // MARK: Least Recurring Emotion
+                    VStack(spacing: 15) {
+                        Text("Fewest")
+                            .font(.custom("Butler", size: 12))
+                            .fontWeight(.semibold)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        if let leastMoodState = moodModelController.calculateLeastCommonMood(moods: moodModelController.moods) {
+                            Image(String(describing: leastMoodState))
                                 .resizable()
                                 .scaledToFill()
                                 .clipShape(RoundedRectangle(cornerRadius: 10))

@@ -28,12 +28,12 @@ struct MoodRowView: View {
                                 .scaledToFit()
                                 .frame(maxWidth: 120)
                             
-                            Text(mood.dayStates.map { $0.rawValue }.joined(separator: ", "))
-                                .font(.caption)
-                                .fontWeight(.semibold)
-                                .textCase(.uppercase)
-                                .minimumScaleFactor(0.5)
-                                .foregroundColor(np_white)
+//                            Text(mood.dayStates.map { $0.rawValue }.joined(separator: ", "))
+//                                .font(.caption)
+//                                .fontWeight(.semibold)
+//                                .textCase(.uppercase)
+//                                .minimumScaleFactor(0.5)
+//                                .foregroundColor(np_white)
                         }
                     }
                 
