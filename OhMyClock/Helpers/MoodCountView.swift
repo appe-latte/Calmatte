@@ -40,9 +40,9 @@ struct MoodCountView: View {
             VStack(spacing: 20) {
                 HStack {
                     Label("Mood Cards:", systemImage: "")
-                        .font(.system(size: 13))
-                        .fontWeight(.bold)
-                        .kerning(3)
+                        .font(.footnote)
+                        .fontWeight(.semibold)
+                        .kerning(2)
                         .textCase(.uppercase)
                         .foregroundColor(np_white)
                     

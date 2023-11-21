@@ -49,171 +49,170 @@ struct MainView: View {
     var body: some View {
         let firstName = authModel.user?.firstName ?? ""
         
-        ScrollView(.vertical, showsIndicators: false) {
-            ZStack {
-                VStack {
-                    // MARK: "Share" / Settings Sheets
-                    HStack(spacing: 30) {
-                        Button(action: {
-                            shareSheet()
-                        }, label: {
-                            Image("share")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .padding(5)
-                                .foregroundColor(np_white)
-                        })
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            self.showSettingsSheet.toggle()
-                        }, label: {
-                            Image("settings")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .padding(5)
-                                .foregroundColor(np_white)
-                        })
-                    }
-                    .padding(10)
-                    
-                    // MARK: Date + Salutation
-                    VStack(spacing: 10) {
-                        HStack {
-                            Text(greeting)
-                                .scaledToFill()
-                                .font(.custom("Butler", size: 27))
-                                .fontWeight(.bold)
-                                .kerning(5)
-                                .minimumScaleFactor(0.5)
-                                .textCase(.uppercase)
-                            
-                            Spacer()
-                        }
-                        .padding(.leading, 10)
-                        
-                        // MARK: Username
-                        HStack {
-                            Text("\(firstName).")
-                                .scaledToFill()
-                                .font(.custom("Butler", size: 36))
-                                .fontWeight(.bold)
-                                .kerning(5)
-                                .minimumScaleFactor(0.5)
-                                .textCase(.uppercase)
-                            
-                            Spacer()
-                        }
-                        .padding(.leading, 10)
-                        
-                        // MARK: Weather Info.
-                        HStack {
-                            HStack {
-                                Text("Temp.")
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                                
-                                Text("\(temperatureLabel)")
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                            }
-                            
-                            HStack {
-                                Text("Hum.")
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                                
-                                Text("\(String(format: "%.0f", humidityLabel * 100))%")
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                            }
-                            
-                            HStack {
-                                Text("•")
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                                
-                                Text("\(conditionLabel)")
-                                    .kerning(5)
-                                    .textCase(.uppercase)
-                            }
-                        }
-                        .font(.system(size: 8))
-                        .fontWeight(.bold)
-                        .frame(width: width, height: 20)
-                        .background(np_white)
-                        .foregroundColor(np_jap_indigo)
-                    }
+        ZStack {
+            VStack {
+                // MARK: "Share" / Settings Sheets
+                HStack(spacing: 30) {
+                    Button(action: {
+                        shareSheet()
+                    }, label: {
+                        Image("share")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .padding(5)
+                            .foregroundColor(np_white)
+                    })
                     
                     Spacer()
-                        .frame(height: 30)
                     
-                    // MARK: "Add Journal Entry" Button
-                    Button {
-                        self.txt = ""
-                        self.docID = ""
-                        self.showJournalEntry.toggle()
-                    } label: {
-                        Text("Log Daily Mood")
-                            .font(.footnote)
+                    Button(action: {
+                        self.showSettingsSheet.toggle()
+                    }, label: {
+                        Image("settings")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .padding(5)
+                            .foregroundColor(np_white)
+                    })
+                }
+                .padding(10)
+                
+                // MARK: Date + Salutation
+                VStack(spacing: 10) {
+                    HStack {
+                        Text(greeting)
+                            .scaledToFill()
+                            .font(.custom("Butler", size: 27))
                             .fontWeight(.bold)
+                            .kerning(5)
+                            .minimumScaleFactor(0.5)
+                            .textCase(.uppercase)
+                        
+                        Spacer()
+                    }
+                    .padding(.leading, 10)
+                    
+                    // MARK: Username
+                    HStack {
+                        Text("\(firstName).")
+                            .scaledToFill()
+                            .font(.custom("Butler", size: 36))
+                            .fontWeight(.bold)
+                            .kerning(5)
+                            .minimumScaleFactor(0.5)
+                            .textCase(.uppercase)
+                        
+                        Spacer()
+                    }
+                    .padding(.leading, 10)
+                    
+                    // MARK: Weather Info.
+                    HStack {
+                        HStack {
+                            Text("Temp.")
+                                .kerning(5)
+                                .textCase(.uppercase)
+                            
+                            Text("\(temperatureLabel)")
+                                .kerning(5)
+                                .textCase(.uppercase)
+                        }
+                        
+                        HStack {
+                            Text("Hum.")
+                                .kerning(5)
+                                .textCase(.uppercase)
+                            
+                            Text("\(String(format: "%.0f", humidityLabel * 100))%")
+                                .kerning(5)
+                                .textCase(.uppercase)
+                        }
+                        
+                        HStack {
+                            Text("•")
+                                .kerning(5)
+                                .textCase(.uppercase)
+                            
+                            Text("\(conditionLabel)")
+                                .kerning(5)
+                                .textCase(.uppercase)
+                        }
+                    }
+                    .font(.system(size: 8))
+                    .fontWeight(.bold)
+                    .frame(width: width, height: 20)
+                    .background(np_white)
+                    .foregroundColor(np_jap_indigo)
+                }
+                
+                Spacer()
+                    .frame(height: 30)
+                
+                // MARK: "Add Journal Entry" Button
+                Button {
+                    self.txt = ""
+                    self.docID = ""
+                    self.showJournalEntry.toggle()
+                } label: {
+                    Text("Log Daily Mood")
+                        .font(.footnote)
+                        .fontWeight(.bold)
+                        .kerning(2)
+                        .textCase(.uppercase)
+                }
+                .padding(.vertical, 5)
+                .foregroundColor(np_jap_indigo)
+                .frame(width: width - 40, height: 35)
+                .background(np_white)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
+                .padding(.bottom, 30)
+                
+                // MARK: "This Week" view
+                VStack {
+                    HStack {
+                        Text("This Week:")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
                             .kerning(2)
                             .textCase(.uppercase)
-                    }
-                    .padding(.vertical, 5)
-                    .foregroundColor(np_jap_indigo)
-                    .frame(width: width - 40, height: 35)
-                    .background(np_white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
-                    .padding(.bottom, 30)
-                    
-                    // MARK: Quote View
-                    VStack {
-                        HStack {
-                            Label("Daily Affirmation:", systemImage: "")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                            
-                            Spacer()
-                        }
-                        .padding(.horizontal)
-                        
-                        AffirmationView()
-                    }
-                    
-                    // MARK: Month View
-                    VStack {
-                        HStack {
-                            Label("This Month", systemImage: "")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_white)
-                            
-                            Spacer()
-                        }
-                        .padding(.horizontal)
-                        
-                        MoodCalendarView(start: Date(), monthsToShow: 1, daysSelectable: true, moodController: moodModelController)
-                            .frame(maxWidth: width - 40, maxHeight: height * 0.75)
-                            .background(np_jap_indigo)
                             .foregroundColor(np_white)
-                            .ignoresSafeArea()
-                            .cornerRadius(10)
-                            .edgesIgnoringSafeArea(.bottom)
-                            .padding(.bottom, 5)
-                            .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
+                        
+                        Spacer()
                     }
+                    .padding(.horizontal)
+                    
+                    WeeklyMoodView(moodModelController: MoodModelController())
+                        .frame(maxWidth: width - 40, maxHeight: height * 0.5)
+                        .background(np_jap_indigo)
+                        .foregroundColor(np_white)
+                        .ignoresSafeArea()
+                        .cornerRadius(10)
+                        .edgesIgnoringSafeArea(.bottom)
+                        .padding(.bottom, 5)
+                        .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
+                }
+                .padding(.bottom, 30)
+                
+                // MARK: Quote View
+                VStack {
+                    HStack {
+                        Label("Daily Affirmation:", systemImage: "")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .kerning(2)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    
+                    AffirmationView()
                 }
             }
-            .frame(maxWidth: .infinity)
         }
+        .frame(maxWidth: .infinity)
         .sheet(isPresented: self.$showJournalEntry) {
             MoodAddDiaryView(moodModelController: self.moodModelController)
         }

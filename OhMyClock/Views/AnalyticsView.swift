@@ -20,6 +20,9 @@ struct AnalyticsView: View {
     let monthsToDisplay: Int
     var selectableDays: Bool
     
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
+    
     @State private var reportDescription = "Here's a summary of your mood statistics over time."
     
     init(start: Date, monthsToShow: Int, daysSelectable: Bool = true, moodController: MoodModelController) {
@@ -37,21 +40,24 @@ struct AnalyticsView: View {
                 HeaderView()
                 
                 ScrollView(.vertical, showsIndicators: false){
-                    StreakView(moodModelController: moodModelController)
-                        .padding(.top, 20)
+                    // MARK: Statistics
+                    StatisticsView(moodModelController: moodModelController)
+                        .padding(.bottom, 30)
                     
+                    // MARK: Mood Cards
                     MoodCountView()
                     
+                    // MARK: CHart
                     ChartView()
                         .frame(height: 500)
                     
-                    // MARK: Last 3 months
+                    // MARK: This Month
                     VStack {
                         HStack {
-                            Label("Last Month:", systemImage: "")
-                                .font(.system(size: 13))
-                                .fontWeight(.bold)
-                                .kerning(3)
+                            Label("This Month:", systemImage: "")
+                                .font(.footnote)
+                                .fontWeight(.semibold)
+                                .kerning(2)
                                 .textCase(.uppercase)
                                 .foregroundColor(np_white)
                             
@@ -59,23 +65,40 @@ struct AnalyticsView: View {
                         }
                         .padding(.horizontal)
                         
-                        // MARK: Last Months Statistics
-                        ForEach((1..<2).reversed(), id: \.self) { monthOffset in
-                            LastMonthView(
-                                moodModelController: moodModelController,
-                                month: Month(
-                                    startDate: previousMonth(from: startDate, subtract: monthOffset),
-                                    selectableDays: selectableDays
-                                )
-                            )
-                            .foregroundColor(np_white)
-                        }
+                        MoodCalendarView(start: Date(), monthsToShow: 1, daysSelectable: true, moodController: moodModelController)
+                            .frame(maxWidth: width - 20, maxHeight: height * 0.6)
+                        
                     }
-                    .padding(.vertical, 10)
+                    
+                    // MARK: Last 3 months
+                    //                    VStack {
+                    //                        HStack {
+                    //                            Label("Last Month:", systemImage: "")
+                    //                                .font(.system(size: 13))
+                    //                                .fontWeight(.bold)
+                    //                                .kerning(3)
+                    //                                .textCase(.uppercase)
+                    //                                .foregroundColor(np_white)
+                    //
+                    //                            Spacer()
+                    //                        }
+                    //                        .padding(.horizontal)
+                    //
+                    //                        // MARK: Last Months Statistics
+                    //                        ForEach((1..<2).reversed(), id: \.self) { monthOffset in
+                    //                            LastMonthView(
+                    //                                moodModelController: moodModelController,
+                    //                                month: Month(
+                    //                                    startDate: previousMonth(from: startDate, subtract: monthOffset),
+                    //                                    selectableDays: selectableDays
+                    //                                )
+                    //                            )
+                    //                            .foregroundColor(np_white)
+                    //                        }
+                    //                    }
                 }
             }
         }
-        .background(np_jap_indigo)
     }
     
     // MARK: Background
@@ -149,7 +172,7 @@ struct AnalyticsView_Previews: PreviewProvider {
 }
 
 // MARK: - Streak View
-struct StreakView: View {
+struct StatisticsView: View {
     @ObservedObject var moodModelController: MoodModelController
     
     var body: some View {
@@ -157,10 +180,10 @@ struct StreakView: View {
             // MARK: Show Streak
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
-                    Text("Statistics:")
-                        .font(.system(size: 13))
-                        .fontWeight(.bold)
-                        .kerning(3)
+                    Text("Emotion Statistics:")
+                        .font(.footnote)
+                        .fontWeight(.semibold)
+                        .kerning(2)
                         .textCase(.uppercase)
                         .foregroundColor(np_white)
                     
@@ -170,47 +193,25 @@ struct StreakView: View {
                 
                 HStack(spacing: 30) {
                     // MARK: Current Streak
-//                    VStack(alignment: .center, spacing: 15) {
-//                        Text("Current")
-//                            .font(.custom("Butler", size: 12))
-//                            .kerning(3)
-//                            .textCase(.uppercase)
-//                            .foregroundColor(np_white)
-//                        
-//                        Text("👑")
-//                            .font(.largeTitle)
-//                            .fontWeight(.semibold)
-//                        
-//                        Text("\(moodModelController.currentStreak)")
-//                            .font(.custom("Butler", size: 30))
-//                            .foregroundColor(np_white)
-//                            .foregroundColor(np_white)
-//                    }
-//                    
-//                    Capsule()
-//                        .frame(width: 0.5, height: 100)
-//                        .foregroundColor(np_gray)
-                    
-                    VStack(alignment: .center, spacing: 15) {
-                        Text("Total")
-                            .font(.custom("Butler", size: 12))
-                            .fontWeight(.semibold)
-                            .kerning(3)
-                            .textCase(.uppercase)
-                            .foregroundColor(np_white)
-                        
-                        Text("📆")
-                            .font(.largeTitle)
-                            .fontWeight(.semibold)
-                        
-                        Text("\(moodModelController.totalDaysLogged)")
-                            .font(.custom("Butler", size: 30))
-                            .foregroundColor(np_white)
-                    }
-                    
-                    Capsule()
-                        .frame(width: 0.5, height: 100)
-                        .foregroundColor(np_gray)
+                    //                    VStack(alignment: .center, spacing: 15) {
+                    //                        Text("Current")
+                    //                            .font(.custom("Butler", size: 12))
+                    //                            .kerning(3)
+                    //                            .textCase(.uppercase)
+                    //                            .foregroundColor(np_white)
+                    //
+                    //                        Text("👑")
+                    //                            .font(.largeTitle)
+                    //                            .fontWeight(.semibold)
+                    //
+                    //                        Text("\(moodModelController.currentStreak)")
+                    //                            .font(.custom("Butler", size: 30))
+                    //                            .foregroundColor(np_white)
+                    //                    }
+                    //
+                    //                    Capsule()
+                    //                        .frame(width: 0.5, height: 100)
+                    //                        .foregroundColor(np_gray)
                     
                     // MARK: Top Recurring Emotion
                     VStack(spacing: 15) {
@@ -261,6 +262,28 @@ struct StreakView: View {
                         }
                     }
                     .frame(alignment: .center)
+                    
+                    Capsule()
+                        .frame(width: 0.5, height: 100)
+                        .foregroundColor(np_gray)
+                    
+                    // MARK: Total days logged
+                    VStack(spacing: 15) {
+                        Text("Total Days")
+                            .font(.custom("Butler", size: 12))
+                            .fontWeight(.semibold)
+                            .kerning(3)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        Text("📆")
+                            .font(.largeTitle)
+                            .fontWeight(.semibold)
+                        
+                        Text("\(moodModelController.totalDaysLogged)")
+                            .font(.custom("Butler", size: 30))
+                            .foregroundColor(np_white)
+                    }
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
             }
@@ -282,13 +305,13 @@ struct LastMonthView: View {
                 
                 // MARK: Month Title
                 HStack {
-                    Spacer()
-                    
                     Text("\(month.monthNameYear)")
                         .font(.custom("Butler", size: 24))
                         .textCase(.uppercase)
                         .scaledToFill()
                         .minimumScaleFactor(0.5)
+                    
+                    Spacer()
                 }
                 .padding(.horizontal)
                 
@@ -386,9 +409,9 @@ struct ChartView: View {
             VStack(alignment: .center, spacing: 10) {
                 HStack {
                     Text("Mood Chart:")
-                        .font(.system(size: 13))
-                        .fontWeight(.bold)
-                        .kerning(3)
+                        .font(.footnote)
+                        .fontWeight(.semibold)
+                        .kerning(2)
                         .textCase(.uppercase)
                         .foregroundColor(np_white)
                     

@@ -38,7 +38,6 @@ struct MoodCalendarView: View {
             
             Spacer()
         }
-        .background(np_jap_indigo)
         .edgesIgnoringSafeArea(.all)
     }
     
@@ -68,13 +67,13 @@ struct MonthView: View {
                 
                 // MARK: Month Title
                 HStack {
-                    Spacer()
-                    
                     Text("\(month.monthNameYear)")
                         .font(.custom("Butler", size: 24))
                         .textCase(.uppercase)
                         .scaledToFill()
                         .minimumScaleFactor(0.5)
+                    
+                    Spacer()
                 }
                 .padding(.horizontal)
                 
@@ -101,7 +100,7 @@ struct MonthView: View {
             }
             .padding(.bottom, 10)
         }
-        .background(np_jap_indigo)
+        .background(np_arsenic)
     }
 }
 
