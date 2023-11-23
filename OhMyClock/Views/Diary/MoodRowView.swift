@@ -18,71 +18,72 @@ struct MoodRowView: View {
     
     var body: some View {
         ZStack {
-            HStack(spacing: 10) {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(mood.emotion.moodColor)
-                    .frame(maxWidth: width * 0.25, maxHeight: height * 0.15)
-                    .overlay {
-                        VStack(alignment: .center, spacing: 20) {
-                            moodImage()
-                                .scaledToFit()
-                                .frame(maxWidth: 120)
-                            
-//                            Text(mood.dayStates.map { $0.rawValue }.joined(separator: ", "))
-//                                .font(.caption)
-//                                .fontWeight(.semibold)
-//                                .textCase(.uppercase)
-//                                .minimumScaleFactor(0.5)
-//                                .foregroundColor(np_white)
-                        }
-                    }
-                
-                Spacer()
-                
-                // MARK: Summary
-                VStack(alignment: .leading, spacing: 10) {
+            VStack(spacing: 15) {
+                HStack {
+                    Spacer()
+                    
                     HStack {
-                        Spacer()
+                        Text(mood.monthString)
                         
-                        HStack {
-                            Text(mood.monthString)
-                            
-                            Text("\(mood.dayAsInt),")
-                            
-                            Text("\(mood.year)")
-                        }
+                        Text("\(mood.dayAsInt),")
+                        
+                        Text("\(mood.year)")
                     }
                     .font(.caption2)
-                    .fontWeight(.semibold)
+                    .fontWeight(.heavy)
+                    .kerning(2)
                     .textCase(.uppercase)
-                    .foregroundColor(np_gray)
-                    .padding(.vertical, 5)
-                    
-                    HStack {
-                        Text("How did you feel?")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .foregroundColor(np_gray)
-                        
-                        Spacer()
-                    }
-                    
-                    // MARK: Summary
-                    HStack {
-                        Text(mood.comment ?? "No Summary")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .lineLimit(7)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(np_white)
-                            .minimumScaleFactor(0.75)
-                        
-                        Spacer()
-                    }
+                    .foregroundColor(np_white)
+              
+                }
+                
+                HStack(spacing: 10) {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(mood.emotion.moodColor)
+                        .frame(width: width * 0.25, height: height * 0.15)
+                        .overlay {
+                            VStack(alignment: .center, spacing: 20) {
+                                moodImage()
+                                    .scaledToFit()
+                                    .frame(maxWidth: 120)
+                            }
+                        }
                     
                     Spacer()
+                    
+                    // MARK: Summary
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack {
+                            Text("How did you feel?")
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .foregroundColor(np_gray)
+                            
+                            Spacer()
+                        }
+                        
+                        // MARK: Summary
+                        HStack {
+                            Text(mood.comment ?? "No Summary")
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .lineLimit(7)
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(np_white)
+                                .minimumScaleFactor(0.75)
+                            
+                            Spacer()
+                        }
+                        
+                        Spacer()
+                    }
+                    .frame(maxWidth: width * 0.7, maxHeight: .infinity)
                 }
-                .frame(maxWidth: width * 0.7, maxHeight: .infinity)
+                
+                Capsule()
+                    .stroke(style: StrokeStyle(lineWidth: 0.3))
+                    .frame(width: width - 40, height: 0.5)
+                    .foregroundColor(np_white)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)

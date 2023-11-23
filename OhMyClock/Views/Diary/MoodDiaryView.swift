@@ -41,7 +41,7 @@ struct MoodDiaryView : View {
                             Section {
                                 ForEach(groupedMoods[outerIndex].value.reversed(), id: \.id) { mood in
                                     MoodRowView(mood: mood)
-                                        .listRowBackground(np_jap_indigo)
+                                        .listRowBackground(np_arsenic)
                                 }
                                 .onDelete { indexSet in
                                     indexSet.forEach { index in
@@ -56,7 +56,7 @@ struct MoodDiaryView : View {
                     .scrollContentBackground(.hidden)
                     .environment(\.defaultMinListRowHeight, 150)
                     .padding(.bottom, 5)
-                    .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
+//                    .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
                     .onAppear {
                         UITableView.appearance().tableFooterView = UIView() // Removes extra cells that are not being used.
                         

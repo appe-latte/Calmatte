@@ -171,12 +171,15 @@ struct MainView: View {
                 // MARK: "This Week" view
                 VStack {
                     HStack {
-                        Text("This Week:")
+                        Label("This Week", systemImage: "")
                             .font(.footnote)
                             .fontWeight(.semibold)
                             .kerning(2)
                             .textCase(.uppercase)
-                            .foregroundColor(np_white)
+                            .foregroundColor(np_jap_indigo)
+                            .padding(5)
+                            .background(np_white)
+                            .clipShape(Capsule())
                         
                         Spacer()
                     }
@@ -197,12 +200,15 @@ struct MainView: View {
                 // MARK: Quote View
                 VStack {
                     HStack {
-                        Label("Daily Affirmation:", systemImage: "")
+                        Label("Daliy Affirmation", systemImage: "")
                             .font(.footnote)
                             .fontWeight(.semibold)
                             .kerning(2)
                             .textCase(.uppercase)
-                            .foregroundColor(np_white)
+                            .foregroundColor(np_jap_indigo)
+                            .padding(5)
+                            .background(np_white)
+                            .clipShape(Capsule())
                         
                         Spacer()
                     }

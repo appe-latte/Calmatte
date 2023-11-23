@@ -38,7 +38,7 @@ enum EmotionState: String, Codable, CaseIterable, CustomStringConvertible {
 }
 
 enum DayMoodState: String, Codable, CaseIterable {
-    case amazing, good, okay, bad, terrible, meh
+    case amazing, good, okay, meh, bad, terrible
 }
 
 enum MoodColor: String, Codable, CaseIterable {
@@ -92,43 +92,39 @@ struct Mood: Codable, Equatable, Identifiable {
     func asDictionary() throws -> [String: Any] {
         let data = try JSONEncoder().encode(self)
         guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-            throw NSError()
+            throw NSError(domain: "MoodSerializationError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to serialize Mood"])
         }
         return dictionary
     }
     
     var dateString: String {
-        dateFormatter.string(from: date)
+        Mood.dateFormatter.string(from: date)
     }
     
     var monthString: String {
-        
-        let dateFormatter1 = DateFormatter()
-        dateFormatter1.dateFormat = "LLL"
-        
-        let month = dateFormatter1.string(from: date)
-        
-        return month
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLL"
+        return dateFormatter.string(from: date)
     }
     
     var dayAsInt: Int {
-        let day = Calendar.current.component(.day, from: date)
-        return day
+        Calendar.current.component(.day, from: date)
     }
     
     var year: String {
-        return Calendar.current.component(.year, from: date).description
+        Calendar.current.component(.year, from: date).description
     }
     
     static func == (lhs: Mood, rhs: Mood) -> Bool {
-        if lhs.date == rhs.date {
-            return true
-        } else {
-            return false
-        }
+        lhs.id == rhs.id
     }
+    
+    private static var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter
+    }()
 }
-
 
 let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -136,3 +132,37 @@ let dateFormatter: DateFormatter = {
     return formatter
 }()
 
+
+// MARK: Mood Prediction Score
+enum MoodScoreCategory {
+    case amazing, good, okay, meh, bad, terrible
+    
+    init(score: Double){
+        switch score {
+        case 85...100: self = .amazing
+        case 65..<85: self = .good
+        case 55..<65: self = .okay
+        case 45..<55: self = .meh
+        case 30..<45: self = .bad
+        case 0..<30: self = .terrible
+        default: self = .okay
+        }
+    }
+    
+    var scoreColor: Color {
+        switch self {
+        case .amazing
+            : return np_green
+        case .good:
+            return np_turq
+        case .okay:
+            return np_yellow
+        case .meh:
+            return np_purple
+        case .bad:
+            return np_yellow
+        case .terrible:
+            return np_red
+        }
+    }
+}

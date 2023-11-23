@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: Mood Types
 enum MoodType: String, CaseIterable {
-    case great, happy, okay, sad, angry
+    case amazing, good, okay, bad, terrible, meh
 }
 
 enum InsightsType: String, CaseIterable {
@@ -28,7 +28,7 @@ enum InsightsType: String, CaseIterable {
 }
 
 class MoodModel: ObservableObject {
-    @Published var moodType: MoodType = .happy
+    @Published var moodType: MoodType = .good
     @Published var insightsType: InsightsType = .today
     
     // MARK: "Saved Data" key

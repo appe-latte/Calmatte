@@ -42,6 +42,7 @@ struct AnalyticsView: View {
                 ScrollView(.vertical, showsIndicators: false){
                     // MARK: Statistics
                     StatisticsView(moodModelController: moodModelController)
+//                        .padding(.horizontal)
                         .padding(.bottom, 30)
                     
                     // MARK: Mood Cards
@@ -54,12 +55,15 @@ struct AnalyticsView: View {
                     // MARK: This Month
                     VStack {
                         HStack {
-                            Label("This Month:", systemImage: "")
+                            Label("This Month", systemImage: "")
                                 .font(.footnote)
                                 .fontWeight(.semibold)
                                 .kerning(2)
                                 .textCase(.uppercase)
-                                .foregroundColor(np_white)
+                                .foregroundColor(np_jap_indigo)
+                                .padding(5)
+                                .background(np_white)
+                                .clipShape(Capsule())
                             
                             Spacer()
                         }
@@ -69,37 +73,15 @@ struct AnalyticsView: View {
                             .frame(maxWidth: width - 20, maxHeight: height * 0.6)
                         
                     }
-                    
-                    // MARK: Last 3 months
-                    //                    VStack {
-                    //                        HStack {
-                    //                            Label("Last Month:", systemImage: "")
-                    //                                .font(.system(size: 13))
-                    //                                .fontWeight(.bold)
-                    //                                .kerning(3)
-                    //                                .textCase(.uppercase)
-                    //                                .foregroundColor(np_white)
-                    //
-                    //                            Spacer()
-                    //                        }
-                    //                        .padding(.horizontal)
-                    //
-                    //                        // MARK: Last Months Statistics
-                    //                        ForEach((1..<2).reversed(), id: \.self) { monthOffset in
-                    //                            LastMonthView(
-                    //                                moodModelController: moodModelController,
-                    //                                month: Month(
-                    //                                    startDate: previousMonth(from: startDate, subtract: monthOffset),
-                    //                                    selectableDays: selectableDays
-                    //                                )
-                    //                            )
-                    //                            .foregroundColor(np_white)
-                    //                        }
-                    //                    }
                 }
             }
         }
     }
+    
+    //    func getMoodPredictionScore() -> Double {
+    //        return calculateMoodPredictionScore(moods: moodModelController.moods)
+    //    }
+    
     
     // MARK: Background
     @ViewBuilder
@@ -180,39 +162,21 @@ struct StatisticsView: View {
             // MARK: Show Streak
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
-                    Text("Emotion Statistics:")
+                    Label("Summary", systemImage: "")
                         .font(.footnote)
                         .fontWeight(.semibold)
                         .kerning(2)
                         .textCase(.uppercase)
-                        .foregroundColor(np_white)
+                        .foregroundColor(np_jap_indigo)
+                        .padding(5)
+                        .background(np_white)
+                        .clipShape(Capsule())
                     
                     Spacer()
                 }
-                .padding(.horizontal, 10)
+                .padding(.horizontal)
                 
                 HStack(spacing: 30) {
-                    // MARK: Current Streak
-                    //                    VStack(alignment: .center, spacing: 15) {
-                    //                        Text("Current")
-                    //                            .font(.custom("Butler", size: 12))
-                    //                            .kerning(3)
-                    //                            .textCase(.uppercase)
-                    //                            .foregroundColor(np_white)
-                    //
-                    //                        Text("👑")
-                    //                            .font(.largeTitle)
-                    //                            .fontWeight(.semibold)
-                    //
-                    //                        Text("\(moodModelController.currentStreak)")
-                    //                            .font(.custom("Butler", size: 30))
-                    //                            .foregroundColor(np_white)
-                    //                    }
-                    //
-                    //                    Capsule()
-                    //                        .frame(width: 0.5, height: 100)
-                    //                        .foregroundColor(np_gray)
-                    
                     // MARK: Top Recurring Emotion
                     VStack(spacing: 15) {
                         Text("Most")
@@ -240,27 +204,32 @@ struct StatisticsView: View {
                         .frame(width: 0.5, height: 100)
                         .foregroundColor(np_gray)
                     
-                    // MARK: Least Recurring Emotion
+                    // MARK: Mood Prediction Score
                     VStack(spacing: 15) {
-                        Text("Fewest")
+                        Text("Mood Score")
                             .font(.custom("Butler", size: 12))
                             .fontWeight(.semibold)
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
                         
-                        if let leastMoodState = moodModelController.calculateLeastCommonMood(moods: moodModelController.moods) {
-                            Image(String(describing: leastMoodState))
-                                .resizable()
-                                .scaledToFill()
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                .frame(width: 50, height: 85)
-                        } else {
-                            Text("-")
-                                .font(.subheadline)
-                                .foregroundColor(np_white)
-                        }
-                    }
+                        Circle()
+                            .fill(np_gray.opacity(0.1))
+                            .frame(width: 85, height: 85)
+                            .clipShape(Circle())
+                            .overlay {
+                                VStack {
+                                    Text("\(moodModelController.calculateMoodPredictionScore(), specifier: "%.0f")")
+                                        .font(.title)
+                                        .fontWeight(.heavy)
+                                        .kerning(2)
+                                    
+                                    Text("out of 100")
+                                        .font(.system(size: 6, weight: .bold))
+                                        .kerning(2)
+                                        .textCase(.uppercase)
+                                }
+                            }                    }
                     .frame(alignment: .center)
                     
                     Capsule()
@@ -269,7 +238,7 @@ struct StatisticsView: View {
                     
                     // MARK: Total days logged
                     VStack(spacing: 15) {
-                        Text("Total Days")
+                        Text("Days")
                             .font(.custom("Butler", size: 12))
                             .fontWeight(.semibold)
                             .kerning(3)
@@ -408,15 +377,19 @@ struct ChartView: View {
             // MARK: Mood Count Summary
             VStack(alignment: .center, spacing: 10) {
                 HStack {
-                    Text("Mood Chart:")
+                    Label("Mood Chart", systemImage: "")
                         .font(.footnote)
                         .fontWeight(.semibold)
                         .kerning(2)
                         .textCase(.uppercase)
-                        .foregroundColor(np_white)
+                        .foregroundColor(np_jap_indigo)
+                        .padding(5)
+                        .background(np_white)
+                        .clipShape(Capsule())
                     
                     Spacer()
                 }
+                .padding(.horizontal)
                 
                 Spacer()
                     .frame(height: 50)

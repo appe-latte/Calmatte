@@ -212,4 +212,42 @@ class MoodModelController: ObservableObject {
         
         return leastCommonMood
     }
+    
+    // MARK: Mood Prediction Score calculation
+    func calculateMoodPredictionScore() -> Double {
+        guard !moods.isEmpty else { return 0.0 }
+        
+        let calendar = Calendar.current
+        let endDate = Date()
+        guard let startDate = calendar.date(byAdding: .day, value: -7, to: endDate) else { return 0.0 }
+        
+        // Filter moods for the last 7 days
+        let recentMoods = moods.filter { $0.date >= startDate && $0.date <= endDate }
+        
+        var score = 0.0
+        for mood in recentMoods {
+            for dayState in mood.dayStates {
+                switch dayState {
+                case .amazing:
+                    score += 1
+                case .good:
+                    score += 0.75
+                case .okay:
+                    score += 0.5
+                case .meh:
+                    score += 0.25
+                case .bad:
+                    score -= 0.5
+                case .terrible:
+                    score -= 1
+                }
+            }
+        }
+        
+        // Normalize the score to a percentage
+        let maxScore = Double(recentMoods.flatMap { $0.dayStates }.count)
+        let normalizedScore = maxScore > 0 ? (score + maxScore) / (2 * maxScore) * 100 : 0
+        
+        return normalizedScore
+    }
 }
