@@ -10,7 +10,6 @@ target 'OhMyClock' do
   pod 'FirebaseFirestore'
   pod 'Alamofire'
   pod 'SwiftyJSON'
-#  pod 'RealmSwift'
   pod 'AlertToast'
 end
 

@@ -436,7 +436,7 @@
 				2F36B09D2967A40000AC8D59 /* Frameworks */,
 				2F36B09E2967A40000AC8D59 /* Resources */,
 				2FDBFCAD2A64B0C400CF96FE /* Embed Foundation Extensions */,
-				FE7F33F7A9D2B7B846401530 /* [CP] Embed Pods Frameworks */,
+				6E8E34B9F4C27B7BF20AFB3B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -537,7 +537,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FE7F33F7A9D2B7B846401530 /* [CP] Embed Pods Frameworks */ = {
+		6E8E34B9F4C27B7BF20AFB3B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -759,7 +759,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OhMyClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Calmatte;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "\"Allow FaceID to secure the app\"";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
@@ -804,7 +804,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OhMyClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Calmatte;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "\"Allow FaceID to secure the app\"";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow \"Calmatte\" permission to get your location so we can deliver accurate weather and timezone information.";

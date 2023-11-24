@@ -21,7 +21,7 @@ Currently in SwiftUI, the only way to inform the user about some process that fi
 
 Alert Toast is an open-source library in Github to use with SwiftUI. It allows you to present popups that don't need any user action to dismiss or to validate. Some great usage examples: `Message Sent`, `Poor Network Connection`, `Profile Updated`, `Logged In/Out`, `Favorited`, `Loading` and so on...
 
-<img src="https://img.shields.io/badge/BUILD-PASSING-green?style=for-the-badge" />&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/PLATFORM-IOS%20|%20MACOS-lightgray?style=for-the-badge" />&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/LICENSE-MIT-lightgray?style=for-the-badge" />&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/MADE WITH-SWIFTUI-orange?style=for-the-badge" />
+<img src="https://img.shields.io/badge/BUILD-1.3.8-green?style=for-the-badge" />&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/PLATFORM-IOS%20|%20MACOS-lightgray?style=for-the-badge" />&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/LICENSE-MIT-lightgray?style=for-the-badge" />&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/MADE WITH-SWIFTUI-orange?style=for-the-badge" />
 
 * Built with pure SwiftUI.
 * 3 Display modes: `Alert` (pop at the center), `HUD` (drop from the top) and `Banner` (pop/slide from the bottom).
@@ -34,6 +34,13 @@ Alert Toast is an open-source library in Github to use with SwiftUI. It allows y
 #### If you like the project, don't forget to `put star 🌟`.
 
 <a href="mailto:elai950@gmail.com"><img src="https://img.shields.io/badge/EMAIL-ELAI-informational?style=for-the-badge&logo=minutemailer&logoColor=white"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.linkedin.com/in/elai-zuberman-8120a073/" target="_blank"><img src="https://img.shields.io/badge/LINKEDIN-informational?style=for-the-badge&logo=linkedin&logoColor=white" ></a>&nbsp;&nbsp;&nbsp;<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5JN5PT55NAHKU" target="_blank"><img src="https://img.shields.io/badge/Donate-informational?style=for-the-badge&logo=paypal&logoColor=white" ></a>
+
+₿ Bitcoin donation address:
+```
+0xec48bfa813a773fa2394aec23f97da5cb4d5ff02
+```
+- Send only BTC to this deposit address.
+- Ensure the network is BNB Smart Chain (BEP20).
 
 ## Navigation
 
@@ -74,6 +81,8 @@ To integrate `AlertToast` into your Xcode project using Xcode 12, specify it in 
 https://github.com/elai950/AlertToast.git, :branch="master"
 ```
 
+For Xcode 13, please refer [this article](https://iiroalhonen.medium.com/adding-a-swift-package-dependency-in-xcode-13-937b2caaf218) to install `AlertToast` 
+
 ------
 
 ### Manually
@@ -112,7 +121,7 @@ struct ContentView: View{
         VStack{
 
             Button("Show Toast"){
-                 showAlert.toggle()
+                 showToast.toggle()
             }
         }
         .toast(isPresenting: $showToast){
@@ -150,10 +159,10 @@ AlertToast(displayMode: DisplayMode,
            type: AlertType,
            title: Optional(String),
            subTitle: Optional(String),
-           custom: Optional(AlertCustom))
+           style: Optional(AlertStyle))
            
 //This is the available customizations parameters:
-AlertCustom(backgroundColor: Color?,
+AlertStyle(backgroundColor: Color?,
             titleColor: Color?,
             subTitleColor: Color?,
             titleFont: Font?,
@@ -203,7 +212,7 @@ You can add many `.toast` on a single view.
 
 ## 📖 Article
 
-I wrote an article that contains more usage exmaples.
+I wrote an article that contains more usage examples.
 
 [Medium - How to toast an alert in SwiftUI](https://elaizuberman.medium.com/presenting-apples-music-alerts-in-swiftui-7f5c32cebed6)
 
@@ -219,7 +228,7 @@ Elai Zuberman
 
 ## 📃 License
 
-`AlertToast` is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
+`AlertToast` is available under the MIT license. See the [LICENSE](https://github.com/elai950/AlertToast/blob/master/LICENSE.md) file for more info.
 
 ---
 

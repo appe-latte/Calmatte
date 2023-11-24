@@ -243,6 +243,7 @@ public struct AlertToast: View{
                             .foregroundColor(color)
                     case .image(let name, let color):
                         Image(name)
+                            .renderingMode(.template)
                             .foregroundColor(color)
                     case .loading:
                         ActivityIndicator()
@@ -256,9 +257,10 @@ public struct AlertToast: View{
                 
                 if subTitle != nil{
                     Text(LocalizedStringKey(subTitle!))
-                        .font(style?.titleFont ?? Font.subheadline)
+                        .font(style?.subTitleFont ?? Font.subheadline)
                 }
             }
+            .fixedSize(horizontal: true, vertical: false)
             .multilineTextAlignment(.leading)
             .textColor(style?.titleColor ?? nil)
             .padding()
@@ -314,6 +316,7 @@ public struct AlertToast: View{
                     }
                 }
             }
+            .fixedSize(horizontal: true, vertical: false)
             .padding(.horizontal, 24)
             .padding(.vertical, 8)
             .frame(minHeight: 50)
@@ -433,11 +436,7 @@ public struct AlertToastModifier: ViewModifier{
     }
     
     private var offset: CGFloat{
-#if os(iOS)
         return -hostRect.midY + alertRect.height
-#else
-        return (-hostRect.midY + screen.midY) + alertRect.height
-#endif
     }
     
     @ViewBuilder
@@ -451,7 +450,9 @@ public struct AlertToastModifier: ViewModifier{
                         onTap?()
                         if tapToDismiss{
                             withAnimation(Animation.spring()){
+                                self.workItem?.cancel()
                                 isPresenting = false
+                                self.workItem = nil
                             }
                         }
                     }
@@ -479,7 +480,9 @@ public struct AlertToastModifier: ViewModifier{
                         onTap?()
                         if tapToDismiss{
                             withAnimation(Animation.spring()){
+                                self.workItem?.cancel()
                                 isPresenting = false
+                                self.workItem = nil
                             }
                         }
                     }
@@ -493,7 +496,9 @@ public struct AlertToastModifier: ViewModifier{
                         onTap?()
                         if tapToDismiss{
                             withAnimation(Animation.spring()){
+                                self.workItem?.cancel()
                                 isPresenting = false
+                                self.workItem = nil
                             }
                         }
                     }
@@ -568,6 +573,10 @@ public struct AlertToastModifier: ViewModifier{
     }
     
     private func onAppearAction(){
+        guard workItem == nil else {
+            return
+        }
+        
         if alert().type == .loading{
             duration = 0
             tapToDismiss = false
@@ -579,6 +588,7 @@ public struct AlertToastModifier: ViewModifier{
             let task = DispatchWorkItem {
                 withAnimation(Animation.spring()){
                     isPresenting = false
+                    workItem = nil
                 }
             }
             workItem = task

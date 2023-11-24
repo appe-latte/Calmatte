@@ -26,6 +26,7 @@
 #include <set>
 #include <string>
 #include <utility>
+#include <vector>
 
 #include "Firestore/Protos/nanopb/google/firestore/v1/document.nanopb.h"
 #include "Firestore/Protos/nanopb/google/firestore/v1/firestore.nanopb.h"
@@ -42,6 +43,7 @@
 #include "Firestore/core/src/model/resource_path.h"
 #include "Firestore/core/src/model/server_timestamp_util.h"
 #include "Firestore/core/src/model/set_mutation.h"
+#include "Firestore/core/src/model/snapshot_version.h"
 #include "Firestore/core/src/model/value_util.h"
 #include "Firestore/core/src/model/verify_mutation.h"
 #include "Firestore/core/src/nanopb/byte_string.h"
@@ -49,6 +51,7 @@
 #include "Firestore/core/src/nanopb/reader.h"
 #include "Firestore/core/src/nanopb/writer.h"
 #include "Firestore/core/src/timestamp_internal.h"
+#include "Firestore/core/src/util/comparison.h"
 #include "Firestore/core/src/util/hard_assert.h"
 #include "Firestore/core/src/util/status.h"
 #include "Firestore/core/src/util/statusor.h"
@@ -111,6 +114,7 @@ using nanopb::SetRepeatedField;
 using nanopb::SharedMessage;
 using nanopb::Writer;
 using remote::WatchChange;
+using util::ComparisonResult;
 using util::ReadContext;
 using util::Status;
 using util::StatusOr;
@@ -635,6 +639,21 @@ google_firestore_v1_Target Serializer::EncodeTarget(
     result.which_resume_type = google_firestore_v1_Target_resume_token_tag;
     result.resume_type.resume_token =
         nanopb::CopyBytesArray(target_data.resume_token().get());
+
+    if (target_data.expected_count().has_value()) {
+      result.has_expected_count = true;
+      result.expected_count.value = target_data.expected_count().value();
+    }
+  } else if (target_data.snapshot_version().CompareTo(
+                 SnapshotVersion::None()) == ComparisonResult::Descending) {
+    result.which_resume_type = google_firestore_v1_Target_read_time_tag;
+    result.resume_type.read_time =
+        EncodeVersion(target_data.snapshot_version());
+
+    if (target_data.expected_count().has_value()) {
+      result.has_expected_count = true;
+      result.expected_count.value = target_data.expected_count().value();
+    }
   }
 
   return result;
@@ -813,8 +832,6 @@ std::vector<Filter> Serializer::DecodeFilters(
 
   // Instead of a singletonList containing AND(F1, F2, ...), we can return
   // a list containing F1, F2, ...
-  // TODO(orquery): Once proper support for composite filters has been
-  // completed, we can remove this flattening from here.
   if (decoded_filter.IsACompositeFilter()) {
     CompositeFilter composite_filter(decoded_filter);
     if (composite_filter.IsFlatConjunction()) {
@@ -1271,6 +1288,8 @@ std::string Serializer::EncodeLabel(QueryPurpose purpose) const {
       return "";
     case QueryPurpose::ExistenceFilterMismatch:
       return "existence-filter-mismatch";
+    case QueryPurpose::ExistenceFilterMismatchBloom:
+      return "existence-filter-mismatch-bloom";
     case QueryPurpose::LimboResolution:
       return "limbo-document";
   }
@@ -1425,9 +1444,28 @@ std::unique_ptr<WatchChange> Serializer::DecodeDocumentRemove(
 
 std::unique_ptr<WatchChange> Serializer::DecodeExistenceFilterWatchChange(
     ReadContext*, const google_firestore_v1_ExistenceFilter& filter) const {
-  ExistenceFilter existence_filter{filter.count};
-  return absl::make_unique<ExistenceFilterWatchChange>(existence_filter,
-                                                       filter.target_id);
+  return absl::make_unique<ExistenceFilterWatchChange>(
+      DecodeExistenceFilter(filter), filter.target_id);
+}
+
+ExistenceFilter Serializer::DecodeExistenceFilter(
+    const google_firestore_v1_ExistenceFilter& filter) const {
+  if (!filter.has_unchanged_names) {
+    return {filter.count, absl::nullopt};
+  }
+
+  int32_t hash_count = filter.unchanged_names.hash_count;
+  int32_t padding = 0;
+  ByteString bitmap;
+  if (filter.unchanged_names.has_bits) {
+    padding = filter.unchanged_names.bits.padding;
+    // TODO(b/274668697) Steal the bytes using ByteString::Take() instead of
+    //  copying them. To do this, the `filter` argument will need to be
+    //  non-const, which will affect the caller(s), and their caller(s), etc.
+    bitmap = ByteString(filter.unchanged_names.bits.bitmap);
+  }
+  return {filter.count,
+          BloomFilterParameters{std::move(bitmap), padding, hash_count}};
 }
 
 bool Serializer::IsLocalResourceName(const ResourcePath& path) const {

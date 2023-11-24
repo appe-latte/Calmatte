@@ -28,6 +28,7 @@
 #import "FirebaseAuth/Sources/Public/FirebaseAuth/FirebaseAuth.h"
 #import "FirebaseCore/Extension/FirebaseCoreInternal.h"
 
+#import "FirebaseAppCheck/Interop/FIRAppCheckInterop.h"
 #import "FirebaseAuth/Sources/Auth/FIRAuthDataResult_Internal.h"
 #import "FirebaseAuth/Sources/Auth/FIRAuthDispatcher.h"
 #import "FirebaseAuth/Sources/Auth/FIRAuthGlobalWorkQueue.h"
@@ -46,6 +47,8 @@
 #import "FirebaseAuth/Sources/Backend/RPC/FIRGetOOBConfirmationCodeResponse.h"
 #import "FirebaseAuth/Sources/Backend/RPC/FIRResetPasswordRequest.h"
 #import "FirebaseAuth/Sources/Backend/RPC/FIRResetPasswordResponse.h"
+#import "FirebaseAuth/Sources/Backend/RPC/FIRRevokeTokenRequest.h"
+#import "FirebaseAuth/Sources/Backend/RPC/FIRRevokeTokenResponse.h"
 #import "FirebaseAuth/Sources/Backend/RPC/FIRSendVerificationCodeRequest.h"
 #import "FirebaseAuth/Sources/Backend/RPC/FIRSendVerificationCodeResponse.h"
 #import "FirebaseAuth/Sources/Backend/RPC/FIRSetAccountInfoRequest.h"
@@ -150,7 +153,7 @@ static NSString *const kRecoverEmailRequestType = @"RECOVER_EMAIL";
 static NSString *const kEmailLinkSignInRequestType = @"EMAIL_SIGNIN";
 
 /** @var kVerifyAndChangeEmailRequestType
-    @brief The action code type value for verifing and changing email in the check action code
+    @brief The action code type value for verifying and changing email in the check action code
            response.
  */
 static NSString *const kVerifyAndChangeEmailRequestType = @"VERIFY_AND_CHANGE_EMAIL";
@@ -462,12 +465,13 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
   self = [self initWithAPIKey:app.options.APIKey
                       appName:app.name
                         appID:app.options.googleAppID
-              heartbeatLogger:app.heartbeatLogger];
+              heartbeatLogger:app.heartbeatLogger
+                     appCheck:FIR_COMPONENT(FIRAppCheckInterop, app.container)];
   if (self) {
     _app = app;
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
     _authURLPresenter = [[FIRAuthURLPresenter alloc] init];
-#endif
+#endif  // TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
   }
   return self;
 }
@@ -475,19 +479,22 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
 - (nullable instancetype)initWithAPIKey:(NSString *)APIKey
                                 appName:(NSString *)appName
                                   appID:(NSString *)appID {
-  return [self initWithAPIKey:APIKey appName:appName appID:appID heartbeatLogger:nil];
+  return [self initWithAPIKey:APIKey appName:appName appID:appID heartbeatLogger:nil appCheck:nil];
 }
 
 - (nullable instancetype)initWithAPIKey:(NSString *)APIKey
                                 appName:(NSString *)appName
                                   appID:(NSString *)appID
-                        heartbeatLogger:(nullable id<FIRHeartbeatLoggerProtocol>)heartbeatLogger {
+                        heartbeatLogger:(nullable id<FIRHeartbeatLoggerProtocol>)heartbeatLogger
+                               appCheck:(nullable id<FIRAppCheckInterop>)appCheck {
   self = [super init];
   if (self) {
     _listenerHandles = [NSMutableArray array];
     _requestConfiguration = [[FIRAuthRequestConfiguration alloc] initWithAPIKey:APIKey
                                                                           appID:appID
-                                                                heartbeatLogger:heartbeatLogger];
+                                                                           auth:self
+                                                                heartbeatLogger:heartbeatLogger
+                                                                       appCheck:appCheck];
     _firebaseAppName = [appName copy];
 #if TARGET_OS_IOS
     _settings = [[FIRAuthSettings alloc] init];
@@ -519,54 +526,41 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
           [[FIRAuthStoredUserManager alloc] initWithServiceName:keychainServiceName];
     }
 
-    NSError *error;
-    NSString *storedUserAccessGroup =
-        [strongSelf.storedUserManager getStoredUserAccessGroupWithError:&error];
-    if (!error) {
-      if (!storedUserAccessGroup) {
-        FIRUser *user;
-        if ([strongSelf getUser:&user error:&error]) {
-          strongSelf.tenantID = user.tenantID;
-          [strongSelf updateCurrentUser:user byForce:NO savingToDisk:NO error:&error];
-          self->_lastNotifiedUserToken = user.rawAccessToken;
-        } else {
-#if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_MACCATALYST
-          if (error.code == FIRAuthErrorCodeKeychainError) {
-            // If there's a keychain error, assume it is due to the keychain being accessed
-            // before the device is unlocked as a result of prewarming, and listen for the
-            // UIApplicationProtectedDataDidBecomeAvailable notification.
-            [strongSelf addProtectedDataDidBecomeAvailableObserver];
-          }
-#endif  // TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_MACCATALYST
-          FIRLogError(kFIRLoggerAuth, @"I-AUT000001",
-                      @"Error loading saved user when starting up: %@", error);
-        }
+    NSString *storedUserAccessGroup = [strongSelf.storedUserManager getStoredUserAccessGroup];
+    if (!storedUserAccessGroup) {
+      FIRUser *user;
+      NSError *error;
+      if ([strongSelf getUser:&user error:&error]) {
+        strongSelf.tenantID = user.tenantID;
+        [strongSelf updateCurrentUser:user byForce:NO savingToDisk:NO error:&error];
+        self->_lastNotifiedUserToken = user.rawAccessToken;
       } else {
-        [strongSelf internalUseUserAccessGroup:storedUserAccessGroup error:&error];
-        if (error) {
 #if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_MACCATALYST
-          if (error.code == FIRAuthErrorCodeKeychainError) {
-            // If there's a keychain error, assume it is due to the keychain being accessed
-            // before the device is unlocked as a result of prewarming, and listen for the
-            // UIApplicationProtectedDataDidBecomeAvailable notification.
-            [strongSelf addProtectedDataDidBecomeAvailableObserver];
-          }
-#endif  // TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_MACCATALYST
-          FIRLogError(kFIRLoggerAuth, @"I-AUT000001",
-                      @"Error loading saved user when starting up: %@", error);
+        if (error.code == FIRAuthErrorCodeKeychainError) {
+          // If there's a keychain error, assume it is due to the keychain being accessed
+          // before the device is unlocked as a result of prewarming, and listen for the
+          // UIApplicationProtectedDataDidBecomeAvailable notification.
+          [strongSelf addProtectedDataDidBecomeAvailableObserver];
         }
+#endif  // TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_MACCATALYST
+        FIRLogError(kFIRLoggerAuth, @"I-AUT000001",
+                    @"Error loading saved user when starting up: %@", error);
       }
     } else {
+      NSError *error;
+      [strongSelf internalUseUserAccessGroup:storedUserAccessGroup error:&error];
+      if (error) {
 #if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_MACCATALYST
-      if (error.code == FIRAuthErrorCodeKeychainError) {
-        // If there's a keychain error, assume it is due to the keychain being accessed
-        // before the device is unlocked as a result of prewarming, and listen for the
-        // UIApplicationProtectedDataDidBecomeAvailable notification.
-        [strongSelf addProtectedDataDidBecomeAvailableObserver];
-      }
+        if (error.code == FIRAuthErrorCodeKeychainError) {
+          // If there's a keychain error, assume it is due to the keychain being accessed
+          // before the device is unlocked as a result of prewarming, and listen for the
+          // UIApplicationProtectedDataDidBecomeAvailable notification.
+          [strongSelf addProtectedDataDidBecomeAvailableObserver];
+        }
 #endif  // TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_MACCATALYST
-      FIRLogError(kFIRLoggerAuth, @"I-AUT000001", @"Error loading saved user when starting up: %@",
-                  error);
+        FIRLogError(kFIRLoggerAuth, @"I-AUT000001",
+                    @"Error loading saved user when starting up: %@", error);
+      }
     }
 
 #if TARGET_OS_IOS
@@ -654,7 +648,7 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
 - (void)signInWithProvider:(id<FIRFederatedAuthProvider>)provider
                 UIDelegate:(nullable id<FIRAuthUIDelegate>)UIDelegate
                 completion:(nullable FIRAuthDataResultCallback)completion {
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
   dispatch_async(FIRAuthGlobalWorkQueue(), ^{
     FIRAuthDataResultCallback decoratedCallback =
         [self signInFlowAuthDataResultCallbackByDecoratingCallback:completion];
@@ -671,7 +665,7 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
                                                                         callback:decoratedCallback];
                                }];
   });
-#endif  // TARGET_OS_IOS
+#endif  // TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
 }
 
 - (void)fetchSignInMethodsForEmail:(nonnull NSString *)email
@@ -773,9 +767,9 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
 - (void)internalSignInAndRetrieveDataWithEmail:(NSString *)email
                                       password:(NSString *)password
                                     completion:(FIRAuthDataResultCallback)completion {
-  FIREmailPasswordAuthCredential *credentail =
+  FIREmailPasswordAuthCredential *credential =
       [[FIREmailPasswordAuthCredential alloc] initWithEmail:email password:password];
-  [self internalSignInAndRetrieveDataWithCredential:credentail
+  [self internalSignInAndRetrieveDataWithCredential:credential
                                  isReauthentication:NO
                                            callback:completion];
 }
@@ -790,6 +784,8 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
                                              callback:(FIRAuthDataResultCallback)callback {
   FIRSignInWithGameCenterRequest *request =
       [[FIRSignInWithGameCenterRequest alloc] initWithPlayerID:credential.playerID
+                                                  teamPlayerID:credential.teamPlayerID
+                                                  gamePlayerID:credential.gamePlayerID
                                                   publicKeyURL:credential.publicKeyURL
                                                      signature:credential.signature
                                                           salt:credential.salt
@@ -1537,6 +1533,34 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
   });
 }
 
+- (void)revokeTokenWithAuthorizationCode:(NSString *)authorizationCode
+                              completion:(nullable void (^)(NSError *_Nullable error))completion {
+  [self.currentUser
+      getIDTokenWithCompletion:^(NSString *_Nullable idToken, NSError *_Nullable error) {
+        if (error) {
+          if (completion) {
+            completion(error);
+          }
+          return;
+        }
+        FIRRevokeTokenRequest *request =
+            [[FIRRevokeTokenRequest alloc] initWithToken:authorizationCode
+                                                 idToken:idToken
+                                    requestConfiguration:self->_requestConfiguration];
+        [FIRAuthBackend
+            revokeToken:request
+               callback:^(FIRRevokeTokenResponse *_Nullable response, NSError *_Nullable error) {
+                 if (completion) {
+                   if (error) {
+                     completion(error);
+                   } else {
+                     completion(nil);
+                   }
+                 }
+               }];
+      }];
+}
+
 #if TARGET_OS_IOS
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-property-ivar"
@@ -1614,9 +1638,11 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
 
 - (BOOL)canHandleURL:(NSURL *)URL {
   __block BOOL result = NO;
+#if TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
   dispatch_sync(FIRAuthGlobalWorkQueue(), ^{
     result = [self->_authURLPresenter canHandleURL:URL];
   });
+#endif  // TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
   return result;
 }
 
@@ -1679,8 +1705,7 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
     @param completion A block which is invoked when the custom token sign in request completes.
  */
 - (void)internalSignInAndRetrieveDataWithCustomToken:(NSString *)token
-                                          completion:
-                                              (nullable FIRAuthDataResultCallback)completion {
+                                          completion:(FIRAuthDataResultCallback)completion {
   FIRVerifyCustomTokenRequest *request =
       [[FIRVerifyCustomTokenRequest alloc] initWithToken:token
                                     requestConfiguration:_requestConfiguration];
@@ -1689,10 +1714,8 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
                callback:^(FIRVerifyCustomTokenResponse *_Nullable response,
                           NSError *_Nullable error) {
                  if (error) {
-                   if (completion) {
-                     completion(nil, error);
-                     return;
-                   }
+                   completion(nil, error);
+                   return;
                  }
                  [self completeSignInWithAccessToken:response.IDToken
                            accessTokenExpirationDate:response.approximateExpirationDate
@@ -1700,7 +1723,7 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
                                            anonymous:NO
                                             callback:^(FIRUser *_Nullable user,
                                                        NSError *_Nullable error) {
-                                              if (error && completion) {
+                                              if (error) {
                                                 completion(nil, error);
                                                 return;
                                               }
@@ -1715,9 +1738,7 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
                                                                    initWithUser:user
                                                              additionalUserInfo:additonalUserInfo]
                                                        : nil;
-                                              if (completion) {
-                                                completion(result, error);
-                                              }
+                                              completion(result, error);
                                             }];
                }];
 }
@@ -2270,7 +2291,7 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
 - (BOOL)internalUseUserAccessGroup:(NSString *_Nullable)accessGroup
                              error:(NSError *_Nullable *_Nullable)outError {
   BOOL success;
-  success = [self.storedUserManager setStoredUserAccessGroup:accessGroup error:outError];
+  success = [self.storedUserManager setStoredUserAccessGroup:accessGroup];
   if (!success) {
     return NO;
   }
