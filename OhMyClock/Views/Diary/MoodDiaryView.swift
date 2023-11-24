@@ -56,7 +56,6 @@ struct MoodDiaryView : View {
                     .scrollContentBackground(.hidden)
                     .environment(\.defaultMinListRowHeight, 150)
                     .padding(.bottom, 5)
-//                    .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
                     .onAppear {
                         UITableView.appearance().tableFooterView = UIView() // Removes extra cells that are not being used.
                         

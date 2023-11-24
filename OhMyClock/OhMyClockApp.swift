@@ -11,6 +11,7 @@ import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
 import LocalAuthentication
+import RevenueCat
 
 @main
 struct OhMyClockApp: App {
@@ -23,6 +24,9 @@ struct OhMyClockApp: App {
     
     init() {
         FirebaseApp.configure()
+        
+        Purchases.logLevel = .debug
+        Purchases.configure(withAPIKey: "appl_lZpRjJALWFQJkONQIJYTljRQAbG", appUserID: "app2bff297483")
     }
     
     var body: some Scene {
