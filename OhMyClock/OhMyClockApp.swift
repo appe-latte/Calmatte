@@ -19,6 +19,7 @@ struct OhMyClockApp: App {
     @StateObject var authViewModel = AuthViewModel()
     @StateObject var appLockViewModel = AppLockViewModel()
     @StateObject var moodModelController = MoodModelController()
+    @StateObject var userViewModel = UserViewModel()
     
     @Environment(\.scenePhase) var scenePhase
     
@@ -36,6 +37,7 @@ struct OhMyClockApp: App {
                 .environmentObject(authViewModel)
                 .environmentObject(appLockViewModel)
                 .environmentObject(moodModelController)
+                .environmentObject(userViewModel)
         }
         .onChange(of: scenePhase, perform: handleScenePhase)
     }

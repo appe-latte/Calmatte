@@ -8,7 +8,7 @@
 import SwiftUI
 import AVKit
 
-struct MeditationView: View {
+struct WellnessView: View {
     @StateObject var meditationViewModel : MeditationViewModel
     @State private var showPlayer = false
     @State private var breathingAnimation = false
@@ -34,6 +34,47 @@ struct MeditationView: View {
             
             // MARK: "Content" section
             Content()
+            
+            // MARK: User Subscription Status
+//            VStack {
+//                HStack {
+//                    Image("paid")
+//                        .resizable()
+//                        .frame(width: 25, height: 25)
+//                        .padding(5)
+//                        .foregroundColor(np_turq)
+//                    
+//                    Text("Subscription:")
+//                        .font(.caption2)
+//                        .fontWeight(.semibold)
+//                        .kerning(2)
+//                        .textCase(.uppercase)
+//                        .foregroundColor(np_white)
+//                    
+//                    Text(userViewModel.isSubscriptionActive ? "Calmatte Plus" : "Free")
+//                        .font(.caption2)
+//                        .fontWeight(.semibold)
+//                        .kerning(2)
+//                        .textCase(.uppercase)
+//                        .foregroundColor(np_white)
+//                    
+//                    Spacer()
+//                    
+//                    Button(action: {
+//                        Purchases.shared.restorePurchases { (customerInfo, error) in
+//                            userViewModel.isSubscriptionActive = customerInfo?.entitlements.all["calm_plus"]?.isActive == true
+//                        }
+//                    }, label: {
+//                        Text("Restore")
+//                            .font(.system(size: 10))
+//                            .bold()
+//                            .kerning(2)
+//                            .textCase(.uppercase)
+//                            .foregroundColor(np_turq)
+//                    })
+//                }
+//            }
+//            .padding(.horizontal, 20)
         }
     }
     
@@ -222,7 +263,7 @@ struct MeditationView_Previews: PreviewProvider {
     static let meditationViewModel = MeditationViewModel(meditation: Meditation.data)
     
     static var previews: some View {
-        MeditationView(meditationViewModel: meditationViewModel)
+        WellnessView(meditationViewModel: meditationViewModel)
             .environmentObject(AudioManager())
     }
 }

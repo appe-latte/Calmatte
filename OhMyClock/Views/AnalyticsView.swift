@@ -147,12 +147,6 @@ struct AnalyticsView: View {
     }
 }
 
-struct AnalyticsView_Previews: PreviewProvider {
-    static var previews: some View {
-        AnalyticsView(start: Date(), monthsToShow: 2, moodController: MoodModelController())
-    }
-}
-
 // MARK: - Streak View
 struct StatisticsView: View {
     @ObservedObject var moodModelController: MoodModelController
@@ -180,8 +174,7 @@ struct StatisticsView: View {
                     // MARK: Top Recurring Emotion
                     VStack(spacing: 15) {
                         Text("Most")
-                            .font(.custom("Butler", size: 12))
-                            .fontWeight(.semibold)
+                            .font(.system(size: 15, weight: .semibold))
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
@@ -207,8 +200,7 @@ struct StatisticsView: View {
                     // MARK: Mood Prediction Score
                     VStack(spacing: 15) {
                         Text("Mood Score")
-                            .font(.custom("Butler", size: 12))
-                            .fontWeight(.semibold)
+                            .font(.system(size: 15, weight: .semibold))
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
@@ -239,8 +231,7 @@ struct StatisticsView: View {
                     // MARK: Total days logged
                     VStack(spacing: 15) {
                         Text("Days")
-                            .font(.custom("Butler", size: 12))
-                            .fontWeight(.semibold)
+                            .font(.system(size: 15, weight: .semibold))
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)

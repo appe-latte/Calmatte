@@ -42,6 +42,11 @@
 		2F5B2EC82AFC00DF00778727 /* DayStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B2EC72AFC00DF00778727 /* DayStateViewModel.swift */; };
 		2F6083432AFACDA1004A7F95 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */; };
 		2F64DE362A8161B9007917D2 /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64DE352A8161B9007917D2 /* ReminderManager.swift */; };
+		2F66679D2B110BE500CC6B4E /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F66679C2B110BE500CC6B4E /* UserViewModel.swift */; };
+		2F66679F2B110CE400CC6B4E /* CalmattePaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F66679E2B110CE400CC6B4E /* CalmattePaywallView.swift */; };
+		2F6667A12B1121B000CC6B4E /* Calmatte.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 2F6667A02B1121B000CC6B4E /* Calmatte.storekit */; };
+		2F6667A32B11234200CC6B4E /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 2F6667A22B11234200CC6B4E /* StoreKitTestCertificate.cer */; };
+		2F6667A52B112C9700CC6B4E /* PaywallCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6667A42B112C9700CC6B4E /* PaywallCheckView.swift */; };
 		2F6BFD952B068B2900BE9D03 /* Analogist.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F6BFD932B068B2900BE9D03 /* Analogist.ttf */; };
 		2F6BFD962B068B2900BE9D03 /* Analogist.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F6BFD942B068B2900BE9D03 /* Analogist.otf */; };
 		2F6BFD9A2B068E6400BE9D03 /* Butler.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F6BFD992B068E6400BE9D03 /* Butler.otf */; };
@@ -49,10 +54,6 @@
 		2F919D352A5DD8EA00291071 /* DiaryColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F919D342A5DD8EA00291071 /* DiaryColors.swift */; };
 		2F9EBB032A6489F900DC806A /* Affirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EBB022A6489F900DC806A /* Affirmation.swift */; };
 		2F9EBB072A648A8000DC806A /* AffirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EBB062A648A8000DC806A /* AffirmationView.swift */; };
-		2FA2D6592B1062C900CB9C27 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = 2FA2D6582B1062C900CB9C27 /* ReceiptParser */; };
-		2FA2D65B2B1062C900CB9C27 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 2FA2D65A2B1062C900CB9C27 /* RevenueCat */; };
-		2FA2D65D2B1062C900CB9C27 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2FA2D65C2B1062C900CB9C27 /* RevenueCatUI */; };
-		2FA2D65F2B1062C900CB9C27 /* RevenueCat_CustomEntitlementComputation in Frameworks */ = {isa = PBXBuildFile; productRef = 2FA2D65E2B1062C900CB9C27 /* RevenueCat_CustomEntitlementComputation */; };
 		2FA2D6612B10630D00CB9C27 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA2D6602B10630D00CB9C27 /* StoreKit.framework */; };
 		2FA38A9F2AEB0E6A00BE57F0 /* CustomHeaderShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA38A9E2AEB0E6A00BE57F0 /* CustomHeaderShape.swift */; };
 		2FA9AB452A4E0D7A00557FD0 /* MoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */; };
@@ -75,7 +76,7 @@
 		2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */; };
 		2FF4260C2B0C74C8000BD7B2 /* WeeklyMoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4260B2B0C74C8000BD7B2 /* WeeklyMoodView.swift */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
-		2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50126296EA2B400813D40 /* MeditationView.swift */; };
+		2FF50127296EA2B400813D40 /* WellnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50126296EA2B400813D40 /* WellnessView.swift */; };
 		2FF50129296EA33000813D40 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50128296EA33000813D40 /* SettingsView.swift */; };
 		2FF51E042A3A42370035A964 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF51E032A3A42370035A964 /* SplashScreenView.swift */; };
 		2FF87ABA2A61177A0026DF9E /* MoodCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */; };
@@ -131,6 +132,11 @@
 		2F5B2EC72AFC00DF00778727 /* DayStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStateViewModel.swift; sourceTree = "<group>"; };
 		2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		2F64DE352A8161B9007917D2 /* ReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderManager.swift; sourceTree = "<group>"; };
+		2F66679C2B110BE500CC6B4E /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		2F66679E2B110CE400CC6B4E /* CalmattePaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalmattePaywallView.swift; sourceTree = "<group>"; };
+		2F6667A02B1121B000CC6B4E /* Calmatte.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Calmatte.storekit; path = OhMyClock/Calmatte.storekit; sourceTree = "<group>"; };
+		2F6667A22B11234200CC6B4E /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = StoreKitTestCertificate.cer; path = ../../../../Desktop/StoreKitTestCertificate.cer; sourceTree = "<group>"; };
+		2F6667A42B112C9700CC6B4E /* PaywallCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallCheckView.swift; sourceTree = "<group>"; };
 		2F6BFD932B068B2900BE9D03 /* Analogist.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Analogist.ttf; sourceTree = "<group>"; };
 		2F6BFD942B068B2900BE9D03 /* Analogist.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Analogist.otf; sourceTree = "<group>"; };
 		2F6BFD992B068E6400BE9D03 /* Butler.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Butler.otf; sourceTree = "<group>"; };
@@ -163,7 +169,7 @@
 		2FF12EBB2A0B759A0097993C /* OmcModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OmcModel.xcdatamodel; sourceTree = "<group>"; };
 		2FF4260B2B0C74C8000BD7B2 /* WeeklyMoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyMoodView.swift; sourceTree = "<group>"; };
 		2FF50123296E9B2800813D40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		2FF50126296EA2B400813D40 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
+		2FF50126296EA2B400813D40 /* WellnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessView.swift; sourceTree = "<group>"; };
 		2FF50128296EA33000813D40 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = ../Security/SettingsView.swift; sourceTree = "<group>"; };
 		2FF51E032A3A42370035A964 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCalendarView.swift; sourceTree = "<group>"; };
@@ -177,12 +183,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FA2D6592B1062C900CB9C27 /* ReceiptParser in Frameworks */,
-				2FA2D65F2B1062C900CB9C27 /* RevenueCat_CustomEntitlementComputation in Frameworks */,
 				2F54B262297C71190075E488 /* RealmSwift in Frameworks */,
-				2FA2D65B2B1062C900CB9C27 /* RevenueCat in Frameworks */,
 				2F54B260297C71190075E488 /* Realm in Frameworks */,
-				2FA2D65D2B1062C900CB9C27 /* RevenueCatUI in Frameworks */,
 				2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */,
 				2FA2D6612B10630D00CB9C27 /* StoreKit.framework in Frameworks */,
 				2F27A18329740143007DA7CC /* Alamofire in Frameworks */,
@@ -204,6 +206,8 @@
 		2F36B0972967A40000AC8D59 = {
 			isa = PBXGroup;
 			children = (
+				2F6667A02B1121B000CC6B4E /* Calmatte.storekit */,
+				2F6667A22B11234200CC6B4E /* StoreKitTestCertificate.cer */,
 				2F36B0A22967A40000AC8D59 /* OhMyClock */,
 				2FDBFC992A64B0C200CF96FE /* Frameworks */,
 				2F36B0A12967A40000AC8D59 /* Products */,
@@ -294,6 +298,7 @@
 				2F438EF82A6B17B000CDF33D /* PasswordResetViewModel.swift */,
 				2F5B2EC72AFC00DF00778727 /* DayStateViewModel.swift */,
 				2FAD51EA2B0425F400D28A3C /* AppViewModel.swift */,
+				2F66679C2B110BE500CC6B4E /* UserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -403,11 +408,13 @@
 			isa = PBXGroup;
 			children = (
 				2FF50123296E9B2800813D40 /* MainView.swift */,
-				2FF50126296EA2B400813D40 /* MeditationView.swift */,
+				2FF50126296EA2B400813D40 /* WellnessView.swift */,
 				2F434BAE296F60FE00698C1A /* PlayerView.swift */,
 				2F9EBB062A648A8000DC806A /* AffirmationView.swift */,
 				2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */,
 				2FCD005D2A671647000AD649 /* ProgressLoadingView.swift */,
+				2F66679E2B110CE400CC6B4E /* CalmattePaywallView.swift */,
+				2F6667A42B112C9700CC6B4E /* PaywallCheckView.swift */,
 				2F4AB6252A5DDCF000F6332F /* Diary */,
 				2FCD00532A66E990000AD649 /* Settings */,
 				2FB2C4FF2A37B4DD006D5A30 /* Tasks */,
@@ -448,10 +455,6 @@
 				2F27A185297401B8007DA7CC /* SwiftyJSON */,
 				2F54B25F297C71190075E488 /* Realm */,
 				2F54B261297C71190075E488 /* RealmSwift */,
-				2FA2D6582B1062C900CB9C27 /* ReceiptParser */,
-				2FA2D65A2B1062C900CB9C27 /* RevenueCat */,
-				2FA2D65C2B1062C900CB9C27 /* RevenueCatUI */,
-				2FA2D65E2B1062C900CB9C27 /* RevenueCat_CustomEntitlementComputation */,
 			);
 			productName = OhMyClock;
 			productReference = 2F36B0A02967A40000AC8D59 /* OhMyClock.app */;
@@ -485,7 +488,6 @@
 				2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				2FA2D6572B1062C900CB9C27 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = 2F36B0A12967A40000AC8D59 /* Products */;
 			projectDirPath = "";
@@ -502,9 +504,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F06D6572A663904004DD93E /* affirmation.json in Resources */,
+				2F6667A12B1121B000CC6B4E /* Calmatte.storekit in Resources */,
 				2F36B0AB2967A40200AC8D59 /* Preview Assets.xcassets in Resources */,
 				2F18B4122A6654DC00F91C7B /* GoogleService-Info.plist in Resources */,
 				2F6BFD952B068B2900BE9D03 /* Analogist.ttf in Resources */,
+				2F6667A32B11234200CC6B4E /* StoreKitTestCertificate.cer in Resources */,
 				2F6BFD9A2B068E6400BE9D03 /* Butler.otf in Resources */,
 				2FD9FB782B0BCEB500E4FBD4 /* equilibrium.mp3 in Resources */,
 				2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */,
@@ -574,16 +578,18 @@
 				2F434BB8296F8CCA00698C1A /* AudioManager.swift in Sources */,
 				2F36B0B32967A4B000AC8D59 /* Colors.swift in Sources */,
 				2F4AB6242A5DDB3600F6332F /* DiaryMood.swift in Sources */,
+				2F66679D2B110BE500CC6B4E /* UserViewModel.swift in Sources */,
 				2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */,
 				2F438EF72A6B164B00CDF33D /* PasswordResetService.swift in Sources */,
 				2FC5643D2A68B67300664FE0 /* SceneDelegate.swift in Sources */,
 				2FFBD0262A5DD7B8002C258B /* Month.swift in Sources */,
 				2FB2C4FC2A37B3C4006D5A30 /* TaskCategory.swift in Sources */,
+				2F6667A52B112C9700CC6B4E /* PaywallCheckView.swift in Sources */,
 				2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */,
 				2F919D332A5DD83000291071 /* Day.swift in Sources */,
 				2FCD00622A67188F000AD649 /* AppLockViewModel.swift in Sources */,
 				2F438EF92A6B17B000CDF33D /* PasswordResetViewModel.swift in Sources */,
-				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
+				2FF50127296EA2B400813D40 /* WellnessView.swift in Sources */,
 				2F5B2EC82AFC00DF00778727 /* DayStateViewModel.swift in Sources */,
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
 				2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */,
@@ -606,6 +612,7 @@
 				2FCD00562A66E9D2000AD649 /* SignUpView.swift in Sources */,
 				2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */,
 				2F36B0B82967A51900AC8D59 /* Models.swift in Sources */,
+				2F66679F2B110CE400CC6B4E /* CalmattePaywallView.swift in Sources */,
 				2FB2C4FE2A37B401006D5A30 /* TaskManagerView.swift in Sources */,
 				2F4AB6222A5DDAA400F6332F /* MoodModelController.swift in Sources */,
 				2FA38A9F2AEB0E6A00BE57F0 /* CustomHeaderShape.swift in Sources */,
@@ -879,14 +886,6 @@
 				minimumVersion = 10.10.0;
 			};
 		};
-		2FA2D6572B1062C900CB9C27 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.30.5;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -909,26 +908,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
-		};
-		2FA2D6582B1062C900CB9C27 /* ReceiptParser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2FA2D6572B1062C900CB9C27 /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = ReceiptParser;
-		};
-		2FA2D65A2B1062C900CB9C27 /* RevenueCat */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2FA2D6572B1062C900CB9C27 /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = RevenueCat;
-		};
-		2FA2D65C2B1062C900CB9C27 /* RevenueCatUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2FA2D6572B1062C900CB9C27 /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = RevenueCatUI;
-		};
-		2FA2D65E2B1062C900CB9C27 /* RevenueCat_CustomEntitlementComputation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2FA2D6572B1062C900CB9C27 /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = RevenueCat_CustomEntitlementComputation;
 		};
 /* End XCSwiftPackageProductDependency section */
 

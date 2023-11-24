@@ -746,6 +746,7 @@ PODS:
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.3.1)
+  - RevenueCat (4.30.5)
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
@@ -753,6 +754,7 @@ DEPENDENCIES:
   - AlertToast
   - FirebaseAuth
   - FirebaseFirestore
+  - RevenueCat
   - SwiftyJSON
 
 SPEC REPOS:
@@ -773,6 +775,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - RevenueCat
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -792,8 +795,9 @@ SPEC CHECKSUMS:
   leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
+  RevenueCat: c1e33f4e1f1fd239ba461652f02928e220becc31
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: b54d9b2bbf0f3af5c47a970fa1d26d28a5a2de60
+PODFILE CHECKSUM: 575008afa8e3dfc640ca9d9e300a02131ba38386
 
 COCOAPODS: 1.12.1

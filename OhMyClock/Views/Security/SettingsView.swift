@@ -219,21 +219,21 @@ struct SettingsView: View {
                                 Spacer()
                                 
                                 DatePicker("Reminder Time:", selection: $selectedDate, displayedComponents: .hourAndMinute)
-                                            .font(.system(size: 8))
-                                            .fontWeight(.semibold)
-                                            .kerning(5)
-                                            .textCase(.uppercase)
-                                            .foregroundColor(np_gray)
-                                            .padding(.leading, 20)
-                                            .tint(np_orange)
-                                            .onAppear {
-                                                // Initialize selectedDate with the stored time
-                                                selectedDate = Date(timeIntervalSince1970: reminderTimeDouble)
-                                            }
-                                            .onChange(of: selectedDate, perform: { newValue in
-                                                reminderTimeDouble = newValue.timeIntervalSince1970
-                                                setDailyReminder()
-                                            })
+                                    .font(.system(size: 8))
+                                    .fontWeight(.semibold)
+                                    .kerning(5)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_gray)
+                                    .padding(.leading, 20)
+                                    .tint(np_orange)
+                                    .onAppear {
+                                        // Initialize selectedDate with the stored time
+                                        selectedDate = Date(timeIntervalSince1970: reminderTimeDouble)
+                                    }
+                                    .onChange(of: selectedDate, perform: { newValue in
+                                        reminderTimeDouble = newValue.timeIntervalSince1970
+                                        setDailyReminder()
+                                    })
                             }
                         }
                         .padding(.horizontal, 20)

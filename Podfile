@@ -11,6 +11,7 @@ target 'OhMyClock' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'AlertToast'
+  pod 'RevenueCat'
 end
 
 post_install do |installer|

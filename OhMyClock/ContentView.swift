@@ -15,11 +15,13 @@ import UserNotifications
 struct ContentView: View {
     @ObservedObject var taskManager = TaskManager()
     @State var showMenuSheet = false
+    @State var showPaywall = false
     
     var audioManager = AudioManager()
     
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var appLockViewModel: AppLockViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     @StateObject private var moodModelController = MoodModelController()
     @StateObject var progressView = AppViewModel()
     
@@ -59,9 +61,17 @@ struct ContentView: View {
                 case 0: MainView(moodModel: moodModel, tabBarSelection: $tabBarSelection)
                 case 1: AnalyticsView(start: Date(), monthsToShow: 2, moodController: MoodModelController()).environmentObject(moodModelController).onAppear {
                     progressView.loadData()
-                        }
+                }
                 case 2: MoodDiaryView()
-                case 3: MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
+                case 3:
+                    if userViewModel.isSubscriptionActive {
+                        WellnessView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
+                    } else {
+                        // Show a placeholder or a CTA for subscription
+                        Button("Subscribe to Calmatte Plus") {
+                            showPaywall = true
+                        }
+                    }
                 case 4: TaskManagerView(taskManager: taskManager)
                 default: Text("Not found")
                 }
@@ -96,12 +106,21 @@ struct ContentView: View {
             .ignoresSafeArea(.all, edges: .bottom)
             
             if progressView.isLoading {
-                            ProgressLoadingView()
-                        }
+                ProgressLoadingView()
+            }
+            
+            if showPaywall {
+                // Display your paywall or subscription view here
+                // Example: PaywallView(isPresented: $showPaywall)
+                CalmattePaywallView(showPaywall: $showPaywall)
+            }
         }
         .onAppear {
             progressView.loadData()
-                }
+        }
+//        .sheet(isPresented: $showPaywall, onDismiss: nil) {
+//            CalmattePaywallView(showPaywall: $showPaywall)
+//        }
     }
     
     private func tabItem(icon: String, selectedIcon: String, text: String, index: Int) -> some View {
