@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Lottie
 
 struct PlayerView: View {
     @EnvironmentObject var audioManager: AudioManager
@@ -71,3 +72,31 @@ struct PlayerView: View {
     }
 }
 
+// MARK: Meditation Player
+struct MeditationPlayerView: View {
+    @EnvironmentObject var audioManager: AudioManager
+    var meditationViewModel: MeditationViewModel
+    var isPreview: Bool = false
+    
+    @State private var isPlaying: Bool = false
+    
+    @Environment(\.dismiss) var dismiss
+    
+    let width = UIScreen.main.bounds.width
+    
+    var body: some View {
+        ZStack {
+            HStack(spacing: 10) {
+                PlaybackControlButton(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill", fontSize: 40) {
+                    isPlaying.toggle()
+                    if isPlaying {
+                        audioManager.startPlayer(track: meditationViewModel.meditation.track, isPreview: isPreview)
+                    } else {
+                        audioManager.playPause()
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity)
+        }
+    }
+}

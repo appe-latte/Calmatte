@@ -138,7 +138,7 @@ struct CalmattePaywallView: View {
                     .fill(np_jap_indigo)
                     .frame(maxHeight: .infinity, alignment: .bottom)
                 
-                LottieViewModel(animationFileName: "paywall-animation", loopMode: .loop)
+                LottieAnimView(animationFileName: "paywall-animation", loopMode: .loop)
                     .frame(width: width / 0.25, height: height)
                     .opacity(0.5)
             }

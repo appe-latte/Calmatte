@@ -1,5 +1,5 @@
 //
-//  LottieViewModel.swift
+//  LottieAnimView.swift
 //  OhMyClock
 //
 //  Created by Stanford L. Khumalo on 2023-11-25.
@@ -7,9 +7,8 @@
 
 import SwiftUI
 import Lottie
-import Foundation
 
-struct LottieViewModel: UIViewRepresentable {
+struct LottieAnimView: UIViewRepresentable {
     var animationFileName: String
     let loopMode: LottieLoopMode
     
@@ -18,10 +17,13 @@ struct LottieViewModel: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> some Lottie.LottieAnimationView {
+        let view = UIView()
         let animationView = LottieAnimationView(name: animationFileName)
+        
         animationView.loopMode = loopMode
         animationView.play()
-        animationView.contentMode = .scaleAspectFill
+        animationView.contentMode = .scaleAspectFit
+        
         return animationView
     }
 }

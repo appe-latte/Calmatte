@@ -10,25 +10,13 @@ import AVKit
 
 struct MeditationView: View {
     @StateObject var meditationViewModel : MeditationViewModel
-    @State private var showPlayer = false
-    @State private var breathingAnimation = false
-    @State private var textBreathingAnimation = false
-    
-    let screenWidth = UIScreen.main.bounds.width
-    let screenHeight = UIScreen.main.bounds.height
-    
-    // MARK: Breathing Animation
-    @Namespace private var animation
-    @State private var currentType : BreathType = sampleTypes[0]
-    @State private var showBreatheView = false
-    @State private var startAnimation = false
-    @State private var timerCount : CGFloat = 0
-    @State private var breatheAction = "Breathe In"
-    @State private var count = 0
-    @State private var breathingScale = false
-    
     @EnvironmentObject var userViewModel : UserViewModel
+    @State private var showPlayer = false
+    
     @State private var meditationDescription = "Take a moment to pause, take some deep breathes, reflect and centre your mind."
+    
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -42,7 +30,6 @@ struct MeditationView: View {
                 
                 // MARK: "Content" section
                 BreathingView()
-                    .frame(width: 100, height: 100)
                 
                 // MARK: User Subscription Status
                 //            VStack {
@@ -90,38 +77,31 @@ struct MeditationView: View {
     // MARK: "Header View"
     @ViewBuilder
     func HeaderView() -> some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 6) {
             HStack {
-                VStack(alignment: .leading, spacing: 6) {
-                    HStack {
-                        Text("Meditation")
-                            .font(.custom("Butler", size: 27))
-                            .minimumScaleFactor(0.5)
-                            .foregroundColor(np_white)
-                        
-                        Spacer()
-                        
-                        // MARK: "Play / Stop" sound
-                        PlayerView(meditationViewModel: meditationViewModel)
-                    }
-                    .hAlign(.leading)
-                    
-                    // MARK: Description
-                    Text("\(meditationDescription)")
-                        .font(.custom("Butler", size: 16))
-                        .kerning(3)
-                        .minimumScaleFactor(0.5)
-                        .foregroundColor(np_gray)
-                }
+                Text("Meditation Break")
+                    .font(.custom("Butler", size: 27))
+                    .minimumScaleFactor(0.5)
+                    .foregroundColor(np_white)
+                
+                Spacer()
             }
-            .padding(15)
-            .background {
-                VStack(spacing: 0) {
-                    np_jap_indigo
-                }
-                .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
-                .ignoresSafeArea()
+            .hAlign(.leading)
+            
+            // MARK: Description
+            Text("\(meditationDescription)")
+                .font(.custom("Butler", size: 16))
+                .kerning(3)
+                .minimumScaleFactor(0.5)
+                .foregroundColor(np_gray)
+        }
+        .padding(15)
+        .background {
+            VStack(spacing: 0) {
+                np_jap_indigo
             }
+            .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
+            .ignoresSafeArea()
         }
     }
     
@@ -129,19 +109,22 @@ struct MeditationView: View {
     @ViewBuilder
     func BreathingView() -> some View {
         VStack {
-                LottieViewModel(animationFileName: "breathing-circle", loopMode: .loop)
-
-            Spacer()
+            LottieAnimView(animationFileName: "paywall-animation", loopMode: .loop)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: width - 50)
+            
+            // MARK: "Play / Stop" sound
+            HStack {
+                Spacer()
+                
+                MeditationPlayerView(meditationViewModel: meditationViewModel)
+                    .frame(width: 60, height: 60)
+                    .background(np_jap_indigo)
+                    .clipShape(Circle())
+            }
+            .padding()
         }
-    }
-}
-
-struct MeditationView_Previews: PreviewProvider {
-    static let meditationViewModel = MeditationViewModel(meditation: Meditation.data)
-    
-    static var previews: some View {
-        MeditationView(meditationViewModel: meditationViewModel)
-            .environmentObject(AudioManager())
+        .frame(alignment: .center)
     }
 }
 
@@ -159,5 +142,14 @@ struct RoundedCorner: Shape {
     func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         return Path(path.cgPath)
+    }
+}
+
+struct MeditationView_Previews: PreviewProvider {
+    static let meditationViewModel = MeditationViewModel(meditation: Meditation.data)
+    
+    static var previews: some View {
+        MeditationView(meditationViewModel: meditationViewModel)
+            .environmentObject(AudioManager())
     }
 }
