@@ -65,12 +65,9 @@ struct ContentView: View {
                 case 2: MoodDiaryView()
                 case 3:
                     if userViewModel.isSubscriptionActive {
-                        WellnessView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
+                        MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
                     } else {
-                        // Show a placeholder or a CTA for subscription
-                        Button("Subscribe to Calmatte Plus") {
-                            showPaywall = true
-                        }
+                        PaywallCheckView()
                     }
                 case 4: TaskManagerView(taskManager: taskManager)
                 default: Text("Not found")
@@ -110,17 +107,15 @@ struct ContentView: View {
             }
             
             if showPaywall {
-                // Display your paywall or subscription view here
-                // Example: PaywallView(isPresented: $showPaywall)
                 CalmattePaywallView(showPaywall: $showPaywall)
             }
         }
         .onAppear {
             progressView.loadData()
         }
-//        .sheet(isPresented: $showPaywall, onDismiss: nil) {
-//            CalmattePaywallView(showPaywall: $showPaywall)
-//        }
+        //        .sheet(isPresented: $showPaywall, onDismiss: nil) {
+        //            CalmattePaywallView(showPaywall: $showPaywall)
+        //        }
     }
     
     private func tabItem(icon: String, selectedIcon: String, text: String, index: Int) -> some View {

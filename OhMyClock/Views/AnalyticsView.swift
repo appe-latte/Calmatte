@@ -174,7 +174,7 @@ struct StatisticsView: View {
                     // MARK: Top Recurring Emotion
                     VStack(spacing: 15) {
                         Text("Most")
-                            .font(.system(size: 15, weight: .semibold))
+                            .font(.system(size: 10, weight: .semibold))
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
@@ -200,7 +200,7 @@ struct StatisticsView: View {
                     // MARK: Mood Prediction Score
                     VStack(spacing: 15) {
                         Text("Mood Score")
-                            .font(.system(size: 15, weight: .semibold))
+                            .font(.system(size: 10, weight: .semibold))
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
@@ -231,7 +231,7 @@ struct StatisticsView: View {
                     // MARK: Total days logged
                     VStack(spacing: 15) {
                         Text("Days")
-                            .font(.system(size: 15, weight: .semibold))
+                            .font(.system(size: 10, weight: .semibold))
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)

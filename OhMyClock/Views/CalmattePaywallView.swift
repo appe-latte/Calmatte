@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Lottie
 import RevenueCat
 
 struct CalmattePaywallView: View {
@@ -14,6 +15,7 @@ struct CalmattePaywallView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     
     let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
     
     var body: some View {
         ZStack {
@@ -131,9 +133,15 @@ struct CalmattePaywallView: View {
     @ViewBuilder
     func background() -> some View {
         GeometryReader { proxy in
-            Rectangle()
-                .fill(np_jap_indigo)
-                .frame(maxHeight: .infinity, alignment: .bottom)
+            ZStack {
+                Rectangle()
+                    .fill(np_jap_indigo)
+                    .frame(maxHeight: .infinity, alignment: .bottom)
+                
+                LottieViewModel(animationFileName: "paywall-animation", loopMode: .loop)
+                    .frame(width: width / 0.25, height: height)
+                    .opacity(0.5)
+            }
         }
         .ignoresSafeArea()
     }

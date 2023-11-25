@@ -76,9 +76,13 @@
 		2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */; };
 		2FF4260C2B0C74C8000BD7B2 /* WeeklyMoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4260B2B0C74C8000BD7B2 /* WeeklyMoodView.swift */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
-		2FF50127296EA2B400813D40 /* WellnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50126296EA2B400813D40 /* WellnessView.swift */; };
+		2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50126296EA2B400813D40 /* MeditationView.swift */; };
 		2FF50129296EA33000813D40 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50128296EA33000813D40 /* SettingsView.swift */; };
 		2FF51E042A3A42370035A964 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF51E032A3A42370035A964 /* SplashScreenView.swift */; };
+		2FF7465B2B127E34007C5F61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2FF7465A2B127E34007C5F61 /* Lottie */; };
+		2FF7465D2B127F28007C5F61 /* paywall-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FF7465C2B127F28007C5F61 /* paywall-animation.json */; };
+		2FF7465F2B12811C007C5F61 /* LottieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7465E2B12811C007C5F61 /* LottieViewModel.swift */; };
+		2FF746642B12869A007C5F61 /* breathing-circle.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FF746632B128699007C5F61 /* breathing-circle.json */; };
 		2FF87ABA2A61177A0026DF9E /* MoodCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */; };
 		2FFBD0262A5DD7B8002C258B /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFBD0252A5DD7B8002C258B /* Month.swift */; };
 		D130FD8150574B3AB4BB697C /* Pods_OhMyClock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0CEB7FFF9AB3C613B273EE /* Pods_OhMyClock.framework */; };
@@ -169,9 +173,12 @@
 		2FF12EBB2A0B759A0097993C /* OmcModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OmcModel.xcdatamodel; sourceTree = "<group>"; };
 		2FF4260B2B0C74C8000BD7B2 /* WeeklyMoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyMoodView.swift; sourceTree = "<group>"; };
 		2FF50123296E9B2800813D40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		2FF50126296EA2B400813D40 /* WellnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessView.swift; sourceTree = "<group>"; };
+		2FF50126296EA2B400813D40 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 		2FF50128296EA33000813D40 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = ../Security/SettingsView.swift; sourceTree = "<group>"; };
 		2FF51E032A3A42370035A964 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		2FF7465C2B127F28007C5F61 /* paywall-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "paywall-animation.json"; sourceTree = "<group>"; };
+		2FF7465E2B12811C007C5F61 /* LottieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieViewModel.swift; sourceTree = "<group>"; };
+		2FF746632B128699007C5F61 /* breathing-circle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "breathing-circle.json"; sourceTree = "<group>"; };
 		2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCalendarView.swift; sourceTree = "<group>"; };
 		2FFBD0252A5DD7B8002C258B /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		71C548B17BD3E291DC7F07BF /* Pods-OhMyClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhMyClock.debug.xcconfig"; path = "Target Support Files/Pods-OhMyClock/Pods-OhMyClock.debug.xcconfig"; sourceTree = "<group>"; };
@@ -184,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F54B262297C71190075E488 /* RealmSwift in Frameworks */,
+				2FF7465B2B127E34007C5F61 /* Lottie in Frameworks */,
 				2F54B260297C71190075E488 /* Realm in Frameworks */,
 				2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */,
 				2FA2D6612B10630D00CB9C27 /* StoreKit.framework in Frameworks */,
@@ -231,6 +239,7 @@
 				2F18B4112A6654DC00F91C7B /* GoogleService-Info.plist */,
 				2FB87FAE2A0C6E090033B4E1 /* Delegates */,
 				2F434BB4296F89D100698C1A /* Helpers */,
+				2FF746602B1281F3007C5F61 /* Animations */,
 				2F36B0B12967A48B00AC8D59 /* Utils */,
 				2F06D6582A663CC3004DD93E /* Data */,
 				2F36B0B62967A4FD00AC8D59 /* Models */,
@@ -299,6 +308,7 @@
 				2F5B2EC72AFC00DF00778727 /* DayStateViewModel.swift */,
 				2FAD51EA2B0425F400D28A3C /* AppViewModel.swift */,
 				2F66679C2B110BE500CC6B4E /* UserViewModel.swift */,
+				2FF7465E2B12811C007C5F61 /* LottieViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -408,7 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				2FF50123296E9B2800813D40 /* MainView.swift */,
-				2FF50126296EA2B400813D40 /* WellnessView.swift */,
+				2FF50126296EA2B400813D40 /* MeditationView.swift */,
 				2F434BAE296F60FE00698C1A /* PlayerView.swift */,
 				2F9EBB062A648A8000DC806A /* AffirmationView.swift */,
 				2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */,
@@ -420,6 +430,15 @@
 				2FB2C4FF2A37B4DD006D5A30 /* Tasks */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2FF746602B1281F3007C5F61 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				2FF7465C2B127F28007C5F61 /* paywall-animation.json */,
+				2FF746632B128699007C5F61 /* breathing-circle.json */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		FCE264DC92A63B05C1E6185B /* Pods */ = {
@@ -455,6 +474,7 @@
 				2F27A185297401B8007DA7CC /* SwiftyJSON */,
 				2F54B25F297C71190075E488 /* Realm */,
 				2F54B261297C71190075E488 /* RealmSwift */,
+				2FF7465A2B127E34007C5F61 /* Lottie */,
 			);
 			productName = OhMyClock;
 			productReference = 2F36B0A02967A40000AC8D59 /* OhMyClock.app */;
@@ -488,6 +508,7 @@
 				2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				2FF746592B127E33007C5F61 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 2F36B0A12967A40000AC8D59 /* Products */;
 			projectDirPath = "";
@@ -509,7 +530,9 @@
 				2F18B4122A6654DC00F91C7B /* GoogleService-Info.plist in Resources */,
 				2F6BFD952B068B2900BE9D03 /* Analogist.ttf in Resources */,
 				2F6667A32B11234200CC6B4E /* StoreKitTestCertificate.cer in Resources */,
+				2FF7465D2B127F28007C5F61 /* paywall-animation.json in Resources */,
 				2F6BFD9A2B068E6400BE9D03 /* Butler.otf in Resources */,
+				2FF746642B12869A007C5F61 /* breathing-circle.json in Resources */,
 				2FD9FB782B0BCEB500E4FBD4 /* equilibrium.mp3 in Resources */,
 				2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */,
 				2F6BFD962B068B2900BE9D03 /* Analogist.otf in Resources */,
@@ -589,7 +612,7 @@
 				2F919D332A5DD83000291071 /* Day.swift in Sources */,
 				2FCD00622A67188F000AD649 /* AppLockViewModel.swift in Sources */,
 				2F438EF92A6B17B000CDF33D /* PasswordResetViewModel.swift in Sources */,
-				2FF50127296EA2B400813D40 /* WellnessView.swift in Sources */,
+				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
 				2F5B2EC82AFC00DF00778727 /* DayStateViewModel.swift in Sources */,
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
 				2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */,
@@ -610,6 +633,7 @@
 				2FCD00602A671862000AD649 /* Constants.swift in Sources */,
 				2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */,
 				2FCD00562A66E9D2000AD649 /* SignUpView.swift in Sources */,
+				2FF7465F2B12811C007C5F61 /* LottieViewModel.swift in Sources */,
 				2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */,
 				2F36B0B82967A51900AC8D59 /* Models.swift in Sources */,
 				2F66679F2B110CE400CC6B4E /* CalmattePaywallView.swift in Sources */,
@@ -886,6 +910,14 @@
 				minimumVersion = 10.10.0;
 			};
 		};
+		2FF746592B127E33007C5F61 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -908,6 +940,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		2FF7465A2B127E34007C5F61 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FF746592B127E33007C5F61 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 
