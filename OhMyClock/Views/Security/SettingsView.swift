@@ -26,8 +26,8 @@ struct SettingsView: View {
     
     // MARK: Reminders
     @AppStorage("RemindersEnabled") private var remindersEnabled: Bool = false
-    @State private var selectedDate: Date = Date()
     @AppStorage("reminderTime") private var reminderTimeDouble: Double = Date().timeIntervalSince1970
+    @State private var selectedDate: Date = Date()
     
     private var reminderTime: Date {
         get { Date(timeIntervalSince1970: reminderTimeDouble) }

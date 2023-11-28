@@ -77,30 +77,34 @@ struct MeditationView: View {
     // MARK: "Header View"
     @ViewBuilder
     func HeaderView() -> some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack {
             HStack {
-                Text("Meditation Break")
-                    .font(.custom("Butler", size: 27))
-                    .minimumScaleFactor(0.5)
-                    .foregroundColor(np_white)
-                
-                Spacer()
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack {
+                        Text("Meditation Break")
+                            .font(.custom("Butler", size: 27))
+                            .minimumScaleFactor(0.5)
+                            .foregroundColor(np_white)
+                        
+                        Spacer()
+                    }
+                    
+                    // MARK: Description
+                    Text("\(meditationDescription)")
+                        .font(.custom("Butler", size: 16))
+                        .kerning(3)
+                        .minimumScaleFactor(0.5)
+                        .foregroundColor(np_gray)
+                }
+                .hAlign(.leading)
             }
-            .hAlign(.leading)
-            
-            // MARK: Description
-            Text("\(meditationDescription)")
-                .font(.custom("Butler", size: 16))
-                .kerning(3)
-                .minimumScaleFactor(0.5)
-                .foregroundColor(np_gray)
         }
         .padding(15)
         .background {
             VStack(spacing: 0) {
                 np_jap_indigo
             }
-            .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
+            .cornerRadius(10, corners: [.bottomLeft, .bottomRight])
             .ignoresSafeArea()
         }
     }

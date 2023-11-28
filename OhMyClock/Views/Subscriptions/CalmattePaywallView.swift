@@ -13,6 +13,7 @@ struct CalmattePaywallView: View {
     @Binding var showPaywall: Bool
     @State var currentOffering: Offering?
     @EnvironmentObject var userViewModel: UserViewModel
+    @Environment(\.openURL) var openURL
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
@@ -105,6 +106,37 @@ struct CalmattePaywallView: View {
                                     .foregroundColor(np_jap_indigo)
                             }
                         }
+                    }
+                }
+                
+                // MARK: Privacy + Terms
+                HStack(spacing: 20) {
+                    // Privacy
+                    Button {
+//                        openURL(URL(string: "https://www.twitter.com/appe_latte")!)
+                    } label: {
+                        Text("Privacy")
+                            .font(.caption2)
+                            .fontWeight(.medium)
+                            .kerning(1)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                    }
+                    
+                    Text("•")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                    
+                    // Terms
+                    Button {
+                        openURL(URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
+                    } label: {
+                        Text("Terms")
+                            .font(.caption2)
+                            .fontWeight(.medium)
+                            .kerning(1)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
                     }
                 }
                 

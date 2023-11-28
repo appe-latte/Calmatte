@@ -18,7 +18,9 @@ struct MoodRowView: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 15) {
+            
+            VStack(spacing: 15){
+                // MARK: Date
                 HStack {
                     Spacer()
                     
@@ -34,56 +36,59 @@ struct MoodRowView: View {
                     .kerning(2)
                     .textCase(.uppercase)
                     .foregroundColor(np_white)
-              
                 }
                 
-                HStack(spacing: 10) {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(mood.emotion.moodColor)
-                        .frame(width: width * 0.25, height: height * 0.15)
-                        .overlay {
-                            VStack(alignment: .center, spacing: 20) {
-                                moodImage()
-                                    .scaledToFit()
-                                    .frame(maxWidth: 120)
+                RoundedRectangle(cornerRadius: 15)
+                    .frame(width: width - 40, height: height * 0.2)
+                    .background(mood.emotion.moodColor).opacity(0.1)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .overlay {
+                        // MARK: Mood Info
+                        HStack(spacing: 10) {
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(mood.emotion.moodColor)
+                                .frame(width: width * 0.25, height: height * 0.15)
+                                .overlay {
+                                    VStack(alignment: .center, spacing: 20) {
+                                        moodImage()
+                                            .scaledToFit()
+                                            .frame(maxWidth: 120)
+                                    }
+                                }
+                            
+                            Spacer()
+                            
+                            // MARK: Summary
+                            VStack(alignment: .leading, spacing: 10) {
+                                HStack {
+                                    Text("How did you feel?")
+                                        .font(.caption2)
+                                        .fontWeight(.medium)
+                                        .textCase(.uppercase)
+                                        .foregroundColor(np_gray)
+                                    
+                                    Spacer()
+                                }
+                                
+                                // MARK: Summary
+                                HStack {
+                                    Text(mood.comment ?? "No Summary")
+                                        .font(.subheadline)
+                                        .fontWeight(.medium)
+                                        .lineLimit(7)
+                                        .multilineTextAlignment(.leading)
+                                        .foregroundColor(np_white)
+                                        .minimumScaleFactor(0.75)
+                                    
+                                    Spacer()
+                                }
+                                
+                                Spacer()
                             }
+                            .frame(maxWidth: width * 0.7, maxHeight: .infinity)
                         }
-                    
-                    Spacer()
-                    
-                    // MARK: Summary
-                    VStack(alignment: .leading, spacing: 10) {
-                        HStack {
-                            Text("How did you feel?")
-                                .font(.subheadline)
-                                .fontWeight(.medium)
-                                .foregroundColor(np_gray)
-                            
-                            Spacer()
-                        }
-                        
-                        // MARK: Summary
-                        HStack {
-                            Text(mood.comment ?? "No Summary")
-                                .font(.subheadline)
-                                .fontWeight(.medium)
-                                .lineLimit(7)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(np_white)
-                                .minimumScaleFactor(0.75)
-                            
-                            Spacer()
-                        }
-                        
-                        Spacer()
+                        .padding(15)
                     }
-                    .frame(maxWidth: width * 0.7, maxHeight: .infinity)
-                }
-                
-                Capsule()
-                    .stroke(style: StrokeStyle(lineWidth: 0.3))
-                    .frame(width: width - 40, height: 0.5)
-                    .foregroundColor(np_white)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
