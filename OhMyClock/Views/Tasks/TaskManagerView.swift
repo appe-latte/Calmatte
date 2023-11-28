@@ -37,7 +37,9 @@ struct TaskManagerView: View {
             // MARK: Completion Check + Animation
             if taskManager.totalTasksCount > 0 && taskManager.completedTasksCount == taskManager.totalTasksCount {
                 LottieAnimView(animationFileName: "success", loopMode: .playOnce)
-                    .frame(width: 200, height: 200)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: width, height: height)
+                    .edgesIgnoringSafeArea(.all)
                     .onAppear {
                         showAlert = true
                     }

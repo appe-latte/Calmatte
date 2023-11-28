@@ -320,3 +320,15 @@ class TaskManager: ObservableObject {
         scheduleNotification(for: newTask)
     }
 }
+
+
+// MARK: Time Picker intervals
+extension Date {
+    func roundedToNextFiveMinutes() -> Date {
+        let calendar = Calendar.current
+        let nextDiff = 5 - calendar.component(.minute, from: self) % 5
+        let nextDate = calendar.date(byAdding: .minute, value: nextDiff, to: self) ?? self
+        return calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: nextDate)) ?? self
+    }
+}
+

@@ -98,5 +98,8 @@ struct MeditationPlayerView: View {
             }
             .frame(maxWidth: .infinity)
         }
+        .onDisappear {
+            audioManager.stop() // or the appropriate method to stop the music
+            }
     }
 }

@@ -11,6 +11,7 @@ import AVKit
 struct MeditationView: View {
     @StateObject var meditationViewModel : MeditationViewModel
     @EnvironmentObject var userViewModel : UserViewModel
+    @StateObject var audioManager = AudioManager()
     @State private var showPlayer = false
     
     @State private var meditationDescription = "Take a moment to pause, take some deep breathes, reflect and centre your mind."

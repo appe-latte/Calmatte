@@ -102,10 +102,12 @@ struct ContentView: View {
             .background(np_arsenic)
             .ignoresSafeArea(.all, edges: .bottom)
             
+            // MARK: Progress Loading
             if progressView.isLoading {
                 ProgressLoadingView()
             }
             
+            // MARK: Show PayWall
             if showPaywall {
                 CalmattePaywallView(showPaywall: $showPaywall)
             }
@@ -113,9 +115,6 @@ struct ContentView: View {
         .onAppear {
             progressView.loadData()
         }
-        //        .sheet(isPresented: $showPaywall, onDismiss: nil) {
-        //            CalmattePaywallView(showPaywall: $showPaywall)
-        //        }
     }
     
     private func tabItem(icon: String, selectedIcon: String, text: String, index: Int) -> some View {
