@@ -65,8 +65,7 @@ struct ContentView: View {
                 case 2: MoodDiaryView()
                 case 3:
                     if userViewModel.isSubscriptionActive {
-//                        MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
-                        WellnessView()
+                        MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
                     } else {
                         PaywallCheckView()
                     }

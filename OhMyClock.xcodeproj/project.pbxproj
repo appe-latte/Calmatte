@@ -71,6 +71,7 @@
 		2FCD00642A671C1E000AD649 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00632A671C1E000AD649 /* LoginView.swift */; };
 		2FD60C542B12A0C1009B3EC8 /* LottieAnimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD60C532B12A0C1009B3EC8 /* LottieAnimView.swift */; };
 		2FD60C582B12B066009B3EC8 /* WellnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD60C572B12B066009B3EC8 /* WellnessView.swift */; };
+		2FD60C5F2B12C61D009B3EC8 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD60C5E2B12C61C009B3EC8 /* loading.json */; };
 		2FD9FB782B0BCEB500E4FBD4 /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FD9FB772B0BCEB500E4FBD4 /* equilibrium.mp3 */; };
 		2FD9FB7A2B0BE1AA00E4FBD4 /* MoodCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9FB792B0BE1AA00E4FBD4 /* MoodCountView.swift */; };
 		2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEE581297731CE00416E54 /* TaskRow.swift */; };
@@ -166,6 +167,7 @@
 		2FCD00632A671C1E000AD649 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2FD60C532B12A0C1009B3EC8 /* LottieAnimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimView.swift; sourceTree = "<group>"; };
 		2FD60C572B12B066009B3EC8 /* WellnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessView.swift; sourceTree = "<group>"; };
+		2FD60C5E2B12C61C009B3EC8 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		2FD9FB772B0BCEB500E4FBD4 /* equilibrium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = equilibrium.mp3; sourceTree = "<group>"; };
 		2FD9FB792B0BE1AA00E4FBD4 /* MoodCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCountView.swift; sourceTree = "<group>"; };
 		2FDBFC9A2A64B0C200CF96FE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -453,6 +455,7 @@
 			children = (
 				2FF7465C2B127F28007C5F61 /* paywall-animation.json */,
 				2FF746632B128699007C5F61 /* breathing-circle.json */,
+				2FD60C5E2B12C61C009B3EC8 /* loading.json */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				2F18B4122A6654DC00F91C7B /* GoogleService-Info.plist in Resources */,
 				2F6BFD952B068B2900BE9D03 /* Analogist.ttf in Resources */,
 				2F6667A32B11234200CC6B4E /* StoreKitTestCertificate.cer in Resources */,
+				2FD60C5F2B12C61D009B3EC8 /* loading.json in Resources */,
 				2FF7465D2B127F28007C5F61 /* paywall-animation.json in Resources */,
 				2F6BFD9A2B068E6400BE9D03 /* Butler.otf in Resources */,
 				2FF746642B12869A007C5F61 /* breathing-circle.json in Resources */,
