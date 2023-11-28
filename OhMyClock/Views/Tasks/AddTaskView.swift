@@ -17,6 +17,7 @@ struct AddTaskView: View {
     @State private var taskDescription: String = ""
     @State private var taskDate: Date = .init()
     @State private var taskCategory: Category = .tan
+    @State private var isCompleted: Bool = false
     
     // MARK: Animations
     @State private var animateColor: Color = Category.tan.color
@@ -173,7 +174,7 @@ struct AddTaskView: View {
                 
                 Button {
                     // MARK: Creating Task & pass to callback
-                    let task = TaskItem(dateAdded: taskDate, taskName: taskName, taskDescription: taskDescription, taskCategory: taskCategory)
+                    let task = TaskItem(dateAdded: taskDate, taskName: taskName, taskDescription: taskDescription, taskCategory: taskCategory, isCompleted: isCompleted)
                     taskManager.addTask(task) // Add the task to the task manager
                     dismiss()
                 } label: {
@@ -249,6 +250,19 @@ class TaskManager: ObservableObject {
         tasks.remove(atOffsets: indices)
         saveTasks()
         tasksToDelete.forEach(removeNotification)
+    }
+    
+    func markTaskAsCompleted(_ task: TaskItem) {
+        if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+            tasks[index].isCompleted = true
+            saveTasks()
+            removeNotification(for: task)
+        }
+    }
+    
+    func clearCompletedTasks() {
+        tasks.removeAll { $0.isCompleted }
+        saveTasks()
     }
     
     private func saveTasks() {

@@ -43,6 +43,7 @@ struct TaskItem : Codable, Identifiable {
     var taskName: String
     var taskDescription: String
     var taskCategory: Category
+    var isCompleted: Bool
 }
 
 enum Theme {

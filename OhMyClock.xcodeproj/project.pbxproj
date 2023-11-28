@@ -56,6 +56,7 @@
 		2FA2D6612B10630D00CB9C27 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA2D6602B10630D00CB9C27 /* StoreKit.framework */; };
 		2FA38A9F2AEB0E6A00BE57F0 /* CustomHeaderShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA38A9E2AEB0E6A00BE57F0 /* CustomHeaderShape.swift */; };
 		2FA9AB452A4E0D7A00557FD0 /* MoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */; };
+		2FA9C8CD2B16708200569C84 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FA9C8CC2B16708200569C84 /* success.json */; };
 		2FAD51EB2B0425F400D28A3C /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD51EA2B0425F400D28A3C /* AppViewModel.swift */; };
 		2FB2C4FC2A37B3C4006D5A30 /* TaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */; };
 		2FB2C4FE2A37B401006D5A30 /* TaskManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C4FD2A37B401006D5A30 /* TaskManagerView.swift */; };
@@ -152,6 +153,7 @@
 		2FA2D6602B10630D00CB9C27 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2FA38A9E2AEB0E6A00BE57F0 /* CustomHeaderShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderShape.swift; sourceTree = "<group>"; };
 		2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodModel.swift; sourceTree = "<group>"; };
+		2FA9C8CC2B16708200569C84 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		2FAD51EA2B0425F400D28A3C /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCategory.swift; sourceTree = "<group>"; };
 		2FB2C4FD2A37B401006D5A30 /* TaskManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerView.swift; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 				2FF7465C2B127F28007C5F61 /* paywall-animation.json */,
 				2FF746632B128699007C5F61 /* breathing-circle.json */,
 				2FD60C5E2B12C61C009B3EC8 /* loading.json */,
+				2FA9C8CC2B16708200569C84 /* success.json */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				2F6BFD9A2B068E6400BE9D03 /* Butler.otf in Resources */,
 				2FF746642B12869A007C5F61 /* breathing-circle.json in Resources */,
 				2FD9FB782B0BCEB500E4FBD4 /* equilibrium.mp3 in Resources */,
+				2FA9C8CD2B16708200569C84 /* success.json in Resources */,
 				2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */,
 				2F6BFD962B068B2900BE9D03 /* Analogist.otf in Resources */,
 			);

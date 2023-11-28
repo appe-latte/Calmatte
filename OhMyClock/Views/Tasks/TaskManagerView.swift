@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import AlertToast
 
 struct TaskManagerView: View {
     @ObservedObject var taskManager: TaskManager
@@ -14,8 +15,11 @@ struct TaskManagerView: View {
     @State private var addNewTask: Bool = false
     @State private var selectedTaskIndex: Int?
     
-    let screenWidth = UIScreen.main.bounds.width
-    let screenHeight = UIScreen.main.bounds.height
+    @State private var showCompletionAnimation = false
+    @State private var showAlert = false
+    
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
     
     @State private var milestoneDescription = "Develop a positive daily routine and organize your day with simple, achievable milestones."
     
@@ -29,6 +33,25 @@ struct TaskManagerView: View {
                 }
             }
             .padding(.vertical)
+            
+            // MARK: Completion Check + Animation
+            if taskManager.totalTasksCount > 0 && taskManager.completedTasksCount == taskManager.totalTasksCount {
+                LottieAnimView(animationFileName: "success", loopMode: .playOnce)
+                    .frame(width: 200, height: 200)
+                    .onAppear {
+                        showAlert = true
+                    }
+            }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Great Work!"),
+                message: Text("You've completed all your tasks for today! Take a moment to enjoy this accomplishment and the positive impact on your well-being. Ready to clear the slate for tomorrow's new beginnings?"),
+                primaryButton: .default(Text("Clear"), action: {
+                    taskManager.clearCompletedTasks()
+                }),
+                secondaryButton: .cancel()
+            )
         }
         .safeAreaInset(edge: .top, spacing: 0) {
             HeaderView()
@@ -100,6 +123,9 @@ struct TaskManagerView: View {
                         .kerning(3)
                         .minimumScaleFactor(0.5)
                         .foregroundColor(np_gray)
+                    
+                    // MARK: Progress Bar
+                        progressBar()
                 }
                 .hAlign(.leading)
             }
@@ -113,11 +139,31 @@ struct TaskManagerView: View {
             .ignoresSafeArea()
         }
     }
+    
+    // MARK: Progress Bar
+    @ViewBuilder
+    func progressBar() -> some View {
+        HStack {
+            ProgressView(value: Double(taskManager.completedTasksCount),
+                         total: Double(taskManager.totalTasksCount))
+            .progressViewStyle(LinearProgressViewStyle())
+            .frame(width: width * 0.8)
+            .padding(5)
+            
+            Text("\(taskManager.completedTasksCount)/\(taskManager.totalTasksCount)")
+                .font(.system(size: 10))
+                .fontWeight(.semibold)
+                .kerning(1)
+                .textCase(.uppercase)
+                .foregroundColor(np_white)
+        }
+    }
+    
 }
 
 struct CardView: View {
     @ObservedObject var taskManager: TaskManager
-    let task: TaskItem
+    @State var task: TaskItem
     
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
@@ -171,8 +217,6 @@ struct CardView: View {
             
             // MARK: "Delete" button
             HStack {
-                Spacer()
-                
                 Button(action: {
                     taskManager.deleteTask(task)
                 }) {
@@ -180,7 +224,28 @@ struct CardView: View {
                         .font(.headline)
                         .foregroundColor(np_red).opacity(0.65)
                 }
+                
+                Spacer()
+                
+                Button(action: {
+                    task.isCompleted.toggle()
+                    taskManager.updateTask(task)
+                }) {
+                    HStack {
+                        Text(task.isCompleted ? "Completed" : "Complete?")
+                            .font(.system(size: 12))
+                            .fontWeight(.semibold)
+                            .kerning(1)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_jap_indigo)
+                        
+                        Image(systemName: task.isCompleted ? "circle.fill" : "circle")
+                            .font(.system(size: 12))
+                            .foregroundColor(np_jap_indigo)
+                    }
+                }
             }
+            .padding(.horizontal, 10)
             .padding(.bottom, 10)
         }
         .frame(maxWidth: screenWidth - 30, maxHeight: screenHeight * 0.25)
@@ -210,5 +275,12 @@ extension Date {
     }
 }
 
-
-
+extension TaskManager {
+    var completedTasksCount: Int {
+        tasks.filter { $0.isCompleted }.count
+    }
+    
+    var totalTasksCount: Int {
+        tasks.count
+    }
+}
