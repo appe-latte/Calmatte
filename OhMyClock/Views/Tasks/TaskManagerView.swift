@@ -17,6 +17,7 @@ struct TaskManagerView: View {
     
     @State private var showCompletionAnimation = false
     @State private var showAlert = false
+    @State private var tasksComplete = false
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
@@ -24,25 +25,34 @@ struct TaskManagerView: View {
     @State private var milestoneDescription = "Develop a positive daily routine and organize your day with simple, achievable milestones."
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 16) {
-                ForEach(taskManager.tasks.sorted(by: { $0.dateAdded < $1.dateAdded })) { task in
-                    CardView(taskManager: taskManager, task: task)
-                        .background(np_white)
-                        .cornerRadius(15)
-                }
-            }
-            .padding(.vertical)
-            
-            // MARK: Completion Check + Animation
-            if taskManager.totalTasksCount > 0 && taskManager.completedTasksCount == taskManager.totalTasksCount {
-                LottieAnimView(animationFileName: "success", loopMode: .playOnce)
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: width, height: height)
-                    .edgesIgnoringSafeArea(.all)
-                    .onAppear {
-                        showAlert = true
+        ZStack {
+            background()
+            VStack {
+                HeaderView()
+                
+                // MARK: "Task" List
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 16) {
+                        ForEach(taskManager.tasks.sorted(by: { $0.dateAdded < $1.dateAdded })) { task in
+                            CardView(taskManager: taskManager, task: task)
+                                .background(np_white)
+                                .cornerRadius(15)
+                        }
+                        
+                        // MARK: Completion Check + Animation
+                        if taskManager.totalTasksCount > 0 && taskManager.completedTasksCount == taskManager.totalTasksCount {
+                            LottieAnimView(animationFileName: "success", loopMode: .playOnce)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: width, height: height)
+                                .onAppear {
+                                    showAlert = true
+                                    HapticManager.instance.hapticSuccess()
+                                }
+                                .edgesIgnoringSafeArea(.all)
+                        }
                     }
+                    .padding(.vertical)
+                }
             }
         }
         .alert(isPresented: $showAlert) {
@@ -55,13 +65,9 @@ struct TaskManagerView: View {
                 secondaryButton: .cancel()
             )
         }
-        .safeAreaInset(edge: .top, spacing: 0) {
-            HeaderView()
-        }
         .sheet(isPresented: $addNewTask) {
             AddTaskView(taskManager: taskManager)
         }
-        .background(background())
     }
     
     // MARK: Background
@@ -127,7 +133,7 @@ struct TaskManagerView: View {
                         .foregroundColor(np_gray)
                     
                     // MARK: Progress Bar
-                        progressBar()
+                    progressBar()
                 }
                 .hAlign(.leading)
             }

@@ -78,11 +78,6 @@ struct AnalyticsView: View {
         }
     }
     
-    //    func getMoodPredictionScore() -> Double {
-    //        return calculateMoodPredictionScore(moods: moodModelController.moods)
-    //    }
-    
-    
     // MARK: Background
     @ViewBuilder
     func background() -> some View {

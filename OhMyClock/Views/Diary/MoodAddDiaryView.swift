@@ -476,7 +476,7 @@ struct MoodAddDiaryView: View {
                                         // Pass dayState directly, not as an array
                                         self.moodModelController.createMood(emotion: Emotion(state: self.emotionState, color: self.moodColor), comment: self.text, date: Date(), dayState: dayState)
                                     }
-                                    
+                                    HapticManager.instance.hapticSuccess()
                                     self.presentationMode.wrappedValue.dismiss()
                                 }, label: {
                                     Text("Save")
