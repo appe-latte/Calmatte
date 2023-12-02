@@ -42,7 +42,6 @@ struct AnalyticsView: View {
                 ScrollView(.vertical, showsIndicators: false){
                     // MARK: Statistics
                     StatisticsView(moodModelController: moodModelController)
-//                        .padding(.horizontal)
                         .padding(.bottom, 30)
                     
                     // MARK: Mood Cards

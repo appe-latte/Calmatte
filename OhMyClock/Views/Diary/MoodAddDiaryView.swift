@@ -418,26 +418,26 @@ struct MoodAddDiaryView: View {
                                     }
                                     
                                     // MARK: Day State
-                                        HStack(spacing: 5){
-                                            
-                                            // MARK: Amazing - state
-                                            DayStateButton(state: .amazing, selectedState: $selectedDayState)
-                                            
-                                            // MARK: Good - state
-                                            DayStateButton(state: .good, selectedState: $selectedDayState)
-                                            
-                                            // MARK: Okay - state
-                                            DayStateButton(state: .okay, selectedState: $selectedDayState)
-                                            
-                                            // MARK: Bad - state
-                                            DayStateButton(state: .bad, selectedState: $selectedDayState)
-                                            
-                                            // MARK: Terrible - state
-                                            DayStateButton(state: .terrible, selectedState: $selectedDayState)
-                                            
-                                            // MARK: Meh - state
-                                            DayStateButton(state: .meh, selectedState: $selectedDayState)
-                                        }
+                                    HStack(spacing: 5){
+                                        
+                                        // MARK: Amazing - state
+                                        DayStateButton(state: .amazing, selectedState: $selectedDayState)
+                                        
+                                        // MARK: Good - state
+                                        DayStateButton(state: .good, selectedState: $selectedDayState)
+                                        
+                                        // MARK: Okay - state
+                                        DayStateButton(state: .okay, selectedState: $selectedDayState)
+                                        
+                                        // MARK: Meh - state
+                                        DayStateButton(state: .meh, selectedState: $selectedDayState)
+                                        
+                                        // MARK: Bad - state
+                                        DayStateButton(state: .bad, selectedState: $selectedDayState)
+                                        
+                                        // MARK: Terrible - state
+                                        DayStateButton(state: .terrible, selectedState: $selectedDayState)
+                                    }
                                 }
                                 
                                 // MARK: Journal Entry

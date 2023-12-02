@@ -57,17 +57,14 @@ struct MoodCountView: View {
                 HStack(spacing: 20) {
                     // "Amazing" Count
                     RoundedRectangle(cornerRadius: 15)
-                        .fill(np_green.opacity(0.1))
+                        .fill(np_gray.opacity(0.1))
                         .frame(width: 175, height: 175)
                         .overlay {
-                            VStack(spacing: 20) {
-                                Circle()
-                                    .stroke(lineWidth: 15)
-                                    .fill(np_green)
-                                    .frame(width: 100, height: 100)
+                            VStack(spacing: 5) {
+                                LottieIconAnimView(animationFileName: "green", loopMode: .loop, height: 160, width: 160)
                                     .overlay {
                                         Text("\(moodCount.frequency(for: .amazing))")
-                                            .font(.system(size: 15, weight: .heavy))
+                                            .font(.system(size: 30, weight: .heavy))
                                             .textCase(.uppercase)
                                             .foregroundColor(np_white)
                                     }
@@ -78,21 +75,19 @@ struct MoodCountView: View {
                                     .kerning(3)
                                     .foregroundColor(np_white)
                             }
+                            .padding(5)
                         }
                     
                     // "Good" Count
                     RoundedRectangle(cornerRadius: 15)
-                        .fill(np_turq.opacity(0.1))
+                        .fill(np_gray.opacity(0.1))
                         .frame(width: 175, height: 175)
                         .overlay {
-                            VStack(spacing: 20) {
-                                Circle()
-                                    .stroke(lineWidth: 15)
-                                    .fill(np_turq)
-                                    .frame(width: 100, height: 100)
+                            VStack(spacing: 5) {
+                                LottieIconAnimView(animationFileName: "turq", loopMode: .loop, height: 160, width: 160)
                                     .overlay {
                                         Text("\(moodCount.frequency(for: .good))")
-                                            .font(.system(size: 15, weight: .heavy))
+                                            .font(.system(size: 30, weight: .heavy))
                                             .textCase(.uppercase)
                                             .foregroundColor(np_white)
                                     }
@@ -103,6 +98,7 @@ struct MoodCountView: View {
                                     .kerning(3)
                                     .foregroundColor(np_white)
                             }
+                            .padding(5)
                         }
                 }
                 
@@ -110,17 +106,14 @@ struct MoodCountView: View {
                 HStack(spacing: 20) {
                     // "Okay" Count
                     RoundedRectangle(cornerRadius: 15)
-                        .fill(np_yellow.opacity(0.1))
+                        .fill(np_gray.opacity(0.1))
                         .frame(width: 175, height: 175)
                         .overlay {
-                            VStack(spacing: 20) {
-                                Circle()
-                                    .stroke(lineWidth: 15)
-                                    .fill(np_yellow)
-                                    .frame(width: 100, height: 100)
+                            VStack(spacing: 5) {
+                                LottieIconAnimView(animationFileName: "yellow", loopMode: .loop, height: 160, width: 160)
                                     .overlay {
                                         Text("\(moodCount.frequency(for: .okay))")
-                                            .font(.system(size: 15, weight: .heavy))
+                                            .font(.system(size: 30, weight: .heavy))
                                             .textCase(.uppercase)
                                             .foregroundColor(np_white)
                                     }
@@ -131,21 +124,19 @@ struct MoodCountView: View {
                                     .kerning(3)
                                     .foregroundColor(np_white)
                             }
+                            .padding(5)
                         }
                     
                     // "Meh" Count
                     RoundedRectangle(cornerRadius: 15)
-                        .fill(np_purple.opacity(0.1))
+                        .fill(np_gray.opacity(0.1))
                         .frame(width: 175, height: 175)
                         .overlay {
-                            VStack(spacing: 20) {
-                                Circle()
-                                    .stroke(lineWidth: 15)
-                                    .fill(np_purple)
-                                    .frame(width: 100, height: 100)
+                            VStack(spacing: 5) {
+                                LottieIconAnimView(animationFileName: "purple", loopMode: .loop, height: 160, width: 160)
                                     .overlay {
                                         Text("\(moodCount.frequency(for: .meh))")
-                                            .font(.system(size: 15, weight: .heavy))
+                                            .font(.system(size: 30, weight: .heavy))
                                             .textCase(.uppercase)
                                             .foregroundColor(np_white)
                                     }
@@ -156,6 +147,7 @@ struct MoodCountView: View {
                                     .kerning(3)
                                     .foregroundColor(np_white)
                             }
+                            .padding(5)
                         }
                 }
                 
@@ -163,17 +155,14 @@ struct MoodCountView: View {
                 HStack(spacing: 20) {
                     // "Bad" Count
                     RoundedRectangle(cornerRadius: 15)
-                        .fill(np_orange.opacity(0.1))
+                        .fill(np_gray.opacity(0.1))
                         .frame(width: 175, height: 175)
                         .overlay {
-                            VStack(spacing: 20) {
-                                Circle()
-                                    .stroke(lineWidth: 15)
-                                    .fill(np_orange)
-                                    .frame(width: 100, height: 100)
+                            VStack(spacing: 5) {
+                                LottieIconAnimView(animationFileName: "orange", loopMode: .loop, height: 160, width: 160)
                                     .overlay {
                                         Text("\(moodCount.frequency(for: .bad))")
-                                            .font(.system(size: 15, weight: .heavy))
+                                            .font(.system(size: 30, weight: .heavy))
                                             .textCase(.uppercase)
                                             .foregroundColor(np_white)
                                     }
@@ -184,21 +173,19 @@ struct MoodCountView: View {
                                     .kerning(3)
                                     .foregroundColor(np_white)
                             }
+                            .padding(5)
                         }
                     
                     // "Terrible" Count
                     RoundedRectangle(cornerRadius: 15)
-                        .fill(np_red.opacity(0.1))
+                        .fill(np_gray.opacity(0.1))
                         .frame(width: 175, height: 175)
                         .overlay {
-                            VStack(spacing: 20) {
-                                Circle()
-                                    .stroke(lineWidth: 15)
-                                    .fill(np_red)
-                                    .frame(width: 100, height: 100)
+                            VStack(spacing: 5) {
+                                LottieIconAnimView(animationFileName: "red", loopMode: .loop, height: 160, width: 160)
                                     .overlay {
                                         Text("\(moodCount.frequency(for: .terrible))")
-                                            .font(.system(size: 15, weight: .heavy))
+                                            .font(.system(size: 30, weight: .heavy))
                                             .textCase(.uppercase)
                                             .foregroundColor(np_white)
                                     }
@@ -209,6 +196,7 @@ struct MoodCountView: View {
                                     .kerning(3)
                                     .foregroundColor(np_white)
                             }
+                            .padding(5)
                         }
                 }
             }

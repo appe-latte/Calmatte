@@ -10,6 +10,12 @@
 		2F06D6572A663904004DD93E /* affirmation.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F06D6562A663904004DD93E /* affirmation.json */; };
 		2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04E82A0A1E1B002523A9 /* Weather.swift */; };
 		2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */; };
+		2F0DD1842B1BEE6600504937 /* green.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F0DD1832B1BEE6600504937 /* green.json */; };
+		2F0DD1862B1BF08100504937 /* turq.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F0DD1852B1BF08100504937 /* turq.json */; };
+		2F0DD1892B1BF46A00504937 /* purple.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F0DD1872B1BF46900504937 /* purple.json */; };
+		2F0DD18A2B1BF46A00504937 /* yellow.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F0DD1882B1BF46A00504937 /* yellow.json */; };
+		2F0DD18D2B1BF57B00504937 /* orange.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F0DD18B2B1BF57A00504937 /* orange.json */; };
+		2F0DD18E2B1BF57B00504937 /* red.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F0DD18C2B1BF57A00504937 /* red.json */; };
 		2F11AE142A675615002FFAED /* BiometricLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F11AE132A675615002FFAED /* BiometricLoginView.swift */; };
 		2F18B4122A6654DC00F91C7B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F18B4112A6654DC00F91C7B /* GoogleService-Info.plist */; };
 		2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A17F2973F0FC007DA7CC /* LocationManager.swift */; };
@@ -118,6 +124,12 @@
 		2F06D6562A663904004DD93E /* affirmation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = affirmation.json; path = OhMyClock/Data/affirmation.json; sourceTree = SOURCE_ROOT; };
 		2F0D04E82A0A1E1B002523A9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		2F0DD1832B1BEE6600504937 /* green.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = green.json; sourceTree = "<group>"; };
+		2F0DD1852B1BF08100504937 /* turq.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = turq.json; sourceTree = "<group>"; };
+		2F0DD1872B1BF46900504937 /* purple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = purple.json; sourceTree = "<group>"; };
+		2F0DD1882B1BF46A00504937 /* yellow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = yellow.json; sourceTree = "<group>"; };
+		2F0DD18B2B1BF57A00504937 /* orange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = orange.json; sourceTree = "<group>"; };
+		2F0DD18C2B1BF57A00504937 /* red.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red.json; sourceTree = "<group>"; };
 		2F11AE132A675615002FFAED /* BiometricLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricLoginView.swift; sourceTree = "<group>"; };
 		2F18B4112A6654DC00F91C7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F27A17F2973F0FC007DA7CC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -233,6 +245,19 @@
 				2F06D6562A663904004DD93E /* affirmation.json */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		2F0DD1822B1BEE0200504937 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				2F0DD1832B1BEE6600504937 /* green.json */,
+				2F0DD1852B1BF08100504937 /* turq.json */,
+				2F0DD1872B1BF46900504937 /* purple.json */,
+				2F0DD1882B1BF46A00504937 /* yellow.json */,
+				2F0DD18B2B1BF57A00504937 /* orange.json */,
+				2F0DD18C2B1BF57A00504937 /* red.json */,
+			);
+			path = Colors;
 			sourceTree = "<group>";
 		};
 		2F36B0972967A40000AC8D59 = {
@@ -477,6 +502,7 @@
 		2FF746602B1281F3007C5F61 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				2F0DD1822B1BEE0200504937 /* Colors */,
 				2FF7465C2B127F28007C5F61 /* paywall-animation.json */,
 				2FF746632B128699007C5F61 /* breathing-circle.json */,
 				2FD60C5E2B12C61C009B3EC8 /* loading.json */,
@@ -588,10 +614,16 @@
 				2FF0AB9B2B1B94C9003703FA /* StoreKitTestCertificate.cer in Resources */,
 				2FD60C5F2B12C61D009B3EC8 /* loading.json in Resources */,
 				2FD25A212B1BD70B00E5AC05 /* breathing-bear.json in Resources */,
+				2F0DD1892B1BF46A00504937 /* purple.json in Resources */,
 				2FF0AB942B1B91C7003703FA /* okay-emoji.json in Resources */,
+				2F0DD18D2B1BF57B00504937 /* orange.json in Resources */,
 				2FF7465D2B127F28007C5F61 /* paywall-animation.json in Resources */,
+				2F0DD18A2B1BF46A00504937 /* yellow.json in Resources */,
+				2F0DD1842B1BEE6600504937 /* green.json in Resources */,
 				2F6BFD9A2B068E6400BE9D03 /* Butler.otf in Resources */,
+				2F0DD1862B1BF08100504937 /* turq.json in Resources */,
 				2FF746642B12869A007C5F61 /* breathing-circle.json in Resources */,
+				2F0DD18E2B1BF57B00504937 /* red.json in Resources */,
 				2FD9FB782B0BCEB500E4FBD4 /* equilibrium.mp3 in Resources */,
 				2FA9C8CD2B16708200569C84 /* success.json in Resources */,
 				2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */,
