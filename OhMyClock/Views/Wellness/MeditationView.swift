@@ -114,9 +114,7 @@ struct MeditationView: View {
     @ViewBuilder
     func BreathingView() -> some View {
         VStack {
-            LottieAnimView(animationFileName: "paywall-animation", loopMode: .loop)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: width - 50)
+            LottieIconAnimView(animationFileName: "breathing-bear", loopMode: .loop, height: height / 2, width: width / 1.25)
             
             // MARK: "Play / Stop" sound
             HStack {

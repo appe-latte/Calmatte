@@ -72,7 +72,8 @@
 		2FCD00602A671862000AD649 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD005F2A671862000AD649 /* Constants.swift */; };
 		2FCD00622A67188F000AD649 /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00612A67188F000AD649 /* AppLockViewModel.swift */; };
 		2FCD00642A671C1E000AD649 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00632A671C1E000AD649 /* LoginView.swift */; };
-		2FD25A1F2B1BC8DF00E5AC05 /* terrible-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD25A1E2B1BC8DF00E5AC05 /* terrible-emoji.json */; };
+		2FD25A212B1BD70B00E5AC05 /* breathing-bear.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD25A202B1BD70B00E5AC05 /* breathing-bear.json */; };
+		2FD25A232B1BD90400E5AC05 /* terrible-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD25A222B1BD90400E5AC05 /* terrible-emoji.json */; };
 		2FD60C542B12A0C1009B3EC8 /* LottieAnimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD60C532B12A0C1009B3EC8 /* LottieAnimView.swift */; };
 		2FD60C582B12B066009B3EC8 /* WellnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD60C572B12B066009B3EC8 /* WellnessView.swift */; };
 		2FD60C5F2B12C61D009B3EC8 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD60C5E2B12C61C009B3EC8 /* loading.json */; };
@@ -177,7 +178,8 @@
 		2FCD005F2A671862000AD649 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2FCD00612A67188F000AD649 /* AppLockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
 		2FCD00632A671C1E000AD649 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		2FD25A1E2B1BC8DF00E5AC05 /* terrible-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "terrible-emoji.json"; sourceTree = "<group>"; };
+		2FD25A202B1BD70B00E5AC05 /* breathing-bear.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "breathing-bear.json"; sourceTree = "<group>"; };
+		2FD25A222B1BD90400E5AC05 /* terrible-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "terrible-emoji.json"; sourceTree = "<group>"; };
 		2FD60C532B12A0C1009B3EC8 /* LottieAnimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimView.swift; sourceTree = "<group>"; };
 		2FD60C572B12B066009B3EC8 /* WellnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessView.swift; sourceTree = "<group>"; };
 		2FD60C5E2B12C61C009B3EC8 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
@@ -484,7 +486,8 @@
 				2FF0AB8C2B1B91C6003703FA /* good-emoji.json */,
 				2FF0AB8D2B1B91C7003703FA /* meh-emoji.json */,
 				2FF0AB8E2B1B91C7003703FA /* okay-emoji.json */,
-				2FD25A1E2B1BC8DF00E5AC05 /* terrible-emoji.json */,
+				2FD25A222B1BD90400E5AC05 /* terrible-emoji.json */,
+				2FD25A202B1BD70B00E5AC05 /* breathing-bear.json */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -576,14 +579,15 @@
 			files = (
 				2F06D6572A663904004DD93E /* affirmation.json in Resources */,
 				2FF0AB922B1B91C7003703FA /* good-emoji.json in Resources */,
+				2FD25A232B1BD90400E5AC05 /* terrible-emoji.json in Resources */,
 				2FF0AB962B1B91C7003703FA /* bad-emoji.json in Resources */,
 				2F6667A12B1121B000CC6B4E /* Calmatte.storekit in Resources */,
 				2F36B0AB2967A40200AC8D59 /* Preview Assets.xcassets in Resources */,
-				2FD25A1F2B1BC8DF00E5AC05 /* terrible-emoji.json in Resources */,
 				2F18B4122A6654DC00F91C7B /* GoogleService-Info.plist in Resources */,
 				2F6BFD952B068B2900BE9D03 /* Analogist.ttf in Resources */,
 				2FF0AB9B2B1B94C9003703FA /* StoreKitTestCertificate.cer in Resources */,
 				2FD60C5F2B12C61D009B3EC8 /* loading.json in Resources */,
+				2FD25A212B1BD70B00E5AC05 /* breathing-bear.json in Resources */,
 				2FF0AB942B1B91C7003703FA /* okay-emoji.json in Resources */,
 				2FF7465D2B127F28007C5F61 /* paywall-animation.json in Resources */,
 				2F6BFD9A2B068E6400BE9D03 /* Butler.otf in Resources */,

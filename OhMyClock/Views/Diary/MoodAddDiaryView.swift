@@ -405,7 +405,7 @@ struct MoodAddDiaryView: View {
                                 }
                                 
                                 // MARK: Day Type selection
-                                VStack(spacing: 10) {
+                                VStack(spacing: 30) {
                                     HStack {
                                         Label("How was your day?", systemImage: "")
                                             .font(.footnote)
@@ -418,7 +418,6 @@ struct MoodAddDiaryView: View {
                                     }
                                     
                                     // MARK: Day State
-                                    VStack {
                                         HStack(spacing: 5){
                                             
                                             // MARK: Amazing - state
@@ -439,7 +438,6 @@ struct MoodAddDiaryView: View {
                                             // MARK: Meh - state
                                             DayStateButton(state: .meh, selectedState: $selectedDayState)
                                         }
-                                    }
                                 }
                                 
                                 // MARK: Journal Entry
@@ -650,11 +648,11 @@ struct DayStateButton: View {
             self.selectedState = self.selectedState == state ? nil : state
         }) {
             ZStack {
-                VStack(spacing: 10) {
+                VStack(spacing: 30) {
                     LottieIconAnimView(animationFileName: self.selectedState == state ? stateIcon : stateIcon, loopMode: .loop, height: 75, width: 75)
                     
                     Text(state.displayString)
-                        .font(self.selectedState == state ? .system(size: 13) : .system(size: 10))
+                        .font(self.selectedState == state ? .system(size: 11) : .system(size: 8))
                         .fontWeight(.heavy)
                         .textCase(.uppercase)
                         .foregroundColor(np_white)
