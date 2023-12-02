@@ -405,7 +405,7 @@ struct MoodAddDiaryView: View {
                                 }
                                 
                                 // MARK: Day Type selection
-                                VStack {
+                                VStack(spacing: 10) {
                                     HStack {
                                         Label("How was your day?", systemImage: "")
                                             .font(.footnote)
@@ -631,17 +631,17 @@ struct DayStateButton: View {
     var stateIcon: String {
         switch state {
         case .amazing:
-            return "amazing"
+            return "amazing-emoji"
         case .good:
-            return "happy-icon"
+            return "good-emoji"
         case .okay:
-            return "okay"
+            return "okay-emoji"
         case .bad:
-            return "bad"
+            return "bad-emoji"
         case .terrible:
-            return "terrible"
+            return "terrible-emoji"
         case .meh:
-            return "meh-icon"
+            return "meh-emoji"
         }
     }
     
@@ -650,18 +650,14 @@ struct DayStateButton: View {
             self.selectedState = self.selectedState == state ? nil : state
         }) {
             ZStack {
-                VStack(spacing: 5) {
-                    Image(self.selectedState == state ? stateIcon : stateIcon)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 60, height: 60)
-                        .foregroundColor(self.selectedState == state ? fillColor : np_arsenic)
+                VStack(spacing: 10) {
+                    LottieIconAnimView(animationFileName: self.selectedState == state ? stateIcon : stateIcon, loopMode: .loop, height: 75, width: 75)
                     
                     Text(state.displayString)
-                        .font(.system(size: 10))
-                        .fontWeight(.semibold)
+                        .font(self.selectedState == state ? .system(size: 13) : .system(size: 10))
+                        .fontWeight(.heavy)
                         .textCase(.uppercase)
-                        .foregroundColor(self.selectedState == state ? fillColor : np_white)
+                        .foregroundColor(np_white)
                 }
             }
         }

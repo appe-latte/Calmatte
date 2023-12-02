@@ -47,7 +47,6 @@
 		2F66679D2B110BE500CC6B4E /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F66679C2B110BE500CC6B4E /* UserViewModel.swift */; };
 		2F66679F2B110CE400CC6B4E /* CalmattePaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F66679E2B110CE400CC6B4E /* CalmattePaywallView.swift */; };
 		2F6667A12B1121B000CC6B4E /* Calmatte.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 2F6667A02B1121B000CC6B4E /* Calmatte.storekit */; };
-		2F6667A32B11234200CC6B4E /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 2F6667A22B11234200CC6B4E /* StoreKitTestCertificate.cer */; };
 		2F6667A52B112C9700CC6B4E /* PaywallCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6667A42B112C9700CC6B4E /* PaywallCheckView.swift */; };
 		2F6BFD952B068B2900BE9D03 /* Analogist.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F6BFD932B068B2900BE9D03 /* Analogist.ttf */; };
 		2F6BFD962B068B2900BE9D03 /* Analogist.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F6BFD942B068B2900BE9D03 /* Analogist.otf */; };
@@ -73,12 +72,19 @@
 		2FCD00602A671862000AD649 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD005F2A671862000AD649 /* Constants.swift */; };
 		2FCD00622A67188F000AD649 /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00612A67188F000AD649 /* AppLockViewModel.swift */; };
 		2FCD00642A671C1E000AD649 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00632A671C1E000AD649 /* LoginView.swift */; };
+		2FD25A1F2B1BC8DF00E5AC05 /* terrible-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD25A1E2B1BC8DF00E5AC05 /* terrible-emoji.json */; };
 		2FD60C542B12A0C1009B3EC8 /* LottieAnimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD60C532B12A0C1009B3EC8 /* LottieAnimView.swift */; };
 		2FD60C582B12B066009B3EC8 /* WellnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD60C572B12B066009B3EC8 /* WellnessView.swift */; };
 		2FD60C5F2B12C61D009B3EC8 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD60C5E2B12C61C009B3EC8 /* loading.json */; };
 		2FD9FB782B0BCEB500E4FBD4 /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FD9FB772B0BCEB500E4FBD4 /* equilibrium.mp3 */; };
 		2FD9FB7A2B0BE1AA00E4FBD4 /* MoodCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9FB792B0BE1AA00E4FBD4 /* MoodCountView.swift */; };
 		2FEEE582297731CE00416E54 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEE581297731CE00416E54 /* TaskRow.swift */; };
+		2FF0AB912B1B91C7003703FA /* amazing-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0AB8B2B1B91C6003703FA /* amazing-emoji.json */; };
+		2FF0AB922B1B91C7003703FA /* good-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0AB8C2B1B91C6003703FA /* good-emoji.json */; };
+		2FF0AB932B1B91C7003703FA /* meh-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0AB8D2B1B91C7003703FA /* meh-emoji.json */; };
+		2FF0AB942B1B91C7003703FA /* okay-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0AB8E2B1B91C7003703FA /* okay-emoji.json */; };
+		2FF0AB962B1B91C7003703FA /* bad-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0AB902B1B91C7003703FA /* bad-emoji.json */; };
+		2FF0AB9B2B1B94C9003703FA /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0AB9D2B1B94C9003703FA /* StoreKitTestCertificate.cer */; };
 		2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */; };
 		2FF4260C2B0C74C8000BD7B2 /* WeeklyMoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4260B2B0C74C8000BD7B2 /* WeeklyMoodView.swift */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
@@ -145,7 +151,6 @@
 		2F66679C2B110BE500CC6B4E /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		2F66679E2B110CE400CC6B4E /* CalmattePaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalmattePaywallView.swift; sourceTree = "<group>"; };
 		2F6667A02B1121B000CC6B4E /* Calmatte.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Calmatte.storekit; path = OhMyClock/Calmatte.storekit; sourceTree = "<group>"; };
-		2F6667A22B11234200CC6B4E /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = StoreKitTestCertificate.cer; path = ../../../../Desktop/StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		2F6667A42B112C9700CC6B4E /* PaywallCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallCheckView.swift; sourceTree = "<group>"; };
 		2F6BFD932B068B2900BE9D03 /* Analogist.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Analogist.ttf; sourceTree = "<group>"; };
 		2F6BFD942B068B2900BE9D03 /* Analogist.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Analogist.otf; sourceTree = "<group>"; };
@@ -172,6 +177,7 @@
 		2FCD005F2A671862000AD649 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2FCD00612A67188F000AD649 /* AppLockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
 		2FCD00632A671C1E000AD649 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		2FD25A1E2B1BC8DF00E5AC05 /* terrible-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "terrible-emoji.json"; sourceTree = "<group>"; };
 		2FD60C532B12A0C1009B3EC8 /* LottieAnimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimView.swift; sourceTree = "<group>"; };
 		2FD60C572B12B066009B3EC8 /* WellnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessView.swift; sourceTree = "<group>"; };
 		2FD60C5E2B12C61C009B3EC8 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
@@ -180,6 +186,12 @@
 		2FDBFC9A2A64B0C200CF96FE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		2FDBFC9C2A64B0C200CF96FE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		2FEEE581297731CE00416E54 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
+		2FF0AB8B2B1B91C6003703FA /* amazing-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "amazing-emoji.json"; sourceTree = "<group>"; };
+		2FF0AB8C2B1B91C6003703FA /* good-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "good-emoji.json"; sourceTree = "<group>"; };
+		2FF0AB8D2B1B91C7003703FA /* meh-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "meh-emoji.json"; sourceTree = "<group>"; };
+		2FF0AB8E2B1B91C7003703FA /* okay-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "okay-emoji.json"; sourceTree = "<group>"; };
+		2FF0AB902B1B91C7003703FA /* bad-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bad-emoji.json"; sourceTree = "<group>"; };
+		2FF0AB9C2B1B94C9003703FA /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		2FF12EBB2A0B759A0097993C /* OmcModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OmcModel.xcdatamodel; sourceTree = "<group>"; };
 		2FF4260B2B0C74C8000BD7B2 /* WeeklyMoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyMoodView.swift; sourceTree = "<group>"; };
 		2FF50123296E9B2800813D40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -225,7 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				2F6667A02B1121B000CC6B4E /* Calmatte.storekit */,
-				2F6667A22B11234200CC6B4E /* StoreKitTestCertificate.cer */,
+				2FF0AB9D2B1B94C9003703FA /* StoreKitTestCertificate.cer */,
 				2F36B0A22967A40000AC8D59 /* OhMyClock */,
 				2FDBFC992A64B0C200CF96FE /* Frameworks */,
 				2F36B0A12967A40000AC8D59 /* Products */,
@@ -467,6 +479,12 @@
 				2FF746632B128699007C5F61 /* breathing-circle.json */,
 				2FD60C5E2B12C61C009B3EC8 /* loading.json */,
 				2FA9C8CC2B16708200569C84 /* success.json */,
+				2FF0AB8B2B1B91C6003703FA /* amazing-emoji.json */,
+				2FF0AB902B1B91C7003703FA /* bad-emoji.json */,
+				2FF0AB8C2B1B91C6003703FA /* good-emoji.json */,
+				2FF0AB8D2B1B91C7003703FA /* meh-emoji.json */,
+				2FF0AB8E2B1B91C7003703FA /* okay-emoji.json */,
+				2FD25A1E2B1BC8DF00E5AC05 /* terrible-emoji.json */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -557,18 +575,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F06D6572A663904004DD93E /* affirmation.json in Resources */,
+				2FF0AB922B1B91C7003703FA /* good-emoji.json in Resources */,
+				2FF0AB962B1B91C7003703FA /* bad-emoji.json in Resources */,
 				2F6667A12B1121B000CC6B4E /* Calmatte.storekit in Resources */,
 				2F36B0AB2967A40200AC8D59 /* Preview Assets.xcassets in Resources */,
+				2FD25A1F2B1BC8DF00E5AC05 /* terrible-emoji.json in Resources */,
 				2F18B4122A6654DC00F91C7B /* GoogleService-Info.plist in Resources */,
 				2F6BFD952B068B2900BE9D03 /* Analogist.ttf in Resources */,
-				2F6667A32B11234200CC6B4E /* StoreKitTestCertificate.cer in Resources */,
+				2FF0AB9B2B1B94C9003703FA /* StoreKitTestCertificate.cer in Resources */,
 				2FD60C5F2B12C61D009B3EC8 /* loading.json in Resources */,
+				2FF0AB942B1B91C7003703FA /* okay-emoji.json in Resources */,
 				2FF7465D2B127F28007C5F61 /* paywall-animation.json in Resources */,
 				2F6BFD9A2B068E6400BE9D03 /* Butler.otf in Resources */,
 				2FF746642B12869A007C5F61 /* breathing-circle.json in Resources */,
 				2FD9FB782B0BCEB500E4FBD4 /* equilibrium.mp3 in Resources */,
 				2FA9C8CD2B16708200569C84 /* success.json in Resources */,
 				2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */,
+				2FF0AB912B1B91C7003703FA /* amazing-emoji.json in Resources */,
+				2FF0AB932B1B91C7003703FA /* meh-emoji.json in Resources */,
 				2F6BFD962B068B2900BE9D03 /* Analogist.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -688,6 +712,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2FF0AB9D2B1B94C9003703FA /* StoreKitTestCertificate.cer */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FF0AB9C2B1B94C9003703FA /* en */,
+			);
+			name = StoreKitTestCertificate.cer;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2F36B0AC2967A40200AC8D59 /* Debug */ = {
@@ -841,7 +876,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appe-latte.OhMyClock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -886,7 +921,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appe-latte.OhMyClock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
