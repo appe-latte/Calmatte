@@ -52,3 +52,11 @@ enum Theme {
     static let text = np_green
     static let pill = np_blue
 }
+
+struct SoundCard: Identifiable {
+    let id = UUID()
+    let title: String
+    let description: String
+    let imageName: String
+    let audioFileName: String
+}

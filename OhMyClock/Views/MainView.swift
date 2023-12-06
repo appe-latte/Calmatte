@@ -19,6 +19,7 @@ struct MainView: View {
     @ObservedObject var moodModel: MoodModel
     @ObservedObject var moodModelController = MoodModelController()
     @ObservedObject var authModel = AuthViewModel()
+    @ObservedObject var userViewModel = UserViewModel()
     @StateObject private var weatherModel = WeatherViewModel()
     @Binding var tabBarSelection: Int
     
@@ -149,24 +150,52 @@ struct MainView: View {
                     .frame(height: 30)
                 
                 // MARK: "Add Journal Entry" Button
-                Button {
-                    self.txt = ""
-                    self.docID = ""
-                    self.showJournalEntry.toggle()
-                } label: {
-                    Text("Log Daily Mood")
-                        .font(.footnote)
-                        .fontWeight(.bold)
-                        .kerning(2)
-                        .textCase(.uppercase)
-                }
-                .padding(.vertical, 5)
-                .foregroundColor(np_jap_indigo)
-                .frame(width: width - 40, height: 35)
-                .background(np_white)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .shadow(color: np_black, radius: 0.1, x: 5, y: 5)
-                .padding(.bottom, 30)
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 1)
+                    .foregroundColor(np_white)
+                    .frame(width: width - 40, height: 60)
+                    .overlay {
+                        HStack(spacing: 15) {
+                            VStack(alignment: .leading)  {
+                                Text("Check-In")
+                                    .font(.system(size: 15))
+                                    .fontWeight(.bold)
+                                    .kerning(2)
+                                    .textCase(.uppercase)
+                                
+                                Text("How was your day?")
+                                    .font(.system(size: 12))
+                                    .fontWeight(.medium)
+                                    .kerning(2)
+                            }
+                            
+                            Spacer()
+                            
+                            Button {
+                                self.txt = ""
+                                self.docID = ""
+                                self.showJournalEntry.toggle()
+                            } label: {
+                                Text("Log Mood")
+                                    .font(.system(size: 10))
+                                    .fontWeight(.bold)
+                                    .kerning(2)
+                                    .textCase(.uppercase)
+                            }
+                            .padding(.vertical, 5)
+                            .foregroundColor(np_jap_indigo)
+                            .frame(width: 100, height: 35)
+                            .background(np_white)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(lineWidth: 2)
+                                    .foregroundStyle(np_white)
+                            }
+                        }
+                        .padding(.horizontal, 15)
+                    }
+                    .padding(.bottom, 15)
                 
                 // MARK: "This Week" view
                 VStack {
@@ -223,7 +252,7 @@ struct MainView: View {
             MoodAddDiaryView(moodModelController: self.moodModelController)
         }
         .sheet(isPresented: self.$showSettingsSheet) {
-            SettingsView(showProfileSheet: $showProfileSheet)
+            SettingsView(userViewModel: userViewModel, showProfileSheet: $showProfileSheet)
                 .environmentObject(authModel) // Use the existing authViewModel
                 .environmentObject(appLockViewModel) // Use the existing appLockViewModel
                 .onAppear {

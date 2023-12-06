@@ -5,11 +5,43 @@
 //  Created by Stanford L. Khumalo on 2023-11-25.
 //
 
+import AVKit
+import Lottie
+import Combine
 import SwiftUI
 
 struct WellnessView: View {
+    @StateObject private var soundPlayerViewModel = SoundPlayerViewModel()
+    
     @State private var showPlayer = false
     @State private var wellnessDescription = "Take a moment to pause, take some deep breathes, reflect and centre your mind."
+    
+    let cards: [SoundCard] = [
+        SoundCard(
+            title: "Morning Meditation",
+            description: "Relaxing meditative sounds to start your morning.",
+            imageName: "img-sunrise",
+            audioFileName: "equilibrium.mp3"
+        ),
+        SoundCard(
+            title: "Afternoon Meditation",
+            description: "Relaxing meditative sounds to keep you going through the day.",
+            imageName: "img-day",
+            audioFileName: "equilibrium.mp3"
+        ),
+        SoundCard(
+            title: "Morning Meditation",
+            description: "Relaxing meditative sounds to help you prepare your mind for rest.",
+            imageName: "img-night",
+            audioFileName: "equilibrium.mp3"
+        ),
+        SoundCard(
+            title: "Get Your Mind Right",
+            description: "Sound to help you calm your mind when things get too much.",
+            imageName: "img-snow",
+            audioFileName: "equilibrium.mp3"
+        )
+    ]
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
@@ -24,31 +56,21 @@ struct WellnessView: View {
                 
                 Spacer()
                 
-                // MARK: User Subscription Status
-                //            VStack {
-                //                HStack {
-                //                    Image("paid")
-                //                        .resizable()
-                //                        .frame(width: 25, height: 25)
-                //                        .padding(5)
-                //                        .foregroundColor(np_turq)
-                //
-                //                    Text("Subscription:")
-                //                        .font(.caption2)
-                //                        .fontWeight(.semibold)
-                //                        .kerning(2)
-                //                        .textCase(.uppercase)
-                //                        .foregroundColor(np_white)
-                //
-                //                    Text(userViewModel.isSubscriptionActive ? "Calmatte Plus" : "Free")
-                //                        .font(.caption2)
-                //                        .fontWeight(.semibold)
-                //                        .kerning(2)
-                //                        .textCase(.uppercase)
-                //                        .foregroundColor(np_white)
-                //                }
-                //            }
-                //            .padding(.horizontal, 20)
+                NavigationView {
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(cards) { card in
+                                NavigationLink(destination: SoundPlayerView(soundPlayerViewModel: soundPlayerViewModel)) {
+                                    SoundCardView(card: card)
+                                        .onTapGesture {
+                                            soundPlayerViewModel.selectedSoundCard = card
+                                        }
+                                }
+                            }
+                        }
+                    }
+                    .background(np_arsenic)
+                }
             }
         }
     }
@@ -99,8 +121,94 @@ struct WellnessView: View {
     }
 }
 
+// MARK: Preview
 struct WellnessView_Previews: PreviewProvider {
     static var previews: some View {
         WellnessView()
+    }
+}
+
+// MARK: Sound Card View
+struct SoundCardView: View {
+    let card: SoundCard
+    
+    var body: some View {
+        ZStack {
+            Image(card.imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+            
+            VStack {
+                Spacer()
+                
+                Text(card.title)
+                    .font(.headline)
+                    .fontWeight(.heavy)
+                    .textCase(.uppercase)
+                    .kerning(3)
+                
+                Text(card.description)
+                    .font(.caption2)
+                    .fontWeight(.medium)
+                    .textCase(.uppercase)
+                    .kerning(3)
+            }
+            .frame(alignment: .leading)
+            .padding(10)
+        }
+    }
+}
+
+// MARK: Sound Player View
+struct SoundPlayerView: View {
+    @ObservedObject var soundPlayerViewModel = SoundPlayerViewModel()
+    
+    let cards: [SoundCard] = [
+        SoundCard(
+            title: "Morning Meditation",
+            description: "Relaxing meditative sounds to start your morning.",
+            imageName: "img-sunrise",
+            audioFileName: "equilibrium.mp3"
+        ),
+        SoundCard(
+            title: "Afternoon Meditation",
+            description: "Relaxing meditative sounds to keep you going through the day.",
+            imageName: "img-day",
+            audioFileName: "equilibrium.mp3"
+        ),
+        SoundCard(
+            title: "Morning Meditation",
+            description: "Relaxing meditative sounds to help you prepare your mind for rest.",
+            imageName: "img-night",
+            audioFileName: "equilibrium.mp3"
+        ),
+        SoundCard(
+            title: "Get Your Mind Right",
+            description: "Sound to help you calm your mind when things get too much.",
+            imageName: "img-snow",
+            audioFileName: "equilibrium.mp3"
+        )
+    ]
+    
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
+    
+    var body: some View {
+        ZStack {
+            Image(soundPlayerViewModel.selectedSoundCard?.imageName ?? "")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
+            
+            // Rest of your player UI...
+            
+            
+            //            LottieIconAnimView(animationFileName: "breathing-circle", loopMode: .loop, height: height / 2, width: width / 1.25)
+        }
+        .onAppear {
+            soundPlayerViewModel.playSound()
+        }
+        .onDisappear {
+            soundPlayerViewModel.pauseSound()
+        }
     }
 }

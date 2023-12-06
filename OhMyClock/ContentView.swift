@@ -23,6 +23,7 @@ struct ContentView: View {
     @EnvironmentObject var appLockViewModel: AppLockViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     @StateObject private var moodModelController = MoodModelController()
+    @StateObject private var soundPlayerViewModel = SoundPlayerViewModel()
     @StateObject var progressView = AppViewModel()
     
     @ObservedObject var moodModel: MoodModel
@@ -65,7 +66,8 @@ struct ContentView: View {
                 case 2: MoodDiaryView()
                 case 3:
                     if userViewModel.isSubscriptionActive {
-                        MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
+//                        MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
+                        WellnessView()
                     } else {
                         PaywallCheckView()
                     }
