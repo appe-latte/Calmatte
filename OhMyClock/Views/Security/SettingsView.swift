@@ -24,6 +24,8 @@ struct SettingsView: View {
     // MARK: Authentication
     @EnvironmentObject var appLockViewModel : AppLockViewModel
     @EnvironmentObject var authModel : AuthViewModel
+    @State private var isSignedIn = true // You can use this to track the user's sign-in status
+    @Environment(\.presentationMode) var presentationMode
     var isAppLockEnabled = false
     
     // MARK: Reminders
@@ -354,7 +356,7 @@ struct SettingsView: View {
                         VStack {
                             Button(action: {
                                 authModel.signOut()
-                                showProfileSheet = false
+                                presentationMode.wrappedValue.dismiss()
                             }, label: {
                                 HStack(spacing: 10) {
                                     Image("logout")
@@ -546,6 +548,18 @@ struct SettingsView: View {
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            if authModel.userSession == nil {
+                isSignedIn = false
+            }
+        }
+        .background(
+            NavigationLink(
+                destination: LoginView(),
+                isActive: $isSignedIn,
+                label: { EmptyView() }
+            )
+        )
     }
     
     // MARK: "Header View"

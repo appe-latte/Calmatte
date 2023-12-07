@@ -23,6 +23,8 @@
 		2F27A18329740143007DA7CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A18229740143007DA7CC /* Alamofire */; };
 		2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A185297401B8007DA7CC /* SwiftyJSON */; };
 		2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A187297402AB007DA7CC /* LocationFetch.swift */; };
+		2F286EDC2B225A8400F6ACAD /* SoundPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F286EDB2B225A8400F6ACAD /* SoundPlayerView.swift */; };
+		2F286EDF2B225AF300F6ACAD /* RiseShineCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F286EDE2B225AF300F6ACAD /* RiseShineCardView.swift */; };
 		2F2A27D32B18FEFE00FA05E5 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F2A27D22B18FEFE00FA05E5 /* OpenAISwift */; };
 		2F2A27D72B190AB800FA05E5 /* WellnessAiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2A27D62B190AB800FA05E5 /* WellnessAiView.swift */; };
 		2F2A27DD2B19140900FA05E5 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2A27DC2B19140900FA05E5 /* HapticManager.swift */; };
@@ -136,6 +138,8 @@
 		2F18B4112A6654DC00F91C7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F27A17F2973F0FC007DA7CC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2F27A187297402AB007DA7CC /* LocationFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetch.swift; sourceTree = "<group>"; };
+		2F286EDB2B225A8400F6ACAD /* SoundPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayerView.swift; sourceTree = "<group>"; };
+		2F286EDE2B225AF300F6ACAD /* RiseShineCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseShineCardView.swift; sourceTree = "<group>"; };
 		2F2A27D62B190AB800FA05E5 /* WellnessAiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessAiView.swift; sourceTree = "<group>"; };
 		2F2A27DC2B19140900FA05E5 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		2F36B0A02967A40000AC8D59 /* OhMyClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhMyClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,6 +264,14 @@
 				2F0DD18C2B1BF57A00504937 /* red.json */,
 			);
 			path = Colors;
+			sourceTree = "<group>";
+		};
+		2F286EDD2B225AC100F6ACAD /* SoundCards */ = {
+			isa = PBXGroup;
+			children = (
+				2F286EDE2B225AF300F6ACAD /* RiseShineCardView.swift */,
+			);
+			path = SoundCards;
 			sourceTree = "<group>";
 		};
 		2F36B0972967A40000AC8D59 = {
@@ -470,6 +482,8 @@
 				2FF50126296EA2B400813D40 /* MeditationView.swift */,
 				2FD60C572B12B066009B3EC8 /* WellnessView.swift */,
 				2F2A27D62B190AB800FA05E5 /* WellnessAiView.swift */,
+				2F286EDB2B225A8400F6ACAD /* SoundPlayerView.swift */,
+				2F286EDD2B225AC100F6ACAD /* SoundCards */,
 			);
 			path = Wellness;
 			sourceTree = "<group>";
@@ -686,6 +700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FB2C5012A37B4FD006D5A30 /* AddTaskView.swift in Sources */,
+				2F286EDC2B225A8400F6ACAD /* SoundPlayerView.swift in Sources */,
 				2F9EBB072A648A8000DC806A /* AffirmationView.swift in Sources */,
 				2F0F58F52B20FD4E0044F043 /* SoundPlayerViewModel.swift in Sources */,
 				2FAD51EB2B0425F400D28A3C /* AppViewModel.swift in Sources */,
@@ -725,6 +740,7 @@
 				2F6083432AFACDA1004A7F95 /* AnalyticsView.swift in Sources */,
 				2F434BB6296F89F100698C1A /* Extensions.swift in Sources */,
 				2FB87FB02A0C6E1D0033B4E1 /* AppDelegate.swift in Sources */,
+				2F286EDF2B225AF300F6ACAD /* RiseShineCardView.swift in Sources */,
 				2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */,
 				2FCD005C2A67127F000AD649 /* User.swift in Sources */,
 				2F4AB62B2A5E5C3500F6332F /* MoodRowView.swift in Sources */,

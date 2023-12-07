@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 import CoreData
 import CoreLocation
+import FirebaseAuth
 import FirebaseFirestore
 import UserNotifications
 
@@ -39,6 +40,10 @@ struct ContentView: View {
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     
+    // MARK: Check for signed in user
+    var isUserSignedIn: Bool {
+        return Auth.auth().currentUser != nil
+    }
     
     init(moodModel: MoodModel = MoodModel(), tabBarSelection: Binding<Int> = .constant(0)) {
         self.moodModel = moodModel
@@ -56,66 +61,72 @@ struct ContentView: View {
     }
     
     var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                switch selectedTab {
-                case 0: MainView(moodModel: moodModel, tabBarSelection: $tabBarSelection)
-                case 1: AnalyticsView(start: Date(), monthsToShow: 2, moodController: MoodModelController()).environmentObject(moodModelController).onAppear {
+        NavigationView {
+            if isUserSignedIn {
+                ZStack {
+                    VStack(spacing: 0) {
+                        switch selectedTab {
+                        case 0: MainView(moodModel: moodModel, tabBarSelection: $tabBarSelection)
+                        case 1: AnalyticsView(start: Date(), monthsToShow: 2, moodController: MoodModelController()).environmentObject(moodModelController).onAppear {
+                            progressView.loadData()
+                        }
+                        case 2: MoodDiaryView()
+                        case 3:
+                            if userViewModel.isSubscriptionActive {
+                                //                        MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
+                                WellnessView()
+                            } else {
+                                PaywallCheckView()
+                            }
+                        case 4: TaskManagerView(taskManager: taskManager)
+                        default: Text("Not found")
+                        }
+                        
+                        // MARK: Custom Tab Bar
+                        ZStack {
+                            Rectangle()
+                                .fill(np_jap_indigo)
+                                .frame(width: width, height: 90)
+                                .cornerRadius(15, corners: [.topRight, .topLeft])
+                            
+                            HStack {
+                                tabItem(icon: "home", selectedIcon: "home", text: "Home", index: 0)
+                                Spacer()
+                                
+                                tabItem(icon: "report", selectedIcon: "report", text: "Reports", index: 1)
+                                Spacer()
+                                
+                                tabItem(icon: "calendar", selectedIcon: "calendar", text: "Journal", index: 2)
+                                Spacer()
+                                
+                                tabItem(icon: "zen", selectedIcon: "zen", text: "Wellness", index: 3)
+                                Spacer()
+                                
+                                tabItem(icon: "paper", selectedIcon: "paper", text: "Tasks", index: 4)
+                            }
+                            .padding(.horizontal, 30)
+                            .frame(height: 60)
+                        }
+                    }
+                    .background(np_arsenic)
+                    .ignoresSafeArea(.all, edges: .bottom)
+                    
+                    // MARK: Progress Loading
+                    if progressView.isLoading {
+                        ProgressLoadingView()
+                    }
+                    
+                    // MARK: Show PayWall
+                    if showPaywall {
+                        CalmattePaywallView(showPaywall: $showPaywall)
+                    }
+                }
+                .onAppear {
                     progressView.loadData()
                 }
-                case 2: MoodDiaryView()
-                case 3:
-                    if userViewModel.isSubscriptionActive {
-                        //                        MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
-                        WellnessView()
-                    } else {
-                        PaywallCheckView()
-                    }
-                case 4: TaskManagerView(taskManager: taskManager)
-                default: Text("Not found")
-                }
-                
-                // MARK: Custom Tab Bar
-                ZStack {
-                    Rectangle()
-                        .fill(np_jap_indigo)
-                        .frame(width: width, height: 90)
-                        .cornerRadius(15, corners: [.topRight, .topLeft])
-                    
-                    HStack {
-                        tabItem(icon: "home", selectedIcon: "home", text: "Home", index: 0)
-                        Spacer()
-                        
-                        tabItem(icon: "report", selectedIcon: "report", text: "Reports", index: 1)
-                        Spacer()
-                        
-                        tabItem(icon: "calendar", selectedIcon: "calendar", text: "Journal", index: 2)
-                        Spacer()
-                        
-                        tabItem(icon: "zen", selectedIcon: "zen", text: "Wellness", index: 3)
-                        Spacer()
-                        
-                        tabItem(icon: "paper", selectedIcon: "paper", text: "Tasks", index: 4)
-                    }
-                    .padding(.horizontal, 30)
-                    .frame(height: 60)
-                }
+            } else {
+                LoginView()
             }
-            .background(np_arsenic)
-            .ignoresSafeArea(.all, edges: .bottom)
-            
-            // MARK: Progress Loading
-            if progressView.isLoading {
-                ProgressLoadingView()
-            }
-            
-            // MARK: Show PayWall
-            if showPaywall {
-                CalmattePaywallView(showPaywall: $showPaywall)
-            }
-        }
-        .onAppear {
-            progressView.loadData()
         }
     }
     
@@ -149,20 +160,5 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-    }
-}
-
-struct CustomShape: Shape {
-    var corner : UIRectCorner
-    var radii : CGFloat
-    
-    func path(in rect : CGRect) -> Path{
-        let path = UIBezierPath(
-            roundedRect : rect,
-            byRoundingCorners: corner,
-            cornerRadii: CGSize(
-                width: radii, height: radii))
-        
-        return Path(path.cgPath)
     }
 }

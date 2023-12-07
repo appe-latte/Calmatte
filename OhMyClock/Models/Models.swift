@@ -60,3 +60,10 @@ struct SoundCard: Identifiable {
     let imageName: String
     let audioFileName: String
 }
+
+struct WellnessCard: Identifiable {
+    let id = UUID()
+    let title: String
+    let description: String
+    let imageName: String
+}

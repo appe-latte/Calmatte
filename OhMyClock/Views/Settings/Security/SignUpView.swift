@@ -131,46 +131,17 @@ struct SignUpView: View {
         GeometryReader { proxy in
             let size = proxy.size
             
-            Image(background_theme)
+            Image("img-bg")
                 .resizable()
-                .aspectRatio(contentMode: .fill)
-                .offset(y: -50)
-                .frame(width: size.width, height: size.height)
-                .clipped()
-                .overlay {
-                    ZStack {
-                        Rectangle()
-                            .fill(.linearGradient(colors: [.clear, np_arsenic, np_arsenic], startPoint: .top, endPoint: .bottom))
-                            .frame(height: size.height * 0.35)
-                            .frame(maxHeight: .infinity, alignment: .bottom)
-                    }
-                }
+                .scaledToFill()
+                .frame(height: size.height, alignment: .bottom)
             
-            // Mask Tint
             Rectangle()
-                .fill(np_arsenic).opacity(0.85)
-                .frame(height: size.height)
-                .frame(maxHeight: .infinity, alignment: .bottom)
+                .fill(np_arsenic)
+                .opacity(0.98)
+                .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()
-    }
-    
-    // MARK: Day / Night Theme
-    func getTime() -> String {
-        let format = DateFormatter()
-        format.dateFormat = "hh:mm a"
-        
-        return format.string(from: Date())
-    }
-    
-    private var background_theme : String {
-        let hour = Calendar.current.component(.hour, from: Date())
-        switch hour {
-        case 5..<19:
-            return "snow-mountain"
-        default:
-            return "mountain-pond"
-        }
     }
 }
 
