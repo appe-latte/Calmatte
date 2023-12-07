@@ -133,6 +133,18 @@ struct SettingsView: View {
                                         .foregroundColor(np_turq)
                                 })
                             }
+                            
+                            HStack {
+                                Text("Edit your profile name.")
+                                    .font(.system(size: 8))
+                                    .fontWeight(.semibold)
+                                    .kerning(2)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_gray)
+                                    .padding(.leading, 20)
+                                
+                                Spacer()
+                            }
                         }
                         .onAppear(perform: loadUserFirstName)
                         .padding(.horizontal, 20)
@@ -166,17 +178,21 @@ struct SettingsView: View {
                                 Spacer()
                                 
                                 // MARK: Restore Subscription Button
-                                Button {
-                                    Purchases.shared.restorePurchases { (customerInfo, error) in
-                                        userViewModel.isSubscriptionActive = customerInfo?.entitlements.all["calm_plus"]?.isActive == true
+                                if userViewModel.isSubscriptionActive == true {
+                                    //
+                                } else {
+                                    Button {
+                                        Purchases.shared.restorePurchases { (customerInfo, error) in
+                                            userViewModel.isSubscriptionActive = customerInfo?.entitlements.all["calm_plus"]?.isActive == true
+                                        }
+                                    } label: {
+                                        Text("Restore")
+                                            .font(.system(size: 10))
+                                            .fontWeight(.medium)
+                                            .textCase(.uppercase)
+                                            .kerning(2)
+                                            .foregroundColor(np_turq)
                                     }
-                                } label: {
-                                    Text("Restore")
-                                        .font(.system(size: 10))
-                                        .fontWeight(.medium)
-                                        .textCase(.uppercase)
-                                        .kerning(2)
-                                        .foregroundColor(np_turq)
                                 }
                             }
                         }
@@ -218,7 +234,7 @@ struct SettingsView: View {
                                 Text("Enable to unlock with FaceID.")
                                     .font(.system(size: 8))
                                     .fontWeight(.semibold)
-                                    .kerning(5)
+                                    .kerning(2)
                                     .textCase(.uppercase)
                                     .foregroundColor(np_gray)
                                     .padding(.leading, 20)
@@ -317,16 +333,16 @@ struct SettingsView: View {
                                 
                                 HStack {
                                     Text("Powered by  Weather. Weather data provided by WeatherKit.")
-                                        .font(.system(size: 6))
+                                        .font(.system(size: 8))
                                         .fontWeight(.semibold)
-                                        .kerning(5)
+                                        .kerning(2)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_gray)
-                                        .padding(1)
                                         .padding(.leading, 20)
                                     
                                     Spacer()
                                 }
+                                .padding(1)
                             }
                         })
                         .padding(.horizontal, 20)
@@ -335,78 +351,103 @@ struct SettingsView: View {
                             .background(np_gray)
                         
                         // MARK: "Logout" Button
-                        Button(action: {
-                            authModel.signOut()
-                            showProfileSheet = false
-                        }, label: {
-                            HStack(spacing: 10) {
-                                Image("logout")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .padding(5)
-                                    .foregroundColor(np_turq)
-                                
-                                HStack {
-                                    Text("Logout")
-                                        .font(.caption)
-                                        .fontWeight(.semibold)
-                                        .kerning(5)
-                                        .textCase(.uppercase)
-                                        .foregroundColor(np_white)
+                        VStack {
+                            Button(action: {
+                                authModel.signOut()
+                                showProfileSheet = false
+                            }, label: {
+                                HStack(spacing: 10) {
+                                    Image("logout")
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                        .padding(5)
+                                        .foregroundColor(np_turq)
                                     
-                                    Spacer()
-                                }
-                                
-                                Image(systemName: "chevron.right")
-                            }
-                        })
-                        .padding(.horizontal, 20)
-                        .environmentObject(authModel)
-                        
-                        Divider()
-                            .background(np_gray)
-                        
-                        // MARK: "Logout" Button
-                        Button(action: {
-                            self.showDeleteAlert = true
-                        }, label: {
-                            HStack(spacing: 10) {
-                                Image("trash")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .padding(5)
-                                    .foregroundColor(np_red)
-                                
-                                HStack {
-                                    Text("Delete My Account")
-                                        .font(.caption)
-                                        .fontWeight(.semibold)
-                                        .kerning(5)
-                                        .textCase(.uppercase)
-                                        .foregroundColor(np_white)
+                                    HStack {
+                                        Text("Logout")
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .kerning(5)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(np_white)
+                                        
+                                        Spacer()
+                                    }
                                     
-                                    Spacer()
+                                    Image(systemName: "chevron.right")
                                 }
+                            })
+                            .padding(.horizontal, 20)
+                            .environmentObject(authModel)
+                            
+                            HStack {
+                                Text("Securely log out of your account.")
+                                    .font(.system(size: 8))
+                                    .fontWeight(.semibold)
+                                    .kerning(2)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_gray)
+                                    .padding(.leading, 20)
                                 
-                                Image(systemName: "chevron.right")
+                                Spacer()
                             }
-                        })
-                        .padding(.horizontal, 20)
-                        .alert(isPresented:$showDeleteAlert) {
-                            Alert(
-                                title: Text("Are you sure you want to delete your account?"),
-                                primaryButton: .destructive(Text("Delete")) {
-                                    authModel.deleteUser()
-                                },
-                                secondaryButton: .cancel()
-                            )
                         }
                         
                         Divider()
                             .background(np_gray)
+                        
+                        // MARK: "Logout" Button
+                        VStack {
+                            Button(action: {
+                                self.showDeleteAlert = true
+                            }, label: {
+                                HStack(spacing: 10) {
+                                    Image("trash")
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                        .padding(5)
+                                        .foregroundColor(np_red)
+                                    
+                                    HStack {
+                                        Text("Delete My Account")
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .kerning(5)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(np_white)
+                                        
+                                        Spacer()
+                                    }
+                                    
+                                    Image(systemName: "chevron.right")
+                                }
+                            })
+                            .padding(.horizontal, 20)
+                            .alert(isPresented:$showDeleteAlert) {
+                                Alert(
+                                    title: Text("Are you sure you want to delete your account?"),
+                                    primaryButton: .destructive(Text("Delete")) {
+                                        authModel.deleteUser()
+                                    },
+                                    secondaryButton: .cancel()
+                                )
+                            }
+                            
+                            HStack {
+                                Text("Permanently close and delete your account.")
+                                    .font(.system(size: 8))
+                                    .fontWeight(.semibold)
+                                    .kerning(2)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_gray)
+                                    .padding(.leading, 20)
+                                
+                                Spacer()
+                            }
+                        }
                     }
                     
-                    // MARK: Logo
+                    // MARK: Appé Latte credits
                     VStack(alignment: .center, spacing: 3) {
                         HStack {
                             Text("Developed with")
