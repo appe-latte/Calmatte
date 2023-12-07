@@ -30,7 +30,7 @@ struct WellnessView: View {
             audioFileName: "equilibrium.mp3"
         ),
         SoundCard(
-            title: "Morning Meditation",
+            title: "Evening Meditation",
             description: "Relaxing meditative sounds to help you prepare your mind for rest.",
             imageName: "img-night",
             audioFileName: "equilibrium.mp3"
@@ -177,7 +177,7 @@ struct SoundPlayerView: View {
             audioFileName: "equilibrium.mp3"
         ),
         SoundCard(
-            title: "Morning Meditation",
+            title: "Evening Meditation",
             description: "Relaxing meditative sounds to help you prepare your mind for rest.",
             imageName: "img-night",
             audioFileName: "equilibrium.mp3"
