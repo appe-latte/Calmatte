@@ -55,18 +55,18 @@ struct AnalyticsView: View {
                     VStack {
                         HStack {
                             Label("This Month", systemImage: "")
-                                .font(.footnote)
+                                .font(.system(size: 10))
                                 .fontWeight(.semibold)
                                 .kerning(2)
                                 .textCase(.uppercase)
                                 .foregroundColor(np_jap_indigo)
                                 .padding(5)
                                 .background(np_white)
-                                .clipShape(Capsule())
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
                             
                             Spacer()
                         }
-                        .padding(.horizontal)
+                        .padding()
                         
                         MoodCalendarView(start: Date(), monthsToShow: 1, daysSelectable: true, moodController: moodModelController)
                             .frame(maxWidth: width - 20, maxHeight: height * 0.6)
@@ -156,14 +156,14 @@ struct MoodSummaryView: View {
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
                     Label("Summary", systemImage: "")
-                        .font(.footnote)
+                        .font(.system(size: 10))
                         .fontWeight(.semibold)
                         .kerning(2)
                         .textCase(.uppercase)
                         .foregroundColor(np_jap_indigo)
                         .padding(5)
                         .background(np_white)
-                        .clipShape(Capsule())
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
                     
                     Spacer()
                 }
@@ -453,14 +453,14 @@ struct ChartView: View {
             VStack(alignment: .center, spacing: 10) {
                 HStack {
                     Label("Mood Chart", systemImage: "")
-                        .font(.footnote)
+                        .font(.system(size: 10))
                         .fontWeight(.semibold)
                         .kerning(2)
                         .textCase(.uppercase)
                         .foregroundColor(np_jap_indigo)
                         .padding(5)
                         .background(np_white)
-                        .clipShape(Capsule())
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
                     
                     Spacer()
                 }

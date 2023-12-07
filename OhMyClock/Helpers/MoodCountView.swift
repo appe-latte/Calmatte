@@ -40,14 +40,14 @@ struct MoodCountView: View {
             VStack(spacing: 20) {
                 HStack {
                     Label("Mood Cards", systemImage: "")
-                        .font(.footnote)
+                        .font(.system(size: 10))
                         .fontWeight(.semibold)
                         .kerning(2)
                         .textCase(.uppercase)
                         .foregroundColor(np_jap_indigo)
                         .padding(5)
                         .background(np_white)
-                        .clipShape(Capsule())
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
                     
                     Spacer()
                 }
