@@ -18,7 +18,6 @@ struct MoodRowView: View {
     
     var body: some View {
         ZStack {
-            
             VStack(spacing: 15){
                 // MARK: Date
                 HStack {
@@ -40,7 +39,7 @@ struct MoodRowView: View {
                 
                 RoundedRectangle(cornerRadius: 15)
                     .frame(width: width - 40, height: height * 0.2)
-                    .background(mood.emotion.moodColor).opacity(0.1)
+                    .background(mood.emotion.moodColor).opacity(0.15)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                     .overlay {
                         // MARK: Mood Info

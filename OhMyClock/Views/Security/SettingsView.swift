@@ -408,12 +408,6 @@ struct SettingsView: View {
                     
                     // MARK: Logo
                     VStack(alignment: .center, spacing: 3) {
-                        //                        Image("logo-text")
-                        //                            .resizable()
-                        //                            .aspectRatio(contentMode: .fill)
-                        //                            .foregroundColor(np_white)
-                        //                            .frame(width: 100, height: 130)
-                        
                         HStack {
                             Text("Developed with")
                                 .font(.system(size: 8))

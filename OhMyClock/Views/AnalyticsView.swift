@@ -40,8 +40,8 @@ struct AnalyticsView: View {
                 HeaderView()
                 
                 ScrollView(.vertical, showsIndicators: false){
-                    // MARK: Statistics
-                    StatisticsView(moodModelController: moodModelController)
+                    // MARK: Summary
+                    MoodSummaryView(moodModelController: moodModelController)
                         .padding(.bottom, 30)
                     
                     // MARK: Mood Cards
@@ -83,10 +83,15 @@ struct AnalyticsView: View {
         GeometryReader { proxy in
             let size = proxy.size
             
+            Image("img-bg")
+                .resizable()
+                .scaledToFill()
+                .frame(height: size.height, alignment: .bottom)
+            
             Rectangle()
                 .fill(np_arsenic)
-                .frame(height: size.height)
-                .frame(maxHeight: .infinity, alignment: .bottom)
+                .opacity(0.98)
+                .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()
     }
@@ -141,8 +146,8 @@ struct AnalyticsView: View {
     }
 }
 
-// MARK: - Streak View
-struct StatisticsView: View {
+// MARK: - Mood Summary
+struct MoodSummaryView: View {
     @ObservedObject var moodModelController: MoodModelController
     
     var body: some View {
@@ -245,6 +250,91 @@ struct StatisticsView: View {
         }
     }
 }
+
+struct MoodEntry: Identifiable {
+    let id = UUID()
+    let date: Date
+}
+
+// MARK: - Streak Calculation
+//struct StreaksView: View {
+//    @ObservedObject var moodModelController: MoodModelController
+//
+//    var body: some View {
+//        VStack(alignment: .leading) {
+//            // MARK: Show Streak
+//            VStack(alignment: .leading, spacing: 10) {
+//                HStack {
+//                    Label("Streaks", systemImage: "")
+//                        .font(.footnote)
+//                        .fontWeight(.semibold)
+//                        .kerning(2)
+//                        .textCase(.uppercase)
+//                        .foregroundColor(np_jap_indigo)
+//                        .padding(5)
+//                        .background(np_white)
+//                        .clipShape(Capsule())
+//
+//                    Spacer()
+//                }
+//                .padding(.horizontal)
+//
+//                HStack(spacing: 30) {
+//                    // MARK: Top Recurring Emotion
+//                    VStack(spacing: 15) {
+//                        Text("Current")
+//                            .font(.system(size: 10, weight: .semibold))
+//                            .kerning(3)
+//                            .textCase(.uppercase)
+//                            .foregroundColor(np_white)
+//
+//                        Text("\(moodModelController.currentStreak)")
+//                            .font(.custom("Butler", size: 30))
+//                            .foregroundColor(np_white)
+//                    }
+//                    .frame(alignment: .center)
+//
+//                    Capsule()
+//                        .frame(width: 0.5, height: 100)
+//                        .foregroundColor(np_gray)
+//
+//                    // MARK: Mood Prediction Score
+//                    VStack(spacing: 15) {
+//                        Text("Best")
+//                            .font(.system(size: 10, weight: .semibold))
+//                            .kerning(3)
+//                            .textCase(.uppercase)
+//                            .foregroundColor(np_white)
+//
+//                        Text("\(moodModelController.bestStreak)")
+//                            .font(.custom("Butler", size: 30))
+//                            .foregroundColor(np_white)
+//                    }
+//                    .frame(alignment: .center)
+//
+//                    Capsule()
+//                        .frame(width: 0.5, height: 100)
+//                        .foregroundColor(np_gray)
+//
+//                    // MARK: Total days logged
+//                    VStack(spacing: 15) {
+//                        Text("Days")
+//                            .font(.system(size: 10, weight: .semibold))
+//                            .kerning(3)
+//                            .textCase(.uppercase)
+//                            .foregroundColor(np_white)
+//
+//                        Text("\(moodModelController.totalDaysLogged)")
+//                            .font(.custom("Butler", size: 30))
+//                            .foregroundColor(np_white)
+//                    }
+//                }
+//                .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+//            }
+//            .padding(.horizontal, 5)
+//        }
+//    }
+//}
 
 // MARK: - 3 Month View
 struct LastMonthView: View {

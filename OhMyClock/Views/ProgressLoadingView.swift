@@ -16,17 +16,6 @@ struct ProgressLoadingView: View {
             background()
                 .edgesIgnoringSafeArea(.all)
             
-//            ProgressView("Loading")
-//                .progressViewStyle(CircularProgressViewStyle(tint: np_white))
-//                .frame(width: 150, height: 125)
-//                .background(np_arsenic)
-//                .clipShape(RoundedRectangle(cornerRadius: 15))
-//                .font(.subheadline)
-//                .fontWeight(.semibold)
-//                .kerning(3)
-//                .textCase(.uppercase)
-//                .foregroundColor(np_white)
-            
             LottieAnimView(animationFileName: "loading", loopMode: .loop)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: width - 50)
@@ -37,9 +26,17 @@ struct ProgressLoadingView: View {
     @ViewBuilder
     func background() -> some View {
         GeometryReader { proxy in
+            let size = proxy.size
+            
+            Image("img-bg")
+                .resizable()
+                .scaledToFill()
+                .frame(height: size.height, alignment: .bottom)
+            
             Rectangle()
-                .fill(np_jap_indigo)
-                .frame(maxHeight: .infinity, alignment: .bottom)
+                .fill(np_arsenic)
+                .opacity(0.98)
+                .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()
     }

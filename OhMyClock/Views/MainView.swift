@@ -157,7 +157,7 @@ struct MainView: View {
                     .overlay {
                         HStack(spacing: 15) {
                             VStack(alignment: .leading)  {
-                                Text("Check-In")
+                                Text("Mood Check-In")
                                     .font(.system(size: 15))
                                     .fontWeight(.bold)
                                     .kerning(2)
@@ -176,7 +176,7 @@ struct MainView: View {
                                 self.docID = ""
                                 self.showJournalEntry.toggle()
                             } label: {
-                                Text("Log Mood")
+                                Text("Log")
                                     .font(.system(size: 10))
                                     .fontWeight(.bold)
                                     .kerning(2)
@@ -298,10 +298,15 @@ struct MainView: View {
         GeometryReader { proxy in
             let size = proxy.size
             
+            Image("img-bg")
+                .resizable()
+                .scaledToFill()
+                .frame(height: size.height, alignment: .bottom)
+            
             Rectangle()
                 .fill(np_arsenic)
-                .frame(height: size.height)
-                .frame(maxHeight: .infinity, alignment: .bottom)
+                .opacity(0.98)
+                .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()
     }

@@ -41,7 +41,7 @@ struct MoodDiaryView : View {
                             Section {
                                 ForEach(groupedMoods[outerIndex].value.reversed(), id: \.id) { mood in
                                     MoodRowView(mood: mood)
-                                        .listRowBackground(np_arsenic)
+                                        .listRowBackground(np_arsenic.opacity(0.1))
                                 }
                                 .onDelete { indexSet in
                                     indexSet.forEach { index in
@@ -82,10 +82,15 @@ struct MoodDiaryView : View {
         GeometryReader { proxy in
             let size = proxy.size
             
+            Image("img-bg")
+                .resizable()
+                .scaledToFill()
+                .frame(height: size.height, alignment: .bottom)
+            
             Rectangle()
                 .fill(np_arsenic)
-                .frame(height: size.height)
-                .frame(maxHeight: .infinity, alignment: .bottom)
+                .opacity(0.98)
+                .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()
     }

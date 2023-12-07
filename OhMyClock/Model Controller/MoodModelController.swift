@@ -131,15 +131,11 @@ class MoodModelController: ObservableObject {
         let sortedMoods = moods.sorted(by: { $0.date < $1.date })
         var currentStreak = 0
         var bestStreak = 0
-        var lastDate: Date?
+        var mostRecentDate: Date?
         
         for mood in sortedMoods {
-            if let lastDateUnwrapped = lastDate {
-                if calendar.isDate(mood.date, inSameDayAs: lastDateUnwrapped) {
-                    continue // Skip if the mood was logged on the same day
-                }
-                
-                let dateDiff = calendar.dateComponents([.day], from: lastDateUnwrapped, to: mood.date).day ?? 0
+            if let lastDate = mostRecentDate {
+                let dateDiff = calendar.dateComponents([.day], from: lastDate, to: mood.date).day ?? 0
                 if dateDiff == 1 {
                     currentStreak += 1
                 } else {
@@ -151,20 +147,8 @@ class MoodModelController: ObservableObject {
                 currentStreak = 1
             }
             
-            lastDate = mood.date
+            mostRecentDate = mood.date
             bestStreak = max(bestStreak, currentStreak)
-        }
-        
-        // Adjust the current streak based on the date of the last logged mood
-        if let lastMoodDate = sortedMoods.last?.date {
-            if calendar.isDateInToday(lastMoodDate) {
-                // Current streak remains as calculated if the last mood was logged today
-            } else if calendar.isDateInYesterday(lastMoodDate) {
-                // Current streak remains as calculated if the last mood was logged yesterday
-            } else {
-                // Reset current streak to 0 if there's a gap
-                currentStreak = 0
-            }
         }
         
         self.currentStreak = currentStreak

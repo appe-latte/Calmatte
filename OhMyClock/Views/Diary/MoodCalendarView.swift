@@ -63,8 +63,9 @@ struct MonthView: View {
     
     var body: some View {
         ZStack {
+            background()
+            
             VStack(spacing: 10) {
-                
                 // MARK: Month Title
                 HStack {
                     Text("\(month.monthNameYear)")
@@ -100,7 +101,7 @@ struct MonthView: View {
             }
             .padding(.bottom, 10)
         }
-        .background(np_arsenic)
+//        .background(np_arsenic)
     }
 }
 
@@ -200,4 +201,23 @@ struct DayCellView: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .opacity(0.1)
     }
+}
+
+// MARK: Background
+@ViewBuilder
+func background() -> some View {
+    GeometryReader { proxy in
+        let size = proxy.size
+        
+        Image("img-bg")
+            .resizable()
+            .scaledToFill()
+            .frame(height: size.height, alignment: .bottom)
+        
+        Rectangle()
+            .fill(np_arsenic)
+            .opacity(0.98)
+            .frame(height: size.height, alignment: .bottom)
+    }
+    .ignoresSafeArea()
 }

@@ -76,10 +76,15 @@ struct TaskManagerView: View {
         GeometryReader { proxy in
             let size = proxy.size
             
+            Image("img-bg")
+                .resizable()
+                .scaledToFill()
+                .frame(height: size.height, alignment: .bottom)
+            
             Rectangle()
                 .fill(np_arsenic)
-                .frame(height: size.height)
-                .frame(maxHeight: .infinity, alignment: .bottom)
+                .opacity(0.98)
+                .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()
     }
@@ -166,7 +171,6 @@ struct TaskManagerView: View {
                 .foregroundColor(np_white)
         }
     }
-    
 }
 
 struct CardView: View {

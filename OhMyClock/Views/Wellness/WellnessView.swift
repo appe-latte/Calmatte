@@ -18,26 +18,38 @@ struct WellnessView: View {
     
     let cards: [SoundCard] = [
         SoundCard(
-            title: "Morning Meditation",
-            description: "Relaxing meditative sounds to start your morning.",
+            title: "Rise n' Shine",
+            description: "Breakfast is the most important meal but so is starting your day off right mentally, listen to some meditative sounds to get you ready for the day.",
             imageName: "img-sunrise",
             audioFileName: "equilibrium.mp3"
         ),
         SoundCard(
-            title: "Afternoon Meditation",
-            description: "Relaxing meditative sounds to keep you going through the day.",
+            title: "Mid-day Pick Me Up",
+            description: "The day maybe hectic, but take some time out to quieten your mind to keep your calm and productive throughout the remainder of the day.",
             imageName: "img-day",
             audioFileName: "equilibrium.mp3"
         ),
         SoundCard(
-            title: "Evening Meditation",
-            description: "Relaxing meditative sounds to help you prepare your mind for rest.",
+            title: "Couch n' Chill",
+            description: "It's been a long day, now it's time to relax, reset and prepare your mind for some much needed rest.",
             imageName: "img-night",
             audioFileName: "equilibrium.mp3"
         ),
         SoundCard(
-            title: "Get Your Mind Right",
-            description: "Sound to help you calm your mind when things get too much.",
+            title: "Take Your Sunscreen",
+            description: "Put your shades on and bring the beach to you with calming sounds of the beach.",
+            imageName: "img-beach",
+            audioFileName: "equilibrium.mp3"
+        ),
+        SoundCard(
+            title: "Be One With Nature",
+            description: "Tune out all the noise from world and enjoy the calming sounds of mother nature.",
+            imageName: "img-nature",
+            audioFileName: "equilibrium.mp3"
+        ),
+        SoundCard(
+            title: "Water's Healing Powers",
+            description: "Nothing is more relaxing than listening to sound of rain or the gentle ripples of a stream.",
             imageName: "img-snow",
             audioFileName: "equilibrium.mp3"
         )
@@ -81,10 +93,15 @@ struct WellnessView: View {
         GeometryReader { proxy in
             let size = proxy.size
             
+            Image("img-bg")
+                .resizable()
+                .scaledToFill()
+                .frame(height: size.height, alignment: .bottom)
+            
             Rectangle()
                 .fill(np_arsenic)
-                .frame(height: size.height)
-                .frame(maxHeight: .infinity, alignment: .bottom)
+                .opacity(0.98)
+                .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()
     }
@@ -131,30 +148,31 @@ struct WellnessView_Previews: PreviewProvider {
 // MARK: Sound Card View
 struct SoundCardView: View {
     let card: SoundCard
+    let width = UIScreen.main.bounds.width
     
     var body: some View {
         ZStack {
-            Image(card.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-            
             VStack {
-                Spacer()
+                Image(card.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
                 
-                Text(card.title)
-                    .font(.headline)
-                    .fontWeight(.heavy)
-                    .textCase(.uppercase)
-                    .kerning(3)
-                
-                Text(card.description)
-                    .font(.caption2)
-                    .fontWeight(.medium)
-                    .textCase(.uppercase)
-                    .kerning(3)
+                VStack(spacing: 10) {
+                    Text(card.title)
+                        .font(.headline)
+                        .fontWeight(.heavy)
+                        .textCase(.uppercase)
+                        .kerning(3)
+                    
+                    Text(card.description)
+                        .font(.system(size: 9))
+                        .fontWeight(.medium)
+                        .textCase(.uppercase)
+                        .kerning(3)
+                }
+                .frame(width:width, height: 80, alignment: .leading)
+                .padding(5)
             }
-            .frame(alignment: .leading)
-            .padding(10)
         }
     }
 }
@@ -165,26 +183,38 @@ struct SoundPlayerView: View {
     
     let cards: [SoundCard] = [
         SoundCard(
-            title: "Morning Meditation",
-            description: "Relaxing meditative sounds to start your morning.",
+            title: "Rise n' Shine",
+            description: "Breakfast is the most important meal but so is starting your day off right mentally, listen to some meditative sounds to get you ready for the day.",
             imageName: "img-sunrise",
             audioFileName: "equilibrium.mp3"
         ),
         SoundCard(
-            title: "Afternoon Meditation",
-            description: "Relaxing meditative sounds to keep you going through the day.",
+            title: "Mid-day Pick Me Up",
+            description: "The day maybe hectic, but take some time out to quieten your mind to keep your calm and productive throughout the remainder of the day.",
             imageName: "img-day",
             audioFileName: "equilibrium.mp3"
         ),
         SoundCard(
-            title: "Evening Meditation",
-            description: "Relaxing meditative sounds to help you prepare your mind for rest.",
+            title: "Couch n' Chill",
+            description: "It's been a long day, now it's time to relax, reset and prepare your mind for some much needed rest.",
             imageName: "img-night",
             audioFileName: "equilibrium.mp3"
         ),
         SoundCard(
-            title: "Get Your Mind Right",
-            description: "Sound to help you calm your mind when things get too much.",
+            title: "Take Your Sunscreen",
+            description: "Put your shades on and bring the beach to you with calming sounds of the beach.",
+            imageName: "img-beach",
+            audioFileName: "equilibrium.mp3"
+        ),
+        SoundCard(
+            title: "Be One With Nature",
+            description: "Tune out all the noise from world and enjoy the calming sounds of mother nature.",
+            imageName: "img-nature",
+            audioFileName: "equilibrium.mp3"
+        ),
+        SoundCard(
+            title: "Water's Healing Powers",
+            description: "Nothing is more relaxing than listening to sound of rain or the gentle ripples of a stream.",
             imageName: "img-snow",
             audioFileName: "equilibrium.mp3"
         )
