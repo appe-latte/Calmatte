@@ -84,7 +84,7 @@
 		2FD25A212B1BD70B00E5AC05 /* breathing-bear.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD25A202B1BD70B00E5AC05 /* breathing-bear.json */; };
 		2FD25A232B1BD90400E5AC05 /* terrible-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD25A222B1BD90400E5AC05 /* terrible-emoji.json */; };
 		2FD60C542B12A0C1009B3EC8 /* LottieAnimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD60C532B12A0C1009B3EC8 /* LottieAnimView.swift */; };
-		2FD60C582B12B066009B3EC8 /* WellnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD60C572B12B066009B3EC8 /* WellnessView.swift */; };
+		2FD60C582B12B066009B3EC8 /* WellnessSoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD60C572B12B066009B3EC8 /* WellnessSoundsView.swift */; };
 		2FD60C5F2B12C61D009B3EC8 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD60C5E2B12C61C009B3EC8 /* loading.json */; };
 		2FD9FB782B0BCEB500E4FBD4 /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FD9FB772B0BCEB500E4FBD4 /* equilibrium.mp3 */; };
 		2FD9FB7A2B0BE1AA00E4FBD4 /* MoodCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9FB792B0BE1AA00E4FBD4 /* MoodCountView.swift */; };
@@ -199,7 +199,7 @@
 		2FD25A202B1BD70B00E5AC05 /* breathing-bear.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "breathing-bear.json"; sourceTree = "<group>"; };
 		2FD25A222B1BD90400E5AC05 /* terrible-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "terrible-emoji.json"; sourceTree = "<group>"; };
 		2FD60C532B12A0C1009B3EC8 /* LottieAnimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimView.swift; sourceTree = "<group>"; };
-		2FD60C572B12B066009B3EC8 /* WellnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessView.swift; sourceTree = "<group>"; };
+		2FD60C572B12B066009B3EC8 /* WellnessSoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessSoundsView.swift; sourceTree = "<group>"; };
 		2FD60C5E2B12C61C009B3EC8 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		2FD9FB772B0BCEB500E4FBD4 /* equilibrium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = equilibrium.mp3; sourceTree = "<group>"; };
 		2FD9FB792B0BE1AA00E4FBD4 /* MoodCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCountView.swift; sourceTree = "<group>"; };
@@ -480,7 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				2FF50126296EA2B400813D40 /* MeditationView.swift */,
-				2FD60C572B12B066009B3EC8 /* WellnessView.swift */,
+				2FD60C572B12B066009B3EC8 /* WellnessSoundsView.swift */,
 				2F2A27D62B190AB800FA05E5 /* WellnessAiView.swift */,
 				2F286EDB2B225A8400F6ACAD /* SoundPlayerView.swift */,
 				2F286EDD2B225AC100F6ACAD /* SoundCards */,
@@ -731,7 +731,7 @@
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
 				2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */,
 				2FF51E042A3A42370035A964 /* SplashScreenView.swift in Sources */,
-				2FD60C582B12B066009B3EC8 /* WellnessView.swift in Sources */,
+				2FD60C582B12B066009B3EC8 /* WellnessSoundsView.swift in Sources */,
 				2FD9FB7A2B0BE1AA00E4FBD4 /* MoodCountView.swift in Sources */,
 				2F64DE362A8161B9007917D2 /* ReminderManager.swift in Sources */,
 				2F919D352A5DD8EA00291071 /* DiaryColors.swift in Sources */,

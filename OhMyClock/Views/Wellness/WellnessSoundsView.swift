@@ -10,19 +10,19 @@ import Lottie
 import Combine
 import SwiftUI
 
-struct WellnessView: View {
-    @State private var wellnessDescription = "Take a moment to pause, take some deep breathes, reflect and centre your mind."
+struct WellnessSoundsView: View {
+    @State private var wellnessDescription = "Sounds to help you meditate, calm your mind or get through the day."
     @State private var showPlayer = false
     
     let wellCard: [WellnessCard] = [
         WellnessCard(
             title: "Rise n' Shine",
-            description: "Breakfast is the most important meal but so is starting your day off right mentally, listen to some meditative sounds to get you ready for the day.",
+            description: "Breakfast is the most important meal of the day, but so is starting your day off right...Mentally! Take some time to meditate and get mentally prepared for the day.",
             imageName: "img-sunrise"
         ),
         WellnessCard(
             title: "Mid-day Pick Me Up",
-            description: "The day maybe hectic, but take some time out to quieten your mind to keep your calm and productive throughout the remainder of the day.",
+            description: "The day maybe hectic, but take a mindfulness break to quieten your mind, calm yourself and give yourself the best chance of being productive for the remaining hours of the day.",
             imageName: "img-day"
         ),
         WellnessCard(
@@ -42,8 +42,8 @@ struct WellnessView: View {
         ),
         WellnessCard(
             title: "Water's Healing Powers",
-            description: "Nothing is more relaxing than listening to sound of rain or the gentle ripples of a stream.",
-            imageName: "img-snow"
+            description: "Nothing is more relaxing than listening to calming sound of the rain gently pouring down or the soothing ripples of a stream in the woods.",
+            imageName: "img-water"
         )
     ]
     
@@ -128,7 +128,7 @@ struct WellnessView: View {
 // MARK: Preview
 struct WellnessView_Previews: PreviewProvider {
     static var previews: some View {
-        WellnessView()
+        WellnessSoundsView()
     }
 }
 
@@ -156,8 +156,10 @@ struct WellnessCardView: View {
                         .fontWeight(.medium)
                         .textCase(.uppercase)
                         .kerning(3)
+                        .minimumScaleFactor(0.6)
+                        .padding(5)
                 }
-                .frame(width:width, height: 80, alignment: .leading)
+                .frame(width:width, height: 80, alignment: .center)
                 .padding(5)
             }
         }

@@ -151,7 +151,7 @@ struct MainView: View {
                 
                 // MARK: "Add Journal Entry" Button
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(lineWidth: 1)
+                    .stroke(lineWidth: 1.5)
                     .foregroundColor(np_white)
                     .frame(width: width - 40, height: 60)
                     .overlay {
@@ -215,16 +215,8 @@ struct MainView: View {
                     .padding(.horizontal)
                     
                     WeeklyMoodView(moodModelController: MoodModelController())
-                        .frame(maxWidth: width - 40, maxHeight: height * 0.5)
-                        .background(np_jap_indigo)
-                        .foregroundColor(np_white)
-                        .ignoresSafeArea()
-                        .cornerRadius(10)
-                        .edgesIgnoringSafeArea(.bottom)
-                        .padding(.bottom, 5)
-                        .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
                 }
-                .padding(.bottom, 30)
+                .padding(.bottom, 15)
                 
                 // MARK: Quote View
                 VStack {

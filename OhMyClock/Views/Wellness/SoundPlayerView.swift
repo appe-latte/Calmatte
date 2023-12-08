@@ -46,7 +46,7 @@ struct SoundPlayerView: View {
         SoundCard(
             title: "Water's Healing Powers",
             description: "Nothing is more relaxing than listening to sound of rain or the gentle ripples of a stream.",
-            imageName: "img-snow",
+            imageName: "img-water",
             audioFileName: "equilibrium.mp3"
         )
     ]

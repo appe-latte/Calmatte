@@ -74,7 +74,7 @@ struct ContentView: View {
                         case 3:
                             if userViewModel.isSubscriptionActive {
                                 //                        MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
-                                WellnessView()
+                                WellnessSoundsView()
                             } else {
                                 PaywallCheckView()
                             }

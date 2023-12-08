@@ -9,24 +9,31 @@ import SwiftUI
 
 struct WeeklyMoodView: View {
     @ObservedObject var moodModelController: MoodModelController
+    
     let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
     
     var body: some View {
         ZStack {
-            VStack(spacing: 10) {
-                WeekDayLabelsView()
-                    .foregroundColor(np_white)
-                
-                WeekMoodsView(moodModelController: moodModelController, weekDates: currentWeekDates)
-                    .foregroundColor(np_white)
-            }
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(lineWidth: 1.5)
+                .foregroundColor(np_white)
+                .frame(width: width - 40, height: 125)
+                .overlay {
+                    VStack(spacing: 10) {
+                        WeekDayLabelsView()
+                        
+                        WeekMoodsView(moodModelController: moodModelController, weekDates: currentWeekDates)
+                    }
+                    .padding(10)
+                }
         }
         .padding(10)
         .edgesIgnoringSafeArea(.all)
     }
     
+    // Logic to calculate the dates for the current week
     private var currentWeekDates: [Date] {
-        // Logic to calculate the dates for the current week
         let calendar = Calendar.current
         let today = Date()
         let weekDay = calendar.component(.weekday, from: today)
@@ -50,7 +57,7 @@ struct WeekDayLabelsView: View {
         HStack(spacing: 10) {
             ForEach(weekdays, id: \.self) { weekday in
                 Text(weekday)
-                    .font(.custom("Butler", size: 18))
+                    .font(.system(size: 20, weight: .bold))
                     .foregroundColor(np_white)
                     .frame(maxWidth: .infinity)
             }

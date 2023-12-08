@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AffirmationView: View {
     let affirmation : [Affirmation] = affirmData
+    let width = UIScreen.main.bounds.width
     
     // MARK: 'Quote of the day' generation
     var dailyAffirmation: Affirmation {
@@ -18,14 +19,17 @@ struct AffirmationView: View {
     }
     
     var body: some View {
-        VStack {
-            AffirmationCard(affirmation: dailyAffirmation.affirmation).padding(5)
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(lineWidth: 1.5)
+                .foregroundColor(np_white)
+                .frame(width: width - 40)
+                .overlay {
+                    AffirmationCard(affirmation: dailyAffirmation.affirmation).padding(5)
+                }
         }
-        .background(np_jap_indigo)
-        .cornerRadius(10)
-        .padding(.bottom, 20)
-        .padding(.bottom, 5)
-        .shadow(color: np_white, radius: 0.1, x: 5, y: 5)
+        .padding(10)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -33,11 +37,11 @@ struct AffirmationView: View {
 struct AffirmationCard : View {
     var affirmation : String
     
-    let screenWidth = UIScreen.main.bounds.width
-    let screenHeight = UIScreen.main.bounds.height
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
     
     var body: some View {
-        VStack(spacing: 15) {
+        VStack(spacing: 5) {
             Image("right-quote")
                 .resizable()
                 .scaledToFit()
@@ -48,20 +52,18 @@ struct AffirmationCard : View {
                         .padding(40)
                 }
                 .frame(width: 60, height: 60, alignment: .center)
-                .padding(.bottom, 5)
                 .foregroundColor(np_white)
             
             Text(#""\#(affirmation)""#)
-                .font(.custom("Analogist", size: 20))
-                .fontWeight(.semibold)
+                .font(.system(size: 18, weight: .semibold))
                 .kerning(3)
                 .textCase(.uppercase)
-                .italic()
                 .foregroundColor(np_white)
                 .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.65)
                 .padding()
         }
-        .frame(width: screenWidth - 40, height: screenHeight * 0.3, alignment: .center)
+        .frame(maxWidth: width - 40, maxHeight: height * 0.5, alignment: .center)
     }
 }
 

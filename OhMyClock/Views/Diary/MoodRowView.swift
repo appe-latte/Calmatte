@@ -37,16 +37,16 @@ struct MoodRowView: View {
                     .foregroundColor(np_white)
                 }
                 
-                RoundedRectangle(cornerRadius: 15)
+                RoundedRectangle(cornerRadius: 10)
                     .frame(width: width - 40, height: height * 0.2)
                     .background(mood.emotion.moodColor).opacity(0.15)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                     .overlay {
                         // MARK: Mood Info
                         HStack(spacing: 10) {
-                            RoundedRectangle(cornerRadius: 15)
+                            RoundedRectangle(cornerRadius: 10)
                                 .fill(mood.emotion.moodColor)
-                                .frame(width: width * 0.25, height: height * 0.15)
+                                .frame(width: width * 0.25, height: height * 0.18)
                                 .overlay {
                                     VStack(alignment: .center, spacing: 20) {
                                         moodImage()
@@ -62,9 +62,9 @@ struct MoodRowView: View {
                                 HStack {
                                     Text("How did you feel?")
                                         .font(.caption2)
-                                        .fontWeight(.medium)
+                                        .fontWeight(.semibold)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_gray)
+                                        .foregroundColor(np_white)
                                     
                                     Spacer()
                                 }
@@ -86,7 +86,7 @@ struct MoodRowView: View {
                             }
                             .frame(maxWidth: width * 0.7, maxHeight: .infinity)
                         }
-                        .padding(15)
+                        .padding(10)
                     }
             }
         }
