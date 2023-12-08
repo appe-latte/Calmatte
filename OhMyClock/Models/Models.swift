@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import Foundation
 
 struct WeatherModel : Codable {
     let current : CurrentWeather
@@ -66,4 +67,11 @@ struct WellnessCard: Identifiable {
     let title: String
     let description: String
     let imageName: String
+}
+
+struct OnboardingScreen {
+    let id: UUID = UUID()
+    let title: String
+    let image: String
+    let description: String
 }

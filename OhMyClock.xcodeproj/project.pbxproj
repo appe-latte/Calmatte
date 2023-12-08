@@ -60,6 +60,8 @@
 		2F6BFD952B068B2900BE9D03 /* Analogist.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F6BFD932B068B2900BE9D03 /* Analogist.ttf */; };
 		2F6BFD962B068B2900BE9D03 /* Analogist.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F6BFD942B068B2900BE9D03 /* Analogist.otf */; };
 		2F6BFD9A2B068E6400BE9D03 /* Butler.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F6BFD992B068E6400BE9D03 /* Butler.otf */; };
+		2F7023A62B23B1050054BCEB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7023A52B23B1050054BCEB /* OnboardingView.swift */; };
+		2F7023A82B23B8370054BCEB /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7023A72B23B8370054BCEB /* OnboardingViewModel.swift */; };
 		2F919D332A5DD83000291071 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F919D322A5DD83000291071 /* Day.swift */; };
 		2F919D352A5DD8EA00291071 /* DiaryColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F919D342A5DD8EA00291071 /* DiaryColors.swift */; };
 		2F9EBB032A6489F900DC806A /* Affirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EBB022A6489F900DC806A /* Affirmation.swift */; };
@@ -174,6 +176,8 @@
 		2F6BFD932B068B2900BE9D03 /* Analogist.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Analogist.ttf; sourceTree = "<group>"; };
 		2F6BFD942B068B2900BE9D03 /* Analogist.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Analogist.otf; sourceTree = "<group>"; };
 		2F6BFD992B068E6400BE9D03 /* Butler.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Butler.otf; sourceTree = "<group>"; };
+		2F7023A52B23B1050054BCEB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		2F7023A72B23B8370054BCEB /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		2F8838302A0AB1C800840F68 /* OhMyClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhMyClock.entitlements; sourceTree = "<group>"; };
 		2F919D322A5DD83000291071 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		2F919D342A5DD8EA00291071 /* DiaryColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryColors.swift; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 				2FAD51EA2B0425F400D28A3C /* AppViewModel.swift */,
 				2F66679C2B110BE500CC6B4E /* UserViewModel.swift */,
 				2F0F58F42B20FD4E0044F043 /* SoundPlayerViewModel.swift */,
+				2F7023A72B23B8370054BCEB /* OnboardingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 				2F9EBB062A648A8000DC806A /* AffirmationView.swift */,
 				2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */,
 				2FCD005D2A671647000AD649 /* ProgressLoadingView.swift */,
+				2F7023A52B23B1050054BCEB /* OnboardingView.swift */,
 				2FD60C562B12B050009B3EC8 /* Wellness */,
 				2FD60C552B12B033009B3EC8 /* Subscriptions */,
 				2F4AB6252A5DDCF000F6332F /* Diary */,
@@ -720,6 +726,7 @@
 				2FC5643D2A68B67300664FE0 /* SceneDelegate.swift in Sources */,
 				2FFBD0262A5DD7B8002C258B /* Month.swift in Sources */,
 				2FB2C4FC2A37B3C4006D5A30 /* TaskCategory.swift in Sources */,
+				2F7023A62B23B1050054BCEB /* OnboardingView.swift in Sources */,
 				2F6667A52B112C9700CC6B4E /* PaywallCheckView.swift in Sources */,
 				2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */,
 				2F919D332A5DD83000291071 /* Day.swift in Sources */,
@@ -756,6 +763,7 @@
 				2F4AB6222A5DDAA400F6332F /* MoodModelController.swift in Sources */,
 				2FA38A9F2AEB0E6A00BE57F0 /* CustomHeaderShape.swift in Sources */,
 				2FCD005A2A6710BC000AD649 /* AuthViewModel.swift in Sources */,
+				2F7023A82B23B8370054BCEB /* OnboardingViewModel.swift in Sources */,
 				2F438EF52A6B139A00CDF33D /* PasswordResetView.swift in Sources */,
 				2FF4260C2B0C74C8000BD7B2 /* WeeklyMoodView.swift in Sources */,
 				2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */,
