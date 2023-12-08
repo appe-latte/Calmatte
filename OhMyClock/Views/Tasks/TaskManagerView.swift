@@ -102,10 +102,11 @@ struct TaskManagerView: View {
     func HeaderView() -> some View {
         VStack {
             HStack {
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: 2) {
                     HStack {
                         Text("Daily Tasks")
-                            .font(.custom("Butler", size: 27))
+                            .font(.system(size: 27, weight: .semibold, design: .rounded))
+                            .kerning(1)
                             .minimumScaleFactor(0.5)
                             .foregroundColor(np_white)
                         
@@ -126,14 +127,14 @@ struct TaskManagerView: View {
                     }
                     
                     Text(Date().formatted(.dateTime.month().day().year()))
-                        .font(.custom("Butler", size: 24))
+                        .font(.system(size: 20, weight: .bold, design: .rounded))
                         .minimumScaleFactor(0.5)
                         .foregroundColor(np_white)
                     
                     // MARK: Description
                     Text("\(milestoneDescription)")
-                        .font(.custom("Butler", size: 16))
-                        .kerning(3)
+                        .font(.system(size: 13, weight: .medium, design: .rounded))
+                        .kerning(1)
                         .minimumScaleFactor(0.5)
                         .foregroundColor(np_gray)
                     

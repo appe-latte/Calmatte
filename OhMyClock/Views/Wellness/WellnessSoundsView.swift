@@ -96,10 +96,11 @@ struct WellnessSoundsView: View {
     // MARK: "Header View"
     @ViewBuilder
     func HeaderView() -> some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 2) {
             HStack {
                 Text("Calmatte Wellness")
-                    .font(.custom("Butler", size: 27))
+                    .font(.system(size: 27, weight: .semibold, design: .rounded))
+                    .kerning(1)
                     .minimumScaleFactor(0.5)
                     .foregroundColor(np_white)
                 
@@ -109,8 +110,8 @@ struct WellnessSoundsView: View {
             
             // MARK: Description
             Text("\(wellnessDescription)")
-                .font(.custom("Butler", size: 16))
-                .kerning(3)
+                .font(.system(size: 13, weight: .medium, design: .rounded))
+                .kerning(1)
                 .minimumScaleFactor(0.5)
                 .foregroundColor(np_gray)
         }
@@ -146,16 +147,16 @@ struct WellnessCardView: View {
                 
                 VStack(spacing: 10) {
                     Text(wellCard.title)
-                        .font(.headline)
-                        .fontWeight(.heavy)
+                        .font(.system(size: 18, design: .rounded))
+                        .fontWeight(.bold)
                         .textCase(.uppercase)
-                        .kerning(3)
+                        .kerning(1)
                     
                     Text(wellCard.description)
-                        .font(.system(size: 9))
+                        .font(.system(size: 9, design: .rounded))
                         .fontWeight(.medium)
                         .textCase(.uppercase)
-                        .kerning(3)
+                        .kerning(1)
                         .minimumScaleFactor(0.6)
                         .padding(5)
                 }

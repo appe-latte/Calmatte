@@ -55,7 +55,7 @@ struct AffirmationCard : View {
                 .foregroundColor(np_white)
             
             Text(#""\#(affirmation)""#)
-                .font(.system(size: 18, weight: .semibold))
+                .font(.system(size: 18, weight: .semibold, design: .rounded))
                 .kerning(3)
                 .textCase(.uppercase)
                 .foregroundColor(np_white)

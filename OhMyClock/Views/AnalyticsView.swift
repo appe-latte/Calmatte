@@ -44,12 +44,12 @@ struct AnalyticsView: View {
                     MoodSummaryView(moodModelController: moodModelController)
                         .padding(.bottom, 30)
                     
-                    // MARK: Mood Cards
-                    MoodCountView()
-                    
-                    // MARK: CHart
+                    // MARK: Bar Chart
                     ChartView()
                         .frame(height: 500)
+                    
+                    // MARK: Mood Cards
+                    MoodCountView()
                     
                     // MARK: This Month
                     VStack {
@@ -103,11 +103,11 @@ struct AnalyticsView: View {
         
         VStack {
             HStack {
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: 2) {
                     HStack {
                         Text("\(firstName)'s Report")
-                            .font(.custom("Butler", size: 27))
-                            .kerning(2)
+                            .font(.system(size: 27, weight: .semibold, design: .rounded))
+                            .kerning(1)
                             .minimumScaleFactor(0.5)
                             .foregroundColor(np_white)
                         
@@ -116,8 +116,8 @@ struct AnalyticsView: View {
                     
                     // MARK: Description
                     Text("\(reportDescription)")
-                        .font(.custom("Butler", size: 16))
-                        .kerning(3)
+                        .font(.system(size: 13, weight: .medium, design: .rounded))
+                        .kerning(1)
                         .minimumScaleFactor(0.5)
                         .foregroundColor(np_gray)
                 }
@@ -173,7 +173,7 @@ struct MoodSummaryView: View {
                     // MARK: Top Recurring Emotion
                     VStack(spacing: 15) {
                         Text("Most")
-                            .font(.system(size: 10, weight: .semibold))
+                            .font(.system(size: 10, weight: .semibold, design: .rounded))
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
@@ -199,7 +199,7 @@ struct MoodSummaryView: View {
                     // MARK: Mood Prediction Score
                     VStack(spacing: 15) {
                         Text("Mood Score")
-                            .font(.system(size: 10, weight: .semibold))
+                            .font(.system(size: 10, weight: .semibold, design: .rounded))
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
@@ -211,16 +211,16 @@ struct MoodSummaryView: View {
                             .overlay {
                                 VStack {
                                     Text("\(moodModelController.calculateMoodPredictionScore(), specifier: "%.0f")")
-                                        .font(.title)
-                                        .fontWeight(.heavy)
+                                        .font(.system(size: 24, weight: .heavy, design: .rounded))
                                         .kerning(2)
                                     
                                     Text("out of 100")
-                                        .font(.system(size: 6, weight: .bold))
+                                        .font(.system(size: 6, weight: .bold, design: .rounded))
                                         .kerning(2)
                                         .textCase(.uppercase)
                                 }
-                            }                    }
+                            }
+                    }
                     .frame(alignment: .center)
                     
                     Capsule()
@@ -230,7 +230,7 @@ struct MoodSummaryView: View {
                     // MARK: Total days logged
                     VStack(spacing: 15) {
                         Text("Days")
-                            .font(.system(size: 10, weight: .semibold))
+                            .font(.system(size: 10, weight: .semibold, design: .rounded))
                             .kerning(3)
                             .textCase(.uppercase)
                             .foregroundColor(np_white)
@@ -240,7 +240,7 @@ struct MoodSummaryView: View {
                             .fontWeight(.semibold)
                         
                         Text("\(moodModelController.totalDaysLogged)")
-                            .font(.custom("Butler", size: 30))
+                            .font(.system(size: 27, weight: .semibold, design: .rounded))
                             .foregroundColor(np_white)
                     }
                 }
@@ -483,8 +483,8 @@ struct ChartView: View {
                                 .frame(height: 30)
                             
                             Text(mood.emotion)
-                                .font(.system(size: 8))
-                                .fontWeight(.regular)
+                                .font(.system(size: 7))
+                                .fontWeight(.medium)
                                 .kerning(1)
                                 .textCase(.uppercase)
                                 .foregroundColor(np_white)

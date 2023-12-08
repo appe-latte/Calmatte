@@ -67,7 +67,7 @@ struct MonthView: View {
                 // MARK: Month Title
                 HStack {
                     Text("\(month.monthNameYear)")
-                        .font(.custom("Butler", size: 24))
+                        .font(.system(size: 24, weight: .bold, design: .rounded))
                         .textCase(.uppercase)
                         .scaledToFill()
                         .minimumScaleFactor(0.5)
@@ -80,7 +80,7 @@ struct MonthView: View {
                 HStack {
                     GridStack(rows: 1, columns: 7) { row, col in
                         Text(weekdays[col])
-                            .font(.custom("Butler", size: 18))
+                            .font(.system(size: 20, weight: .semibold, design: .rounded))
                             .foregroundColor(np_white)
                     }
                 }
@@ -95,11 +95,10 @@ struct MonthView: View {
                                     day: month.monthDays[col+1]![row])
                     }
                 }
-                .font(.custom("Butler", size: 20))
+                .font(.system(size: 16, weight: .medium, design: .rounded))
             }
             .padding(.bottom, 10)
         }
-//        .background(np_arsenic)
     }
 }
 

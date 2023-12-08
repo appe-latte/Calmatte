@@ -100,10 +100,11 @@ struct MoodDiaryView : View {
     func HeaderView() -> some View {
         VStack {
             HStack {
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: 2) {
                     HStack {
                         Text("Mood Timeline")
-                            .font(.custom("Butler", size: 27))
+                            .font(.system(size: 27, weight: .semibold, design: .rounded))
+                            .kerning(1)
                             .minimumScaleFactor(0.5)
                             .foregroundColor(np_white)
                         
@@ -128,8 +129,8 @@ struct MoodDiaryView : View {
                     
                     // MARK: Description
                     Text("\(diaryDescription)")
-                        .font(.custom("Butler", size: 16))
-                        .kerning(3)
+                        .font(.system(size: 13, weight: .medium, design: .rounded))
+                        .kerning(1)
                         .minimumScaleFactor(0.5)
                         .foregroundColor(np_gray)
                 }

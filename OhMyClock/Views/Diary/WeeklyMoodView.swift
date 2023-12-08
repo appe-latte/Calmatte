@@ -57,7 +57,7 @@ struct WeekDayLabelsView: View {
         HStack(spacing: 10) {
             ForEach(weekdays, id: \.self) { weekday in
                 Text(weekday)
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 20, weight: .bold, design: .rounded))
                     .foregroundColor(np_white)
                     .frame(maxWidth: .infinity)
             }

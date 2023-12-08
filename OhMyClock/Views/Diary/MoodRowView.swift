@@ -61,7 +61,7 @@ struct MoodRowView: View {
                             VStack(alignment: .leading, spacing: 10) {
                                 HStack {
                                     Text("How did you feel?")
-                                        .font(.caption2)
+                                        .font(.system(size: 14, design: .rounded))
                                         .fontWeight(.semibold)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_white)
@@ -69,10 +69,9 @@ struct MoodRowView: View {
                                     Spacer()
                                 }
                                 
-                                // MARK: Summary
                                 HStack {
                                     Text(mood.comment ?? "No Summary")
-                                        .font(.subheadline)
+                                        .font(.system(size: 14, design: .rounded))
                                         .fontWeight(.medium)
                                         .lineLimit(7)
                                         .multilineTextAlignment(.leading)

@@ -78,13 +78,12 @@ struct MainView: View {
                 }
                 .padding(10)
                 
-                // MARK: Date + Salutation
-                VStack(spacing: 10) {
+                // MARK: Salutation
+                VStack(spacing: 2) {
                     HStack {
                         Text(greeting)
                             .scaledToFill()
-                            .font(.custom("Butler", size: 27))
-                            .fontWeight(.bold)
+                            .font(.system(size: 27, weight: .bold, design: .rounded))
                             .kerning(5)
                             .minimumScaleFactor(0.5)
                             .textCase(.uppercase)
@@ -97,8 +96,7 @@ struct MainView: View {
                     HStack {
                         Text("\(firstName).")
                             .scaledToFill()
-                            .font(.custom("Butler", size: 36))
-                            .fontWeight(.bold)
+                            .font(.system(size: 36, weight: .bold, design: .rounded))
                             .kerning(5)
                             .minimumScaleFactor(0.5)
                             .textCase(.uppercase)
@@ -158,14 +156,12 @@ struct MainView: View {
                         HStack(spacing: 15) {
                             VStack(alignment: .leading)  {
                                 Text("Mood Check-In")
-                                    .font(.system(size: 15))
-                                    .fontWeight(.bold)
+                                    .font(.system(size: 15, weight: .bold, design: .rounded))
                                     .kerning(2)
                                     .textCase(.uppercase)
                                 
                                 Text("How was your day?")
-                                    .font(.system(size: 12))
-                                    .fontWeight(.medium)
+                                    .font(.system(size: 12, weight: .medium, design: .rounded))
                                     .kerning(2)
                             }
                             
@@ -177,8 +173,7 @@ struct MainView: View {
                                 self.showJournalEntry.toggle()
                             } label: {
                                 Text("Log")
-                                    .font(.system(size: 10))
-                                    .fontWeight(.bold)
+                                    .font(.system(size: 12, weight: .bold, design: .rounded))
                                     .kerning(2)
                                     .textCase(.uppercase)
                             }
