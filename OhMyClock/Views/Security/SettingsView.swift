@@ -48,7 +48,6 @@ struct SettingsView: View {
     @State private var appLockMessage = ""
     
     @State private var firstName = ""
-    @Binding var showProfileSheet : Bool
     
     let screenHeight = UIScreen.main.bounds.height
     let screenWidth = UIScreen.main.bounds.width
@@ -98,7 +97,7 @@ struct SettingsView: View {
                 // MARK: Settings
                 VStack(alignment: .center, spacing: 20) {
                     HeaderView()
-                        .padding(.top, 30)
+//                        .padding(.top, 30)
                     
                     Group {
                         // MARK: "edit" name
@@ -569,12 +568,12 @@ struct SettingsView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
+                        Spacer()
+                        
                         Text("Profile Settings")
                             .font(.custom("Butler", size: 27))
                             .minimumScaleFactor(0.5)
                             .foregroundColor(np_white)
-                        
-                        Spacer()
                     }
                 }
                 .hAlign(.leading)

@@ -15,6 +15,7 @@ struct AnalyticsView: View {
     @ObservedObject var moodModelController: MoodModelController
     @ObservedObject var authModel = AuthViewModel()
     @StateObject var progressViewModel = AppViewModel()
+    @ObservedObject var moodCount: DayStateViewModel = DayStateViewModel()
     
     let startDate: Date
     let monthsToDisplay: Int
@@ -25,6 +26,18 @@ struct AnalyticsView: View {
     
     @State private var reportDescription = "Here's a summary of your mood statistics over time."
     
+    // Initialization of mood frequency percentages for the bar chart
+    private func initializeMoodData() -> [BarChartView.MoodDataModel] {
+        return [
+            .init(emotion: "Amazing", count: Double(moodCount.frequency(for: .amazing)), color: np_green),
+            .init(emotion: "Good", count: Double(moodCount.frequency(for: .good)), color: np_turq),
+            .init(emotion: "Okay", count: Double(moodCount.frequency(for: .okay)), color: np_yellow),
+            .init(emotion: "Meh", count: Double(moodCount.frequency(for: .meh)), color: np_purple),
+            .init(emotion: "Bad", count: Double(moodCount.frequency(for: .bad)), color: np_orange),
+            .init(emotion: "Terrible", count: Double(moodCount.frequency(for: .terrible)), color: np_red)
+        ]
+    }
+    
     init(start: Date, monthsToShow: Int, daysSelectable: Bool = true, moodController: MoodModelController) {
         self.startDate = start
         self.monthsToDisplay = monthsToShow
@@ -33,6 +46,8 @@ struct AnalyticsView: View {
     }
     
     public var body: some View {
+        let moodData = initializeMoodData()
+        
         ZStack {
             background()
             
@@ -44,14 +59,7 @@ struct AnalyticsView: View {
                     MoodSummaryView(moodModelController: moodModelController)
                         .padding(.bottom, 30)
                     
-                    // MARK: Bar Chart
-                    ChartView()
-                        .frame(height: 500)
-                    
-                    // MARK: Mood Cards
-                    MoodCountView()
-                    
-                    // MARK: This Month
+                    // MARK: "This Month" Calendar View
                     VStack {
                         HStack {
                             Label("This Month", systemImage: "")
@@ -70,8 +78,14 @@ struct AnalyticsView: View {
                         
                         MoodCalendarView(start: Date(), monthsToShow: 1, daysSelectable: true, moodController: moodModelController)
                             .frame(maxWidth: width - 20, maxHeight: height * 0.6)
-                        
                     }
+                    
+                    // MARK: Bar Chart
+                    BarChartView(data: moodData)
+                    
+                    // MARK: Donut Chart
+                    DonutChartView()
+                        .frame(height: 500)
                 }
             }
         }
@@ -256,86 +270,6 @@ struct MoodEntry: Identifiable {
     let date: Date
 }
 
-// MARK: - Streak Calculation
-//struct StreaksView: View {
-//    @ObservedObject var moodModelController: MoodModelController
-//
-//    var body: some View {
-//        VStack(alignment: .leading) {
-//            // MARK: Show Streak
-//            VStack(alignment: .leading, spacing: 10) {
-//                HStack {
-//                    Label("Streaks", systemImage: "")
-//                        .font(.footnote)
-//                        .fontWeight(.semibold)
-//                        .kerning(2)
-//                        .textCase(.uppercase)
-//                        .foregroundColor(np_jap_indigo)
-//                        .padding(5)
-//                        .background(np_white)
-//                        .clipShape(Capsule())
-//
-//                    Spacer()
-//                }
-//                .padding(.horizontal)
-//
-//                HStack(spacing: 30) {
-//                    // MARK: Top Recurring Emotion
-//                    VStack(spacing: 15) {
-//                        Text("Current")
-//                            .font(.system(size: 10, weight: .semibold))
-//                            .kerning(3)
-//                            .textCase(.uppercase)
-//                            .foregroundColor(np_white)
-//
-//                        Text("\(moodModelController.currentStreak)")
-//                            .font(.custom("Butler", size: 30))
-//                            .foregroundColor(np_white)
-//                    }
-//                    .frame(alignment: .center)
-//
-//                    Capsule()
-//                        .frame(width: 0.5, height: 100)
-//                        .foregroundColor(np_gray)
-//
-//                    // MARK: Mood Prediction Score
-//                    VStack(spacing: 15) {
-//                        Text("Best")
-//                            .font(.system(size: 10, weight: .semibold))
-//                            .kerning(3)
-//                            .textCase(.uppercase)
-//                            .foregroundColor(np_white)
-//
-//                        Text("\(moodModelController.bestStreak)")
-//                            .font(.custom("Butler", size: 30))
-//                            .foregroundColor(np_white)
-//                    }
-//                    .frame(alignment: .center)
-//
-//                    Capsule()
-//                        .frame(width: 0.5, height: 100)
-//                        .foregroundColor(np_gray)
-//
-//                    // MARK: Total days logged
-//                    VStack(spacing: 15) {
-//                        Text("Days")
-//                            .font(.system(size: 10, weight: .semibold))
-//                            .kerning(3)
-//                            .textCase(.uppercase)
-//                            .foregroundColor(np_white)
-//
-//                        Text("\(moodModelController.totalDaysLogged)")
-//                            .font(.custom("Butler", size: 30))
-//                            .foregroundColor(np_white)
-//                    }
-//                }
-//                .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
-//            }
-//            .padding(.horizontal, 5)
-//        }
-//    }
-//}
-
 // MARK: - 3 Month View
 struct LastMonthView: View {
     @ObservedObject var moodModelController: MoodModelController
@@ -386,8 +320,8 @@ struct LastMonthView: View {
     }
 }
 
-// MARK: Chart View
-struct ChartView: View {
+// MARK: Donut Chart View
+struct DonutChartView: View {
     struct MoodDataModel: Identifiable {
         var id = UUID()
         var emotion: String
@@ -403,9 +337,9 @@ struct ChartView: View {
             .init(emotion: "Amazing", count: Double(moodCount.frequency(for: .amazing)), color: np_green),
             .init(emotion: "Good", count: Double(moodCount.frequency(for: .good)), color: np_turq),
             .init(emotion: "Okay", count: Double(moodCount.frequency(for: .okay)), color: np_yellow),
+            .init(emotion: "Meh", count: Double(moodCount.frequency(for: .meh)), color: np_purple),
             .init(emotion: "Bad", count: Double(moodCount.frequency(for: .bad)), color: np_orange),
-            .init(emotion: "Terrible", count: Double(moodCount.frequency(for: .terrible)), color: np_red),
-            .init(emotion: "Meh", count: Double(moodCount.frequency(for: .meh)), color: np_purple)
+            .init(emotion: "Terrible", count: Double(moodCount.frequency(for: .terrible)), color: np_red)
         ]
     }
     
@@ -499,13 +433,12 @@ struct ChartView: View {
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
             }
-            .padding(.horizontal, 15)
         }
     }
 }
 
 struct DonutChart: View {
-    var data: [ChartView.MoodDataModel]
+    var data: [DonutChartView.MoodDataModel]
     var body: some View {
         ZStack {
             ForEach(data) { datum in
@@ -519,7 +452,7 @@ struct DonutChart: View {
     }
     
     // Calculate the start angle of each donut chart segment
-    private func startAngle(datum: ChartView.MoodDataModel) -> Double {
+    private func startAngle(datum: DonutChartView.MoodDataModel) -> Double {
         var startAngle: Double = 0
         for d in data {
             if d.id == datum.id {
@@ -528,6 +461,94 @@ struct DonutChart: View {
             startAngle += (d.count / 100) * 360 // Convert the percentage to an angle
         }
         return startAngle
+    }
+}
+
+// MARK: Bar Chart View
+struct BarChartView: View {
+    struct MoodDataModel: Identifiable {
+        var id = UUID()
+        var emotion: String
+        var count: Double
+        var color: Color
+    }
+    
+    var data: [MoodDataModel]
+    
+    let maxBarHeight: CGFloat = 200 // Maximum height for bars
+    let width = UIScreen.main.bounds.width
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Label("Bar Chart", systemImage: "")
+                    .font(.system(size: 10))
+                    .fontWeight(.semibold)
+                    .kerning(2)
+                    .textCase(.uppercase)
+                    .foregroundColor(np_jap_indigo)
+                    .padding(5)
+                    .background(np_white)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                
+                Spacer()
+            }
+            .padding(.horizontal)
+            
+            Spacer()
+                .frame(height: 50)
+            
+            HStack(alignment: .bottom, spacing: 10) {
+                ForEach(data, id: \.id) { mood in
+                    VStack(spacing: 5) {
+                        Text("\(Int(mood.count))")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                        
+                        Rectangle()
+                            .fill(mood.color)
+                            .frame(width: 50, height: normalizedHeight(for: mood.count))
+                            .cornerRadius(5, corners: [.topLeft, .topRight])
+                        
+                        Text(mood.emotion)
+                            .font(.system(size: 7))
+                            .fontWeight(.medium)
+                            .kerning(1)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                            .lineLimit(1)
+                    }
+                }
+            }
+            .frame(width: width - 20, alignment: .center)
+        }
+        .padding(.horizontal, 15)
+    }
+    
+    private func normalizedHeight(for count: Double) -> CGFloat {
+        CGFloat(count) / 100.0 * maxBarHeight
+    }
+}
+
+struct YAxisView: View {
+    var maxHeight: CGFloat
+    var step: CGFloat = 5 // Adjust step for more/less grid lines
+    
+    var body: some View {
+        VStack {
+            // Convert the stride to an Array
+            ForEach(Array(stride(from: 20, through: 0, by: -step)), id: \.self) { value in
+                HStack {
+                    Text("\(Int(value))")
+                        .font(.caption)
+                        .frame(width: 30)
+                    
+                    Divider()
+                        .foregroundColor(np_white)
+                }
+                .frame(height: maxHeight / (100 / step))
+            }
+        }
     }
 }
 
