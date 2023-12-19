@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F047E4D2B3233DE00113472 /* MiddayPickupCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F047E4C2B3233DE00113472 /* MiddayPickupCardView.swift */; };
 		2F06D6572A663904004DD93E /* affirmation.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F06D6562A663904004DD93E /* affirmation.json */; };
 		2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04E82A0A1E1B002523A9 /* Weather.swift */; };
 		2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */; };
@@ -126,6 +127,7 @@
 
 /* Begin PBXFileReference section */
 		1E0CEB7FFF9AB3C613B273EE /* Pods_OhMyClock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OhMyClock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F047E4C2B3233DE00113472 /* MiddayPickupCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddayPickupCardView.swift; sourceTree = "<group>"; };
 		2F06D6562A663904004DD93E /* affirmation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = affirmation.json; path = OhMyClock/Data/affirmation.json; sourceTree = SOURCE_ROOT; };
 		2F0D04E82A0A1E1B002523A9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				2F286EDE2B225AF300F6ACAD /* RiseShineCardView.swift */,
+				2F047E4C2B3233DE00113472 /* MiddayPickupCardView.swift */,
 			);
 			path = SoundCards;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				2F4AB6222A5DDAA400F6332F /* MoodModelController.swift in Sources */,
 				2FA38A9F2AEB0E6A00BE57F0 /* CustomHeaderShape.swift in Sources */,
 				2FCD005A2A6710BC000AD649 /* AuthViewModel.swift in Sources */,
+				2F047E4D2B3233DE00113472 /* MiddayPickupCardView.swift in Sources */,
 				2F7023A82B23B8370054BCEB /* OnboardingViewModel.swift in Sources */,
 				2F438EF52A6B139A00CDF33D /* PasswordResetView.swift in Sources */,
 				2FF4260C2B0C74C8000BD7B2 /* WeeklyMoodView.swift in Sources */,

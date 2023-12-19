@@ -11,6 +11,7 @@ import Combine
 import SwiftUI
 
 struct WellnessSoundsView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var wellnessDescription = "Sounds to help you meditate, calm your mind or get through the day."
     @State private var showPlayer = false
     
@@ -51,20 +52,75 @@ struct WellnessSoundsView: View {
     let height = UIScreen.main.bounds.height
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            // MARK: Background
-            background()
-            
-            VStack {
-                HeaderView()
+        NavigationStack {
+            ZStack(alignment: .bottom) {
+                // MARK: Background
+                background()
                 
-                Spacer()
-                
-                NavigationView {
+                VStack {
+                    HeaderView()
+                    
+                    Spacer()
+                    
                     ScrollView {
                         LazyVStack {
-                            ForEach(wellCard) { card in
-                                WellnessCardView(wellCard: card)
+                            //                            ForEach(wellCard) { card in
+                            //                                WellnessCardView(wellCard: card)
+                            //                            }
+                            
+                            // MARK: Rise n' Shine
+                            NavigationLink(destination: RiseShineCardView()){
+                                VStack {
+                                    Image("img-sunrise")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                    
+                                    VStack(spacing: 10) {
+                                        Text("Rise n' Shine")
+                                            .font(.system(size: 18, design: .rounded))
+                                            .fontWeight(.bold)
+                                            .textCase(.uppercase)
+                                            .kerning(1)
+                                        
+                                        Text("Breakfast is the most important meal of the day, but so is starting your day off right...Mentally! Take some time to meditate and get mentally prepared for the day.")
+                                            .font(.system(size: 9, design: .rounded))
+                                            .fontWeight(.medium)
+                                            .textCase(.uppercase)
+                                            .kerning(1)
+                                            .minimumScaleFactor(0.6)
+                                            .padding(5)
+                                    }
+                                    .frame(width:width, height: 80, alignment: .center)
+                                    .padding(5)
+                                }
+                            }
+                            
+                            
+                            // MARK: Mid-day Pick Up
+                            NavigationLink(destination: MiddayPickupCardView()){
+                                VStack {
+                                    Image("img-day")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                    
+                                    VStack(spacing: 10) {
+                                        Text("Mid-day Pick Me Up")
+                                            .font(.system(size: 18, design: .rounded))
+                                            .fontWeight(.bold)
+                                            .textCase(.uppercase)
+                                            .kerning(1)
+                                        
+                                        Text("The day maybe hectic, but take a mindfulness break to quieten your mind, calm yourself and give yourself the best chance of being productive for the remaining hours of the day.")
+                                            .font(.system(size: 9, design: .rounded))
+                                            .fontWeight(.medium)
+                                            .textCase(.uppercase)
+                                            .kerning(1)
+                                            .minimumScaleFactor(0.6)
+                                            .padding(5)
+                                    }
+                                    .frame(width:width, height: 80, alignment: .center)
+                                    .padding(5)
+                                }
                             }
                         }
                     }
@@ -72,6 +128,8 @@ struct WellnessSoundsView: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
     }
     
     // MARK: Background
