@@ -66,13 +66,13 @@ struct MonthView: View {
             VStack(spacing: 10) {
                 // MARK: Month Title
                 HStack {
+                    Spacer()
+                    
                     Text("\(month.monthNameYear)")
                         .font(.system(size: 24, weight: .bold, design: .rounded))
                         .textCase(.uppercase)
                         .scaledToFill()
                         .minimumScaleFactor(0.5)
-                    
-                    Spacer()
                 }
                 .padding(.horizontal)
                 

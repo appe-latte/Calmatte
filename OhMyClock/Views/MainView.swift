@@ -65,16 +65,6 @@ struct MainView: View {
                         
                         Spacer()
                         
-                        //                    Button(action: {
-                        //                        self.showSettingsSheet.toggle()
-                        //                    }, label: {
-                        //                        Image("settings")
-                        //                            .resizable()
-                        //                            .frame(width: 25, height: 25)
-                        //                            .padding(5)
-                        //                            .foregroundColor(np_white)
-                        //                    })
-                        
                         NavigationLink(destination: SettingsView(userViewModel: userViewModel)){
                             Image("settings")
                                 .resizable()

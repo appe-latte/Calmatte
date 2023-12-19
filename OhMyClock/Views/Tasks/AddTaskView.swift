@@ -14,7 +14,6 @@ struct AddTaskView: View {
     @ObservedObject var taskManager: TaskManager
     
     @State private var taskName: String = ""
-    @State private var taskDescription: String = ""
     @State private var taskDate: Date = .init()
     @State private var taskCategory: Category = .tan
     @State private var isCompleted: Bool = false
@@ -47,7 +46,7 @@ struct AddTaskView: View {
                 }
                 .padding(.bottom, 15)
                 
-                TitleView("Date")
+                TitleView("Task Date")
                 
                 // MARK: Date Picker
                 DatePicker("", selection: $taskDate, displayedComponents: .date)
@@ -62,8 +61,8 @@ struct AddTaskView: View {
                     .padding(10)
                     .padding(.top, 15)
                 
-                TitleView("Title")
-                    .padding(.top, 10)
+                TitleView("Task Title")
+                    .padding(.top, 20)
                 
                 TextField("Enter task title", text: $taskName)
                     .font(.footnote)
@@ -78,7 +77,7 @@ struct AddTaskView: View {
                     .fill(np_white.opacity(0.7))
                     .frame(height: 1)
                 
-                TitleView("Time")
+                TitleView("Reminder Time")
                     .padding(.top, 10)
                 
                 // MARK: Date + Time Pickers
@@ -131,23 +130,7 @@ struct AddTaskView: View {
             }
             
             VStack(alignment: .leading, spacing: 10) {
-                TitleView("DESCRIPTION", np_arsenic)
-                
-                TextField("Enter task title", text: $taskDescription)
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .kerning(2)
-                    .foregroundColor(np_arsenic)
-                    .textCase(.uppercase)
-                    .frame(width: screenWidth - 20, alignment: .leading)
-                    .tint(np_arsenic)
-                    .padding(.top, 2)
-                
-                Rectangle()
-                    .fill(np_arsenic.opacity(0.2))
-                    .frame(height: 1)
-                
-                TitleView("Assign Colour", np_arsenic)
+                TitleView("Custom Task Colour", np_arsenic)
                     .padding(.top, 10)
                 
                 LazyVGrid(columns: Array(repeating: .init(.flexible(),spacing: 10), count: 4), spacing: 10) {
@@ -174,7 +157,7 @@ struct AddTaskView: View {
                 
                 Button {
                     // MARK: Creating Task & pass to callback
-                    let task = TaskItem(dateAdded: taskDate, taskName: taskName, taskDescription: taskDescription, taskCategory: taskCategory, isCompleted: isCompleted)
+                    let task = TaskItem(dateAdded: taskDate, taskName: taskName, taskCategory: taskCategory, isCompleted: isCompleted)
                     taskManager.addTask(task) // Add the task to the task manager
                     dismiss()
                 } label: {

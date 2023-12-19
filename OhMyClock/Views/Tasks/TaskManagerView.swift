@@ -27,6 +27,7 @@ struct TaskManagerView: View {
     var body: some View {
         ZStack {
             background()
+            
             VStack {
                 HeaderView()
                 
@@ -52,6 +53,22 @@ struct TaskManagerView: View {
                         }
                     }
                     .padding(.vertical)
+                }
+            }
+            
+            ZStack {
+                VStack {
+                    Spacer()
+                    
+                    // MARK: Progress Bar
+                    Capsule()
+                        .fill(np_arsenic).opacity(0.1)
+                        .frame(width: width - 20, height: 50)
+                        .clipShape(Capsule())
+                        .overlay {
+                            
+                            progressBar()
+                        }
                 }
             }
         }
@@ -103,12 +120,18 @@ struct TaskManagerView: View {
         VStack {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
-                    HStack {
-                        Text("Daily Tasks")
+                    HStack(spacing: 2) {
+                        Text("Daily Tasks: ")
                             .font(.system(size: 27, weight: .semibold, design: .rounded))
                             .kerning(1)
                             .minimumScaleFactor(0.5)
                             .foregroundColor(np_white)
+                        
+                        Text(Date().formatted(.dateTime.month().year()))
+                            .font(.system(size: 27, weight: .semibold, design: .rounded))
+                            .kerning(1)
+                            .minimumScaleFactor(0.5)
+                            .foregroundColor(np_gray)
                         
                         Spacer()
                         
@@ -126,11 +149,6 @@ struct TaskManagerView: View {
                         .frame(width: 40, height: 40)
                     }
                     
-                    Text(Date().formatted(.dateTime.month().day().year()))
-                        .font(.system(size: 20, weight: .bold, design: .rounded))
-                        .minimumScaleFactor(0.5)
-                        .foregroundColor(np_white)
-                    
                     // MARK: Description
                     Text("\(milestoneDescription)")
                         .font(.system(size: 13, weight: .medium, design: .rounded))
@@ -138,8 +156,9 @@ struct TaskManagerView: View {
                         .minimumScaleFactor(0.5)
                         .foregroundColor(np_gray)
                     
-                    // MARK: Progress Bar
-                    progressBar()
+                    // MARK: Week
+                    TaskWeekView()
+                        .padding()
                 }
                 .hAlign(.leading)
             }
@@ -157,19 +176,32 @@ struct TaskManagerView: View {
     // MARK: Progress Bar
     @ViewBuilder
     func progressBar() -> some View {
-        HStack {
-            ProgressView(value: Double(taskManager.completedTasksCount),
-                         total: Double(taskManager.totalTasksCount))
-            .progressViewStyle(LinearProgressViewStyle())
-            .frame(width: width * 0.8)
-            .padding(5)
+        VStack {
+            HStack {
+                Text("Completed:")
+                    .font(.system(size: 10))
+                    .fontWeight(.semibold)
+                    .kerning(1)
+                    .textCase(.uppercase)
+                    .foregroundColor(np_white)
+                
+                Spacer()
+            }
             
-            Text("\(taskManager.completedTasksCount)/\(taskManager.totalTasksCount)")
-                .font(.system(size: 10))
-                .fontWeight(.semibold)
-                .kerning(1)
-                .textCase(.uppercase)
-                .foregroundColor(np_white)
+            HStack {
+                ProgressView(value: Double(taskManager.completedTasksCount),
+                             total: Double(taskManager.totalTasksCount))
+                .progressViewStyle(LinearProgressViewStyle())
+                .frame(width: width * 0.8)
+                .padding(5)
+                
+                Text("\(taskManager.completedTasksCount)/\(taskManager.totalTasksCount)")
+                    .font(.system(size: 10))
+                    .fontWeight(.semibold)
+                    .kerning(1)
+                    .textCase(.uppercase)
+                    .foregroundColor(np_white)
+            }
         }
     }
 }
@@ -221,13 +253,6 @@ struct CardView: View {
                 .textCase(.uppercase)
                 .padding(.horizontal, 15)
             
-            Text(task.taskDescription)
-                .font(.footnote)
-                .fontWeight(.semibold)
-                .kerning(2)
-                .textCase(.uppercase)
-                .padding(.horizontal, 15)
-            
             // MARK: "Delete" button
             HStack {
                 Button(action: {
@@ -246,15 +271,15 @@ struct CardView: View {
                 }) {
                     HStack {
                         Text(task.isCompleted ? "Completed" : "Complete?")
-                            .font(.system(size: 12))
-                            .fontWeight(.semibold)
+                            .font(.system(size: 10))
+                            .fontWeight(.medium    )
                             .kerning(1)
                             .textCase(.uppercase)
                             .foregroundColor(np_jap_indigo)
                         
-                        Image(systemName: task.isCompleted ? "circle.fill" : "circle")
-                            .font(.system(size: 12))
-                            .foregroundColor(np_jap_indigo)
+                        Image(systemName: task.isCompleted ? "checkmark.square.fill" : "square")
+                            .font(.system(size: 15))
+                            .foregroundColor(task.isCompleted ? np_red : np_jap_indigo)
                     }
                 }
             }
@@ -295,5 +320,58 @@ extension TaskManager {
     
     var totalTasksCount: Int {
         tasks.count
+    }
+}
+
+struct TaskWeekView: View {
+    private var calendar = Calendar.current
+    private let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    private var currentWeek: [Date] {
+        currentWeekDates()
+    }
+    
+    let width = UIScreen.main.bounds.width
+    
+    var body: some View {
+        HStack(spacing: 15) {
+            ForEach(0..<7, id: \.self) { index in
+                VStack {
+                    Text(daysOfWeek[index])
+                        .font(.system(size: 12, weight: .bold, design: .rounded))
+                        .foregroundColor(np_white)
+                    
+                    Text(dayOfMonth(for: currentWeek[index]))
+                        .font(.system(size: 20, weight: .semibold, design: .rounded))
+                        .foregroundColor(isToday(date: currentWeek[index]) ? np_white : np_gray)
+                        .frame(width: 40, height: 40)
+                        .background(Circle().fill(isToday(date: currentWeek[index]) ? np_red : np_arsenic))
+                        .overlay(
+                            isToday(date: currentWeek[index]) ? nil : Circle().stroke(np_arsenic, lineWidth: 1)
+                        )
+                }
+            }
+        }
+    }
+    
+    private func isToday(date: Date) -> Bool {
+        calendar.isDateInToday(date)
+    }
+    
+    private func dayOfMonth(for date: Date) -> String {
+        let day = calendar.component(.day, from: date)
+        return String(format: "%02d", day)
+    }
+    
+    private func currentWeekDates() -> [Date] {
+        let today = Date()
+        let weekInterval = calendar.dateInterval(of: .weekOfMonth, for: today)!
+        
+        var weekArray: [Date] = []
+        for i in 0..<7 {
+            if let weekDay = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
+                weekArray.append(weekDay)
+            }
+        }
+        return weekArray
     }
 }
