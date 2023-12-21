@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WeeklyMoodView: View {
+struct WeeklyCalendarView: View {
     @ObservedObject var moodModelController: MoodModelController
     
     let width = UIScreen.main.bounds.width
@@ -46,7 +46,7 @@ struct WeeklyMoodView: View {
 }
 
 #Preview {
-    WeeklyMoodView(moodModelController: MoodModelController())
+    WeeklyCalendarView(moodModelController: MoodModelController())
 }
 
 // MARK: Labels for the week

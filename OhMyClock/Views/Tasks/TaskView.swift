@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 import AlertToast
 
-struct TaskManagerView: View {
+struct TaskView: View {
     @ObservedObject var taskManager: TaskManager
     @State private var currentDay: Date = .init()
     @State private var addNewTask: Bool = false
@@ -22,7 +22,7 @@ struct TaskManagerView: View {
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     
-    @State private var milestoneDescription = "Develop a positive daily routine and organize your day with simple, achievable milestones."
+    @State private var milestoneDescription = "Conquer the day by setting and completing daily tasks."
     
     var body: some View {
         ZStack {
@@ -121,17 +121,11 @@ struct TaskManagerView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 2) {
-                        Text("Daily Tasks: ")
+                        Text("Daily Tasks")
                             .font(.system(size: 27, weight: .semibold, design: .rounded))
                             .kerning(1)
                             .minimumScaleFactor(0.5)
                             .foregroundColor(np_white)
-                        
-                        Text(Date().formatted(.dateTime.month().year()))
-                            .font(.system(size: 27, weight: .semibold, design: .rounded))
-                            .kerning(1)
-                            .minimumScaleFactor(0.5)
-                            .foregroundColor(np_gray)
                         
                         Spacer()
                         
@@ -149,6 +143,7 @@ struct TaskManagerView: View {
                         .frame(width: 40, height: 40)
                     }
                     
+                    
                     // MARK: Description
                     Text("\(milestoneDescription)")
                         .font(.system(size: 13, weight: .medium, design: .rounded))
@@ -158,7 +153,7 @@ struct TaskManagerView: View {
                     
                     // MARK: Week
                     TaskWeekView()
-                        .padding()
+                        .padding(5)
                 }
                 .hAlign(.leading)
             }
@@ -325,7 +320,7 @@ extension TaskManager {
 
 struct TaskWeekView: View {
     private var calendar = Calendar.current
-    private let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    private let daysOfWeek = ["S", "M", "T", "W", "T", "F", "S"]
     private var currentWeek: [Date] {
         currentWeekDates()
     }
@@ -333,20 +328,20 @@ struct TaskWeekView: View {
     let width = UIScreen.main.bounds.width
     
     var body: some View {
-        HStack(spacing: 15) {
+        HStack(spacing: 20) {
             ForEach(0..<7, id: \.self) { index in
                 VStack {
                     Text(daysOfWeek[index])
-                        .font(.system(size: 12, weight: .bold, design: .rounded))
+                        .font(.system(size: 20, weight: .bold, design: .rounded))
                         .foregroundColor(np_white)
                     
                     Text(dayOfMonth(for: currentWeek[index]))
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
-                        .foregroundColor(isToday(date: currentWeek[index]) ? np_white : np_gray)
+                        .foregroundColor(isToday(date: currentWeek[index]) ? np_jap_indigo : np_gray)
                         .frame(width: 40, height: 40)
-                        .background(Circle().fill(isToday(date: currentWeek[index]) ? np_red : np_arsenic))
+                        .background(RoundedRectangle(cornerRadius: 10).fill(isToday(date: currentWeek[index]) ? np_white : np_arsenic))
                         .overlay(
-                            isToday(date: currentWeek[index]) ? nil : Circle().stroke(np_arsenic, lineWidth: 1)
+                            isToday(date: currentWeek[index]) ? nil : RoundedRectangle(cornerRadius: 10).stroke(np_arsenic, lineWidth: 1)
                         )
                 }
             }

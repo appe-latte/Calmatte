@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseCore
 import FirebaseFirestore
 
-struct MoodCalendarView: View {
+struct MonthlyCalendarView: View {
     @ObservedObject var moodModelController: MoodModelController
     let startDate: Date
     let monthsToDisplay: Int
@@ -50,7 +50,7 @@ struct MoodCalendarView: View {
 
 struct MoodCalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        MoodCalendarView(start: Date(), monthsToShow: 2, moodController: MoodModelController())
+        MonthlyCalendarView(start: Date(), monthsToShow: 2, moodController: MoodModelController())
     }
 }
 

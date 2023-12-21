@@ -130,7 +130,7 @@ struct AddTaskView: View {
             }
             
             VStack(alignment: .leading, spacing: 10) {
-                TitleView("Custom Task Colour", np_arsenic)
+                TitleView("Assign Colour", np_arsenic)
                     .padding(.top, 10)
                 
                 LazyVGrid(columns: Array(repeating: .init(.flexible(),spacing: 10), count: 4), spacing: 10) {

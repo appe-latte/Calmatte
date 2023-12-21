@@ -51,7 +51,7 @@ struct SettingsView: View {
     
     let screenHeight = UIScreen.main.bounds.height
     let screenWidth = UIScreen.main.bounds.width
-    @State var rowHeight = 55.0
+    @State var rowHeight = 40.0
     
     // MARK: Load the current user's first name
     private func loadUserFirstName() {
@@ -89,15 +89,14 @@ struct SettingsView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 np_jap_indigo
-                    .ignoresSafeArea()
+                    .edgesIgnoringSafeArea(.all)
                 
                 // MARK: Settings
                 VStack(alignment: .center, spacing: 20) {
                     HeaderView()
-//                        .padding(.top, 30)
                     
                     Group {
                         // MARK: "edit" name
@@ -533,7 +532,7 @@ struct SettingsView: View {
                         
                         Spacer()
                     }
-                    .padding(.top, 25)
+                    .padding(.top, 10)
                 }
                 .frame(alignment: .topLeading)
             }
@@ -545,8 +544,18 @@ struct SettingsView: View {
                 AlertToast(type: .regular, title: "\(appLockTitle)", subTitle: "\(appLockMessage)")
             }
         }
-        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
+            Image(systemName: "chevron.left")
+                .aspectRatio(contentMode: .fit)
+                .foregroundColor(np_jap_indigo)
+                .padding(10)
+                .background(Circle().fill(np_white))
+        })
+        .scrollContentBackground(.hidden)
         .onAppear {
             if authModel.userSession == nil {
                 isSignedIn = false

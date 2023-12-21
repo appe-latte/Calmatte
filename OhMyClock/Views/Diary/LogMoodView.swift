@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MoodAddDiaryView: View {
+struct LogMoodView: View {
     @ObservedObject var moodModelController: MoodModelController
     @Environment(\.presentationMode) var presentationMode
     

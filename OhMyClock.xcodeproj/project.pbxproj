@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F047E4D2B3233DE00113472 /* MiddayPickupCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F047E4C2B3233DE00113472 /* MiddayPickupCardView.swift */; };
+		2F047E4D2B3233DE00113472 /* AfternoonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F047E4C2B3233DE00113472 /* AfternoonCardView.swift */; };
 		2F06D6572A663904004DD93E /* affirmation.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F06D6562A663904004DD93E /* affirmation.json */; };
 		2F0D04E92A0A1E1B002523A9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04E82A0A1E1B002523A9 /* Weather.swift */; };
 		2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */; };
@@ -20,15 +20,18 @@
 		2F0F58F52B20FD4E0044F043 /* SoundPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F58F42B20FD4E0044F043 /* SoundPlayerViewModel.swift */; };
 		2F11AE142A675615002FFAED /* BiometricLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F11AE132A675615002FFAED /* BiometricLoginView.swift */; };
 		2F18B4122A6654DC00F91C7B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F18B4112A6654DC00F91C7B /* GoogleService-Info.plist */; };
+		2F249EAD2B341ABA0083AC14 /* NightCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F249EAC2B341ABA0083AC14 /* NightCardView.swift */; };
+		2F249EAF2B341ACF0083AC14 /* BeachCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F249EAE2B341ACF0083AC14 /* BeachCardView.swift */; };
+		2F249EB12B341AE10083AC14 /* NatureCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F249EB02B341AE10083AC14 /* NatureCardView.swift */; };
+		2F249EB32B341AF10083AC14 /* WaterCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F249EB22B341AF10083AC14 /* WaterCardView.swift */; };
 		2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A17F2973F0FC007DA7CC /* LocationManager.swift */; };
 		2F27A18329740143007DA7CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A18229740143007DA7CC /* Alamofire */; };
 		2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A185297401B8007DA7CC /* SwiftyJSON */; };
 		2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A187297402AB007DA7CC /* LocationFetch.swift */; };
-		2F286EDC2B225A8400F6ACAD /* SoundPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F286EDB2B225A8400F6ACAD /* SoundPlayerView.swift */; };
-		2F286EDF2B225AF300F6ACAD /* RiseShineCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F286EDE2B225AF300F6ACAD /* RiseShineCardView.swift */; };
+		2F286EDF2B225AF300F6ACAD /* MorningCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F286EDE2B225AF300F6ACAD /* MorningCardView.swift */; };
 		2F2A27D32B18FEFE00FA05E5 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F2A27D22B18FEFE00FA05E5 /* OpenAISwift */; };
-		2F2A27D72B190AB800FA05E5 /* WellnessAiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2A27D62B190AB800FA05E5 /* WellnessAiView.swift */; };
 		2F2A27DD2B19140900FA05E5 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2A27DC2B19140900FA05E5 /* HapticManager.swift */; };
+		2F3520482B344129000D6127 /* piano-meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F3520472B344129000D6127 /* piano-meditation.mp3 */; };
 		2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0A32967A40000AC8D59 /* OhMyClockApp.swift */; };
 		2F36B0A62967A40000AC8D59 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0A52967A40000AC8D59 /* ContentView.swift */; };
 		2F36B0A82967A40200AC8D59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F36B0A72967A40200AC8D59 /* Assets.xcassets */; };
@@ -46,8 +49,8 @@
 		2F438EF92A6B17B000CDF33D /* PasswordResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F438EF82A6B17B000CDF33D /* PasswordResetViewModel.swift */; };
 		2F4AB6222A5DDAA400F6332F /* MoodModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6212A5DDAA400F6332F /* MoodModelController.swift */; };
 		2F4AB6242A5DDB3600F6332F /* DiaryMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6232A5DDB3600F6332F /* DiaryMood.swift */; };
-		2F4AB6272A5DDD0D00F6332F /* MoodDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */; };
-		2F4AB6292A5DDDBE00F6332F /* MoodAddDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */; };
+		2F4AB6272A5DDD0D00F6332F /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6262A5DDD0D00F6332F /* JournalView.swift */; };
+		2F4AB6292A5DDDBE00F6332F /* LogMoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6282A5DDDBE00F6332F /* LogMoodView.swift */; };
 		2F4AB62B2A5E5C3500F6332F /* MoodRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */; };
 		2F54B260297C71190075E488 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B25F297C71190075E488 /* Realm */; };
 		2F54B262297C71190075E488 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B261297C71190075E488 /* RealmSwift */; };
@@ -73,7 +76,7 @@
 		2FA9C8CD2B16708200569C84 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FA9C8CC2B16708200569C84 /* success.json */; };
 		2FAD51EB2B0425F400D28A3C /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD51EA2B0425F400D28A3C /* AppViewModel.swift */; };
 		2FB2C4FC2A37B3C4006D5A30 /* TaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */; };
-		2FB2C4FE2A37B401006D5A30 /* TaskManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C4FD2A37B401006D5A30 /* TaskManagerView.swift */; };
+		2FB2C4FE2A37B401006D5A30 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C4FD2A37B401006D5A30 /* TaskView.swift */; };
 		2FB2C5012A37B4FD006D5A30 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C5002A37B4FD006D5A30 /* AddTaskView.swift */; };
 		2FB87FB02A0C6E1D0033B4E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */; };
 		2FC5643D2A68B67300664FE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5643C2A68B67300664FE0 /* SceneDelegate.swift */; };
@@ -87,7 +90,7 @@
 		2FD25A212B1BD70B00E5AC05 /* breathing-bear.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD25A202B1BD70B00E5AC05 /* breathing-bear.json */; };
 		2FD25A232B1BD90400E5AC05 /* terrible-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD25A222B1BD90400E5AC05 /* terrible-emoji.json */; };
 		2FD60C542B12A0C1009B3EC8 /* LottieAnimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD60C532B12A0C1009B3EC8 /* LottieAnimView.swift */; };
-		2FD60C582B12B066009B3EC8 /* WellnessSoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD60C572B12B066009B3EC8 /* WellnessSoundsView.swift */; };
+		2FD60C582B12B066009B3EC8 /* WellnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD60C572B12B066009B3EC8 /* WellnessView.swift */; };
 		2FD60C5F2B12C61D009B3EC8 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD60C5E2B12C61C009B3EC8 /* loading.json */; };
 		2FD9FB782B0BCEB500E4FBD4 /* equilibrium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FD9FB772B0BCEB500E4FBD4 /* equilibrium.mp3 */; };
 		2FD9FB7A2B0BE1AA00E4FBD4 /* MoodCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9FB792B0BE1AA00E4FBD4 /* MoodCountView.swift */; };
@@ -99,7 +102,7 @@
 		2FF0AB962B1B91C7003703FA /* bad-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0AB902B1B91C7003703FA /* bad-emoji.json */; };
 		2FF0AB9B2B1B94C9003703FA /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0AB9D2B1B94C9003703FA /* StoreKitTestCertificate.cer */; };
 		2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */; };
-		2FF4260C2B0C74C8000BD7B2 /* WeeklyMoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4260B2B0C74C8000BD7B2 /* WeeklyMoodView.swift */; };
+		2FF4260C2B0C74C8000BD7B2 /* WeeklyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4260B2B0C74C8000BD7B2 /* WeeklyCalendarView.swift */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
 		2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50126296EA2B400813D40 /* MeditationView.swift */; };
 		2FF50129296EA33000813D40 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50128296EA33000813D40 /* SettingsView.swift */; };
@@ -107,7 +110,7 @@
 		2FF7465B2B127E34007C5F61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2FF7465A2B127E34007C5F61 /* Lottie */; };
 		2FF7465D2B127F28007C5F61 /* paywall-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FF7465C2B127F28007C5F61 /* paywall-animation.json */; };
 		2FF746642B12869A007C5F61 /* breathing-circle.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FF746632B128699007C5F61 /* breathing-circle.json */; };
-		2FF87ABA2A61177A0026DF9E /* MoodCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */; };
+		2FF87ABA2A61177A0026DF9E /* MonthlyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF87AB92A61177A0026DF9E /* MonthlyCalendarView.swift */; };
 		2FFBD0262A5DD7B8002C258B /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFBD0252A5DD7B8002C258B /* Month.swift */; };
 		D130FD8150574B3AB4BB697C /* Pods_OhMyClock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0CEB7FFF9AB3C613B273EE /* Pods_OhMyClock.framework */; };
 /* End PBXBuildFile section */
@@ -127,7 +130,7 @@
 
 /* Begin PBXFileReference section */
 		1E0CEB7FFF9AB3C613B273EE /* Pods_OhMyClock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OhMyClock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F047E4C2B3233DE00113472 /* MiddayPickupCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddayPickupCardView.swift; sourceTree = "<group>"; };
+		2F047E4C2B3233DE00113472 /* AfternoonCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfternoonCardView.swift; sourceTree = "<group>"; };
 		2F06D6562A663904004DD93E /* affirmation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = affirmation.json; path = OhMyClock/Data/affirmation.json; sourceTree = SOURCE_ROOT; };
 		2F0D04E82A0A1E1B002523A9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		2F0D04ED2A0A21EF002523A9 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
@@ -140,12 +143,15 @@
 		2F0F58F42B20FD4E0044F043 /* SoundPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayerViewModel.swift; sourceTree = "<group>"; };
 		2F11AE132A675615002FFAED /* BiometricLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricLoginView.swift; sourceTree = "<group>"; };
 		2F18B4112A6654DC00F91C7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2F249EAC2B341ABA0083AC14 /* NightCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightCardView.swift; sourceTree = "<group>"; };
+		2F249EAE2B341ACF0083AC14 /* BeachCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeachCardView.swift; sourceTree = "<group>"; };
+		2F249EB02B341AE10083AC14 /* NatureCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatureCardView.swift; sourceTree = "<group>"; };
+		2F249EB22B341AF10083AC14 /* WaterCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterCardView.swift; sourceTree = "<group>"; };
 		2F27A17F2973F0FC007DA7CC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2F27A187297402AB007DA7CC /* LocationFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetch.swift; sourceTree = "<group>"; };
-		2F286EDB2B225A8400F6ACAD /* SoundPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayerView.swift; sourceTree = "<group>"; };
-		2F286EDE2B225AF300F6ACAD /* RiseShineCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseShineCardView.swift; sourceTree = "<group>"; };
-		2F2A27D62B190AB800FA05E5 /* WellnessAiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessAiView.swift; sourceTree = "<group>"; };
+		2F286EDE2B225AF300F6ACAD /* MorningCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningCardView.swift; sourceTree = "<group>"; };
 		2F2A27DC2B19140900FA05E5 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		2F3520472B344129000D6127 /* piano-meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "piano-meditation.mp3"; sourceTree = "<group>"; };
 		2F36B0A02967A40000AC8D59 /* OhMyClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhMyClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F36B0A32967A40000AC8D59 /* OhMyClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhMyClockApp.swift; sourceTree = "<group>"; };
 		2F36B0A52967A40000AC8D59 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -165,8 +171,8 @@
 		2F438EF82A6B17B000CDF33D /* PasswordResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewModel.swift; sourceTree = "<group>"; };
 		2F4AB6212A5DDAA400F6332F /* MoodModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodModelController.swift; sourceTree = "<group>"; };
 		2F4AB6232A5DDB3600F6332F /* DiaryMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMood.swift; sourceTree = "<group>"; };
-		2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDiaryView.swift; sourceTree = "<group>"; };
-		2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodAddDiaryView.swift; sourceTree = "<group>"; };
+		2F4AB6262A5DDD0D00F6332F /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		2F4AB6282A5DDDBE00F6332F /* LogMoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMoodView.swift; sourceTree = "<group>"; };
 		2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRowView.swift; sourceTree = "<group>"; };
 		2F5B2EC72AFC00DF00778727 /* DayStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStateViewModel.swift; sourceTree = "<group>"; };
 		2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
@@ -191,7 +197,7 @@
 		2FA9C8CC2B16708200569C84 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		2FAD51EA2B0425F400D28A3C /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCategory.swift; sourceTree = "<group>"; };
-		2FB2C4FD2A37B401006D5A30 /* TaskManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerView.swift; sourceTree = "<group>"; };
+		2FB2C4FD2A37B401006D5A30 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		2FB2C5002A37B4FD006D5A30 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FC5643C2A68B67300664FE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,7 +211,7 @@
 		2FD25A202B1BD70B00E5AC05 /* breathing-bear.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "breathing-bear.json"; sourceTree = "<group>"; };
 		2FD25A222B1BD90400E5AC05 /* terrible-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "terrible-emoji.json"; sourceTree = "<group>"; };
 		2FD60C532B12A0C1009B3EC8 /* LottieAnimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimView.swift; sourceTree = "<group>"; };
-		2FD60C572B12B066009B3EC8 /* WellnessSoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessSoundsView.swift; sourceTree = "<group>"; };
+		2FD60C572B12B066009B3EC8 /* WellnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessView.swift; sourceTree = "<group>"; };
 		2FD60C5E2B12C61C009B3EC8 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		2FD9FB772B0BCEB500E4FBD4 /* equilibrium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = equilibrium.mp3; sourceTree = "<group>"; };
 		2FD9FB792B0BE1AA00E4FBD4 /* MoodCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCountView.swift; sourceTree = "<group>"; };
@@ -219,14 +225,14 @@
 		2FF0AB902B1B91C7003703FA /* bad-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bad-emoji.json"; sourceTree = "<group>"; };
 		2FF0AB9C2B1B94C9003703FA /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		2FF12EBB2A0B759A0097993C /* OmcModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OmcModel.xcdatamodel; sourceTree = "<group>"; };
-		2FF4260B2B0C74C8000BD7B2 /* WeeklyMoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyMoodView.swift; sourceTree = "<group>"; };
+		2FF4260B2B0C74C8000BD7B2 /* WeeklyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalendarView.swift; sourceTree = "<group>"; };
 		2FF50123296E9B2800813D40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2FF50126296EA2B400813D40 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 		2FF50128296EA33000813D40 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = ../Security/SettingsView.swift; sourceTree = "<group>"; };
 		2FF51E032A3A42370035A964 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		2FF7465C2B127F28007C5F61 /* paywall-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "paywall-animation.json"; sourceTree = "<group>"; };
 		2FF746632B128699007C5F61 /* breathing-circle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "breathing-circle.json"; sourceTree = "<group>"; };
-		2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCalendarView.swift; sourceTree = "<group>"; };
+		2FF87AB92A61177A0026DF9E /* MonthlyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarView.swift; sourceTree = "<group>"; };
 		2FFBD0252A5DD7B8002C258B /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		71C548B17BD3E291DC7F07BF /* Pods-OhMyClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhMyClock.debug.xcconfig"; path = "Target Support Files/Pods-OhMyClock/Pods-OhMyClock.debug.xcconfig"; sourceTree = "<group>"; };
 		F035852F19147F0F38D6AF6C /* Pods-OhMyClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhMyClock.release.xcconfig"; path = "Target Support Files/Pods-OhMyClock/Pods-OhMyClock.release.xcconfig"; sourceTree = "<group>"; };
@@ -275,8 +281,12 @@
 		2F286EDD2B225AC100F6ACAD /* SoundCards */ = {
 			isa = PBXGroup;
 			children = (
-				2F286EDE2B225AF300F6ACAD /* RiseShineCardView.swift */,
-				2F047E4C2B3233DE00113472 /* MiddayPickupCardView.swift */,
+				2F286EDE2B225AF300F6ACAD /* MorningCardView.swift */,
+				2F047E4C2B3233DE00113472 /* AfternoonCardView.swift */,
+				2F249EAC2B341ABA0083AC14 /* NightCardView.swift */,
+				2F249EAE2B341ACF0083AC14 /* BeachCardView.swift */,
+				2F249EB02B341AE10083AC14 /* NatureCardView.swift */,
+				2F249EB22B341AF10083AC14 /* WaterCardView.swift */,
 			);
 			path = SoundCards;
 			sourceTree = "<group>";
@@ -320,6 +330,7 @@
 				2FF51E032A3A42370035A964 /* SplashScreenView.swift */,
 				2FF50125296EA29300813D40 /* Views */,
 				2F36B0A72967A40200AC8D59 /* Assets.xcassets */,
+				2F3520472B344129000D6127 /* piano-meditation.mp3 */,
 				2FD9FB772B0BCEB500E4FBD4 /* equilibrium.mp3 */,
 				2F6BFD942B068B2900BE9D03 /* Analogist.otf */,
 				2F6BFD932B068B2900BE9D03 /* Analogist.ttf */,
@@ -408,11 +419,11 @@
 		2F4AB6252A5DDCF000F6332F /* Diary */ = {
 			isa = PBXGroup;
 			children = (
-				2F4AB6262A5DDD0D00F6332F /* MoodDiaryView.swift */,
-				2F4AB6282A5DDDBE00F6332F /* MoodAddDiaryView.swift */,
+				2F4AB6262A5DDD0D00F6332F /* JournalView.swift */,
+				2F4AB6282A5DDDBE00F6332F /* LogMoodView.swift */,
 				2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */,
-				2FF87AB92A61177A0026DF9E /* MoodCalendarView.swift */,
-				2FF4260B2B0C74C8000BD7B2 /* WeeklyMoodView.swift */,
+				2FF87AB92A61177A0026DF9E /* MonthlyCalendarView.swift */,
+				2FF4260B2B0C74C8000BD7B2 /* WeeklyCalendarView.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -440,7 +451,7 @@
 		2FB2C4FF2A37B4DD006D5A30 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				2FB2C4FD2A37B401006D5A30 /* TaskManagerView.swift */,
+				2FB2C4FD2A37B401006D5A30 /* TaskView.swift */,
 				2FB2C5002A37B4FD006D5A30 /* AddTaskView.swift */,
 			);
 			path = Tasks;
@@ -488,9 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				2FF50126296EA2B400813D40 /* MeditationView.swift */,
-				2FD60C572B12B066009B3EC8 /* WellnessSoundsView.swift */,
-				2F2A27D62B190AB800FA05E5 /* WellnessAiView.swift */,
-				2F286EDB2B225A8400F6ACAD /* SoundPlayerView.swift */,
+				2FD60C572B12B066009B3EC8 /* WellnessView.swift */,
 				2F286EDD2B225AC100F6ACAD /* SoundCards */,
 			);
 			path = Wellness;
@@ -645,6 +654,7 @@
 				2F0DD18D2B1BF57B00504937 /* orange.json in Resources */,
 				2FF7465D2B127F28007C5F61 /* paywall-animation.json in Resources */,
 				2F0DD18A2B1BF46A00504937 /* yellow.json in Resources */,
+				2F3520482B344129000D6127 /* piano-meditation.mp3 in Resources */,
 				2F0DD1842B1BEE6600504937 /* green.json in Resources */,
 				2F6BFD9A2B068E6400BE9D03 /* Butler.otf in Resources */,
 				2F0DD1862B1BF08100504937 /* turq.json in Resources */,
@@ -709,13 +719,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FB2C5012A37B4FD006D5A30 /* AddTaskView.swift in Sources */,
-				2F286EDC2B225A8400F6ACAD /* SoundPlayerView.swift in Sources */,
 				2F9EBB072A648A8000DC806A /* AffirmationView.swift in Sources */,
 				2F0F58F52B20FD4E0044F043 /* SoundPlayerViewModel.swift in Sources */,
 				2FAD51EB2B0425F400D28A3C /* AppViewModel.swift in Sources */,
+				2F249EAD2B341ABA0083AC14 /* NightCardView.swift in Sources */,
 				2F36B0B52967A4DF00AC8D59 /* DateFormatter+TimeFormatter.swift in Sources */,
 				2F11AE142A675615002FFAED /* BiometricLoginView.swift in Sources */,
-				2FF87ABA2A61177A0026DF9E /* MoodCalendarView.swift in Sources */,
+				2FF87ABA2A61177A0026DF9E /* MonthlyCalendarView.swift in Sources */,
 				2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */,
 				2FCD005E2A671647000AD649 /* ProgressLoadingView.swift in Sources */,
 				2FF50124296E9B2800813D40 /* MainView.swift in Sources */,
@@ -726,6 +736,7 @@
 				2F66679D2B110BE500CC6B4E /* UserViewModel.swift in Sources */,
 				2F434BB3296F863400698C1A /* MeditationViewModel.swift in Sources */,
 				2F438EF72A6B164B00CDF33D /* PasswordResetService.swift in Sources */,
+				2F249EB32B341AF10083AC14 /* WaterCardView.swift in Sources */,
 				2FC5643D2A68B67300664FE0 /* SceneDelegate.swift in Sources */,
 				2FFBD0262A5DD7B8002C258B /* Month.swift in Sources */,
 				2FB2C4FC2A37B3C4006D5A30 /* TaskCategory.swift in Sources */,
@@ -733,7 +744,6 @@
 				2F6667A52B112C9700CC6B4E /* PaywallCheckView.swift in Sources */,
 				2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */,
 				2F919D332A5DD83000291071 /* Day.swift in Sources */,
-				2F2A27D72B190AB800FA05E5 /* WellnessAiView.swift in Sources */,
 				2FCD00622A67188F000AD649 /* AppLockViewModel.swift in Sources */,
 				2F438EF92A6B17B000CDF33D /* PasswordResetViewModel.swift in Sources */,
 				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
@@ -741,16 +751,18 @@
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
 				2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */,
 				2FF51E042A3A42370035A964 /* SplashScreenView.swift in Sources */,
-				2FD60C582B12B066009B3EC8 /* WellnessSoundsView.swift in Sources */,
+				2FD60C582B12B066009B3EC8 /* WellnessView.swift in Sources */,
 				2FD9FB7A2B0BE1AA00E4FBD4 /* MoodCountView.swift in Sources */,
 				2F64DE362A8161B9007917D2 /* ReminderManager.swift in Sources */,
 				2F919D352A5DD8EA00291071 /* DiaryColors.swift in Sources */,
-				2F4AB6272A5DDD0D00F6332F /* MoodDiaryView.swift in Sources */,
+				2F4AB6272A5DDD0D00F6332F /* JournalView.swift in Sources */,
 				2FD60C542B12A0C1009B3EC8 /* LottieAnimView.swift in Sources */,
 				2F6083432AFACDA1004A7F95 /* AnalyticsView.swift in Sources */,
 				2F434BB6296F89F100698C1A /* Extensions.swift in Sources */,
+				2F249EAF2B341ACF0083AC14 /* BeachCardView.swift in Sources */,
 				2FB87FB02A0C6E1D0033B4E1 /* AppDelegate.swift in Sources */,
-				2F286EDF2B225AF300F6ACAD /* RiseShineCardView.swift in Sources */,
+				2F249EB12B341AE10083AC14 /* NatureCardView.swift in Sources */,
+				2F286EDF2B225AF300F6ACAD /* MorningCardView.swift in Sources */,
 				2F434BB1296F63F100698C1A /* PlaybackControlButton.swift in Sources */,
 				2FCD005C2A67127F000AD649 /* User.swift in Sources */,
 				2F4AB62B2A5E5C3500F6332F /* MoodRowView.swift in Sources */,
@@ -762,16 +774,16 @@
 				2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */,
 				2F36B0B82967A51900AC8D59 /* Models.swift in Sources */,
 				2F66679F2B110CE400CC6B4E /* CalmattePaywallView.swift in Sources */,
-				2FB2C4FE2A37B401006D5A30 /* TaskManagerView.swift in Sources */,
+				2FB2C4FE2A37B401006D5A30 /* TaskView.swift in Sources */,
 				2F4AB6222A5DDAA400F6332F /* MoodModelController.swift in Sources */,
 				2FA38A9F2AEB0E6A00BE57F0 /* CustomHeaderShape.swift in Sources */,
 				2FCD005A2A6710BC000AD649 /* AuthViewModel.swift in Sources */,
-				2F047E4D2B3233DE00113472 /* MiddayPickupCardView.swift in Sources */,
+				2F047E4D2B3233DE00113472 /* AfternoonCardView.swift in Sources */,
 				2F7023A82B23B8370054BCEB /* OnboardingViewModel.swift in Sources */,
 				2F438EF52A6B139A00CDF33D /* PasswordResetView.swift in Sources */,
-				2FF4260C2B0C74C8000BD7B2 /* WeeklyMoodView.swift in Sources */,
+				2FF4260C2B0C74C8000BD7B2 /* WeeklyCalendarView.swift in Sources */,
 				2F27A1802973F0FC007DA7CC /* LocationManager.swift in Sources */,
-				2F4AB6292A5DDDBE00F6332F /* MoodAddDiaryView.swift in Sources */,
+				2F4AB6292A5DDDBE00F6332F /* LogMoodView.swift in Sources */,
 				2FCD00642A671C1E000AD649 /* LoginView.swift in Sources */,
 				2FA9AB452A4E0D7A00557FD0 /* MoodModel.swift in Sources */,
 				2F2A27DD2B19140900FA05E5 /* HapticManager.swift in Sources */,

@@ -76,7 +76,7 @@ struct AnalyticsView: View {
                         }
                         .padding()
                         
-                        MoodCalendarView(start: Date(), monthsToShow: 1, daysSelectable: true, moodController: moodModelController)
+                        MonthlyCalendarView(start: Date(), monthsToShow: 1, daysSelectable: true, moodController: moodModelController)
                             .frame(maxWidth: width - 20, maxHeight: height * 0.6)
                     }
                     
@@ -322,6 +322,8 @@ struct LastMonthView: View {
 
 // MARK: Donut Chart View
 struct DonutChartView: View {
+    let width = UIScreen.main.bounds.width
+    
     struct MoodDataModel: Identifiable {
         var id = UUID()
         var emotion: String
@@ -386,7 +388,7 @@ struct DonutChartView: View {
             // MARK: Mood Count Summary
             VStack(alignment: .center, spacing: 10) {
                 HStack {
-                    Label("Mood Chart", systemImage: "")
+                    Label("Donut Chart", systemImage: "")
                         .font(.system(size: 10))
                         .fontWeight(.semibold)
                         .kerning(2)
@@ -409,7 +411,7 @@ struct DonutChartView: View {
                     .frame(height: 50)
                 
                 // MARK: Chart Key
-                HStack(spacing: 20) {
+                HStack(spacing: 10) {
                     ForEach(moodDataInPercentages, id: \.id) { mood in
                         VStack(spacing: 5) {
                             RoundedRectangle(cornerRadius: 10)
@@ -431,7 +433,7 @@ struct DonutChartView: View {
                         }
                     }
                 }
-                .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+                .frame(width: width - 10, alignment: .center)
             }
         }
     }

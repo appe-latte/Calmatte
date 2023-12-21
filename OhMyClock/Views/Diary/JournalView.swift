@@ -10,7 +10,7 @@ import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
 
-struct MoodDiaryView : View {
+struct JournalView : View {
     @ObservedObject var moodModelController = MoodModelController()
     @State var txt = ""
     @State var docID = ""
@@ -72,7 +72,7 @@ struct MoodDiaryView : View {
         }
         .background(background())
         .sheet(isPresented: self.$show) {
-            MoodAddDiaryView(moodModelController: self.moodModelController)
+            LogMoodView(moodModelController: self.moodModelController)
         }
     }
     
@@ -156,6 +156,6 @@ class Host : UIHostingController<ContentView>{
 
 struct MoodDiaryView_Previews: PreviewProvider {
     static var previews: some View {
-        MoodDiaryView()
+        JournalView()
     }
 }

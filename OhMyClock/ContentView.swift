@@ -70,15 +70,15 @@ struct ContentView: View {
                         case 1: AnalyticsView(start: Date(), monthsToShow: 2, moodController: MoodModelController()).environmentObject(moodModelController).onAppear {
                             progressView.loadData()
                         }
-                        case 2: MoodDiaryView()
+                        case 2: JournalView()
                         case 3:
                             if userViewModel.isSubscriptionActive {
                                 //                        MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
-                                WellnessSoundsView()
+                                WellnessView()
                             } else {
                                 PaywallCheckView()
                             }
-                        case 4: TaskManagerView(taskManager: taskManager)
+                        case 4: TaskView(taskManager: taskManager)
                         default: Text("Not found")
                         }
                         

@@ -206,7 +206,7 @@ struct MainView: View {
                         }
                         .padding(.horizontal)
                         
-                        WeeklyMoodView(moodModelController: MoodModelController())
+                        WeeklyCalendarView(moodModelController: MoodModelController())
                     }
                     .padding(.bottom, 15)
                     
@@ -234,7 +234,7 @@ struct MainView: View {
             .background(background())
             .frame(maxWidth: .infinity)
             .sheet(isPresented: self.$showJournalEntry) {
-                MoodAddDiaryView(moodModelController: self.moodModelController)
+                LogMoodView(moodModelController: self.moodModelController)
             }
         }
         .navigationBarHidden(true)
