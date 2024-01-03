@@ -19,7 +19,6 @@ struct MoodRowView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 15){
-                // MARK: Date
                 HStack {
                     Spacer()
                     
@@ -30,12 +29,12 @@ struct MoodRowView: View {
                         
                         Text("\(mood.year)")
                     }
-                    .font(.caption2)
-                    .fontWeight(.heavy)
-                    .kerning(2)
-                    .textCase(.uppercase)
-                    .foregroundColor(np_white)
                 }
+                .font(.caption2)
+                .fontWeight(.heavy)
+                .kerning(2)
+                .textCase(.uppercase)
+                .foregroundColor(np_white)
                 
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: width - 40, height: height * 0.2)
@@ -52,6 +51,13 @@ struct MoodRowView: View {
                                         moodImage()
                                             .scaledToFit()
                                             .frame(maxWidth: 120)
+                                        
+                                        Text(mood.emotion.state.rawValue)
+                                            .font(.caption2)
+                                            .fontWeight(.heavy)
+                                            .kerning(2)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(np_white)
                                     }
                                 }
                             

@@ -87,7 +87,6 @@ struct ContentView: View {
                             Rectangle()
                                 .fill(np_jap_indigo)
                                 .frame(width: width, height: 90)
-                                .cornerRadius(15, corners: [.topRight, .topLeft])
                             
                             HStack {
                                 tabItem(icon: "home", selectedIcon: "home", text: "Home", index: 0)
@@ -108,7 +107,7 @@ struct ContentView: View {
                             .frame(height: 60)
                         }
                     }
-                    .background(np_arsenic)
+                    .background(np_jap_indigo)
                     .ignoresSafeArea(.all, edges: .bottom)
                     
                     // MARK: Progress Loading

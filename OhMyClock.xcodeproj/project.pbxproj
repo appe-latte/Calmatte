@@ -68,6 +68,8 @@
 		2F7023A82B23B8370054BCEB /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7023A72B23B8370054BCEB /* OnboardingViewModel.swift */; };
 		2F919D332A5DD83000291071 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F919D322A5DD83000291071 /* Day.swift */; };
 		2F919D352A5DD8EA00291071 /* DiaryColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F919D342A5DD8EA00291071 /* DiaryColors.swift */; };
+		2F94CE662B4600F50049E7C5 /* myrrh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F94CE652B4600F50049E7C5 /* myrrh.mp3 */; };
+		2F94CE682B4601030049E7C5 /* candlelit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F94CE672B4601030049E7C5 /* candlelit.mp3 */; };
 		2F9EBB032A6489F900DC806A /* Affirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EBB022A6489F900DC806A /* Affirmation.swift */; };
 		2F9EBB072A648A8000DC806A /* AffirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EBB062A648A8000DC806A /* AffirmationView.swift */; };
 		2FA2D6612B10630D00CB9C27 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA2D6602B10630D00CB9C27 /* StoreKit.framework */; };
@@ -189,6 +191,8 @@
 		2F8838302A0AB1C800840F68 /* OhMyClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhMyClock.entitlements; sourceTree = "<group>"; };
 		2F919D322A5DD83000291071 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		2F919D342A5DD8EA00291071 /* DiaryColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryColors.swift; sourceTree = "<group>"; };
+		2F94CE652B4600F50049E7C5 /* myrrh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = myrrh.mp3; sourceTree = "<group>"; };
+		2F94CE672B4601030049E7C5 /* candlelit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = candlelit.mp3; sourceTree = "<group>"; };
 		2F9EBB022A6489F900DC806A /* Affirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Affirmation.swift; sourceTree = "<group>"; };
 		2F9EBB062A648A8000DC806A /* AffirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationView.swift; sourceTree = "<group>"; };
 		2FA2D6602B10630D00CB9C27 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -330,6 +334,8 @@
 				2FF51E032A3A42370035A964 /* SplashScreenView.swift */,
 				2FF50125296EA29300813D40 /* Views */,
 				2F36B0A72967A40200AC8D59 /* Assets.xcassets */,
+				2F94CE652B4600F50049E7C5 /* myrrh.mp3 */,
+				2F94CE672B4601030049E7C5 /* candlelit.mp3 */,
 				2F3520472B344129000D6127 /* piano-meditation.mp3 */,
 				2FD9FB772B0BCEB500E4FBD4 /* equilibrium.mp3 */,
 				2F6BFD942B068B2900BE9D03 /* Analogist.otf */,
@@ -644,6 +650,7 @@
 				2FF0AB962B1B91C7003703FA /* bad-emoji.json in Resources */,
 				2F6667A12B1121B000CC6B4E /* Calmatte.storekit in Resources */,
 				2F36B0AB2967A40200AC8D59 /* Preview Assets.xcassets in Resources */,
+				2F94CE662B4600F50049E7C5 /* myrrh.mp3 in Resources */,
 				2F18B4122A6654DC00F91C7B /* GoogleService-Info.plist in Resources */,
 				2F6BFD952B068B2900BE9D03 /* Analogist.ttf in Resources */,
 				2FF0AB9B2B1B94C9003703FA /* StoreKitTestCertificate.cer in Resources */,
@@ -658,6 +665,7 @@
 				2F0DD1842B1BEE6600504937 /* green.json in Resources */,
 				2F6BFD9A2B068E6400BE9D03 /* Butler.otf in Resources */,
 				2F0DD1862B1BF08100504937 /* turq.json in Resources */,
+				2F94CE682B4601030049E7C5 /* candlelit.mp3 in Resources */,
 				2FF746642B12869A007C5F61 /* breathing-circle.json in Resources */,
 				2F0DD18E2B1BF57B00504937 /* red.json in Resources */,
 				2FD9FB782B0BCEB500E4FBD4 /* equilibrium.mp3 in Resources */,

@@ -52,10 +52,10 @@ struct JournalView : View {
                             }
                         }
                     }
-                    .listStyle(InsetGroupedListStyle())
+                    .listStyle(InsetListStyle())
                     .scrollContentBackground(.hidden)
                     .environment(\.defaultMinListRowHeight, 150)
-                    .padding(.bottom, 5)
+                    //                    .padding(.bottom, 5)
                     .onAppear {
                         UITableView.appearance().tableFooterView = UIView() // Removes extra cells that are not being used.
                         

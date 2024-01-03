@@ -6,8 +6,8 @@
 //
 
 import SwiftUI
-import AVFoundation
 import Lottie
+import AVFoundation
 
 struct MorningCardView: View {
     @State private var audioPlayer: AVAudioPlayer?
@@ -24,14 +24,10 @@ struct MorningCardView: View {
     let height = UIScreen.main.bounds.height
     
     // MARK: Load Audio File
-    // Load an audio file by name
     private func loadAudio(audioName: String) {
-        // Check if the track is already loaded
         if currentTrack == audioName && audioPlayer != nil {
             return
         }
-        
-        // Load the new track
         guard let url = Bundle.main.url(forResource: audioName, withExtension: "mp3") else {
             print("Audio file not found")
             return
@@ -49,7 +45,6 @@ struct MorningCardView: View {
         }
     }
     
-    
     // MARK: Play/Stop Controls
     private func playOrStop(trackName: String) {
         if currentTrack != trackName || audioPlayer == nil {
@@ -58,6 +53,7 @@ struct MorningCardView: View {
         
         if isPlaying {
             audioPlayer?.stop()
+            audioPlayer?.currentTime = 0 // Reset the track to the beginning
             isPlaying = false
         } else {
             audioPlayer?.play()
@@ -80,8 +76,30 @@ struct MorningCardView: View {
         }
     }
     
+    // MARK: Skip Forward/Backward
+    private func skip(seconds: TimeInterval) {
+        guard let player = audioPlayer else { return }
+        
+        let newTime = player.currentTime + seconds
+        if newTime < 0 {
+            audioPlayer?.currentTime = 0
+        } else if newTime > player.duration {
+            audioPlayer?.currentTime = player.duration
+        } else {
+            audioPlayer?.currentTime = newTime
+        }
+        
+        self.updateProgress()
+    }
     
-    // Format time from seconds to "Minutes:Seconds"
+    // MARK: Update Progress
+    private func updateProgress() {
+        if let player = audioPlayer {
+            self.progress = Float(player.currentTime / player.duration)
+            self.currentTime = formatTime(time: player.currentTime)
+        }
+    }
+    
     private func formatTime(time: TimeInterval) -> String {
         let minutes = Int(time) / 60
         let seconds = Int(time) % 60
@@ -92,107 +110,69 @@ struct MorningCardView: View {
         NavigationStack {
             ZStack {
                 VStack(spacing: 5) {
-                    Image("img-sunrise")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: width, height: 400, alignment: .topLeading)
+                    CustomHeaderShape()
+                        .frame(width: width, height: 500)
                         .overlay {
-                            VStack(spacing: 5) {
-                                Spacer()
-                                
-                                // MARK: Title
-                                HStack {
-                                    Text("Rise n' Shine")
-                                        .font(.system(size: 23, design: .rounded))
-                                        .fontWeight(.bold)
-                                        .textCase(.uppercase)
-                                        .kerning(3)
-                                        .foregroundColor(np_white)
-                                    
-                                    Spacer()
+                            Image("img-sunrise")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: width, height: 600)
+                                .overlay {
+                                    VStack(spacing: 5) {
+                                        // MARK: Title
+                                        HStack {
+                                            Spacer()
+                                            
+                                            Text("Rise n' Shine")
+                                                .font(.system(size: 23, design: .rounded))
+                                                .fontWeight(.bold)
+                                                .textCase(.uppercase)
+                                                .kerning(3)
+                                                .foregroundColor(np_black)
+                                        }
+                                        .padding(.horizontal, 20)
+                                        
+                                        // MARK: Track Time
+                                        HStack(spacing: 5) {
+                                            Spacer()
+                                            
+                                            Image(systemName: "speaker.wave.2.fill")
+                                                .font(.system(size: 9))
+                                                .fontWeight(.heavy)
+                                                .foregroundStyle(np_black)
+                                            
+                                            Text("Wellness Activity •")
+                                                .font(.system(size: 8, design: .rounded))
+                                                .fontWeight(.bold)
+                                                .textCase(.uppercase)
+                                                .kerning(2)
+                                                .foregroundColor(np_black)
+                                            
+                                            Text("\(trackTime)min")
+                                                .font(.system(size: 8, design: .rounded))
+                                                .fontWeight(.bold)
+                                                .textCase(.uppercase)
+                                                .kerning(2)
+                                                .foregroundColor(np_black)
+                                        }
+                                        .padding(.horizontal, 20)
+                                        
+                                        Spacer()
+                                            .frame(height: 300)
+                                    }
+                                    .padding(.vertical, 10)
                                 }
-                                .padding(.horizontal, 20)
-                                
-                                // MARK: Track Time
-                                HStack(spacing: 5) {
-                                    Image(systemName: "speaker.wave.2.fill")
-                                        .font(.system(size: 9))
-                                        .fontWeight(.heavy)
-                                        .foregroundStyle(np_white)
-                                    
-                                    Text("Wellness Activity •")
-                                        .font(.system(size: 8, design: .rounded))
-                                        .fontWeight(.bold)
-                                        .textCase(.uppercase)
-                                        .kerning(2)
-                                        .foregroundColor(np_white)
-                                    
-                                    Text("\(trackTime)min")
-                                        .font(.system(size: 8, design: .rounded))
-                                        .fontWeight(.bold)
-                                        .textCase(.uppercase)
-                                        .kerning(2)
-                                        .foregroundColor(np_white)
-                                    
-                                    Spacer()
-                                }
-                                .padding(.horizontal, 20)
-                            }
-                            .padding(.vertical, 10)
+                            
                         }
+                        .clipShape(CustomHeaderShape())
                         .edgesIgnoringSafeArea(.top)
                     
-                    Spacer()
                     
-                    // MARK: Equilibrium
-//                    VStack {
-//                        HStack(spacing: 5) {
-//                            Label("Equilibrium", systemImage: "lock.open.fill")
-//                                .font(.system(size: 14))
-//                                .fontWeight(.semibold)
-//                                .kerning(2)
-//                                .textCase(.uppercase)
-//                                .foregroundColor(np_white)
-//                                .padding(5)
-//                            
-//                            Spacer()
-//                        }
-//                        .padding(.horizontal)
-//                        
-//                        HStack(spacing: 5) {
-//                            Button(action: {
-//                                self.playOrStop(trackName: "equilibrium")
-//                            }) {
-//                                Image(isPlaying ? "stop" : "play")
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fill)
-//                                    .frame(width: 40, height: 50)
-//                                    .foregroundStyle(np_white)
-//                            }
-//                            
-//                            Spacer()
-//                            
-//                            Label("\(currentTime) / \(duration)", systemImage: "")
-//                                .font(.system(size: 10))
-//                                .fontWeight(.semibold)
-//                                .kerning(2)
-//                                .textCase(.uppercase)
-//                                .foregroundColor(np_white)
-//                                .padding(5)
-//                        }
-//                        .frame(width: width)
-//                        .padding(.horizontal, 10)
-//                        
-//                        ProgressView(value: progress)
-//                            .progressViewStyle(BarProgressStyle(height: 50.0))
-//                            .padding(.horizontal, 10)
-//                    }
-//                    .onAppear {
-//                        self.loadAudio(audioName: "equilibrium")
-//                    }
+                    Spacer()
+                        .frame(height: 100)
                     
                     // MARK: Piano_meditation
-                    VStack {
+                    VStack(spacing: 25) {
                         HStack(spacing: 5) {
                             Label("Piano Meditation", systemImage: "lock.open.fill")
                                 .font(.system(size: 14))
@@ -206,20 +186,58 @@ struct MorningCardView: View {
                         }
                         .padding(.horizontal)
                         
-                        HStack(spacing: 5) {
+                        HStack(spacing: 35) {
+                            // "Skip Backwards" button
+                            Button(action: {
+                                self.skip(seconds: -10)
+                            }) {
+                                Image(systemName: "gobackward.10")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 30, height: 30)
+                                    .foregroundStyle(np_white)                           
+                            }
+                            
+                            // "Play / Stop" button
                             Button(action: {
                                 self.playOrStop(trackName: "piano-meditation")
                             }) {
-                                Image(isPlaying ? "stop" : "play")
+                                Image(systemName: isPlaying ? "stop.circle.fill" : "play.circle.fill")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(width: 40, height: 50)
+                                    .frame(width: 50, height: 50)
                                     .foregroundStyle(np_white)
                             }
                             
+                            // "Skip forward" button
+                            Button(action: {
+                                self.skip(seconds: 10)
+                            }) {
+                                Image(systemName: "goforward.10")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 30, height: 30)
+                                    .foregroundStyle(np_white)
+                            }
+                        }
+                        .frame(width: width - 40)
+                        
+                        ProgressView(value: progress)
+                            .accentColor(np_white)
+                            .padding(.horizontal)
+                        
+                        HStack {
+                            Text("\(currentTime)")
+                                .font(.system(size: 10))
+                                .fontWeight(.semibold)
+                                .kerning(2)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_white)
+                                .padding(5)
+                            
                             Spacer()
                             
-                            Label("\(currentTime) / \(duration)", systemImage: "")
+                            Text("\(duration)")
                                 .font(.system(size: 10))
                                 .fontWeight(.semibold)
                                 .kerning(2)
@@ -227,13 +245,9 @@ struct MorningCardView: View {
                                 .foregroundColor(np_white)
                                 .padding(5)
                         }
-                        .frame(width: width)
-                        .padding(.horizontal, 40)
-                        
-                        ProgressView(value: progress)
-                            .progressViewStyle(BarProgressStyle(height: 50.0))
-                            .padding(.horizontal, 10)
+                        .frame(width: width - 40)
                     }
+                    .padding(.bottom, 150)
                     .onAppear {
                         self.loadAudio(audioName: "piano-meditation")
                     }
@@ -260,46 +274,13 @@ struct MorningCardView: View {
             let size = proxy.size
             
             Rectangle()
-                .fill(np_arsenic)
+                .fill(np_jap_indigo)
                 .frame(height: size.height, alignment: .bottom)
         }
-        .ignoresSafeArea()
+        .ignoresSafeArea(.all)
     }
 }
 
 #Preview {
     MorningCardView()
 }
-
-// MARK: Progress Bar - custom
-struct BarProgressStyle: ProgressViewStyle {
-    var color: Color = np_white
-    var height: Double = 20.0
-    var labelFontStyle: Font = .body
-    
-    func makeBody(configuration: Configuration) -> some View {
-        let progress = configuration.fractionCompleted ?? 0.0
-        
-        return GeometryReader { geometry in
-            HStack {
-                configuration.label
-                    .font(labelFontStyle)
-                
-                ZStack(alignment: .leading) {
-                    Capsule()
-                        .fill(np_gray)
-                        .opacity(0.15)
-                        .frame(height: height)
-                    
-                    if progress > 0 {
-                        Capsule()
-                            .fill(color)
-                            .frame(width: max(geometry.size.width * CGFloat(progress), height))
-                    }
-                }
-                .frame(width: geometry.size.width, height: height)
-            }
-        }
-    }
-}
-

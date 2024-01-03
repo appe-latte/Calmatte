@@ -119,7 +119,7 @@ struct TaskView: View {
     func HeaderView() -> some View {
         VStack {
             HStack {
-                VStack(alignment: .leading, spacing: 2) {
+                VStack(alignment: .leading, spacing: 5) {
                     HStack(spacing: 2) {
                         Text("Daily Tasks")
                             .font(.system(size: 27, weight: .semibold, design: .rounded))
@@ -143,17 +143,17 @@ struct TaskView: View {
                         .frame(width: 40, height: 40)
                     }
                     
-                    
-                    // MARK: Description
-                    Text("\(milestoneDescription)")
-                        .font(.system(size: 13, weight: .medium, design: .rounded))
-                        .kerning(1)
-                        .minimumScaleFactor(0.5)
-                        .foregroundColor(np_gray)
-                    
                     // MARK: Week
                     TaskWeekView()
-                        .padding(5)
+                        .padding(.horizontal, 2)
+                        .padding(.vertical, 5)
+                    
+                    // MARK: Description
+//                    Text("\(milestoneDescription)")
+//                        .font(.system(size: 13, weight: .medium, design: .rounded))
+//                        .kerning(1)
+//                        .minimumScaleFactor(0.5)
+//                        .foregroundColor(np_gray)
                 }
                 .hAlign(.leading)
             }
