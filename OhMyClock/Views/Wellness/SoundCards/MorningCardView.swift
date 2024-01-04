@@ -167,12 +167,21 @@ struct MorningCardView: View {
                         .clipShape(CustomHeaderShape())
                         .edgesIgnoringSafeArea(.top)
                     
-                    
                     Spacer()
                         .frame(height: 100)
                     
                     // MARK: Piano_meditation
                     VStack(spacing: 25) {
+                        // MARK: Card Description
+//                        Text("Breakfast is the most important meal of the day, but so is starting your day off right...Mentally! Take some time to meditate and get mentally prepared for the day.")
+//                            .frame(width: width - 40, height: 100)
+//                            .font(.system(size: 12, design: .rounded))
+//                            .fontWeight(.medium)
+//                            .textCase(.uppercase)
+//                            .multilineTextAlignment(.leading)
+//                            .lineLimit(4)
+//                            .kerning(1)
+                        
                         HStack(spacing: 5) {
                             Label("Piano Meditation", systemImage: "lock.open.fill")
                                 .font(.system(size: 14))

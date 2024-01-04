@@ -177,6 +177,18 @@ struct AfternoonCardView: View {
                     
                     // MARK: Myrrh
                     VStack(spacing: 25) {
+                        
+                        // Text - Mid-day
+                        Text("The day maybe hectic, but take a mindfulness break to quieten your mind, calm yourself and give yourself the best chance of being productive for the remaining hours of the day.")
+                            .font(.system(size: 9, design: .rounded))
+                            .fontWeight(.medium)
+                            .textCase(.uppercase)
+                            .kerning(1)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(4)
+                            .minimumScaleFactor(0.6)
+                            .padding(.horizontal, 5)
+                        
                         HStack(spacing: 5) {
                             Label("Lo-Fi Myrrh", systemImage: "lock.open.fill")
                                 .font(.system(size: 16))

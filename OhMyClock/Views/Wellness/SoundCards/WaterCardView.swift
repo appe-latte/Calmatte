@@ -177,6 +177,16 @@ struct WaterCardView: View {
                     
                     // MARK: Rain by Candle light Sound
                     VStack(spacing: 25) {
+                        Text("Nothing is more relaxing than listening to calming sound of the rain gently pouring down or the soothing ripples of a stream in the woods.")
+                            .font(.system(size: 9, design: .rounded))
+                            .fontWeight(.medium)
+                            .textCase(.uppercase)
+                            .kerning(1)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(4)
+                            .minimumScaleFactor(0.6)
+                            .padding(.horizontal, 5)
+                        
                         HStack(spacing: 5) {
                             Label("Rain By Candle light", systemImage: "lock.open.fill")
                                 .font(.system(size: 16))
