@@ -22,6 +22,7 @@ struct MorningCardView: View {
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
+    let id = UUID()
     
     // MARK: Load Audio File
     private func loadAudio(audioName: String) {

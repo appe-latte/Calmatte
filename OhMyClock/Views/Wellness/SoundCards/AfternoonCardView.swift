@@ -22,6 +22,7 @@ struct AfternoonCardView: View {
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
+    let id = UUID()
     
     // MARK: Load Audio File
     // Load an audio file by name
@@ -178,16 +179,16 @@ struct AfternoonCardView: View {
                     // MARK: Myrrh
                     VStack(spacing: 25) {
                         
-                        // Text - Mid-day
-                        Text("The day maybe hectic, but take a mindfulness break to quieten your mind, calm yourself and give yourself the best chance of being productive for the remaining hours of the day.")
-                            .font(.system(size: 9, design: .rounded))
-                            .fontWeight(.medium)
-                            .textCase(.uppercase)
-                            .kerning(1)
-                            .multilineTextAlignment(.leading)
-                            .lineLimit(4)
-                            .minimumScaleFactor(0.6)
-                            .padding(.horizontal, 5)
+                        // MARK: CArd Description
+//                        Text("The day maybe hectic, but take a mindfulness break to quieten your mind, calm yourself and give yourself the best chance of being productive for the remaining hours of the day.")
+//                            .font(.system(size: 9, design: .rounded))
+//                            .fontWeight(.medium)
+//                            .textCase(.uppercase)
+//                            .kerning(1)
+//                            .multilineTextAlignment(.leading)
+//                            .lineLimit(4)
+//                            .minimumScaleFactor(0.6)
+//                            .padding(.horizontal, 5)
                         
                         HStack(spacing: 5) {
                             Label("Lo-Fi Myrrh", systemImage: "lock.open.fill")

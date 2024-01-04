@@ -22,6 +22,7 @@ struct NightCardView: View {
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
+    let id = UUID()
     
     // MARK: Load Audio File
     // Load an audio file by name
@@ -177,15 +178,16 @@ struct NightCardView: View {
                     
                     // MARK: Rain by Candle light Sound
                     VStack(spacing: 25) {
-                        Text("It's been a long day, now it's time to relax, reset and prepare your mind for some much needed rest.")
-                            .font(.system(size: 9, design: .rounded))
-                            .fontWeight(.medium)
-                            .textCase(.uppercase)
-                            .kerning(1)
-                            .multilineTextAlignment(.leading)
-                            .lineLimit(4)
-                            .minimumScaleFactor(0.6)
-                            .padding(.horizontal, 5)
+                        // MARK: Card Description
+//                        Text("It's been a long day, now it's time to relax, reset and prepare your mind for some much needed rest.")
+//                            .font(.system(size: 9, design: .rounded))
+//                            .fontWeight(.medium)
+//                            .textCase(.uppercase)
+//                            .kerning(1)
+//                            .multilineTextAlignment(.leading)
+//                            .lineLimit(4)
+//                            .minimumScaleFactor(0.6)
+//                            .padding(.horizontal, 5)
                         
                         HStack(spacing: 5) {
                             Label("Rain By Candle light", systemImage: "lock.open.fill")
