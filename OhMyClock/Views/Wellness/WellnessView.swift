@@ -273,7 +273,7 @@ struct WellnessView: View {
                                     .background(np_gray)
                                 
                                 // MARK: DIY Calm
-                                NavigationLink(destination: MentalHealth101View()){
+                                NavigationLink(destination: DiyCalmView()){
                                     HStack(spacing: 10) {
                                         Text("DIY Calm")
                                             .font(.caption)
@@ -293,7 +293,7 @@ struct WellnessView: View {
                                     .background(np_gray)
                                 
                                 // MARK: Helping Your Squad
-                                NavigationLink(destination: MentalHealth101View()){
+                                NavigationLink(destination: HelpSquadView()){
                                     HStack(spacing: 10) {
                                         Text("Helping Your Squad")
                                             .font(.caption)
@@ -313,7 +313,7 @@ struct WellnessView: View {
                                     .background(np_gray)
                                 
                                 // MARK: When Things Get Real
-                                NavigationLink(destination: MentalHealth101View()){
+                                NavigationLink(destination: GettingRealView()){
                                     HStack(spacing: 10) {
                                         Text("When Things Get Real")
                                             .font(.caption)
@@ -333,7 +333,7 @@ struct WellnessView: View {
                                     .background(np_gray)
                                 
                                 // MARK: Pro Talk
-                                NavigationLink(destination: MentalHealth101View()){
+                                NavigationLink(destination: ProTalkView()){
                                     HStack(spacing: 10) {
                                         Text("Pro Talk")
                                             .font(.caption)
@@ -372,6 +372,10 @@ struct WellnessView: View {
                                 Divider()
                                     .background(np_gray)
                             }
+                            .padding(20)
+                            .background(np_gray)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                            .padding(.bottom, 10)
                         }
                     }
                     

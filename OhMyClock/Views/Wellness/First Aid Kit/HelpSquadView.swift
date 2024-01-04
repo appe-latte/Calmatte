@@ -1,19 +1,17 @@
 //
-//  MentalHealth101View.swift
+//  HelpSquadView.swift
 //  OhMyClock
 //
-//  Created by Stanford L. Khumalo on 2024-01-03.
+//  Created by Stanford L. Khumalo on 2024-01-04.
 //
 
 import SwiftUI
 
-struct MentalHealth101View: View {
+struct HelpSquadView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
-    
-    @State var rowHeight = 40.0
     
     // Disclosure Group declarations
     @State private var isSectionOneExpanded = false
@@ -25,6 +23,9 @@ struct MentalHealth101View: View {
     @State private var isSectionSevenExpanded = false
     @State private var isSectionEightExpanded = false
     @State private var isSectionNineExpanded = false
+    @State private var isSectionTenExpanded = false
+    
+    @State var rowHeight = 40.0
     
     var body: some View {
         NavigationStack {
@@ -33,7 +34,7 @@ struct MentalHealth101View: View {
                     CustomHeaderShape()
                         .frame(width: width, height: 300)
                         .overlay {
-                            Image("mental-101")
+                            Image("help-squad")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: width, height: 400)
@@ -43,12 +44,12 @@ struct MentalHealth101View: View {
                                         HStack {
                                             Spacer()
                                             
-                                            Text("What's Up with Mental Health?")
+                                            Text("Helping Your Squad")
                                                 .font(.system(size: 27, design: .rounded))
                                                 .fontWeight(.bold)
                                                 .textCase(.uppercase)
                                                 .kerning(3)
-                                                .foregroundColor(np_jap_indigo)
+                                                .foregroundColor(np_beige)
                                         }
                                         .padding(.horizontal, 20)
                                         
@@ -66,22 +67,22 @@ struct MentalHealth101View: View {
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 15){
-                            // MARK: Mental Health 101
+                            // MARK: How To Chat
                             VStack {
                                 HStack(spacing: 5) {
-                                    Label("Mental Health 101", systemImage: "")
+                                    Label("How To Chat", systemImage: "")
                                         .font(.system(size: 16))
                                         .fontWeight(.heavy)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_jap_indigo)
+                                        .foregroundColor(np_gray)
                                     
                                     Spacer()
                                 }
                                 
                                 VStack(spacing: 10) {
-                                    DisclosureGroup("What's Mental Health?", isExpanded: $isSectionOneExpanded) {
-                                        Text("Think of it like this – mental health is all about how you handle your emotions, respond to stress, and deal with everyday life. Just like we work out to keep our bodies fit, our minds need a bit of TLC too.")
+                                    DisclosureGroup("Finding the Right Moment", isExpanded: $isSectionOneExpanded) {
+                                        Text("Pick a chill time to talk. Maybe during a walk or a relaxed hangout. Start with, 'Hey, I've noticed you've been a bit down. Want to talk about it?'")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
                                             .foregroundColor(np_jap_indigo)
@@ -90,11 +91,11 @@ struct MentalHealth101View: View {
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_arsenic)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                     
-                                    DisclosureGroup("Why it matters?", isExpanded: $isSectionTwoExpanded) {
-                                        Text("Your mental health influences how you think, feel, and behave. It's a big deal because it impacts your ability to make decisions, build relationships, and generally enjoy life.")
+                                    DisclosureGroup("What to Say", isExpanded: $isSectionTwoExpanded) {
+                                        Text("Keep it real but gentle. Try, 'I'm here for you,' or 'It's totally okay to feel this way.' Avoid clichés like, 'Cheer up,' or 'It could be worse.'")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
                                             .foregroundColor(np_jap_indigo)
@@ -103,31 +104,31 @@ struct MentalHealth101View: View {
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_arsenic)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_beige)
+                                .background(np_gray)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
                             
-                            // MARK: Common Vibes
+                            // MARK: Listen Like a Pro
                             VStack {
                                 HStack(spacing: 5) {
-                                    Label("Common Vibes", systemImage: "")
+                                    Label("Listen Like a Pro", systemImage: "")
                                         .font(.system(size: 16))
                                         .fontWeight(.heavy)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_jap_indigo)
+                                        .foregroundColor(np_gray)
                                     
                                     Spacer()
                                 }
                                 
                                 VStack(spacing: 10) {
-                                    DisclosureGroup("Anxiety", isExpanded: $isSectionThreeExpanded) {
-                                        Text("Ever felt like your brain's a running engine that won't turn off? That's anxiety. It's when worry and stress are like unwanted guests in your head.")
+                                    DisclosureGroup("Full Attention Mode", isExpanded: $isSectionThreeExpanded) {
+                                        Text("When they talk, really listen. Put your phone away. Nod, make eye contact – show you're all ears.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
                                             .foregroundColor(np_jap_indigo)
@@ -136,11 +137,11 @@ struct MentalHealth101View: View {
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_arsenic)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                     
-                                    DisclosureGroup("Depression", isExpanded: $isSectionFourExpanded) {
-                                        Text("This is more than just a bad day; it's feeling down or losing interest in things you used to enjoy, and it can feel like walking through mud.")
+                                    DisclosureGroup("Reflect and Validate", isExpanded: $isSectionFourExpanded) {
+                                        Text("Sometimes, just saying, 'That sounds really tough,' or 'I can see why you'd feel that way,' means a lot.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
                                             .foregroundColor(np_jap_indigo)
@@ -149,11 +150,11 @@ struct MentalHealth101View: View {
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_arsenic)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                     
-                                    DisclosureGroup("Stress", isExpanded: $isSectionFiveExpanded) {
-                                        Text("It's like when your brain is juggling a million balls at once. A bit of stress is normal, but too much can feel overwhelming.")
+                                    DisclosureGroup("No Judging, Just Listening", isExpanded: $isSectionFiveExpanded) {
+                                        Text("It's not about giving advice or fixing things. It's about being there and letting them vent.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
                                             .foregroundColor(np_jap_indigo)
@@ -162,44 +163,31 @@ struct MentalHealth101View: View {
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_arsenic)
-                                    .padding(.horizontal, 20)
-                                    
-                                    DisclosureGroup("Mood Swings", isExpanded: $isSectionSixExpanded) {
-                                        Text("One minute you're up, the next you're down. If these swings are extreme, they can really mess with your day-to-day life.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
-                                    }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
-                                    .kerning(1)
-                                    .textCase(.uppercase)
-                                    .foregroundColor(np_arsenic)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_white)
+                                .background(np_gray)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
                             
-                            // MARK: Spotting The Signs
+                            // MARK: Offering Support, Not Smothering
                             VStack {
                                 HStack(spacing: 5) {
-                                    Label("Spotting The Signs", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.heavy)
+                                    Label("Offering Support, Not Smothering", systemImage: "")
+                                        .font(.system(size: 15))
+                                        .fontWeight(.semibold)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_jap_indigo)
+                                        .foregroundColor(np_gray)
                                     
                                     Spacer()
                                 }
                                 
                                 VStack(spacing: 10) {
-                                    DisclosureGroup("In Yourself", isExpanded: $isSectionSevenExpanded) {
-                                        Text("Notice if you're feeling more down, worried, or stressed than usual. Changes in sleep, appetite, or energy levels are clues too. If you're finding it hard to enjoy things you normally would, that's a sign.")
+                                    DisclosureGroup("Small Gestures Count", isExpanded: $isSectionSixExpanded) {
+                                        Text("Sometimes it's the little things – sending a meme, a text, or just hanging out.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
                                             .foregroundColor(np_jap_indigo)
@@ -208,11 +196,11 @@ struct MentalHealth101View: View {
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_arsenic)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                     
-                                    DisclosureGroup("In Friends", isExpanded: $isSectionEightExpanded) {
-                                        Text("They might seem more withdrawn, irritable, or just not themselves. Maybe they're not hanging out as much or have stopped doing things they love.")
+                                    DisclosureGroup("Encourage, Don't Push", isExpanded: $isSectionSevenExpanded) {
+                                        Text("Suggest they talk to someone who can help, like a counselor, but don’t force it. Say, 'Have you thought about talking to someone professional about this?'")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
                                             .foregroundColor(np_jap_indigo)
@@ -221,24 +209,70 @@ struct MentalHealth101View: View {
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_arsenic)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                     
-                                    DisclosureGroup("What's Normal?", isExpanded: $isSectionNineExpanded) {
-                                        Text("Everyone has off days, but if these feelings stick around for a while or start to really get in the way of life, it's time to take them seriously.")
+                                    DisclosureGroup("Respect Their Space", isExpanded: $isSectionEightExpanded) {
+                                        Text("If they're not ready to open up, that's cool. Just let them know you're there when they are.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
                                             .foregroundColor(np_jap_indigo)
                                     }
-                                    .font(.system(size: 13))
+                                    .font(.system(size: 12))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_arsenic)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_white)
+                                .background(np_gray)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .padding(.bottom, 10)
+                            }
+                            
+                            // MARK: When to Step Up
+                            VStack {
+                                HStack(spacing: 5) {
+                                    Label("When to Step Up", systemImage: "")
+                                        .font(.system(size: 16))
+                                        .fontWeight(.semibold)
+                                        .kerning(2)
+                                        .textCase(.uppercase)
+                                        .foregroundColor(np_gray)
+                                    
+                                    Spacer()
+                                }
+                                
+                                VStack(spacing: 10) {
+                                    DisclosureGroup("Red Flags", isExpanded: $isSectionNineExpanded) {
+                                        Text("If they talk about self-harm or seem really down, it's more than just being a good listener. Encourage them to seek professional help.")
+                                            .font(.system(size: 12))
+                                            .fontWeight(.medium)
+                                            .foregroundColor(np_jap_indigo)
+                                    }
+                                    .font(.system(size: 13))
+                                    .fontWeight(.semibold)
+                                    .kerning(1)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_jap_indigo)
+                                    .padding(.horizontal, 20)
+                                    
+                                    DisclosureGroup("Staying Safe", isExpanded: $isSectionTenExpanded) {
+                                        Text("If you ever think they're in immediate danger, it’s okay to reach out for more help – like a trusted adult or even emergency services.")
+                                            .font(.system(size: 12))
+                                            .fontWeight(.medium)
+                                            .foregroundColor(np_jap_indigo)
+                                    }
+                                    .font(.system(size: 13))
+                                    .fontWeight(.semibold)
+                                    .kerning(1)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_jap_indigo)
+                                    .padding(.horizontal, 20)
+                                }
+                                .padding(20)
+                                .background(np_gray)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -273,7 +307,7 @@ struct MentalHealth101View: View {
                 .frame(height: size.height, alignment: .bottom)
             
             Rectangle()
-                .fill(cov_green)
+                .fill(np_jap_indigo)
                 .opacity(0.98)
                 .frame(height: size.height, alignment: .bottom)
         }
@@ -282,5 +316,5 @@ struct MentalHealth101View: View {
 }
 
 #Preview {
-    MentalHealth101View()
+    HelpSquadView()
 }
