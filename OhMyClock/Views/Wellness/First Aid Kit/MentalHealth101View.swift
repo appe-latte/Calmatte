@@ -68,42 +68,46 @@ struct MentalHealth101View: View {
                         VStack(spacing: 15){
                             // MARK: Mental Health 101
                             VStack(spacing: 15) {
-                                HStack(alignment: .center, spacing: 5) {
+                                HStack(spacing: 5) {
                                     Label("Mental Health 101", systemImage: "info.circle.fill")
                                         .font(.system(size: 16))
                                         .fontWeight(.heavy)
                                         .kerning(2)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_white)
+                                    
+                                    Spacer()
                                 }
                                 
                                 DisclosureGroup("What's Mental Health?", isExpanded: $isSectionOneExpanded) {
                                     Text("Think of it like this – mental health is all about how you handle your emotions, respond to stress, and deal with everyday life. Just like we work out to keep our bodies fit, our minds need a bit of TLC too.")
                                         .font(.system(size: 9))
                                         .fontWeight(.medium)
+                                        .foregroundColor(np_white)
                                 }
                                 .font(.system(size: 12))
                                 .fontWeight(.semibold)
                                 .kerning(1)
                                 .textCase(.uppercase)
-                                .foregroundColor(np_white)
+                                .foregroundColor(np_gray)
                                 
                                 DisclosureGroup("Why it matters?", isExpanded: $isSectionTwoExpanded) {
                                     Text("Your mental health influences how you think, feel, and behave. It's a big deal because it impacts your ability to make decisions, build relationships, and generally enjoy life.")
                                         .font(.system(size: 9))
                                         .fontWeight(.medium)
+                                        .foregroundColor(np_white)
                                 }
                                 .font(.system(size: 12))
                                 .fontWeight(.semibold)
                                 .kerning(1)
                                 .textCase(.uppercase)
-                                .foregroundColor(np_white)
+                                .foregroundColor(np_gray)
                             }
                             .padding(.bottom, 10)
                             
                             // MARK: Common Vibes
                             VStack(spacing: 25) {
-                                HStack(alignment: .center, spacing: 5) {
+                                HStack(spacing: 5) {
                                     Label("Common Vibes", systemImage: "info.circle.fill")
                                         .font(.system(size: 16))
                                         .fontWeight(.heavy)
@@ -118,51 +122,55 @@ struct MentalHealth101View: View {
                                     Text("Ever felt like your brain's a running engine that won't turn off? That's anxiety. It's when worry and stress are like unwanted guests in your head.")
                                         .font(.system(size: 9))
                                         .fontWeight(.medium)
+                                        .foregroundColor(np_white)
                                 }
                                 .font(.system(size: 12))
                                 .fontWeight(.semibold)
                                 .kerning(1)
                                 .textCase(.uppercase)
-                                .foregroundColor(np_white)
+                                .foregroundColor(np_gray)
                                 
                                 DisclosureGroup("Depression", isExpanded: $isSectionFourExpanded) {
                                     Text("This is more than just a bad day; it's feeling down or losing interest in things you used to enjoy, and it can feel like walking through mud.")
                                         .font(.system(size: 9))
                                         .fontWeight(.medium)
+                                        .foregroundColor(np_white)
                                 }
                                 .font(.system(size: 12))
                                 .fontWeight(.semibold)
                                 .kerning(1)
                                 .textCase(.uppercase)
-                                .foregroundColor(np_white)
+                                .foregroundColor(np_gray)
                                 
                                 DisclosureGroup("Stress", isExpanded: $isSectionFiveExpanded) {
                                     Text("It's like when your brain is juggling a million balls at once. A bit of stress is normal, but too much can feel overwhelming.")
                                         .font(.system(size: 9))
                                         .fontWeight(.medium)
+                                        .foregroundColor(np_white)
                                 }
                                 .font(.system(size: 12))
                                 .fontWeight(.semibold)
                                 .kerning(1)
                                 .textCase(.uppercase)
-                                .foregroundColor(np_white)
+                                .foregroundColor(np_gray)
                                 
                                 DisclosureGroup("Mood Swings", isExpanded: $isSectionSixExpanded) {
                                     Text("One minute you're up, the next you're down. If these swings are extreme, they can really mess with your day-to-day life.")
                                         .font(.system(size: 9))
                                         .fontWeight(.medium)
+                                        .foregroundColor(np_white)
                                 }
                                 .font(.system(size: 12))
                                 .fontWeight(.semibold)
                                 .kerning(1)
                                 .textCase(.uppercase)
-                                .foregroundColor(np_white)
+                                .foregroundColor(np_gray)
                             }
                             .padding(.bottom, 10)
                             
                             // MARK: Spotting The Signs
                             VStack(spacing: 25) {
-                                HStack(alignment: .center, spacing: 5) {
+                                HStack(spacing: 5) {
                                     Label("Spotting The Signs", systemImage: "info.circle.fill")
                                         .font(.system(size: 16))
                                         .fontWeight(.semibold)
@@ -177,34 +185,37 @@ struct MentalHealth101View: View {
                                     Text("Notice if you're feeling more down, worried, or stressed than usual. Changes in sleep, appetite, or energy levels are clues too. If you're finding it hard to enjoy things you normally would, that's a sign.")
                                         .font(.system(size: 9))
                                         .fontWeight(.medium)
+                                        .foregroundColor(np_white)
                                 }
                                 .font(.system(size: 12))
                                 .fontWeight(.semibold)
                                 .kerning(1)
                                 .textCase(.uppercase)
-                                .foregroundColor(np_white)
+                                .foregroundColor(np_gray)
                                 
                                 DisclosureGroup("In Friends", isExpanded: $isSectionEightExpanded) {
                                     Text("They might seem more withdrawn, irritable, or just not themselves. Maybe they're not hanging out as much or have stopped doing things they love.")
                                         .font(.system(size: 9))
                                         .fontWeight(.medium)
+                                        .foregroundColor(np_white)
                                 }
                                 .font(.system(size: 12))
                                 .fontWeight(.semibold)
                                 .kerning(1)
                                 .textCase(.uppercase)
-                                .foregroundColor(np_white)
+                                .foregroundColor(np_gray)
                                 
                                 DisclosureGroup("What's Normal?", isExpanded: $isSectionNineExpanded) {
                                     Text("Everyone has off days, but if these feelings stick around for a while or start to really get in the way of life, it's time to take them seriously.")
                                         .font(.system(size: 9))
                                         .fontWeight(.medium)
+                                        .foregroundColor(np_white)
                                 }
                                 .font(.system(size: 12))
                                 .fontWeight(.semibold)
                                 .kerning(1)
                                 .textCase(.uppercase)
-                                .foregroundColor(np_white)
+                                .foregroundColor(np_gray)
                             }
                         }
                         .padding(.horizontal, 10)

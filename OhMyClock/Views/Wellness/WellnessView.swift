@@ -29,24 +29,25 @@ struct WellnessView: View {
                 VStack {
                     HeaderView()
                     
-                    Spacer()
-                    
                     // MARK: Audio Section
                     VStack {
                         HStack {
-                            Text("Audio")
+                            Text("Wellness Audio")
                                 .font(.footnote)
-                                .fontWeight(.heavy)
+                                .fontWeight(.bold)
                                 .kerning(2)
                                 .textCase(.uppercase)
-                                .foregroundColor(np_white)
+                                .foregroundColor(np_jap_indigo)
+                                .padding(5)
+                                .background(np_white)
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
                             
                             Spacer()
                         }
                         .padding(.horizontal)
                         
                         // MARK: Card Carousel
-                        ScrollView(.horizontal, showsIndicators: false) {
+                        ScrollView(.horizontal, showsIndicators: true) {
                             HStack(spacing: 10) {
                                 // MARK: Morning Card
                                 NavigationLink(destination: MorningCardView()){
@@ -233,127 +234,144 @@ struct WellnessView: View {
                     }
                     
                     // MARK: Mental Health First Kit
-                    NavigationStack {
-                        Group {
-                            // MARK: Mental Health 101
-                            NavigationLink(destination: MentalHealth101View()){
-                                HStack(spacing: 10) {
-                                    Text("Mental Health 101")
-                                        .font(.caption)
-                                        .fontWeight(.semibold)
-                                        .kerning(1)
-                                        .textCase(.uppercase)
-                                        .foregroundColor(np_white)
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "chevron.right")
+                    VStack(spacing: 10) {
+                        HStack {
+                            Text("Mental Health First Kit")
+                                .font(.footnote)
+                                .fontWeight(.bold)
+                                .kerning(2)
+                                .textCase(.uppercase)
+                                .foregroundColor(np_jap_indigo)
+                                .padding(5)
+                                .background(np_white)
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                            
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                        
+                        NavigationStack {
+                            Group {
+                                // MARK: Mental Health 101
+                                NavigationLink(destination: MentalHealth101View()){
+                                    HStack(spacing: 10) {
+                                        Text("Mental Health 101")
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .kerning(1)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(np_white)
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "chevron.right")
+                                    }
+                                    .padding(.horizontal, 10)
                                 }
-                                .padding(.horizontal, 10)
-                            }
-                            
-                            Divider()
-                                .background(np_gray)
-                            
-                            // MARK: DIY Calm
-                            NavigationLink(destination: MentalHealth101View()){
-                                HStack(spacing: 10) {
-                                    Text("DIY Calm")
-                                        .font(.caption)
-                                        .fontWeight(.semibold)
-                                        .kerning(1)
-                                        .textCase(.uppercase)
-                                        .foregroundColor(np_white)
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "chevron.right")
+                                
+                                Divider()
+                                    .background(np_gray)
+                                
+                                // MARK: DIY Calm
+                                NavigationLink(destination: MentalHealth101View()){
+                                    HStack(spacing: 10) {
+                                        Text("DIY Calm")
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .kerning(1)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(np_white)
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "chevron.right")
+                                    }
+                                    .padding(.horizontal, 10)
                                 }
-                                .padding(.horizontal, 10)
-                            }
-                            
-                            Divider()
-                                .background(np_gray)
-                            
-                            // MARK: Helping Your Squad
-                            NavigationLink(destination: MentalHealth101View()){
-                                HStack(spacing: 10) {
-                                    Text("Helping Your Squad")
-                                        .font(.caption)
-                                        .fontWeight(.semibold)
-                                        .kerning(1)
-                                        .textCase(.uppercase)
-                                        .foregroundColor(np_white)
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "chevron.right")
+                                
+                                Divider()
+                                    .background(np_gray)
+                                
+                                // MARK: Helping Your Squad
+                                NavigationLink(destination: MentalHealth101View()){
+                                    HStack(spacing: 10) {
+                                        Text("Helping Your Squad")
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .kerning(1)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(np_white)
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "chevron.right")
+                                    }
+                                    .padding(.horizontal, 10)
                                 }
-                                .padding(.horizontal, 10)
-                            }
-                            
-                            Divider()
-                                .background(np_gray)
-                            
-                            // MARK: When Things Get Real
-                            NavigationLink(destination: MentalHealth101View()){
-                                HStack(spacing: 10) {
-                                    Text("When Things Get Real")
-                                        .font(.caption)
-                                        .fontWeight(.semibold)
-                                        .kerning(1)
-                                        .textCase(.uppercase)
-                                        .foregroundColor(np_white)
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "chevron.right")
+                                
+                                Divider()
+                                    .background(np_gray)
+                                
+                                // MARK: When Things Get Real
+                                NavigationLink(destination: MentalHealth101View()){
+                                    HStack(spacing: 10) {
+                                        Text("When Things Get Real")
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .kerning(1)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(np_white)
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "chevron.right")
+                                    }
+                                    .padding(.horizontal, 10)
                                 }
-                                .padding(.horizontal, 10)
-                            }
-                            
-                            Divider()
-                                .background(np_gray)
-                            
-                            // MARK: Pro Talk
-                            NavigationLink(destination: MentalHealth101View()){
-                                HStack(spacing: 10) {
-                                    Text("Pro Talk")
-                                        .font(.caption)
-                                        .fontWeight(.semibold)
-                                        .kerning(1)
-                                        .textCase(.uppercase)
-                                        .foregroundColor(np_white)
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "chevron.right")
+                                
+                                Divider()
+                                    .background(np_gray)
+                                
+                                // MARK: Pro Talk
+                                NavigationLink(destination: MentalHealth101View()){
+                                    HStack(spacing: 10) {
+                                        Text("Pro Talk")
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .kerning(1)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(np_white)
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "chevron.right")
+                                    }
+                                    .padding(.horizontal, 10)
                                 }
-                                .padding(.horizontal, 10)
-                            }
-                            
-                            Divider()
-                                .background(np_gray)
-                            
-                            // MARK: Keepin' It Steady
-                            NavigationLink(destination: MentalHealth101View()){
-                                HStack(spacing: 10) {
-                                    Text("Keepin' It Steady")
-                                        .font(.caption)
-                                        .fontWeight(.semibold)
-                                        .kerning(1)
-                                        .textCase(.uppercase)
-                                        .foregroundColor(np_white)
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "chevron.right")
+                                
+                                Divider()
+                                    .background(np_gray)
+                                
+                                // MARK: Keepin' It Steady
+                                NavigationLink(destination: MentalHealth101View()){
+                                    HStack(spacing: 10) {
+                                        Text("Keepin' It Steady")
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .kerning(1)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(np_white)
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "chevron.right")
+                                    }
+                                    .padding(.horizontal, 10)
                                 }
-                                .padding(.horizontal, 10)
+                                
+                                Divider()
+                                    .background(np_gray)
                             }
-                            
-                            Divider()
-                                .background(np_gray)
                         }
                     }
                     
