@@ -29,353 +29,357 @@ struct WellnessView: View {
                 VStack {
                     HeaderView()
                     
-                    // MARK: Audio Section
-                    VStack {
-                        HStack {
-                            Text("Wellness Audio")
-                                .font(.footnote)
-                                .fontWeight(.bold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_jap_indigo)
-                                .padding(5)
-                                .background(np_white)
-                                .clipShape(RoundedRectangle(cornerRadius: 5))
-                            
-                            Spacer()
-                        }
-                        .padding(.horizontal)
-                        
-                        // MARK: Card Carousel
-                        ScrollView(.horizontal, showsIndicators: true) {
-                            HStack(spacing: 10) {
-                                // MARK: Morning Card
-                                NavigationLink(destination: MorningCardView()){
-                                    Image("img-sunrise")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 250, height: 250)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        .padding(.vertical, 10)
-                                        .overlay {
-                                            VStack {
-                                                HStack {
-                                                    Label("Rise n' Shine", systemImage: "")
-                                                        .font(.system(size: 10))
-                                                        .fontWeight(.semibold)
-                                                        .kerning(2)
-                                                        .textCase(.uppercase)
-                                                        .foregroundColor(np_jap_indigo)
-                                                        .padding(5)
-                                                        .background(np_white)
-                                                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                    
-                                                    Spacer()
-                                                }
-                                                
-                                                Spacer()
-                                            }
-                                            .padding(.horizontal)
-                                        }
-                                }
+                    ScrollView(.vertical, showsIndicators: false) {
+                        // MARK: Audio Section
+                        VStack {
+                            HStack {
+                                Text("Wellness Audio")
+                                    .font(.footnote)
+                                    .fontWeight(.bold)
+                                    .kerning(2)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_jap_indigo)
+                                    .padding(5)
+                                    .background(np_white)
+                                    .clipShape(RoundedRectangle(cornerRadius: 5))
                                 
-                                // MARK: Afternoon Card
-                                NavigationLink(destination: AfternoonCardView()){
-                                    Image("img-day")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 250, height: 250)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        .padding(.vertical, 10)
-                                        .overlay {
-                                            VStack {
-                                                HStack {
-                                                    Label("Mid-day Pick Me Up", systemImage: "")
-                                                        .font(.system(size: 10))
-                                                        .fontWeight(.semibold)
-                                                        .kerning(2)
-                                                        .textCase(.uppercase)
-                                                        .foregroundColor(np_white)
-                                                        .padding(5)
-                                                        .background(np_jap_indigo)
-                                                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                    
-                                                    Spacer()
-                                                }
-                                                
-                                                Spacer()
-                                            }
-                                            .padding(.horizontal)
-                                        }
-                                }
-                                
-                                // MARK: Evening Card
-                                NavigationLink(destination: NightCardView()){
-                                    Image("img-night")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 250, height: 250)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        .padding(.vertical, 10)
-                                        .overlay {
-                                            VStack {
-                                                HStack {
-                                                    Label("Couch n' Chill", systemImage: "")
-                                                        .font(.system(size: 10))
-                                                        .fontWeight(.semibold)
-                                                        .kerning(2)
-                                                        .textCase(.uppercase)
-                                                        .foregroundColor(np_jap_indigo)
-                                                        .padding(5)
-                                                        .background(np_white)
-                                                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                    
-                                                    Spacer()
-                                                }
-                                                
-                                                Spacer()
-                                            }
-                                            .padding(.horizontal)
-                                        }
-                                }
-                                
-                                // MARK: Beach Card
-                                NavigationLink(destination: BeachCardView()){
-                                    Image("img-beach")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 250, height: 250)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        .padding(.vertical, 10)
-                                        .overlay {
-                                            VStack {
-                                                HStack {
-                                                    Label("Take Your Sunscreen", systemImage: "")
-                                                        .font(.system(size: 10))
-                                                        .fontWeight(.semibold)
-                                                        .kerning(2)
-                                                        .textCase(.uppercase)
-                                                        .foregroundColor(np_white)
-                                                        .padding(5)
-                                                        .background(np_jap_indigo)
-                                                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                    
-                                                    Spacer()
-                                                }
-                                                
-                                                Spacer()
-                                            }
-                                            .padding(.horizontal)
-                                        }
-                                }
-                                
-                                // MARK: Nature Card
-                                NavigationLink(destination: NatureCardView()){
-                                    Image("img-nature")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 250, height: 250)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        .padding(.vertical, 10)
-                                        .overlay {
-                                            VStack {
-                                                HStack {
-                                                    Label("Be One With Nature", systemImage: "")
-                                                        .font(.system(size: 10))
-                                                        .fontWeight(.semibold)
-                                                        .kerning(2)
-                                                        .textCase(.uppercase)
-                                                        .foregroundColor(np_jap_indigo)
-                                                        .padding(5)
-                                                        .background(np_white)
-                                                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                    
-                                                    Spacer()
-                                                }
-                                                
-                                                Spacer()
-                                            }
-                                            .padding(.horizontal)
-                                        }
-                                }
-                                
-                                // MARK: Water's Healing Powers
-                                NavigationLink(destination: WaterCardView()){
-                                    Image("img-water")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 250, height: 250)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        .padding(.vertical, 10)
-                                        .overlay {
-                                            VStack {
-                                                HStack {
-                                                    Label("Water's Healing Powers", systemImage: "")
-                                                        .font(.system(size: 10))
-                                                        .fontWeight(.semibold)
-                                                        .kerning(2)
-                                                        .textCase(.uppercase)
-                                                        .foregroundColor(np_white)
-                                                        .padding(5)
-                                                        .background(np_jap_indigo)
-                                                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                    
-                                                    Spacer()
-                                                }
-                                                
-                                                Spacer()
-                                            }
-                                            .padding(.horizontal)
-                                        }
-                                }
+                                Spacer()
                             }
-                            .padding(10)
-                        }
-                    }
-                    
-                    // MARK: Mental Health First Kit
-                    VStack(spacing: 10) {
-                        HStack {
-                            Text("Mental Health First Kit")
-                                .font(.footnote)
-                                .fontWeight(.bold)
-                                .kerning(2)
-                                .textCase(.uppercase)
-                                .foregroundColor(np_jap_indigo)
-                                .padding(5)
-                                .background(np_white)
-                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                            .padding(.horizontal)
                             
-                            Spacer()
+                            // MARK: Card Carousel
+                            ScrollView(.horizontal, showsIndicators: true) {
+                                HStack(spacing: 10) {
+                                    // MARK: Morning Card
+                                    NavigationLink(destination: MorningCardView()){
+                                        Image("img-sunrise")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 250, height: 250)
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            .padding(.vertical, 10)
+                                            .overlay {
+                                                VStack {
+                                                    HStack {
+                                                        Label("Rise n' Shine", systemImage: "")
+                                                            .font(.system(size: 10))
+                                                            .fontWeight(.semibold)
+                                                            .kerning(2)
+                                                            .textCase(.uppercase)
+                                                            .foregroundColor(np_jap_indigo)
+                                                            .padding(5)
+                                                            .background(np_white)
+                                                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                                                        
+                                                        Spacer()
+                                                    }
+                                                    
+                                                    Spacer()
+                                                }
+                                                .padding(.horizontal)
+                                            }
+                                    }
+                                    
+                                    // MARK: Afternoon Card
+                                    NavigationLink(destination: AfternoonCardView()){
+                                        Image("img-day")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 250, height: 250)
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            .padding(.vertical, 10)
+                                            .overlay {
+                                                VStack {
+                                                    HStack {
+                                                        Label("Mid-day Pick Me Up", systemImage: "")
+                                                            .font(.system(size: 10))
+                                                            .fontWeight(.semibold)
+                                                            .kerning(2)
+                                                            .textCase(.uppercase)
+                                                            .foregroundColor(np_white)
+                                                            .padding(5)
+                                                            .background(np_jap_indigo)
+                                                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                                                        
+                                                        Spacer()
+                                                    }
+                                                    
+                                                    Spacer()
+                                                }
+                                                .padding(.horizontal)
+                                            }
+                                    }
+                                    
+                                    // MARK: Evening Card
+                                    NavigationLink(destination: NightCardView()){
+                                        Image("img-night")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 250, height: 250)
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            .padding(.vertical, 10)
+                                            .overlay {
+                                                VStack {
+                                                    HStack {
+                                                        Label("Couch n' Chill", systemImage: "")
+                                                            .font(.system(size: 10))
+                                                            .fontWeight(.semibold)
+                                                            .kerning(2)
+                                                            .textCase(.uppercase)
+                                                            .foregroundColor(np_jap_indigo)
+                                                            .padding(5)
+                                                            .background(np_white)
+                                                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                                                        
+                                                        Spacer()
+                                                    }
+                                                    
+                                                    Spacer()
+                                                }
+                                                .padding(.horizontal)
+                                            }
+                                    }
+                                    
+                                    // MARK: Beach Card
+                                    NavigationLink(destination: BeachCardView()){
+                                        Image("img-beach")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 250, height: 250)
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            .padding(.vertical, 10)
+                                            .overlay {
+                                                VStack {
+                                                    HStack {
+                                                        Label("Take Your Sunscreen", systemImage: "")
+                                                            .font(.system(size: 10))
+                                                            .fontWeight(.semibold)
+                                                            .kerning(2)
+                                                            .textCase(.uppercase)
+                                                            .foregroundColor(np_white)
+                                                            .padding(5)
+                                                            .background(np_jap_indigo)
+                                                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                                                        
+                                                        Spacer()
+                                                    }
+                                                    
+                                                    Spacer()
+                                                }
+                                                .padding(.horizontal)
+                                            }
+                                    }
+                                    
+                                    // MARK: Nature Card
+                                    NavigationLink(destination: NatureCardView()){
+                                        Image("img-nature")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 250, height: 250)
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            .padding(.vertical, 10)
+                                            .overlay {
+                                                VStack {
+                                                    HStack {
+                                                        Label("Be One With Nature", systemImage: "")
+                                                            .font(.system(size: 10))
+                                                            .fontWeight(.semibold)
+                                                            .kerning(2)
+                                                            .textCase(.uppercase)
+                                                            .foregroundColor(np_jap_indigo)
+                                                            .padding(5)
+                                                            .background(np_white)
+                                                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                                                        
+                                                        Spacer()
+                                                    }
+                                                    
+                                                    Spacer()
+                                                }
+                                                .padding(.horizontal)
+                                            }
+                                    }
+                                    
+                                    // MARK: Water's Healing Powers
+                                    NavigationLink(destination: WaterCardView()){
+                                        Image("img-water")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 250, height: 250)
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            .padding(.vertical, 10)
+                                            .overlay {
+                                                VStack {
+                                                    HStack {
+                                                        Label("Water's Healing Powers", systemImage: "")
+                                                            .font(.system(size: 10))
+                                                            .fontWeight(.semibold)
+                                                            .kerning(2)
+                                                            .textCase(.uppercase)
+                                                            .foregroundColor(np_white)
+                                                            .padding(5)
+                                                            .background(np_jap_indigo)
+                                                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                                                        
+                                                        Spacer()
+                                                    }
+                                                    
+                                                    Spacer()
+                                                }
+                                                .padding(.horizontal)
+                                            }
+                                    }
+                                }
+                                .padding(10)
+                            }
                         }
-                        .padding(.horizontal)
                         
-                        NavigationStack {
-                            Group {
-                                // MARK: Mental Health 101
-                                NavigationLink(destination: MentalHealth101View()){
-                                    HStack(spacing: 10) {
-                                        Text("Mental Health 101")
-                                            .font(.caption)
-                                            .fontWeight(.semibold)
-                                            .kerning(1)
-                                            .textCase(.uppercase)
-                                            .foregroundColor(np_white)
+                        // MARK: Mental Health First Kit
+                        VStack(spacing: 10) {
+                            HStack {
+                                Text("Mental Health First Aid Kit")
+                                    .font(.footnote)
+                                    .fontWeight(.bold)
+                                    .kerning(2)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_jap_indigo)
+                                    .padding(5)
+                                    .background(np_white)
+                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                                
+                                Spacer()
+                            }
+                            .padding(.horizontal)
+                            
+                            NavigationStack {
+                                Group {
+                                    VStack(spacing: 15) {
+                                        // MARK: Mental Health 101
+                                        NavigationLink(destination: MentalHealth101View()){
+                                            HStack(spacing: 10) {
+                                                Text("Mental Health 101")
+                                                    .font(.system(size: 14))
+                                                    .fontWeight(.semibold)
+                                                    .kerning(1)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(np_beige)
+                                                
+                                                Spacer()
+                                                
+                                                Image(systemName: "chevron.right")
+                                            }
+                                            .padding(.horizontal, 10)
+                                        }
                                         
-                                        Spacer()
+                                        Divider()
+                                            .background(np_gray)
                                         
-                                        Image(systemName: "chevron.right")
+                                        // MARK: DIY Calm
+                                        NavigationLink(destination: DiyCalmView()){
+                                            HStack(spacing: 10) {
+                                                Text("DIY Calm")
+                                                    .font(.system(size: 14))
+                                                    .fontWeight(.semibold)
+                                                    .kerning(1)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(np_beige)
+                                                
+                                                Spacer()
+                                                
+                                                Image(systemName: "chevron.right")
+                                            }
+                                            .padding(.horizontal, 10)
+                                        }
+                                        .font(.system(size: 14))
+                                        .fontWeight(.medium)
+                                        .foregroundColor(np_beige)
+                                        
+                                        Divider()
+                                            .background(np_gray)
+                                        
+                                        // MARK: Helping Your Squad
+                                        NavigationLink(destination: HelpSquadView()){
+                                            HStack(spacing: 10) {
+                                                Text("Helping Your Squad")
+                                                    .font(.system(size: 14))
+                                                    .fontWeight(.semibold)
+                                                    .kerning(1)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(np_beige)
+                                                
+                                                Spacer()
+                                                
+                                                Image(systemName: "chevron.right")
+                                            }
+                                            .padding(.horizontal, 10)
+                                        }
+                                        
+                                        Divider()
+                                            .background(np_gray)
+                                        
+                                        // MARK: When Things Get Real
+                                        NavigationLink(destination: GettingRealView()){
+                                            HStack(spacing: 10) {
+                                                Text("When Things Get Real")
+                                                    .font(.system(size: 14))
+                                                    .fontWeight(.semibold)
+                                                    .kerning(1)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(np_beige)
+                                                
+                                                Spacer()
+                                                
+                                                Image(systemName: "chevron.right")
+                                            }
+                                            .padding(.horizontal, 10)
+                                        }
+                                        
+                                        Divider()
+                                            .background(np_gray)
+                                        
+                                        // MARK: Pro Talk
+                                        NavigationLink(destination: ProTalkView()){
+                                            HStack(spacing: 10) {
+                                                Text("Pro Talk")
+                                                    .font(.system(size: 14))
+                                                    .fontWeight(.semibold)
+                                                    .kerning(1)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(np_beige)
+                                                
+                                                Spacer()
+                                                
+                                                Image(systemName: "chevron.right")
+                                            }
+                                            .padding(.horizontal, 10)
+                                        }
+                                        
+                                        Divider()
+                                            .background(np_gray)
+                                        
+                                        // MARK: Keepin' It Steady
+                                        NavigationLink(destination: SelfCareView()){
+                                            HStack(spacing: 10) {
+                                                Text("Keepin' It Steady")
+                                                    .font(.system(size: 14))
+                                                    .fontWeight(.semibold)
+                                                    .kerning(1)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(np_beige)
+                                                
+                                                Spacer()
+                                                
+                                                Image(systemName: "chevron.right")
+                                            }
+                                            .padding(.horizontal, 10)
+                                        }
                                     }
-                                    .padding(.horizontal, 10)
                                 }
-                                
-                                Divider()
-                                    .background(np_gray)
-                                
-                                // MARK: DIY Calm
-                                NavigationLink(destination: DiyCalmView()){
-                                    HStack(spacing: 10) {
-                                        Text("DIY Calm")
-                                            .font(.caption)
-                                            .fontWeight(.semibold)
-                                            .kerning(1)
-                                            .textCase(.uppercase)
-                                            .foregroundColor(np_white)
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "chevron.right")
-                                    }
-                                    .padding(.horizontal, 10)
-                                }
-                                
-                                Divider()
-                                    .background(np_gray)
-                                
-                                // MARK: Helping Your Squad
-                                NavigationLink(destination: HelpSquadView()){
-                                    HStack(spacing: 10) {
-                                        Text("Helping Your Squad")
-                                            .font(.caption)
-                                            .fontWeight(.semibold)
-                                            .kerning(1)
-                                            .textCase(.uppercase)
-                                            .foregroundColor(np_white)
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "chevron.right")
-                                    }
-                                    .padding(.horizontal, 10)
-                                }
-                                
-                                Divider()
-                                    .background(np_gray)
-                                
-                                // MARK: When Things Get Real
-                                NavigationLink(destination: GettingRealView()){
-                                    HStack(spacing: 10) {
-                                        Text("When Things Get Real")
-                                            .font(.caption)
-                                            .fontWeight(.semibold)
-                                            .kerning(1)
-                                            .textCase(.uppercase)
-                                            .foregroundColor(np_white)
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "chevron.right")
-                                    }
-                                    .padding(.horizontal, 10)
-                                }
-                                
-                                Divider()
-                                    .background(np_gray)
-                                
-                                // MARK: Pro Talk
-                                NavigationLink(destination: ProTalkView()){
-                                    HStack(spacing: 10) {
-                                        Text("Pro Talk")
-                                            .font(.caption)
-                                            .fontWeight(.semibold)
-                                            .kerning(1)
-                                            .textCase(.uppercase)
-                                            .foregroundColor(np_white)
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "chevron.right")
-                                    }
-                                    .padding(.horizontal, 10)
-                                }
-                                
-                                Divider()
-                                    .background(np_gray)
-                                
-                                // MARK: Keepin' It Steady
-                                NavigationLink(destination: MentalHealth101View()){
-                                    HStack(spacing: 10) {
-                                        Text("Keepin' It Steady")
-                                            .font(.caption)
-                                            .fontWeight(.semibold)
-                                            .kerning(1)
-                                            .textCase(.uppercase)
-                                            .foregroundColor(np_white)
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "chevron.right")
-                                    }
-                                    .padding(.horizontal, 10)
-                                }
-                                
-                                Divider()
-                                    .background(np_gray)
                             }
                             .padding(20)
-                            .background(np_gray)
+                            .background(np_jap_indigo)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
-                            .padding(.bottom, 10)
+                            .padding(20)
                         }
                     }
                     

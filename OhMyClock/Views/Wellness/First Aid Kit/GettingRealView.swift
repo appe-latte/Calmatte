@@ -44,20 +44,20 @@ struct GettingRealView: View {
                                             Spacer()
                                             
                                             Text("When Things Get Real")
-                                                .font(.system(size: 27, design: .rounded))
+                                                .font(.system(size: 21, design: .rounded))
                                                 .fontWeight(.bold)
                                                 .textCase(.uppercase)
                                                 .kerning(3)
                                                 .foregroundColor(np_white)
                                                 .padding(5)
-                                                .background(np_black)
+                                                .background(np_red)
                                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                                 .padding(.bottom, 10)
                                         }
                                         .padding(.horizontal, 20)
                                         
                                         Spacer()
-                                            .frame(height: 50)
+                                            .frame(height: 150)
                                     }
                                     .padding(.vertical, 10)
                                 }
@@ -78,7 +78,7 @@ struct GettingRealView: View {
                                         .fontWeight(.heavy)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_gray)
+                                        .foregroundColor(np_light_gray)
                                     
                                     Spacer()
                                 }
@@ -97,6 +97,8 @@ struct GettingRealView: View {
                                     .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                     
+                                    Divider()
+                                    
                                     DisclosureGroup("Immediate Actions", isExpanded: $isSectionTwoExpanded) {
                                         Text("If someone's in immediate danger, don't wait. Call emergency services. If it's not life-threatening but still serious, guide them to urgent but non-emergency care, like a crisis hotline or a walk-in clinic.")
                                             .font(.system(size: 12))
@@ -109,6 +111,8 @@ struct GettingRealView: View {
                                     .textCase(.uppercase)
                                     .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
+                                    
+                                    Divider()
                                     
                                     DisclosureGroup("Stay Calm and Supportive", isExpanded: $isSectionTwoExpanded) {
                                         Text("If you're helping someone through a crisis, try to stay calm. Your calmness can be contagious. Let them know you're there for them and take their concerns seriously.")
@@ -124,7 +128,7 @@ struct GettingRealView: View {
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_gray)
+                                .background(np_light_gray)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -137,7 +141,7 @@ struct GettingRealView: View {
                                         .fontWeight(.heavy)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_gray)
+                                        .foregroundColor(np_light_gray)
                                     
                                     Spacer()
                                 }
@@ -156,6 +160,8 @@ struct GettingRealView: View {
                                     .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                     
+                                    Divider()
+                                    
                                     DisclosureGroup("Local Emergency Services", isExpanded: $isSectionFourExpanded) {
                                         Text("Have the numbers for local emergency services handy. In many places, this will be 911, 999 etc, depending on where you live.")
                                             .font(.system(size: 12))
@@ -168,6 +174,8 @@ struct GettingRealView: View {
                                     .textCase(.uppercase)
                                     .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
+                                    
+                                    Divider()
                                     
                                     DisclosureGroup("Mental Health Clinics", isExpanded: $isSectionFiveExpanded) {
                                         Text("Know where the nearest mental health clinic or hospital is. Sometimes, professional help is needed ASAP.")
@@ -183,7 +191,7 @@ struct GettingRealView: View {
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_gray)
+                                .background(np_light_gray)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -196,7 +204,7 @@ struct GettingRealView: View {
                                         .fontWeight(.semibold)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_gray)
+                                        .foregroundColor(np_light_gray)
                                     
                                     Spacer()
                                 }
@@ -215,6 +223,8 @@ struct GettingRealView: View {
                                     .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                     
+                                    Divider()
+                                    
                                     DisclosureGroup("For Helping Others", isExpanded: $isSectionSevenExpanded) {
                                         Text("If you're supporting someone, encourage them to develop a safety plan and be a part of it if appropriate. Know what their triggers are, what helps them calm down, and who they want to contact in a crisis.")
                                             .font(.system(size: 12))
@@ -229,7 +239,7 @@ struct GettingRealView: View {
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_gray)
+                                .background(np_light_gray)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -242,7 +252,7 @@ struct GettingRealView: View {
                                         .fontWeight(.semibold)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_gray)
+                                        .foregroundColor(np_light_gray)
                                     
                                     Spacer()
                                 }
@@ -261,6 +271,8 @@ struct GettingRealView: View {
                                     .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                     
+                                    Divider()
+                                    
                                     DisclosureGroup("Self-Care for Supporters", isExpanded: $isSectionNineExpanded) {
                                         Text("If you've helped someone through a crisis, take care of yourself too. It can be emotionally draining, so don't forget to recharge.")
                                             .font(.system(size: 12))
@@ -275,7 +287,7 @@ struct GettingRealView: View {
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_gray)
+                                .background(np_light_gray)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -293,7 +305,7 @@ struct GettingRealView: View {
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(np_white)
                     .padding(10)
-                    .background(Circle().fill(np_jap_indigo))
+                    .background(Circle().fill(np_red))
             })
         }
     }

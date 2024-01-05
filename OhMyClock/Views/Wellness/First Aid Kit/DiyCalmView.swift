@@ -43,16 +43,20 @@ struct DiyCalmView: View {
                                             Spacer()
                                             
                                             Text("DIY Calm")
-                                                .font(.system(size: 27, design: .rounded))
+                                                .font(.system(size: 23, design: .rounded))
                                                 .fontWeight(.bold)
                                                 .textCase(.uppercase)
                                                 .kerning(3)
-                                                .foregroundColor(np_black)
+                                                .foregroundColor(np_white)
+                                                .padding(5)
+                                                .background(np_jap_indigo)
+                                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                .padding(.bottom, 10)
                                         }
                                         .padding(.horizontal, 20)
                                         
                                         Spacer()
-                                            .frame(height: 50)
+                                            .frame(height: 150)
                                     }
                                     .padding(.vertical, 10)
                                 }
@@ -73,7 +77,7 @@ struct DiyCalmView: View {
                                         .fontWeight(.heavy)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_jap_indigo)
+                                        .foregroundColor(np_light_gray)
                                     
                                     Spacer()
                                 }
@@ -83,30 +87,32 @@ struct DiyCalmView: View {
                                         Text("Learn how to use your breath to calm your mind. Try deep breathing exercises – inhale slowly for four counts, hold it for four, and exhale for four. It's like a remote control for chilling out your brain.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_white)
+                                            .foregroundColor(np_arsenic)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_gray)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
+                                    
+                                    Divider()
                                     
                                     DisclosureGroup("Bubble Breathing", isExpanded: $isSectionTwoExpanded) {
                                         Text("Imagine you're blowing bubbles. Slow and steady. It's a fun way to focus on your breath and push away stress.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_white)
+                                            .foregroundColor(np_arsenic)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_gray)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_jap_indigo)
+                                .background(np_light_gray)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -119,7 +125,7 @@ struct DiyCalmView: View {
                                         .fontWeight(.heavy)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_jap_indigo)
+                                        .foregroundColor(np_light_gray)
                                     
                                     Spacer()
                                 }
@@ -129,43 +135,47 @@ struct DiyCalmView: View {
                                         Text("It's all about living in the now. Not stressing about tomorrow's math test or that awkward thing you said yesterday.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_white)
+                                            .foregroundColor(np_arsenic)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_gray)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
+                                    
+                                    Divider()
                                     
                                     DisclosureGroup("Quick Mindfulness Exercise", isExpanded: $isSectionFourExpanded) {
                                         Text("Try this – spend 5 minutes noticing everything around you. The sounds, the sights, how your feet feel on the ground. It's like hitting the pause button on life's craziness.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_white)
+                                            .foregroundColor(np_arsenic)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_gray)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
+                                    
+                                    Divider()
                                     
                                     DisclosureGroup("Daily Mindfulness Habit", isExpanded: $isSectionFiveExpanded) {
                                         Text("Make it a habit. Maybe take a minute every morning to just sit and be. It's a game-changer for starting your day on a positive note.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_white)
+                                            .foregroundColor(np_arsenic)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_gray)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_jap_indigo)
+                                .background(np_light_gray)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -178,7 +188,7 @@ struct DiyCalmView: View {
                                         .fontWeight(.semibold)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_jap_indigo)
+                                        .foregroundColor(np_light_gray)
                                     
                                     Spacer()
                                 }
@@ -188,43 +198,47 @@ struct DiyCalmView: View {
                                         Text("When things feel too much, plant your feet firmly on the ground. Feel the floor beneath you. It's a quick way to bring you back to the present.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_white)
+                                            .foregroundColor(np_arsenic)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_gray)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
+                                    
+                                    Divider()
                                     
                                     DisclosureGroup("The 5-4-3-2-1 Game", isExpanded: $isSectionSevenExpanded) {
                                         Text("Spot 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, and 1 you can taste. It's a cool trick to distract your brain from panic or anxiety.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_white)
+                                            .foregroundColor(np_arsenic)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_gray)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
+                                    
+                                    Divider()
                                     
                                     DisclosureGroup("Power of Music", isExpanded: $isSectionEightExpanded) {
                                         Text("Create a playlist of tunes that lift you up or calm you down. Music can be a powerful ally when your mind's in overdrive.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_white)
+                                            .foregroundColor(np_arsenic)
                                     }
                                     .font(.system(size: 12))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_gray)
+                                    .foregroundColor(np_jap_indigo)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_jap_indigo)
+                                .background(np_light_gray)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -259,7 +273,7 @@ struct DiyCalmView: View {
                 .frame(height: size.height, alignment: .bottom)
             
             Rectangle()
-                .fill(np_white)
+                .fill(np_artichoke)
                 .opacity(0.98)
                 .frame(height: size.height, alignment: .bottom)
         }

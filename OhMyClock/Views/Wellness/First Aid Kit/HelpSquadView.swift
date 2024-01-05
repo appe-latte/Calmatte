@@ -45,16 +45,20 @@ struct HelpSquadView: View {
                                             Spacer()
                                             
                                             Text("Helping Your Squad")
-                                                .font(.system(size: 27, design: .rounded))
+                                                .font(.system(size: 22, design: .rounded))
                                                 .fontWeight(.bold)
                                                 .textCase(.uppercase)
                                                 .kerning(3)
                                                 .foregroundColor(np_beige)
+                                                .padding(5)
+                                                .background(np_jap_indigo)
+                                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                .padding(.bottom, 10)
                                         }
                                         .padding(.horizontal, 20)
                                         
                                         Spacer()
-                                            .frame(height: 50)
+                                            .frame(height: 150)
                                     }
                                     .padding(.vertical, 10)
                                 }
@@ -75,7 +79,7 @@ struct HelpSquadView: View {
                                         .fontWeight(.heavy)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_gray)
+                                        .foregroundColor(np_jap_indigo)
                                     
                                     Spacer()
                                 }
@@ -85,30 +89,32 @@ struct HelpSquadView: View {
                                         Text("Pick a chill time to talk. Maybe during a walk or a relaxed hangout. Start with, 'Hey, I've noticed you've been a bit down. Want to talk about it?'")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
+                                    
+                                    Divider()
                                     
                                     DisclosureGroup("What to Say", isExpanded: $isSectionTwoExpanded) {
                                         Text("Keep it real but gentle. Try, 'I'm here for you,' or 'It's totally okay to feel this way.' Avoid clichés like, 'Cheer up,' or 'It could be worse.'")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_gray)
+                                .background(np_jap_indigo)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -121,7 +127,7 @@ struct HelpSquadView: View {
                                         .fontWeight(.heavy)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_gray)
+                                        .foregroundColor(np_jap_indigo)
                                     
                                     Spacer()
                                 }
@@ -131,43 +137,47 @@ struct HelpSquadView: View {
                                         Text("When they talk, really listen. Put your phone away. Nod, make eye contact – show you're all ears.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
+                                    
+                                    Divider()
                                     
                                     DisclosureGroup("Reflect and Validate", isExpanded: $isSectionFourExpanded) {
                                         Text("Sometimes, just saying, 'That sounds really tough,' or 'I can see why you'd feel that way,' means a lot.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
+                                    
+                                    Divider()
                                     
                                     DisclosureGroup("No Judging, Just Listening", isExpanded: $isSectionFiveExpanded) {
                                         Text("It's not about giving advice or fixing things. It's about being there and letting them vent.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_gray)
+                                .background(np_jap_indigo)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -180,7 +190,7 @@ struct HelpSquadView: View {
                                         .fontWeight(.semibold)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_gray)
+                                        .foregroundColor(np_jap_indigo)
                                     
                                     Spacer()
                                 }
@@ -190,43 +200,47 @@ struct HelpSquadView: View {
                                         Text("Sometimes it's the little things – sending a meme, a text, or just hanging out.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
+                                    
+                                    Divider()
                                     
                                     DisclosureGroup("Encourage, Don't Push", isExpanded: $isSectionSevenExpanded) {
                                         Text("Suggest they talk to someone who can help, like a counselor, but don’t force it. Say, 'Have you thought about talking to someone professional about this?'")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
+                                    
+                                    Divider()
                                     
                                     DisclosureGroup("Respect Their Space", isExpanded: $isSectionEightExpanded) {
                                         Text("If they're not ready to open up, that's cool. Just let them know you're there when they are.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 12))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_gray)
+                                .background(np_jap_indigo)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -239,7 +253,7 @@ struct HelpSquadView: View {
                                         .fontWeight(.semibold)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_gray)
+                                        .foregroundColor(np_jap_indigo)
                                     
                                     Spacer()
                                 }
@@ -249,30 +263,32 @@ struct HelpSquadView: View {
                                         Text("If they talk about self-harm or seem really down, it's more than just being a good listener. Encourage them to seek professional help.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
+                                    
+                                    Divider()
                                     
                                     DisclosureGroup("Staying Safe", isExpanded: $isSectionTenExpanded) {
                                         Text("If you ever think they're in immediate danger, it’s okay to reach out for more help – like a trusted adult or even emergency services.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_gray)
+                                .background(np_jap_indigo)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -307,7 +323,7 @@ struct HelpSquadView: View {
                 .frame(height: size.height, alignment: .bottom)
             
             Rectangle()
-                .fill(np_jap_indigo)
+                .fill(np_light_gray)
                 .opacity(0.98)
                 .frame(height: size.height, alignment: .bottom)
         }

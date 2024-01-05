@@ -13,7 +13,7 @@ class DiaryColors: ObservableObject {
     @Published var textColor: Color = np_black
     @Published var todayColor: Color = np_red
     @Published var disabledColor: Color = np_gray
-    @Published var selectedColor: Color = cov_green
+    @Published var selectedColor: Color = np_munsell_blue
 
     // MARK: Background
     @Published var backgroundColor: Color = Color.clear
