@@ -20,6 +20,13 @@ struct WellnessView: View {
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     
+    @State var showDiySheet = false
+    @State var show101Sheet = false
+    @State var showSquadHelpSheet = false
+    @State var showGetRealSheet = false
+    @State var showProTalkSheet = false
+    @State var showSelfCareSheet = false
+    
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
@@ -255,7 +262,10 @@ struct WellnessView: View {
                                 Group {
                                     VStack(spacing: 15) {
                                         // MARK: Mental Health 101
-                                        NavigationLink(destination: MentalHealth101View()){
+                                        Button(action: {
+                                            show101Sheet.toggle()
+                                        },
+                                               label: {
                                             HStack(spacing: 10) {
                                                 Text("Mental Health 101")
                                                     .font(.system(size: 14))
@@ -269,13 +279,19 @@ struct WellnessView: View {
                                                 Image(systemName: "chevron.right")
                                             }
                                             .padding(.horizontal, 10)
-                                        }
+                                        })
+                                        .font(.system(size: 14))
+                                        .fontWeight(.medium)
+                                        .foregroundColor(np_beige)
                                         
                                         Divider()
                                             .background(np_gray)
                                         
                                         // MARK: DIY Calm
-                                        NavigationLink(destination: DiyCalmView()){
+                                        Button(action: {
+                                            showDiySheet.toggle()
+                                        },
+                                               label: {
                                             HStack(spacing: 10) {
                                                 Text("DIY Calm")
                                                     .font(.system(size: 14))
@@ -289,7 +305,7 @@ struct WellnessView: View {
                                                 Image(systemName: "chevron.right")
                                             }
                                             .padding(.horizontal, 10)
-                                        }
+                                        })
                                         .font(.system(size: 14))
                                         .fontWeight(.medium)
                                         .foregroundColor(np_beige)
@@ -298,7 +314,10 @@ struct WellnessView: View {
                                             .background(np_gray)
                                         
                                         // MARK: Helping Your Squad
-                                        NavigationLink(destination: HelpSquadView()){
+                                        Button(action: {
+                                            showSquadHelpSheet.toggle()
+                                        },
+                                               label: {
                                             HStack(spacing: 10) {
                                                 Text("Helping Your Squad")
                                                     .font(.system(size: 14))
@@ -312,13 +331,19 @@ struct WellnessView: View {
                                                 Image(systemName: "chevron.right")
                                             }
                                             .padding(.horizontal, 10)
-                                        }
+                                        })
+                                        .font(.system(size: 14))
+                                        .fontWeight(.medium)
+                                        .foregroundColor(np_beige)
                                         
                                         Divider()
                                             .background(np_gray)
                                         
                                         // MARK: When Things Get Real
-                                        NavigationLink(destination: GettingRealView()){
+                                        Button(action: {
+                                            showGetRealSheet.toggle()
+                                        },
+                                               label: {
                                             HStack(spacing: 10) {
                                                 Text("When Things Get Real")
                                                     .font(.system(size: 14))
@@ -332,13 +357,19 @@ struct WellnessView: View {
                                                 Image(systemName: "chevron.right")
                                             }
                                             .padding(.horizontal, 10)
-                                        }
+                                        })
+                                        .font(.system(size: 14))
+                                        .fontWeight(.medium)
+                                        .foregroundColor(np_beige)
                                         
                                         Divider()
                                             .background(np_gray)
                                         
                                         // MARK: Pro Talk
-                                        NavigationLink(destination: ProTalkView()){
+                                        Button(action: {
+                                            showProTalkSheet.toggle()
+                                        },
+                                               label: {
                                             HStack(spacing: 10) {
                                                 Text("Pro Talk")
                                                     .font(.system(size: 14))
@@ -352,13 +383,19 @@ struct WellnessView: View {
                                                 Image(systemName: "chevron.right")
                                             }
                                             .padding(.horizontal, 10)
-                                        }
+                                        })
+                                        .font(.system(size: 14))
+                                        .fontWeight(.medium)
+                                        .foregroundColor(np_beige)
                                         
                                         Divider()
                                             .background(np_gray)
                                         
                                         // MARK: Keepin' It Steady
-                                        NavigationLink(destination: SelfCareView()){
+                                        Button(action: {
+                                            showSelfCareSheet.toggle()
+                                        },
+                                               label: {
                                             HStack(spacing: 10) {
                                                 Text("Keepin' It Steady")
                                                     .font(.system(size: 14))
@@ -372,7 +409,10 @@ struct WellnessView: View {
                                                 Image(systemName: "chevron.right")
                                             }
                                             .padding(.horizontal, 10)
-                                        }
+                                        })
+                                        .font(.system(size: 14))
+                                        .fontWeight(.medium)
+                                        .foregroundColor(np_beige)
                                     }
                                 }
                             }
@@ -389,6 +429,24 @@ struct WellnessView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
+        .sheet(isPresented: self.$showDiySheet) {
+            DiyCalmView()
+        }
+        .sheet(isPresented: self.$show101Sheet) {
+            MentalHealth101View()
+        }
+        .sheet(isPresented: self.$showSquadHelpSheet) {
+            HelpSquadView()
+        }
+        .sheet(isPresented: self.$showGetRealSheet) {
+            GettingRealView()
+        }
+        .sheet(isPresented: self.$showProTalkSheet) {
+            ProTalkView()
+        }
+        .sheet(isPresented: self.$showSelfCareSheet) {
+            SelfCareView()
+        }
     }
     
     // MARK: Background

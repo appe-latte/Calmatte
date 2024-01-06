@@ -283,14 +283,8 @@ struct MentalHealth101View: View {
         GeometryReader { proxy in
             let size = proxy.size
             
-            Image("img-bg")
-                .resizable()
-                .scaledToFill()
-                .frame(height: size.height, alignment: .bottom)
-            
             Rectangle()
-                .fill(np_munsell_blue)
-                .opacity(0.98)
+                .fill(LinearGradient(colors: [np_turq, np_turq, np_munsell_blue], startPoint: .top, endPoint: .bottom))
                 .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()

@@ -30,6 +30,7 @@ struct DiyCalmView: View {
             ZStack {
                 VStack(spacing: 5) {
                     CustomHeaderShape()
+                        .stroke(np_black, lineWidth: 50)
                         .frame(width: width, height: 300)
                         .overlay {
                             Image("diy-calm")
@@ -77,7 +78,7 @@ struct DiyCalmView: View {
                                         .fontWeight(.heavy)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_light_gray)
+                                        .foregroundColor(np_jap_indigo)
                                     
                                     Spacer()
                                 }
@@ -87,13 +88,13 @@ struct DiyCalmView: View {
                                         Text("Learn how to use your breath to calm your mind. Try deep breathing exercises – inhale slowly for four counts, hold it for four, and exhale for four. It's like a remote control for chilling out your brain.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_arsenic)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
@@ -102,17 +103,17 @@ struct DiyCalmView: View {
                                         Text("Imagine you're blowing bubbles. Slow and steady. It's a fun way to focus on your breath and push away stress.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_arsenic)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_light_gray)
+                                .background(np_jap_indigo)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -125,7 +126,7 @@ struct DiyCalmView: View {
                                         .fontWeight(.heavy)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_light_gray)
+                                        .foregroundColor(np_jap_indigo)
                                     
                                     Spacer()
                                 }
@@ -135,13 +136,13 @@ struct DiyCalmView: View {
                                         Text("It's all about living in the now. Not stressing about tomorrow's math test or that awkward thing you said yesterday.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_arsenic)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
@@ -150,13 +151,13 @@ struct DiyCalmView: View {
                                         Text("Try this – spend 5 minutes noticing everything around you. The sounds, the sights, how your feet feel on the ground. It's like hitting the pause button on life's craziness.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_arsenic)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
@@ -165,17 +166,17 @@ struct DiyCalmView: View {
                                         Text("Make it a habit. Maybe take a minute every morning to just sit and be. It's a game-changer for starting your day on a positive note.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_arsenic)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_light_gray)
+                                .background(np_jap_indigo)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -188,7 +189,7 @@ struct DiyCalmView: View {
                                         .fontWeight(.semibold)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_light_gray)
+                                        .foregroundColor(np_jap_indigo)
                                     
                                     Spacer()
                                 }
@@ -198,13 +199,13 @@ struct DiyCalmView: View {
                                         Text("When things feel too much, plant your feet firmly on the ground. Feel the floor beneath you. It's a quick way to bring you back to the present.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_arsenic)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
@@ -213,13 +214,13 @@ struct DiyCalmView: View {
                                         Text("Spot 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, and 1 you can taste. It's a cool trick to distract your brain from panic or anxiety.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_arsenic)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
@@ -228,17 +229,17 @@ struct DiyCalmView: View {
                                         Text("Create a playlist of tunes that lift you up or calm you down. Music can be a powerful ally when your mind's in overdrive.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_arsenic)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 12))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_light_gray)
+                                .background(np_jap_indigo)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -267,14 +268,8 @@ struct DiyCalmView: View {
         GeometryReader { proxy in
             let size = proxy.size
             
-            Image("img-bg")
-                .resizable()
-                .scaledToFill()
-                .frame(height: size.height, alignment: .bottom)
-            
             Rectangle()
-                .fill(np_artichoke)
-                .opacity(0.98)
+                .fill(LinearGradient(colors: [np_tangerine, np_pink, np_pink], startPoint: .top, endPoint: .bottom))
                 .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()

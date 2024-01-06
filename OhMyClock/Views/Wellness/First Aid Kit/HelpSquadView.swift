@@ -317,14 +317,8 @@ struct HelpSquadView: View {
         GeometryReader { proxy in
             let size = proxy.size
             
-            Image("img-bg")
-                .resizable()
-                .scaledToFill()
-                .frame(height: size.height, alignment: .bottom)
-            
             Rectangle()
-                .fill(np_light_gray)
-                .opacity(0.98)
+                .fill(LinearGradient(colors: [np_purple, np_purple, np_deep_purple], startPoint: .top, endPoint: .bottom))
                 .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()
