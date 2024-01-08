@@ -11,7 +11,7 @@ import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
 import LocalAuthentication
-import RevenueCat
+//import RevenueCat
 
 @main
 struct OhMyClockApp: App {
@@ -19,15 +19,14 @@ struct OhMyClockApp: App {
     @StateObject var authViewModel = AuthViewModel()
     @StateObject var appLockViewModel = AppLockViewModel()
     @StateObject var moodModelController = MoodModelController()
-    @StateObject var userViewModel = UserViewModel()
     
     @Environment(\.scenePhase) var scenePhase
     
     init() {
         FirebaseApp.configure()
         
-        Purchases.logLevel = .debug
-        Purchases.configure(withAPIKey: "appl_lZpRjJALWFQJkONQIJYTljRQAbG", appUserID: "app2bff297483")
+//        Purchases.logLevel = .debug
+//        Purchases.configure(withAPIKey: "appl_lZpRjJALWFQJkONQIJYTljRQAbG", appUserID: "app2bff297483")
     }
     
     var body: some Scene {
@@ -37,7 +36,6 @@ struct OhMyClockApp: App {
                 .environmentObject(authViewModel)
                 .environmentObject(appLockViewModel)
                 .environmentObject(moodModelController)
-                .environmentObject(userViewModel)
         }
         .onChange(of: scenePhase, perform: handleScenePhase)
     }

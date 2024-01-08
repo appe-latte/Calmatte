@@ -328,7 +328,7 @@ struct TaskWeekView: View {
     let width = UIScreen.main.bounds.width
     
     var body: some View {
-        HStack(spacing: 20) {
+        HStack(spacing: 15) {
             ForEach(0..<7, id: \.self) { index in
                 VStack {
                     Text(daysOfWeek[index])

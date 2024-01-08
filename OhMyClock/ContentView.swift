@@ -16,13 +16,12 @@ import UserNotifications
 struct ContentView: View {
     @ObservedObject var taskManager = TaskManager()
     @State var showMenuSheet = false
-    @State var showPaywall = false
+//    @State var showPaywall = false
     
     var audioManager = AudioManager()
     
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var appLockViewModel: AppLockViewModel
-    @EnvironmentObject var userViewModel: UserViewModel
     @StateObject private var moodModelController = MoodModelController()
     @StateObject private var soundPlayerViewModel = SoundPlayerViewModel()
     @StateObject var progressView = AppViewModel()
@@ -72,12 +71,13 @@ struct ContentView: View {
                         }
                         case 2: JournalView()
                         case 3:
-                            if userViewModel.isSubscriptionActive {
-                                //                        MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
-                                WellnessView()
-                            } else {
-                                PaywallCheckView()
-                            }
+//                            if userViewModel.isSubscriptionActive {
+//                                //                        MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
+//                                WellnessView()
+//                            } else {
+//                                PaywallCheckView()
+//                            }
+                            WellnessView()
                         case 4: TaskView(taskManager: taskManager)
                         default: Text("Not found")
                         }
@@ -116,9 +116,9 @@ struct ContentView: View {
                     }
                     
                     // MARK: Show PayWall
-                    if showPaywall {
-                        CalmattePaywallView(showPaywall: $showPaywall)
-                    }
+//                    if showPaywall {
+//                        CalmattePaywallView(showPaywall: $showPaywall)
+//                    }
                 }
                 .onAppear {
                     progressView.loadData()

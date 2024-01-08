@@ -9,11 +9,6 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
-		<key>Copy of OhMyClock.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>21</integer>
-		</dict>
 		<key>GettingStarted (Playground) 1.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,8 +32,10 @@
 		</dict>
 		<key>OhMyClock.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
-			<integer>20</integer>
+			<integer>1</integer>
 		</dict>
 		<key>Playground (Playground) 1.xcscheme</key>
 		<dict>

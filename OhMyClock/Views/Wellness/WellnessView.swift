@@ -41,9 +41,8 @@ struct WellnessView: View {
                         VStack {
                             HStack {
                                 Text("Wellness Audio")
-                                    .font(.footnote)
-                                    .fontWeight(.bold)
-                                    .kerning(2)
+                                    .font(.system(size:  14, weight: .bold, design: .rounded))
+                                    .kerning(1)
                                     .textCase(.uppercase)
                                     .foregroundColor(np_jap_indigo)
                                     .padding(5)
@@ -54,190 +53,34 @@ struct WellnessView: View {
                             }
                             .padding(.horizontal)
                             
-                            // MARK: Card Carousel
-                            ScrollView(.horizontal, showsIndicators: true) {
-                                HStack(spacing: 10) {
-                                    // MARK: Morning Card
-                                    NavigationLink(destination: MorningCardView()){
-                                        Image("img-sunrise")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 250, height: 250)
-                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                            .padding(.vertical, 10)
-                                            .overlay {
-                                                VStack {
-                                                    HStack {
-                                                        Label("Rise n' Shine", systemImage: "")
-                                                            .font(.system(size: 10))
-                                                            .fontWeight(.semibold)
-                                                            .kerning(2)
-                                                            .textCase(.uppercase)
-                                                            .foregroundColor(np_jap_indigo)
-                                                            .padding(5)
-                                                            .background(np_white)
-                                                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                        
-                                                        Spacer()
-                                                    }
-                                                    
-                                                    Spacer()
-                                                }
-                                                .padding(.horizontal)
+                            // MARK: Wellness Audio View
+                            NavigationLink(destination: WellnessAudioView()){
+                                Image("img-sunrise")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: width - 40, height: 250)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .padding(.vertical, 10)
+                                    .overlay {
+                                        VStack {
+                                            HStack {
+                                                Label("Featured Sound", systemImage: "star.fill")
+                                                    .font(.system(size: 10))
+                                                    .fontWeight(.semibold)
+                                                    .kerning(2)
+                                                    .textCase(.uppercase)
+                                                    .foregroundColor(np_jap_indigo)
+                                                    .padding(5)
+                                                    .background(np_white)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                                                
+                                                Spacer()
                                             }
+                                            
+                                            Spacer()
+                                        }
+                                        .padding(.horizontal)
                                     }
-                                    
-                                    // MARK: Afternoon Card
-                                    NavigationLink(destination: AfternoonCardView()){
-                                        Image("img-day")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 250, height: 250)
-                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                            .padding(.vertical, 10)
-                                            .overlay {
-                                                VStack {
-                                                    HStack {
-                                                        Label("Mid-day Pick Me Up", systemImage: "")
-                                                            .font(.system(size: 10))
-                                                            .fontWeight(.semibold)
-                                                            .kerning(2)
-                                                            .textCase(.uppercase)
-                                                            .foregroundColor(np_white)
-                                                            .padding(5)
-                                                            .background(np_jap_indigo)
-                                                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                        
-                                                        Spacer()
-                                                    }
-                                                    
-                                                    Spacer()
-                                                }
-                                                .padding(.horizontal)
-                                            }
-                                    }
-                                    
-                                    // MARK: Evening Card
-                                    NavigationLink(destination: NightCardView()){
-                                        Image("img-night")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 250, height: 250)
-                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                            .padding(.vertical, 10)
-                                            .overlay {
-                                                VStack {
-                                                    HStack {
-                                                        Label("Couch n' Chill", systemImage: "")
-                                                            .font(.system(size: 10))
-                                                            .fontWeight(.semibold)
-                                                            .kerning(2)
-                                                            .textCase(.uppercase)
-                                                            .foregroundColor(np_jap_indigo)
-                                                            .padding(5)
-                                                            .background(np_white)
-                                                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                        
-                                                        Spacer()
-                                                    }
-                                                    
-                                                    Spacer()
-                                                }
-                                                .padding(.horizontal)
-                                            }
-                                    }
-                                    
-                                    // MARK: Beach Card
-                                    NavigationLink(destination: BeachCardView()){
-                                        Image("img-beach")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 250, height: 250)
-                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                            .padding(.vertical, 10)
-                                            .overlay {
-                                                VStack {
-                                                    HStack {
-                                                        Label("Take Your Sunscreen", systemImage: "")
-                                                            .font(.system(size: 10))
-                                                            .fontWeight(.semibold)
-                                                            .kerning(2)
-                                                            .textCase(.uppercase)
-                                                            .foregroundColor(np_white)
-                                                            .padding(5)
-                                                            .background(np_jap_indigo)
-                                                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                        
-                                                        Spacer()
-                                                    }
-                                                    
-                                                    Spacer()
-                                                }
-                                                .padding(.horizontal)
-                                            }
-                                    }
-                                    
-                                    // MARK: Nature Card
-                                    NavigationLink(destination: NatureCardView()){
-                                        Image("img-nature")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 250, height: 250)
-                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                            .padding(.vertical, 10)
-                                            .overlay {
-                                                VStack {
-                                                    HStack {
-                                                        Label("Be One With Nature", systemImage: "")
-                                                            .font(.system(size: 10))
-                                                            .fontWeight(.semibold)
-                                                            .kerning(2)
-                                                            .textCase(.uppercase)
-                                                            .foregroundColor(np_jap_indigo)
-                                                            .padding(5)
-                                                            .background(np_white)
-                                                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                        
-                                                        Spacer()
-                                                    }
-                                                    
-                                                    Spacer()
-                                                }
-                                                .padding(.horizontal)
-                                            }
-                                    }
-                                    
-                                    // MARK: Water's Healing Powers
-                                    NavigationLink(destination: WaterCardView()){
-                                        Image("img-water")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 250, height: 250)
-                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                            .padding(.vertical, 10)
-                                            .overlay {
-                                                VStack {
-                                                    HStack {
-                                                        Label("Water's Healing Powers", systemImage: "")
-                                                            .font(.system(size: 10))
-                                                            .fontWeight(.semibold)
-                                                            .kerning(2)
-                                                            .textCase(.uppercase)
-                                                            .foregroundColor(np_white)
-                                                            .padding(5)
-                                                            .background(np_jap_indigo)
-                                                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                        
-                                                        Spacer()
-                                                    }
-                                                    
-                                                    Spacer()
-                                                }
-                                                .padding(.horizontal)
-                                            }
-                                    }
-                                }
-                                .padding(10)
                             }
                         }
                         
@@ -245,9 +88,8 @@ struct WellnessView: View {
                         VStack(spacing: 10) {
                             HStack {
                                 Text("Mental Health First Aid Kit")
-                                    .font(.footnote)
-                                    .fontWeight(.bold)
-                                    .kerning(2)
+                                    .font(.system(size:  14, weight: .bold, design: .rounded))
+                                    .kerning(1)
                                     .textCase(.uppercase)
                                     .foregroundColor(np_jap_indigo)
                                     .padding(5)
@@ -268,8 +110,7 @@ struct WellnessView: View {
                                                label: {
                                             HStack(spacing: 10) {
                                                 Text("Mental Health 101")
-                                                    .font(.system(size: 14))
-                                                    .fontWeight(.semibold)
+                                                    .font(.system(size:  14, weight: .semibold, design: .rounded))
                                                     .kerning(1)
                                                     .textCase(.uppercase)
                                                     .foregroundColor(np_beige)
@@ -280,8 +121,7 @@ struct WellnessView: View {
                                             }
                                             .padding(.horizontal, 10)
                                         })
-                                        .font(.system(size: 14))
-                                        .fontWeight(.medium)
+                                        .font(.system(size:  14, weight: .medium, design: .rounded))
                                         .foregroundColor(np_beige)
                                         
                                         Divider()
@@ -294,8 +134,7 @@ struct WellnessView: View {
                                                label: {
                                             HStack(spacing: 10) {
                                                 Text("DIY Calm")
-                                                    .font(.system(size: 14))
-                                                    .fontWeight(.semibold)
+                                                    .font(.system(size:  14, weight: .semibold, design: .rounded))
                                                     .kerning(1)
                                                     .textCase(.uppercase)
                                                     .foregroundColor(np_beige)
@@ -306,8 +145,7 @@ struct WellnessView: View {
                                             }
                                             .padding(.horizontal, 10)
                                         })
-                                        .font(.system(size: 14))
-                                        .fontWeight(.medium)
+                                        .font(.system(size:  14, weight: .medium, design: .rounded))
                                         .foregroundColor(np_beige)
                                         
                                         Divider()
@@ -320,8 +158,7 @@ struct WellnessView: View {
                                                label: {
                                             HStack(spacing: 10) {
                                                 Text("Helping Your Squad")
-                                                    .font(.system(size: 14))
-                                                    .fontWeight(.semibold)
+                                                    .font(.system(size:  14, weight: .semibold, design: .rounded))
                                                     .kerning(1)
                                                     .textCase(.uppercase)
                                                     .foregroundColor(np_beige)
@@ -332,8 +169,7 @@ struct WellnessView: View {
                                             }
                                             .padding(.horizontal, 10)
                                         })
-                                        .font(.system(size: 14))
-                                        .fontWeight(.medium)
+                                        .font(.system(size:  14, weight: .medium, design: .rounded))
                                         .foregroundColor(np_beige)
                                         
                                         Divider()
@@ -346,8 +182,7 @@ struct WellnessView: View {
                                                label: {
                                             HStack(spacing: 10) {
                                                 Text("When Things Get Real")
-                                                    .font(.system(size: 14))
-                                                    .fontWeight(.semibold)
+                                                    .font(.system(size:  14, weight: .semibold, design: .rounded))
                                                     .kerning(1)
                                                     .textCase(.uppercase)
                                                     .foregroundColor(np_beige)
@@ -358,8 +193,7 @@ struct WellnessView: View {
                                             }
                                             .padding(.horizontal, 10)
                                         })
-                                        .font(.system(size: 14))
-                                        .fontWeight(.medium)
+                                        .font(.system(size:  14, weight: .medium, design: .rounded))
                                         .foregroundColor(np_beige)
                                         
                                         Divider()
@@ -372,8 +206,7 @@ struct WellnessView: View {
                                                label: {
                                             HStack(spacing: 10) {
                                                 Text("Pro Talk")
-                                                    .font(.system(size: 14))
-                                                    .fontWeight(.semibold)
+                                                    .font(.system(size:  14, weight: .semibold, design: .rounded))
                                                     .kerning(1)
                                                     .textCase(.uppercase)
                                                     .foregroundColor(np_beige)
@@ -398,8 +231,7 @@ struct WellnessView: View {
                                                label: {
                                             HStack(spacing: 10) {
                                                 Text("Keepin' It Steady")
-                                                    .font(.system(size: 14))
-                                                    .fontWeight(.semibold)
+                                                    .font(.system(size:  14, weight: .semibold, design: .rounded))
                                                     .kerning(1)
                                                     .textCase(.uppercase)
                                                     .foregroundColor(np_beige)
@@ -410,8 +242,7 @@ struct WellnessView: View {
                                             }
                                             .padding(.horizontal, 10)
                                         })
-                                        .font(.system(size: 14))
-                                        .fontWeight(.medium)
+                                        .font(.system(size:  14, weight: .medium, design: .rounded))
                                         .foregroundColor(np_beige)
                                     }
                                 }

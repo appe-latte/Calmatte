@@ -27,6 +27,7 @@ struct SelfCareView: View {
     @State private var isSectionElevenExpanded = false
     @State private var isSectionTwelveExpanded = false
     @State private var isSectionThirteenExpanded = false
+    @State private var isSectionFourteenExpanded = false
     
     @State var rowHeight = 40.0
     
@@ -78,9 +79,8 @@ struct SelfCareView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Everyday Mind Fitness", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.heavy)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -90,14 +90,11 @@ struct SelfCareView: View {
                                 VStack(spacing: 10) {
                                     DisclosureGroup("Routine is Key", isExpanded: $isSectionOneExpanded) {
                                         Text("Establish a daily routine that includes time for work, relaxation, and activities you enjoy. A consistent routine can provide a sense of normalcy and control.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -105,29 +102,23 @@ struct SelfCareView: View {
                                     
                                     DisclosureGroup("Journaling", isExpanded: $isSectionTwoExpanded) {
                                         Text("Keep a daily journal. Writing down your thoughts and feelings can help you understand them more clearly and reduce stress.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
                                     
-                                    DisclosureGroup("Learning New Skills", isExpanded: $isSectionTwoExpanded) {
+                                    DisclosureGroup("Learning New Skills", isExpanded: $isSectionThreeExpanded) {
                                         Text("Picking up a new hobby or skill can be incredibly rewarding and a great distraction from everyday stress.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
@@ -141,9 +132,8 @@ struct SelfCareView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Your Crew Matters", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.heavy)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -151,46 +141,37 @@ struct SelfCareView: View {
                                 }
                                 
                                 VStack(spacing: 10) {
-                                    DisclosureGroup("Nurturing Relationships", isExpanded: $isSectionThreeExpanded) {
+                                    DisclosureGroup("Nurturing Relationships", isExpanded: $isSectionFourExpanded) {
                                         Text("Spend quality time with people who uplift you. Good conversations with friends or family can be incredibly therapeutic.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
                                     
-                                    DisclosureGroup("Join Groups or Clubs", isExpanded: $isSectionFourExpanded) {
+                                    DisclosureGroup("Join Groups or Clubs", isExpanded: $isSectionFiveExpanded) {
                                         Text("Engaging in social activities or clubs can help you connect with others who share similar interests, providing a sense of belonging and community.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
                                     
-                                    DisclosureGroup("Asking for Help", isExpanded: $isSectionFiveExpanded) {
+                                    DisclosureGroup("Asking for Help", isExpanded: $isSectionSixExpanded) {
                                         Text("Don’t be afraid to reach out for support from your network when you need it. Remember, it’s okay to not be okay.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
@@ -204,9 +185,8 @@ struct SelfCareView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Breaking the Silence", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.semibold)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -214,46 +194,37 @@ struct SelfCareView: View {
                                 }
                                 
                                 VStack(spacing: 10) {
-                                    DisclosureGroup("Talk About It", isExpanded: $isSectionSixExpanded) {
+                                    DisclosureGroup("Talk About It", isExpanded: $isSectionSevenExpanded) {
                                         Text("Open up about your mental health experiences. Sharing your story can inspire others to do the same and help break down stigma.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
                                     
-                                    DisclosureGroup("Educate Yourself and Others", isExpanded: $isSectionSevenExpanded) {
+                                    DisclosureGroup("Educate Yourself and Others", isExpanded: $isSectionEightExpanded) {
                                         Text("Learn more about mental health and share your knowledge with others. This can help create a more understanding and supportive environment.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
                                     
-                                    DisclosureGroup("Advocacy and Volunteering", isExpanded: $isSectionEightExpanded) {
+                                    DisclosureGroup("Advocacy and Volunteering", isExpanded: $isSectionNineExpanded) {
                                         Text("Consider volunteering for mental health causes or participating in advocacy efforts. This can be empowering and give you a sense of purpose.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
@@ -267,9 +238,8 @@ struct SelfCareView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Embracing Self-Care", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.semibold)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -277,46 +247,37 @@ struct SelfCareView: View {
                                 }
                                 
                                 VStack(spacing: 10) {
-                                    DisclosureGroup("Self-Care Practices", isExpanded: $isSectionNineExpanded) {
+                                    DisclosureGroup("Self-Care Practices", isExpanded: $isSectionTenExpanded) {
                                         Text("Incorporate self-care into your daily life. This could be as simple as taking a relaxing bath, reading a book, or practicing meditation.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
                                     
-                                    DisclosureGroup("Physical Health and Mental Health", isExpanded: $isSectionTenExpanded) {
+                                    DisclosureGroup("Physical & Mental Health", isExpanded: $isSectionElevenExpanded) {
                                         Text("Remember that physical health plays a crucial role in mental health. Eat nutritious foods, exercise regularly, and get enough sleep.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
                                     
-                                    DisclosureGroup("Digital Breaks", isExpanded: $isSectionElevenExpanded) {
+                                    DisclosureGroup("Digital Breaks", isExpanded: $isSectionTwelveExpanded) {
                                         Text("Take regular breaks from digital devices to avoid information overload and reduce stress.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
@@ -330,9 +291,8 @@ struct SelfCareView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Reflect and Recharge", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.semibold)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -340,31 +300,25 @@ struct SelfCareView: View {
                                 }
                                 
                                 VStack(spacing: 10) {
-                                    DisclosureGroup("Reflect on Progress", isExpanded: $isSectionTwelveExpanded) {
+                                    DisclosureGroup("Reflect on Progress", isExpanded: $isSectionThirteenExpanded) {
                                         Text("Regularly take time to reflect on your mental health journey and acknowledge your progress, no matter how small.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
                                     
-                                    DisclosureGroup("Relaxation Techniques", isExpanded: $isSectionThirteenExpanded) {
+                                    DisclosureGroup("Relaxation Techniques", isExpanded: $isSectionFourteenExpanded) {
                                         Text("Learn and practice relaxation techniques such as deep breathing, progressive muscle relaxation, or guided imagery.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }

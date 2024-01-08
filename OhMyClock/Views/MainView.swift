@@ -19,7 +19,6 @@ struct MainView: View {
     @ObservedObject var moodModel: MoodModel
     @ObservedObject var moodModelController = MoodModelController()
     @ObservedObject var authModel = AuthViewModel()
-    @ObservedObject var userViewModel = UserViewModel()
     @StateObject private var weatherModel = WeatherViewModel()
     @Binding var tabBarSelection: Int
     
@@ -65,7 +64,7 @@ struct MainView: View {
                         
                         Spacer()
                         
-                        NavigationLink(destination: SettingsView(userViewModel: userViewModel)){
+                        NavigationLink(destination: SettingsView()){
                             Image("settings")
                                 .resizable()
                                 .frame(width: 25, height: 25)

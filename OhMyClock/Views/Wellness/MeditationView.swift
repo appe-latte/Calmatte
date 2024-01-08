@@ -10,7 +10,6 @@ import AVKit
 
 struct MeditationView: View {
     @StateObject var meditationViewModel : MeditationViewModel
-    @EnvironmentObject var userViewModel : UserViewModel
     @StateObject var audioManager = AudioManager()
     @State private var showPlayer = false
     

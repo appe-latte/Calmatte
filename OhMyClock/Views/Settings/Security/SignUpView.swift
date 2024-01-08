@@ -53,44 +53,80 @@ struct SignUpView: View {
                 }
                 
                 // MARK: Firstname field
-                TextField("First Name", text: $firstName)
-                    .font(.footnote)
-                    .kerning(3)
-                    .textCase(.uppercase)
-                    .minimumScaleFactor(0.5)
-                    .foregroundColor(np_white)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .strokeBorder(np_white, lineWidth: 0.5)
-                    )
+                VStack(spacing: 5){
+                    HStack {
+                        Text("First Name")
+                            .font(.system(size: 10, weight: .semibold))
+                            .kerning(1)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        Spacer()
+                    }
+                    
+                    TextField("First Name", text: $firstName)
+                        .font(.footnote)
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .minimumScaleFactor(0.5)
+                        .foregroundColor(np_white)
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .strokeBorder(np_white, lineWidth: 0.5)
+                        )
+                }
                 
                 // MARK: Email field
-                TextField("Email", text: $email)
-                    .font(.footnote)
-                    .kerning(3)
-                    .textCase(.uppercase)
-                    .minimumScaleFactor(0.5)
-                    .foregroundColor(np_white)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .strokeBorder(np_white, lineWidth: 0.5)
-                    )
-                    .keyboardType(.emailAddress)
+                VStack(spacing: 5){
+                    HStack {
+                        Text("Email")
+                            .font(.system(size: 10, weight: .semibold))
+                            .kerning(1)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        Spacer()
+                    }
+                    
+                    TextField("Email", text: $email)
+                        .font(.footnote)
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .minimumScaleFactor(0.5)
+                        .foregroundColor(np_white)
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .strokeBorder(np_white, lineWidth: 0.5)
+                        )
+                        .keyboardType(.emailAddress)
+                }
                 
                 // MARK: Pwd field
-                SecureField("Password", text: $password)
-                    .font(.footnote)
-                    .kerning(3)
-                    .textCase(.uppercase)
-                    .minimumScaleFactor(0.5)
-                    .foregroundColor(np_white)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .strokeBorder(np_white, lineWidth: 0.5)
-                    )
+                VStack(spacing: 5) {
+                    HStack {
+                        Text("Password")
+                            .font(.system(size: 10, weight: .semibold))
+                            .kerning(1)
+                            .textCase(.uppercase)
+                            .foregroundColor(np_white)
+                        
+                        Spacer()
+                    }
+                    
+                    SecureField("Password", text: $password)
+                        .font(.footnote)
+                        .kerning(3)
+                        .textCase(.uppercase)
+                        .minimumScaleFactor(0.5)
+                        .foregroundColor(np_white)
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .strokeBorder(np_white, lineWidth: 0.5)
+                        )
+                }
                 
                 // MARK: "Error Message" - duplicate account creation
                 if authViewModel.isError {

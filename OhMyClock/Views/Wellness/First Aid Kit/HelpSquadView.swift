@@ -75,9 +75,8 @@ struct HelpSquadView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("How To Chat", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.heavy)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -87,14 +86,11 @@ struct HelpSquadView: View {
                                 VStack(spacing: 10) {
                                     DisclosureGroup("Finding the Right Moment", isExpanded: $isSectionOneExpanded) {
                                         Text("Pick a chill time to talk. Maybe during a walk or a relaxed hangout. Start with, 'Hey, I've noticed you've been a bit down. Want to talk about it?'")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size: 13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -102,14 +98,11 @@ struct HelpSquadView: View {
                                     
                                     DisclosureGroup("What to Say", isExpanded: $isSectionTwoExpanded) {
                                         Text("Keep it real but gentle. Try, 'I'm here for you,' or 'It's totally okay to feel this way.' Avoid clichés like, 'Cheer up,' or 'It could be worse.'")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size: 13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
@@ -123,9 +116,8 @@ struct HelpSquadView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Listen Like a Pro", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.heavy)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -135,14 +127,11 @@ struct HelpSquadView: View {
                                 VStack(spacing: 10) {
                                     DisclosureGroup("Full Attention Mode", isExpanded: $isSectionThreeExpanded) {
                                         Text("When they talk, really listen. Put your phone away. Nod, make eye contact – show you're all ears.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size: 13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -150,14 +139,11 @@ struct HelpSquadView: View {
                                     
                                     DisclosureGroup("Reflect and Validate", isExpanded: $isSectionFourExpanded) {
                                         Text("Sometimes, just saying, 'That sounds really tough,' or 'I can see why you'd feel that way,' means a lot.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size: 13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -165,14 +151,11 @@ struct HelpSquadView: View {
                                     
                                     DisclosureGroup("No Judging, Just Listening", isExpanded: $isSectionFiveExpanded) {
                                         Text("It's not about giving advice or fixing things. It's about being there and letting them vent.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size: 13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
@@ -186,9 +169,8 @@ struct HelpSquadView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Offering Support, Not Smothering", systemImage: "")
-                                        .font(.system(size: 15))
-                                        .fontWeight(.semibold)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -198,14 +180,11 @@ struct HelpSquadView: View {
                                 VStack(spacing: 10) {
                                     DisclosureGroup("Small Gestures Count", isExpanded: $isSectionSixExpanded) {
                                         Text("Sometimes it's the little things – sending a meme, a text, or just hanging out.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size: 13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -213,14 +192,11 @@ struct HelpSquadView: View {
                                     
                                     DisclosureGroup("Encourage, Don't Push", isExpanded: $isSectionSevenExpanded) {
                                         Text("Suggest they talk to someone who can help, like a counselor, but don’t force it. Say, 'Have you thought about talking to someone professional about this?'")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size: 13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -228,14 +204,11 @@ struct HelpSquadView: View {
                                     
                                     DisclosureGroup("Respect Their Space", isExpanded: $isSectionEightExpanded) {
                                         Text("If they're not ready to open up, that's cool. Just let them know you're there when they are.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size: 13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 12))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
@@ -249,9 +222,8 @@ struct HelpSquadView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("When to Step Up", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.semibold)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -261,14 +233,11 @@ struct HelpSquadView: View {
                                 VStack(spacing: 10) {
                                     DisclosureGroup("Red Flags", isExpanded: $isSectionNineExpanded) {
                                         Text("If they talk about self-harm or seem really down, it's more than just being a good listener. Encourage them to seek professional help.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size: 13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -276,14 +245,11 @@ struct HelpSquadView: View {
                                     
                                     DisclosureGroup("Staying Safe", isExpanded: $isSectionTenExpanded) {
                                         Text("If you ever think they're in immediate danger, it’s okay to reach out for more help – like a trusted adult or even emergency services.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size: 13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }

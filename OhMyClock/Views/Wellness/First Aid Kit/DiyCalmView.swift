@@ -73,9 +73,8 @@ struct DiyCalmView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Breathe Easy", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.heavy)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -85,14 +84,11 @@ struct DiyCalmView: View {
                                 VStack(spacing: 10) {
                                     DisclosureGroup("Chill with Your Breath", isExpanded: $isSectionOneExpanded) {
                                         Text("Learn how to use your breath to calm your mind. Try deep breathing exercises – inhale slowly for four counts, hold it for four, and exhale for four. It's like a remote control for chilling out your brain.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .bold, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -100,14 +96,11 @@ struct DiyCalmView: View {
                                     
                                     DisclosureGroup("Bubble Breathing", isExpanded: $isSectionTwoExpanded) {
                                         Text("Imagine you're blowing bubbles. Slow and steady. It's a fun way to focus on your breath and push away stress.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .bold, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
@@ -121,9 +114,8 @@ struct DiyCalmView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Mindful Moments", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.heavy)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -133,14 +125,12 @@ struct DiyCalmView: View {
                                 VStack(spacing: 10) {
                                     DisclosureGroup("What's Mindfulness?", isExpanded: $isSectionThreeExpanded) {
                                         Text("It's all about living in the now. Not stressing about tomorrow's math test or that awkward thing you said yesterday.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
+                                            .kerning(1)
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .bold, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -148,14 +138,11 @@ struct DiyCalmView: View {
                                     
                                     DisclosureGroup("Quick Mindfulness Exercise", isExpanded: $isSectionFourExpanded) {
                                         Text("Try this – spend 5 minutes noticing everything around you. The sounds, the sights, how your feet feel on the ground. It's like hitting the pause button on life's craziness.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .bold, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -163,14 +150,11 @@ struct DiyCalmView: View {
                                     
                                     DisclosureGroup("Daily Mindfulness Habit", isExpanded: $isSectionFiveExpanded) {
                                         Text("Make it a habit. Maybe take a minute every morning to just sit and be. It's a game-changer for starting your day on a positive note.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .bold, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
@@ -184,9 +168,8 @@ struct DiyCalmView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Stay Grounded", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.semibold)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -194,16 +177,13 @@ struct DiyCalmView: View {
                                 }
                                 
                                 VStack(spacing: 10) {
-                                    DisclosureGroup("Feet On THe Floor", isExpanded: $isSectionSixExpanded) {
+                                    DisclosureGroup("Feet On The Floor", isExpanded: $isSectionSixExpanded) {
                                         Text("When things feel too much, plant your feet firmly on the ground. Feel the floor beneath you. It's a quick way to bring you back to the present.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .bold, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -211,14 +191,11 @@ struct DiyCalmView: View {
                                     
                                     DisclosureGroup("The 5-4-3-2-1 Game", isExpanded: $isSectionSevenExpanded) {
                                         Text("Spot 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, and 1 you can taste. It's a cool trick to distract your brain from panic or anxiety.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .bold, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -226,14 +203,11 @@ struct DiyCalmView: View {
                                     
                                     DisclosureGroup("Power of Music", isExpanded: $isSectionEightExpanded) {
                                         Text("Create a playlist of tunes that lift you up or calm you down. Music can be a powerful ally when your mind's in overdrive.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 12))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .bold, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }

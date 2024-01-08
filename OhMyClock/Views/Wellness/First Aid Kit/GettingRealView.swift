@@ -23,6 +23,7 @@ struct GettingRealView: View {
     @State private var isSectionSevenExpanded = false
     @State private var isSectionEightExpanded = false
     @State private var isSectionNineExpanded = false
+    @State private var isSectionTenExpanded = false
     
     @State var rowHeight = 40.0
     
@@ -74,9 +75,8 @@ struct GettingRealView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Crisis Management", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.heavy)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -86,14 +86,11 @@ struct GettingRealView: View {
                                 VStack(spacing: 10) {
                                     DisclosureGroup("Recognizing a Crisis", isExpanded: $isSectionOneExpanded) {
                                         Text("A crisis might look like someone talking about self-harm, showing extreme emotional distress, or losing touch with reality. It's more than just a bad day.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -101,29 +98,23 @@ struct GettingRealView: View {
                                     
                                     DisclosureGroup("Immediate Actions", isExpanded: $isSectionTwoExpanded) {
                                         Text("If someone's in immediate danger, don't wait. Call emergency services. If it's not life-threatening but still serious, guide them to urgent but non-emergency care, like a crisis hotline or a walk-in clinic.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
                                     
-                                    DisclosureGroup("Stay Calm and Supportive", isExpanded: $isSectionTwoExpanded) {
+                                    DisclosureGroup("Stay Calm and Supportive", isExpanded: $isSectionThreeExpanded) {
                                         Text("If you're helping someone through a crisis, try to stay calm. Your calmness can be contagious. Let them know you're there for them and take their concerns seriously.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
@@ -137,9 +128,8 @@ struct GettingRealView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Emergency Contact Information", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.heavy)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -147,46 +137,37 @@ struct GettingRealView: View {
                                 }
                                 
                                 VStack(spacing: 10) {
-                                    DisclosureGroup("Hotlines and Text Lines", isExpanded: $isSectionThreeExpanded) {
+                                    DisclosureGroup("Hotlines and Text Lines", isExpanded: $isSectionFourExpanded) {
                                         Text("Keep a list of mental health crisis hotlines and text services. These are great resources for immediate, anonymous support.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
                                     
-                                    DisclosureGroup("Local Emergency Services", isExpanded: $isSectionFourExpanded) {
+                                    DisclosureGroup("Local Emergency Services", isExpanded: $isSectionFiveExpanded) {
                                         Text("Have the numbers for local emergency services handy. In many places, this will be 911, 999 etc, depending on where you live.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
                                     
-                                    DisclosureGroup("Mental Health Clinics", isExpanded: $isSectionFiveExpanded) {
+                                    DisclosureGroup("Mental Health Clinics", isExpanded: $isSectionSixExpanded) {
                                         Text("Know where the nearest mental health clinic or hospital is. Sometimes, professional help is needed ASAP.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
@@ -200,9 +181,8 @@ struct GettingRealView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Creating a Safety Plan", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.semibold)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -210,31 +190,25 @@ struct GettingRealView: View {
                                 }
                                 
                                 VStack(spacing: 10) {
-                                    DisclosureGroup("For Personal Use", isExpanded: $isSectionSixExpanded) {
+                                    DisclosureGroup("For Personal Use", isExpanded: $isSectionSevenExpanded) {
                                         Text("If you often find yourself in a crisis, work with a therapist or counselor to create a safety plan. This plan includes signs that a crisis may be developing, coping strategies, and people to contact for help.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
                                     
-                                    DisclosureGroup("For Helping Others", isExpanded: $isSectionSevenExpanded) {
+                                    DisclosureGroup("For Helping Others", isExpanded: $isSectionEightExpanded) {
                                         Text("If you're supporting someone, encourage them to develop a safety plan and be a part of it if appropriate. Know what their triggers are, what helps them calm down, and who they want to contact in a crisis.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
@@ -248,9 +222,8 @@ struct GettingRealView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("After a Crisis", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.semibold)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -258,31 +231,25 @@ struct GettingRealView: View {
                                 }
                                 
                                 VStack(spacing: 10) {
-                                    DisclosureGroup("Post-Crisis Support", isExpanded: $isSectionEightExpanded) {
+                                    DisclosureGroup("Post-Crisis Support", isExpanded: $isSectionNineExpanded) {
                                         Text("After a crisis, ongoing support is crucial. This might mean professional counseling, support groups, or just checking in regularly.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
                                     
-                                    DisclosureGroup("Self-Care for Supporters", isExpanded: $isSectionNineExpanded) {
+                                    DisclosureGroup("Self-Care for Supporters", isExpanded: $isSectionTenExpanded) {
                                         Text("If you've helped someone through a crisis, take care of yourself too. It can be emotionally draining, so don't forget to recharge.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_beige)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }

@@ -73,9 +73,8 @@ struct ProTalkView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Time for a Pro?", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.heavy)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -85,14 +84,11 @@ struct ProTalkView: View {
                                 VStack(spacing: 10) {
                                     DisclosureGroup("Recognizing the Need", isExpanded: $isSectionOneExpanded) {
                                         Text("If you or someone you know has been struggling consistently and it’s affecting daily life, it might be time to chat with a professional. This is especially true if there’s talk of self-harm or if the usual self-help tricks aren't cutting it.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_light_gray)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -100,14 +96,11 @@ struct ProTalkView: View {
                                     
                                     DisclosureGroup("It’s Okay to Seek Help", isExpanded: $isSectionTwoExpanded) {
                                         Text("Remember, reaching out to a mental health professional is as normal as seeing a doctor for a physical problem. It’s about taking care of your wellbeing.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_light_gray)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
@@ -121,9 +114,8 @@ struct ProTalkView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Who's Who in Mental Health", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.heavy)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -133,14 +125,11 @@ struct ProTalkView: View {
                                 VStack(spacing: 10) {
                                     DisclosureGroup("Psychologists vs. Psychiatrists", isExpanded: $isSectionThreeExpanded) {
                                         Text("Psychologists help with therapy and counseling, while psychiatrists can also prescribe medication. Both are great resources for mental health support.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_light_gray)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -148,14 +137,11 @@ struct ProTalkView: View {
                                     
                                     DisclosureGroup("Counselors and Therapists", isExpanded: $isSectionFourExpanded) {
                                         Text("These pros are trained to listen and help you work through your feelings. They’re perfect for regular check-ins and talk therapy.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_light_gray)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -163,14 +149,11 @@ struct ProTalkView: View {
                                     
                                     DisclosureGroup("Social Workers", isExpanded: $isSectionFiveExpanded) {
                                         Text("They often work in mental health too, offering counseling and connecting you with community resources.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_light_gray)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
@@ -184,9 +167,8 @@ struct ProTalkView: View {
                             VStack {
                                 HStack(spacing: 5) {
                                     Label("Finding Help", systemImage: "")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.semibold)
-                                        .kerning(2)
+                                        .font(.system(size:  16, weight: .heavy, design: .rounded))
+                                        .kerning(1)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_jap_indigo)
                                     
@@ -196,14 +178,11 @@ struct ProTalkView: View {
                                 VStack(spacing: 10) {
                                     DisclosureGroup("Start with a GP", isExpanded: $isSectionSixExpanded) {
                                         Text("Your General Practitioner (GP) or family doctor is a good starting point. They can make referrals to mental health specialists.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_light_gray)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -211,14 +190,11 @@ struct ProTalkView: View {
                                     
                                     DisclosureGroup("School and Work Resources", isExpanded: $isSectionSevenExpanded) {
                                         Text("If you’re a student, check out your school’s counseling services. Many workplaces also have employee assistance programs for mental health support.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_light_gray)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
@@ -226,14 +202,11 @@ struct ProTalkView: View {
                                     
                                     DisclosureGroup("Online Directories", isExpanded: $isSectionEightExpanded) {
                                         Text("Websites like Psychology Today have directories of therapists and psychiatrists, including their specialties and contact info.")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.medium)
+                                            .font(.system(size:  13, weight: .medium, design: .rounded))
                                             .foregroundColor(np_light_gray)
                                     }
-                                    .font(.system(size: 13))
-                                    .fontWeight(.semibold)
+                                    .font(.system(size:  15, weight: .heavy, design: .rounded))
                                     .kerning(1)
-                                    .textCase(.uppercase)
                                     .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
