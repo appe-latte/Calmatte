@@ -50,7 +50,7 @@ struct MentalHealth101View: View {
                                                 .kerning(3)
                                                 .foregroundColor(np_white)
                                                 .padding(5)
-                                                .background(np_jap_indigo)
+                                                .background(np_arsenic)
                                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                                 .padding(.bottom, 10)
                                         }
@@ -272,7 +272,7 @@ struct MentalHealth101View: View {
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(np_white)
                     .padding(10)
-                    .background(Circle().fill(np_jap_indigo))
+                    .background(Circle().fill(np_arsenic))
             })
         }
     }

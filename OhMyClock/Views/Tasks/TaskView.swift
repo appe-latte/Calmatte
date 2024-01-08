@@ -244,8 +244,8 @@ struct CardView: View {
             Text(task.taskName)
                 .font(.headline)
                 .fontWeight(.semibold)
-                .kerning(3)
-                .textCase(.uppercase)
+                .kerning(1)
+//                .textCase(.uppercase) 
                 .padding(.horizontal, 15)
             
             // MARK: "Delete" button

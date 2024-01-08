@@ -30,7 +30,6 @@ struct DiyCalmView: View {
             ZStack {
                 VStack(spacing: 5) {
                     CustomHeaderShape()
-                        .stroke(np_black, lineWidth: 50)
                         .frame(width: width, height: 300)
                         .overlay {
                             Image("diy-calm")
@@ -50,7 +49,7 @@ struct DiyCalmView: View {
                                                 .kerning(3)
                                                 .foregroundColor(np_white)
                                                 .padding(5)
-                                                .background(np_jap_indigo)
+                                                .background(np_arsenic)
                                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                                 .padding(.bottom, 10)
                                         }
@@ -113,7 +112,7 @@ struct DiyCalmView: View {
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_jap_indigo)
+                                .background(np_arsenic)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -176,7 +175,7 @@ struct DiyCalmView: View {
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_jap_indigo)
+                                .background(np_arsenic)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -239,7 +238,7 @@ struct DiyCalmView: View {
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_jap_indigo)
+                                .background(np_arsenic)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -257,7 +256,7 @@ struct DiyCalmView: View {
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(np_white)
                     .padding(10)
-                    .background(Circle().fill(np_jap_indigo))
+                    .background(Circle().fill(np_arsenic))
             })
         }
     }

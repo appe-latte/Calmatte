@@ -13,7 +13,7 @@ struct WaterCardView: View {
     @State private var audioPlayer: AVAudioPlayer?
     @State private var isPlaying = false
     @State private var progress: Float = 0.0
-    @State private var trackTime : Int = 6
+    @State private var trackTime : Int = 4
     @State private var currentTime: String = "0:00"
     @State private var duration: String = "0:00"
     @State private var currentTrack: String?
@@ -79,7 +79,7 @@ struct WaterCardView: View {
             }
         }
     }
-
+    
     
     // MARK: Skip Forward/Backward
     private func skip(seconds: TimeInterval) {
@@ -146,7 +146,7 @@ struct WaterCardView: View {
                                                 .fontWeight(.heavy)
                                                 .foregroundStyle(np_black)
                                             
-                                            Text("Wellness Activity •")
+                                            Text("Wellness Audio •")
                                                 .font(.system(size: 8, design: .rounded))
                                                 .fontWeight(.bold)
                                                 .textCase(.uppercase)
@@ -176,21 +176,21 @@ struct WaterCardView: View {
                     Spacer()
                         .frame(height: 100)
                     
-                    // MARK: Rain by Candle light Sound
+                    // MARK: Iridescent Waves Sound
                     VStack(spacing: 25) {
                         // MARK: Card Description
-//                        Text("Nothing is more relaxing than listening to calming sound of the rain gently pouring down or the soothing ripples of a stream in the woods.")
-//                            .font(.system(size: 9, design: .rounded))
-//                            .fontWeight(.medium)
-//                            .textCase(.uppercase)
-//                            .kerning(1)
-//                            .multilineTextAlignment(.leading)
-//                            .lineLimit(4)
-//                            .minimumScaleFactor(0.6)
-//                            .padding(.horizontal, 5)
+                        //                        Text("Nothing is more relaxing than listening to calming sound of the rain gently pouring down or the soothing ripples of a stream in the woods.")
+                        //                            .font(.system(size: 9, design: .rounded))
+                        //                            .fontWeight(.medium)
+                        //                            .textCase(.uppercase)
+                        //                            .kerning(1)
+                        //                            .multilineTextAlignment(.leading)
+                        //                            .lineLimit(4)
+                        //                            .minimumScaleFactor(0.6)
+                        //                            .padding(.horizontal, 5)
                         
                         HStack(spacing: 5) {
-                            Label("Rain By Candle light", systemImage: "lock.open.fill")
+                            Label("Iridescent Waves", systemImage: "lock.open.fill")
                                 .font(.system(size: 16))
                                 .fontWeight(.semibold)
                                 .kerning(2)
@@ -216,7 +216,7 @@ struct WaterCardView: View {
                             
                             // "Play / Stop" button
                             Button(action: {
-                                self.playOrStop(trackName: "candlelit")
+                                self.playOrStop(trackName: "iridescent-waves")
                             }) {
                                 Image(systemName: isPlaying ? "stop.circle.fill" : "play.circle.fill")
                                     .resizable()
@@ -265,7 +265,12 @@ struct WaterCardView: View {
                     }
                     .padding(.bottom, 150)
                     .onAppear {
-                        self.loadAudio(audioName: "candlelit")
+                        self.loadAudio(audioName: "iridescent-waves")
+                    }
+                    .onDisappear {
+                        self.audioPlayer?.stop()
+                        self.audioPlayer?.currentTime = 0
+                        self.isPlaying = false
                     }
                 }
             }

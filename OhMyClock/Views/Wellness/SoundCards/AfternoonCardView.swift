@@ -13,7 +13,7 @@ struct AfternoonCardView: View {
     @State private var audioPlayer: AVAudioPlayer?
     @State private var isPlaying = false
     @State private var progress: Float = 0.0
-    @State private var trackTime : Int = 6
+    @State private var trackTime : Int = 4
     @State private var currentTime: String = "0:00"
     @State private var duration: String = "0:00"
     @State private var currentTrack: String?
@@ -79,7 +79,7 @@ struct AfternoonCardView: View {
             }
         }
     }
-
+    
     
     // MARK: Skip Forward/Backward
     private func skip(seconds: TimeInterval) {
@@ -146,7 +146,7 @@ struct AfternoonCardView: View {
                                                 .fontWeight(.heavy)
                                                 .foregroundStyle(np_black)
                                             
-                                            Text("Wellness Activity •")
+                                            Text("Wellness Audio •")
                                                 .font(.system(size: 8, design: .rounded))
                                                 .fontWeight(.bold)
                                                 .textCase(.uppercase)
@@ -176,22 +176,22 @@ struct AfternoonCardView: View {
                     Spacer()
                         .frame(height: 100)
                     
-                    // MARK: Myrrh
+                    // MARK: Soft Drift
                     VStack(spacing: 25) {
                         
-                        // MARK: CArd Description
-//                        Text("The day maybe hectic, but take a mindfulness break to quieten your mind, calm yourself and give yourself the best chance of being productive for the remaining hours of the day.")
-//                            .font(.system(size: 9, design: .rounded))
-//                            .fontWeight(.medium)
-//                            .textCase(.uppercase)
-//                            .kerning(1)
-//                            .multilineTextAlignment(.leading)
-//                            .lineLimit(4)
-//                            .minimumScaleFactor(0.6)
-//                            .padding(.horizontal, 5)
+                        // MARK: Card Description
+                        //                        Text("The day maybe hectic, but take a mindfulness break to quieten your mind, calm yourself and give yourself the best chance of being productive for the remaining hours of the day.")
+                        //                            .font(.system(size: 9, design: .rounded))
+                        //                            .fontWeight(.medium)
+                        //                            .textCase(.uppercase)
+                        //                            .kerning(1)
+                        //                            .multilineTextAlignment(.leading)
+                        //                            .lineLimit(4)
+                        //                            .minimumScaleFactor(0.6)
+                        //                            .padding(.horizontal, 5)
                         
                         HStack(spacing: 5) {
-                            Label("Lo-Fi Myrrh", systemImage: "lock.open.fill")
+                            Label("Soft Drift", systemImage: "lock.open.fill")
                                 .font(.system(size: 16))
                                 .fontWeight(.semibold)
                                 .kerning(2)
@@ -217,7 +217,7 @@ struct AfternoonCardView: View {
                             
                             // "Play / Stop" button
                             Button(action: {
-                                self.playOrStop(trackName: "myrrh")
+                                self.playOrStop(trackName: "soft-drift")
                             }) {
                                 Image(systemName: isPlaying ? "stop.circle.fill" : "play.circle.fill")
                                     .resizable()
@@ -266,7 +266,12 @@ struct AfternoonCardView: View {
                     }
                     .padding(.bottom, 150)
                     .onAppear {
-                        self.loadAudio(audioName: "myrrh")
+                        self.loadAudio(audioName: "soft-drift")
+                    }
+                    .onDisappear {
+                        self.audioPlayer?.stop()
+                        self.audioPlayer?.currentTime = 0
+                        self.isPlaying = false
                     }
                 }
             }

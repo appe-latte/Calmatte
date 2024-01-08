@@ -13,7 +13,7 @@ struct MorningCardView: View {
     @State private var audioPlayer: AVAudioPlayer?
     @State private var isPlaying = false
     @State private var progress: Float = 0.0
-    @State private var trackTime : Int = 2
+    @State private var trackTime : Int = 10
     @State private var currentTime: String = "0:00"
     @State private var duration: String = "0:00"
     @State private var currentTrack: String?
@@ -142,7 +142,7 @@ struct MorningCardView: View {
                                                 .fontWeight(.heavy)
                                                 .foregroundStyle(np_black)
                                             
-                                            Text("Wellness Activity •")
+                                            Text("Wellness Audio •")
                                                 .font(.system(size: 8, design: .rounded))
                                                 .fontWeight(.bold)
                                                 .textCase(.uppercase)
@@ -171,20 +171,20 @@ struct MorningCardView: View {
                     Spacer()
                         .frame(height: 100)
                     
-                    // MARK: Piano_meditation
+                    // MARK: Mindfulness Journey Sound
                     VStack(spacing: 25) {
                         // MARK: Card Description
-//                        Text("Breakfast is the most important meal of the day, but so is starting your day off right...Mentally! Take some time to meditate and get mentally prepared for the day.")
-//                            .frame(width: width - 40, height: 100)
-//                            .font(.system(size: 12, design: .rounded))
-//                            .fontWeight(.medium)
-//                            .textCase(.uppercase)
-//                            .multilineTextAlignment(.leading)
-//                            .lineLimit(4)
-//                            .kerning(1)
+                        //                        Text("Breakfast is the most important meal of the day, but so is starting your day off right...Mentally! Take some time to meditate and get mentally prepared for the day.")
+                        //                            .frame(width: width - 40, height: 100)
+                        //                            .font(.system(size: 12, design: .rounded))
+                        //                            .fontWeight(.medium)
+                        //                            .textCase(.uppercase)
+                        //                            .multilineTextAlignment(.leading)
+                        //                            .lineLimit(4)
+                        //                            .kerning(1)
                         
                         HStack(spacing: 5) {
-                            Label("Piano Meditation", systemImage: "lock.open.fill")
+                            Label("Mindfulness Journey", systemImage: "lock.open.fill")
                                 .font(.system(size: 14))
                                 .fontWeight(.semibold)
                                 .kerning(2)
@@ -210,7 +210,7 @@ struct MorningCardView: View {
                             
                             // "Play / Stop" button
                             Button(action: {
-                                self.playOrStop(trackName: "piano-meditation")
+                                self.playOrStop(trackName: "mindfulness-journey")
                             }) {
                                 Image(systemName: isPlaying ? "stop.circle.fill" : "play.circle.fill")
                                     .resizable()
@@ -259,7 +259,12 @@ struct MorningCardView: View {
                     }
                     .padding(.bottom, 150)
                     .onAppear {
-                        self.loadAudio(audioName: "piano-meditation")
+                        self.loadAudio(audioName: "mindfulness-journey")
+                    }
+                    .onDisappear {
+                        self.audioPlayer?.stop()
+                        self.audioPlayer?.currentTime = 0
+                        self.isPlaying = false
                     }
                 }
             }

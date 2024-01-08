@@ -13,7 +13,7 @@ struct BeachCardView: View {
     @State private var audioPlayer: AVAudioPlayer?
     @State private var isPlaying = false
     @State private var progress: Float = 0.0
-    @State private var trackTime : Int = 6
+    @State private var trackTime : Int = 1
     @State private var currentTime: String = "0:00"
     @State private var duration: String = "0:00"
     @State private var currentTrack: String?
@@ -79,7 +79,7 @@ struct BeachCardView: View {
             }
         }
     }
-
+    
     
     // MARK: Skip Forward/Backward
     private func skip(seconds: TimeInterval) {
@@ -146,7 +146,7 @@ struct BeachCardView: View {
                                                 .fontWeight(.heavy)
                                                 .foregroundStyle(np_black)
                                             
-                                            Text("Wellness Activity •")
+                                            Text("Wellness Sounds •")
                                                 .font(.system(size: 8, design: .rounded))
                                                 .fontWeight(.bold)
                                                 .textCase(.uppercase)
@@ -176,21 +176,21 @@ struct BeachCardView: View {
                     Spacer()
                         .frame(height: 100)
                     
-                    // MARK: Rain by Candle light Sound
+                    // MARK: Ocean Ambience Sound
                     VStack(spacing: 25) {
                         // MARK: CArd Description
-//                        Text("Put your shades on and bring the beach to you with calming sounds of the beach.")
-//                            .font(.system(size: 9, design: .rounded))
-//                            .fontWeight(.medium)
-//                            .textCase(.uppercase)
-//                            .kerning(1)
-//                            .multilineTextAlignment(.leading)
-//                            .lineLimit(4)
-//                            .minimumScaleFactor(0.6)
-//                            .padding(.horizontal, 5)
+                        //                        Text("Put your shades on and bring the beach to you with calming sounds of the beach.")
+                        //                            .font(.system(size: 9, design: .rounded))
+                        //                            .fontWeight(.medium)
+                        //                            .textCase(.uppercase)
+                        //                            .kerning(1)
+                        //                            .multilineTextAlignment(.leading)
+                        //                            .lineLimit(4)
+                        //                            .minimumScaleFactor(0.6)
+                        //                            .padding(.horizontal, 5)
                         
                         HStack(spacing: 5) {
-                            Label("Rain By Candle light", systemImage: "lock.open.fill")
+                            Label("Ocean Ambience", systemImage: "lock.open.fill")
                                 .font(.system(size: 16))
                                 .fontWeight(.semibold)
                                 .kerning(2)
@@ -216,7 +216,7 @@ struct BeachCardView: View {
                             
                             // "Play / Stop" button
                             Button(action: {
-                                self.playOrStop(trackName: "candlelit")
+                                self.playOrStop(trackName: "ocean-ambience")
                             }) {
                                 Image(systemName: isPlaying ? "stop.circle.fill" : "play.circle.fill")
                                     .resizable()
@@ -265,7 +265,12 @@ struct BeachCardView: View {
                     }
                     .padding(.bottom, 150)
                     .onAppear {
-                        self.loadAudio(audioName: "candlelit")
+                        self.loadAudio(audioName: "ocean-ambience")
+                    }
+                    .onDisappear {
+                        self.audioPlayer?.stop()
+                        self.audioPlayer?.currentTime = 0
+                        self.isPlaying = false
                     }
                 }
             }

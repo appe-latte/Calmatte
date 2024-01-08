@@ -14,7 +14,7 @@ struct WellnessView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var dragOffset: CGFloat = 0
     
-    @State private var wellnessDescription = "Sounds to help you meditate, calm your mind or get through the day."
+    @State private var wellnessDescription = "Embrace this sanctuary of sound and support, designed for your journey towards inner peace and balance."
     @State private var showPlayer = false
     
     let width = UIScreen.main.bounds.width

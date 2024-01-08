@@ -49,7 +49,7 @@ struct ProTalkView: View {
                                                 .kerning(3)
                                                 .foregroundColor(np_white)
                                                 .padding(5)
-                                                .background(np_jap_indigo)
+                                                .background(np_arsenic)
                                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                                 .padding(.bottom, 10)
                                         }
@@ -256,7 +256,7 @@ struct ProTalkView: View {
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(np_white)
                     .padding(10)
-                    .background(Circle().fill(np_jap_indigo))
+                    .background(Circle().fill(np_arsenic))
             })
         }
     }
@@ -267,14 +267,8 @@ struct ProTalkView: View {
         GeometryReader { proxy in
             let size = proxy.size
             
-            Image("img-bg")
-                .resizable()
-                .scaledToFill()
-                .frame(height: size.height, alignment: .bottom)
-            
             Rectangle()
-                .fill(np_ash_green)
-                .opacity(0.98)
+                .fill(LinearGradient(colors: [np_peach, np_blush_pink, np_blush_pink], startPoint: .top, endPoint: .bottom))
                 .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()

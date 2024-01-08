@@ -51,7 +51,7 @@ struct HelpSquadView: View {
                                                 .kerning(3)
                                                 .foregroundColor(np_beige)
                                                 .padding(5)
-                                                .background(np_jap_indigo)
+                                                .background(np_arsenic)
                                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                                 .padding(.bottom, 10)
                                         }
@@ -114,7 +114,7 @@ struct HelpSquadView: View {
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_jap_indigo)
+                                .background(np_arsenic)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -177,7 +177,7 @@ struct HelpSquadView: View {
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_jap_indigo)
+                                .background(np_arsenic)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -240,7 +240,7 @@ struct HelpSquadView: View {
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_jap_indigo)
+                                .background(np_arsenic)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -288,7 +288,7 @@ struct HelpSquadView: View {
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_jap_indigo)
+                                .background(np_arsenic)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -306,7 +306,7 @@ struct HelpSquadView: View {
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(np_white)
                     .padding(10)
-                    .background(Circle().fill(np_jap_indigo))
+                    .background(Circle().fill(np_arsenic))
             })
         }
     }

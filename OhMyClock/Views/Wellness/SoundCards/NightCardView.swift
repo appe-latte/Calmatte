@@ -79,7 +79,7 @@ struct NightCardView: View {
             }
         }
     }
-
+    
     
     // MARK: Skip Forward/Backward
     private func skip(seconds: TimeInterval) {
@@ -146,7 +146,7 @@ struct NightCardView: View {
                                                 .fontWeight(.heavy)
                                                 .foregroundStyle(np_white)
                                             
-                                            Text("Wellness Activity •")
+                                            Text("Wellness Audio •")
                                                 .font(.system(size: 8, design: .rounded))
                                                 .fontWeight(.bold)
                                                 .textCase(.uppercase)
@@ -176,21 +176,21 @@ struct NightCardView: View {
                     Spacer()
                         .frame(height: 100)
                     
-                    // MARK: Rain by Candle light Sound
+                    // MARK: Lo-Fi Myrrh Sound
                     VStack(spacing: 25) {
                         // MARK: Card Description
-//                        Text("It's been a long day, now it's time to relax, reset and prepare your mind for some much needed rest.")
-//                            .font(.system(size: 9, design: .rounded))
-//                            .fontWeight(.medium)
-//                            .textCase(.uppercase)
-//                            .kerning(1)
-//                            .multilineTextAlignment(.leading)
-//                            .lineLimit(4)
-//                            .minimumScaleFactor(0.6)
-//                            .padding(.horizontal, 5)
+                        //                        Text("It's been a long day, now it's time to relax, reset and prepare your mind for some much needed rest.")
+                        //                            .font(.system(size: 9, design: .rounded))
+                        //                            .fontWeight(.medium)
+                        //                            .textCase(.uppercase)
+                        //                            .kerning(1)
+                        //                            .multilineTextAlignment(.leading)
+                        //                            .lineLimit(4)
+                        //                            .minimumScaleFactor(0.6)
+                        //                            .padding(.horizontal, 5)
                         
                         HStack(spacing: 5) {
-                            Label("Rain By Candle light", systemImage: "lock.open.fill")
+                            Label("Lo-Fi Myrrh", systemImage: "lock.open.fill")
                                 .font(.system(size: 16))
                                 .fontWeight(.semibold)
                                 .kerning(2)
@@ -216,7 +216,7 @@ struct NightCardView: View {
                             
                             // "Play / Stop" button
                             Button(action: {
-                                self.playOrStop(trackName: "candlelit")
+                                self.playOrStop(trackName: "myrrh")
                             }) {
                                 Image(systemName: isPlaying ? "stop.circle.fill" : "play.circle.fill")
                                     .resizable()
@@ -265,7 +265,12 @@ struct NightCardView: View {
                     }
                     .padding(.bottom, 150)
                     .onAppear {
-                        self.loadAudio(audioName: "candlelit")
+                        self.loadAudio(audioName: "myrrh")
+                    }
+                    .onDisappear {
+                        self.audioPlayer?.stop()
+                        self.audioPlayer?.currentTime = 0
+                        self.isPlaying = false
                     }
                 }
             }

@@ -48,9 +48,9 @@ struct GettingRealView: View {
                                                 .fontWeight(.bold)
                                                 .textCase(.uppercase)
                                                 .kerning(3)
-                                                .foregroundColor(np_white)
+                                                .foregroundColor(np_beige)
                                                 .padding(5)
-                                                .background(np_red)
+                                                .background(np_arsenic)
                                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                                 .padding(.bottom, 10)
                                         }
@@ -78,7 +78,7 @@ struct GettingRealView: View {
                                         .fontWeight(.heavy)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_light_gray)
+                                        .foregroundColor(np_jap_indigo)
                                     
                                     Spacer()
                                 }
@@ -88,13 +88,13 @@ struct GettingRealView: View {
                                         Text("A crisis might look like someone talking about self-harm, showing extreme emotional distress, or losing touch with reality. It's more than just a bad day.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
@@ -103,13 +103,13 @@ struct GettingRealView: View {
                                         Text("If someone's in immediate danger, don't wait. Call emergency services. If it's not life-threatening but still serious, guide them to urgent but non-emergency care, like a crisis hotline or a walk-in clinic.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
@@ -118,17 +118,17 @@ struct GettingRealView: View {
                                         Text("If you're helping someone through a crisis, try to stay calm. Your calmness can be contagious. Let them know you're there for them and take their concerns seriously.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_light_gray)
+                                .background(np_arsenic)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -141,7 +141,7 @@ struct GettingRealView: View {
                                         .fontWeight(.heavy)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_light_gray)
+                                        .foregroundColor(np_jap_indigo)
                                     
                                     Spacer()
                                 }
@@ -151,13 +151,13 @@ struct GettingRealView: View {
                                         Text("Keep a list of mental health crisis hotlines and text services. These are great resources for immediate, anonymous support.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
@@ -166,13 +166,13 @@ struct GettingRealView: View {
                                         Text("Have the numbers for local emergency services handy. In many places, this will be 911, 999 etc, depending on where you live.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
@@ -181,17 +181,17 @@ struct GettingRealView: View {
                                         Text("Know where the nearest mental health clinic or hospital is. Sometimes, professional help is needed ASAP.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_light_gray)
+                                .background(np_arsenic)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -204,7 +204,7 @@ struct GettingRealView: View {
                                         .fontWeight(.semibold)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_light_gray)
+                                        .foregroundColor(np_jap_indigo)
                                     
                                     Spacer()
                                 }
@@ -214,13 +214,13 @@ struct GettingRealView: View {
                                         Text("If you often find yourself in a crisis, work with a therapist or counselor to create a safety plan. This plan includes signs that a crisis may be developing, coping strategies, and people to contact for help.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
@@ -229,17 +229,17 @@ struct GettingRealView: View {
                                         Text("If you're supporting someone, encourage them to develop a safety plan and be a part of it if appropriate. Know what their triggers are, what helps them calm down, and who they want to contact in a crisis.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_light_gray)
+                                .background(np_arsenic)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -252,7 +252,7 @@ struct GettingRealView: View {
                                         .fontWeight(.semibold)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(np_light_gray)
+                                        .foregroundColor(np_jap_indigo)
                                     
                                     Spacer()
                                 }
@@ -262,13 +262,13 @@ struct GettingRealView: View {
                                         Text("After a crisis, ongoing support is crucial. This might mean professional counseling, support groups, or just checking in regularly.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                     
                                     Divider()
@@ -277,17 +277,17 @@ struct GettingRealView: View {
                                         Text("If you've helped someone through a crisis, take care of yourself too. It can be emotionally draining, so don't forget to recharge.")
                                             .font(.system(size: 12))
                                             .fontWeight(.medium)
-                                            .foregroundColor(np_jap_indigo)
+                                            .foregroundColor(np_beige)
                                     }
                                     .font(.system(size: 13))
                                     .fontWeight(.semibold)
                                     .kerning(1)
                                     .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
+                                    .foregroundColor(np_white)
                                     .padding(.horizontal, 20)
                                 }
                                 .padding(20)
-                                .background(np_light_gray)
+                                .background(np_arsenic)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.bottom, 10)
                             }
@@ -305,7 +305,7 @@ struct GettingRealView: View {
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(np_white)
                     .padding(10)
-                    .background(Circle().fill(np_red))
+                    .background(Circle().fill(np_arsenic))
             })
         }
     }
@@ -316,14 +316,8 @@ struct GettingRealView: View {
         GeometryReader { proxy in
             let size = proxy.size
             
-            Image("img-bg")
-                .resizable()
-                .scaledToFill()
-                .frame(height: size.height, alignment: .bottom)
-            
             Rectangle()
-                .fill(np_black)
-                .opacity(0.98)
+                .fill(LinearGradient(colors: [np_blush_pink, np_blush_pink, np_pink], startPoint: .top, endPoint: .bottom))
                 .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()

@@ -153,50 +153,50 @@ struct SettingsView: View {
                             .background(np_gray)
                         
                         // MARK: User Subscription Status
-                        VStack {
-                            HStack {
-                                Image("paid")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .padding(5)
-                                    .foregroundColor(np_turq)
-                                
-                                Text("Subscription:")
-                                    .font(.caption2)
-                                    .fontWeight(.semibold)
-                                    .kerning(2)
-                                    .textCase(.uppercase)
-                                    .foregroundColor(np_white)
-                                
-                                Text(userViewModel.isSubscriptionActive ? "Calmatte Plus" : "Free")
-                                    .font(.caption2)
-                                    .fontWeight(.semibold)
-                                    .kerning(2)
-                                    .textCase(.uppercase)
-                                    .foregroundColor(np_white)
-                                
-                                Spacer()
-                                
-                                // MARK: Restore Subscription Button
-                                if userViewModel.isSubscriptionActive == true {
-                                    //
-                                } else {
-                                    Button {
-                                        Purchases.shared.restorePurchases { (customerInfo, error) in
-                                            userViewModel.isSubscriptionActive = customerInfo?.entitlements.all["calm_plus"]?.isActive == true
-                                        }
-                                    } label: {
-                                        Text("Restore")
-                                            .font(.system(size: 10))
-                                            .fontWeight(.medium)
-                                            .textCase(.uppercase)
-                                            .kerning(2)
-                                            .foregroundColor(np_turq)
-                                    }
-                                }
-                            }
-                        }
-                        .padding(.horizontal, 20)
+//                        VStack {
+//                            HStack {
+//                                Image("paid")
+//                                    .resizable()
+//                                    .frame(width: 25, height: 25)
+//                                    .padding(5)
+//                                    .foregroundColor(np_turq)
+//                                
+//                                Text("Subscription:")
+//                                    .font(.caption2)
+//                                    .fontWeight(.semibold)
+//                                    .kerning(2)
+//                                    .textCase(.uppercase)
+//                                    .foregroundColor(np_white)
+//                                
+//                                Text(userViewModel.isSubscriptionActive ? "Calmatte Plus" : "Free")
+//                                    .font(.caption2)
+//                                    .fontWeight(.semibold)
+//                                    .kerning(2)
+//                                    .textCase(.uppercase)
+//                                    .foregroundColor(np_white)
+//                                
+//                                Spacer()
+//                                
+//                                // MARK: Restore Subscription Button
+//                                if userViewModel.isSubscriptionActive == true {
+//                                    //
+//                                } else {
+//                                    Button {
+//                                        Purchases.shared.restorePurchases { (customerInfo, error) in
+//                                            userViewModel.isSubscriptionActive = customerInfo?.entitlements.all["calm_plus"]?.isActive == true
+//                                        }
+//                                    } label: {
+//                                        Text("Restore")
+//                                            .font(.system(size: 10))
+//                                            .fontWeight(.medium)
+//                                            .textCase(.uppercase)
+//                                            .kerning(2)
+//                                            .foregroundColor(np_turq)
+//                                    }
+//                                }
+//                            }
+//                        }
+//                        .padding(.horizontal, 20)
                         
                         Divider()
                             .background(np_gray)
