@@ -17,6 +17,11 @@ struct AfternoonCardView: View {
     @State private var currentTime: String = "0:00"
     @State private var duration: String = "0:00"
     @State private var currentTrack: String?
+    @State private var animationTimer: Timer?
+    
+    @State private var amplitude : CGFloat = 0.8
+    @State private var phase : CGFloat = 0.0
+    @State private var change : CGFloat = 0.1
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -59,9 +64,11 @@ struct AfternoonCardView: View {
             audioPlayer?.stop()
             audioPlayer?.currentTime = 0 // Reset the track to the beginning
             isPlaying = false
+            animationTimer?.invalidate() // Stops the waveform animation
         } else {
             audioPlayer?.play()
             isPlaying = true
+            startAnimation()
             
             // Update progress and track time
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
@@ -80,6 +87,15 @@ struct AfternoonCardView: View {
         }
     }
     
+    // MARK: Animation Control
+    private func startAnimation() {
+        animationTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            withAnimation(.linear(duration: 0.1)) {
+                self.amplitude = self._nextAmplitude()
+                self.phase -= 1.5
+            }
+        }
+    }
     
     // MARK: Skip Forward/Backward
     private func skip(seconds: TimeInterval) {
@@ -95,6 +111,20 @@ struct AfternoonCardView: View {
         }
         
         self.updateProgress()
+    }
+    
+    // MARK: Amplitude for waveform
+    private func _nextAmplitude() -> CGFloat {
+        if self.amplitude <= 0.01 {
+            self.change = 0.1
+            return 0.02
+        } else if self.amplitude > 0.9 {
+            self.change = -0.1
+            return 0.9
+        }
+        
+        let newAmplitude = self.amplitude + (self.change * CGFloat.random(in: 0.3...0.8))
+        return max(0.01, newAmplitude)
     }
     
     // MARK: Update Progress
@@ -163,33 +193,22 @@ struct AfternoonCardView: View {
                                         .padding(.horizontal, 20)
                                         
                                         Spacer()
+                                            .frame(height: 20)
+                                        
+                                        Muiltiwave(amplitude: amplitude, color: np_white, phase: phase)
                                             .frame(height: 300)
                                     }
                                     .padding(.vertical, 10)
                                 }
-                            
                         }
                         .clipShape(CustomHeaderShape())
                         .edgesIgnoringSafeArea(.top)
-                    
                     
                     Spacer()
                         .frame(height: 100)
                     
                     // MARK: Soft Drift
                     VStack(spacing: 25) {
-                        
-                        // MARK: Card Description
-                        //                        Text("The day maybe hectic, but take a mindfulness break to quieten your mind, calm yourself and give yourself the best chance of being productive for the remaining hours of the day.")
-                        //                            .font(.system(size: 9, design: .rounded))
-                        //                            .fontWeight(.medium)
-                        //                            .textCase(.uppercase)
-                        //                            .kerning(1)
-                        //                            .multilineTextAlignment(.leading)
-                        //                            .lineLimit(4)
-                        //                            .minimumScaleFactor(0.6)
-                        //                            .padding(.horizontal, 5)
-                        
                         HStack(spacing: 5) {
                             Label("Soft Drift", systemImage: "lock.open.fill")
                                 .font(.system(size: 16))

@@ -37,50 +37,39 @@ struct WellnessView: View {
                     HeaderView()
                     
                     ScrollView(.vertical, showsIndicators: false) {
-                        // MARK: Audio Section
                         VStack {
-                            HStack {
-                                Text("Wellness Audio")
-                                    .font(.system(size:  14, weight: .bold, design: .rounded))
-                                    .kerning(1)
-                                    .textCase(.uppercase)
-                                    .foregroundColor(np_jap_indigo)
-                                    .padding(5)
-                                    .background(np_white)
-                                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                                
-                                Spacer()
-                            }
-                            .padding(.horizontal)
-                            
-                            // MARK: Wellness Audio View
-                            NavigationLink(destination: WellnessAudioView()){
-                                Image("img-sunrise")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: width - 40, height: 250)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .padding(.vertical, 10)
-                                    .overlay {
-                                        VStack {
-                                            HStack {
-                                                Label("Featured Sound", systemImage: "star.fill")
-                                                    .font(.system(size: 10))
-                                                    .fontWeight(.semibold)
-                                                    .kerning(2)
-                                                    .textCase(.uppercase)
-                                                    .foregroundColor(np_jap_indigo)
-                                                    .padding(5)
-                                                    .background(np_white)
-                                                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                
-                                                Spacer()
-                                            }
-                                            
-                                            Spacer()
-                                        }
-                                        .padding(.horizontal)
+                            HStack(spacing: 10) {
+                                // MARK: Wellness Audio View
+                                NavigationLink(destination: WellnessAudioView()){
+                                    HStack {
+                                        Text("Wellness Audio")
+                                            .font(.system(size:  14, weight: .bold, design: .rounded))
+                                            .kerning(1)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(np_jap_indigo)
+                                            .padding(5)
                                     }
+                                    .padding(.horizontal)
+                                }
+                                .frame(width: 175, height: 100)
+                                .background(np_white)
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                                
+                                // MARK: Meditation View
+                                NavigationLink(destination: WellnessAudioView()){
+                                    HStack {
+                                        Text("Meditation Zone")
+                                            .font(.system(size:  14, weight: .bold, design: .rounded))
+                                            .kerning(1)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(np_jap_indigo)
+                                            .padding(5)
+                                    }
+                                    .padding(.horizontal)
+                                }
+                                .frame(width: 175, height: 100)
+                                .background(np_white)
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
                             }
                         }
                         

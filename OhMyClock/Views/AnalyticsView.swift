@@ -103,7 +103,7 @@ struct AnalyticsView: View {
                 .frame(height: size.height, alignment: .bottom)
             
             Rectangle()
-                .fill(np_arsenic)
+                .fill(np_jap_indigo)
                 .opacity(0.98)
                 .frame(height: size.height, alignment: .bottom)
         }

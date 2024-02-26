@@ -114,11 +114,6 @@ struct ContentView: View {
                     if progressView.isLoading {
                         ProgressLoadingView()
                     }
-                    
-                    // MARK: Show PayWall
-//                    if showPaywall {
-//                        CalmattePaywallView(showPaywall: $showPaywall)
-//                    }
                 }
                 .onAppear {
                     progressView.loadData()

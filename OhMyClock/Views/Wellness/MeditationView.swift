@@ -30,32 +30,6 @@ struct MeditationView: View {
                 
                 // MARK: "Content" section
                 BreathingView()
-                
-                // MARK: User Subscription Status
-                //            VStack {
-                //                HStack {
-                //                    Image("paid")
-                //                        .resizable()
-                //                        .frame(width: 25, height: 25)
-                //                        .padding(5)
-                //                        .foregroundColor(np_turq)
-                //
-                //                    Text("Subscription:")
-                //                        .font(.caption2)
-                //                        .fontWeight(.semibold)
-                //                        .kerning(2)
-                //                        .textCase(.uppercase)
-                //                        .foregroundColor(np_white)
-                //
-                //                    Text(userViewModel.isSubscriptionActive ? "Calmatte Plus" : "Free")
-                //                        .font(.caption2)
-                //                        .fontWeight(.semibold)
-                //                        .kerning(2)
-                //                        .textCase(.uppercase)
-                //                        .foregroundColor(np_white)
-                //                }
-                //            }
-                //            .padding(.horizontal, 20)
             }
         }
     }
@@ -72,7 +46,7 @@ struct MeditationView: View {
                 .frame(height: size.height, alignment: .bottom)
             
             Rectangle()
-                .fill(np_arsenic)
+                .fill(np_jap_indigo)
                 .opacity(0.98)
                 .frame(height: size.height, alignment: .bottom)
         }
@@ -126,7 +100,7 @@ struct MeditationView: View {
                 
                 MeditationPlayerView(meditationViewModel: meditationViewModel)
                     .frame(width: 60, height: 60)
-                    .background(np_jap_indigo)
+                    .background(np_arsenic)
                     .clipShape(Circle())
             }
             .padding()

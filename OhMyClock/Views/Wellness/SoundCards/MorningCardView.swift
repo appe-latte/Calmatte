@@ -12,11 +12,16 @@ import AVFoundation
 struct MorningCardView: View {
     @State private var audioPlayer: AVAudioPlayer?
     @State private var isPlaying = false
-    @State private var progress: Float = 0.0
+    @State private var progress : Float = 0.0
     @State private var trackTime : Int = 10
-    @State private var currentTime: String = "0:00"
-    @State private var duration: String = "0:00"
-    @State private var currentTrack: String?
+    @State private var currentTime : String = "0:00"
+    @State private var duration : String = "0:00"
+    @State private var currentTrack : String?
+    @State private var animationTimer: Timer?
+    
+    @State private var amplitude : CGFloat = 0.8
+    @State private var phase : CGFloat = 0.0
+    @State private var change : CGFloat = 0.1
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -56,9 +61,11 @@ struct MorningCardView: View {
             audioPlayer?.stop()
             audioPlayer?.currentTime = 0 // Reset the track to the beginning
             isPlaying = false
+            animationTimer?.invalidate() // Stops the waveform animation
         } else {
             audioPlayer?.play()
             isPlaying = true
+            startAnimation()
             
             // Update progress and track time
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
@@ -77,6 +84,16 @@ struct MorningCardView: View {
         }
     }
     
+    // MARK: Animation Control
+    private func startAnimation() {
+        animationTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            withAnimation(.linear(duration: 0.1)) {
+                self.amplitude = self._nextAmplitude()
+                self.phase -= 1.5
+            }
+        }
+    }
+    
     // MARK: Skip Forward/Backward
     private func skip(seconds: TimeInterval) {
         guard let player = audioPlayer else { return }
@@ -91,6 +108,20 @@ struct MorningCardView: View {
         }
         
         self.updateProgress()
+    }
+    
+    // MARK: Amplitude for waveform
+    private func _nextAmplitude() -> CGFloat {
+        if self.amplitude <= 0.01 {
+            self.change = 0.1
+            return 0.02
+        } else if self.amplitude > 0.9 {
+            self.change = -0.1
+            return 0.9
+        }
+        
+        let newAmplitude = self.amplitude + (self.change * CGFloat.random(in: 0.3...0.8))
+        return max(0.01, newAmplitude)
     }
     
     // MARK: Update Progress
@@ -159,11 +190,13 @@ struct MorningCardView: View {
                                         .padding(.horizontal, 20)
                                         
                                         Spacer()
+                                            .frame(height: 20)
+                                        
+                                        Muiltiwave(amplitude: amplitude, color: np_white, phase: phase)
                                             .frame(height: 300)
                                     }
                                     .padding(.vertical, 10)
                                 }
-                            
                         }
                         .clipShape(CustomHeaderShape())
                         .edgesIgnoringSafeArea(.top)
@@ -173,16 +206,6 @@ struct MorningCardView: View {
                     
                     // MARK: Mindfulness Journey Sound
                     VStack(spacing: 25) {
-                        // MARK: Card Description
-                        //                        Text("Breakfast is the most important meal of the day, but so is starting your day off right...Mentally! Take some time to meditate and get mentally prepared for the day.")
-                        //                            .frame(width: width - 40, height: 100)
-                        //                            .font(.system(size: 12, design: .rounded))
-                        //                            .fontWeight(.medium)
-                        //                            .textCase(.uppercase)
-                        //                            .multilineTextAlignment(.leading)
-                        //                            .lineLimit(4)
-                        //                            .kerning(1)
-                        
                         HStack(spacing: 5) {
                             Label("Mindfulness Journey", systemImage: "lock.open.fill")
                                 .font(.system(size: 14))
@@ -205,7 +228,7 @@ struct MorningCardView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 30, height: 30)
-                                    .foregroundStyle(np_white)                           
+                                    .foregroundStyle(np_white)
                             }
                             
                             // "Play / Stop" button

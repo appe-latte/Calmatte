@@ -74,6 +74,7 @@
 		2F9EBB072A648A8000DC806A /* AffirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EBB062A648A8000DC806A /* AffirmationView.swift */; };
 		2FA2D6612B10630D00CB9C27 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA2D6602B10630D00CB9C27 /* StoreKit.framework */; };
 		2FA38A9F2AEB0E6A00BE57F0 /* CustomHeaderShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA38A9E2AEB0E6A00BE57F0 /* CustomHeaderShape.swift */; };
+		2FA510832B8CFBBF00B6738F /* SoundWaves.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA510822B8CFBBF00B6738F /* SoundWaves.swift */; };
 		2FA9AB452A4E0D7A00557FD0 /* MoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */; };
 		2FA9C8CD2B16708200569C84 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FA9C8CC2B16708200569C84 /* success.json */; };
 		2FAD51EB2B0425F400D28A3C /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD51EA2B0425F400D28A3C /* AppViewModel.swift */; };
@@ -200,6 +201,7 @@
 		2F9EBB062A648A8000DC806A /* AffirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationView.swift; sourceTree = "<group>"; };
 		2FA2D6602B10630D00CB9C27 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2FA38A9E2AEB0E6A00BE57F0 /* CustomHeaderShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderShape.swift; sourceTree = "<group>"; };
+		2FA510822B8CFBBF00B6738F /* SoundWaves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundWaves.swift; sourceTree = "<group>"; };
 		2FA9AB442A4E0D7A00557FD0 /* MoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodModel.swift; sourceTree = "<group>"; };
 		2FA9C8CC2B16708200569C84 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		2FAD51EA2B0425F400D28A3C /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				2FB2C4FB2A37B3C4006D5A30 /* TaskCategory.swift */,
 				2FCD005B2A67127F000AD649 /* User.swift */,
 				2F64DE352A8161B9007917D2 /* ReminderManager.swift */,
+				2FA510822B8CFBBF00B6738F /* SoundWaves.swift */,
 				2F9EBB012A6489C900DC806A /* Quote */,
 				2F4AB62D2A5E5CEF00F6332F /* Mood */,
 			);
@@ -771,6 +774,7 @@
 				2FCD00622A67188F000AD649 /* AppLockViewModel.swift in Sources */,
 				2F438EF92A6B17B000CDF33D /* PasswordResetViewModel.swift in Sources */,
 				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
+				2FA510832B8CFBBF00B6738F /* SoundWaves.swift in Sources */,
 				2F5B2EC82AFC00DF00778727 /* DayStateViewModel.swift in Sources */,
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
 				2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */,
@@ -950,7 +954,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = OhMyClock/OhMyClock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OhMyClock/Preview Content\"";
 				DEVELOPMENT_TEAM = QACLP69RHJ;
 				ENABLE_PREVIEWS = YES;
@@ -973,7 +977,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appe-latte.OhMyClock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -995,7 +999,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = OhMyClock/OhMyClock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OhMyClock/Preview Content\"";
 				DEVELOPMENT_TEAM = QACLP69RHJ;
 				ENABLE_PREVIEWS = YES;
@@ -1018,7 +1022,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appe-latte.OhMyClock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
