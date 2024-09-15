@@ -18,6 +18,7 @@
 		2F0DD18D2B1BF57B00504937 /* orange.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F0DD18B2B1BF57A00504937 /* orange.json */; };
 		2F0DD18E2B1BF57B00504937 /* red.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F0DD18C2B1BF57A00504937 /* red.json */; };
 		2F0F58F52B20FD4E0044F043 /* SoundPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F58F42B20FD4E0044F043 /* SoundPlayerViewModel.swift */; };
+		2F1062212C97A36900FD40F7 /* ThoughtRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1062202C97A35A00FD40F7 /* ThoughtRecordView.swift */; };
 		2F11AE142A675615002FFAED /* BiometricLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F11AE132A675615002FFAED /* BiometricLoginView.swift */; };
 		2F18B4122A6654DC00F91C7B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F18B4112A6654DC00F91C7B /* GoogleService-Info.plist */; };
 		2F249EAD2B341ABA0083AC14 /* NightCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F249EAC2B341ABA0083AC14 /* NightCardView.swift */; };
@@ -159,6 +160,7 @@
 		2F0DD18B2B1BF57A00504937 /* orange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = orange.json; sourceTree = "<group>"; };
 		2F0DD18C2B1BF57A00504937 /* red.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red.json; sourceTree = "<group>"; };
 		2F0F58F42B20FD4E0044F043 /* SoundPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayerViewModel.swift; sourceTree = "<group>"; };
+		2F1062202C97A35A00FD40F7 /* ThoughtRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtRecordView.swift; sourceTree = "<group>"; };
 		2F11AE132A675615002FFAED /* BiometricLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricLoginView.swift; sourceTree = "<group>"; };
 		2F18B4112A6654DC00F91C7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F249EAC2B341ABA0083AC14 /* NightCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightCardView.swift; sourceTree = "<group>"; };
@@ -565,6 +567,7 @@
 				2F9EBB062A648A8000DC806A /* AffirmationView.swift */,
 				2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */,
 				2FCD005D2A671647000AD649 /* ProgressLoadingView.swift */,
+				2F1062202C97A35A00FD40F7 /* ThoughtRecordView.swift */,
 				2FD60C562B12B050009B3EC8 /* Wellness */,
 				2F4AB6252A5DDCF000F6332F /* Diary */,
 				2FCD00532A66E990000AD649 /* Settings */,
@@ -770,6 +773,7 @@
 				2FF87ABA2A61177A0026DF9E /* MonthlyCalendarView.swift in Sources */,
 				2F0D04EE2A0A21EF002523A9 /* WeatherViewModel.swift in Sources */,
 				2FCD005E2A671647000AD649 /* ProgressLoadingView.swift in Sources */,
+				2F1062212C97A36900FD40F7 /* ThoughtRecordView.swift in Sources */,
 				2FF50124296E9B2800813D40 /* MainView.swift in Sources */,
 				2F36B0A62967A40000AC8D59 /* ContentView.swift in Sources */,
 				2F434BB8296F8CCA00698C1A /* AudioManager.swift in Sources */,
