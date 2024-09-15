@@ -30,10 +30,6 @@
 #ifndef ABSL_FUNCTIONAL_BIND_FRONT_H_
 #define ABSL_FUNCTIONAL_BIND_FRONT_H_
 
-#if defined(__cpp_lib_bind_front) && __cpp_lib_bind_front >= 201907L
-#include <functional>  // For std::bind_front.
-#endif  // defined(__cpp_lib_bind_front) && __cpp_lib_bind_front >= 201907L
-
 #include "absl/functional/internal/front_binder.h"
 #include "absl/utility/utility.h"
 
@@ -50,8 +46,7 @@ ABSL_NAMESPACE_BEGIN
 // specified. More importantly, it provides more reliable correctness guarantees
 // than `std::bind()`; while `std::bind()` will silently ignore passing more
 // parameters than expected, for example, `absl::bind_front()` will report such
-// mis-uses as errors. In C++20, `absl::bind_front` is replaced by
-// `std::bind_front`.
+// mis-uses as errors.
 //
 // absl::bind_front(a...) can be seen as storing the results of
 // std::make_tuple(a...).
@@ -175,9 +170,6 @@ ABSL_NAMESPACE_BEGIN
 //   // Doesn't copy "hi".
 //   absl::bind_front(Print, absl::string_view(hi))("Chuk");
 //
-#if defined(__cpp_lib_bind_front) && __cpp_lib_bind_front >= 201907L
-using std::bind_front;
-#else   // defined(__cpp_lib_bind_front) && __cpp_lib_bind_front >= 201907L
 template <class F, class... BoundArgs>
 constexpr functional_internal::bind_front_t<F, BoundArgs...> bind_front(
     F&& func, BoundArgs&&... args) {
@@ -185,7 +177,6 @@ constexpr functional_internal::bind_front_t<F, BoundArgs...> bind_front(
       absl::in_place, absl::forward<F>(func),
       absl::forward<BoundArgs>(args)...);
 }
-#endif  // defined(__cpp_lib_bind_front) && __cpp_lib_bind_front >= 201907L
 
 ABSL_NAMESPACE_END
 }  // namespace absl

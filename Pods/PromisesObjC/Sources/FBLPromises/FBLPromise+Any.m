@@ -46,10 +46,10 @@ static NSArray *FBLPromiseCombineValuesAndErrors(NSArray<FBLPromise *> *promises
   NSParameterAssert(anyPromises);
 
   if (anyPromises.count == 0) {
-    return [[self alloc] initWithResolution:@[]];
+    return [[FBLPromise alloc] initWithResolution:@[]];
   }
   NSMutableArray *promises = [anyPromises mutableCopy];
-  return [self
+  return [FBLPromise
       onQueue:queue
         async:^(FBLPromiseFulfillBlock fulfill, FBLPromiseRejectBlock reject) {
           for (NSUInteger i = 0; i < promises.count; ++i) {
@@ -58,7 +58,7 @@ static NSArray *FBLPromiseCombineValuesAndErrors(NSArray<FBLPromise *> *promises
               continue;
             } else {
               [promises replaceObjectAtIndex:i
-                                  withObject:[[self alloc] initWithResolution:promise]];
+                                  withObject:[[FBLPromise alloc] initWithResolution:promise]];
             }
           }
           for (FBLPromise *promise in promises) {
@@ -110,6 +110,3 @@ static NSArray *FBLPromiseCombineValuesAndErrors(NSArray<FBLPromise *> *promises
 }
 
 @end
-
-/** Stub used to force the linker to include the categories in this file. */
-void FBLIncludeAnyCategory(void) {}

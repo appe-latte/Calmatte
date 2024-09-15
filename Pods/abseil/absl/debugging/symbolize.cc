@@ -23,11 +23,6 @@
 #endif
 #endif
 
-// Emscripten symbolization relies on JS. Do not use them in standalone mode.
-#if defined(__EMSCRIPTEN__) && !defined(STANDALONE_WASM)
-#define ABSL_INTERNAL_HAVE_SYMBOLIZE_WASM
-#endif
-
 #if defined(ABSL_INTERNAL_HAVE_ELF_SYMBOLIZE)
 #include "absl/debugging/symbolize_elf.inc"
 #elif defined(ABSL_INTERNAL_HAVE_SYMBOLIZE_WIN32)
@@ -36,7 +31,7 @@
 #include "absl/debugging/symbolize_win32.inc"
 #elif defined(__APPLE__)
 #include "absl/debugging/symbolize_darwin.inc"
-#elif defined(ABSL_INTERNAL_HAVE_SYMBOLIZE_WASM)
+#elif defined(__EMSCRIPTEN__)
 #include "absl/debugging/symbolize_emscripten.inc"
 #else
 #include "absl/debugging/symbolize_unimplemented.inc"

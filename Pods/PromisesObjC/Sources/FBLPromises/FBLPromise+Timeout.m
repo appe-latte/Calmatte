@@ -27,7 +27,7 @@
 - (FBLPromise *)onQueue:(dispatch_queue_t)queue timeout:(NSTimeInterval)interval {
   NSParameterAssert(queue);
 
-  FBLPromise *promise = [[[self class] alloc] initPending];
+  FBLPromise *promise = [[FBLPromise alloc] initPending];
   [self observeOnQueue:queue
       fulfill:^(id __nullable value) {
         [promise fulfill:value];
@@ -62,6 +62,3 @@
 }
 
 @end
-
-/** Stub used to force the linker to include the categories in this file. */
-void FBLIncludeTimeoutCategory(void) {}

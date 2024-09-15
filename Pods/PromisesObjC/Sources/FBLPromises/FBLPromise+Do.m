@@ -28,7 +28,7 @@
   NSParameterAssert(queue);
   NSParameterAssert(work);
 
-  FBLPromise *promise = [[self alloc] initPending];
+  FBLPromise *promise = [[FBLPromise alloc] initPending];
   dispatch_group_async(FBLPromise.dispatchGroup, queue, ^{
     id value = work();
     if ([value isKindOfClass:[FBLPromise class]]) {
@@ -57,6 +57,3 @@
 }
 
 @end
-
-/** Stub used to force the linker to include the categories in this file. */
-void FBLIncludeDoCategory(void) {}

@@ -92,14 +92,14 @@ struct BiometricLoginView: View {
         GeometryReader { proxy in
             let size = proxy.size
             
-            Image("img-bg")
-                .resizable()
-                .scaledToFill()
-                .frame(height: size.height, alignment: .bottom)
+//            Image("img-bg")
+//                .resizable()
+//                .scaledToFill()
+//                .frame(height: size.height, alignment: .bottom)
             
             Rectangle()
                 .fill(np_arsenic)
-                .opacity(0.98)
+//                .opacity(0.98)
                 .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()

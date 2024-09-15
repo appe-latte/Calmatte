@@ -174,12 +174,9 @@ class ABSL_LOCKABLE Mutex {
 
   // Mutex::AssertHeld()
   //
-  // Require that the mutex be held exclusively (write mode) by this thread.
-  //
-  // If the mutex is not currently held by this thread, this function may report
-  // an error (typically by crashing with a diagnostic) or it may do nothing.
-  // This function is intended only as a tool to assist debugging; it doesn't
-  // guarantee correctness.
+  // Return immediately if this thread holds the `Mutex` exclusively (in write
+  // mode). Otherwise, may report an error (typically by crashing with a
+  // diagnostic), or may return immediately.
   void AssertHeld() const ABSL_ASSERT_EXCLUSIVE_LOCK();
 
   // ---------------------------------------------------------------------------
@@ -239,13 +236,9 @@ class ABSL_LOCKABLE Mutex {
 
   // Mutex::AssertReaderHeld()
   //
-  // Require that the mutex be held at least in shared mode (read mode) by this
-  // thread.
-  //
-  // If the mutex is not currently held by this thread, this function may report
-  // an error (typically by crashing with a diagnostic) or it may do nothing.
-  // This function is intended only as a tool to assist debugging; it doesn't
-  // guarantee correctness.
+  // Returns immediately if this thread holds the `Mutex` in at least shared
+  // mode (read mode). Otherwise, may report an error (typically by
+  // crashing with a diagnostic), or may return immediately.
   void AssertReaderHeld() const ABSL_ASSERT_SHARED_LOCK();
 
   // Mutex::WriterLock()
@@ -991,15 +984,14 @@ inline Condition::Condition(const T *object,
 // Register a hook for profiling support.
 //
 // The function pointer registered here will be called whenever a mutex is
-// contended.  The callback is given the cycles for which waiting happened (as
-// measured by //absl/base/internal/cycleclock.h, and which may not
-// be real "cycle" counts.)
+// contended.  The callback is given the absl/base/cycleclock.h timestamp when
+// waiting began.
 //
 // Calls to this function do not race or block, but there is no ordering
 // guaranteed between calls to this function and call to the provided hook.
 // In particular, the previously registered hook may still be called for some
 // time after this function returns.
-void RegisterMutexProfiler(void (*fn)(int64_t wait_cycles));
+void RegisterMutexProfiler(void (*fn)(int64_t wait_timestamp));
 
 // Register a hook for Mutex tracing.
 //

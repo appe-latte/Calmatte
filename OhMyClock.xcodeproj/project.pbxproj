@@ -56,7 +56,6 @@
 		2F4AB6292A5DDDBE00F6332F /* LogMoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB6282A5DDDBE00F6332F /* LogMoodView.swift */; };
 		2F4AB62B2A5E5C3500F6332F /* MoodRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AB62A2A5E5C3500F6332F /* MoodRowView.swift */; };
 		2F4AD37B2B4686CB0035D3EF /* MentalHealth101View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AD37A2B4686CB0035D3EF /* MentalHealth101View.swift */; };
-		2F54B260297C71190075E488 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B25F297C71190075E488 /* Realm */; };
 		2F54B262297C71190075E488 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B261297C71190075E488 /* RealmSwift */; };
 		2F5B2EC82AFC00DF00778727 /* DayStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B2EC72AFC00DF00778727 /* DayStateViewModel.swift */; };
 		2F5D439A2B47CCF500D7B2A6 /* SelfCareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D43992B47CCF500D7B2A6 /* SelfCareView.swift */; };
@@ -82,6 +81,7 @@
 		2FB2C4FE2A37B401006D5A30 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C4FD2A37B401006D5A30 /* TaskView.swift */; };
 		2FB2C5012A37B4FD006D5A30 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2C5002A37B4FD006D5A30 /* AddTaskView.swift */; };
 		2FB87FB02A0C6E1D0033B4E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB87FAF2A0C6E1D0033B4E1 /* AppDelegate.swift */; };
+		2FC15D292C50B4D100286994 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 2F54B261297C71190075E488 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		2FC5643D2A68B67300664FE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5643C2A68B67300664FE0 /* SceneDelegate.swift */; };
 		2FCD00562A66E9D2000AD649 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00552A66E9D2000AD649 /* SignUpView.swift */; };
 		2FCD005A2A6710BC000AD649 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD00592A6710BC000AD649 /* AuthViewModel.swift */; };
@@ -108,6 +108,7 @@
 		2FF0AB942B1B91C7003703FA /* okay-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0AB8E2B1B91C7003703FA /* okay-emoji.json */; };
 		2FF0AB962B1B91C7003703FA /* bad-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0AB902B1B91C7003703FA /* bad-emoji.json */; };
 		2FF12EBC2A0B759A0097993C /* OmcModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FF12EBA2A0B759A0097993C /* OmcModel.xcdatamodeld */; };
+		2FF29F522C979316008F5815 /* ThoughtRecordModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF29F512C979300008F5815 /* ThoughtRecordModelController.swift */; };
 		2FF4260C2B0C74C8000BD7B2 /* WeeklyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4260B2B0C74C8000BD7B2 /* WeeklyCalendarView.swift */; };
 		2FF50124296E9B2800813D40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50123296E9B2800813D40 /* MainView.swift */; };
 		2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50126296EA2B400813D40 /* MeditationView.swift */; };
@@ -122,6 +123,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2FC15D2A2C50B4D100286994 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2FC15D292C50B4D100286994 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2FDBFCAD2A64B0C400CF96FE /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -237,6 +249,7 @@
 		2FF0AB8E2B1B91C7003703FA /* okay-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "okay-emoji.json"; sourceTree = "<group>"; };
 		2FF0AB902B1B91C7003703FA /* bad-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bad-emoji.json"; sourceTree = "<group>"; };
 		2FF12EBB2A0B759A0097993C /* OmcModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OmcModel.xcdatamodel; sourceTree = "<group>"; };
+		2FF29F512C979300008F5815 /* ThoughtRecordModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtRecordModelController.swift; sourceTree = "<group>"; };
 		2FF4260B2B0C74C8000BD7B2 /* WeeklyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalendarView.swift; sourceTree = "<group>"; };
 		2FF50123296E9B2800813D40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2FF50126296EA2B400813D40 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
@@ -257,7 +270,6 @@
 			files = (
 				2F54B262297C71190075E488 /* RealmSwift in Frameworks */,
 				2FF7465B2B127E34007C5F61 /* Lottie in Frameworks */,
-				2F54B260297C71190075E488 /* Realm in Frameworks */,
 				2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */,
 				2F2A27D32B18FEFE00FA05E5 /* OpenAISwift in Frameworks */,
 				2FA2D6612B10630D00CB9C27 /* StoreKit.framework in Frameworks */,
@@ -421,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				2F4AB6212A5DDAA400F6332F /* MoodModelController.swift */,
+				2FF29F512C979300008F5815 /* ThoughtRecordModelController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -601,6 +614,7 @@
 				2F36B09E2967A40000AC8D59 /* Resources */,
 				2FDBFCAD2A64B0C400CF96FE /* Embed Foundation Extensions */,
 				6E8E34B9F4C27B7BF20AFB3B /* [CP] Embed Pods Frameworks */,
+				2FC15D2A2C50B4D100286994 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -610,7 +624,6 @@
 			packageProductDependencies = (
 				2F27A18229740143007DA7CC /* Alamofire */,
 				2F27A185297401B8007DA7CC /* SwiftyJSON */,
-				2F54B25F297C71190075E488 /* Realm */,
 				2F54B261297C71190075E488 /* RealmSwift */,
 				2FF7465A2B127E34007C5F61 /* Lottie */,
 				2F2A27D22B18FEFE00FA05E5 /* OpenAISwift */,
@@ -776,6 +789,7 @@
 				2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */,
 				2FA510832B8CFBBF00B6738F /* SoundWaves.swift in Sources */,
 				2F5B2EC82AFC00DF00778727 /* DayStateViewModel.swift in Sources */,
+				2FF29F522C979316008F5815 /* ThoughtRecordModelController.swift in Sources */,
 				2F434BAF296F60FE00698C1A /* PlayerView.swift in Sources */,
 				2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */,
 				2FF51E042A3A42370035A964 /* SplashScreenView.swift in Sources */,
@@ -977,12 +991,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appe-latte.OhMyClock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1022,12 +1037,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appe-latte.OhMyClock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1115,11 +1131,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F2A27D12B18FEFE00FA05E5 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
 			productName = OpenAISwift;
-		};
-		2F54B25F297C71190075E488 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
 		};
 		2F54B261297C71190075E488 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;

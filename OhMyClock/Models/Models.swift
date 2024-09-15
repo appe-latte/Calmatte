@@ -74,3 +74,41 @@ struct OnboardingScreen {
     let image: String
     let description: String
 }
+
+struct ThoughtRecord: Identifiable, Codable {
+    var id = UUID()
+    var date: Date
+    var negativeThought: String
+    var emotion: String
+    var evidenceFor: String
+    var evidenceAgainst: String
+    var alternativeThought: String
+    
+    func asDictionary() -> [String: Any] {
+        return [
+            "id": id.uuidString,
+            "date": date,
+            "negativeThought": negativeThought,
+            "emotion": emotion,
+            "evidenceFor": evidenceFor,
+            "evidenceAgainst": evidenceAgainst,
+            "alternativeThought": alternativeThought
+        ]
+    }
+}
+
+
+struct GratitudeEntry: Identifiable, Codable {
+    var id = UUID()
+    var date: Date
+    var gratitudeText: String
+    
+    // Convert GratitudeEntry to a dictionary
+    func asDictionary() -> [String: Any] {
+        return [
+            "id": id.uuidString,
+            "date": date,
+            "gratitudeText": gratitudeText
+        ]
+    }
+}
