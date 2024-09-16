@@ -19,18 +19,36 @@ struct ThoughtRecordView: View {
     var body: some View {
         VStack {
             Text("Record Your Thoughts")
-                .font(.headline)
+                .scaledToFill()
+                .font(.system(size: 36, weight: .bold, design: .rounded))
+                .kerning(5)
+                .minimumScaleFactor(0.5)
+                .textCase(.uppercase)
             
             ScrollView {
                 Group {
                     TextField("Negative Thought", text: $negativeThought)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .kerning(5)
+                        .minimumScaleFactor(0.5)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                    
                     TextField("Emotion", text: $emotion)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .kerning(5)
+                        .minimumScaleFactor(0.5)
+                        .textCase(.uppercase)
+                        .foregroundColor(np_white)
+                    
                     TextField("Evidence For", text: $evidenceFor)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
                     TextField("Evidence Against", text: $evidenceAgainst)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
                     TextField("Alternative Thought", text: $alternativeThought)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
@@ -39,6 +57,11 @@ struct ThoughtRecordView: View {
                 Button("Save Thought Record") {
                     addThoughtRecord()
                 }
+                .padding(.vertical, 5)
+                .foregroundColor(np_jap_indigo)
+                .frame(width: 150, height: 50)
+                .background(np_white)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding()
                 
                 // Display saved records
@@ -57,7 +80,8 @@ struct ThoughtRecordView: View {
         }
         .padding()
         .onAppear {
-            thoughtRecordModelController.loadFromFirestore()  // Load data when the view appears
+            thoughtRecordModelController.loadFromFirestore()
+            // Load data when the view appears
         }
     }
     

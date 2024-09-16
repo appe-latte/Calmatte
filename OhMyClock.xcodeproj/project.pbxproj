@@ -34,7 +34,6 @@
 		2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2F27A185297401B8007DA7CC /* SwiftyJSON */; };
 		2F27A188297402AB007DA7CC /* LocationFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27A187297402AB007DA7CC /* LocationFetch.swift */; };
 		2F286EDF2B225AF300F6ACAD /* MorningCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F286EDE2B225AF300F6ACAD /* MorningCardView.swift */; };
-		2F2A27D32B18FEFE00FA05E5 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F2A27D22B18FEFE00FA05E5 /* OpenAISwift */; };
 		2F2A27DD2B19140900FA05E5 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2A27DC2B19140900FA05E5 /* HapticManager.swift */; };
 		2F36B0A42967A40000AC8D59 /* OhMyClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0A32967A40000AC8D59 /* OhMyClockApp.swift */; };
 		2F36B0A62967A40000AC8D59 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36B0A52967A40000AC8D59 /* ContentView.swift */; };
@@ -62,8 +61,8 @@
 		2F5D439A2B47CCF500D7B2A6 /* SelfCareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D43992B47CCF500D7B2A6 /* SelfCareView.swift */; };
 		2F6083432AFACDA1004A7F95 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */; };
 		2F64DE362A8161B9007917D2 /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64DE352A8161B9007917D2 /* ReminderManager.swift */; };
+		2F67BA6E2C97B72D00A72926 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2F67BA6D2C97B72D00A72926 /* Lottie */; };
 		2F6BFD952B068B2900BE9D03 /* Analogist.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F6BFD932B068B2900BE9D03 /* Analogist.ttf */; };
-		2F6BFD962B068B2900BE9D03 /* Analogist.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F6BFD942B068B2900BE9D03 /* Analogist.otf */; };
 		2F6BFD9A2B068E6400BE9D03 /* Butler.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F6BFD992B068E6400BE9D03 /* Butler.otf */; };
 		2F7023A82B23B8370054BCEB /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7023A72B23B8370054BCEB /* OnboardingViewModel.swift */; };
 		2F8D20282B4C7A5C00A15148 /* WellnessAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8D20272B4C7A5C00A15148 /* WellnessAudioView.swift */; };
@@ -115,7 +114,6 @@
 		2FF50127296EA2B400813D40 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50126296EA2B400813D40 /* MeditationView.swift */; };
 		2FF50129296EA33000813D40 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50128296EA33000813D40 /* SettingsView.swift */; };
 		2FF51E042A3A42370035A964 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF51E032A3A42370035A964 /* SplashScreenView.swift */; };
-		2FF7465B2B127E34007C5F61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2FF7465A2B127E34007C5F61 /* Lottie */; };
 		2FF7465D2B127F28007C5F61 /* paywall-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FF7465C2B127F28007C5F61 /* paywall-animation.json */; };
 		2FF746642B12869A007C5F61 /* breathing-circle.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FF746632B128699007C5F61 /* breathing-circle.json */; };
 		2FF87ABA2A61177A0026DF9E /* MonthlyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF87AB92A61177A0026DF9E /* MonthlyCalendarView.swift */; };
@@ -203,7 +201,6 @@
 		2F6083422AFACDA1004A7F95 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		2F64DE352A8161B9007917D2 /* ReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderManager.swift; sourceTree = "<group>"; };
 		2F6BFD932B068B2900BE9D03 /* Analogist.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Analogist.ttf; sourceTree = "<group>"; };
-		2F6BFD942B068B2900BE9D03 /* Analogist.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Analogist.otf; sourceTree = "<group>"; };
 		2F6BFD992B068E6400BE9D03 /* Butler.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Butler.otf; sourceTree = "<group>"; };
 		2F7023A72B23B8370054BCEB /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		2F8838302A0AB1C800840F68 /* OhMyClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhMyClock.entitlements; sourceTree = "<group>"; };
@@ -271,12 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F54B262297C71190075E488 /* RealmSwift in Frameworks */,
-				2FF7465B2B127E34007C5F61 /* Lottie in Frameworks */,
 				2F27A186297401B8007DA7CC /* SwiftyJSON in Frameworks */,
-				2F2A27D32B18FEFE00FA05E5 /* OpenAISwift in Frameworks */,
 				2FA2D6612B10630D00CB9C27 /* StoreKit.framework in Frameworks */,
 				2F27A18329740143007DA7CC /* Alamofire in Frameworks */,
 				D130FD8150574B3AB4BB697C /* Pods_OhMyClock.framework in Frameworks */,
+				2F67BA6E2C97B72D00A72926 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +351,6 @@
 				2FF50125296EA29300813D40 /* Views */,
 				2F36B0A72967A40200AC8D59 /* Assets.xcassets */,
 				2FDB7AAD2B4A090700F7FEA5 /* Audio_files */,
-				2F6BFD942B068B2900BE9D03 /* Analogist.otf */,
 				2F6BFD932B068B2900BE9D03 /* Analogist.ttf */,
 				2F6BFD992B068E6400BE9D03 /* Butler.otf */,
 				2F36B0A92967A40200AC8D59 /* Preview Content */,
@@ -628,8 +623,7 @@
 				2F27A18229740143007DA7CC /* Alamofire */,
 				2F27A185297401B8007DA7CC /* SwiftyJSON */,
 				2F54B261297C71190075E488 /* RealmSwift */,
-				2FF7465A2B127E34007C5F61 /* Lottie */,
-				2F2A27D22B18FEFE00FA05E5 /* OpenAISwift */,
+				2F67BA6D2C97B72D00A72926 /* Lottie */,
 			);
 			productName = OhMyClock;
 			productReference = 2F36B0A02967A40000AC8D59 /* OhMyClock.app */;
@@ -663,8 +657,7 @@
 				2F27A18129740143007DA7CC /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				2FF746592B127E33007C5F61 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				2F2A27D12B18FEFE00FA05E5 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				2F67BA6C2C97B72D00A72926 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 2F36B0A12967A40000AC8D59 /* Products */;
 			projectDirPath = "";
@@ -709,7 +702,6 @@
 				2FF0AB912B1B91C7003703FA /* amazing-emoji.json in Resources */,
 				2FF0AB932B1B91C7003703FA /* meh-emoji.json in Resources */,
 				2FDB7AB32B4A091C00F7FEA5 /* soft-drift.mp3 in Resources */,
-				2F6BFD962B068B2900BE9D03 /* Analogist.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -994,7 +986,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appe-latte.OhMyClock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1039,7 +1031,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appe-latte.OhMyClock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1092,14 +1084,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		2F2A27D12B18FEFE00FA05E5 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/adamrushy/OpenAISwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.1;
-			};
-		};
 		2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
@@ -1108,12 +1092,12 @@
 				minimumVersion = 10.10.0;
 			};
 		};
-		2FF746592B127E33007C5F61 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		2F67BA6C2C97B72D00A72926 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			repositoryURL = "https://github.com/airbnb/lottie-spm";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.3.3;
+				minimumVersion = 4.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1129,19 +1113,14 @@
 			package = 2F27A184297401B8007DA7CC /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
-		2F2A27D22B18FEFE00FA05E5 /* OpenAISwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2F2A27D12B18FEFE00FA05E5 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
-			productName = OpenAISwift;
-		};
 		2F54B261297C71190075E488 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2F54B25E297C71190075E488 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
-		2FF7465A2B127E34007C5F61 /* Lottie */ = {
+		2F67BA6D2C97B72D00A72926 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2FF746592B127E33007C5F61 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = 2F67BA6C2C97B72D00A72926 /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
