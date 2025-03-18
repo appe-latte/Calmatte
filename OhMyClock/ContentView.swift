@@ -16,7 +16,6 @@ import UserNotifications
 struct ContentView: View {
     @ObservedObject var taskManager = TaskManager()
     @State var showMenuSheet = false
-//    @State var showPaywall = false
     
     var audioManager = AudioManager()
     
@@ -38,6 +37,9 @@ struct ContentView: View {
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
+    
+    // Define an array of colors for the tabs
+    let tabColors: [Color] = [np_turq, np_orange, np_purple, np_tan, np_red]
     
     // MARK: Check for signed in user
     var isUserSignedIn: Bool {
@@ -64,50 +66,31 @@ struct ContentView: View {
             if isUserSignedIn {
                 ZStack {
                     VStack(spacing: 0) {
+                        // MARK: Top Tab Bar
+                        HStack(spacing: 0) {
+                            topTabItem(text: "Home", index: 0, tabColor: tabColors[0])
+                            topTabItem(text: "Journal", index: 1, tabColor: tabColors[1])
+                            topTabItem(text: "Tasks", index: 2, tabColor: tabColors[2])
+                            topTabItem(text: "Wellness", index: 3, tabColor: tabColors[3])
+                            topTabItem(text: "Settings", index: 4, tabColor: tabColors[4])
+                        }
+                        .padding(.horizontal)
+                        .background(np_white)
+                        Divider()
+
+                        // MARK: Tab Content Views
                         switch selectedTab {
                         case 0: MainView(moodModel: moodModel, tabBarSelection: $tabBarSelection)
-                        case 1: AnalyticsView(start: Date(), monthsToShow: 2, moodController: MoodModelController()).environmentObject(moodModelController).onAppear {
-                            progressView.loadData()
-                        }
-                        case 2: JournalView()
-                        case 3:
-//                            if userViewModel.isSubscriptionActive {
-//                                //                        MeditationView(meditationViewModel: MeditationViewModel(meditation: Meditation.data))
-//                                WellnessView()
-//                            } else {
-//                                PaywallCheckView()
-//                            }
-                            WellnessView()
-                        case 4: TaskView(taskManager: taskManager)
+                        case 1: JournalView()
+                        case 2: TaskView(taskManager: taskManager)
+                        case 3: WellnessView(moodModel: moodModel)
+                        case 4: SettingsView()
                         default: Text("Not found")
                         }
                         
-                        // MARK: Custom Tab Bar
-                        ZStack {
-                            Rectangle()
-                                .fill(np_jap_indigo)
-                                .frame(width: width, height: 90)
-                            
-                            HStack {
-                                tabItem(icon: "home", selectedIcon: "home", text: "Home", index: 0)
-                                Spacer()
-                                
-                                tabItem(icon: "report", selectedIcon: "report", text: "Reports", index: 1)
-                                Spacer()
-                                
-                                tabItem(icon: "calendar", selectedIcon: "calendar", text: "Journal", index: 2)
-                                Spacer()
-                                
-                                tabItem(icon: "zen", selectedIcon: "zen", text: "Wellness", index: 3)
-                                Spacer()
-                                
-                                tabItem(icon: "paper", selectedIcon: "paper", text: "Tasks", index: 4)
-                            }
-                            .padding(.horizontal, 30)
-                            .frame(height: 60)
-                        }
+                        Spacer()
                     }
-                    .background(np_jap_indigo)
+                    .background(np_white)
                     .ignoresSafeArea(.all, edges: .bottom)
                     
                     // MARK: Progress Loading
@@ -124,30 +107,31 @@ struct ContentView: View {
         }
     }
     
-    private func tabItem(icon: String, selectedIcon: String, text: String, index: Int) -> some View {
+    private func topTabItem(text: String, index: Int, tabColor: Color) -> some View {
         Button(action: {
             selectedTab = index
         }) {
-            VStack {
-                Circle()
-                    .fill(np_white)
-                    .frame(width: 7, height: 7)
-                    .clipShape(Circle())
-                    .opacity(selectedTab == index ? 1.0 : 0.0)
-                
-                Image(selectedTab == index ? selectedIcon : icon)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20, height: 20)
-                    .foregroundColor(np_white)
-                
+            VStack(spacing: 0) {
                 Text(text)
-                    .font(.system(size: 8))
-                    .foregroundColor(selectedTab == index ? np_gray : np_white)
-                    .textCase(.uppercase)
-                    .kerning(2)
+                    .font(.system(size: 14, weight: .semibold)) // Adjust font to match image
+                    .foregroundColor(selectedTab == index ? np_jap_indigo : np_gray) // Selected tab text color
+                    .padding(.vertical, 10)
+                
+                // Indicator line
+                if selectedTab == index {
+                                    Rectangle()
+                                        .fill(tabColor) // Use the passed tabColor here
+                                        .frame(height: 2)
+                                        .matchedGeometryEffect(id: "tab_indicator", in: animation)
+                } else {
+                    Rectangle()
+                        .fill(Color.clear)
+                        .frame(height: 2)
+                }
             }
+            .frame(maxWidth: .infinity) // Distribute tabs evenly
         }
+        .buttonStyle(.plain) // Remove button styling
     }
 }
 

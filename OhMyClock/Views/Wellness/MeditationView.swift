@@ -6,124 +6,191 @@
 //
 
 import SwiftUI
-import AVKit
+import CoreHaptics
 
 struct MeditationView: View {
-    @StateObject var meditationViewModel : MeditationViewModel
-    @StateObject var audioManager = AudioManager()
-    @State private var showPlayer = false
-    
-    @State private var meditationDescription = "Take a moment to pause, take some deep breathes, reflect and centre your mind."
+    @StateObject var meditationViewModel: MeditationViewModel
+    @State private var timeRemaining = 60
+    @State private var isRunning = false
+    @State private var instruction = "Inhale"
+    @State private var hapticEngine: CHHapticEngine?
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            // MARK: Background
+        ZStack {
             background()
             
             VStack {
-                HeaderView()
+                // MARK: Instructions
+                Text(instruction)
+                    .font(.system(size: 32, weight: .bold))
+                    .foregroundColor(np_white)
+                    .padding(.top, 20)
+                
+                // MARK: Expanding Circles
+                BreathingCircles()
+                
+                // MARK: Time Remaining Counter
+                Text("\(timeRemaining)s")
+                    .font(.system(size: 20, weight: .medium))
+                    .foregroundColor(np_white)
+                    .padding(.bottom, 30)
                 
                 Spacer()
                 
-                // MARK: "Content" section
-                BreathingView()
-            }
-        }
-    }
-    
-    // MARK: Background
-    @ViewBuilder
-    func background() -> some View {
-        GeometryReader { proxy in
-            let size = proxy.size
-            
-//            Image("img-bg")
-//                .resizable()
-//                .scaledToFill()
-//                .frame(height: size.height, alignment: .bottom)
-            
-            Rectangle()
-                .fill(np_jap_indigo)
-//                .opacity(0.98)
-                .frame(height: size.height, alignment: .bottom)
-        }
-        .ignoresSafeArea()
-    }
-    
-    // MARK: "Header View"
-    @ViewBuilder
-    func HeaderView() -> some View {
-        VStack {
-            HStack {
-                VStack(alignment: .leading, spacing: 6) {
-                    HStack {
-                        Text("Meditation Break")
-                            .font(.custom("Butler", size: 27))
-                            .minimumScaleFactor(0.5)
+                HStack {
+                    // MARK: Start/Stop Button
+                    Button(action: {
+                        if isRunning {
+                            stopBreathing()
+                        } else {
+                            startBreathing()
+                        }
+                    }) {
+                        Text(isRunning ? "Stop" : "Start")
+                            .font(.system(size: 12))
+                            .fontWeight(.bold)
                             .foregroundColor(np_white)
-                        
-                        Spacer()
+                            .textCase(.uppercase)
+                            .kerning(1)
+                            .padding()
+                            .background(isRunning ? np_red.opacity(0.3) : np_turq.opacity(0.7))
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                     
-                    // MARK: Description
-                    Text("\(meditationDescription)")
-                        .font(.custom("Butler", size: 16))
-                        .kerning(3)
-                        .minimumScaleFactor(0.5)
-                        .foregroundColor(np_gray)
+                    Spacer()
+                    
+                    // MARK: Haptic Feedback Toggle
+                    Button(action: {
+                        prepareHaptics()
+                        playHapticFeedback()
+                    }) {
+                        Image(systemName: "iphone.radiowaves.left.and.right")
+                            .font(.system(size: 24))
+                            .foregroundColor(np_white)
+                    }
                 }
-                .hAlign(.leading)
+                .frame(width: width - 20)
             }
-        }
-        .padding(15)
-        .background {
-            VStack(spacing: 0) {
-                np_jap_indigo
+            .onAppear {
+                prepareHaptics()
             }
-            .cornerRadius(10, corners: [.bottomLeft, .bottomRight])
-            .ignoresSafeArea()
         }
     }
     
-    // MARK: Meditation View
+    // MARK: Background Colour
     @ViewBuilder
-    func BreathingView() -> some View {
-        VStack {
-            LottieIconAnimView(animationFileName: "breathing-bear", loopMode: .loop, height: height / 2, width: width / 1.25)
-            
-            // MARK: "Play / Stop" sound
-            HStack {
-                Spacer()
-                
-                MeditationPlayerView(meditationViewModel: meditationViewModel)
-                    .frame(width: 60, height: 60)
-                    .background(np_arsenic)
-                    .clipShape(Circle())
-            }
-            .padding()
-        }
-        .frame(alignment: .center)
+    func background() -> some View {
+        np_arsenic
+            .edgesIgnoringSafeArea(.all)
     }
-}
-
-// MARK: extension for rounded corners for ZStack
-extension View {
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape( RoundedCorner(radius: radius, corners: corners) )
-    }
-}
-
-struct RoundedCorner: Shape {
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
     
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        return Path(path.cgPath)
+    // MARK: Expanding Circles
+    @ViewBuilder
+    func BreathingCircles() -> some View {
+        ZStack {
+            Circle()
+                .stroke(Color.gray.opacity(0.5), lineWidth: 2)
+                .frame(width: 300, height: 300)
+                .scaleEffect(animate ? 1 : 0.7)
+                .opacity(animate ? 0 : 1)
+                .animation(Animation.easeInOut(duration: 4).repeatForever(autoreverses: true))
+            
+            Circle()
+                .stroke(Color.gray.opacity(0.3), lineWidth: 3)
+                .frame(width: 220, height: 220)
+                .scaleEffect(animate ? 1 : 0.8)
+                .opacity(animate ? 0 : 1)
+                .animation(Animation.easeInOut(duration: 4).repeatForever(autoreverses: true).delay(1))
+            
+            Circle()
+                .stroke(Color.white.opacity(0.5), lineWidth: 4)
+                .frame(width: 140, height: 140)
+                .scaleEffect(animate ? 1 : 0.9)
+                .opacity(animate ? 0 : 1)
+                .animation(Animation.easeInOut(duration: 4).repeatForever(autoreverses: true).delay(2))
+        }
+        .onAppear {
+            animate = true
+        }
     }
+    
+    // MARK: Start/Stop Logic
+    func startBreathing() {
+        isRunning = true
+        timeRemaining = 60
+        instruction = "Inhale"
+        playHapticFeedback()
+        
+        Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { timer in
+            if !isRunning {
+                timer.invalidate()
+                return
+            }
+            
+            switch instruction {
+            case "Inhale":
+                instruction = "Hold"
+                playHapticFeedback()
+            case "Hold":
+                instruction = "Exhale"
+                playHapticFeedback()
+            case "Exhale":
+                instruction = "Inhale"
+                playHapticFeedback()
+            default:
+                break
+            }
+            
+            if timeRemaining > 1 {
+                timeRemaining -= 4
+            } else {
+                timer.invalidate()
+                isRunning = false
+            }
+        }
+    }
+    
+    func stopBreathing() {
+        isRunning = false
+        timeRemaining = 60
+        instruction = "Inhale"
+    }
+    
+    // MARK: Haptic Feedback
+    func prepareHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        do {
+            hapticEngine = try CHHapticEngine()
+            try hapticEngine?.start()
+        } catch {
+            print("Haptic Engine Error: \(error.localizedDescription)")
+        }
+    }
+    
+    func playHapticFeedback() {
+        guard let hapticEngine = hapticEngine, CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        
+        var events = [CHHapticEvent]()
+        
+        // Create haptic pattern based on instruction
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5)
+        let event = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 1)
+        events.append(event)
+        
+        do {
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try hapticEngine.makePlayer(with: pattern)
+            try player.start(atTime: 0)
+        } catch {
+            print("Failed to play haptic: \(error.localizedDescription)")
+        }
+    }
+    
+    @State private var animate = false
 }
 
 struct MeditationView_Previews: PreviewProvider {
@@ -131,6 +198,5 @@ struct MeditationView_Previews: PreviewProvider {
     
     static var previews: some View {
         MeditationView(meditationViewModel: meditationViewModel)
-            .environmentObject(AudioManager())
     }
 }

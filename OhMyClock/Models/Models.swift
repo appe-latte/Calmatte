@@ -46,6 +46,31 @@ struct TaskItem : Codable, Identifiable {
     var isCompleted: Bool
 }
 
+struct Routine: Identifiable, Codable {
+    var id: UUID = .init()
+    var name: String
+    var daysOfWeek: [Int]
+    var startTime: Date
+    var reminderEnabled: Bool
+    var reminderType: ReminderType
+
+    func asDictionary() -> [String: Any] {
+        return [
+            "id": id.uuidString,
+            "name": name,
+            "daysOfWeek": daysOfWeek,
+            "startTime": startTime,
+            "reminderEnabled": reminderEnabled,
+            "reminderType": reminderType.rawValue // Assuming ReminderType is an enum with RawRepresentable
+        ]
+    }
+}
+
+enum ReminderType: String, Codable, CaseIterable {
+    case time = "Time"
+    case manual = "Manual"
+}
+
 enum Theme {
     static let background = np_red
     static let detailBackground = np_orange
@@ -97,7 +122,6 @@ struct ThoughtRecord: Identifiable, Codable {
     }
 }
 
-
 struct GratitudeEntry: Identifiable, Codable {
     var id = UUID()
     var date: Date
@@ -112,3 +136,4 @@ struct GratitudeEntry: Identifiable, Codable {
         ]
     }
 }
+

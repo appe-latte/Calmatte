@@ -647,16 +647,17 @@ struct DayStateButton: View {
         Button(action: {
             self.selectedState = self.selectedState == state ? nil : state
         }) {
-            ZStack {
-                VStack(spacing: 30) {
-                    LottieIconAnimView(animationFileName: self.selectedState == state ? stateIcon : stateIcon, loopMode: .loop, height: 75, width: 75)
-                    
-                    Text(state.displayString)
-                        .font(self.selectedState == state ? .system(size: 11) : .system(size: 8))
-                        .fontWeight(.heavy)
-                        .textCase(.uppercase)
-                        .foregroundColor(self.selectedState == state ? np_white : np_gray.opacity(0.75))
-                }
+            VStack {
+                LottieIconAnimView(animationFileName: self.selectedState == state ? stateIcon : stateIcon, loopMode: .loop, height: 75, width: 75)
+                
+                Spacer()
+                    .frame(height: 20)
+                
+                Text(state.displayString)
+                    .font(self.selectedState == state ? .system(size: 11) : .system(size: 8))
+                    .fontWeight(.heavy)
+                    .textCase(.uppercase)
+                    .foregroundColor(self.selectedState == state ? np_white : np_gray.opacity(0.75))
             }
         }
     }

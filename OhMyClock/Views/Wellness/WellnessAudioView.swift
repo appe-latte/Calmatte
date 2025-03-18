@@ -292,7 +292,6 @@ struct WellnessAudioView: View {
             VStack(spacing: 0) {
                 np_jap_indigo
             }
-            .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
             .ignoresSafeArea()
         }
     }

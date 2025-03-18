@@ -54,22 +54,16 @@ struct TaskView: View {
                     }
                     .padding(.vertical)
                 }
-            }
-            
-            ZStack {
-                VStack {
-                    Spacer()
-                    
-                    // MARK: Progress Bar
-                    Capsule()
-                        .fill(np_arsenic).opacity(0.1)
-                        .frame(width: width - 20, height: 50)
-                        .clipShape(Capsule())
-                        .overlay {
-                            
-                            progressBar()
-                        }
-                }
+                
+                // MARK: Progress Bar
+                Capsule()
+                    .fill(np_arsenic).opacity(0.1)
+                    .frame(width: width - 20, height: 50)
+                    .clipShape(Capsule())
+                    .overlay {
+                        
+                        progressBar()
+                    }
             }
         }
         .alert(isPresented: $showAlert) {
@@ -92,15 +86,9 @@ struct TaskView: View {
     func background() -> some View {
         GeometryReader { proxy in
             let size = proxy.size
-//            
-//            Image("img-bg")
-//                .resizable()
-//                .scaledToFill()
-//                .frame(height: size.height, alignment: .bottom)
             
             Rectangle()
                 .fill(np_jap_indigo)
-//                .opacity(0.98)
                 .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()
@@ -120,13 +108,8 @@ struct TaskView: View {
         VStack {
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    HStack(spacing: 2) {
-                        Text("Daily Tasks")
-                            .font(.system(size: 27, weight: .semibold, design: .rounded))
-                            .kerning(1)
-                            .minimumScaleFactor(0.5)
-                            .foregroundColor(np_white)
-                        
+                    HStack {
+                      
                         Spacer()
                         
                         // MARK: "Add + Task" Button
@@ -156,7 +139,6 @@ struct TaskView: View {
             VStack(spacing: 0) {
                 np_jap_indigo
             }
-            .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
             .ignoresSafeArea()
         }
     }
@@ -238,7 +220,7 @@ struct CardView: View {
                 .font(.headline)
                 .fontWeight(.semibold)
                 .kerning(1)
-//                .textCase(.uppercase) 
+            //                .textCase(.uppercase)
                 .padding(.horizontal, 15)
             
             // MARK: "Delete" button

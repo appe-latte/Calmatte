@@ -147,13 +147,14 @@ struct DayCellView: View {
                         .scaledToFit()
                         .frame(width: 40, height: 40)
                 } else {
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 15)
                         .fill(np_gray)
                         .opacity(0.15)
                         .frame(width: 40, height: 40)
                 }
             }
             .background(np_arsenic)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
         }
     }
     
@@ -195,7 +196,7 @@ struct DayCellView: View {
             .resizable()
             .scaledToFill()
             .frame(width: 20, height: 20)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .clipShape(RoundedRectangle(cornerRadius: 15))
             .opacity(0.1)
     }
 }

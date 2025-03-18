@@ -55,7 +55,6 @@ struct JournalView : View {
                     .listStyle(InsetListStyle())
                     .scrollContentBackground(.hidden)
                     .environment(\.defaultMinListRowHeight, 150)
-                    //                    .padding(.bottom, 5)
                     .onAppear {
                         UITableView.appearance().tableFooterView = UIView() // Removes extra cells that are not being used.
                         
@@ -82,14 +81,8 @@ struct JournalView : View {
         GeometryReader { proxy in
             let size = proxy.size
             
-//            Image("img-bg")
-//                .resizable()
-//                .scaledToFill()
-//                .frame(height: size.height, alignment: .bottom)
-            
             Rectangle()
                 .fill(np_jap_indigo)
-//                .opacity(0.98)
                 .frame(height: size.height, alignment: .bottom)
         }
         .ignoresSafeArea()
@@ -98,53 +91,55 @@ struct JournalView : View {
     // MARK: "Header View"
     @ViewBuilder
     func HeaderView() -> some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 2) {
             HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    HStack {
-                        Text("Mood Timeline")
-                            .font(.system(size: 27, weight: .semibold, design: .rounded))
-                            .kerning(1)
-                            .minimumScaleFactor(0.5)
-                            .foregroundColor(np_white)
-                        
-                        Spacer()
-                        
-                        // MARK: "Add + Diary" Button
-                        Button(action: {
-                            self.txt = ""
-                            self.docID = ""
-                            self.show.toggle()
-                        }, label: {
-                            Image("add")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 40, height: 40)
-                                .foregroundColor(np_white)
-                                .padding(5)
-                        })
-                        .frame(width: 40, height: 40)
-                        .padding(5)
-                    }
-                    
-                    // MARK: Description
-                    Text("\(diaryDescription)")
-                        .font(.system(size: 13, weight: .medium, design: .rounded))
-                        .kerning(1)
+                // MARK: View Title
+                VStack(alignment: .leading) {
+                    Text("Mood")
+                        .font(.custom("Butler", size: 23))
                         .minimumScaleFactor(0.5)
-                        .foregroundColor(np_gray)
+                        .kerning(2)
+                        .foregroundColor(np_white)
+                    
+                    Text("Timeline")
+                        .font(.custom("Butler", size: 30))
+                        .textCase(.uppercase)
+                        .minimumScaleFactor(0.5)
+                        .foregroundColor(np_white)
                 }
-                .hAlign(.leading)
+                
+                Spacer()
+                
+                // MARK: "Add + Diary" Button
+                Button(action: {
+                    self.txt = ""
+                    self.docID = ""
+                    self.show.toggle()
+                }, label: {
+                    Image("add")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(np_white)
+                        .padding(5)
+                })
+                .frame(width: 40, height: 40)
+                .padding(5)
             }
+            
+            // MARK: Description
+            Text("\(diaryDescription)")
+                .font(.system(size: 13, weight: .medium, design: .rounded))
+                .kerning(1)
+                .minimumScaleFactor(0.5)
+                .foregroundColor(np_gray)
+            
+            Divider()
+                .background(np_gray)
+                .padding(.top, 15)
         }
+        .hAlign(.leading)
         .padding(15)
-        .background {
-            VStack(spacing: 0) {
-                np_jap_indigo
-            }
-            .cornerRadius(10, corners: [.bottomLeft, .bottomRight])
-            .ignoresSafeArea()
-        }
     }
 }
 

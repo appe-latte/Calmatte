@@ -17,7 +17,7 @@
 
   /// A class to manage app credentials backed by iOS Keychain.
   @available(iOS 13, tvOS 13, macOS 10.15, macCatalyst 13, watchOS 7, *)
-  class AuthAppCredentialManager: NSObject {
+  class AuthAppCredentialManager {
     let kKeychainDataKey = "app_credentials"
     let kFullCredentialKey = "full_credential"
     let kPendingReceiptsKey = "pending_receipts"
@@ -65,7 +65,7 @@
 
     func didStartVerification(withReceipt receipt: String,
                               timeout: TimeInterval) async -> AuthAppCredential {
-      return await withCheckedContinuation { continuation in
+      return await withUnsafeContinuation { continuation in
         self.didStartVerificationInternal(withReceipt: receipt, timeout: timeout) { credential in
           continuation.resume(returning: credential)
         }

@@ -2,11 +2,10 @@
 //  LottieAnimView.swift
 //  OhMyClock
 //
-//  Created by Stanford L. Khumalo on 2023-11-25.
+//  Created by Stanford L. Khumalo on 2025-03-16.
 //
-
-import SwiftUI
 import Lottie
+import SwiftUI
 
 struct LottieAnimView: UIViewRepresentable {
     var animationFileName: String

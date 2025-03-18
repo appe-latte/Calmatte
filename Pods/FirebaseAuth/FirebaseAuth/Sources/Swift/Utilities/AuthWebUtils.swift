@@ -15,7 +15,7 @@
 import Foundation
 
 @available(iOS 13, tvOS 13, macOS 10.15, macCatalyst 13, watchOS 7, *)
-class AuthWebUtils: NSObject {
+class AuthWebUtils {
   static func randomString(withLength length: Int) -> String {
     var randomString = ""
     for _ in 0 ..< length {
@@ -98,7 +98,8 @@ class AuthWebUtils: NSObject {
     return urlComponents.first
   }
 
-  static func fetchAuthDomain(withRequestConfiguration requestConfiguration: AuthRequestConfiguration)
+  static func fetchAuthDomain(withRequestConfiguration requestConfiguration: AuthRequestConfiguration,
+                              backend: AuthBackend)
     async throws -> String {
     if let emulatorHostAndPort = requestConfiguration.emulatorHostAndPort {
       // If we are using the auth emulator, we do not want to call the GetProjectConfig endpoint.
@@ -107,7 +108,7 @@ class AuthWebUtils: NSObject {
     }
 
     let request = GetProjectConfigRequest(requestConfiguration: requestConfiguration)
-    let response = try await AuthBackend.call(with: request)
+    let response = try await backend.call(with: request)
 
     // Look up an authorized domain ends with one of the supportedAuthDomains.
     // The sequence of supportedAuthDomains matters. ("firebaseapp.com", "web.app")

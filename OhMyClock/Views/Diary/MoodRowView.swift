@@ -19,6 +19,7 @@ struct MoodRowView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 15){
+                // MARK: Date
                 HStack {
                     Spacer()
                     
@@ -36,30 +37,30 @@ struct MoodRowView: View {
                 .textCase(.uppercase)
                 .foregroundColor(np_white)
                 
-                RoundedRectangle(cornerRadius: 10)
-                    .frame(width: width - 40, height: height * 0.2)
-                    .background(mood.emotion.moodColor).opacity(0.15)
+                RoundedRectangle(cornerRadius: 15)
+                    .frame(width: width - 20, height: height * 0.2)
+                    .background(np_white).opacity(0.05)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .overlay {
                         // MARK: Mood Info
                         HStack(spacing: 10) {
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(mood.emotion.moodColor)
-                                .frame(width: width * 0.25, height: height * 0.18)
-                                .overlay {
-                                    VStack(alignment: .center, spacing: 20) {
-                                        moodImage()
-                                            .scaledToFit()
-                                            .frame(maxWidth: 120)
-                                        
-                                        Text(mood.emotion.state.rawValue)
-                                            .font(.caption2)
-                                            .fontWeight(.heavy)
-                                            .kerning(2)
-                                            .textCase(.uppercase)
-                                            .foregroundColor(np_white)
-                                    }
-                                }
+                            VStack(spacing: 20) {
+                                moodImage()
+                                    .frame(width: 60)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                                    .scaledToFit()
+                                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(np_white, lineWidth: 1))
+                                
+                                Text(mood.emotion.state.rawValue)
+                                    .font(.caption2)
+                                    .fontWeight(.heavy)
+                                    .kerning(2)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(np_white)
+                            }
+                            
+                            Divider()
+                                .background(np_gray)
                             
                             Spacer()
                             
@@ -67,8 +68,8 @@ struct MoodRowView: View {
                             VStack(alignment: .leading, spacing: 10) {
                                 HStack {
                                     Text("How did you feel?")
-                                        .font(.system(size: 14, design: .rounded))
-                                        .fontWeight(.semibold)
+                                        .font(.system(size: 17))
+                                        .fontWeight(.bold)
                                         .textCase(.uppercase)
                                         .foregroundColor(np_white)
                                     
@@ -77,7 +78,7 @@ struct MoodRowView: View {
                                 
                                 HStack {
                                     Text(mood.comment ?? "No Summary")
-                                        .font(.system(size: 14, design: .rounded))
+                                        .font(.system(size: 14))
                                         .fontWeight(.medium)
                                         .lineLimit(7)
                                         .multilineTextAlignment(.leading)
