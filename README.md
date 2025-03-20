@@ -3,15 +3,17 @@
 
 <h3 align="left">Project Summary:</h3>
 <h4 align="left">  
-<p> Introducing Calmatte, a comprehensive wellness app designed to empower you in managing and improving your mental well-being. Calmatte blends practical utility with mindful practices, creating a unique, immersive, and calming environment at your fingertips. </p>
+<p> Step into Calmatte – your ultimate pocket companion for a vibrant and balanced life. Merging daily affirmations, mood tracking, soothing sounds, and habit-building tools, we’re here to fuel your journey to a more joyful and centered you. </p>
 <br/>
-<p>Calmatte's core feature is its soothing meditation interface. Designed to help alleviate anxiety and encourage tranquility, it guides you into a peaceful mental state when you need it most. Not only that, but it allows you to log and monitor your mood, transforming your emotions into quantifiable data. This mood journal feature provides a platform for reflection, helping you to understand your emotional trends, recognize triggers, and develop better coping strategies over time.</p>
-<br/>
-<p>The app also houses a user-friendly task manager that helps you organize your day and achieve your goals. Simply log the tasks you plan on completing for the day, and experience the satisfaction of digitally checking them off upon completion. This feature works to alleviate daily stressors, allowing you to focus on what truly matters.</p>
-<br/>
-<p>Adding to the practicality of the app, Calmatte includes a desk clock feature, alongside real-time weather updates and forecasts. Stay aware of the time and be prepared for the day's weather without having to exit the app, making Calmatte an all-in-one platform for your daily routine.</p>
-<br/>
-<p>In essence, Calmatte is more than just an app - it's your personal wellness assistant, aiming to enhance your daily routine, improve your mental well-being, and make your life simpler, one day at a time. With Calmatte, serenity is just a tap away.</p>
+<p>Features: </p>
+<ul>
+  <li>Kickstart with Positivity: Jumpstart each day with powerful affirmations. Tune your mind to a vibe of positivity and motivation, setting the stage for an awesome day.</li>
+  <li>Mood Journaling Made Fun: Chart your emotional voyage in our sleek mood journal. It’s all about understanding your vibes with cool emoticons and insightful summaries – boosting your self-awareness game.</li>
+  <li>Chill with Our Wellness Beats: Dive into the chill zone with Calmatte’s sound library. Meditation tracks, chill-out beats, or emergency calm-down audios – we’ve got your back for every mood swing.</li>
+  <li>Routine Your Way: Nail your wellness goals with our super-flexible Routine section. Whether it’s daily yoga vibes or a weekly digital detox, customize it to fit your lifestyle.</li>
+  <li>Unlock Your Emotional Map: Each month, uncover the trends in your emotional world with our insightful reports. It’s like having a personal emotional GPS to guide your self-growth journey.</li>
+  <li>Smooth Sailing Interface: Glide through Calmatte with ease. Our interface isn’t just easy on the eyes; it’s a breeze to use, making your path to wellness both fun and efficient.</li>
+</ul>
 </h4>
 
 <h3 align="left">Languages and Tools:</h3>
